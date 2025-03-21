@@ -1,43 +1,93 @@
 "use client";
 
 import { useTranslation } from "@/contexts/TranslationProvider";
-import { useState } from "react";
+import { ChevronDown, Search } from "lucide-react";
+import { useEffect, useState } from "react";
+import Flag from 'react-world-flags'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Input } from "./ui/input";
 
-const languageOptions = [
-  { value: "en", label: "EN" },
-  { value: "es", label: "ES" },
-  { value: "fr", label: "FR" },
+interface languageOption {
+  value: string;
+  label: string;
+  flag: string;
+}
+const languageOptions:languageOption[] = [
+  { value: "en", label: "EN", flag:"usa" },
+  { value: "es", label: "ES", flag:"es" },
+  { value: "fr", label: "FR", flag:"fr" },
 ];
 
 const Translator = () => {
-  const { t, setLanguage, language } = useTranslation();
-  const [selectedLang, setSelectedLang] = useState(language);
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedLang(e.target.value);
-    setLanguage(e.target.value);
+  const { setLanguage, language } = useTranslation();
+  const [selectedLang, setSelectedLang] = useState<languageOption|undefined>(languageOptions.find(l=>l.value===language));
+  const [filteredLanguagesOption, setFilteredLanguagesOption] = useState<languageOption[]>([])
+  const handleChange = (value: string) => {
+    const findLanguage = languageOptions.find(l=>l.value===value)
+    setSelectedLang(findLanguage);
+    setLanguage(value);
   };
+  const handleSearchLangFilter = (value:string) =>{
+    const filtered = languageOptions.filter(l=>l.value.includes(value) || l.flag.includes(value) || l.label.includes(value))
+    setFilteredLanguagesOption(filtered)
+  }
+
+  useEffect(() => {
+    handleSearchLangFilter("")
+  }, [])
+  
 
   return (
-    <div className="px-6 text-center flex items-center gap-9">
-      <h2 className="text-2xl font-bold">{t("welcome")}</h2>
-      <p className="text-lg">{t("hello")}!</p>
-
-      <div className="relative flex items-center gap-3">
-        <div className="flex items-center h-10 w-10 bg-gray-200 rounded-full">Flags</div>
-        <select
-          value={selectedLang}
-          onChange={handleChange}
-          className="bg-white border-none rounded-md pr-3 text-black focus:outline-none cursor-pointer"
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="flex items-center justify-between gap-2 cursor-pointer text-sm md:text-base lg:text-lg">
+          <span className="size-4 overflow-hidden rounded-full flex items-center justify-center">
+          <Flag code={selectedLang?.flag} className="size-full object-center object-cover"/>
+          </span>
+          {selectedLang?.label}
+          <ChevronDown className="font-light" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-fit">
+        <DropdownMenuLabel asChild>
+          <div className="w-full flex flex-col px-2 gap-2">
+            <strong>Select language</strong>
+            <div className="w-full relative">
+            <Input className="!bg-transparent !outline-none !ring-0 pr-7" placeholder="search language" onChange={(e)=>{
+              handleSearchLangFilter(e.target.value)
+            }}/>
+            <span className="absolute right-0 top-0 w-7 h-full flex items-center justify-center">
+              <Search className="size-4 text-neutral-500"/>
+            </span>
+            </div>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuRadioGroup
+          value={selectedLang?.value}
+          onValueChange={handleChange}
+          className="max-h-52 px-2 overflow-y-auto"
         >
-          {languageOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
+          {filteredLanguagesOption.map((lang) => (
+            <DropdownMenuRadioItem className="cursor-pointer" key={lang.value} value={lang.value}>
+              <span className="size-4 overflow-hidden rounded-full flex items-center justify-center">
+          <Flag code={lang.flag} className="size-full object-center object-cover"/>
+          </span>
+          {lang.label}
+            </DropdownMenuRadioItem>
           ))}
-        </select>
-      </div>
-    </div>
+
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
