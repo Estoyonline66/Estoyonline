@@ -3,6 +3,10 @@ import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 import { TranslationProvider } from "@/contexts/TranslationProvider";
 import Footer from "@/components/footer/Footer";
+import { Inter } from "next/font/google";
+import clsx from "clsx";
+
+const inter = Inter({ subsets: ["latin"] });
 
 
 export default function RootLayout({
@@ -12,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={
+        clsx(
+          "bg-white",
+          inter.className
+        )
+      }>
         
         <TranslationProvider>
           <Navbar/>
