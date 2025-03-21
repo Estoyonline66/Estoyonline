@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { getCookie, setCookie } from "@/lib/utils/__cookies";
 
 // Define translation types
 interface Translations {
@@ -23,7 +24,7 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   
   const [language, setLanguage] = useState<string>(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("language") || "en";
+      return getCookie("language") || "en";
     }
     return "en";
   });
@@ -46,7 +47,7 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("language", language);
+      setCookie("language", language);
     }
   }, [language]);
 
