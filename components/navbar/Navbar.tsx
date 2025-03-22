@@ -6,11 +6,11 @@ import usePage from "@/lib/hooks/usePage";
 import useScrollPercent from "@/lib/hooks/useScrollPercent";
 import clsx from "clsx";
 import { X } from "lucide-react";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import ImageBox from "../ImageBox";
 import MenuIcon from "../MenuIcon";
+import TranslatedLink from "../TranslatedLink";
 import Translator from "../Translator";
 import { Button } from "../ui/button";
 
@@ -86,7 +86,7 @@ export default function Navbar() {
                 "Videos":"/videos",
                 "Price":"/price",
                 "Contact":"/contact"
-              }).map((link)=><Link key={link} href={navbarData.links[link]} className="w-full min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary">{link}</Link>)
+              }).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className="w-full min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary">{link}</TranslatedLink>)
             }
               
             

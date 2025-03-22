@@ -2,11 +2,10 @@
 
 
 import { useTranslation } from '@/contexts/TranslationProvider'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { Button } from '../ui/button'
 import { Instagram } from 'lucide-react'
+import Image from 'next/image'
+import { Button } from '../ui/button'
+import TranslatedLink from '../TranslatedLink'
 
 export default function Footer() {
     const {t} = useTranslation()
@@ -28,7 +27,7 @@ export default function Footer() {
                 "Videos":"/videos",
                 "Price":"/price",
                 "Contact":"/contact"
-              }).map((link)=><Link key={link} href={navigationData.links[link]} className="w-full min-[498px]:w-fit text-center">{link}</Link>)
+              }).map((link)=><TranslatedLink key={link} href={navigationData.links[link]} className="w-full min-[498px]:w-fit text-center">{link}</TranslatedLink>)
             }
           </nav>
 
