@@ -10,7 +10,7 @@ interface Translations {
 }
 
 interface TranslationContextType {
-  t: (key: string) => string;
+  t<T>(key: string): T;
   setLanguage: (lang: string) => void;
   language: string;
 }
@@ -57,8 +57,9 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
     const newPath = `/${lang}${pathname.replace(/^\/(en|es|fr)/, "")}`;
     router.push(newPath); // Update URL dynamically
   };
-
-  const t = (key: string) => translations[key] || key;
+    function t<T>(key: string){
+      return (translations[key] || key) as T
+    }
 
   return (
     <TranslationContext.Provider value={{ t, setLanguage: changeLanguage, language }}>

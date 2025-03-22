@@ -18,15 +18,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={
         clsx(
-          "bg-white",
+          "bg-white max-h-screen",
           inter.className
         )
       }>
         
         <TranslationProvider>
+          <main id="scroll-container" className="max-h-screen overflow-auto relative">
           <Navbar/>
-          <main>{children}</main>
+          {children}
           <Footer/>
+          </main>
+          
         </TranslationProvider>
       </body>
     </html>

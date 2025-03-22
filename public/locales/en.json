@@ -1,5 +1,18 @@
 {
   "hello": "Hello",
   "welcome": "Welcome",
-  "goodbye": "Goodbye"
+  "goodbye": "Goodbye",
+  "navbar":{
+    "links":{
+        "Teachers":"/teachers",
+        "Courses":"/courses",
+        "Videos":"/videos",
+        "Price":"/price",
+        "Contact":"/contact"
+      }
+    
+  }
 }
+
+
+

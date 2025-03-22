@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import "tailwindcss";
 
 
@@ -9,10 +10,11 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  /* Updated primary and secondary colors */
+  --primary: #fabd12;
+  --primary-foreground: #000000;  /* dark text on primary background */
+  --secondary: #EB0004;
+  --secondary-foreground: #ffffff;  /* light text on secondary background */
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -43,10 +45,11 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  /* Updated primary and secondary colors in dark mode */
+  --primary: #fabd12;
+  --primary-foreground: #000000;
+  --secondary: #EB0004;
+  --secondary-foreground: #ffffff;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -110,10 +113,15 @@
 
 @layer base {
   * {
-    @apply border-border outline-none;
+    @apply border-border box-border outline-none;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
-
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", cursive;
+}
+button{
+  @apply cursor-pointer
+}
