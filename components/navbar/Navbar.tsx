@@ -33,13 +33,15 @@ export default function Navbar() {
     <header className={
       clsx(
         "w-full z-50 top-0 p-4 md:px-10 lg:px-20 flex items-center duration-300 justify-between gap-5",
-        isHome.isPage&&scrollPercentage>=5?"bg-white fixed shadow-md":
+        !isTabletScreen?isHome.isPage&&scrollPercentage>=5?"bg-white fixed shadow-md":
+          "bg-transparent fixed":isHome.isPage&&scrollPercentage>=2?"bg-white fixed shadow-md":
           "bg-transparent fixed",
-        !isHome.isPage&&"bg-white sticky shadow-md"
+        !isHome.isPage&&"bg-white sticky shadow-md",
+        dropped&&"!bg-white"
       )
     }>
       {/* logo */}
-      <span className="w-fit">
+      <TranslatedLink href={"/"} className="w-fit">
         <ImageBox
           fallback={
             <strong className="text-lg text-black">estoyonline.es</strong>
@@ -50,7 +52,7 @@ export default function Navbar() {
           height={300}
           alt="logo image"
         />
-      </span>
+      </TranslatedLink>
 
       
      
@@ -73,11 +75,11 @@ export default function Navbar() {
             "top-[100%] opacity-100":dropped,
             "top-[-200%] opacity-0 pointer-events-none":!dropped,
           },
-          isHome.isPage&&scrollPercentage<5&&"text-white"
+          !isTabletScreen&&isHome.isPage&&scrollPercentage<5&&"text-white"
         )
       }>
         <Translator />
-        <nav className="w-full min-[498px]:w-fit flex flex-col min-[498px]:flex-row items-center gap-5 text-sm md:text-base lg:text-lg">
+        <nav className="w-full min-[498px]:w-fit flex flex-col min-[498px]:flex-row items-center sm:gap-5 text-base sm:text-sm md:text-base lg:text-lg">
           
             {
               navbarData.links&&Object.keys(navbarData.links||{
@@ -86,7 +88,7 @@ export default function Navbar() {
                 "Videos":"/videos",
                 "Price":"/price",
                 "Contact":"/contact"
-              }).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className="w-full min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary">{link}</TranslatedLink>)
+              }).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className="w-full py-4 sm:py-0 min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary">{link}</TranslatedLink>)
             }
               
             
