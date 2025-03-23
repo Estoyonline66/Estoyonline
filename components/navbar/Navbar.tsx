@@ -88,7 +88,14 @@ export default function Navbar() {
                 "Videos":"/videos",
                 "Price":"/price",
                 "Contact":"/contact"
-              }).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className="w-full py-4 sm:py-0 min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary">{link}</TranslatedLink>)
+              }).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className={
+                clsx(
+                  "w-full relative py-4 sm:py-0 min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary",
+                  "before:w-0 before:absolute before:h-[2px] before:bg-gradient-to-r before:from-secondary before:to-primary",
+                  "hover:before:w-full hover:before:absolute hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
+                  "before:duration-500 before:-bottom-1 before:left-0 before:rounded-full before:delay-150"
+                )
+              }>{link}</TranslatedLink>)
             }
               
             

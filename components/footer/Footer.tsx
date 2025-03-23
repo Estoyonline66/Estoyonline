@@ -6,6 +6,7 @@ import { Instagram } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import TranslatedLink from '../TranslatedLink'
+import clsx from 'clsx'
 
 export default function Footer() {
     const {t} = useTranslation()
@@ -27,7 +28,12 @@ export default function Footer() {
                 "Videos":"/videos",
                 "Price":"/price",
                 "Contact":"/contact"
-              }).map((link)=><TranslatedLink key={link} href={navigationData.links[link]} className="w-full min-[498px]:w-fit text-center">{link}</TranslatedLink>)
+              }).map((link)=><TranslatedLink key={link} href={navigationData.links[link]} className={clsx(
+                                "relative w-full min-[498px]:w-fit text-center",
+                                "before:w-0 before:absolute before:h-1 before:bg-gradient-to-r before:from-secondary before:to-primary",
+                                "hover:before:w-full hover:before:absolute hover:before:h-1 hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
+                                "before:duration-500 before:-bottom-1 before:left-0 before:rounded-full before:delay-150"
+                              )}>{link}</TranslatedLink>)
             }
           </nav>
 

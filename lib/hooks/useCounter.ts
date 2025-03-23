@@ -28,6 +28,8 @@ export default function useCounter({ from = 0, to = 10, delay = 200,skip=1,start
                 });
             }, delay);
         return () => clearInterval(timer);
+        }else{
+            setCounter(from)
         }
 
     }, [from, to, delay, skip,start]);
