@@ -1,5 +1,15 @@
 {
   "hello": "Bonjour",
   "welcome": "Bienvenue",
-  "goodbye": "Au revoir"
+  "goodbye": "Au revoir",
+  "navbar":{
+    "links":{
+        "Teachers":"/teachers",
+        "Courses":"/courses",
+        "Videos":"/videos",
+        "Price":"/price",
+        "Contact":"/contact"
+      }
+    
+  }
 }
