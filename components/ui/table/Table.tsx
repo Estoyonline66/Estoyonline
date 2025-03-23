@@ -1,12 +1,12 @@
 import React from "react";
 
-interface Column<T> {
+export interface Column<T> {
   key: keyof T; // Restrict keys to properties of T
   header: string;
   render?: (value: T[keyof T], row: T) => React.ReactNode;
 }
 
-interface TableProps<T> {
+export interface TableProps<T> {
   columns: ReadonlyArray<Column<T>>; 
   data: T[];
 }

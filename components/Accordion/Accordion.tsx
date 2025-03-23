@@ -1,12 +1,21 @@
 "use client";
 import { useState } from "react";
 import { AccordionItem } from "./AccordionItem";
-import { accordionData } from "./accordionData";
+// import { accordionData } from "./accordionData";
+import { useTranslation } from "@/contexts/TranslationProvider";
+import { PriceData } from "@/types/PropTypes";
 
 
 
 export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { t } = useTranslation();
+    // fetch courses data from translation file
+    const Data: PriceData = t("courses");
+  
+  const accordionDatas = Data?.accordionData || [];
+  
+  console.log(accordionDatas);
 
   
 
@@ -16,7 +25,7 @@ export default function Accordion() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4 p-5">
-      {accordionData.map((item, index) => (
+      {accordionDatas.map((item, index) => (
         <AccordionItem
           key={index}
           title={item.title}

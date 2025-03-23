@@ -3,13 +3,13 @@ interface AccordionContent {
   contentDescription: string;
 }
 
-interface AccordionData {
+interface AccordionProps {
   title: string;
   content: AccordionContent[];
 }
 
 
-export const accordionData: AccordionData[] = [
+export const accordionData: AccordionProps[] = [
     {
       title: "A1 LEVEL Beginner Courses",
       content: [

@@ -1,66 +1,19 @@
-import { cardCourses } from '@/data/courseDatas';
+"use client"
 import React from 'react';
 import BgSvg from '../ui/BgSvg';
+import { useTranslation } from '@/contexts/TranslationProvider';
+import { PriceData } from '@/types/PropTypes';
+
 
 export default function Courses() {
-  const levels = [
-    {
-      title: 'Beginner Level A1',
-      items: [
-        { level: 'A1.1', duration: '40 minutes', book: 'Hall 1' },
-        { level: 'A1.2', duration: '30 minutes', book: 'Hall 1' },
-      ],
-    },
-    {
-      title: 'Basic Level A2',
-      items: [
-        { level: 'A1.1', duration: '30 hours', book: 'Area 2' },
-        { level: 'A1.2', duration: '30 hours', book: 'Area 2' },
-        { level: 'A2.1', duration: '30 hours', book: 'Area 2' },
-        { level: 'A2.2', duration: '30 hours', book: 'Area 2' },
-      ],
-    },
-    {
-      title: 'Intermediate Level B1',
-      items: [
-        { level: 'A1.1', duration: '30 minutes', book: 'Hall 3' },
-        { level: 'A1.2', duration: '30 minutes', book: 'Hall 3' },
-        { level: 'A1.3', duration: '30 minutes', book: 'Hall 3' },
-        { level: 'A1.4', duration: '30 minutes', book: 'Hall 3' },
-        { level: 'A1.5', duration: '30 minutes', book: 'Hall 3' },
-        { level: 'A1.6', duration: '30 minutes', book: 'Hall 3' },
-      ],
-      },
-    {
-      title: 'Beginner Level A1',
-      items: [
-        { level: 'A1.1', duration: '40 minutes', book: 'Hall 1' },
-        { level: 'A1.2', duration: '30 minutes', book: 'Hall 1' },
-      ],
-      },
-    {
-      title: 'Beginner Level A1',
-      items: [
-        { level: 'A1.1', duration: '40 minutes', book: 'Hall 1' },
-        { level: 'A1.2', duration: '30 minutes', book: 'Hall 1' },
-      ],
-      },
-    {
-      title: 'Beginner Level A1',
-      items: [
-        { level: 'A1.1', duration: '40 minutes', book: 'Hall 1' },
-        { level: 'A1.2', duration: '30 minutes', book: 'Hall 1' },
-      ],
-      },
-    {
-      title: 'Beginner Level A1',
-      items: [
-        { level: 'A1.1', duration: '40 minutes', book: 'Hall 1' },
-        { level: 'A1.2', duration: '30 minutes', book: 'Hall 1' },
-      ],
-    },
-    
-  ];
+  const { t } = useTranslation();
+  // fetch courses data from translation file
+  const Data: PriceData = t("courses");
+
+  const levelss = Data?.levels || [];
+
+  const cardCourses = Data?.cardCourses || [];
+
 
   return (
     <>
@@ -73,12 +26,12 @@ export default function Courses() {
             >
                 <h1 className="text-xl font-bold">{card.title}</h1>
                 <p className="text-md">
-                <span className="font-semibold">Only</span> {card.time}
+                  <span className="font-semibold">Only</span> {card.time}
                 </p>
                 <p className="text-md">{card.week}</p>
                 <p className="text-md">
-                <span>{card.lesson}</span>{" "}
-                <span className="font-semibold">{card.month}</span>
+                  <span>{card.lesson}</span>{" "}
+                  <span className="font-semibold">{card.month}</span>
                 </p>
             </li>
             ))}
@@ -89,9 +42,9 @@ export default function Courses() {
       <section className="relative bg-[#078CE2] w-full h-[75rem] flex justify-center items-center z-[-1]">
         <BgSvg />
         <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9">
-          <h1 className="text-white text-2xl font-bold">All Levels</h1>
+          <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
           <ul className="text-white flex flex-col gap-9">
-            {levels.map((level, index) => (
+            {levelss.map((level, index) => (
               <li key={index} className="flex flex-col">
                 <b className="pb-2">{level.title}</b>
                 {level.items.map((item, idx) => (
