@@ -66,11 +66,11 @@ export default function TestimonialCarousel() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-0 sm:-left-5 !bg-neutral-700">
-          <ChevronLeft className="bg-white rounded-full" />
+        <CarouselPrevious className="left-0 size-12 sm:-left-5 !bg-neutral-700">
+          <ChevronLeft className="bg-white rounded-full size-[50%]" />
         </CarouselPrevious>
-        <CarouselNext className="right-0 sm:left-[calc(100%+(var(--spacing)_*_-2))] !bg-neutral-700">
-          <ChevronRight className="bg-white rounded-full" />
+        <CarouselNext className="right-0 size-12 sm:left-[calc(100%+(var(--spacing)_*_-2))] !bg-neutral-700">
+          <ChevronRight className="bg-white rounded-full size-[50%]" />
         </CarouselNext>
       </Carousel>
     </section>
