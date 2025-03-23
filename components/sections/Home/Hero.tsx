@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function HomeHero() {
   return (
-    <section className="w-full h-fit py-40 px-4 md:px-10 lg:px-20 z-0 relative isolate flex items-center">
+    <section className="w-full min-h-screen py-40 px-4 md:px-10 lg:px-20 z-0 relative isolate flex items-center">
           {/* hero section, change uncomment the video and replace the video url with the necesssary url, remove image */}
           <span className='block size-full bg-black -z-10 absolute inset-0'>
           <ImageBox src="/Images/homeImage.png" style={{

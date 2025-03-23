@@ -49,7 +49,7 @@ export default function Navbar() {
           className="h-6 min-[498px]:h-8 md:h-10 lg:h-12 w-fit"
           src={"/Images/logo.png"}
           width={500}
-          height={300}
+          height={350}
           alt="logo image"
         />
       </TranslatedLink>

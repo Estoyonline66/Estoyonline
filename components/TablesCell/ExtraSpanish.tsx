@@ -1,18 +1,46 @@
+"use client";
 import React from "react";
-import Table from "../ui/table/Table";
-import { extraSpanishColumns } from "./../../data/columns";
+import Table, { Column } from "../ui/table/Table";
+import { useTranslation } from "@/contexts/TranslationProvider";
 
-const ExtraSpanishTable = [
-  { course: "Spanish for Travelers", duration: "3 Weeks", price: 90 },
-  { course: "Business Spanish", duration: "7 Weeks", price: 160 },
-  { course: "Spanish Pronunciation", duration: "5 Weeks", price: 110 },
-];
+// Define the structure for the data
+interface CourseData {
+  course: string;
+  duration: string;
+  price: number;
+}
+
+// Define expected type structure for the `price` translation data
+interface PriceData {
+  title2?: string;
+  tables?: {
+    extraSpanishColumns?: { key: keyof CourseData; header: string }[];
+  };
+  courses?: {
+    extraSpanishTable?: CourseData[];
+  };
+}
 
 const ExtraSpanish = () => {
+    const { t } = useTranslation();
+    // fetch price data from translation file
+    const Data: PriceData = t("price");
+
+
+    // Ensure `columns` is properly structured
+    const extraSpanishColumns: Column<CourseData>[] =
+    Data?.tables?.extraSpanishColumns?.map((col) => ({
+        key: col.key, // No need to cast
+        header: col.header,
+    })) || [];
+
+    // Ensure `data` is correctly structured
+    const extraSpanishTable: CourseData[] =
+    Data?.courses?.extraSpanishTable || [];
   return (
     <div className="p-3 md:p-6">
-      <h1 className="text-xl font-bold mb-4">Extra Spanish course Prices</h1>
-      <Table columns={extraSpanishColumns} data={ExtraSpanishTable} />
+      <h1 className="text-xl font-bold mb-4">{Data?.title2}</h1>
+      <Table columns={extraSpanishColumns} data={extraSpanishTable} />
     </div>
   );
 };
