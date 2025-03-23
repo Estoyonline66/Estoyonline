@@ -11,6 +11,7 @@
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
+    "@react-google-maps/api": "^2.20.6",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.79.0",
     "class-variance-authority": "^0.7.1",
@@ -36,6 +37,7 @@
     "@eslint/eslintrc": "^3",
     "@opennextjs/cloudflare": "^0.5.12",
     "@tailwindcss/postcss": "^4",
+    "@types/google-map-react": "^2.1.10",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",

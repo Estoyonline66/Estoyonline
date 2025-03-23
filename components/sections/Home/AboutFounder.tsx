@@ -17,7 +17,9 @@ export default function AboutFounder() {
               <p>
               An online Spanish school <strong>with over 300 students.</strong> We’re excited to tell you all about our boutique school and our lessons in detail. Let’s schedule a free class! I am looking forward to your Whatsapp message. <strong> Text us now!</strong>
               </p>
-              <Button variant={"secondary"} className="!w-fit !px-4 mx-auto sm:mx-0"> <MessagePhone className="size-4"/> Whatsapp (530) 77 00 789</Button>
+              <Button variant={"secondary"} className="!w-fit !px-4 mx-auto sm:mx-0"> <MessagePhone svg={{
+                className:"size-4"
+              }}/> Whatsapp (530) 77 00 789</Button>
             </div>
           </div>
         </section>
