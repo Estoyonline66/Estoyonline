@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 import { TranslationProvider } from "@/contexts/TranslationProvider";
@@ -22,7 +21,6 @@ export default function RootLayout({
           inter.className
         )
       }>
-        
         <TranslationProvider>
           <Navbar/>
           <main>{children}</main>
