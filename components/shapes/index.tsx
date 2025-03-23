@@ -359,3 +359,12 @@ export const TeacherVideoShape = (props: SVGProps<SVGSVGElement>) => {
 </svg>
   )
 }
+
+export const TeacherIcon = (props: SVGProps<SVGSVGElement>) => {
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72" fill="none" {...props}>
+<path d="M6 6H48C53.658 6 56.484 6 58.242 7.758C60 9.516 60 12.342 60 18V36C60 41.658 60 44.484 58.242 46.242C56.484 48 53.658 48 48 48H27M30 19.5H48M6 51V39C6 36.171 6 34.758 6.879 33.879C7.758 33 9.171 33 12 33H18M6 51H18M6 51V66M18 33V51M18 33H36M18 51V66" stroke="#FEFEFE" strokeWidth="3.69" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M18 19.5C18 21.0913 17.3679 22.6174 16.2426 23.7426C15.1174 24.8679 13.5913 25.5 12 25.5C10.4087 25.5 8.88258 24.8679 7.75736 23.7426C6.63214 22.6174 6 21.0913 6 19.5C6 17.9087 6.63214 16.3826 7.75736 15.2574C8.88258 14.1321 10.4087 13.5 12 13.5C13.5913 13.5 15.1174 14.1321 16.2426 15.2574C17.3679 16.3826 18 17.9087 18 19.5Z" stroke="#FEFEFE" strokeWidth="3.69" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+  )
+}
