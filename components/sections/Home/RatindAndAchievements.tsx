@@ -8,8 +8,12 @@ import React, { useState } from 'react'
 export default function RatindAndAchievements() {
   const [startCounter, setSartCounter] = useState(false)
   const ref = useIntersectionObserver<HTMLUListElement>({
-    onEnter() {
-      setSartCounter(true)
+    onProgress(progress) {
+      if (progress > 0.05) {
+        setSartCounter(true);
+      } else {
+        setSartCounter(false);
+      }
     },
   })
   const calculateSkipper = (length:number)=>Math.floor(length/20)
