@@ -7,7 +7,7 @@ import useScrollPercent from "@/lib/hooks/useScrollPercent";
 import clsx from "clsx";
 import { X } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageBox from "../ImageBox";
 import MenuIcon from "../MenuIcon";
 import TranslatedLink from "../TranslatedLink";
@@ -29,13 +29,16 @@ export default function Navbar() {
     setDropped(!dropped)
   }
 
+  useEffect(() => {
+    setDropped(false)
+  }, [pathName])
+  
   
   return (
     <header className={
       clsx(
         "w-full z-50 top-0 p-4 md:px-10 lg:px-20 flex items-center duration-300 justify-between gap-5",
-        !isTabletScreen?isHome.isPage&&scrollPercentage>=5?"bg-white fixed shadow-md":
-          "bg-transparent fixed":isHome.isPage&&scrollPercentage>=2?"bg-white fixed shadow-md":
+        isHome.isPage&&scrollPercentage>=5?"bg-white fixed shadow-md":
           "bg-transparent fixed",
         !isHome.isPage&&"bg-white sticky shadow-md",
         dropped&&"!bg-white"
@@ -74,7 +77,7 @@ export default function Navbar() {
           "w-full h-[calc(100vh-100%)] justify-end sm:justify-start sm:w-fit absolute left-0 duration-300 shadow-md p-2 sm:p-0 sm:shadow-none bg-white sm:bg-transparent sm:static flex flex-col-reverse sm:flex-row items-center gap-5",
           isTabletScreen&&{
             "top-[100%] opacity-100":dropped,
-            "top-[-200%] opacity-0 pointer-events-none":!dropped,
+            "top-[-100vh] opacity-0 pointer-events-none":!dropped,
           },
           !isTabletScreen&&isHome.isPage&&scrollPercentage<5&&"text-white"
         )

@@ -108,8 +108,12 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --animate-spin-gradient: spinGradient 3s linear infinite;
 }
 
+* {
+  @apply !outline-none focus:!border-none focus:!ring-0;
+}
 @layer base {
   * {
     @apply border-border box-border;
@@ -136,4 +140,50 @@ button {
 }
 .contact-shape-bottom {
   clip-path: polygon(0% 0%, 100% 0%, 100% 91%, 50% 100%, 0% 91%);
+}
+
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.styledButton{
+  @apply !py-3 relative !h-fit !rounded !bg-secondary;
+}
+
+.styledButton:hover::before,
+.styledButton:hover::after{
+  @apply size-full absolute top-1/2 box-content left-1/2 -translate-1/2 p-[3px] -z-10 rounded animate-spin-gradient;
+}
+
+.styledButton:hover::before{
+  @apply blur-md;
+}
+
+.styledButton:hover::before,
+.styledButton:hover::after{
+  content:"";
+  background-image: conic-gradient(from var(--angle), transparent 70%, var(--primary));
+}
+
+.styledButton.primary{
+  @apply !py-3 relative !h-fit !rounded !bg-primary;
+}
+
+
+.styledButton.primary:hover::before,
+.styledButton.primary:hover::after{
+  content:"";
+  background-image: conic-gradient(from var(--angle), transparent 70%, var(--secondary));
+}
+
+@keyframes spinGradient {
+  from{
+    --angle:0deg;
+  }
+  to{
+    --angle:360deg;
+  }
 }

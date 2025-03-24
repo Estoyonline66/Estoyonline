@@ -19,9 +19,7 @@ const ImageItem = ({index}:{index:number})=>{
     },
   });
   return(
-    <li ref={imageRef} style={{
-      transitionDelay: `${index*200}ms`
-    }} className={
+    <li ref={imageRef} className={
       clsx(
         "w-full max-h-52 sm:max-h-64 bg-primary rounded-md duration-500 overflow-hidden",
         show?"scale-100 opacity-100":"scale-0 opacity-0"

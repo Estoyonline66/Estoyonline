@@ -12,7 +12,7 @@ export default function StyledButton({children,icon,className}: Props) {
   return (
     <Button variant={"secondary"} className={
         clsx(
-            "!w-fit !px-6 !py-3 !h-fit !rounded",
+            "!w-fit !px-6 styledButton",
             className
         )
     }> {icon}{children}</Button>

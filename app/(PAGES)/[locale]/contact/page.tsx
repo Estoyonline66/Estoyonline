@@ -7,7 +7,7 @@ import {
   SingleLineShortLeft,
   SingleLineShortRight,
 } from "@/components/shapes";
-import { Button } from "@/components/ui/button";
+import StyledButton from "@/components/StyledButton";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import clsx from "clsx";
 
@@ -28,7 +28,7 @@ export default function Contact() {
       />
 
       <section className="w-full mt-10 bg-white isolate relative grid grid-cols-1 sm:grid-cols-2 items-center justify-center overflow-hidden">
-        <div className="w-full h-full isolate px-4 relative py-14 md:px-10 lg:px-20 flex flex-col gap-3">
+        <div className="w-full h-full isolate px-4 relative py-14 md:px-10 lg:px-20 flex flex-col gap-5">
           <span
             className={clsx(
               "absolute size-full bg-[#DEEBFE] top-0 left-0 -z-10",
@@ -38,14 +38,14 @@ export default function Contact() {
           <span className="absolute h-full -left-2 top-0 pointer-events-none -z-10">
             <SingleLineShortLeft className="h-[calc(100%+2rem)]" />
           </span>
-          <strong>Do you need assistance?</strong>
+          <strong className="text-lg sm:text-xl lg:text-2xl">Do you need assistance?</strong>
           <p>Contact us via whatsapp</p>
-          <Button variant={"secondary"} className="w-fit">
+          <StyledButton>
             <MessagePhone />
             Send Us Message
-          </Button>
+          </StyledButton>
         </div>
-        <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-3">
+        <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-5">
           <span
             className={clsx(
               "absolute size-full bg-[#DEEBFE] top-0 left-0 -z-10",

@@ -5,6 +5,8 @@ import ExtraSpanish from '@/components/TablesCell/ExtraSpanish';
 import OnlineSpanishOne from '@/components/TablesCell/OnlineSpanishOne';
 import OnlineSpanishTwo from '@/components/TablesCell/OnlineSpanishTwo';
 import { useTranslation } from '@/contexts/TranslationProvider';
+import GeneralHero from '@/components/GeneralHero';
+import { PriceTagIcon } from '@/components/shapes';
 
 
 
@@ -22,6 +24,8 @@ export default function Page() {
   
   
   return (
+        <><GeneralHero icon={<PriceTagIcon/>} text='Price'/>
+    
     <div className="w-full flex flex-col justify-between gap-2 md:gap-5 py-20 px-3 md:px-5 lg:px-20">
       <OnlineSpanishOne />
       <OnlineSpanishTwo />
@@ -39,5 +43,6 @@ export default function Page() {
         ))}
       </ul>
     </div>
+    </>
   );
 }
