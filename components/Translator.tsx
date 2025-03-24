@@ -1,9 +1,9 @@
 "use client";
 
 import { useTranslation } from "@/contexts/TranslationProvider";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import Flag from 'react-world-flags'
+import Flag from 'react-world-flags';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Input } from "./ui/input";
 
 interface languageOption {
   value: string;
@@ -21,7 +20,7 @@ interface languageOption {
   flag: string;
 }
 const languageOptions:languageOption[] = [
-  { value: "en", label: "EN", flag:"usa" },
+  { value: "en", label: "EN", flag:"gb" },
   { value: "es", label: "ES", flag:"es" },
   { value: "fr", label: "FR", flag:"fr" },
 ];
@@ -30,11 +29,16 @@ const Translator = () => {
   const { setLanguage, language } = useTranslation();
   const [selectedLang, setSelectedLang] = useState<languageOption|undefined>(languageOptions.find(l=>l.value===language));
   const [filteredLanguagesOption, setFilteredLanguagesOption] = useState<languageOption[]>([])
+
+
   const handleChange = (value: string) => {
     const findLanguage = languageOptions.find(l=>l.value===value)
     setSelectedLang(findLanguage);
     setLanguage(value);
   };
+
+
+
   const handleSearchLangFilter = (value:string) =>{
     const filtered = languageOptions.filter(l=>l.value.includes(value) || l.flag.includes(value) || l.label.includes(value))
     setFilteredLanguagesOption(filtered)
@@ -48,8 +52,8 @@ const Translator = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center justify-between gap-2 cursor-pointer text-base sm:text-sm md:text-base lg:text-lg">
-          <span className="size-4 overflow-hidden rounded-full flex items-center justify-center">
+        <button className="flex  h-fit items-center justify-between gap-2 cursor-pointer text-base sm:text-sm md:text-base lg:text-lg">
+          <span className="size-6 overflow-hidden rounded-full flex items-center justify-center">
           <Flag code={selectedLang?.flag} className="size-full object-center object-cover"/>
           </span>
           {selectedLang?.label}
@@ -60,14 +64,16 @@ const Translator = () => {
         <DropdownMenuLabel asChild>
           <div className="w-full flex flex-col px-2 gap-2">
             <strong>Select language</strong>
-            <div className="w-full relative">
+
+            {/* language filter element: uncomment as needed */}
+            {/* <div className="w-full relative">
             <Input className="!bg-transparent !outline-none !ring-0 pr-7" placeholder="search language" onChange={(e)=>{
               handleSearchLangFilter(e.target.value)
             }}/>
             <span className="absolute right-0 top-0 w-7 h-full flex items-center justify-center">
               <Search className="size-4 text-neutral-500"/>
             </span>
-            </div>
+            </div> */}
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

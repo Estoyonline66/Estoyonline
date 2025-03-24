@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
 @import "tailwindcss";
-
 
 :root {
   --radius: 0.625rem;
@@ -12,9 +11,9 @@
   --popover-foreground: oklch(0.145 0 0);
   /* Updated primary and secondary colors */
   --primary: #fabd12;
-  --primary-foreground: #000000;  /* dark text on primary background */
-  --secondary: #EB0004;
-  --secondary-foreground: #ffffff;  /* light text on secondary background */
+  --primary-foreground: #000000; /* dark text on primary background */
+  --secondary: #eb0004;
+  --secondary-foreground: #ffffff; /* light text on secondary background */
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -48,7 +47,7 @@
   /* Updated primary and secondary colors in dark mode */
   --primary: #fabd12;
   --primary-foreground: #000000;
-  --secondary: #EB0004;
+  --secondary: #eb0004;
   --secondary-foreground: #ffffff;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
@@ -113,7 +112,7 @@
 
 @layer base {
   * {
-    @apply border-border box-border outline-none;
+    @apply border-border box-border;
   }
   body {
     @apply bg-background text-foreground;
@@ -122,6 +121,19 @@
 .shadows-into-light-regular {
   font-family: "Shadows Into Light", cursive;
 }
-button{
-  @apply cursor-pointer
+button {
+  @apply cursor-pointer;
+}
+
+.contact-shape-right {
+  clip-path: polygon(9% 0, 100% 0%, 100% 100%, 9% 100%, 0% 50%);
+}
+.contact-shape-left {
+  clip-path: polygon(0% 0%, 91% 0, 100% 50%, 91% 100%, 0% 100%);
+}
+.contact-shape-top {
+  clip-path: polygon(50% 0%, 100% 9%, 100% 100%, 0% 100%, 0% 9%);
+}
+.contact-shape-bottom {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 91%, 50% 100%, 0% 91%);
 }

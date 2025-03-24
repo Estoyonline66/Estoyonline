@@ -65,7 +65,7 @@ export default function Videos() {
   return (
     <>
       <GeneralHero icon={<VideoLinedBottom />} text="Videos" />
-      <section className="w-full flex flex-col items-center gap-7 p-4 pt-10 pb-20">
+      <section className="w-full flex flex-col items-center gap-7 p-4 md:px-10 lg:px-20 pt-10 pb-20">
         {videos.map((vid, ind) => (
           <VideoCard key={ind} {...vid} />
         ))}
