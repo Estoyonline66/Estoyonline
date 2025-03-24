@@ -47,7 +47,7 @@ export default function Navbar() {
           fallback={
             <strong className="text-lg text-black">estoyonline.es</strong>
           }
-          className="h-6 min-[498px]:h-8 md:h-10 lg:h-12 w-fit"
+          className="h-8 md:h-10 lg:h-12 w-fit"
           src={"/Images/logo.png"}
           width={500}
           height={350}
@@ -91,10 +91,10 @@ export default function Navbar() {
                 "Contact":"/contact"
               }).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className={
                 clsx(
-                  "w-full relative py-4 sm:py-0 min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary",
+                  "relative py-4 sm:py-0 min-[498px]:w-fit text-center",
                   "before:w-0 before:absolute before:h-[2px] before:bg-gradient-to-r before:from-secondary before:to-primary",
                   "hover:before:w-full hover:before:absolute hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
-                  "before:duration-500 before:-bottom-1 before:left-0 before:rounded-full before:delay-150",
+                  "before:duration-500 before:bottom-1 sm:before:-bottom-1 before:left-0 before:rounded-full before:delay-150",
                   pathName.includes(navbarData.links[link])&&"before:w-full before:absolute before:bg-gradient-to-r before:from-secondary before:to-primary"
                 )
               }>{link}</TranslatedLink>)
