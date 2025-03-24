@@ -51,10 +51,10 @@ export default function TeacherCard({ teach }: Props) {
     },
   });
   return (
-    <li className="flex items-center flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
+    <li className="flex items-center my-5 sm:my-10 flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
       <div
         ref={imageref}
-        className="w-full relative isolate sm:w-[40%] sm:min-w-72 shrink-0 p-5"
+        className="w-full relative isolate sm:w-[40%] sm:min-w-72 shrink-0"
       >
         <div className="w-full bg-black overflow-hidden rounded-md h-52 sm:h-72 relative">
           {/* <video src="" className='size-full object-center object-cover'></video> */}
@@ -68,7 +68,7 @@ export default function TeacherCard({ teach }: Props) {
         </div>
         <span
           className={clsx(
-            "absolute inset-0 size-full scale-105 sm:scale-110 -z-10 pointer-events-none duration-500",
+            "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 size-[calc(100%+2rem)] -z-10 pointer-events-none duration-500",
             show.image
               ? "scale-100 opacity-100 rotate-0"
               : "scale-50 opacity-50 rotate-180"
@@ -79,7 +79,7 @@ export default function TeacherCard({ teach }: Props) {
       </div>
       <div
         ref={textref}
-        className="w-full py-4 sm:p-5 flex flex-col h-full gap-2"
+        className="w-full flex flex-col h-full gap-2"
       >
         <h4 className={
           clsx(
