@@ -1,3 +1,4 @@
+"use client"
 import ImageBox from "@/components/ImageBox";
 import {
   Carousel,
@@ -7,14 +8,21 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ChevronLeft, ChevronRight, HeartIcon } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay"
+import { useRef } from "react";
 
 export default function TestimonialCarousel() {
+  const plugin = useRef(
+    Autoplay({ stopOnInteraction: true })
+  )
+
+
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20">
       <h3 className="font-bold text-xl sm:text-2xl lg:text-4xl text-center">
         What our clients are saying about us
       </h3>
-      <Carousel className="w-full *:first:w-full">
+      <Carousel plugins={[plugin.current]} className="w-full *:first:w-full">
         <CarouselContent className="-ml-1 gap-3">
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem
