@@ -193,3 +193,11 @@ button {
     --angle:360deg;
   }
 }
+
+.scrollBar::-webkit-scrollbar{
+ @apply w-1 bg-transparent;
+}
+
+.scrollBar::-webkit-scrollbar-thumb{
+  @apply bg-gradient-to-b from-primary to-secondary rounded-full;
+}
