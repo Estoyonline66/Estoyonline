@@ -45,7 +45,7 @@ export default function AboutFounder() {
     },
   })
   return (
-    <section className="w-full min-h-[500px] my-20">
+    <section className="w-full min-h-fit my-20">
           <div className="w-full px-4 md:px-10 lg:px-20 grid sm:grid-cols-2 items-center gap-10">
             <div ref={imageRef} className="w-full min-h-fit h-32 my-8 sm:my-0 sm:h-60 relative flex items-center justify-center pointer-events-none">
               <HomeVector className={
@@ -71,9 +71,11 @@ export default function AboutFounder() {
               }>
               An online Spanish school <strong>with over 300 students.</strong> We’re excited to tell you all about our boutique school and our lessons in detail. Let’s schedule a free class! I am looking forward to your Whatsapp message. <strong> Text us now!</strong>
               </p>
-              <StyledButton className="mx-auto sm:mx-0 !mt-2" icon={<MessagePhone svg={{
+
+              <a href="https://wa.me/905307700789"><StyledButton className="mx-auto sm:mx-0 !mt-2" icon={<MessagePhone svg={{
                 className:"size-4"
-              }}/> }> Whatsapp (530) 77 00 789</StyledButton>
+              }}/> }> Whatsapp (530) 77 00 789</StyledButton></a>
+              
             </div>
           </div>
         </section>

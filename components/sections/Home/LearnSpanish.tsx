@@ -1,6 +1,7 @@
 "use client"
 import { DoubleLeft, DoubleRight } from '@/components/shapes'
 import StyledButton from '@/components/StyledButton'
+import TranslatedLink from '@/components/TranslatedLink'
 import useIntersectionObserver from '@/lib/hooks/useIntersector'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -58,7 +59,9 @@ export default function LearnSpanish() {
         !show.body?"translate-y-10 opacity-0":"translate-y-0 opacity-100"
       )
     }>At our  boutique school Estyonline.es, based in Barcelona, we teach Spanish in fun and engaging way, completely different from traditional methods. Thanks the method techniques we use, learning spanish online has become an enjoyable and exciting process. Fun activities and game increase your motivation and reduce your stress, making language learning easier. Additionally, they encourage natural language use and strengthen social connections.  Learning a language in an enjoyable way enhances retention and effectively helps improve your language skills.Our School has teachers from Spain, Italy, Argentina, and Colombia who are native Spanish speakers. The teacher who conduct beginner-level lessons also speak Turish. All our lessons are conducted online via Zoom </p>
+    <TranslatedLink href={"/videos"}>
     <StyledButton className='!mt-2'>Sample videos from Lesson</StyledButton>
+    </TranslatedLink>
     </div>
   </section>
   )

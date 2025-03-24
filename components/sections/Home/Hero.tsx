@@ -1,4 +1,5 @@
 import StyledButton from '@/components/StyledButton'
+import TranslatedLink from '@/components/TranslatedLink'
 
 
 export default function HomeHero() {
@@ -11,7 +12,9 @@ export default function HomeHero() {
           <div className="w-fit p-2 flex flex-col gap-5 animate-[pulse_1s_linear_forwards] text-white relative max-w-[95vw] min-[498px]:max-w-sm sm:max-w-lg lg:max-w-xl">
             <strong className="text-3xl sm:text-5xl font-bold lg:text-6xl">The World <em className="text-primary not-italic">Speaks Spanish,</em> Will You?</strong>
             <p className="text-base md:text-lg">Learn Spanish online with native teachers and let the sun warm your words</p>
+            <TranslatedLink href={"/courses"}>
             <StyledButton className="!w-fit !px-4 !text-base !mt-2 md:!text-lg">Explore Courses</StyledButton>
+            </TranslatedLink>
           </div>
         </section>
   )
