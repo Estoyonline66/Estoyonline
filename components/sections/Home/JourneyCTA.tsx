@@ -2,13 +2,16 @@
 import ImageBox from "@/components/ImageBox";
 import { Dots1, Dots2, SunIcon } from "@/components/shapes";
 import StyledButton from "@/components/StyledButton";
+import { Button } from "@/components/ui/button";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import clsx from "clsx";
+import { Volume2Icon, VolumeX } from "lucide-react";
 import { useState } from "react";
 
 const ImageItem = ({index}:{index:number})=>{
   const [show, setShow] = useState(false);
+  const [muted, setMuted] = useState(false)
   const imageRef = useIntersectionObserver<HTMLLIElement>({
     onProgress(progress) {
       if (progress > 0.05) {
@@ -21,7 +24,7 @@ const ImageItem = ({index}:{index:number})=>{
   return(
     <li ref={imageRef} className={
       clsx(
-        "w-full max-h-52 sm:max-h-64 bg-primary rounded-md duration-500 overflow-hidden",
+        "w-full max-h-52 sm:max-h-64 bg-primary relative rounded-md duration-500 overflow-hidden",
         show?"scale-100 opacity-100":"scale-0 opacity-0"
       )
     }>
@@ -31,6 +34,13 @@ const ImageItem = ({index}:{index:number})=>{
         height={1024}
         className="size-full object-cover object-top"
       />
+      <Button onClick={()=>{
+            setMuted(!muted)
+          }} className="!absolute !block !bottom-4 !left-1/2 !-translate-x-1/2  !p-2 !h-fit !bg-black/30 !backdrop-blur-3xl !text-white">
+          {
+            muted?<VolumeX className="size-5"/>:<Volume2Icon className="size-5"/>
+          }
+          </Button>
     </li>
   )
 }
