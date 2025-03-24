@@ -47,7 +47,7 @@ export default function AboutFounder() {
   return (
     <section className="w-full min-h-[500px] my-20">
           <div className="w-full px-4 md:px-10 lg:px-20 grid sm:grid-cols-2 items-center gap-10">
-            <div ref={imageRef} className="w-full min-h-fit h-32 sm:h-60 relative flex items-center justify-center pointer-events-none">
+            <div ref={imageRef} className="w-full min-h-fit h-32 my-8 sm:my-0 sm:h-60 relative flex items-center justify-center pointer-events-none">
               <HomeVector className={
                 clsx(
                   "absolute size-full z-0 aspect-square duration-500",
