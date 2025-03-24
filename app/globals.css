@@ -152,7 +152,7 @@ button {
 }
 
 .styledButton{
-  @apply !py-3 relative !h-fit !rounded !bg-secondary;
+  @apply !py-3 relative !h-fit !rounded-md !bg-secondary;
 }
 
 .styledButton:hover::before,
