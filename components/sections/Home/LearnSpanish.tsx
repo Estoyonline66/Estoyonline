@@ -1,9 +1,9 @@
 "use client"
 import { DoubleLeft, DoubleRight } from '@/components/shapes'
-import { Button } from '@/components/ui/button'
+import StyledButton from '@/components/StyledButton'
 import useIntersectionObserver from '@/lib/hooks/useIntersector'
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 
 export default function LearnSpanish() {
@@ -48,7 +48,7 @@ export default function LearnSpanish() {
     <div className="flex items-center justify-center flex-col gap-3 w-full max-w-3xl">
     <h3 className={
       clsx(
-        "font-bold text-xl sm:text-2xl lg:text-4xl duration-500 text-center",
+        "font-bold text-lg sm:text-xl lg:text-2xl duration-500 text-center",
         show.header?"-translate-y-5 opacity-100":"translate-y-0 opacity-0"
       )
     }>Learn Spanish in a fun way at our boutique school.</h3>
@@ -58,7 +58,7 @@ export default function LearnSpanish() {
         show.body?"-translate-y-5 opacity-100":"translate-y-0 opacity-0"
       )
     }>At our  boutique school Estyonline.es, based in Barcelona, we teach Spanish in fun and engaging way, completely different from traditional methods. Thanks the method techniques we use, learning spanish online has become an enjoyable and exciting process. Fun activities and game increase your motivation and reduce your stress, making language learning easier. Additionally, they encourage natural language use and strengthen social connections.  Learning a language in an enjoyable way enhances retention and effectively helps improve your language skills.Our School has teachers from Spain, Italy, Argentina, and Colombia who are native Spanish speakers. The teacher who conduct beginner-level lessons also speak Turish. All our lessons are conducted online via Zoom </p>
-    <Button variant={"secondary"} className="!w-fit !px-4">Sample videos from Lesson</Button>
+    <StyledButton >Sample videos from Lesson</StyledButton>
     </div>
   </section>
   )

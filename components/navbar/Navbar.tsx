@@ -6,7 +6,7 @@ import usePage from "@/lib/hooks/usePage";
 import useScrollPercent from "@/lib/hooks/useScrollPercent";
 import clsx from "clsx";
 import { X } from "lucide-react";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useState } from "react";
 import ImageBox from "../ImageBox";
 import MenuIcon from "../MenuIcon";
@@ -18,6 +18,7 @@ export default function Navbar() {
   const {t} = useTranslation()
   const isTabletScreen = useIsMobile(640)
   const params = useParams()
+  const pathName = usePathname()
   const isHome = usePage(`/${params.locale}`) //defaults to check for home page and locale page
   const {scrollPercentage} = useScrollPercent("#scroll-container") // check the current scroll percent of scroll-container 
   const [dropped, setDropped] = useState(false)
@@ -70,7 +71,7 @@ export default function Navbar() {
 
       <div className={
         clsx(
-          "w-full sm:w-fit absolute left-0 duration-300 shadow-md p-2 sm:p-0 sm:shadow-none bg-white sm:bg-transparent sm:static flex flex-col-reverse sm:flex-row items-center gap-5",
+          "w-full h-[calc(100vh-100%)] justify-end sm:justify-start sm:w-fit absolute left-0 duration-300 shadow-md p-2 sm:p-0 sm:shadow-none bg-white sm:bg-transparent sm:static flex flex-col-reverse sm:flex-row items-center gap-5",
           isTabletScreen&&{
             "top-[100%] opacity-100":dropped,
             "top-[-200%] opacity-0 pointer-events-none":!dropped,
@@ -79,7 +80,7 @@ export default function Navbar() {
         )
       }>
         <Translator />
-        <nav className="w-full min-[498px]:w-fit flex flex-col min-[498px]:flex-row items-center sm:gap-5 text-base sm:text-sm md:text-base lg:text-lg">
+        <nav className="w-full !h-fit min-[498px]:w-fit flex flex-col sm:flex-row items-center sm:gap-5 text-base sm:text-sm md:text-base lg:text-lg">
           
             {
               navbarData.links&&Object.keys(navbarData.links||{
@@ -93,7 +94,8 @@ export default function Navbar() {
                   "w-full relative py-4 sm:py-0 min-[498px]:w-fit text-center border-b min-[498px]:border-b-0 border-b-primary",
                   "before:w-0 before:absolute before:h-[2px] before:bg-gradient-to-r before:from-secondary before:to-primary",
                   "hover:before:w-full hover:before:absolute hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
-                  "before:duration-500 before:-bottom-1 before:left-0 before:rounded-full before:delay-150"
+                  "before:duration-500 before:-bottom-1 before:left-0 before:rounded-full before:delay-150",
+                  pathName.includes(navbarData.links[link])&&"before:w-full before:absolute before:bg-gradient-to-r before:from-secondary before:to-primary"
                 )
               }>{link}</TranslatedLink>)
             }

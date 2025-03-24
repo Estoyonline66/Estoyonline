@@ -1,7 +1,7 @@
 "use client";
 import ImageBox from "@/components/ImageBox";
 import { Dots1, Dots2, SunIcon } from "@/components/shapes";
-import { Button } from "@/components/ui/button";
+import StyledButton from "@/components/StyledButton";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import clsx from "clsx";
@@ -78,7 +78,7 @@ export default function JourneyCTA() {
           )}
           <h3
             className={clsx(
-              "font-bold text-xl sm:text-2xl lg:text-4xl duration-500",
+              "font-bold text-lg sm:text-xl lg:text-2xl duration-500",
               show.body
                 ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
                 : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
@@ -96,9 +96,9 @@ export default function JourneyCTA() {
           >
             Join Estyonline.es and learn Spanish in a fun and engaging way.
           </p>
-          <Button variant={"secondary"} className="!w-fit !px-4">
+          <StyledButton className="!mt-2">
             Explore Courses
-          </Button>
+          </StyledButton>
         </div>
         <ul className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3">
           {

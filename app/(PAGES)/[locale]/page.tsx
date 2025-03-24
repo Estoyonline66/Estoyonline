@@ -5,7 +5,7 @@ import LearnSpanish from "@/components/sections/Home/LearnSpanish";
 import RatindAndAchievements from "@/components/sections/Home/RatindAndAchievements";
 import TestimonialCarousel from "@/components/sections/Home/TestimonialCarousel";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <HomeHero />

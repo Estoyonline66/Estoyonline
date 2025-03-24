@@ -3,10 +3,10 @@
 
 import ImageBox from '@/components/ImageBox'
 import { HomeVector, MessagePhone } from '@/components/shapes'
-import { Button } from '@/components/ui/button'
+import StyledButton from '@/components/StyledButton'
 import useIntersectionObserver from '@/lib/hooks/useIntersector'
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 
 export default function AboutFounder() {
@@ -56,10 +56,10 @@ export default function AboutFounder() {
               }/>
               <ImageBox className="max-w-[50vw] sm:max-w-full object-contain aspect-square relative" src="/Images/homeImage2.png" width={500} height={500}/>
             </div>
-            <div ref={bodyRef}  className="w-full flex gap-3 flex-col">
+            <div ref={bodyRef}  className="w-full flex gap-5 flex-col">
               <h3 className={
                 clsx(
-                  "font-bold text-xl sm:text-2xl lg:text-4xl duration-500 delay-100",
+                  "font-bold text-lg sm:text-xl lg:text-2xl duration-500 delay-100",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
               }>Hello! Hola! I’am <em className="shadows-into-light-regular text-secondary font-normal">Aleja</em>, the founder of Estyonline.es</h3>
@@ -71,9 +71,9 @@ export default function AboutFounder() {
               }>
               An online Spanish school <strong>with over 300 students.</strong> We’re excited to tell you all about our boutique school and our lessons in detail. Let’s schedule a free class! I am looking forward to your Whatsapp message. <strong> Text us now!</strong>
               </p>
-              <Button variant={"secondary"} className="!w-fit !px-4 mx-auto sm:mx-0"> <MessagePhone svg={{
+              <StyledButton className="mx-auto sm:mx-0 !mt-2" icon={<MessagePhone svg={{
                 className:"size-4"
-              }}/> Whatsapp (530) 77 00 789</Button>
+              }}/> }> Whatsapp (530) 77 00 789</StyledButton>
             </div>
           </div>
         </section>
