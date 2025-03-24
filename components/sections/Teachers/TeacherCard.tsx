@@ -72,7 +72,7 @@ export default function TeacherCard({ teach }: Props) {
     <li className="flex items-center my-5 sm:my-10 flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
       <div
         ref={imageref}
-        className="w-full relative isolate sm:w-[40%] sm:min-w-72 shrink-0"
+        className="w-full relative isolate sm:w-[40%] sm:min-w-72 min-[498px]:max-w-fit shrink-0"
       >
         <div onMouseEnter={()=>setPlay(true)} onMouseLeave={()=>setPlay(false)} className="w-full bg-black overflow-hidden rounded-md h-72 relative">
           <video ref={vidRef} src={teach.media} className='size-full object-top object-cover'></video>
