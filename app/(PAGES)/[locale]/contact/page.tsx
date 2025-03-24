@@ -1,5 +1,6 @@
 "use client";
 import GeneralHero from "@/components/GeneralHero";
+import MapComponent from "@/components/sections/Contact/MapContainer";
 // import ContactMap from "@/components/sections/Contact/Map";
 import {
   MapPinCustom,
@@ -65,9 +66,10 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="w-full mt-10">
+      <section className="w-full mt-10 z-[-1]">
         {/* <ContactMap/> */}
         {/* handle the map section in contact design */}
+        <MapComponent/>
       </section>
     </>
   );
