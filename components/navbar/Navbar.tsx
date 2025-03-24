@@ -46,7 +46,7 @@ export default function Navbar() {
           fallback={
             <strong className="text-lg text-black">estoyonline.es</strong>
           }
-          className="h-6 min-[498px]:h-8 md:h-10 lg:h-12 w-fit"
+          className="h-8 min-[498px]:h-8 md:h-10 lg:h-12 w-fit"
           src={"/Images/logo.png"}
           width={500}
           height={350}
