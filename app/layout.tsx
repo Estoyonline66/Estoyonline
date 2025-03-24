@@ -22,7 +22,7 @@ export default function RootLayout({
         )
       }>
         <TranslationProvider>
-          <main id="scroll-container" className="max-h-screen scrollBar overflow-auto relative">
+          <main id="scroll-container" className="max-h-screen overflow-auto relative">
           <Navbar/>
           {children}
           <Footer/>
