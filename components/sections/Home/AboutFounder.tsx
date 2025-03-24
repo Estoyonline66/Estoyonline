@@ -50,11 +50,11 @@ export default function AboutFounder() {
             <div ref={imageRef} className="w-full min-h-fit h-32 sm:h-60 relative flex items-center justify-center pointer-events-none">
               <HomeVector className={
                 clsx(
-                  "absolute w-[50vw] sm:w-full z-0 aspect-square duration-500",
+                  "absolute size-full z-0 aspect-square duration-500",
                   show.image?"scale-100 opacity-100 rotate-0":"scale-50 opacity-50 rotate-180"
                 )
               }/>
-              <ImageBox className="max-w-[50vw] sm:max-w-full object-contain aspect-square relative" src="/Images/homeImage2.png" width={500} height={500}/>
+              <ImageBox className="max-w-[70vw] sm:max-w-full object-contain aspect-square relative" src="/Images/homeImage2.png" width={500} height={500}/>
             </div>
             <div ref={bodyRef}  className="w-full flex gap-5 flex-col">
               <h3 className={

@@ -25,7 +25,7 @@ export default function Teachers() {
       <strong className="font-bold text-base sm:text-xl lg:text-2xl max-w-xl">Learn <em className="text-secondary not-italic">Spanish online</em> with native teachers and let the sun warm your words</strong>
      </section>
 
-     <ul className="w-full flex flex-col gap-10 px-4 md:px-10 lg:px-20">
+     <ul className="w-full flex flex-col gap-10 px-4 md:px-10 lg:px-20 mb-10">
         {
           teachers.map((teach,ind)=><TeacherCard key={ind} teach={teach}/>)
         }

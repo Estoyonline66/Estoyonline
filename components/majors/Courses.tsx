@@ -17,12 +17,12 @@ export default function Courses() {
 
   return (
     <>
-      <section className="w-full flex flex-col gap-5 py-20 px-5 lg:px-20 z-[-1]">
+      <section className="w-full flex flex-col gap-5 py-20 px-5 lg:px-20 z-0">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {cardCourses.map((card, index) => (
             <li
                 key={index}
-                className="bg-[#078CE2] p-6 h-[226px] text-center text-white shadow-lg transform scale-100 transition-all duration-300 hover:scale-110"
+                className="bg-[#078CE2] p-6 h-[226px] text-center text-white shadow-lg scale-100 duration-300 hover:scale-105"
             >
                 <h1 className="text-xl font-bold">{card.title}</h1>
                 <p className="text-md">
