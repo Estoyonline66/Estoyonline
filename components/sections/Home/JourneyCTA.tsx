@@ -2,6 +2,7 @@
 import ImageBox from "@/components/ImageBox";
 import { Dots1, Dots2, SunIcon } from "@/components/shapes";
 import StyledButton from "@/components/StyledButton";
+import TranslatedLink from "@/components/TranslatedLink";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
@@ -112,9 +113,11 @@ export default function JourneyCTA() {
           >
             {Data.homeSubAboutDescription}
           </p>
+          <TranslatedLink href={"/courses"}>
           <StyledButton className="!mt-2">
             {Data.homeSubAboutButton}
           </StyledButton>
+          </TranslatedLink>
         </div>
         <ul className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3">
           {

@@ -152,12 +152,12 @@ button {
 }
 
 .styledButton{
-  @apply !py-3 relative !h-fit !rounded !bg-secondary;
+  @apply !py-3 relative !h-fit !rounded-md;
 }
 
 .styledButton:hover::before,
 .styledButton:hover::after{
-  @apply size-full absolute top-1/2 box-content left-1/2 -translate-1/2 p-[3px] -z-10 rounded animate-spin-gradient;
+  @apply size-full absolute top-1/2 box-content left-1/2 -translate-1/2 p-[3px] -z-10 rounded-lg animate-spin-gradient;
 }
 
 .styledButton:hover::before{
@@ -171,8 +171,12 @@ button {
 }
 
 .styledButton.primary{
-  @apply !py-3 relative !h-fit !rounded !bg-primary;
+  @apply !bg-primary;
 }
+.styledButton.secondary{
+  @apply !bg-secondary;
+}
+
 
 
 .styledButton.primary:hover::before,
@@ -188,4 +192,12 @@ button {
   to{
     --angle:360deg;
   }
+}
+
+.scrollBar::-webkit-scrollbar{
+ @apply w-1 bg-transparent;
+}
+
+.scrollBar::-webkit-scrollbar-thumb{
+  @apply bg-gradient-to-b from-primary to-secondary rounded-full;
 }

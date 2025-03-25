@@ -7,8 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ChevronLeft, ChevronRight, HeartIcon } from "lucide-react";
+import clsx from "clsx";
 import Autoplay from "embla-carousel-autoplay";
+import { ChevronLeft, ChevronRight, HeartIcon } from "lucide-react";
 import { useRef } from "react";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { HomeProps } from "@/types/PropTypes";
@@ -52,8 +53,13 @@ export default function TestimonialCarousel() {
       <h3 className="font-bold text-xl sm:text-2xl lg:text-4xl text-center">
         {Data.testimonies}
       </h3>
-      <Carousel plugins={[plugin.current]} className="w-full *:first:w-full">
-        <CarouselContent className="-ml-1 gap-3">
+      <Carousel plugins={[plugin.current]} className="w-full *:first:!w-full *:first:!max-w-full *:first:flex *:first:justify-center">
+        <CarouselContent className={
+          clsx(
+            "-ml-1 gap-3 lg:!grid",
+            `lg:grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] md:place-items-center`
+          )
+        }>
           {testimonials.map((testimony, index) => (
             <CarouselItem
               key={index}
