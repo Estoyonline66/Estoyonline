@@ -1,6 +1,7 @@
 "use client";
 import ImageBox from "@/components/ImageBox";
-import { Dots1, Dots2, SunIcon } from "@/components/shapes";
+import { Dots1, Dots2 } from "@/components/shapes";
+import { AnimatedSunLogo } from "@/components/shapes/logo";
 import StyledButton from "@/components/StyledButton";
 import TranslatedLink from "@/components/TranslatedLink";
 import { Button } from "@/components/ui/button";
@@ -71,8 +72,12 @@ export default function JourneyCTA() {
   return (
     <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#078CE2]">
       {/* sun image */}
-      <SunIcon className="animate-[spin_10s_linear_infinite] size-20 sm:size-40 lg:size-60 absolute -top-10 -left-10 sm:-top-20 sm-left-20 lg:-top-30 lg-left-30" />
-      <SunIcon className="animate-[spin_10s_linear_infinite] size-20 sm:size-40 lg:size-60 absolute top-1/2 -translate-y-1/2 left-[calc(100%-2.5rem)] sm:left-[calc(100%-5rem)] lg:left-[calc(100%-7.5rem)]" />
+      <AnimatedSunLogo svg={{
+        className:"size-40 sm:size-60 absolute -top-20 -left-20 sm:-top-30 sm:-left-30"
+      }} />
+      <AnimatedSunLogo svg={{
+        className:"size-40 sm:size-60 absolute top-1/2 -translate-y-1/2 left-[calc(100%-5rem)] sm:left-[calc(100%-7.5rem)]"
+      }}/>
       <div className="w-full grid sm:grid-cols-2 items-center gap-5 isolate">
         <div ref={bodyRef} className="w-full relative text-white flex flex-col justify-center gap-3 h-full">
           {!isTabletScreen && (

@@ -2,11 +2,11 @@
 
 
 import { useTranslation } from '@/contexts/TranslationProvider'
-import { Instagram } from 'lucide-react'
-import Image from 'next/image'
-import { Button } from '../ui/button'
-import TranslatedLink from '../TranslatedLink'
 import clsx from 'clsx'
+import { Instagram } from 'lucide-react'
+import WebsiteLogo from '../shapes/logo'
+import TranslatedLink from '../TranslatedLink'
+import { Button } from '../ui/button'
 
 export default function Footer() {
     const {t} = useTranslation()
@@ -17,7 +17,9 @@ export default function Footer() {
   return (
       <footer className='py-10 w-full bg-[#E9E8E8] flex items-center justify-center flex-col gap-7'>
           <div>
-              <Image src="/Images/EstoyLogo.svg" alt="EstoyLogo" width={200} height={100}/>
+              <TranslatedLink href={"/"} className="w-fit">
+                      <WebsiteLogo svg={{className:"h-8 md:h-10 lg:h-12 w-fit"}}/>
+                    </TranslatedLink>
           </div>
 
           <nav className="w-full min-[498px]:w-fit flex flex-col min-[498px]:flex-row items-center gap-5 text-sm md:text-base lg:text-lg">

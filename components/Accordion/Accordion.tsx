@@ -15,7 +15,6 @@ export default function Accordion() {
   
   const accordionDatas = Data?.accordionData || [];
   
-  console.log(accordionDatas);
 
   
 
