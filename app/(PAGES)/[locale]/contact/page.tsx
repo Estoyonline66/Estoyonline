@@ -9,11 +9,15 @@ import {
   SingleLineShortRight,
 } from "@/components/shapes";
 import StyledButton from "@/components/StyledButton";
+import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
+import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
 
 export default function Contact() {
   const sm = useIsMobile(640);
+  const { t } = useTranslation();
+  const Data: ContactData = t("contact");
   return (
     <>
       <GeneralHero
@@ -25,7 +29,7 @@ export default function Contact() {
             }}
           />
         }
-        text="Contact us"
+        text={Data.PageTitle}
       />
 
       <section className="w-full mt-10 bg-white isolate relative grid grid-cols-1 sm:grid-cols-2 items-center justify-center overflow-hidden">
@@ -39,11 +43,11 @@ export default function Contact() {
           <span className="absolute h-full -left-2 top-0 pointer-events-none -z-10">
             <SingleLineShortLeft className="h-[calc(100%+2rem)]" />
           </span>
-          <strong className="text-lg sm:text-xl lg:text-2xl">Do you need assistance?</strong>
-          <p>Contact us via whatsapp</p>
+          <strong className="text-lg sm:text-xl lg:text-2xl">{Data.needAssistance}</strong>
+          <p>{Data.contactDescription}</p>
           <StyledButton className="!px-10">
             <MessagePhone />
-            Send Us Message
+            {Data.officeContactButton}
           </StyledButton>
         </div>
         <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-5">
@@ -59,9 +63,9 @@ export default function Contact() {
           <span className="size-10">
             <MapPinCustom className="size-full" />
           </span>
-          <strong>Address</strong>
+          <strong>{Data.officeAddressTitle}</strong>
           <address className="w-full text-center max-w-[25ch]">
-            9 Station Rd, West Drayton UB7 7BT
+            {Data.officeAddressDescription}
           </address>
         </div>
       </section>
