@@ -152,22 +152,35 @@ button {
 }
 
 .styledButton{
-  @apply !py-3 relative !h-fit !rounded-md;
+  @apply !py-3 relative !h-fit !rounded-md !overflow-hidden isolate;
 }
 
-.styledButton:hover::before,
+.styledButton::before,
+.styledButton::after{
+  @apply w-full h-1/2 absolute left-0 content-[''] -z-10 duration-[200ms];
+}
+.styledButton::after{
+  @apply -bottom-[50%] rounded-full;
+}
+.styledButton::before{
+  @apply -top-[50%] rounded-full;
+}
 .styledButton:hover::after{
-  @apply size-full absolute top-1/2 box-content left-1/2 -translate-1/2 p-[3px] -z-10 rounded-lg animate-spin-gradient;
+  @apply -bottom-0 rounded-none;
 }
-
 .styledButton:hover::before{
-  @apply blur-md;
+  @apply -top-0 rounded-none;
 }
 
-.styledButton:hover::before,
-.styledButton:hover::after{
-  content:"";
-  background-image: conic-gradient(from var(--angle), transparent 70%, var(--primary));
+
+
+.styledButton.primary::before,
+.styledButton.primary::after{
+  @apply !bg-secondary;
+}
+.styledButton.secondary::before,
+.styledButton.secondary::after{
+  @apply !bg-primary;
 }
 
 .styledButton.primary{
@@ -179,11 +192,7 @@ button {
 
 
 
-.styledButton.primary:hover::before,
-.styledButton.primary:hover::after{
-  content:"";
-  background-image: conic-gradient(from var(--angle), transparent 70%, var(--secondary));
-}
+
 
 @keyframes spinGradient {
   from{
