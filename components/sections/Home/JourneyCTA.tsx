@@ -4,8 +4,10 @@ import { Dots1, Dots2, SunIcon } from "@/components/shapes";
 import StyledButton from "@/components/StyledButton";
 import TranslatedLink from "@/components/TranslatedLink";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/contexts/TranslationProvider";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import { useIsMobile } from "@/lib/hooks/useMobile";
+import { HomeProps } from "@/types/PropTypes";
 import clsx from "clsx";
 import { Volume2Icon, VolumeX } from "lucide-react";
 import { useState } from "react";
@@ -13,6 +15,9 @@ import { useState } from "react";
 const ImageItem = ({index}:{index:number})=>{
   const [show, setShow] = useState(false);
   const [muted, setMuted] = useState(false)
+
+  
+  
   const imageRef = useIntersectionObserver<HTMLLIElement>({
     onProgress(progress) {
       if (progress > 0.05) {
@@ -51,6 +56,9 @@ export default function JourneyCTA() {
   const [show, setShow] = useState({
     body: false,
   });
+
+  const { t } = useTranslation()
+  const Data: HomeProps = t('home')
   
   const bodyRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
@@ -93,7 +101,7 @@ export default function JourneyCTA() {
                 : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
             )}
           >
-            Start Your Spanish Learning Journey Today!
+            {Data.homeSubAboutTitle}
           </h3>
           <p
             className={clsx(
@@ -103,11 +111,11 @@ export default function JourneyCTA() {
               : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
             )}
           >
-            Join Estyonline.es and learn Spanish in a fun and engaging way.
+            {Data.homeSubAboutDescription}
           </p>
           <TranslatedLink href={"/courses"}>
           <StyledButton className="!mt-2">
-            Explore Courses
+            {Data.homeSubAboutButton}
           </StyledButton>
           </TranslatedLink>
         </div>
