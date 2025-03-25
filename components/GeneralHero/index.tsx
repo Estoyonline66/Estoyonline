@@ -10,11 +10,11 @@ type Props = {
 export default function GeneralHero({icon,text}: Props) {
   return (
     <section className='w-full bg-primary isolate relative flex items-center justify-center gap-3 py-14 overflow-hidden'>
-        <span className='absolute h-full pointer-events-none -left-2 top-0 -z-10'>
-            <SingleLineShortLeft className='h-[calc(100%+2rem)]'/>
+        <span className='absolute h-full pointer-events-none -left-14 sm:-left-2 top-0 -z-10'>
+            <SingleLineShortLeft className='h-full sm:h-[calc(100%+2rem)]'/>
         </span>
         <span className='absolute h-full pointer-events-none right-0 top-0 -z-10'>
-            <SingleLineShortRight className='h-[calc(100%+2rem)] translate-x-2'/>
+            <SingleLineShortRight className='h-full sm:h-[calc(100%+2rem)] translate-x-14 sm:translate-x-2'/>
         </span>
         <span className='absolute size-10 pointer-events-none left-[30vw] sm:left-[300px] top-3 -z-10'>
             <SmallDot/>

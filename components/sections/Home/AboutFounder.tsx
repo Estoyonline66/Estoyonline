@@ -50,13 +50,13 @@ export default function AboutFounder() {
     },
   })
   return (
-    <section className="w-full min-h-fit my-20">
-          <div className="w-full px-4 md:px-10 lg:px-20 grid sm:grid-cols-2 items-center gap-10">
+    <section className="w-full min-h-fit my-10 sm:my-20">
+          <div className="w-full px-4 md:px-10 lg:px-20 grid sm:grid-cols-2 items-center gap-3 sm:gap-10">
             <div ref={imageRef} className="w-full min-h-fit h-32 my-8 sm:my-0 sm:h-60 relative flex items-center justify-center pointer-events-none">
               <HomeVector className={
                 clsx(
                   "absolute size-full z-0 aspect-square duration-500",
-                  show.image?"scale-100 opacity-100 rotate-0":"scale-50 opacity-50 rotate-180"
+                  show.image?"scale-125 min-[360px]:scale-100 opacity-100 rotate-0":"scale-50 opacity-50 rotate-180"
                 )
               }/>
               <ImageBox className="max-w-[70vw] sm:max-w-full object-contain aspect-square relative" src="/Images/homeImage2.png" width={500} height={500}/>
@@ -64,23 +64,25 @@ export default function AboutFounder() {
             <div ref={bodyRef}  className="w-full flex gap-5 flex-col">
               <h3 className={
                 clsx(
-                  "font-bold text-lg sm:text-xl lg:text-2xl duration-500 delay-100",
+                  "font-bold text-lg sm:text-xl lg:text-2xl duration-500 delay-100 text-center sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
-              }>{Data.homeAboutTitle} <em className="shadows-into-light-regular text-secondary font-normal">Aleja</em>, {Data.homeAboutTitle2}</h3>
+              }>{Data.homeAboutTitle} <em className="shadows-into-light-regular text-secondary text-xl sm:text-2xl lg:text-3xl font-normal">Aleja</em>, {Data.homeAboutTitle2}</h3>
               <p className={
                 clsx(
-                  "duration-500 delay-300",
+                  "duration-500 delay-300 text-center sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
               }>
             {Data.homeAboutDescription} <strong>{Data.homeAboutDescriptionBold}</strong> {Data.homeAboutDescription2} <strong> {Data.homeAboutDescriptionBold2}</strong>
               </p>
 
-              <a href="https://wa.me/905307700789"><StyledButton className="mx-auto sm:mx-0 !mt-2" icon={<MessagePhone svg={{
+              <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
+              <a href="https://wa.me/905307700789"><StyledButton icon={<MessagePhone svg={{
                 className:"size-4"
           }} />}> {Data.homeAboutButton}</StyledButton>
             </a>
+              </div>
             </div>
           </div>
         </section>

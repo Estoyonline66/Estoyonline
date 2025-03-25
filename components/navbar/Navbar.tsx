@@ -8,8 +8,8 @@ import clsx from "clsx";
 import { X } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import ImageBox from "../ImageBox";
 import MenuIcon from "../MenuIcon";
+import WebsiteLogo from "../shapes/logo";
 import TranslatedLink from "../TranslatedLink";
 import Translator from "../Translator";
 import { Button } from "../ui/button";
@@ -46,16 +46,7 @@ export default function Navbar() {
     }>
       {/* logo */}
       <TranslatedLink href={"/"} className="w-fit">
-        <ImageBox
-          fallback={
-            <strong className="text-lg text-black">estoyonline.es</strong>
-          }
-          className="h-8 md:h-10 lg:h-12 w-fit"
-          src={"/Images/logo.png"}
-          width={500}
-          height={350}
-          alt="logo image"
-        />
+        <WebsiteLogo svg={{className:"h-8 md:h-10 lg:h-12 w-fit"}}/>
       </TranslatedLink>
 
       
