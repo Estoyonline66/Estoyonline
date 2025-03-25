@@ -39,9 +39,11 @@ export default function Footer() {
             }
           </nav>
 
-          <Button variant="ghost">
+            <a href="https://www.instagram.com/estoyonline.es/">
+            <Button variant="ghost">
             <Instagram className='size-6 sm:size-10 text-neutral-800'/>
-          </Button>
+          </Button></a>
+          
           
           <p className='text-xs sm:text-sm'>© 2025 EstoyOnline.es | All Rights Reserved</p>
     </footer>
