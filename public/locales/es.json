@@ -1,13 +1,13 @@
 {
 "navbar": {
-    "links": {
-      "Teachers": "/teachers",
-      "Courses": "/courses",
+  "links": {
+      "Profesores": "/teachers",
+      "Cursos": "/courses",
       "Videos": "/videos",
-      "Price": "/price",
-      "Contact": "/contact"
+      "Precio": "/price",
+      "Contacto": "/contact"
     }
-  },
+},
 "home": {
   "HeroTitle": "El Mundo",
   "HeroYellowTitle": "Habla Español,",
