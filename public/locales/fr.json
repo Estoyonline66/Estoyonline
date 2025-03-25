@@ -13,3 +13,12 @@
     
   }
 }
+//   "navbar": {
+//   "links": {
+//     "Teachers": "/profesores",
+//     "Courses": "/cursos",
+//     "Videos": "/videos",
+//     "Price": "/precio",
+//     "Contact": "/contacto"
+//   }
+// },

@@ -1,5 +1,5 @@
 {
-  "navbar": {
+"navbar": {
   "links": {
       "Profesores": "/teachers",
       "Cursos": "/courses",
@@ -34,6 +34,7 @@
   "counterTitle4": "Temas de Tendencia"
 },
 "courses": {
+  "PageTitle": "Cursos",
   "accordionData": [
       {
         "title": "CURSOS DE NIVEL A1 (PRINCIPIANTE)",
@@ -353,6 +354,7 @@
     ]
   },
   "price": {
+    "PageTitle": "Precios",
     "title": "Precios de Cursos de Español en Línea",
     "title2": "Precios de Cursos Complementarios de Español",
     "tables": {
@@ -409,6 +411,13 @@
         "description": "Una vez iniciadas las clases, no se realizarán reembolsos ni cambios de curso, incluso si no asiste a las clases."
       }
     ]
-  }
-
+  },
+  "contact": {
+    "PageTitle": "Contáctenos",
+    "needAssistance": "¿Necesita ayuda?",
+    "contactDescription": "¿Necesita asistencia?",
+    "officeAddressTitle": "Dirección de la Oficina",
+    "officeAddressDescription": "9 Station Rd, West Drayton UB7 7BT",
+    "officeContactButton": "Envíenos un Mensaje"
+}
 }

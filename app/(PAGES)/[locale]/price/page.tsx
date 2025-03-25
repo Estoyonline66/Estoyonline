@@ -11,6 +11,7 @@ import { PriceTagIcon } from '@/components/shapes';
 
 
 interface PriceData {
+  PageTitle: string;
   cards?: {
     title: string;
     description: string;
@@ -24,7 +25,7 @@ export default function Page() {
   
   
   return (
-        <><GeneralHero icon={<PriceTagIcon/>} text='Price'/>
+        <><GeneralHero icon={<PriceTagIcon/>} text={Data.PageTitle}/>
     
     <div className="w-full flex flex-col justify-between gap-2 md:gap-5 py-20 px-3 md:px-5 lg:px-20">
       <OnlineSpanishOne />
