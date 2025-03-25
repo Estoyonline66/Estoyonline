@@ -30,7 +30,7 @@ export default function VideoCard(vid: video) {
         onReady={videoReady}
           videoId={vid.youtubeId}
           opts={opts}
-          className="*:w-full *:h-52"
+          className="*:w-full *:h-52 sm:*:h-72"
         />
       </span>
       <div className="w-full flex flex-col gap-3 items-center justify-center text-center">
