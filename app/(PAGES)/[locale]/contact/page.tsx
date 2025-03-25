@@ -1,5 +1,6 @@
 "use client";
 import GeneralHero from "@/components/GeneralHero";
+import Meta from "@/components/Meta";
 import MapComponent from "@/components/sections/Contact/MapContainer";
 // import ContactMap from "@/components/sections/Contact/Map";
 import {
@@ -20,6 +21,8 @@ export default function Contact() {
   const Data: ContactData = t("contact");
   return (
     <>
+      <Meta route="/contact"/>
+    
       <GeneralHero
         icon={
           <MessagePhone

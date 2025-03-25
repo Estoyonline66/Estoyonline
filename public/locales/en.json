@@ -1,4 +1,50 @@
 {
+  "seo":{
+    "pages":[
+      {
+        "route":"/",
+        "datas":{
+          "title":"Estoyonline | Start your spanish learning journey",
+          "description": "Learn Spanish online with native teachers and let the sun warm your words."
+        }
+      },
+      {
+        "route":"/teachers",
+        "datas":{
+          "title":"Estoyonline | Teachers",
+          "description": "Know more about our teachers."
+        }
+      },
+      {
+        "route":"/contact",
+        "datas":{
+          "title":"Estoyonline | Contact us",
+          "description": "Get in touch with us and begin your learning journey."
+        }
+      },
+      {
+        "route":"/courses",
+        "datas":{
+          "title":"Estoyonline | Courses",
+          "description": "FInd the course of your interest."
+        }
+      },
+      {
+        "route":"/price",
+        "datas":{
+          "title":"Estoyonline | Pricing",
+          "description": "Find the best price"
+        }
+      },
+      {
+        "route":"/videos",
+        "datas":{
+          "title":"Estoyonline | Videos | Understand our learning process",
+          "description": "Find out how our leaning system works."
+        }
+      }
+    ]
+  },
   "navbar": {
     "links": {
       "Teachers": "/teachers",
