@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 export interface HomeProps {
   HeroTitle: string;
   HeroYellowTitle: string;
@@ -29,7 +31,7 @@ export interface CoursesData {
   book: string;
   bold: string;
 }
-export interface LevelsProps{
+export interface LevelsProps {
   title: string;
   items: CoursesData[];
 }
@@ -49,6 +51,18 @@ interface AccordionProps {
   title: string;
   content: AccordionContent[];
 }
+
+// seo types
+
+interface SeoPageData {
+  route: string;
+  datas: Metadata;
+}
+export interface SeoData {
+  pages:SeoPageData[]
+}
+
+// -----------------
 export interface PriceData {
   title: string;
   levels: LevelsProps[];
