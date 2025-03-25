@@ -1,8 +1,9 @@
 "use client"
+import { useTranslation } from '@/contexts/TranslationProvider'
 import useCounter from '@/lib/hooks/useCounter'
 import useIntersectionObserver from '@/lib/hooks/useIntersector'
+import { HomeProps } from '@/types/PropTypes'
 import React, { useState } from 'react'
-
 
 
 export default function RatindAndAchievements() {
@@ -16,6 +17,9 @@ export default function RatindAndAchievements() {
       }
     },
   })
+  const { t } = useTranslation()
+  const Data: HomeProps = t('home')
+  
   const calculateSkipper = (length:number)=>Math.floor(length/20)
   const successStoriesCount = useCounter({to:700,delay:100, skip:calculateSkipper(700),start:startCounter})
   const ExpertInstructorsCount = useCounter({to:200,delay:100, skip:calculateSkipper(200),start:startCounter})
@@ -25,19 +29,19 @@ export default function RatindAndAchievements() {
     <ul ref={ref} className="w-full bg-secondary py-5 px-4 relative md:px-10 lg:px-20 grid grid-cols-1  sm:grid-cols-4 gap-3">
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{successStoriesCount.current}+</strong>
-        <em className="not-italic text-xs">Success Stories</em>
+        <em className="not-italic text-xs">{Data.counterTitle}</em>
       </li>
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{ExpertInstructorsCount.current}+</strong>
-        <em className="not-italic text-xs">Expert Instructors</em>
+        <em className="not-italic text-xs">{Data.counterTitle2}</em>
       </li>
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{StudentsCount.current}K+</strong>
-        <em className="not-italic text-xs">Students</em>
+        <em className="not-italic text-xs">{Data.counterTitle3}</em>
       </li>
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{TrendingSubjectsCount.current}+</strong>
-        <em className="not-italic text-xs">Trending Subjects</em>
+        <em className="not-italic text-xs">{Data.counterTitle4}</em>
       </li>
     </ul>
   )

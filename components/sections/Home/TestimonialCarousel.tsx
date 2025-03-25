@@ -11,9 +11,14 @@ import clsx from "clsx";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, HeartIcon } from "lucide-react";
 import { useRef } from "react";
+import { useTranslation } from "@/contexts/TranslationProvider";
+import { HomeProps } from "@/types/PropTypes";
 
 export default function TestimonialCarousel() {
   const plugin = useRef(Autoplay({ stopOnInteraction: true }));
+  const { t } = useTranslation()
+  const Data: HomeProps = t('home')
+  
   const testimonials: {
     image: string;
     firstComment: string;
@@ -46,7 +51,7 @@ export default function TestimonialCarousel() {
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20">
       <h3 className="font-bold text-xl sm:text-2xl lg:text-4xl text-center">
-        What our clients are saying about us
+        {Data.testimonies}
       </h3>
       <Carousel plugins={[plugin.current]} className="w-full *:first:!w-full *:first:!max-w-full *:first:flex *:first:justify-center">
         <CarouselContent className={

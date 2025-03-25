@@ -1,7 +1,33 @@
+export interface HomeProps {
+  HeroTitle: string;
+  HeroYellowTitle: string;
+  HeroTitle2: string;
+  HeroDescription: string;
+  HeroButton: string;
+  LearnSpanishtitle: string;
+  LearnSpanishdescription: string;
+  LearnSpanishbutton: string;
+  homeAboutTitle: string;
+  homeAboutTitle2: string;
+  homeAboutDescription: string;
+  homeAboutDescriptionBold: string;
+  homeAboutDescription2: string;
+  homeAboutDescriptionBold2: string;
+  homeAboutButton: string;
+  homeSubAboutTitle: string;
+  homeSubAboutDescription: string;
+  homeSubAboutButton: string;
+  testimonies: string;
+  counterTitle: string;
+  counterTitle2: string;
+  counterTitle3: string;
+  counterTitle4: string;
+}
 export interface CoursesData {
   level: string;
   duration: string;
   book: string;
+  bold: string;
 }
 export interface LevelsProps{
   title: string;
@@ -28,4 +54,5 @@ export interface PriceData {
   levels: LevelsProps[];
   cardCourses: CoursesData[];
   accordionData: AccordionProps[];
+  home: HomeProps[];
 }
