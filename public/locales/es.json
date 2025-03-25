@@ -1,12 +1,12 @@
 {
   "navbar": {
   "links": {
-    "Teachers": "/profesores",
-    "Courses": "/cursos",
-    "Videos": "/videos",
-    "Price": "/precio",
-    "Contact": "/contacto"
-  }
+      "Profesores": "/teachers",
+      "Cursos": "/courses",
+      "Videos": "/videos",
+      "Precio": "/price",
+      "Contacto": "/contact"
+    }
 },
 "home": {
   "HeroTitle": "El Mundo",
