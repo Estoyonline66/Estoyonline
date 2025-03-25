@@ -5,17 +5,20 @@ import { Button } from "@/components/ui/button";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import clsx from "clsx";
 import { Volume2Icon, VolumeX } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   teach: {
     name: string;
     about: string;
+    media:string
   };
 };
 
 export default function TeacherCard({ teach }: Props) {
   const [muted, setMuted] = useState(false)
+  const [play, setPlay]=useState(false)
+  const vidRef = useRef<HTMLVideoElement>(null)
   const [show, setShow] = useState({
     image: false,
     body: false,
@@ -50,14 +53,29 @@ export default function TeacherCard({ teach }: Props) {
       }
     },
   });
+
+  useEffect(() => {
+    const videoElement = vidRef.current
+    
+    if(videoElement){
+      if(play){
+        videoElement.play()
+      }else{
+        videoElement.pause()
+      }
+
+      videoElement.muted = muted
+    }
+  }, [vidRef, play, muted])
+  
   return (
-    <li className="flex items-center flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
+    <li className="flex items-center my-5 sm:my-10 flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
       <div
         ref={imageref}
-        className="w-full relative isolate sm:w-[40%] sm:min-w-72 shrink-0 p-5"
+        className="w-full relative isolate sm:w-[40%] sm:min-w-72 min-[498px]:max-w-fit shrink-0"
       >
-        <div className="w-full bg-black overflow-hidden rounded-md h-52 sm:h-72 relative">
-          {/* <video src="" className='size-full object-center object-cover'></video> */}
+        <div onMouseEnter={()=>setPlay(true)} onMouseLeave={()=>setPlay(false)} className="w-full bg-black overflow-hidden rounded-md h-72 relative">
+          <video ref={vidRef} src={teach.media} className='size-full object-top object-cover'></video>
           <Button onClick={()=>{
             setMuted(!muted)
           }} className="!absolute !block !bottom-4 !left-1/2 !-translate-x-1/2  !p-2 !h-fit !bg-black/30 !backdrop-blur-3xl !text-white">
@@ -68,7 +86,7 @@ export default function TeacherCard({ teach }: Props) {
         </div>
         <span
           className={clsx(
-            "absolute inset-0 size-full scale-105 sm:scale-110 -z-10 pointer-events-none duration-500",
+            "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 size-[calc(100%+2rem)] -z-10 pointer-events-none duration-500",
             show.image
               ? "scale-100 opacity-100 rotate-0"
               : "scale-50 opacity-50 rotate-180"
@@ -79,7 +97,7 @@ export default function TeacherCard({ teach }: Props) {
       </div>
       <div
         ref={textref}
-        className="w-full py-4 sm:p-5 flex flex-col h-full gap-2"
+        className="w-full flex flex-col h-full gap-2"
       >
         <h4 className={
           clsx(

@@ -41,7 +41,7 @@ export default function Contact() {
           </span>
           <strong className="text-lg sm:text-xl lg:text-2xl">Do you need assistance?</strong>
           <p>Contact us via whatsapp</p>
-          <StyledButton>
+          <StyledButton className="!px-10">
             <MessagePhone />
             Send Us Message
           </StyledButton>

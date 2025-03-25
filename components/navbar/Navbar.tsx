@@ -74,10 +74,10 @@ export default function Navbar() {
 
       <div className={
         clsx(
-          "w-full h-[calc(100vh-100%)] justify-end sm:justify-start sm:w-fit absolute left-0 duration-300 shadow-md p-2 sm:p-0 sm:shadow-none bg-white sm:bg-transparent sm:static flex flex-col-reverse sm:flex-row items-center gap-5",
+          "w-full top-[-200vh] h-[calc(100vh-100%)] justify-end sm:justify-start sm:w-fit absolute left-0 duration-300 shadow-md p-2 sm:p-0 sm:shadow-none bg-white sm:bg-transparent sm:static flex flex-col-reverse sm:flex-row items-center gap-5",
           isTabletScreen&&{
             "top-[100%] opacity-100":dropped,
-            "top-[-100vh] opacity-0 pointer-events-none":!dropped,
+            "top-[-200vh] opacity-0 pointer-events-none":!dropped,
           },
           !isTabletScreen&&isHome.isPage&&scrollPercentage<5&&"text-white"
         )

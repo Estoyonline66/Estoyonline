@@ -2,6 +2,7 @@
 import ImageBox from "@/components/ImageBox";
 import { Dots1, Dots2, SunIcon } from "@/components/shapes";
 import StyledButton from "@/components/StyledButton";
+import TranslatedLink from "@/components/TranslatedLink";
 import { Button } from "@/components/ui/button";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import { useIsMobile } from "@/lib/hooks/useMobile";
@@ -104,9 +105,11 @@ export default function JourneyCTA() {
           >
             Join Estyonline.es and learn Spanish in a fun and engaging way.
           </p>
+          <TranslatedLink href={"/courses"}>
           <StyledButton className="!mt-2">
             Explore Courses
           </StyledButton>
+          </TranslatedLink>
         </div>
         <ul className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3">
           {
