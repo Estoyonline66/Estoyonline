@@ -81,6 +81,7 @@
   },
 
   "courses": {
+    "PageTitle": "Courses",
     "accordionData": [
       {
         "title": "A1 LEVEL Beginner Courses",
@@ -404,6 +405,7 @@
   },
 
   "price": {
+    "PageTitle": "Prices",
     "title": "Online Spanish Course Prices",
     "title2": "Extra Spanish Course Prices",
     "tables": {
@@ -460,5 +462,13 @@
         "description": "Once classes have started, no refunds or course changes will be made, even if you do not attend the class."
       }
     ]
+  },
+  "contact": {
+    "PageTitle": "Contact us",
+    "needAssistance": "Do you need assistance?",
+    "contactDescription": "Do you need assistance?",
+    "officeAddressTitle": "Office Address",
+    "officeAddressDescription": "9 Station Rd, West Drayton UB7 7BT",
+    "officeContactButton": "Send Us Message"
   }
 }

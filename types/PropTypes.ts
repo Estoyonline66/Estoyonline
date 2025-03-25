@@ -30,6 +30,7 @@ export interface CoursesData {
   duration: string;
   book: string;
   bold: string;
+  PageTitle: string;
 }
 export interface LevelsProps {
   title: string;
@@ -50,6 +51,14 @@ interface AccordionContent {
 interface AccordionProps {
   title: string;
   content: AccordionContent[];
+}
+export interface ContactData{
+  PageTitle: string;
+  needAssistance: string;
+  contactDescription: string;
+  officeAddressTitle: string;
+  officeAddressDescription: string;
+  officeContactButton: string;
 }
 
 // seo types
