@@ -8,6 +8,31 @@
       "Contact": "/contact"
     }
   },
+  "home": {
+    "HeroTitle": "The World",
+    "HeroYellowTitle": "Speaks Spanish,",
+    "HeroTitle2": "Will You?",
+    "HeroDescription": "Learn Spanish online with native teachers and let the sun warm your words",
+    "HeroButton": "Explore Courses",
+    "LearnSpanishtitle": "Learn Spanish in a fun way at our boutique school.",
+    "LearnSpanishdescription": "At our boutique school Estyonline.es, based in Barcelona, we teach Spanish in fun and engaging way, completely different from traditional methods. Thanks the method techniques we use, learning spanish online has become an enjoyable and exciting process. Fun activities and game increase your motivation and reduce your stress, making language learning easier. Additionally, they encourage natural language use and strengthen social connections. Learning a language in an enjoyable way enhances retention and effectively helps improve your language skills.Our School has teachers from Spain, Italy, Argentina, and Colombia who are native Spanish speakers. The teacher who conduct beginner-level lessons also speak Turish. All our lessons are conducted online via Zoom",
+    "LearnSpanishbutton": "Sample videos from Lesson",
+    "homeAboutTitle": "Hello! Hola! I’am",
+    "homeAboutTitle2": "the founder of Estyonline.es",
+    "homeAboutDescription": "An online Spanish school",
+    "homeAboutDescriptionBold": "with over 300 students.",
+    "homeAboutDescription2": "We’re excited to tell you all about our boutique school and our lessons in detail. Let’s schedule a free class! I am looking forward to your Whatsapp message.",
+    "homeAboutDescriptionBold2": "Text us now!",
+    "homeAboutButton": "Whatsapp (530) 77 00 789",
+    "homeSubAboutTitle": "Start Your Spanish Learning Journey Today!",
+    "homeSubAboutDescription": "Join Estyonline.es and learn Spanish in a fun and engaging way.",
+    "homeSubAboutButton": "Explore Courses",
+    "testimonies": "What our clients are saying about us",
+    "counterTitle": "Success Stories",
+    "counterTitle2": "Expert Instructors",
+    "counterTitle3": "Students",
+    "counterTitle4": "Trending Subjects"
+  },
 
   "courses": {
     "accordionData": [
@@ -24,171 +49,244 @@
       {
         "title": "Intermediate - Upper Level Courses",
         "content": [
-          { "contentTitle": "Introduction", "contentDescription": "Framer Motion is a React animation library." },
-          { "contentTitle": "Key Features", "contentDescription": "It allows smooth animations with simple APIs." },
-          { "contentTitle": "Gestures", "contentDescription": "Supports drag, hover, and tap animations." }
+          { "contentTitle": "General Information", "contentDescription": "Intermediate and upper-level courses focus on grammar and vocabulary, as well as speaking and listening exercises. In addition, tests are administered through fun apps to assess each student's progress. Starting from A1.2 level, students start practicing reading books in Spanish. Each student shares sections of the book with their classmates. In this way, they develop fluency, learn new words and gain confidence while speaking. At more advanced levels, newspaper articles and news are used to expand vocabulary." },
+          { "contentTitle": "Lessons", "contentDescription": "Classes are held online once a week via Zoom. Each class lasts 2.5 hours with a 15-minute break in the middle. All classes are recorded, and students can download and watch the recordings later. Course materials and all important information are stored in Google Classroom and can be accessed at any time. The total duration of a course is 30 hours. (It lasts 3 months)" },
+          { "contentTitle": "Teachers", "contentDescription": "Teachers are available who can answer students' detailed grammar questions and have experience in intermediate/advanced level courses. Record Each course has a maximum of 13 students. Before registration, a free trial lesson is held with each student to understand their Spanish level. In the trial lesson, other details about the course are given and all questions are answered. Please send us a Whatsapp message for a trial lesson." },
+          { "contentTitle": "Certificate", "contentDescription": "At the end of each module, an oral and written exam is held and a certificate indicating the student's level is given." }
         ]
       },
       {
         "title": "YDS SPANISH PREPARATORY COURSE",
         "content": [
-          { "contentTitle": "Utility-First Approach", "contentDescription": "Tailwind speeds up UI development." },
-          { "contentTitle": "Customization", "contentDescription": "Highly customizable with configuration files." },
-          { "contentTitle": "Performance", "contentDescription": "Removes unused styles in production for a smaller file size." }
+          { "contentTitle": "General Information", "contentDescription": "It is a specially prepared course for those who want to be successful in the Spanish foreign language exam (YDS). A Spanish education program is applied with a special test technique. Spanish test solving practices are done quickly. Those who want to attend the course must be at least A2.4 level." },
+          { "contentTitle": "Lessons", "contentDescription": "Classes are held online twice a week via Zoom. Each class lasts 2.5 hours with a 15-minute break in the middle. All classes are recorded, and students can download and watch the recordings later. Course materials and all important information are stored in Google Classroom and can be accessed at any time. There are 2 lessons per week and it lasts for 6 months. The entire course consists of 6 levels (120 hours in total). It starts at level B1.1 and ends at level B1.6. One level is advanced each month. Used books Special materials prepared by the teachers are used. In addition, the Spanish YDS Module book is used for homework." },
+          { "contentTitle": "Teachers", "contentDescription": "The lessons are given by 2 separate teachers. The teachers are expert philologists who know the test technique well and are native Spanish speakers." },
+          { "contentTitle": "Records", "contentDescription": "Each course has a maximum of 13 students. Before registration, a free trial lesson is held with each student to understand their Spanish level. In the trial lesson, other details about the course are given and all questions are answered (in Turkish). The trial lesson is free and lasts approximately 20 minutes. Please send us a Whatsapp message for a trial lesson." },
+          { "contentTitle": "Certificate", "contentDescription": "At the end of the course, an oral and written exam is held and a certificate indicating the student's level is given." }
         ]
       },
       {
         "title": "TOURISM SPANISH Course",
         "content": [
-          { "contentTitle": "Utility-First Approach", "contentDescription": "Tailwind speeds up UI development." },
-          { "contentTitle": "Customization", "contentDescription": "Highly customizable with configuration files." },
-          { "contentTitle": "Performance", "contentDescription": "Removes unused styles in production for a smaller file size." }
+          { "contentTitle": "General Information", "contentDescription": "This is a course designed for tourism sector employees who want to speak Spanish or those who want to use Spanish fluently for travel. Since it is an intensive course, it is also suitable for those who want to learn Spanish very quickly. 3 levels are taught in 4.5 months. It can be started from scratch or intermediate level. The course program is based on the Common European Framework of Reference for Languages​​(MCER). Spanish materials specific to the tourism sector are used and fluent speaking practices are especially carried out." },
+          { "contentTitle": "Lessons", "contentDescription": "Classes are held online twice a week via Zoom. Each class lasts 2.5 hours with a 15-minute break in the middle. All classes are recorded, and students can download and watch the recordings later. Course materials and all important information are stored in Google Classroom and can be accessed at any time. The entire course consists of 2 modules (180 hours in total). Module A: Beginner level; for those who have never spoken Spanish before or are just starting to learn. It takes 90 hours and covers levels A1.1, A1.2 and A2.1. (It takes 4.5 months in total) Module B: Intermediate level; for those who can speak comfortably in the present tense and have learned to speak in the past tense (Pretérito Indefinido). If your Spanish level is at least A2.1, you can start the course from Module B. It lasts 90 hours and covers levels A2.2, A2.3 and A2.4. (It takes 4.5 months in total) Used books Tourism 1- SGEL publications • Tourism 2- SGEL publications • Tourism Professionals- Enclave ELE publications • Welcome back (A1-A2)- Enclave ELE publications. In addition, teachers use their own prepared materials and communicative exercises are carried out in all lessons to strengthen speaking." },
+          { "contentTitle": "Teachers", "contentDescription": "The teachers have extensive experience in teaching ELE. Module A is staffed by a Turkish-speaking, native Spanish teacher, and Module B is staffed by a native Spanish teacher." },
+          { "contentTitle": "Records", "contentDescription": "Each course has a maximum of 13 students. Before registration, a free trial lesson is held with each student to understand their Spanish level. In the trial lesson, other details about the course are given and all questions are answered (in Turkish). The trial lesson is free and lasts approximately 20 minutes. Please send us a Whatsapp message for a trial lesson." },
+          { "contentTitle": "Certificate", "contentDescription": "At the end of each module, an oral and written exam is held and a certificate indicating the student's level is given." }
         ]
       },
       {
         "title": "SUPPLEMENTARY COURSES",
         "content": [
-          { "contentTitle": "Utility-First Approach", "contentDescription": "Tailwind speeds up UI development." },
-          { "contentTitle": "Customization", "contentDescription": "Highly customizable with configuration files." },
-          { "contentTitle": "Performance", "contentDescription": "Removes unused styles in production for a smaller file size." }
+          { "contentTitle": "Spanish Speaking Course", "contentDescription": "Speaking and language practice courses aim to improve the speaking skills of students who have passed the first level. Each lesson covers a different topic. In this course, many words and terms are taught on many different topics, and daily language use and intonation are studied. Each student has plenty of speaking practice opportunities. Speaking courses are held at two different levels. To join the beginner level, you must have completed the A.1.1 course. If you have completed the A2.1 level, you can attend the more advanced speaking course. Since the teachers of this course do not speak Turkish, real communication is established with the student using Spanish. The course is 16 hours in total. The course has a maximum of 10 students. B." },
+          { "contentTitle": "Pasado Pisado - Past Tense Course in Spanish", "contentDescription": "In the Pasado Pisado Course, students focus on the 3 different past tenses in Spanish (pretérito indefinido, pretérito imperfecto and pretérito perfecto). The past tense is one of the most practiced topics when learning Spanish. Grammar structure is examined in detail. Written and oral practical use and speaking exercises are done. At the end of the course, you will start using the correct past tense fluently. For this course, you must have completed level A1.2. The course is 16 hours in total. The course has a maximum of 10 students. C." },
+          { "contentTitle": "Spanish Course with Songs", "contentDescription": "It is for those who want to understand the lyrics of popular Spanish songs and learn new words and expressions while having fun. Understanding the music that Spanish speakers listen to in their daily lives will greatly increase your language level. We will also examine the biographies of Latin American singers and practice speaking together. Our course teacher is both a Spanish teacher and a professional musician. For this course, you must have completed at least A.2.1 level. The course is 16 hours in total. The course has a maximum of 10 students. D." },
+          { "contentTitle": "I Love The Subjunctive - Learn the Basics", "contentDescription": "The Amo el subjuntivo course is ideal for students who want to improve their Spanish and master this difficult subject perfectly. This course teaches all types of use of the subjunctive mood and patterns in different tenses. In addition, at the end of each topic, there is practice in using grammar patterns effectively and speaking. The course teacher is a philologist. To take this course you must have passed at least A2.4 level. The course is 16 hours in total. The course has a maximum of 10 students. E." },
+          { "contentTitle": "Grammar is beautiful course", "contentDescription": "The Amo el subjuntivo course is ideal for students who want to improve their Spanish and master this difficult subject perfectly. This course teaches all types of use of the subjunctive mood and patterns in different tenses. In addition, at the end of each topic, there is practice in using grammar patterns effectively and speaking. The course teacher is a philologist. To take this course you must have passed at least A2.4 level. The course is 16 hours in total. The course has a maximum of 10 students. E." },
+          { "contentTitle": "Lessons", "contentDescription": "Since no homework is given, attending supplementary classes alongside regular classes does not put a strain on the student and speeds up the learning process considerably. Classes are held online once a week via Zoom. Each class lasts 2 hours. All classes are recorded, and students can download and watch the recordings later. Course materials and all important information are stored in Google Classroom and can be accessed at any time." },
+          { "contentTitle": "Records", "contentDescription": "Before registration, a free trial lesson is held with each student to understand their Spanish level. In the trial lesson, other details about the course are also given and all questions are answered. Please send us a Whatsapp message for a trial lesson." },
+          { "contentTitle": "Certificate", "contentDescription": "There are no exams in these courses, so no certificates are given." }
         ]
       },
       {
         "title": "Private Lessons FOR CHILDREN / ADULTS",
         "content": [
-          { "contentTitle": "Overview", "contentDescription": "Next.js is a React framework for building fast and SEO-friendly applications." },
-          { "contentTitle": "Key Features", "contentDescription": "It supports SSR and SSG for improved performance." },
-          { "contentTitle": "Performance", "contentDescription": "Next.js optimizes page loads and reduces client-side processing." }
+          { "contentTitle": "General Information", "contentDescription": "Adult private lessons are available for those over the age of 14. Children between the ages of 6 and 13 attend private children's lessons. Those who do not have time for group lessons or want to learn Spanish much faster can take private lessons. Adult private lessons are customized according to the student's interests and topics of interest. These lessons are not recorded with videos. Lesson times are arranged by consulting with the teacher. Adult private lessons last 1 hour, you can take lessons twice a week if you wish. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you. In children's private lessons, students are taught vocabulary and grammar through games, songs and fun activities. The student-teacher relationship in children's lessons has very different and special dynamics. For this reason, the teachers we assign specifically for children have deep experience in working with children. If parents request, lessons can be recorded. The teacher also sends a report to the parent once a week about how the child is progressing. Children's private lessons last 45 minutes. Private lesson payments are made in 5 or 10 hour packages. For more detailed information, please send us a Whatsapp message." }
         ]
       }
-    ],
-    
+    ], 
     "cardCourses": [
       {
         "title": "A1.1 Start",
+        "bold": "Only",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:00 - 2.5 hours",
         "week": "1 day a week",
         "month": "Februray 21"
       },
       {
         "title": "A1.1 Start",
+        "bold": "Saturday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "18:00 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 1st"
       },
       {
         "title": "A1,1 Start",
+        "bold": "Tue-Thurs",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
-        "week": "1 day a week",
-        "month": "Februray 21"
+        "time": " 19:00 - 2.5 hours",
+        "week": "2 day a week",
+        "month": "March 4th"
       },
       {
         "title": "A1.1 Start",
+        "bold": "Mon-Wed",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
-        "week": "1 day a week",
-        "month": "Februray 21"
+        "time": "19:0 - 2.5 hours",
+        "week": "2 days a week",
+        "month": "March 10"
       },
       {
         "title": "A1.1 Start",
+        "bold": "Wednesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 19"
       },
       {
-        "title": "A1.1 Start",
+        "title": "A1.2",
+        "bold": "Tuesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "Februray 18th"
       },
       {
-        "title": "A1.1 Start",
+        "title": "A2.2",
+        "bold": "Only",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "May 16th"
       },
       {
-        "title": "A1.1 Start",
+        "title": "A2.3",
+        "bold": "Monday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "18:30 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "April 14th"
       },
       {
-        "title": "A1.1 Start",
+        "title": "A2.4",
+        "bold": "Tuesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 18th"
       },
       {
-        "title": "A1.1 Start",
+        "title": "B1.1",
+        "bold": "Wednesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 12"
       },
       {
-        "title": "A1.1 Start",
+        "title": "B1.5",
+        "bold": "Tuesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "April 22"
       },
       {
-        "title": "A1.1 Start",
+        "title": "B2.4",
+        "bold": "Thursday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 20"
       },
       {
-        "title": "A1.1 Start",
+        "title": "B1.1",
+        "bold": "Wednesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 12"
       },
       {
-        "title": "A1.2 Start",
+        "title": "B1.5",
+        "bold": "Tuesday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "April 22"
       },
       {
-        "title": "A1.3 Start",
+        "title": "B2.4",
+        "bold": "Thursday",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 20"
       },
       {
-        "title": "A1.4 Start",
+        "title": "Tourism Module-A",
+        "bold": "Tue-Thurs",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
-        "week": "1 day a week",
-        "month": "Februray 21"
+        "time": "19:0 - 2.5 hours",
+        "week": "2 days a week",
+        "month": "March 4th"
       },
       {
-        "title": "A1.5 Start",
+        "title": "Tourism Module-B",
+        "bold": "Mon-Wed",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
-        "week": "1 day a week",
-        "month": "Februray 21"
+        "time": "19:0 - 2.5 hours",
+        "week": "2 days a week",
+        "month": "March 12"
       },
       {
-        "title": "A1.6 Start",
+        "title": "YDS Spanish Preparatory Intermediate",
+        "bold": "Mon-Wed",
         "lesson": "First lesson",
-        "time": "19:0 - 2.5 seconds",
+        "time": "19:0 - 2.5 hours",
+        "week": "2 days a week",
+        "month": "March 3"
+      },
+      {
+        "title": "Speaking Course Start",
+        "bold": "Saturday",
+        "lesson": "First lesson",
+        "time": "18:30 - 2 hours",
         "week": "1 day a week",
-        "month": "Februray 21"
+        "month": "March 8th"
+      },
+      {
+        "title": "Speaking Course Medium",
+        "bold": "Saturday",
+        "lesson": "First lesson",
+        "time": "18:30 - 2 hours",
+        "week": "1 day a week",
+        "month": "March 8th"
+      },
+      {
+        "title": "Past Stepped Orta",
+        "bold": "Tuesday",
+        "lesson": "First lesson",
+        "time": "19:00 - 2 hours",
+        "week": "1 day a week",
+        "month": "February 25th"
+      },
+      {
+        "title": "Spanish Medium with Songs",
+        "bold": "Saturday",
+        "lesson": "First lesson",
+        "time": "10:30 - 2 hours",
+        "week": "1 day a week",
+        "month": "March 1st"
+      },
+      {
+        "title": "Grammar is Beautiful Medium",
+        "bold": "Saturday",
+        "lesson": "First lesson",
+        "time": "10:30 - 2 hours",
+        "week": "1 day a week",
+        "month": "March 5th"
+      },
+      {
+        "title": "A2.1",
+        "bold": "Only",
+        "lesson": "First lesson",
+        "time": "18:30 - 2.5 hours",
+        "week": "1 day a week",
+        "month": "March 7th"
       }
     ],
     
@@ -197,60 +295,65 @@
       {
         "title": "Beginner Level A1",
         "items": [
-          { "level": "A1.1", "duration": "40 minutes", "book": "Hall 1" },
-          { "level": "A1.2", "duration": "30 minutes", "book": "Hall 1" }
+          { "level": "A1.1", "duration": "40 minutes Book:", "book": "Hall 1" },
+          { "level": "A1.2", "duration": "30 minutes Book:", "book": "Hall 1" }
         ]
       },
       {
         "title": "Basic Level A2",
         "items": [
-          { "level": "A1.1", "duration": "30 hours", "book": "Area 2" },
-          { "level": "A1.2", "duration": "30 hours", "book": "Area 2" },
-          { "level": "A2.1", "duration": "30 hours", "book": "Area 2" },
-          { "level": "A2.2", "duration": "30 hours", "book": "Area 2" },
-          { "level": "A3.1", "duration": "30 hours", "book": "Area 2" },
-          { "level": "A3.2", "duration": "30 hours", "book": "Area 2" }
+          { "level": "A1.1", "duration": "30 hours Book:", "book": "Area 2" },
+          { "level": "A1.2", "duration": "30 hours Book:", "book": "Area 2" },
+          { "level": "A2.1", "duration": "30 hours Book:", "book": "Area 2" },
+          { "level": "A2.2", "duration": "30 hours Book:", "book": "Area 2" },
+          { "level": "A3.1", "duration": "30 hours Book:", "book": "Area 2" },
+          { "level": "A3.2", "duration": "30 hours Book:", "book": "Area 2" }
         ]
       },
       {
         "title": "Intermediate Level B1",
         "items": [
-          { "level": "A1.1", "duration": "30 minutes", "book": "Hall 3" },
-          { "level": "A1.2", "duration": "30 minutes", "book": "Hall 3" },
-          { "level": "A1.3", "duration": "30 minutes", "book": "Hall 3" },
-          { "level": "A1.4", "duration": "30 minutes", "book": "Hall 3" },
-          { "level": "A1.5", "duration": "30 minutes", "book": "Hall 3" },
-          { "level": "A1.6", "duration": "30 minutes", "book": "Hall 3" }
+          { "level": "B1.1", "duration": "30 minutes Book:", "book": "Hall 3" },
+          { "level": "B1.2", "duration": "30 minutes Book:", "book": "Hall 3" },
+          { "level": "B1.3", "duration": "30 minutes Book:", "book": "Hall 3" },
+          { "level": "B1.4", "duration": "30 minutes Book:", "book": "Hall 3" },
+          { "level": "B1.5", "duration": "30 minutes Book:", "book": "Hall 3" },
+          { "level": "B1.6", "duration": "30 minutes Book:", "book": "Hall 3" }
         ]
       },
       {
-        "title": "Beginner Level A1",
+        "title": "Advanced Level B2",
         "items": [
-          { "level": "A1.1", "duration": "40 minutes", "book": "Hall 1" },
-          { "level": "A1.2", "duration": "30 minutes", "book": "Hall 1" }
+          { "level": "B2.1", "duration": "30 hours Kitap:", "book": "Hall 4" },
+          { "level": "B2.2", "duration": "30 hours Kitap:", "book": "Hall 4" },
+          { "level": "B2.3", "duration": "30 hours Kitap:", "book": "Hall 4 & 5" },
+          { "level": "B2.4", "duration": "30 hours Kitap:", "book": "Hall 4 & 5" },
+          { "level": "B2.5", "duration": "30 hours Kitap:", "book": "Hall 5" },
+          { "level": "B2.6", "duration": "30 hours Kitap:", "book": "Hall 5" }
         ]
       },
       {
-        "title": "Beginner Level A1",
+        "title": "Very Advanced Level C1",
         "items": [
-          { "level": "A1.1", "duration": "40 minutes", "book": "Hall 1" },
-          { "level": "A1.2", "duration": "30 minutes", "book": "Hall 1" }
+          { "level": "C1.1", "duration": "30 minutes Book:", "book": "Vitamins" },
+          { "level": "C1.2", "duration": "30 minutes Book:", "book": "Vitamins" },
+          { "level": "C1.3", "duration": "30 minutes Book:", "book": "Vitamins" },
+          { "level": "C1.4", "duration": "30 minutes Book:", "book": "Vitamins" },
+          { "level": "C1.5", "duration": "30 minutes Book:", "book": "Vitamins" },
+          { "level": "C1.6", "duration": "30 minutes Book:", "book": "Vitamins" }
         ]
       },
       {
-        "title": "Beginner Level A1",
+        "title": "Master Level C2",
         "items": [
-          { "level": "A1.1", "duration": "40 minutes", "book": "Hall 1" },
-          { "level": "A1.2", "duration": "30 minutes", "book": "Hall 1" }
+          { "level": "C2.1", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.2", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.3", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.4", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.5", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.6", "duration": "30 hours Book:", "book": "Nuevo Prisma" }
         ]
-      },
-      {
-        "title": "Beginner Level A1",
-        "items": [
-          { "level": "A1.1", "duration": "40 minutes", "book": "Hall 1" },
-          { "level": "A1.2", "duration": "30 minutes", "book": "Hall 1" }
-        ]
-      }
+      } 
     ]
   },
 
@@ -276,19 +379,25 @@
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "Basic Spanish", "duration": "6 Weeks", "price": 150 },
-        { "course": "Intermediate Spanish", "duration": "8 Weeks", "price": 150 },
-        { "course": "Advanced Spanish", "duration": "10 Weeks", "price": 200 }
+        { "course": "A1.2 / Intermediate / Upper Levels", "duration": "49 hours - 4 months", "price": "5600 TL" },
+        { "course": "Supplementary Courses", "duration": "30 hours - 3 months", "price": "4250 TL" },
+        { "course": "Private Lessons - Adults", "duration": "16 hours - 2 months", "price": "2,200 TL" },
+        { "course": "Private Lessons - Children", "duration": "60 minute", "price": "22 EUR" },
+        { "course": "A1.1 Beginner Level", "duration": "45 minutes", "price": "17 EUR" }
       ],
       "onlineSpanishTwoTable": [
-        { "course": "Spanish Grammar", "duration": "4 Weeks", "price": 120 },
-        { "course": "Spanish Writing", "duration": "6 Weeks", "price": 140 },
-        { "course": "Spanish Conversation", "duration": "5 Weeks", "price": 130 }
+        { "course": "A1.2 / Intermediate / Upper Levels", "duration": "49 hours - 4 months", "price": "5600 TL" },
+        { "course": "Supplementary Courses", "duration": "30 hours - 3 months", "price": "4250 TL" },
+        { "course": "Private Lessons - Adults", "duration": "16 hours - 2 months", "price": "2,200 TL" },
+        { "course": "Private Lessons - Children", "duration": "60 minute", "price": "22 EUR" },
+        { "course": "A1.1 Beginner Level", "duration": "45 minutes", "price": "17 EUR" }
       ],
       "extraSpanishTable": [
-        { "course": "Spanish for Travelers", "duration": "3 Weeks", "price": 90 },
-        { "course": "Business Spanish", "duration": "7 Weeks", "price": 160 },
-        { "course": "Spanish Pronunciation", "duration": "5 Weeks", "price": 110 }
+        { "course": "A1.2 / Intermediate / Upper Levels", "duration": "49 hours - 4 months", "price": "5600 TL" },
+        { "course": "Supplementary Courses", "duration": "30 hours - 3 months", "price": "4250 TL" },
+        { "course": "Private Lessons - Adults", "duration": "16 hours - 2 months", "price": "2,200 TL" },
+        { "course": "Private Lessons - Children", "duration": "60 minute", "price": "22 EUR" },
+        { "course": "A1.1 Beginner Level", "duration": "45 minutes", "price": "17 EUR" }
       ]
     },
     "cards": [
