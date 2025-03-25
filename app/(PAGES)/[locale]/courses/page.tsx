@@ -6,7 +6,7 @@ import { BookIcon } from '@/components/shapes'
 import { useTranslation } from '@/contexts/TranslationProvider'
 import { CoursesData } from '@/types/PropTypes'
 
-export default function page() {
+export default function Course() {
     const { t } = useTranslation()
   const Data: CoursesData = t("courses")
 
