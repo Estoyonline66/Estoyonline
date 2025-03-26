@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
-import Navbar from "@/components/navbar/Navbar";
-import "./globals.css";
 import { TranslationProvider } from "@/contexts/TranslationProvider";
-import Footer from "@/components/footer/Footer";
-import { Inter } from "next/font/google";
 import clsx from "clsx";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -93,9 +91,7 @@ export default function RootLayout({
       <body className={clsx("bg-white max-h-screen", inter.className)}>
         <TranslationProvider>
           <main id="scroll-container" className="max-h-screen overflow-auto relative">
-            <Navbar />
             {children}
-            <Footer />
           </main>
         </TranslationProvider>
       </body>
