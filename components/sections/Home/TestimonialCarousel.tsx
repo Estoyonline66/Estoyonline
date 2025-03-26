@@ -11,6 +11,10 @@ export default function TestimonialCarousel() {
   const defaultData = {
     testimonies: "Lo que nuestros clientes dicen sobre nosotros",
   };
+
+
+  
+
   const testimonials: {
     image: string;
     firstComment: string;
@@ -38,6 +42,33 @@ export default function TestimonialCarousel() {
       lastComment: "Thanks to Aleja and her team, whom I met years ago",
       personName: "ugurege",
     },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:
+        "Hola Şarkılarla İspanyolca dersi çok keyifli. Bilmediğim İspanyol şarkıcıları ve ispanyol kültürünü öğreniyorum. Arkadaşlarıma tavsiye edeceğim. İyiki sizi tanımışım.",
+      lastComment: "Şarkılarla yapılan İspanyolca dersleri çok eğlenceli.",
+      personName: "muge_dusun",
+    },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:
+        "Harika ogretmenler, harika metodlar. Derslerin nasil gectigini anlamiyorum bile. 2020 den beri sizlerle Ispanyolca ogreniyorum, dersler cok keyifli ve verimli geciyor. Seviyem sizin yardimlarinizla cok iyi seviyeye geldi.",
+      lastComment: "Harika öğretmenler, harika yöntemler...",
+      personName: "meltem_sonmez_canseco",
+    },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:
+        "İspanyolca'ya 3 sene önce sıfırdan başladım. @alejaescuderotuc ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
+      lastComment: "3 yıl önce sıfırdan İspanyolca öğrenmeye başladım.",
+      personName: "ulucozuyener",
+    },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:`Gerçekten "wow" dedim öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz. "Yakında öğrendiğim her şeyi derslerime uygulamaya başlayacağım" ne kadar güzel bir cümle heyecanınızı ben bile hissettim 😊Hoşuma gitti❤️ Hocam❤️`,
+      lastComment: `Gerçekten "Vay be!" dedim. Siz bir öğretmensiniz ve hala kendinizi geliştiriyorsunuz.`,
+      personName: "17limerence",
+    }
   ];
 
 
@@ -51,7 +82,7 @@ export default function TestimonialCarousel() {
           {testimonials.map((testimony, index) => (
             <div
               key={index}
-              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-72 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0"
+              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-80 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0"
             >
               <div className="flex gap-2">
                 {/* Image */}
@@ -64,7 +95,7 @@ export default function TestimonialCarousel() {
                 {/* Content */}
                 <div className="w-full flex flex-col gap-3">
                   <div className="w-full flex min-[360px]:items-center justify-between flex-col-reverse min-[360px]:flex-row">
-                    <strong className="text-sm">{testimony.personName}</strong>
+                    <strong className="text-sm shrink max-w-full min-[360px]:max-w-[40%] break-words">{testimony.personName}</strong>
                     <span className="w-full justify-between min-[360px]:justify-start min-[360px]:w-fit flex items-center gap-2 shrink-0">
                       <em className="text-xs not-italic text-neutral-400">
                         20 mins
