@@ -60,6 +60,11 @@ export default function JourneyCTA() {
 
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
+  const defaultData = {
+    "homeSubAboutTitle": "¡Comienza tu viaje de aprendizaje del español hoy!",
+    "homeSubAboutDescription": "Únete a Estyonline.es y aprende español de una manera divertida y atractiva.",
+    "homeSubAboutButton": "Explorar Cursos",
+  };
   
   const bodyRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
@@ -106,7 +111,7 @@ export default function JourneyCTA() {
                 : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
             )}
           >
-            {Data.homeSubAboutTitle}
+            {Data.homeSubAboutTitle?Data.homeSubAboutTitle:defaultData.homeSubAboutTitle}
           </h3>
           <p
             className={clsx(
@@ -116,11 +121,11 @@ export default function JourneyCTA() {
               : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
             )}
           >
-            {Data.homeSubAboutDescription}
+            {Data.homeSubAboutDescription?Data.homeSubAboutDescription:defaultData.homeSubAboutDescription}
           </p>
           <TranslatedLink href={"/courses"}>
           <StyledButton className="!mt-2">
-            {Data.homeSubAboutButton}
+            {Data.homeSubAboutButton?Data.homeSubAboutButton:defaultData.homeSubAboutButton}
           </StyledButton>
           </TranslatedLink>
         </div>

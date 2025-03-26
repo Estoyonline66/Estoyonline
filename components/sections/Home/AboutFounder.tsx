@@ -18,6 +18,15 @@ export default function AboutFounder() {
    })
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
+  const defaultData = {
+    "homeAboutTitle": "¡Hola! Hello! Soy",
+    "homeAboutTitle2": "el fundador de Estyonline.es",
+    "homeAboutDescription": "Una escuela de español en línea",
+    "homeAboutDescriptionBold": "con más de 300 estudiantes.",
+    "homeAboutDescription2": "Estamos emocionados de contarte todo sobre nuestra escuela boutique y nuestras lecciones en detalle. ¡Agendemos una clase gratuita! Estoy esperando tu mensaje por WhatsApp.",
+    "homeAboutDescriptionBold2": "¡Envíanos un mensaje ahora!",
+    "homeAboutButton": "WhatsApp (530) 77 00 789",
+  };
   
   const imageRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
@@ -67,14 +76,14 @@ export default function AboutFounder() {
                   "font-bold text-lg sm:text-xl lg:text-2xl duration-500 delay-100 text-center sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
-              }>{Data.homeAboutTitle} <em className="shadows-into-light-regular text-secondary text-xl sm:text-2xl lg:text-3xl font-normal">Aleja</em>, {Data.homeAboutTitle2}</h3>
+              }>{Data.homeAboutTitle?Data.homeAboutTitle:defaultData.homeAboutTitle} <em className="shadows-into-light-regular text-secondary text-xl sm:text-2xl lg:text-3xl font-normal">Aleja</em>, {Data.homeAboutTitle2?Data.homeAboutTitle2:defaultData.homeAboutTitle2}</h3>
               <p className={
                 clsx(
                   "duration-500 delay-300 text-center sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
               }>
-            {Data.homeAboutDescription} <strong>{Data.homeAboutDescriptionBold}</strong> {Data.homeAboutDescription2} <strong> {Data.homeAboutDescriptionBold2}</strong>
+            {Data.homeAboutDescription?Data.homeAboutDescription:defaultData.homeAboutDescription} <strong>{Data.homeAboutDescriptionBold?Data.homeAboutDescriptionBold:defaultData.homeAboutDescriptionBold}</strong> {Data.homeAboutDescription2?Data.homeAboutDescription2:defaultData.homeAboutDescription2} <strong> {Data.homeAboutDescriptionBold2}</strong>
               </p>
 
               <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
@@ -85,7 +94,7 @@ export default function AboutFounder() {
                 }
               }} svg={{
                 className:"size-4"
-          }} />}> {Data.homeAboutButton}</StyledButton>
+          }} />}> {Data.homeAboutButton?Data.homeAboutButton:defaultData.homeAboutButton}</StyledButton>
             </a>
               </div>
             </div>
