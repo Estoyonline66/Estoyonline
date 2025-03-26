@@ -51,7 +51,7 @@ export default function TestimonialCarousel() {
           {testimonials.map((testimony, index) => (
             <div
               key={index}
-              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] sm:max-w-72 cursor-pointer overflow-hidden rounded-xl border p-4 mx-2"
+              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-72 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0"
             >
               <div className="flex gap-2">
                 {/* Image */}
