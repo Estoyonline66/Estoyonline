@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import BgSvg from '../ui/BgSvg';
+import BgSvg from '../../ui/BgSvg';
 import { useTranslation } from '@/contexts/TranslationProvider';
 import { PriceData } from '@/types/PropTypes';
 
