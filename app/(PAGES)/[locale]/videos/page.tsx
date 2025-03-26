@@ -2,6 +2,7 @@
 // import react from "react"
 
 import GeneralHero from "@/components/GeneralHero";
+import Meta from "@/components/Meta";
 import VideoCard, { video } from "@/components/sections/Videos/VideoCard";
 import { VideoLinedBottom } from "@/components/shapes";
 
@@ -64,6 +65,7 @@ export default function Videos() {
   ];
   return (
     <>
+        <Meta route="/videos"/>
       <GeneralHero icon={<VideoLinedBottom />} text="Videos" />
       <section className="w-full flex flex-col items-center gap-7 p-4 md:px-10 lg:px-20 pt-10 pb-20">
         {videos.map((vid, ind) => (

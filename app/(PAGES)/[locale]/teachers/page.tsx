@@ -1,4 +1,5 @@
 import GeneralHero from "@/components/GeneralHero";
+import Meta from "@/components/Meta";
 import TeacherCard from "@/components/sections/Teachers/TeacherCard";
 import { TeacherIcon } from "@/components/shapes";
 
@@ -22,6 +23,8 @@ export default function Teachers() {
   ]
   return (
     <>
+      <Meta route="/teachers"/>
+    
      <GeneralHero icon={<TeacherIcon/>} text="Teachers"/>
 
      <section className="w-full flex items-center justify-center px-4 py-10 text-center">
