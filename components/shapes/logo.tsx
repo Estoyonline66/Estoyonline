@@ -166,16 +166,13 @@ export default function WebsiteLogo({
 const growRay = keyframes`
   from {
     transform: scale(0.5);
-    opacity: 0;
   }
   to {
-    transform: scale(0.6);
-    opacity: 0;
+    transform: scale(0);
   }
 
   50%{
     transform: scale(1);
-    opacity: 1;
   }
 `;
 
@@ -184,7 +181,7 @@ const growRay = keyframes`
 // Each ray receives a different animation delay via the `delay` prop.
 const RayPath = styled.path<{ delay: number }>`
   transform-origin: 26px 25px;
-  animation: ${growRay} 3s forwards infinite;
+  animation: ${growRay} 5s forwards infinite;
   animation-delay: ${(props) => props.delay}s;
 `;
 
