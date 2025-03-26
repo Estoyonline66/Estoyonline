@@ -36,7 +36,7 @@ export default function Page() {
           {Data?.cards?.map((card, index) => (
             <li
               key={index}
-              className="bg-[#078CE2] px-3 py-9 h-[226px] rounded-lg text-center text-white space-y-1 transition-transform duration-300 transform hover:scale-105 z-[-1]"
+              className="bg-[#078CE2] px-3 py-9 min-h-[226px] rounded-lg text-center text-white space-y-1 transition-transform duration-300 transform hover:scale-105 z-[-1]"
             >
               <h1 className="text-xl font-bold">{card.title}</h1>
               <p className="text-md">{card.description}</p>
