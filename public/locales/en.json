@@ -80,6 +80,80 @@
     "counterTitle4": "Trending Subjects"
   },
 
+  "teachers":{
+    "PageTitle": "Teachers",
+    "teachersTitle": "Learn ",
+    "teachersTitleRed": "Spanish online",
+    "teachersTitle2": "with native teachers and let the sun warm your words",
+    "teacher": [
+      {
+        "name": "DIANA MELISSA",
+        "about": "Born and raised in Colombia, she currently lives in Colombia. She has worked as a librarian and taught library services at all levels. She completed her master's degree in Béziers, France. Melissa learned Turkish a long time ago and speaks Turkish at an advanced level. Since 2010, she has taught French, English and Spanish in various academies (Oxford, Just English) and schools in Turkey (ISTEK in Antalya, Kütahya Başarı, etc.). In her spare time, she enjoys knitting dolls, singing with her friends, and cooking. Our school offers A1 beginner courses that require Turkish support.",
+        "media":"/videos/video1.mp4"
+      },
+      {
+        "name": "ALEJA",
+        "about": "She lived in Istanbul for 10 years, working as a teacher at Saint Michel High School and Cervantes Institute. She organized the \"Solo hablamos Español\" meetings that brought together those who wanted to practice Spanish. During her teaching career, she improved herself with many international formation courses such as ELE, DELE, AVE, Int House, etc. She moved to Spain in 2019 and decided to establish her own school. She developed modern methods for her school, based on fun and conversation. He continues to improve the educational processes together with the teachers in his team.",
+        "media":"/videos/video2.mp4"
+      },
+      {
+        "name": "ANITA",
+        "about": "Anita is from Ecuador. She graduated from the Universidad de las Américas in Quito with a degree in Communication. She also holds a certificate in Spanish language teaching grammar and methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked in institutions such as Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. She taught Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, thus she had the opportunity to integrate with different cultures.",
+        "media":"/videos/video3.mp4"
+      }
+    ]
+  },
+  "videos":{
+    "PageTitle": "Videos",
+    "videos": [
+      {
+        "title": "A1.1 Spanish  Beginner Level",
+        "description": "At the beginning level, you start speaking Spanish from the first lesson.",
+        "youtubeId": "JP1dSslQqVc"
+      },
+      {
+        "title": "A1.1 Spanish  Beginner Level",
+        "description": "Our students reach basic speaking proficiency amd use simple grammatical structure within a few weeks.",
+        "youtubeId": "hdyEE5YDQBg"
+      },
+      {
+        "title": "A1.1 Spanish  Beginner Level",
+        "description": "At the beginner level, our teachers sometimes help with Turkish.",
+        "youtubeId": "_x1uuq4Ta2c"
+      },
+      {
+        "title": "A2.1 Spanish Basic Level",
+        "description": "Our students reach have reached this level are now advanced enoungh to have a simple conversion",
+        "youtubeId": "MMYkbSAKdN4"
+      },
+      {
+        "title": "A2.1 Spanish Basic Level",
+        "description": "Our teachers take care to make the lesson fun by using creative methods and objects from daily life. ",
+        "youtubeId": "aJg6gEIYsFs"
+      },
+      {
+        "title": "A2.2 Spanish Intermediate Level",
+        "description": "Our students at A2.2 level can make detailed descriptions with a wide vocabulary and comprehensive use of grammar.",
+        "youtubeId": "H5tmRgVsBSY"
+      },
+      {
+        "title": "A2.3 Spanish Intermediate Level",
+        "description": "At level A2.3, dialogues now reach a normal speaking tempo and use special terms.",
+        "youtubeId": "0jxqVyG5tt8"
+      },
+      {
+        "title": "B1.2 Advance Spanish",
+        "description": "Advanced students have no trouble understanding and using the fast spoken language of Spanish.",
+        "youtubeId": "srggR7eHxc8"
+      },
+      {
+        "title": "B1.6 Spanish Advanced Level",
+        "description": "Advanced students are now fully adapted to the pace of spanish",
+        "youtubeId": "nsnLOSRtrd4"
+      }
+    ]
+  },
+
   "courses": {
     "PageTitle": "Courses",
     "accordionData": [

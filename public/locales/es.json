@@ -79,6 +79,82 @@
     "counterTitle3": "Estudiantes",
     "counterTitle4": "Temas de Tendencia"
   },
+
+  "teachers": {
+    "PageTitle": "Profesores",
+    "teachersTitle": "Aprende ",
+    "teachersTitleRed": "Español en línea",
+    "teachersTitle2": "con profesores nativos y deja que el sol caliente tus palabras",
+    "teacher": [
+      {
+        "name": "DIANA MELISSA",
+        "about": "Nacida y criada en Colombia, actualmente vive en Colombia. Ha trabajado como bibliotecaria y ha enseñado servicios bibliotecarios en todos los niveles. Completó su maestría en Béziers, Francia. Melissa aprendió turco hace mucho tiempo y lo habla a nivel avanzado. Desde 2010, ha enseñado francés, inglés y español en varias academias (Oxford, Just English) y escuelas en Turquía (ISTEK en Antalya, Kütahya Başarı, etc.). En su tiempo libre, disfruta tejiendo muñecas, cantando con sus amigos y cocinando. Nuestra escuela ofrece cursos para principiantes A1 que requieren apoyo en turco.",
+        "media": "/videos/video1.mp4"
+      },
+      {
+        "name": "ALEJA",
+        "about": "Vivió en Estambul durante 10 años, trabajando como profesora en el Liceo Saint Michel y en el Instituto Cervantes. Organizó los encuentros \"Solo hablamos Español\" que reunían a quienes querían practicar español. Durante su carrera docente, se perfeccionó con muchos cursos de formación internacional como ELE, DELE, AVE, Int House, etc. Se mudó a España en 2019 y decidió establecer su propia escuela. Desarrolló métodos modernos para su escuela, basados en la diversión y la conversación. Continúa mejorando los procesos educativos junto con los profesores de su equipo.",
+        "media": "/videos/video2.mp4"
+      },
+      {
+        "name": "ANITA",
+        "about": "Anita es de Ecuador. Se graduó en Comunicación en la Universidad de las Américas en Quito. También tiene un certificado en gramática y metodología para la enseñanza del español. Trabajó como profesora en el Instituto Internacional de Español, adquiriendo experiencia en la enseñanza de español para extranjeros. Trabajó en instituciones como Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. Enseñó a estudiantes turcos de todos los niveles. En los últimos años, comenzó a dar clases particulares y grupales en línea a estudiantes de diferentes países, lo que le permitió integrarse con diferentes culturas.",
+        "media": "/videos/video3.mp4"
+      }
+    ]
+  },
+
+  "videos": {
+    "PageTitle": "Videos",
+    "videos": [
+      {
+        "title": "A1.1 Español Nivel Principiante",
+        "description": "En el nivel inicial, comienzas a hablar español desde la primera lección.",
+        "youtubeId": "JP1dSslQqVc"
+      },
+      {
+        "title": "A1.1 Español Nivel Principiante",
+        "description": "Nuestros estudiantes alcanzan competencia básica en conversación y usan estructuras gramaticales simples en pocas semanas.",
+        "youtubeId": "hdyEE5YDQBg"
+      },
+      {
+        "title": "A1.1 Español Nivel Principiante",
+        "description": "En el nivel principiante, nuestros profesores a veces brindan ayuda en turco.",
+        "youtubeId": "_x1uuq4Ta2c"
+      },
+      {
+        "title": "A2.1 Español Nivel Básico",
+        "description": "Nuestros estudiantes que han alcanzado este nivel ahora son lo suficientemente avanzados para tener conversaciones simples.",
+        "youtubeId": "MMYkbSAKdN4"
+      },
+      {
+        "title": "A2.1 Español Nivel Básico",
+        "description": "Nuestros profesores se esfuerzan por hacer las clases divertidas usando métodos creativos y objetos de la vida cotidiana.",
+        "youtubeId": "aJg6gEIYsFs"
+      },
+      {
+        "title": "A2.2 Español Nivel Intermedio",
+        "description": "Nuestros estudiantes de nivel A2.2 pueden hacer descripciones detalladas con un vocabulario amplio y uso completo de la gramática.",
+        "youtubeId": "H5tmRgVsBSY"
+      },
+      {
+        "title": "A2.3 Español Nivel Intermedio",
+        "description": "En el nivel A2.3, los diálogos ahora alcanzan un tempo de habla normal y utilizan términos especializados.",
+        "youtubeId": "0jxqVyG5tt8"
+      },
+      {
+        "title": "B1.2 Español Avanzado",
+        "description": "Los estudiantes avanzados no tienen problemas para entender y usar el español hablado rápidamente.",
+        "youtubeId": "srggR7eHxc8"
+      },
+      {
+        "title": "B1.6 Español Nivel Avanzado",
+        "description": "Los estudiantes avanzados ahora están completamente adaptados al ritmo del español.",
+        "youtubeId": "nsnLOSRtrd4"
+      }
+    ]
+  },
+
   "courses": {
     "PageTitle": "Cursos",
     "accordionData": [
