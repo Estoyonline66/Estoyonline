@@ -51,7 +51,7 @@ export default function TestimonialCarousel() {
           {testimonials.map((testimony, index) => (
             <div
               key={index}
-              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] sm:max-w-72 cursor-pointer overflow-hidden rounded-xl border p-4 mx-2"
+              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-72 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0"
             >
               <div className="flex gap-2">
                 {/* Image */}
@@ -63,18 +63,20 @@ export default function TestimonialCarousel() {
                 </span>
                 {/* Content */}
                 <div className="w-full flex flex-col gap-3">
-                  <div className="w-full flex items-center justify-between flex-col-reverse sm:flex-row">
+                  <div className="w-full flex min-[360px]:items-center justify-between flex-col-reverse min-[360px]:flex-row">
                     <strong className="text-sm">{testimony.personName}</strong>
-                    <span className="flex items-center gap-2 shrink-0">
+                    <span className="w-full justify-between min-[360px]:justify-start min-[360px]:w-fit flex items-center gap-2 shrink-0">
                       <em className="text-xs not-italic text-neutral-400">
                         20 mins
                       </em>
+                      <div className="flex items-center gap-2">
                       <HeartIcon
                         className="text-transparent w-5 h-5 shrink-0"
                         fill="#EB0004"
                         fillOpacity={30}
                       />
                       <span className="w-5 h-5 bg-neutral-300 shrink-0 rounded-full"></span>
+                      </div>
                     </span>
                   </div>
                   <p className="text-xs">{testimony.firstComment}</p>
