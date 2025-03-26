@@ -68,6 +68,24 @@ export default function TestimonialCarousel() {
       firstComment:`Gerçekten "wow" dedim öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz. "Yakında öğrendiğim her şeyi derslerime uygulamaya başlayacağım" ne kadar güzel bir cümle heyecanınızı ben bile hissettim 😊Hoşuma gitti❤️ Hocam❤️`,
       lastComment: `Gerçekten "Vay be!" dedim. Siz bir öğretmensiniz ve hala kendinizi geliştiriyorsunuz.`,
       personName: "17limerence",
+    },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:`Daha 1 seviye geçip diğerine geçtim. Carolina ile derslerimiz çok eğleneceli geçiyor, çok verimli, bilgilerle dolu dolu, hocamız çok güler yüzlü ve çok yardımcıdır. İyi ki yolumuz kesişti @estoyonline.es sizi seviyorum, sizinle konuşma korkusunu aştım ve çok motive oldum dili öğrenmeye devam etmek için. Herkese şiddetle kursunuzu tavsiye ederim!😍`,
+      lastComment: `Pandemiden beri harika bir yolculuk oldu.`,
+      personName: "allaunal_embroidery",
+    },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:`Recomiendo las lecciones de Aleja, son muy divertido`,
+      lastComment: `Pandemiden beri harika bir yolculuk oldu.`,
+      personName: "ebru_basaran35",
+    },
+    {
+      image: "/Images/testimonialImage (1).png",
+      firstComment:`Aleja ve ekibine Teşekkürler. İspanyolca öğrenirken en iyi yani ogretmenlerin İspanyol ve Türkçe biliyor olmaları..Anlamamız kolay oluyor..bir yabancı dil öğretmeni olarak üçüncü bir dil İspanyolca ya iki ay önce başladım.. A1.1 deyim zamanım oldukça öğrenmeye devam edeceğim.. teşekkürler @clasesconaleja ve Melis yeni kurda görüşmek üzere`,
+      lastComment: `Aleja ve ekibine teşekkürler.`,
+      personName: "yollarinrengL",
     }
   ];
 
