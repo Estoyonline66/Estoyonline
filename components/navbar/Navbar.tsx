@@ -2,11 +2,10 @@
 
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
-import usePage from "@/lib/hooks/usePage";
 import useScrollPercent from "@/lib/hooks/useScrollPercent";
 import clsx from "clsx";
 import { X } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import MenuIcon from "../MenuIcon";
 import WebsiteLogo from "../shapes/logo";
@@ -14,12 +13,14 @@ import TranslatedLink from "../TranslatedLink";
 import Translator from "../Translator";
 import { Button } from "../ui/button";
 
-export default function Navbar() {
+
+type props = {
+  isHome?:boolean;
+}
+export default function Navbar({isHome}:props) {
   const {t} = useTranslation()
   const isTabletScreen = useIsMobile(640)
-  const params = useParams()
   const pathName = usePathname()
-  const isHome = usePage(`/${params.locale}`) //defaults to check for home page and locale page
   const {scrollPercentage} = useScrollPercent("#scroll-container") // check the current scroll percent of scroll-container 
   const [dropped, setDropped] = useState(false)
   const navbarData = t<{
@@ -45,9 +46,9 @@ export default function Navbar() {
     <header className={
       clsx(
         "w-full z-50 top-0 p-4 fixed md:px-10 lg:px-20 flex items-center duration-300 justify-between gap-5",
-        isHome.isPage&&scrollPercentage>=5?"!bg-white fixed shadow-md":
+        isHome&&scrollPercentage>=5?"!bg-white fixed shadow-md":
           "!bg-transparent fixed",
-        !isHome.isPage&&"!bg-white !sticky shadow-md",
+        !isHome&&"!bg-white !sticky shadow-md",
         dropped&&"!bg-white"
       )
     }>
@@ -62,7 +63,7 @@ export default function Navbar() {
       {
         isTabletScreen&&<Button variant="ghost" onClick={handleToggleDropMenu} className="!bg-transparent !p-0">
         {!dropped?<MenuIcon path={{
-            stroke:isHome.isPage&&scrollPercentage<5?"#fff":"#000",
+            stroke:isHome&&scrollPercentage<5?"#fff":"#000",
             strokeOpacity: 1
           }} svg={{
             className:"size-6 min-[498px]:size-8 brightness-125"
@@ -77,7 +78,7 @@ export default function Navbar() {
             "top-[100%] opacity-100":dropped,
             "top-[-200vh] opacity-0 pointer-events-none":!dropped,
           },
-          !isTabletScreen&&isHome.isPage&&scrollPercentage<5&&"text-white"
+          !isTabletScreen&&isHome&&scrollPercentage<5&&"text-white"
         )
       }>
         <Translator />

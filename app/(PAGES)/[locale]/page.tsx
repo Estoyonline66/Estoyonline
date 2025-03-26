@@ -1,5 +1,7 @@
 "use client"
+import Footer from "@/components/footer/Footer";
 import Meta from "@/components/Meta";
+import Navbar from "@/components/navbar/Navbar";
 import AboutFounder from "@/components/sections/Home/AboutFounder";
 import HomeHero from "@/components/sections/Home/Hero";
 import JourneyCTA from "@/components/sections/Home/JourneyCTA";
@@ -11,6 +13,7 @@ export default function Home() {
 
   return (
     <>
+     <Navbar isHome/>
     <Meta route="/"/>
       <HomeHero />
 
@@ -23,6 +26,8 @@ export default function Home() {
       <TestimonialCarousel />
 
       <RatindAndAchievements />
+      <Footer />
+
     </>
   );
 }
