@@ -18,7 +18,9 @@ export default function TestimonialCarousel() {
   const plugin = useRef(Autoplay({ stopOnInteraction: true }));
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
-  
+  const defaultData = {
+    "testimonies": "Lo que nuestros clientes dicen sobre nosotros",
+  };
   const testimonials: {
     image: string;
     firstComment: string;
@@ -48,13 +50,15 @@ export default function TestimonialCarousel() {
     },
   ];
 
+  const carouselContent = useRef<HTMLDivElement>(null)
+
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20">
       <h3 className="font-bold text-xl sm:text-2xl lg:text-4xl text-center">
-        {Data.testimonies}
+        {Data.testimonies?Data.testimonies:defaultData.testimonies}
       </h3>
-      <Carousel plugins={[plugin.current]} className="w-full *:first:!w-full *:first:!max-w-full *:first:flex *:first:justify-center">
-        <CarouselContent className={
+      <Carousel plugins={[plugin.current]} className="w-full *:first:!w-full *:first:!max-w-full">
+        <CarouselContent ref={carouselContent} className={
           clsx(
             "-ml-1 gap-3 lg:!grid",
             `lg:grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] md:place-items-center`
@@ -63,7 +67,10 @@ export default function TestimonialCarousel() {
           {testimonials.map((testimony, index) => (
             <CarouselItem
               key={index}
-              className="p-3 rounded-md border basis-[80vw] min-[498px]:basis-[300px]"
+              style={{
+                minHeight: `${carouselContent.current?.clientHeight}px`
+              }}
+              className="p-3 rounded-md border h-full basis-[80vw] min-[498px]:basis-[300px]"
             >
               <div className="flex gap-2">
                 {/* image */}

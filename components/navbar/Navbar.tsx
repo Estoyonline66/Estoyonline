@@ -37,10 +37,10 @@ export default function Navbar() {
   return (
     <header className={
       clsx(
-        "w-full z-50 top-0 p-4 md:px-10 lg:px-20 flex items-center duration-300 justify-between gap-5",
-        isHome.isPage&&scrollPercentage>=5?"bg-white fixed shadow-md":
-          "bg-transparent fixed",
-        !isHome.isPage&&"bg-white sticky shadow-md",
+        "w-full z-50 top-0 p-4 bg-transparent fixed md:px-10 lg:px-20 flex items-center duration-300 justify-between gap-5",
+        isHome.isPage&&scrollPercentage>=5?"!bg-white fixed shadow-md":
+          "!bg-transparent",
+        !isHome.isPage&&"!bg-white !sticky shadow-md",
         dropped&&"!bg-white"
       )
     }>
