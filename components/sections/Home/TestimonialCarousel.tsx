@@ -1,25 +1,15 @@
 "use client";
 import ImageBox from "@/components/ImageBox";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import clsx from "clsx";
-import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, HeartIcon } from "lucide-react";
-import { useRef } from "react";
+import { Marquee } from "@/components/magicui/marquee";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { HomeProps } from "@/types/PropTypes";
+import { HeartIcon } from "lucide-react";
 
 export default function TestimonialCarousel() {
-  const plugin = useRef(Autoplay({ stopOnInteraction: true }));
-  const { t } = useTranslation()
-  const Data: HomeProps = t('home')
+  const { t } = useTranslation();
+  const Data: HomeProps = t("home");
   const defaultData = {
-    "testimonies": "Lo que nuestros clientes dicen sobre nosotros",
+    testimonies: "Lo que nuestros clientes dicen sobre nosotros",
   };
   const testimonials: {
     image: string;
@@ -50,50 +40,41 @@ export default function TestimonialCarousel() {
     },
   ];
 
-  const carouselContent = useRef<HTMLDivElement>(null)
 
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20">
       <h3 className="font-bold text-xl sm:text-2xl lg:text-4xl text-center">
-        {Data.testimonies?Data.testimonies:defaultData.testimonies}
+        {Data.testimonies ? Data.testimonies : defaultData.testimonies}
       </h3>
-      <Carousel plugins={[plugin.current]} className="w-full *:first:!w-full *:first:!max-w-full">
-        <CarouselContent ref={carouselContent} className={
-          clsx(
-            "-ml-1 gap-3 lg:!grid",
-            `lg:grid-cols-[repeat(auto-fit,_minmax(100px,_1fr))] md:place-items-center`
-          )
-        }>
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <Marquee pauseOnHover className="[--duration:20s]">
           {testimonials.map((testimony, index) => (
-            <CarouselItem
+            <div
               key={index}
-              style={{
-                minHeight: `${carouselContent.current?.clientHeight}px`
-              }}
-              className="p-3 rounded-md border h-full basis-[80vw] min-[498px]:basis-[300px]"
+              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] sm:max-w-72 cursor-pointer overflow-hidden rounded-xl border p-4 mx-2"
             >
               <div className="flex gap-2">
-                {/* image */}
-                <span className="size-14 rounded-full overflow-hidden shrink-0">
+                {/* Image */}
+                <span className="w-8 h-8 rounded-full overflow-hidden shrink-0">
                   <ImageBox
                     src={testimony.image}
-                    className="size-full object-cover object-center"
+                    className="w-full h-full object-cover object-center"
                   />
                 </span>
-                {/* content */}
+                {/* Content */}
                 <div className="w-full flex flex-col gap-3">
-                  <div className="w-full flex items-center justify-between flex-col-reverse min-[300px]:flex-row">
+                  <div className="w-full flex items-center justify-between flex-col-reverse sm:flex-row">
                     <strong className="text-sm">{testimony.personName}</strong>
                     <span className="flex items-center gap-2 shrink-0">
-                      <em className="text-xs shrink-0 not-italic text-neutral-400">
+                      <em className="text-xs not-italic text-neutral-400">
                         20 mins
                       </em>
                       <HeartIcon
-                        className="text-transparent size-5 shrink-0"
+                        className="text-transparent w-5 h-5 shrink-0"
                         fill="#EB0004"
                         fillOpacity={30}
                       />
-                      <span className="size-5 bg-neutral-300 shrink-0 rounded-full"></span>
+                      <span className="w-5 h-5 bg-neutral-300 shrink-0 rounded-full"></span>
                     </span>
                   </div>
                   <p className="text-xs">{testimony.firstComment}</p>
@@ -108,16 +89,10 @@ export default function TestimonialCarousel() {
                   </div>
                 </div>
               </div>
-            </CarouselItem>
+            </div>
           ))}
-        </CarouselContent>
-        <CarouselPrevious className="left-0 size-12 sm:-left-5 !bg-neutral-700">
-          <ChevronLeft className="bg-white rounded-full size-[50%]" />
-        </CarouselPrevious>
-        <CarouselNext className="right-0 size-12 sm:left-[calc(100%+(var(--spacing)_*_-2))] !bg-neutral-700">
-          <ChevronRight className="bg-white rounded-full size-[50%]" />
-        </CarouselNext>
-      </Carousel>
+        </Marquee>
+      </div>
     </section>
   );
 }

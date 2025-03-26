@@ -49,7 +49,12 @@ export default function Contact() {
           <strong className="text-lg sm:text-xl lg:text-2xl">{Data.needAssistance}</strong>
           <p>{Data.contactDescription}</p>
           <StyledButton className="!px-10">
-            <MessagePhone />
+            <MessagePhone path={{
+                fill: "var(--styledButtonHoveredTextColor)",
+                style:{
+                  transitionDuration: "300ms"
+                }
+              }} />
             {Data.officeContactButton}
           </StyledButton>
         </div>
