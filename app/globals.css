@@ -110,7 +110,6 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --animate-spin-gradient: spinGradient 3s linear infinite;
 }
 
 * {
@@ -145,44 +144,30 @@ button {
 }
 
 
-@property --angle{
-  syntax: "<angle>";
-  initial-value: 0deg;
+@property --styledButtonHoveredTextColor {
+  syntax: '<color>';
   inherits: false;
 }
 
+
 .styledButton{
-  @apply !py-3 relative !h-fit !rounded-md !overflow-hidden isolate;
+  @apply !py-3 relative !h-fit !rounded-md !overflow-hidden isolate duration-300;
 }
-
-.styledButton::before,
-.styledButton::after{
-  @apply w-full h-1/2 absolute left-0 content-[''] -z-10 duration-[200ms];
+.styledButton{
+  --styledButtonHoveredTextColor: var(--color-white)
 }
-.styledButton::after{
-  @apply -bottom-[50%] rounded-full;
+.styledButton.primary:hover{
+  @apply !text-secondary;
 }
-.styledButton::before{
-  @apply -top-[50%] rounded-full;
+.styledButton.secondary:hover{
+  @apply !text-primary;
 }
-.styledButton:hover::after{
-  @apply -bottom-0 rounded-none;
+.styledButton.primary:hover{
+  --styledButtonHoveredTextColor: var(--color-secondary)
 }
-.styledButton:hover::before{
-  @apply -top-0 rounded-none;
+.styledButton.secondary:hover{
+  --styledButtonHoveredTextColor: var(--color-primary)
 }
-
-
-
-.styledButton.primary::before,
-.styledButton.primary::after{
-  @apply !bg-secondary;
-}
-.styledButton.secondary::before,
-.styledButton.secondary::after{
-  @apply !bg-primary;
-}
-
 .styledButton.primary{
   @apply !bg-primary;
 }
@@ -192,16 +177,6 @@ button {
 
 
 
-
-
-@keyframes spinGradient {
-  from{
-    --angle:0deg;
-  }
-  to{
-    --angle:360deg;
-  }
-}
 
 .scrollBar::-webkit-scrollbar{
  @apply w-1 bg-transparent;

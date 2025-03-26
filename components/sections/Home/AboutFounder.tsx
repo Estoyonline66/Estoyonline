@@ -78,7 +78,12 @@ export default function AboutFounder() {
               </p>
 
               <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
-              <a href="https://wa.me/905307700789"><StyledButton icon={<MessagePhone svg={{
+              <a href="https://wa.me/905307700789"><StyledButton icon={<MessagePhone path={{
+                fill: "var(--styledButtonHoveredTextColor)",
+                style:{
+                  transitionDuration: "300ms"
+                }
+              }} svg={{
                 className:"size-4"
           }} />}> {Data.homeAboutButton}</StyledButton>
             </a>
