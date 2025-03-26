@@ -25,6 +25,29 @@ export interface HomeProps {
   counterTitle3: string;
   counterTitle4: string;
 }
+export interface TeachersTeacher {
+  name: string;
+  about: string;
+  media:string
+}
+export interface TeachersData {
+  PageTitle: string;
+  teachersTitle: string;
+  teachersTitleRed: string;
+  teachersTitle2: string;
+  teacher: TeachersTeacher[]
+}
+
+export interface VideosVideo {
+  title: string;
+  description: string;
+  youtubeId: string;
+}
+export interface VideosData {
+  PageTitle: string;
+  videos: VideosVideo[];
+}
+
 export interface CoursesData {
   level: string;
   duration: string;
