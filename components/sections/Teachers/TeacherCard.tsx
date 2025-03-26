@@ -75,7 +75,7 @@ export default function TeacherCard({ teach }: Props) {
         className="w-full relative isolate sm:w-[40%] sm:min-w-72 min-[498px]:max-w-fit shrink-0"
       >
         <div onMouseEnter={()=>setPlay(true)} onMouseLeave={()=>setPlay(false)} className="w-full bg-black overflow-hidden rounded-md h-72 relative">
-          <video ref={vidRef} src={teach.media} className='size-full object-top object-cover'></video>
+          <video ref={vidRef} src={teach.media} className='size-full object-top object-cover aspect-square'></video>
           <Button onClick={()=>{
             setMuted(!muted)
           }} className="!absolute !block !bottom-4 !left-1/2 !-translate-x-1/2  !p-2 !h-fit !bg-black/30 !backdrop-blur-3xl !text-white">
