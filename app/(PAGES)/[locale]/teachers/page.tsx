@@ -25,12 +25,6 @@ export default function Teachers() {
         {
           teachers.map((teach,ind)=><TeacherCard key={ind} teach={teach}/>)
         }
-        {
-          teachers.map((teach,ind)=><TeacherCard key={ind} teach={teach}/>)
-        }
-        {
-          teachers.map((teach,ind)=><TeacherCard key={ind} teach={teach}/>)
-        }
      </ul>
     </>
   );
