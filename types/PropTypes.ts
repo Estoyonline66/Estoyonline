@@ -19,6 +19,7 @@ export interface HomeProps {
   homeSubAboutTitle: string;
   homeSubAboutDescription: string;
   homeSubAboutButton: string;
+  homeSubAboutVideos:string[];
   testimonies: string;
   counterTitle: string;
   counterTitle2: string;

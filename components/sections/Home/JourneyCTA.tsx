@@ -1,5 +1,4 @@
 "use client";
-import ImageBox from "@/components/ImageBox";
 import { Dots1, Dots2 } from "@/components/shapes";
 import { AnimatedSunLogo } from "@/components/shapes/logo";
 import StyledButton from "@/components/StyledButton";
@@ -11,15 +10,30 @@ import { useIsMobile } from "@/lib/hooks/useMobile";
 import { HomeProps } from "@/types/PropTypes";
 import clsx from "clsx";
 import { Volume2Icon, VolumeX } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const ImageItem = ({index}:{index:number})=>{
+const VideoItem = ({video}:{video:string})=>{
   const [show, setShow] = useState(false);
   const [muted, setMuted] = useState(false)
 
   
-  
-  const imageRef = useIntersectionObserver<HTMLLIElement>({
+  const [play, setPlay]=useState(false)
+  const vidRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const videoElement = vidRef.current
+    
+    if(videoElement){
+      if(play){
+        videoElement.play()
+      }else{
+        videoElement.pause()
+      }
+
+      videoElement.muted = muted
+    }
+  }, [vidRef, play, muted])
+  const VideoRef = useIntersectionObserver<HTMLLIElement>({
     onProgress(progress) {
       if (progress > 0.05) {
         setShow(true);
@@ -29,17 +43,18 @@ const ImageItem = ({index}:{index:number})=>{
     },
   });
   return(
-    <li ref={imageRef} className={
+    <li ref={VideoRef} onMouseEnter={()=>setPlay(true)} onMouseLeave={()=>setPlay(false)}  className={
       clsx(
         "w-full max-h-52 sm:max-h-64 bg-primary relative rounded-md duration-500 overflow-hidden",
         show?"scale-100 opacity-100":"scale-0 opacity-0"
       )
     }>
-      <ImageBox
-        src={`/Images/image (${index+1}).png`}
+      <video
+      ref={vidRef}
+        src={video}
         width={1024}
         height={1024}
-        className="size-full object-cover object-top"
+        className="size-full object-cover aspect-square object-top"
       />
       <Button onClick={()=>{
             setMuted(!muted)
@@ -81,6 +96,7 @@ export default function JourneyCTA() {
       }
     },
   })
+
 
   return (
     <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#078CE2]">
@@ -131,7 +147,7 @@ export default function JourneyCTA() {
         </div>
         <ul className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3">
           {
-            Array.from({length:4}).map((_, i)=><ImageItem key={i} index={i}/>)
+            Data.homeSubAboutVideos?.map((video, i)=><VideoItem key={i} video={video}/>)
           }
         </ul>
       </div>
