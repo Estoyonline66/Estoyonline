@@ -23,7 +23,7 @@ export default function Accordion() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-4 p-5">
+    <div className="w-full md:px-20 lg:px-40 mx-auto space-y-4 p-4">
       {accordionDatas.map((item, index) => (
         <AccordionItem
           key={index}

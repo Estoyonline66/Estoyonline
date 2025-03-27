@@ -48,6 +48,8 @@ export default function Contact() {
           </span>
           <strong className="text-lg sm:text-xl lg:text-2xl">{Data.needAssistance}</strong>
           <p>{Data.contactDescription}</p>
+          <a href="https://wa.me/905307700789" target='_blank'>
+
           <StyledButton className="!px-10">
             <MessagePhone path={{
                 fill: "var(--styledButtonHoveredTextColor)",
@@ -57,6 +59,7 @@ export default function Contact() {
               }} />
             {Data.officeContactButton}
           </StyledButton>
+          </a>
         </div>
         <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-5">
           <span

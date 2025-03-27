@@ -19,18 +19,18 @@ export default function AboutFounder() {
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
   const defaultData = {
-    "homeAboutTitle": "¡Hola! Hello! Soy",
-    "homeAboutTitle2": "el fundador de Estyonline.es",
-    "homeAboutDescription": "Una escuela de español en línea",
-    "homeAboutDescriptionBold": "con más de 300 estudiantes.",
-    "homeAboutDescription2": "Estamos emocionados de contarte todo sobre nuestra escuela boutique y nuestras lecciones en detalle. ¡Agendemos una clase gratuita! Estoy esperando tu mensaje por WhatsApp.",
-    "homeAboutDescriptionBold2": "¡Envíanos un mensaje ahora!",
-    "homeAboutButton": "WhatsApp (530) 77 00 789",
+    "homeAboutTitle": "Hello! Hola! I’am",
+    "homeAboutTitle2": "the founder of Estyonline.es",
+    "homeAboutDescription": "An online Spanish school",
+    "homeAboutDescriptionBold": "with over 300 students.",
+    "homeAboutDescription2": "We’re excited to tell you all about our boutique school and our lessons in detail. Let’s schedule a free class! I am looking forward to your Whatsapp message.",
+    "homeAboutDescriptionBold2": "Text us now!",
+    "homeAboutButton": "Whatsapp (530) 77 00 789",
   };
   
   const imageRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
-      if(progress>0.05){
+      if(progress>0.3){
         setShow(s=>({
           ...s,
           image:true
@@ -76,7 +76,7 @@ export default function AboutFounder() {
                   "font-bold text-lg sm:text-xl lg:text-2xl duration-500 delay-100 text-center sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
-              }>{Data.homeAboutTitle?Data.homeAboutTitle:defaultData.homeAboutTitle} <em className="shadows-into-light-regular text-secondary text-xl sm:text-2xl lg:text-3xl font-normal">Aleja</em>, {Data.homeAboutTitle2?Data.homeAboutTitle2:defaultData.homeAboutTitle2}</h3>
+              }>{Data.homeAboutTitle?Data.homeAboutTitle:defaultData.homeAboutTitle} <em className="font-inkfree font-extrabold text-secondary text-xl sm:text-2xl lg:text-3xl">Aleja</em>, {Data.homeAboutTitle2?Data.homeAboutTitle2:defaultData.homeAboutTitle2}</h3>
               <p className={
                 clsx(
                   "duration-500 delay-300 text-center sm:text-left",
@@ -87,7 +87,7 @@ export default function AboutFounder() {
               </p>
 
               <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
-              <a href="https://wa.me/905307700789"><StyledButton icon={<MessagePhone path={{
+              <a href="https://wa.me/905307700789" target='_blank'><StyledButton icon={<MessagePhone path={{
                 fill: "var(--styledButtonHoveredTextColor)",
                 style:{
                   transitionDuration: "300ms"

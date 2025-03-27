@@ -17,9 +17,9 @@ export default function LearnSpanish() {
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
   const defaultData = {
-    "LearnSpanishtitle": "Aprende español de manera divertida en nuestra escuela boutique.",
-    "LearnSpanishdescription": "En nuestra escuela boutique Estyonline.es, con sede en Barcelona, enseñamos español de una manera divertida y atractiva, completamente diferente a los métodos tradicionales. Gracias a las técnicas de nuestro método, aprender español en línea se ha convertido en un proceso agradable y emocionante. Las actividades divertidas y los juegos aumentan tu motivación y reducen tu estrés, facilitando el aprendizaje del idioma. Además, fomentan el uso natural del lenguaje y fortalecen las conexiones sociales. Aprender un idioma de manera divertida mejora la retención y ayuda a mejorar tus habilidades lingüísticas de manera efectiva. Nuestra escuela cuenta con profesores de España, Italia, Argentina y Colombia, quienes son hablantes nativos de español. Los profesores que imparten clases para principiantes también hablan turco. Todas nuestras clases se realizan en línea a través de Zoom.",
-    "LearnSpanishbutton": "Videos de muestra de la lección",
+    "LearnSpanishtitle": "Learn Spanish in a fun way at our boutique school.",
+    "LearnSpanishdescription": "At our boutique school Estyonline.es, based in Barcelona, we teach Spanish in fun and engaging way, completely different from traditional methods. Thanks the method techniques we use, learning spanish online has become an enjoyable and exciting process. Fun activities and game increase your motivation and reduce your stress, making language learning easier. Additionally, they encourage natural language use and strengthen social connections. Learning a language in an enjoyable way enhances retention and effectively helps improve your language skills.Our School has teachers from Spain, Italy, Argentina, and Colombia who are native Spanish speakers. The teacher who conduct beginner-level lessons also speak Turish. All our lessons are conducted online via Zoom",
+    "LearnSpanishbutton": "Sample videos from Lesson",
   };
   
   const generalSect = useIntersectionObserver({
@@ -50,12 +50,12 @@ export default function LearnSpanish() {
   })
   return (
     <section ref={generalSect} className="w-full mt-20 px-4 z-0 relative flex items-center justify-center isolate h-fit">
-      <span className="absolute pointer-events-none w-fit -left-5 top-5 h-screen block -z-10 overflow-x-hidden">
-        <DoubleLeft className="h-full"/>
-      </span>
-      <span className="absolute pointer-events-none w-fit -right-0 top-10 h-screen block -z-10 overflow-x-hidden">
-        <DoubleRight className="h-full relative left-5"/>
-      </span>
+      <span className="absolute pointer-events-none w-fit max-w-[20vw] -left-5 top-5 sm:h-screen block -z-10 overflow-x-hidden">
+              <DoubleLeft className="h-full w-full"/>
+            </span>
+            <span className="absolute pointer-events-none w-fit max-w-[20vw] -right-0 top-10 sm:h-screen block -z-10 overflow-x-hidden">
+              <DoubleRight className="h-full relative left-5"/>
+            </span>
       <div className="flex items-center justify-center flex-col gap-3 w-full max-w-3xl">
         <h3 className={
           clsx(

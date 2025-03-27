@@ -3,6 +3,11 @@
 @import 'leaflet/dist/leaflet.css';
 
 
+@font-face {
+  font-family: 'inkfree';
+  src: url('/ink-font/Inkfree.ttf') format('truetype');
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -112,11 +117,14 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --animate-marquee:marquee var(--duration) linear infinite;
+  --font-inkfree: 'inkfree',sans-serif;
 }
+
 
 * {
   @apply !outline-none focus:!border-none focus:!ring-0;
 }
+
 @layer base {
   * {
     @apply border-border box-border;
