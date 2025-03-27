@@ -41,7 +41,7 @@ export default function Courses() {
           
       <section className="relative bg-[#078CE2] w-full h-[85rem] flex justify-center items-center z-[-1]">
         <BgSvg />
-        <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9">
+        <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
           <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
           <ul className="text-white flex flex-col gap-9">
             {levelss.map((level, index) => (
@@ -50,7 +50,7 @@ export default function Courses() {
                    <b className="pb-2">{level.title}</b>
                    {level.items.map((item, idx) => (
                     <p key={idx} className="font-light">
-                      <span className="font-semibold">{item.level}</span> - {item.duration} - Book: {item.book}
+                      <span className="font-semibold">{item.level}</span> &nbsp; {item.duration} {item.book}
                      </p>
                    ))}
                 </div>
