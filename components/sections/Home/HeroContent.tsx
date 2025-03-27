@@ -11,11 +11,11 @@ export default function HeroContent() {
   const { t } = useTranslation();
   const Data: HomeProps = t("home");
   const defaultData = {
-    "HeroTitle": "El Mundo",
-    "HeroYellowTitle": "Habla Español,",
-    "HeroTitle2": "¿Y Tú?",
-    "HeroDescription": "Aprende español en línea con profesores nativos y deja que el sol caliente tus palabras",
-    "HeroButton": "Explorar Cursos",
+    "HeroTitle": "The World",
+    "HeroYellowTitle": "Speaks Spanish,",
+    "HeroTitle2": "Will You?",
+    "HeroDescription": "Learn Spanish online with native teachers and let the sun warm your words",
+    "HeroButton": "Explore Courses",
   };
   return (
     <div className="w-fit p-2 flex flex-col gap-5 animate-[pulse_1s_linear_forwards] text-white relative max-w-[95vw] min-[498px]:max-w-sm sm:max-w-lg lg:max-w-xl">

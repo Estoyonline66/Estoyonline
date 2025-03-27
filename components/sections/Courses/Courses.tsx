@@ -17,8 +17,8 @@ export default function Courses() {
 
   return (
     <>
-      <section className="w-full flex flex-col gap-5 py-20 px-5 lg:px-20 z-0">
-        <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {cardCourses.map((card, index) => (
             <li
                 key={index}
