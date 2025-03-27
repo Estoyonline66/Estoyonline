@@ -19,10 +19,10 @@ export default function RatindAndAchievements() {
   const { t } = useTranslation();
   const Data: HomeProps = t("home");
   const defaultData = {
-    counterTitle: "Historias de Éxito",
-    counterTitle2: "Instructores Expertos",
-    counterTitle3: "Estudiantes",
-    counterTitle4: "Temas de Tendencia",
+    "counterTitle": "Success Stories",
+    "counterTitle2": "Expert Instructors",
+    "counterTitle3": "Students",
+    "counterTitle4": "Trending Subjects"
   };
 
   const calculateSkipper = (length: number) => Math.floor(length / 20);
@@ -53,7 +53,7 @@ export default function RatindAndAchievements() {
   return (
     <ul
       ref={ref}
-      className="w-full bg-secondary py-5 px-4 relative md:px-10 lg:px-20 grid grid-cols-1  sm:grid-cols-4 gap-3"
+      className="w-full bg-secondary py-5 px-4 relative md:px-10 lg:px-20 grid grid-cols-1 z-[1] sm:grid-cols-4 gap-3"
     >
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{successStoriesCount.current}+</strong>

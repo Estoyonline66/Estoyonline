@@ -15,7 +15,7 @@ export default function Footer() {
     }>("navbar")
   
   return (
-      <footer className='py-10 w-full bg-[#E9E8E8] flex items-center justify-center flex-col gap-7'>
+      <footer className='py-10 w-full bg-[#E9E8E8] flex items-center justify-center relative z-10 flex-col gap-7'>
           <div>
               <TranslatedLink href={"/"} className="w-fit">
                       <WebsiteLogo svg={{className:"h-8 md:h-10 lg:h-12 w-fit"}}/>

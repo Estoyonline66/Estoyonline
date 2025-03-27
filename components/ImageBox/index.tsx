@@ -24,7 +24,8 @@ const ImageBox: React.FC<ImageProps> = ({
     fallback
   ) : (
     <>
-      <NextImage
+      {
+        !src?.includes("://")? <NextImage
         src={`${src ? src : ""}`} // Use the resolved imageSrc or empty string as fallback
         {...imgProps} // Spread the remaining props for the <img> element
         onError={() => {
@@ -35,7 +36,20 @@ const ImageBox: React.FC<ImageProps> = ({
         loading="lazy"
         alt={alt ? alt : "image"}
         className={clsx("object-cover object-center", imgProps.className)}
-      />
+      // eslint-disable-next-line @next/next/no-img-element
+      />: <img
+      src={`${src ? src : ""}`} // Use the resolved imageSrc or empty string as fallback
+      {...imgProps} // Spread the remaining props for the <img> element
+      onError={() => {
+        setMediaThumbnailError(true);
+      }}
+      width={imgProps.width ? imgProps.width : 200}
+      height={imgProps.height ? imgProps.height : 200}
+      loading="lazy"
+      alt={alt ? alt : "image"}
+      className={clsx("object-cover object-center", imgProps.className)}
+    />
+      }
       {siblings}
     </>
   );

@@ -12,103 +12,166 @@ import clsx from "clsx";
 import { Volume2Icon, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const VideoItem = ({video}:{video:string})=>{
+// VideoItem now receives the containerVisible prop from JourneyCTA.
+const VideoItem = ({
+  video,
+  id,
+  activeVideo,
+  onHover,
+  containerVisible,
+}: {
+  video: string;
+  id: number;
+  activeVideo: number | null;
+  onHover: (id: number | null) => void;
+  containerVisible: boolean;
+}) => {
+  const isMobile = useIsMobile(640);
   const [show, setShow] = useState(false);
-  const [muted, setMuted] = useState(false)
+  const [muted, setMuted] = useState(true);
+  const [play, setPlay] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
+  const vidRef = useRef<HTMLVideoElement>(null);
 
-  
-  const [play, setPlay]=useState(false)
-  const vidRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    const videoElement = vidRef.current
-    
-    if(videoElement){
-      if(play){
-        videoElement.play()
-      }else{
-        videoElement.pause()
-      }
-
-      videoElement.muted = muted
+  // Reset the video to the start.
+  const resetVideo = () => {
+    if (vidRef.current) {
+      vidRef.current.currentTime = 0;
     }
-  }, [vidRef, play, muted])
-  const VideoRef = useIntersectionObserver<HTMLLIElement>({
-    onProgress(progress) {
-      if (progress > 0.05) {
-        setShow(true);
-      } else {
-        setShow(false);
+  };
+
+  // Use containerVisible to control when the video should auto-play.
+  useEffect(() => {
+    if (containerVisible) {
+      setShow(true);
+      if (!hasPlayed) {
+        setPlay(true);
+        setHasPlayed(true);
       }
-    },
-  });
-  return(
-    <li ref={VideoRef} onMouseEnter={()=>setPlay(true)} onMouseLeave={()=>setPlay(false)}  className={
-      clsx(
-        "w-full max-h-52 sm:max-h-64 bg-primary relative rounded-md duration-500 overflow-hidden",
-        show?"scale-100 opacity-100":"scale-0 opacity-0"
-      )
-    }>
+    } else {
+      setShow(false);
+      setPlay(false);
+      setHasPlayed(false);
+      resetVideo();
+      onHover(null);
+    }
+  }, [containerVisible, hasPlayed, onHover]);
+
+  // Play or pause the video based on the local "play" state.
+  useEffect(() => {
+    const videoElement = vidRef.current;
+    if (videoElement) {
+      if (play) {
+        videoElement.play();
+      } else {
+        videoElement.pause();
+        resetVideo();
+      }
+    }
+  }, [play]);
+
+  // When a hover is active, ensure only the active video plays.
+  useEffect(() => {
+    if (hasPlayed && activeVideo !== null) {
+      if (activeVideo === id) {
+        setPlay(true);
+      } else {
+        setPlay(false);
+        resetVideo();
+      }
+    }
+  }, [activeVideo, id, hasPlayed]);
+
+  return (
+    <li
+      // On hover, notify the parent so it can set this video as active.
+      onMouseEnter={() => !isMobile?onHover(id):null}
+      onClick={() => isMobile?onHover(id):null}
+      className={clsx(
+        "w-full max-h-52 sm:max-h-64 cursor-pointer bg-primary relative rounded-md duration-500 overflow-hidden",
+        show ? "scale-100 opacity-100" : "scale-0 opacity-0"
+      )}
+    >
       <video
-      ref={vidRef}
+        ref={vidRef}
+        onEnded={() => {
+          setPlay(false);
+          resetVideo();
+          onHover(null);
+        }}
+        loop={false}
+        disablePictureInPicture={true}
+        controls={false}
+        autoPlay={false}
+        muted={muted}
+        disableRemotePlayback={true}
+        playsInline={true}
         src={video}
         width={1024}
         height={1024}
         className="size-full object-cover aspect-square object-top"
       />
-      <Button onClick={()=>{
-            setMuted(!muted)
-          }} className="!absolute !block !bottom-4 !left-1/2 !-translate-x-1/2  !p-2 !h-fit !bg-black/30 !backdrop-blur-3xl !text-white">
-          {
-            muted?<VolumeX className="size-5"/>:<Volume2Icon className="size-5"/>
-          }
-          </Button>
+      <Button
+        onClick={() => setMuted(!muted)}
+        className="!absolute !block !bottom-4 !left-1/2 !-translate-x-1/2 !p-2 !h-fit !bg-black/30 !backdrop-blur-3xl !text-white"
+      >
+        {muted ? <VolumeX className="size-5" /> : <Volume2Icon className="size-5" />}
+      </Button>
     </li>
-  )
-}
+  );
+};
 
 export default function JourneyCTA() {
   const isTabletScreen = useIsMobile(640);
   const [show, setShow] = useState({
     body: false,
   });
+  // Track which video is currently hovered/active.
+  const [activeVideo, setActiveVideo] = useState<number | null>(null);
+  // Track the visibility of the videos container.
+  const [containerVisible, setContainerVisible] = useState(false);
 
-  const { t } = useTranslation()
-  const Data: HomeProps = t('home')
+  const { t } = useTranslation();
+  const Data: HomeProps = t("home");
   const defaultData = {
-    "homeSubAboutTitle": "¡Comienza tu viaje de aprendizaje del español hoy!",
-    "homeSubAboutDescription": "Únete a Estyonline.es y aprende español de una manera divertida y atractiva.",
-    "homeSubAboutButton": "Explorar Cursos",
+    homeSubAboutTitle: "¡Comienza tu viaje de aprendizaje del español hoy!",
+    homeSubAboutDescription:
+      "Únete a Estyonline.es y aprende español de una manera divertida y atractiva.",
+    homeSubAboutButton: "Explorar Cursos",
   };
-  
+
   const bodyRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
-      if(progress>0.05){
-        setShow(s=>({
-          ...s,
-          body:true
-        }))
-      }else{
-        setShow(s=>({
-          ...s,
-          body:false
-        }))
+      if (progress > 0.05) {
+        setShow((s) => ({ ...s, body: true }));
+      } else {
+        setShow((s) => ({ ...s, body: false }));
       }
     },
-  })
+  });
 
+  // Intersection observer for the videos container.
+  const videosContainerRef = useIntersectionObserver<HTMLUListElement>({
+    onProgress(progress) {
+      setContainerVisible(progress > 0.05);
+    },
+  });
 
   return (
     <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#078CE2]">
       {/* sun image */}
-      <AnimatedSunLogo svg={{
-        className:"size-40 sm:size-60 absolute -top-20 -left-20 sm:-top-30 sm:-left-30"
-      }} />
-      <AnimatedSunLogo svg={{
-        className:"size-40 sm:size-60 absolute top-1/2 -translate-y-1/2 left-[calc(100%-5rem)] sm:left-[calc(100%-7.5rem)]"
-      }}/>
+      <AnimatedSunLogo
+        svg={{
+          className:
+            "size-40 sm:size-60 absolute -top-20 -left-20 sm:-top-30 sm:-left-30",
+        }}
+      />
+      
       <div className="w-full grid sm:grid-cols-2 items-center gap-5 isolate">
-        <div ref={bodyRef} className="w-full relative text-white flex flex-col justify-center gap-3 h-full">
+        <div
+          ref={bodyRef}
+          className="w-full relative text-white flex flex-col justify-center gap-3 h-full"
+        >
           {!isTabletScreen && (
             <>
               <span className="absolute -bottom-5 -left-5 pointer-events-none -z-10">
@@ -127,28 +190,49 @@ export default function JourneyCTA() {
                 : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
             )}
           >
-            {Data.homeSubAboutTitle?Data.homeSubAboutTitle:defaultData.homeSubAboutTitle}
+            {Data.homeSubAboutTitle
+              ? Data.homeSubAboutTitle
+              : defaultData.homeSubAboutTitle}
           </h3>
           <p
             className={clsx(
               "duration-500 delay-300",
               show.body
-              ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
-              : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
+                ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
+                : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
             )}
           >
-            {Data.homeSubAboutDescription?Data.homeSubAboutDescription:defaultData.homeSubAboutDescription}
+            {Data.homeSubAboutDescription
+              ? Data.homeSubAboutDescription
+              : defaultData.homeSubAboutDescription}
           </p>
           <TranslatedLink href={"/courses"}>
-          <StyledButton className="!mt-2">
-            {Data.homeSubAboutButton?Data.homeSubAboutButton:defaultData.homeSubAboutButton}
-          </StyledButton>
+            <StyledButton className="!mt-2">
+              {Data.homeSubAboutButton
+                ? Data.homeSubAboutButton
+                : defaultData.homeSubAboutButton}
+            </StyledButton>
           </TranslatedLink>
         </div>
-        <ul className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3">
-          {
-            Data.homeSubAboutVideos?.map((video, i)=><VideoItem key={i} video={video}/>)
-          }
+        <ul
+          ref={videosContainerRef}
+          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3"
+        >
+          {Data.homeSubAboutVideos?.map((video, i) => (
+            <VideoItem
+              key={i}
+              id={i}
+              video={video}
+              activeVideo={activeVideo}
+              onHover={(id) => {
+                // Update activeVideo so that only the hovered video plays.
+                if (activeVideo !== id) {
+                  setActiveVideo(id);
+                }
+              }}
+              containerVisible={containerVisible}
+            />
+          ))}
         </ul>
       </div>
     </section>

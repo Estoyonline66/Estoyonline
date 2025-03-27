@@ -1,5 +1,6 @@
 import React from 'react'
-import { BigDotSmallDot, SingleLineShortLeft, SingleLineShortRight, SmallDot, SunBW } from '../shapes'
+import { BigDotSmallDot, SingleLineShortLeft, SingleLineShortRight, SmallDot } from '../shapes'
+import { SunLogo } from '../shapes/SunLogo'
 
 type Props = {
     icon:React.ReactNode,
@@ -26,7 +27,10 @@ export default function GeneralHero({icon,text}: Props) {
             <BigDotSmallDot className='size-full'/>
         </span>
         <span className='absolute size-5 pointer-events-none sm:size-10 right-[30vw] bottom-5 -z-10'>
-            <SunBW className='size-full'/>
+            <SunLogo colors={{
+                primary:"#ffffff",
+                secondary:"#ffffff"
+            }} svg={{className:"size-full"}}/>
         </span>
         <span className='size-10 *:size-full text-white'>{icon}</span>
          <strong className='text-secondary text-3xl'>{text}</strong>

@@ -1,6 +1,7 @@
 "use client";
 import ImageBox from "@/components/ImageBox";
 import { Marquee } from "@/components/magicui/marquee";
+import { AnimatedSunLogo } from "@/components/shapes/logo";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { HomeProps } from "@/types/PropTypes";
 import { HeartIcon } from "lucide-react";
@@ -9,7 +10,7 @@ export default function TestimonialCarousel() {
   const { t } = useTranslation();
   const Data: HomeProps = t("home");
   const defaultData = {
-    testimonies: "Lo que nuestros clientes dicen sobre nosotros",
+    testimonies: "What our clients are saying about us",
   };
 
 
@@ -96,16 +97,22 @@ export default function TestimonialCarousel() {
 
 
   return (
-    <section className="w-full flex flex-col gap-10 items-center justify-center py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20">
+    <section className="w-full flex flex-col gap-10 items-center justify-center bg-white py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20">
       <h3 className="font-bold text-xl sm:text-2xl lg:text-4xl text-center">
         {Data.testimonies ? Data.testimonies : defaultData.testimonies}
       </h3>
-      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+      <AnimatedSunLogo
+        svg={{
+          className:
+            "size-40 sm:size-60 absolute -top-20 left-[calc(100%-5rem)] z-0 sm:left-[calc(100%-7.5rem)]",
+        }}
+      />
+      <div className="relative flex w-full flex-col items-center bg-white justify-center z-[1] overflow-hidden">
         <Marquee pauseOnHover className="[--duration:50s]">
           {testimonials.map((testimony, index) => (
             <div
               key={index}
-              className="relative h-full w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-80 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0"
+              className="relative h-full bg-white w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-80 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0"
             >
               <div className="flex gap-2">
                 {/* Image */}

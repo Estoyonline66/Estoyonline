@@ -20,7 +20,7 @@ export default function VideoCard(vid: video) {
     setLoading(false)
   }
   return (
-    <div className="w-full grid sm:grid-cols-2 items-center border gap-5 p-4 rounded-md">
+    <div className="w-full bg-white grid sm:grid-cols-2 items-center border gap-5 p-4 rounded-md">
       <span className="w-full rounded-md overflow-hidden bg-black relative">
         {
             loading&&<Loader2 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white size-10 animate-spin"/>
