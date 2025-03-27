@@ -30,7 +30,7 @@ export function AccordionItem({ title, content, isActive, onClick }: AccordionIt
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="overflow-hidden"
       >
-        <div className="p-4 bg-white">
+        <div className="p-4 bg-white max-h-[20rem] overflow-y-auto">
           {content.map((item, index) => (
             <div key={index} className="mb-1">
               <h3 className="text-lg font-bold">{item.contentTitle}</h3>

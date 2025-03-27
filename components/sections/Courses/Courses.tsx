@@ -46,12 +46,14 @@ export default function Courses() {
           <ul className="text-white flex flex-col gap-9">
             {levelss.map((level, index) => (
               <li key={index} className="flex flex-col">
-                <b className="pb-2">{level.title}</b>
-                {level.items.map((item, idx) => (
-                  <p key={idx} className="font-light">
-                    <span className="font-semibold">{item.level}</span> - {item.duration} - Book: {item.book}
-                  </p>
-                ))}
+                <div className='flex flex-col'>
+                   <b className="pb-2">{level.title}</b>
+                   {level.items.map((item, idx) => (
+                    <p key={idx} className="font-light">
+                      <span className="font-semibold">{item.level}</span> - {item.duration} - Book: {item.book}
+                     </p>
+                   ))}
+                </div>
               </li>
             ))}
           </ul>
