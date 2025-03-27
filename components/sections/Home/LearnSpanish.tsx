@@ -56,7 +56,7 @@ export default function LearnSpanish() {
             <span className="absolute pointer-events-none w-fit max-w-[20vw] -right-0 top-10 sm:h-screen block -z-10 overflow-x-hidden">
               <DoubleRight className="h-full relative left-5"/>
             </span>
-      <div className="flex items-center justify-center flex-col gap-3 w-full max-w-3xl">
+      <div className="flex items-center justify-center flex-col gap-3 w-full max-w-3xl bg-white">
         <h3 className={
           clsx(
             "font-bold text-lg sm:text-xl lg:text-2xl duration-500 text-center",

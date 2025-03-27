@@ -29,7 +29,7 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
             data.map((row, rowIndex) => (
               <tr key={rowIndex} className="border bg-white border-gray-300 hover:bg-gray-50">
                 {columns.map((col) => (
-                  <td key={String(col.key)} className="px-4 py-2 border border-gray-300 text-sm md:text-base whitespace-nowrap">
+                  <td key={String(col.key)} className="px-4 py-2 border border-gray-300 text-sm md:text-base">
                     {col.render ? col.render(row[col.key], row) : String(row[col.key])}
                   </td>
                 ))}
