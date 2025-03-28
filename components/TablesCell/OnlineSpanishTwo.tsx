@@ -39,7 +39,7 @@ const OnlineSpanishTwo = () => {
         Data?.courses?.onlineSpanishTwoTable || [];
   return (
     <div className="p-3 md:p-6">
-      <h1 className="text-xl font-bold mb-4">{Data?.title}</h1>
+      {/* <h1 className="text-xl font-bold mb-4">{Data?.title}</h1> */}
       <Table columns={[...onlineSpanishTwoColumns]} data={onlineSpanishTwoTables} />
     </div>
   );
