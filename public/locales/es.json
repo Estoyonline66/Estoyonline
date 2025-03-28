@@ -73,7 +73,7 @@
     "homeSubAboutTitle": "¡Comienza tu viaje de aprendizaje del español hoy!",
     "homeSubAboutDescription": "Únete a Estyonline.es y aprende español de una manera divertida y atractiva.",
     "homeSubAboutButton": "Explorar Cursos",
-    "homeSubAboutVideos":["/videos/video1.mp4","/videos/video1.mp4","/videos/video1.mp4","/videos/video1.mp4"],
+    "homeSubAboutVideos":["/videos/teachers/aleja2.mp4","/videos/teachers/aleja1.mp4","/videos/teachers/aleja1.mp4","/videos/teachers/aleja1.mp4"],
     "testimonies": "Lo que nuestros clientes dicen sobre nosotros",
     "counterTitle": "Historias de Éxito",
     "counterTitle2": "Instructores Expertos",
@@ -90,27 +90,27 @@
       {
         "name": "DIANA MELISSA",
         "about": "Nacida y criada en Colombia, actualmente vive en Colombia. Ha trabajado como bibliotecaria y ha enseñado servicios bibliotecarios en todos los niveles. Completó su maestría en Béziers, Francia. Melissa aprendió turco hace mucho tiempo y lo habla a nivel avanzado. Desde 2010, ha enseñado francés, inglés y español en varias academias (Oxford, Just English) y escuelas en Turquía (ISTEK en Antalya, Kütahya Başarı, etc.). En su tiempo libre, disfruta tejiendo muñecas, cantando con sus amigos y cocinando. Nuestra escuela ofrece cursos para principiantes A1 que requieren apoyo en turco.",
-        "media": "/videos/video1.mp4"
+        "media": "/videos/teachers/aleja2.mp4"
       },
       {
         "name": "ALEJA",
         "about": "Vivió en Estambul durante 10 años, trabajando como profesora en el Liceo Saint Michel y en el Instituto Cervantes. Organizó los encuentros \"Solo hablamos Español\" que reunían a quienes querían practicar español. Durante su carrera docente, se perfeccionó con muchos cursos de formación internacional como ELE, DELE, AVE, Int House, etc. Se mudó a España en 2019 y decidió establecer su propia escuela. Desarrolló métodos modernos para su escuela, basados en la diversión y la conversación. Continúa mejorando los procesos educativos junto con los profesores de su equipo.",
-        "media": "/videos/video1.mp4"
+        "media": "/videos/teachers/aleja1.mp4"
       },
       {
         "name": "ANITA",
         "about": "Anita es de Ecuador. Se graduó en Comunicación en la Universidad de las Américas en Quito. También tiene un certificado en gramática y metodología para la enseñanza del español. Trabajó como profesora en el Instituto Internacional de Español, adquiriendo experiencia en la enseñanza de español para extranjeros. Trabajó en instituciones como Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. Enseñó a estudiantes turcos de todos los niveles. En los últimos años, comenzó a dar clases particulares y grupales en línea a estudiantes de diferentes países, lo que le permitió integrarse con diferentes culturas.",
-        "media": "/videos/video1.mp4"
+        "media": "/videos/teachers/aleja1.mp4"
       },
       {
         "name": "ALEJA",
         "about": "Vivió en Estambul durante 10 años, trabajando como profesora en el Liceo Saint Michel y en el Instituto Cervantes. Organizó los encuentros \"Solo hablamos Español\" que reunían a quienes querían practicar español. Durante su carrera docente, se perfeccionó con muchos cursos de formación internacional como ELE, DELE, AVE, Int House, etc. Se mudó a España en 2019 y decidió establecer su propia escuela. Desarrolló métodos modernos para su escuela, basados en la diversión y la conversación. Continúa mejorando los procesos educativos junto con los profesores de su equipo.",
-        "media": "/videos/video1.mp4"
+        "media": "/videos/teachers/aleja1.mp4"
       },
       {
         "name": "ANITA",
         "about": "Anita es de Ecuador. Se graduó en Comunicación en la Universidad de las Américas en Quito. También tiene un certificado en gramática y metodología para la enseñanza del español. Trabajó como profesora en el Instituto Internacional de Español, adquiriendo experiencia en la enseñanza de español para extranjeros. Trabajó en instituciones como Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. Enseñó a estudiantes turcos de todos los niveles. En los últimos años, comenzó a dar clases particulares y grupales en línea a estudiantes de diferentes países, lo que le permitió integrarse con diferentes culturas.",
-        "media": "/videos/video1.mp4"
+        "media": "/videos/teachers/aleja1.mp4"
       }
     ]
   },
@@ -775,6 +775,6 @@
     "contactDescription": "¿Necesita asistencia?",
     "officeAddressTitle": "Dirección de la Oficina",
     "officeAddressDescription": "9 Station Rd, West Drayton UB7 7BT",
-    "officeContactButton": "Envíenos un Mensaje"
+    "officeContactButton": "WhatsApp (530) 77 00 789"
   }
 }
