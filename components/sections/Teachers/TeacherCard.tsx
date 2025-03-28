@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import { Volume2Icon, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -19,7 +20,12 @@ type Props = {
   onHover: (id: number | null) => void;
 };
 
-export default function TeacherCard({ teach, activeVideo, id, onHover }: Props) {
+export default function TeacherCard({
+  teach,
+  activeVideo,
+  id,
+  onHover,
+}: Props) {
   const isMobile = useIsMobile(640);
   const [muted, setMuted] = useState(true);
   const [play, setPlay] = useState(false);
@@ -36,14 +42,7 @@ export default function TeacherCard({ teach, activeVideo, id, onHover }: Props) 
       setShow((s) => ({ ...s, body: progress > 0.05 }));
     },
   });
-  
-  // Observer for the video container – used for auto‑play on first visibility.
-  const imageref = useIntersectionObserver<HTMLDivElement>({
-    onProgress(progress) {
-      setShow((s) => ({ ...s, image: progress > 0.05 }));
-      
-    },
-  });
+
 
   // When the video container becomes visible, auto‑play only once.
   useEffect(() => {
@@ -53,7 +52,7 @@ export default function TeacherCard({ teach, activeVideo, id, onHover }: Props) 
     } else if (!show.image && activeVideo === id) {
       onHover(null);
     }
-    if(!show.image){
+    if (!show.image) {
       setHasAutoPlayed(false);
     }
   }, [show.image, activeVideo, id, onHover, hasAutoPlayed]);
@@ -89,8 +88,12 @@ export default function TeacherCard({ teach, activeVideo, id, onHover }: Props) 
 
   return (
     <li className="flex items-center my-5 sm:my-10 flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
-      <div
-        ref={imageref}
+      <motion.div
+        initial="offscreen"
+      whileInView="onscreen"
+      onViewportEnter={() => setShow((s) => ({ ...s, image: true }))}
+      onViewportLeave={() => setShow((s) => ({ ...s, image: false }))}
+      viewport={{ amount: 0.4 }}
         className="w-full relative isolate sm:w-[40%] sm:min-w-72 min-[498px]:max-w-fit shrink-0"
       >
         <div
@@ -137,7 +140,7 @@ export default function TeacherCard({ teach, activeVideo, id, onHover }: Props) 
         >
           <TeacherVideoShape className="size-full" />
         </span>
-      </div>
+      </motion.div>
       <div ref={textref} className="w-full flex flex-col h-full gap-2">
         <h4
           className={clsx(

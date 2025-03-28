@@ -9,6 +9,7 @@ import useIntersectionObserver from "@/lib/hooks/useIntersector";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import { HomeProps } from "@/types/PropTypes";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import { Volume2Icon, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -121,6 +122,8 @@ const VideoItem = ({
   );
 };
 
+
+
 export default function JourneyCTA() {
   const isTabletScreen = useIsMobile(640);
   const [show, setShow] = useState({
@@ -150,12 +153,7 @@ export default function JourneyCTA() {
     },
   });
 
-  // Intersection observer for the videos container.
-  const videosContainerRef = useIntersectionObserver<HTMLUListElement>({
-    onProgress(progress) {
-      setContainerVisible(progress > 0.05);
-    },
-  });
+
 
   return (
     <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#078CE2]">
@@ -214,8 +212,12 @@ export default function JourneyCTA() {
             </StyledButton>
           </TranslatedLink>
         </div>
-        <ul
-          ref={videosContainerRef}
+        <motion.ul
+          initial="offscreen"
+          whileInView="onscreen"
+          onViewportEnter={() => setContainerVisible(true)}
+          onViewportLeave={() => setContainerVisible(false)}
+          viewport={{ amount: 0.4 }}
           className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3"
         >
           {Data.homeSubAboutVideos?.map((video, i) => (
@@ -233,7 +235,7 @@ export default function JourneyCTA() {
               containerVisible={containerVisible}
             />
           ))}
-        </ul>
+        </motion.ul>
       </div>
     </section>
   );
