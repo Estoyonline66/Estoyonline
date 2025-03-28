@@ -21,8 +21,8 @@ export default function Contact() {
   const Data: ContactData = t("contact");
   return (
     <>
-      <Meta route="/contact"/>
-    
+      <Meta route="/contact" />
+
       <GeneralHero
         icon={
           <MessagePhone
@@ -46,20 +46,32 @@ export default function Contact() {
           <span className="absolute h-full -left-2 top-0 pointer-events-none -z-10">
             <SingleLineShortLeft className="h-[calc(100%+2rem)]" />
           </span>
-          <strong className="text-lg sm:text-xl lg:text-2xl">{Data.needAssistance}</strong>
+          <strong className="text-lg sm:text-xl lg:text-2xl">
+            {Data.needAssistance}
+          </strong>
           <p>{Data.contactDescription}</p>
-          <a href="https://wa.me/905307700789" target='_blank'>
-
-          <StyledButton className="!px-10">
-            <MessagePhone path={{
-                fill: "var(--styledButtonHoveredTextColor)",
-                style:{
-                  transitionDuration: "300ms"
+          <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
+            <a href="https://wa.me/905307700789" target="_blank">
+              <StyledButton
+                icon={
+                  <MessagePhone
+                    path={{
+                      fill: "var(--styledButtonHoveredTextColor)",
+                      style: {
+                        transitionDuration: "300ms",
+                      },
+                    }}
+                    svg={{
+                      className: "size-4",
+                    }}
+                  />
                 }
-              }} />
-            {Data.officeContactButton}
-          </StyledButton>
-          </a>
+              >
+                {" "}
+                {Data.officeContactButton}
+              </StyledButton>
+            </a>
+          </div>
         </div>
         <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-5">
           <span
@@ -84,7 +96,7 @@ export default function Contact() {
       <section className="w-full mt-10 z-[-1]">
         {/* <ContactMap/> */}
         {/* handle the map section in contact design */}
-        <MapComponent/>
+        <MapComponent />
       </section>
     </>
   );
