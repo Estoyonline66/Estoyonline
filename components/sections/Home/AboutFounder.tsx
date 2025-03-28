@@ -65,7 +65,7 @@ export default function AboutFounder() {
               <HomeVector className={
                 clsx(
                   "absolute size-full z-0 aspect-square duration-500",
-                  show.image?"scale-125 min-[360px]:scale-100 opacity-100 rotate-0":"scale-50 opacity-50 rotate-180"
+                  show.image?"scale-110 min-[360px]:scale-100 opacity-100 rotate-0":"scale-50 opacity-50 rotate-180"
                 )
               }/>
               <ImageBox className="max-w-[70vw] sm:max-w-full object-contain aspect-square relative" src="/Images/homeImage2.png" width={500} height={500}/>
@@ -79,7 +79,7 @@ export default function AboutFounder() {
               }>{Data.homeAboutTitle?Data.homeAboutTitle:defaultData.homeAboutTitle} <em className="font-inkfree font-extrabold text-secondary text-xl sm:text-2xl lg:text-3xl">Aleja</em>, {Data.homeAboutTitle2?Data.homeAboutTitle2:defaultData.homeAboutTitle2}</h3>
               <p className={
                 clsx(
-                  "duration-500 delay-300 text-center sm:text-left",
+                  "duration-500 delay-300 text-justify sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
               }>
