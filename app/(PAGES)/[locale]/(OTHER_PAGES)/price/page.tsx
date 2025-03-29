@@ -27,13 +27,13 @@ export default function Page() {
       <Meta route="/price" />
       <GeneralHero icon={<PriceTagIcon />} text={Data.PageTitle} />
 
-      <div className="w-full flex flex-col justify-between gap-2 md:gap-5 py-20 px-4 relative md:px-20 lg:px-40">
+      <div className="w-full flex flex-col justify-between gap-2 md:gap-5 py-10 px-4 relative md:px-20 lg:px-40">
         <span className="fixed pointer-events-none w-fit max-w-[20vw] -left-5 top-5 sm:h-screen block -z-10 overflow-x-hidden">
-                      <DoubleLeft className="h-full w-full"/>
-                    </span>
-                    <span className="fixed pointer-events-none w-fit max-w-[20vw] -right-0 top-10 sm:h-screen block -z-10 overflow-x-hidden">
-                      <DoubleRight className="h-full relative left-5"/>
-                    </span>
+          <DoubleLeft className="h-full w-full" />
+        </span>
+        <span className="fixed pointer-events-none w-fit max-w-[20vw] -right-0 top-10 sm:h-screen block -z-10 overflow-x-hidden">
+          <DoubleRight className="h-full relative left-5" />
+        </span>
         <OnlineSpanishOne />
         <OnlineSpanishTwo />
         <ExtraSpanish />
