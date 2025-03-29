@@ -43,7 +43,7 @@ export default function Navbar({isHome}:props) {
   }, [pathName])
   
   return (
-    <header className={
+    <header data-id="main-header" className={
       clsx(
         "w-full z-50 top-0 p-4 fixed md:px-10 lg:px-20 flex items-center duration-300 justify-between gap-5",
         isHome&&scrollPercentage>=5?"!bg-white fixed shadow-md":

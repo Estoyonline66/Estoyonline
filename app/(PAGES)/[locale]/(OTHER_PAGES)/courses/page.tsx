@@ -15,7 +15,7 @@ export default function Course() {
     <>
       <Meta route="/courses" />
       <GeneralHero icon={<BookIcon />} text={Data.PageTitle} />
-      <div className="w-full flex flex-col justify-between gap-2 relative md:gap-5 pt-20">
+      <div className="w-full flex flex-col justify-between gap-2 relative md:gap-5 pt-10">
         <span className="fixed pointer-events-none w-fit max-w-[20vw] -left-5 top-5 sm:h-screen block -z-10 overflow-x-hidden">
           <DoubleLeft className="h-full w-full" />
         </span>
