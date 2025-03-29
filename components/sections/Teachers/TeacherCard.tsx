@@ -33,6 +33,7 @@ export default function TeacherCard({
   const [show, setShow] = useState({
     image: false,
     body: false,
+    smallHead: false,
   });
   const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
 
@@ -40,6 +41,11 @@ export default function TeacherCard({
   const textref = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
       setShow((s) => ({ ...s, body: progress > 0.05 }));
+    },
+  });
+  const smallHeadRef = useIntersectionObserver<HTMLDivElement>({
+    onProgress(progress) {
+      setShow((s) => ({ ...s, smallHead: progress > 0.05 }));
     },
   });
 
@@ -88,6 +94,18 @@ export default function TeacherCard({
 
   return (
     <li className="flex items-center my-5 sm:my-10 flex-row-reverse sm:even:flex-row sm:odd:flex-row-reverse flex-wrap sm:flex-nowrap justify-center gap-10">
+      {
+          isMobile&&<div ref={smallHeadRef} className="w-full ">
+            <h4
+          className={clsx(
+            "uppercase text-secondary font-inkfree font-extrabold text-base sm:text-lg lg:text-xl duration-500",
+            show.smallHead ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+          )}
+        >
+          {teach.name}
+        </h4>
+          </div>
+        }
       <motion.div
         initial="offscreen"
       whileInView="onscreen"
@@ -96,11 +114,17 @@ export default function TeacherCard({
       viewport={{ amount: 0.4 }}
         className="w-full relative isolate sm:w-[40%] sm:min-w-72 min-[498px]:max-w-fit shrink-0"
       >
+        
         <div
           // On desktop, trigger onHover on mouse enter; on mobile, on click.
           onMouseEnter={() => !isMobile && onHover(id)}
           onClick={() => isMobile && onHover(id)}
-          className="w-full bg-black overflow-hidden rounded-md h-72 relative"
+          className={
+            clsx(
+              "w-full bg-black overflow-hidden rounded-md h-72 relative",
+              isMobile&&"delay-300"
+            )
+          }
         >
           <video
             onEnded={() => {
@@ -142,17 +166,18 @@ export default function TeacherCard({
         </span>
       </motion.div>
       <div ref={textref} className="w-full flex flex-col h-full gap-2">
-        <h4
+        {!isMobile&&<h4
           className={clsx(
             "uppercase text-secondary font-inkfree font-extrabold text-base sm:text-lg lg:text-xl delay-300 duration-500",
             show.body ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
           )}
         >
           {teach.name}
-        </h4>
+        </h4>}
         <p
           className={clsx(
-            "text-sm sm:text-base lg:text-lg duration-500 delay-[600ms]",
+            "text-sm sm:text-base lg:text-lg duration-500",
+            isMobile?"delay-[100ms]":"delay-[600ms]",
             show.body ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
           )}
         >
