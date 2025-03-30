@@ -5,7 +5,7 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { PriceData } from "@/types/PropTypes";
 
 export default function Accordion() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null|"not-set">("not-set");
   const { t } = useTranslation();
   const Data: PriceData = t("courses");
   const accordionDatas = Data?.accordionData || [];
@@ -16,6 +16,9 @@ export default function Accordion() {
     } else if (activeIndex === index) {
       // Toggle off the active item
       setActiveIndex(null);
+    } else if(activeIndex === "not-set"){
+      setActiveIndex(index);
+      return
     } else {
       // A different item is open: close it first...
       setActiveIndex(null);
@@ -26,6 +29,8 @@ export default function Accordion() {
     }
   };
 
+  
+
   return (
     <div className="w-full md:px-20 lg:px-40 mx-auto space-y-4 px-4">
       {accordionDatas.map((item, index) => (
@@ -35,6 +40,7 @@ export default function Accordion() {
           content={item.content}
           isActive={activeIndex === index}
           onClick={() => handleToggle(index)}
+          activeIndex={activeIndex}
         />
       ))}
     </div>
