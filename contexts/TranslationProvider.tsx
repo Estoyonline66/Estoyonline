@@ -24,9 +24,9 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   
   const [language, setLanguage] = useState<string>(() => {
     if (typeof window !== "undefined") {
-      return getCookie("language") || "en";
+      return getCookie("language") || "tr";
     }
-    return "en";
+    return "tr";
   });
 
   const [translations, setTranslations] = useState<Translations>({});
@@ -54,7 +54,7 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   // Function to update language and route
   const changeLanguage = (lang: string) => {
     setLanguage(lang);
-    const newPath = `/${lang}${pathname.replace(/^\/(en|es|fr)/, "")}`;
+    const newPath = `/${lang}${pathname.replace(/^\/(en|es|fr|tr)/, "")}`;
     router.push(newPath); // Update URL dynamically
   };
     function t<T>(key: string){
