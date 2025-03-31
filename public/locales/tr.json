@@ -1,0 +1,130 @@
+{
+  "seo": {
+    "pages": [
+      {
+        "route": "/",
+        "datas": {
+          "title": "Estoyonline | İspanyolca Öğrenme Yolculuğuna Başla",
+          "description": "Ana dili İspanyolca olan öğretmenlerle çevrimiçi İspanyolca öğrenin ve güneşin kelimelerinizi ısıtmasına izin verin."
+        }
+      },
+      {
+        "route": "/teachers",
+        "datas": {
+          "title": "Estoyonline | Öğretmenler",
+          "description": "Öğretmenlerimiz hakkında daha fazla bilgi edinin."
+        }
+      },
+      {
+        "route": "/contact",
+        "datas": {
+          "title": "Estoyonline | Bize Ulaşın",
+          "description": "Bizimle iletişime geçin ve öğrenme yolculuğunuza başlayın."
+        }
+      },
+      {
+        "route": "/courses",
+        "datas": {
+          "title": "Estoyonline | Kurslar",
+          "description": "İlgilendiğiniz kursu bulun."
+        }
+      },
+      {
+        "route": "/price",
+        "datas": {
+          "title": "Estoyonline | Fiyatlar",
+          "description": "En iyi fiyatı bulun."
+        }
+      },
+      {
+        "route": "/videos",
+        "datas": {
+          "title": "Estoyonline | Videolar | Öğrenme Sürecimizi Anlayın",
+          "description": "Öğrenme sistemimizin nasıl çalıştığını keşfedin."
+        }
+      }
+    ]
+  },
+  "navbar": {
+    "links": {
+      "Öğretmenler": "/teachers",
+      "Kurslar": "/courses",
+      "Videolar": "/videos",
+      "Fiyat": "/price",
+      "İletişim": "/contact"
+    }
+  },
+  "home": {
+    "HeroTitle": "Dünya",
+    "HeroYellowTitle": "İspanyolca Konuşuyor,",
+    "HeroTitle2": "Ya Sen?",
+    "HeroDescription": "Ana dili İspanyolca olan öğretmenlerle çevrimiçi İspanyolca öğrenin ve güneşin kelimelerinizi ısıtmasına izin verin.",
+    "HeroButton": "Kursları Keşfet",
+    "LearnSpanishtitle": "Butik okulumuzda eğlenceli bir şekilde İspanyolca öğrenin.",
+    "LearnSpanishdescription": "Barselona merkezli butik okulumuz Estyonline.es’de İspanyolcayı geleneksel yöntemlerden tamamen farklı, eğlenceli ve etkili bir şekilde öğretiyoruz. Eğlenceli aktiviteler ve oyunlar motivasyonunuzu artırır, stresi azaltır ve dili doğal bir şekilde kullanmanıza yardımcı olur. Ayrıca sosyal bağlantıları güçlendirir. Okulumuzda İspanya, İtalya, Arjantin ve Kolombiya'dan ana dili İspanyolca olan öğretmenler bulunmaktadır. Başlangıç seviyesinde ders veren öğretmenler Türkçe de bilmektedir. Tüm dersler Zoom üzerinden çevrimiçi olarak gerçekleştirilir.",
+    "LearnSpanishbutton": "Derslerden Örnek Videolar",
+    "homeAboutTitle": "¡Hola! Merhaba! Ben",
+    "homeAboutTitle2": "Estyonline.es’in kurucusuyum",
+    "homeAboutDescription": "Bir çevrimiçi İspanyolca okulu",
+    "homeAboutDescriptionBold": "300’den fazla öğrencimiz var.",
+    "homeAboutDescription2": "Okulumuz ve derslerimiz hakkında tüm detayları paylaşmak için heyecanlıyız. Ücretsiz deneme dersi ayarlayalım! WhatsApp’tan mesajınızı bekliyorum.",
+    "homeAboutDescriptionBold2": "Hemen bize mesaj gönderin!",
+    "homeAboutButton": "WhatsApp (530) 77 00 789",
+    "homeSubAboutTitle": "Bugün İspanyolca öğrenme yolculuğuna başla!",
+    "homeSubAboutDescription": "Estyonline.es’e katıl ve eğlenceli, etkili bir şekilde İspanyolca öğren.",
+    "homeSubAboutButton": "Kursları Keşfet",
+    "homeSubAboutVideos": [
+      "/videos/teachers/aleja2.mp4",
+      "/videos/teachers/aleja1.mp4",
+      "/videos/teachers/aleja1.mp4",
+      "/videos/teachers/aleja1.mp4"
+    ],
+    "testimonies": "Öğrencilerimizin bizim hakkımızdaki yorumları",
+    "counterTitle": "Başarı Hikayeleri",
+    "counterTitle2": "Uzman Eğitmenler",
+    "counterTitle3": "Öğrenciler",
+    "counterTitle4": "Popüler Konular"
+  },
+  "teachers": {
+    "PageTitle": "Öğretmenler",
+    "teachersTitle": "Öğren",
+    "teachersTitleRed": "Çevrimiçi İspanyolca",
+    "teachersTitle2": "ana dili İspanyolca olan öğretmenlerle ve güneşin kelimelerinizi ısıtmasına izin verin",
+    "teacher": [
+      {
+        "name": "DIANA MELISSA",
+        "about": "Kolombiya’da doğdu ve büyüdü. Halen Kolombiya’da yaşıyor. Kütüphane hizmetleri eğitimi verdi ve çeşitli seviyelerde dersler verdi. Fransa Béziers’de yüksek lisansını tamamladı. Melissa uzun zaman önce Türkçe öğrendi ve ileri seviyede konuşabiliyor. 2010’dan beri Fransa, İngiltere ve Türkiye’de İspanyolca, Fransızca ve İngilizce öğretmenliği yapmaktadır. Boş zamanlarında oyuncak bebek örmeyi, arkadaşlarıyla şarkı söylemeyi ve yemek yapmayı seviyor. Okulumuz, Türkçe desteğine ihtiyaç duyan A1 başlangıç seviyesindeki öğrenciler için dersler sunmaktadır.",
+        "media": "/videos/teachers/aleja2.mp4"
+      }
+    ]
+  },
+  "price": {
+    "PageTitle": "Fiyatlar",
+    "title": "Çevrimiçi İspanyolca Kurs Fiyatları",
+    "title2": "Ek İspanyolca Kurs Fiyatları",
+    "tables": {
+      "onlineSpanishOneColumns": [
+        { "key": "course", "header": "Kurs" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat" }
+      ]
+    },
+    "courses": {
+      "onlineSpanishOneTable": [
+        {
+          "course": "A1.2 / Orta-İleri Seviye Kurslar",
+          "duration": "49 saat - 4 ay",
+          "price": "5600 TL"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "PageTitle": "Bize Ulaşın",
+    "needAssistance": "Yardıma mı ihtiyacınız var?",
+    "contactDescription": "Destek mi gerekiyor?",
+    "officeAddressTitle": "Ofis Adresi",
+    "officeAddressDescription": "9 Station Rd, West Drayton UB7 7BT",
+    "officeContactButton": "WhatsApp (530) 77 00 789"
+  }
+}
