@@ -22,8 +22,8 @@ interface languageOption {
 const languageOptions:languageOption[] = [
   { value: "en", label: "EN", flag:"gb" },
   { value: "es", label: "ES", flag:"es" },
-  // { value: "tr", label: "TR", flag:"tr" },
-   { value: "fr", label: "FR", flag:"fr" },
+   { value: "tr", label: "TR", flag:"tr" },
+   //{ value: "fr", label: "FR", flag:"fr" },
 ];
 
 const Translator = () => {
