@@ -218,7 +218,7 @@ export default function JourneyCTA() {
           onViewportEnter={() => setContainerVisible(true)}
           onViewportLeave={() => setContainerVisible(false)}
           viewport={{ amount: 0.4 }}
-          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-3"
+          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-10"
         >
           {Data.homeSubAboutVideos?.map((video, i) => (
             <VideoItem

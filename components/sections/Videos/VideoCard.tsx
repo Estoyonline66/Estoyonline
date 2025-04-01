@@ -33,7 +33,7 @@ export default function VideoCard(vid: video) {
           className="*:w-full *:h-52 sm:*:h-72"
         />
       </span>
-      <div className="w-full flex flex-col gap-10 items-center justify-center text-center">
+      <div className="w-full flex flex-col gap-3 items-center justify-center text-center">
         <strong className="font-bold text-lg sm:text-xl lg:text-2xl">
           {vid.title}
         </strong>
