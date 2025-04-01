@@ -168,7 +168,7 @@ export default function JourneyCTA() {
       <div className="w-full grid sm:grid-cols-2 items-center gap-5 isolate">
         <div
           ref={bodyRef}
-          className="w-full relative text-white flex flex-col justify-center gap-3 h-full"
+          className="w-full relative text-white flex flex-col justify-center gap-10 h-full"
         >
           {!isTabletScreen && (
             <>
