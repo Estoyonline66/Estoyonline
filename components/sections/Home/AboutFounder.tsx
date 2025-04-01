@@ -18,15 +18,7 @@ export default function AboutFounder() {
    })
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
-  const defaultData = {
-    "homeAboutTitle": "Hello! Hola! I’am",
-    "homeAboutTitle2": "the founder of Estyonline.es",
-    "homeAboutDescription": "An online Spanish school",
-    "homeAboutDescriptionBold": "",
-    "homeAboutDescription2": "We’re excited to tell you all about our boutique school and our lessons in detail. Let’s schedule a free class! I am looking forward to your Whatsapp message.",
-    "homeAboutDescriptionBold2": "Text us now!",
-    "homeAboutButton": "Whatsapp (530) 77 00 789",
-  };
+  const defaultData = {};
   
   const imageRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
