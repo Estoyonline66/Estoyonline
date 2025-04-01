@@ -156,7 +156,7 @@ export default function JourneyCTA() {
 
 
   return (
-    <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#078CE2]">
+    <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#0068FF]">
       {/* sun image */}
       <AnimatedSunLogo
         svg={{

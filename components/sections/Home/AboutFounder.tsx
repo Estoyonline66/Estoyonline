@@ -76,7 +76,7 @@ export default function AboutFounder() {
                   "font-bold text-lg sm:text-xl lg:text-2xl duration-500 delay-100 text-center sm:text-left",
                   show.body?"translate-y-0 opacity-100":"translate-y-10 opacity-0"
                 )
-              }>{Data.homeAboutTitle?Data.homeAboutTitle:defaultData.homeAboutTitle} <em className="font-inkfree font-extrabold text-secondary text-xl sm:text-2xl lg:text-3xl">Aleja</em>, {Data.homeAboutTitle2?Data.homeAboutTitle2:defaultData.homeAboutTitle2}</h3>
+              }>{Data.homeAboutTitle?Data.homeAboutTitle:defaultData.homeAboutTitle} <em className="font-inkfree font-extrabold text-secondary text-xl sm:text-2xl lg:text-3xl">Aleja</em>{Data.homeAboutTitle2?Data.homeAboutTitle2:defaultData.homeAboutTitle2}</h3>
               <p className={
                 clsx(
                   "duration-500 delay-300 text-justify sm:text-left",

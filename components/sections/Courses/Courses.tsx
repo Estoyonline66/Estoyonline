@@ -22,7 +22,7 @@ export default function Courses() {
             {cardCourses.map((card, index) => (
             <li
                 key={index}
-                className="bg-[#078CE2] p-6 h-[200px] text-center text-white shadow-lg scale-100 duration-300 hover:scale-105"
+                className="bg-[#0068FF] p-6 h-[200px] text-center text-white shadow-lg scale-100 duration-300 hover:scale-105"
             >
                 <h1 className="text-xl font-bold">{card.title}</h1>
                 <p className="text-md">
@@ -39,7 +39,7 @@ export default function Courses() {
       </section>
 
           
-      <section className="relative bg-[#078CE2] w-full h-[85rem] flex justify-center items-center z-[-1]">
+      <section className="relative bg-[#0068FF] w-full h-[85rem] flex justify-center items-center z-[-1]">
         <BgSvg />
         <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
           <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
