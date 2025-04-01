@@ -18,7 +18,15 @@ export default function AboutFounder() {
    })
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
-  const defaultData = {};
+  const defaultData = {
+    "homeAboutTitle": "",
+    "homeAboutTitle2": "",
+    "homeAboutDescription": "",
+    "homeAboutDescriptionBold": "",
+    "homeAboutDescription2": "",
+    "homeAboutDescriptionBold2": "",
+    "homeAboutButton": "",
+  };
   
   const imageRef = useIntersectionObserver<HTMLDivElement>({
     onProgress(progress) {
