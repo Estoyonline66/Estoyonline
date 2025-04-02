@@ -48,7 +48,7 @@
   "navbar": {
     "links": {
       "Öğretmenler": "/teachers",
-      "Kurslar": "/courses",
+      "Online Kurslar": "/courses",
       "Videolar": "/videos",
       "Fiyat": "/price",
       "İletişim": "/contact"
@@ -58,7 +58,7 @@
     "HeroTitle": "Dünya",
     "HeroYellowTitle": "İspanyolca konuşuyor,",
     "HeroTitle2": "ya sen?",
-     "HeroDescription": "İspanyolcayı ana dilinde konuşanlardan öğrenin ve bırakın güneş kelimelerinizi ısıtsın",
+     "HeroDescription": "İspanyolcayı ana dilinde konuşanlardan öğren, bırak güneş kelimelerini ısıtsın",
     "HeroButton": "Kursları incele",
     "LearnSpanishtitle": "Butik okulumuzda eğlenerek İspanyolca öğrenin",
     "LearnSpanishdescription": "Barselona merkezli EstoyOnline.es butik okulumuzda İspanyolcayı geleneksel metotlardan çok farklı olarak, eğlenerek öğretiyoruz.  Kullandığımız modern metotlar sayesinde online ispanyolca öğrenmek artık çok eğlenceli ve keyifli bir süreç. Eğlenceli aktiviteler ve oyunlar motivasyonunuzu artırır ve stresinizi azaltır, böylece dil öğrenmeyi kolaylaştırır. Ayrıca doğal dil kullanımını teşvik eder ve sosyal bağları güçlendirir. Eğlenceli bir şekilde dil öğrenmek, kalıcılığı sağlar ve etkili bir şekilde dil becerilerinizi geliştirmenize katkıda bulunur. Okulumuzdaki İspanya ve Latin Amerika'da yaşayan öğretmenlerin tümünün ana dili İspanyolca'dır. Başlangıç seviyesi derslerini veren öğretmenlerimiz Türkçe  bilmektedir. Tüm derslerimiz Zoom üzerinden online yapılmaktadır.",
@@ -70,7 +70,7 @@
     "homeAboutDescription2": "Size butik okulumuzu ve derslerimizi en detaylı şekilde anlatmak için sabırsızlanıyorum. Türkçem oldukça iyidir:)",
     "homeAboutDescriptionBold2": "WhatsApp mesajınızı bekliyorum.",
     "homeAboutButton": "Whatsapp (530) 77 00 789",
-    "homeSubAboutTitle": "Bizimle İspanyolca öğrenmeye başla, güneşli bir dünyaya ilk adımını at!",
+    "homeSubAboutTitle": "Bizimle online İspanyolca öğrenmeye başla, güneşli dünyaya ilk adımını at!",
     "homeSubAboutDescription": "Ana dili İspanyolca olan öğretmenlerle çalışmak, İspanyolca'yı doğal ve eğlenceli bir şekilde öğrenmeni sağlar. Seninle tanışmak için sabırsızlanıyoruz.",
     "homeSubAboutButton": "Kursları İncele",
     "homeSubAboutVideos":["/videos/teachers/aleja1.mp4","/videos/teachers/aleja2.mp4","/videos/teachers/aleja3.mp4","/videos/teachers/aleja4.mp4"],
