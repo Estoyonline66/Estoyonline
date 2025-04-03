@@ -229,21 +229,37 @@
     ], 
     "cardCourses": [
       {
-        "title": "A1.1 Start",
-        "bold": "Only",
-        "lesson": "First lesson",
-        "time": "19:00 - 2.5 hours",
-        "week": "1 day a week",
-        "month": "Februray 21"
+        "title": "A1.1 Başlangıç",
+        "bold": "Perşembe ",
+        "lesson": "İlk ders",
+        "time": "11:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "17 Nisan"
+      },
+	   {
+        "title": "A1.1 Başlangıç",
+        "bold": "Perşembe ",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "24 Nisan"
+      },
+	   {
+        "title": "A1.2",
+        "bold": "Salı ",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "18 Mart"
       },
 	  {
-        "title": "A1.1 Start Konuşma Güzeldir",
-        "bold": "Only",
-        "lesson": "First lesson",
-        "time": "19:00 - 2.5 hours",
-        "week": "1 day a week",
-        "month": "Februray 21"
-      }
+        "title": "A2.1",
+        "bold": "Salı ",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "27 Nisan"
+      },
      
     ],
     
