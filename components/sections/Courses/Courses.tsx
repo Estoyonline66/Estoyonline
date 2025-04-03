@@ -22,7 +22,7 @@ export default function Courses() {
             {cardCourses.map((card, index) => (
             <li
                 key={index}
-                className="bg-[#F8BC1680] rounded-lg text-[#333] p-6 min-h-[160px] text-center shadow-lg scale-100 duration-300 hover:scale-105"
+                className="bg-[#FB2C3621] rounded-lg text-[#333] p-6 min-h-[160px] text-center shadow-lg scale-100 duration-300 hover:scale-105"
             >
                 <h1 className="text-2xl font-semibold line-clamp-2 min-h-[3em] leading-normal">{card.title}</h1>
                 <p className="text-sm">

@@ -259,15 +259,96 @@
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
         "month": "27 Nisan"
-      }, {
+      },
+	  {
+        "title": "A2.2",
+        "bold": "Cuma",
+        "lesson": "İlk ders",
+        "time": "18:30 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "16 Mayıs"
+      },
+	  {
+        "title": "A2.3",
+        "bold": "Pazartesi",
+        "lesson": "İlk ders",
+        "time": "18:30 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "5 Mayıs"
+      },
+	  {
+        "title": "B1.2",
+        "bold": "Pazartesi",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "14 Nisan"
+      },
+	  {
+        "title": "B1.5",
+        "bold": "Salı",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "22 Nisan"
+      },
+	  {
+        "title": "B2.4",
+        "bold": "Perşembe",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "17 Nisan"
+      },
+	  {
+        "title": "Turizm Modül A",
+        "bold": "Salı - Perş",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 2 gün",
+        "month": "16 Eylül"
+      },
+	  {
+        "title": "Turizm Modül B",
+        "bold": "Salı - Perş",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 2 gün",
+        "month": "16 Eylül"
+      }
+	  ,{
         "title": "Turizm Konuşma Başlangıç",
         "bold": "Cumartesi",
         "lesson": "İlk ders",
         "time": "18:30 - 2 saat",
         "week": "Haftada 1 gün",
         "month": "12 Nisan"
+      } 
+	  ,{
+        "title": "Konuşma Kursu Orta",
+        "bold": "Cumartesi",
+        "lesson": "İlk ders",
+        "time": "18:30 - 2 saat",
+        "week": "Haftada 1 gün",
+        "month": "12 Nisan"
       }
-     
+	    ,{
+        "title": "Şarkılarla İspanyolca Orta",
+        "bold": "Cumartesi",
+        "lesson": "İlk ders",
+        "time": "10:30 - 2 saat",
+        "week": "Haftada 1 gün",
+        "month": "5 Nisan"
+      }
+	    ,{
+        "title": "Gramer Güzeldir Orta",
+        "bold": "Çarşamba",
+        "lesson": "İlk ders",
+        "time": "18:30 - 2 saat",
+        "week": "Haftada 1 gün",
+        "month": "26 Mart"
+      }
+    
     ],
     
     "title": "All Levels",

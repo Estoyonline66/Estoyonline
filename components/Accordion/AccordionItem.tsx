@@ -70,7 +70,7 @@ export function AccordionItem({
   return (
     <div
       ref={accordionRef}
-      className="border-b-2 border-red-500 focus:border-none overflow-hidden"
+      className="border-b-1 border-red-500 focus:border-none overflow-hidden"
     >
       <button
         ref={triggerRef}
