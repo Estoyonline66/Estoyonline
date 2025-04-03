@@ -24,7 +24,7 @@ export default function Courses() {
                 key={index}
                 className="bg-[#F8BC1680] rounded-lg text-[#333] p-6 h-[200px] text-center  shadow-lg scale-100 duration-300 hover:scale-105" style="height: min-content"
             >
-                <h1 className="text-xl font-semibold">{card.title}</h1>
+                <h1 className="text-2xl font-semibold">{card.title}</h1>
                 <p className="text-sm">
                   <span className="font-semibold">{card.bold}</span> {card.time}
                 </p>
