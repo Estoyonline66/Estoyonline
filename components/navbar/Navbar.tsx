@@ -31,11 +31,11 @@ export default function Navbar({isHome}:props) {
   }
 
   const defaultLink = {
-    "Teachers":"/teachers",
-    "Courses":"/courses",
-    "Videos":"/videos",
-    "Price":"/price",
-    "Contact":"/contact"
+    "":"/teachers",
+    "":"/courses",
+    "":"/videos",
+    "":"/price",
+    "":"/contact"
   }
 
   useEffect(() => {
