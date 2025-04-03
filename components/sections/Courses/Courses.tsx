@@ -17,19 +17,19 @@ export default function Courses() {
 
   return (
     <>
-      <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
+      <section className="w-full flex flex-col gap-10 py-20 px-5 md:px-20 lg:px-40 z-0">
         <ul className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {cardCourses.map((card, index) => (
             <li
                 key={index}
-                className="bg-[#F8BC1680] rounded-lg text-[#333] p-6 h-[200px] text-center text-white shadow-lg scale-100 duration-300 hover:scale-105"
+                className="bg-[#F8BC1680] rounded-lg text-[#333] p-6 h-[200px] text-center  shadow-lg scale-100 duration-300 hover:scale-105" style="height: min-content"
             >
-                <h1 className="text-xl font-bold">{card.title}</h1>
-                <p className="text-md">
+                <h1 className="text-xl font-semibold">{card.title}</h1>
+                <p className="text-sm">
                   <span className="font-semibold">{card.bold}</span> {card.time}
                 </p>
-                <p className="text-md">{card.week}</p>
-                <p className="text-md">
+                <p className="text-sm">{card.week}</p>
+                <p className="text-sm">
                   <span>{card.lesson}</span>{" "}
                   <span className="font-semibold">{card.month}</span>
                 </p>
