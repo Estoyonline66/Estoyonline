@@ -230,7 +230,7 @@
     "cardCourses": [
       {
         "title": "A1.1 Başlangıç",
-        "bold": "Perşembe ",
+        "bold": "Perşembe",
         "lesson": "İlk ders",
         "time": "11:00 - 2,5 saat",
         "week": "Haftada 1 gün",
@@ -238,7 +238,7 @@
       },
 	   {
         "title": "A1.1 Başlangıç",
-        "bold": "Perşembe ",
+        "bold": "Perşembe",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
@@ -246,7 +246,7 @@
       },
 	   {
         "title": "A1.2",
-        "bold": "Salı ",
+        "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
@@ -254,11 +254,18 @@
       },
 	  {
         "title": "A2.1",
-        "bold": "Salı ",
+        "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
         "month": "27 Nisan"
+      }, {
+        "title": "Turizm Konuşma Başlangıç",
+        "bold": "Cumartesi",
+        "lesson": "İlk ders",
+        "time": "18:30 - 2 saat",
+        "week": "Haftada 1 gün",
+        "month": "12 Nisan"
       }
      
     ],
