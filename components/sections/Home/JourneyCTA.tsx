@@ -220,21 +220,23 @@ export default function JourneyCTA() {
           viewport={{ amount: 0.4 }}
           className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-10"
         >
-          {Data.homeSubAboutVideos?.map((video, i) => (
-            <VideoItem
-              key={i}
-              id={i}
-              video={video}
-              activeVideo={activeVideo}
-              onHover={(id) => {
-                // Update activeVideo so that only the hovered video plays.
-                if (activeVideo !== id) {
-                  setActiveVideo(id);
-                }
-              }}
-              containerVisible={containerVisible}
-            />
-          ))}
+			{(isTabletScreen
+		  ? Data.homeSubAboutVideos?.slice(0, 1) // show only the first video on mobile
+		  : Data.homeSubAboutVideos // show all videos on desktop
+		)?.map((video, i) => (
+		  <VideoItem
+			key={i}
+			id={i}
+			video={video}
+			activeVideo={activeVideo}
+			onHover={(id) => {
+			  if (activeVideo !== id) {
+				setActiveVideo(id);
+			  }
+			}}
+			containerVisible={containerVisible}
+		  />
+		))}
         </motion.ul>
       </div>
     </section>
