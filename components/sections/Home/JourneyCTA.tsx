@@ -168,7 +168,7 @@ export default function JourneyCTA() {
       <div className="w-full grid sm:grid-cols-2 items-center gap-5 isolate">
         <div
           ref={bodyRef}
-          className="w-full relative text-white flex flex-col justify-center gap-10 h-full"
+          className="w-full relative text-white flex flex-col justify-center gap-5 h-full"
         >
           {!isTabletScreen && (
             <>
@@ -182,7 +182,7 @@ export default function JourneyCTA() {
           )}
           <h3
             className={clsx(
-              "font-bold text-lg sm:text-xl lg:text-2xl duration-500",
+              "font-bold text-2xl sm:text-2xl lg:text-3xl duration-500",
               show.body
                 ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
                 : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
