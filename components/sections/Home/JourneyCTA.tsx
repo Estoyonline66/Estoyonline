@@ -89,7 +89,7 @@ const VideoItem = ({
       onMouseEnter={() => !isMobile?onHover(id):null}
       onClick={() => isMobile?onHover(id):null}
       className={clsx(
-        "w-full max-h-52 sm:max-h-64 cursor-pointer bg-primary relative rounded-md duration-500 overflow-hidden",
+        "w-full sm:w-full lg:w-1/2 mx-auto max-h-52 sm:max-h-64 cursor-pointer bg-primary relative rounded-md duration-500 overflow-hidden",
         show ? "scale-100 opacity-100" : "scale-0 opacity-0"
       )}
     >
@@ -218,7 +218,7 @@ export default function JourneyCTA() {
           onViewportEnter={() => setContainerVisible(true)}
           onViewportLeave={() => setContainerVisible(false)}
           viewport={{ amount: 0.4 }}
-          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-10"
+          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-1 gap-10"
         >
 			{(isTabletScreen
 		  ? Data.homeSubAboutVideos?.slice(0, 1) // show only the first video on mobile
