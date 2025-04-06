@@ -138,8 +138,6 @@ export default function JourneyCTA() {
   const Data: HomeProps = t("home");
   const defaultData = {
     homeSubAboutTitle: "¡Comienza tu viaje de aprendizaje del español hoy!",
-    homeSubAboutDescription:
-      "Únete a Estyonline.es y aprende español de una manera divertida y atractiva.",
     homeSubAboutButton: "Explorar Cursos",
   };
 
@@ -168,7 +166,7 @@ export default function JourneyCTA() {
       <div className="w-full grid sm:grid-cols-2 items-center gap-5 isolate">
         <div
           ref={bodyRef}
-          className="w-full relative text-white flex flex-col justify-center gap-5 h-full"
+          className="w-full relative text-white flex flex-col items-center justify-center gap-5 h-full"
         >
           {!isTabletScreen && (
             <>
@@ -182,7 +180,7 @@ export default function JourneyCTA() {
           )}
           <h3
             className={clsx(
-              "font-bold text-2xl sm:text-2xl lg:text-3xl duration-500",
+              "font-bold text-2xl sm:text-2xl lg:text-2xl duration-500",
               show.body
                 ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
                 : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
@@ -192,18 +190,7 @@ export default function JourneyCTA() {
               ? Data.homeSubAboutTitle
               : defaultData.homeSubAboutTitle}
           </h3>
-          <p
-            className={clsx(
-              "duration-500 delay-300",
-              show.body
-                ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
-                : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
-            )}
-          >
-            {Data.homeSubAboutDescription
-              ? Data.homeSubAboutDescription
-              : defaultData.homeSubAboutDescription}
-          </p>
+          
           <TranslatedLink href={"/courses"}>
             <StyledButton className="!mt-2">
               {Data.homeSubAboutButton
