@@ -156,89 +156,96 @@ export default function JourneyCTA() {
 
 
   return (
-    <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#0068FF]">
-      {/* sun image */}
-      <AnimatedSunLogo
-        svg={{
-          className:
-            "size-40 sm:size-60 absolute -top-20 -left-20 sm:-top-30 sm:-left-30",
-        }}
-      />
-      
-      <div className="w-full grid sm:grid-cols-2 items-center gap-5 isolate">
-        <div
-          ref={bodyRef}
-          className="w-full relative text-white flex flex-col justify-center gap-10 h-full"
-        >
-          {!isTabletScreen && (
-            <>
-              <span className="absolute -bottom-5 -left-5 pointer-events-none -z-10">
-                <Dots1 />
-              </span>
-              <span className="absolute -top-8 left-[70%] pointer-events-none -z-10">
-                <Dots2 />
-              </span>
-            </>
-          )}
-          <h3
-            className={clsx(
-              "font-bold text-lg sm:text-xl lg:text-2xl duration-500",
-              show.body
-                ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
-                : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
-            )}
-          >
-            {Data.homeSubAboutTitle
-              ? Data.homeSubAboutTitle
-              : defaultData.homeSubAboutTitle}
-          </h3>
-          <p
-            className={clsx(
-              "duration-500 delay-300",
-              show.body
-                ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
-                : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
-            )}
-          >
-            {Data.homeSubAboutDescription
-              ? Data.homeSubAboutDescription
-              : defaultData.homeSubAboutDescription}
-          </p>
-          <TranslatedLink href={"/courses"}>
-            <StyledButton className="!mt-2">
-              {Data.homeSubAboutButton
-                ? Data.homeSubAboutButton
-                : defaultData.homeSubAboutButton}
-            </StyledButton>
-          </TranslatedLink>
-        </div>
-        <motion.ul
-          initial="offscreen"
-          whileInView="onscreen"
-          onViewportEnter={() => setContainerVisible(true)}
-          onViewportLeave={() => setContainerVisible(false)}
-          viewport={{ amount: 0.4 }}
-          className="w-full grid grid-cols-[repeat(auto-fit,_minmax(240px,1fr))] sm:grid-cols-2 gap-10"
-        >
-			{(isTabletScreen
-		  ? Data.homeSubAboutVideos?.slice(0, 1) // show only the first video on mobile
-		  : Data.homeSubAboutVideos // show all videos on desktop
-		)?.map((video, i) => (
-		  <VideoItem
-			key={i}
-			id={i}
-			video={video}
-			activeVideo={activeVideo}
-			onHover={(id) => {
-			  if (activeVideo !== id) {
-				setActiveVideo(id);
-			  }
-			}}
-			containerVisible={containerVisible}
-		  />
-		))}
-        </motion.ul>
-      </div>
-    </section>
+  <section className="w-full py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 bg-[#0068FF]">
+  {/* sun image */}
+  <AnimatedSunLogo
+    svg={{
+      className:
+        "size-40 sm:size-60 absolute -top-20 -left-20 sm:-top-30 sm:-left-30",
+    }}
+  />
+
+  <div className="w-full grid grid-cols-[2fr_1fr] items-center gap-5 isolate">
+    {/* Sol sütun (2/3) */}
+    <div
+      ref={bodyRef}
+      className="w-full relative text-white flex flex-col justify-center gap-10 h-full"
+    >
+      {!isTabletScreen && (
+        <>
+          <span className="absolute -bottom-5 -left-5 pointer-events-none -z-10">
+            <Dots1 />
+          </span>
+          <span className="absolute -top-8 left-[70%] pointer-events-none -z-10">
+            <Dots2 />
+          </span>
+        </>
+      )}
+      <h3
+        className={clsx(
+          "font-bold text-lg sm:text-xl lg:text-2xl duration-500",
+          show.body
+            ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
+            : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
+        )}
+      >
+        {Data.homeSubAboutTitle
+          ? Data.homeSubAboutTitle
+          : defaultData.homeSubAboutTitle}
+      </h3>
+      <p
+        className={clsx(
+          "duration-500 delay-300",
+          show.body
+            ? "sm:translate-x-0 sm:translate-y-0 opacity-100"
+            : "sm:-translate-x-10 sm:translate-y-0 translate-y-10 opacity-0"
+        )}
+      >
+        {Data.homeSubAboutDescription
+          ? Data.homeSubAboutDescription
+          : defaultData.homeSubAboutDescription}
+      </p>
+      <TranslatedLink href={"/courses"}>
+        <StyledButton className="!mt-2">
+          {Data.homeSubAboutButton
+            ? Data.homeSubAboutButton
+            : defaultData.homeSubAboutButton}
+        </StyledButton>
+      </TranslatedLink>
+    </div>
+
+    {/* Sağ sütun (1/3) */}
+    <div className="w-full flex justify-center items-center">
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        onViewportEnter={() => setContainerVisible(true)}
+        onViewportLeave={() => setContainerVisible(false)}
+        viewport={{ amount: 0.4 }}
+        className="w-full max-w-[300px]"
+      >
+        {(isTabletScreen
+          ? Data.homeSubAboutVideos?.slice(0, 1)
+          : Data.homeSubAboutVideos
+        )?.slice(0, 1) // sadece 1 video göster
+          .map((video, i) => (
+            <VideoItem
+              key={i}
+              id={i}
+              video={video}
+              activeVideo={activeVideo}
+              onHover={(id) => {
+                if (activeVideo !== id) {
+                  setActiveVideo(id);
+                }
+              }}
+              containerVisible={containerVisible}
+            />
+          ))}
+      </motion.div>
+    </div>
+  </div>
+</section>
+
   );
 }
