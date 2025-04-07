@@ -110,7 +110,7 @@ const VideoItem = ({
         src={video}
         width={1024}
         height={1024}
-        className="size-full object-cover aspect-square object-top"
+        className="w-full h-auto  object-cover aspect-square object-top"
       />
       <Button
         onClick={() => setMuted(!muted)}
