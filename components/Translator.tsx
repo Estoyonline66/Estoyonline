@@ -53,7 +53,7 @@ const Translator = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex  h-fit items-center justify-between gap-2 cursor-pointer text-base sm:text-sm md:text-base lg:text-lg">
+        <button className="flex invisible h-fit items-center justify-between gap-2 cursor-pointer text-base sm:text-sm md:text-base lg:text-lg">
           <span className="size-6 overflow-hidden rounded-full flex items-center justify-center">
           <Flag code={selectedLang?.flag} className="size-full object-center object-cover"/>
           </span>

@@ -21,13 +21,13 @@ const MapComponent = () => {
       {/* OpenStreetMap Tile Layer */}
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
   
-      {/* Marker with Popup */}
+      {/* Marker with Popup */
 	  /*
       <Marker position={position} icon={customIcon}>
         <Popup>📍Estoyonline.es Office Location</Popup>
       </Marker>
 	  */
-
+		}
     </MapContainer>
   );
 };
