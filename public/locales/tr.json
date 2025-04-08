@@ -82,98 +82,98 @@
 
   "teachers":{
     "PageTitle": "Öğretmenler",
-    "teachersTitle": "Learn ",
-    "teachersTitleRed": "Spanish online",
-    "teachersTitle2": "with native teachers and let the sun warm your words",
+    "teachersTitle": "İspanyolca öğretmenlerimizle tanışın, kelimeleriniz İspanya güneşiyle ısınsın",
+    "teachersTitleRed": "",
+    "teachersTitle2": ".",
     "teacher": [
       {
-        "name": "DIANA MELISSA",
-        "about": "Born and raised in Colombia, she currently lives in Colombia. She has worked as a librarian and taught library services at all levels. She completed her master's degree in Béziers, France. Melissa learned Turkish a long time ago and speaks Turkish at an advanced level. Since 2010, she has taught French, English and Spanish in various academies (Oxford, Just English) and schools in Turkey (ISTEK in Antalya, Kütahya Başarı, etc.). In her spare time, she enjoys knitting dolls, singing with her friends, and cooking. Our school offers A1 beginner courses that require Turkish support.",
+        "name": "ALEJA",
+        "about": "10 yıl boyunca İstanbul'da yaşadı, Saint Michel Lisesi ve Cervantes Enstitüsünde öğretmen olarak çalıştı. İspanyolca pratik yapmak isteyenleri bir araya getiren 'Solo hablamos Español' buluşmalarını organize etti. Öğretmenliği boyunca ELE, DELE, AVE, Int House vb. birçok uluslararası formasyon kursları ile kendini geliştirdi. 2019 yılında İspanya'ya taşındı ve kendi okulunu kurmaya karar verdi. Okulu için eğlence ve konuşmaya dayalı, modern metotlar geliştirdi. Ekibindeki öğretmenler ile birlikte eğitim süreçlerini iyileştirmeye devam ediyor. Özellikle yeni teknoloji ve modern tekniklerini İspanyolca derslerine adapte etmeye çalışıyor. Ders kayıtlarını izleyerek hangi detaylara önem verilmesi gerektiği üzerine kafa yoruyor. Yılda bir kez Türkiye'ye giderek İstanbul, İzmir, Ankara, Bodrum, Kapadokya gibi yerlerde öğrencileri ile bir araya geliyor. Tangoyu ve Barselona açıklarında kürek çekmeyi çok seviyor.  Türkçesini geliştirmekten büyük bir keyif alıyor ve ileri seviye Türkçe dersleri almaya devam ediyor.",
         "media":"/videos/teachers/aleja1.mp4"
       },
       {
-        "name": "ALEJA",
-        "about": "She lived in Istanbul for 10 years, working as a teacher at Saint Michel High School and Cervantes Institute. She organized the \"Solo hablamos Español\" meetings that brought together those who wanted to practice Spanish. During her teaching career, she improved herself with many international formation courses such as ELE, DELE, AVE, Int House, etc. She moved to Spain in 2019 and decided to establish her own school. She developed modern methods for her school, based on fun and conversation. He continues to improve the educational processes together with the teachers in his team.",
-        "media":"/videos/teachers/aleja2.mp4"
+        "name": "CAROLINA",
+        "about": "Eğitim konusunda tutkulu bir öğretmendir ve tüm eğitim kademelerinde çalışmıştır. 15 yıl boyunca doğayla iç içe Patagonya'da yaşadı ve burada öğretmen ve öğretmen eğitmeni olarak çalışmaya devam etti. Müzik onun diğer tutkusudur. Çeşitli enstrümanlar (gitar, klavye, ukulele vb.) çalıyor ve korolarda şarkı söylüyor. Müzikal komedi dersleri aldı, birçok müzikalde yer aldı. 2021 yılında yabancılar için İspanyolca öğretmeni sertifikası alarak çeşitli platformlarda ve enstitülerde online ve yüz yüze çalışmaya başladı. Konuşma kurslarında, özel derslerde ve düzenli kurslarda öğrenmeyi kolaylaştıran oyunlar ve alternatif araçlar kullanmaya özen gösteriyor. ",
+        "media":"/videos/teachers/caro.mp4"
+      },
+      {
+        "name": "DANIELA",
+        "about": "Arjantinlidir, Buenos Aires'te yaşamaktadır. Öğretmeyi çok sever. 2004 yılında yabancılara İspanyolca öğretmeye başladı ve 2008 yılında kendi okulunu açtı. Okul 2015 yılında Üniversitenin bir parçası haline geldi. Ana dili olan İspanyolca'nın yanı sıra Fransızca, İngilizce, Portekizce, İbranice ve İtalyanca da konuşmaktadır. İletişim Bilimleri bölümünden mezun oldu. Buenos Aires Üniversitesi'nde Edebiyat ve Tel Aviv Üniversitesi'nde Dilbilim ve Fransız Edebiyatı okudu. Boş zamanlarında çocuklarıyla birlikte olmayı, ailesiyle vakit geçirmeyi ve seyahat etmeyi seviyor. ",
+        "media":"/videos/teachers/dani.mp4"
+      },
+      {
+        "name": "MELISSA",
+        "about": "Kolombiya'da doğup büyümüştür ve şu anda Kolombiya'da yaşamaktadır. Kütüphaneci olarak çalıştı ve her seviyede kütüphane öğretmenliği yaptı. Yüksek lisansını Béziers, Fransa'da tamamladı. Melissa uzun süre önce Türkçe öğrenmiştir ve ileri düzeyde Türkçe konuşmaktadır. 2010 yılından bu yana çeşitli akademilerde (Oxford, Just English) ve Türkiye'deki okullarda (Antalya'da İSTEK, Kütahya Başarı, vb) Fransızca, İngilizce ve İspanyolca dersleri verdi. Boş zamanlarında örgü bebek örmekten, arkadaşlarıyla şarkı söylemekten ve yemek yapmaktan hoşlanır. Okulumuzda Türkçe destek gerektiren A1 başlangıç derslerini vermektedir.",
+        "media":"/videos/teachers/meli.mp4"
+      },
+      {
+        "name": "SABRINA",
+        "about": "Kelimeleri hep  çok sevmiştir. Okumaya ve metinleri düzeltmeye bayılır. Gazetecilik öğrenimi gördü,  radyoda ve gazetelerde spor muhabiri olarak çalıştı. 2011'den bu yana CoPeHU pedagoji çalışmalarına katılmaktadır. Amaçlı öğrenme üzerine araştırmalar yaptı ve yaratıcı yazarlık atölyelerine katıldı. 2021'de birçok tutkusunu birleştirdi: İletişim, eğitim ve kültürel değişim. Bu amaçla ELE İspanyolca öğretmeni sertifikası aldı. Çeşitli akademi ve e-öğrenme platformlarında dijital araçları ve oyunu öğretme yöntemi olarak kullandı. 2022 yılında Öğretmen Eğitim Enstitüsü'nde ELE öğretmenleri yetiştirmek üzere çalışmaya başladı. ",
+        "media":"/videos/teachers/sabri.mp4"
+      },
+      {
+        "name": "MAITA",
+        "about": "Maita İngilizce ve İspanyolca öğretmenidir. Çok küçük yaşlardan itibaren İngilizce eğitimi gördü. Üniversitede mimarlık okudu. Ama bu sırada dil öğretmeni olmak istediğini keşfetti ve kariyer değişikliğine gitti. Öğrencilerin ihtiyaçlarına göre kişiselleştirilmiş dil öğretimine yoğunlaştı ve bu konuda çeşitli kurslar ile kendini geliştirdi.  Derslerinde dijital araçları etkili biçimde kullanma konusunda tecrübelidir. Ayrıca eğitim yöntemi olarak oyunlara ağırlık verir. Maita'nın bir başka tutkusu ise yemek yapmaktır. İspanyol ve Latin Amerika mutfağının inceliklerini keşfetmeye bayılır.",
+        "media":"/videos/teachers/maia.mp4"
       },
       {
         "name": "ANITA",
-        "about": "Anita is from Ecuador. She graduated from the Universidad de las Américas in Quito with a degree in Communication. She also holds a certificate in Spanish language teaching grammar and methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked in institutions such as Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. She taught Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, thus she had the opportunity to integrate with different cultures.",
-        "media":"/videos/teachers/aleja3.mp4"
+        "about": "Anita Ekvatorludur. Quito Universidad de las Américas  İletişim mezunudur. Ayrıca İspanyolca eğitimi dilbilgisi ve metodoloji sertifikasına sahiptir. Instituto Internacional de Español'da öğretmen olarak çalıştı, yabancılara İspanyolca eğitimi konusunda tecrübe kazandı. İstanbul Just English, British Town Dil Okulları, Likia Just Kids vb kurumlarda çalıştı. Türk öğrencilere tüm seviyelerde eğitim verdi. Son yıllarda farklı ülkelerden öğrencilere özel ve grup online dersleri vermeye başladı böylece farklı kültürlerle kaynaşma fırsatı buldu. Grafik tasarımı ve fotoğrafçılıkla uğraşır.  Müzik dinlemeyi, salsa dansını ve seyahat etmeyi çok sever. Okulumuzda Türkçe destek gerektiren A1 başlangıç derslerini vermektedir.",
+        "media":"/videos/teachers/anita.mp4"
       },
       {
-        "name": "ALEJA",
-        "about": "She lived in Istanbul for 10 years, working as a teacher at Saint Michel High School and Cervantes Institute. She organized the \"Solo hablamos Español\" meetings that brought together those who wanted to practice Spanish. During her teaching career, she improved herself with many international formation courses such as ELE, DELE, AVE, Int House, etc. She moved to Spain in 2019 and decided to establish her own school. She developed modern methods for her school, based on fun and conversation. He continues to improve the educational processes together with the teachers in his team.",
-        "media":"/videos/teachers/aleja4.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita is from Ecuador. She graduated from the Universidad de las Américas in Quito with a degree in Communication. She also holds a certificate in Spanish language teaching grammar and methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked in institutions such as Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. She taught Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, thus she had the opportunity to integrate with different cultures.",
-        "media":"/videos/teachers/aleja5.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita is from Ecuador. She graduated from the Universidad de las Américas in Quito with a degree in Communication. She also holds a certificate in Spanish language teaching grammar and methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked in institutions such as Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. She taught Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, thus she had the opportunity to integrate with different cultures.",
-        "media":"/videos/teachers/aleja6.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita is from Ecuador. She graduated from the Universidad de las Américas in Quito with a degree in Communication. She also holds a certificate in Spanish language teaching grammar and methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked in institutions such as Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. She taught Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, thus she had the opportunity to integrate with different cultures.",
-        "media":"/videos/teachers/aleja7.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita is from Ecuador. She graduated from the Universidad de las Américas in Quito with a degree in Communication. She also holds a certificate in Spanish language teaching grammar and methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked in institutions such as Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. She taught Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, thus she had the opportunity to integrate with different cultures.",
-        "media":"/videos/teachers/aleja8.mp4"
+        "name": "VIRGINIA",
+        "about": "Virginia edebiyatla dolu hayatına öğretmenlik kariyeri ile devam etti.  Buenos Aires Üniversitesi'nde okudu, edebiyat lisansını tamamladı, dil ve edebiyat öğretmeni oldu. Beş yıl boyunca İtalya'nın zengin kültürünü keşfetti. Bu deneyim, edebiyatı daha derinlemesine anlamasını sağladı. Şu anda Buenos Aires'te bir devlet okulunda dil ve edebiyat öğretmenliği yapıyor, öğrencileriyle edebiyat sevdasını paylaşıyor.  Aynı zamanda okulumuzda orta ve ileri düzey dersleri veriyor. Kalan zamanlarında Buenos Aires sokaklarında bisiklet sürmeyi ve evindeki bahçesinde organik sebze yetiştirmeyi çok seviyor.",
+        "media":"/videos/teachers/vir.mp4"
       }
     ]
   },
   "videos":{
-    "PageTitle": "Videos",
+    "PageTitle": "DDERSLERİMİZDEN ÖRNEK VİDEOLAR",
     "videos": [
       {
-        "title": "A1.1 Spanish  Beginner Level",
-        "description": "At the beginning level, you start speaking Spanish from the first lesson.",
+        "title": "A1.1 İspanyolca Başlangıç Seviyesi",
+        "description": "Başlangıç seviyesinde ilk dersten itibaren İspanyolca konuşmaya başlıyorsunuz",
         "youtubeId": "JP1dSslQqVc"
       },
       {
-        "title": "A1.1 Spanish  Beginner Level",
-        "description": "Our students reach basic speaking proficiency amd use simple grammatical structure within a few weeks.",
+        "title": "A1.1 İspanyolca Başlangıç Seviyesi",
+        "description": "Öğrencilerimiz birkaç hafta içinde temel konuşma yetkinliğine ulaşıyor ve basit gramer yapılarını kullanıyor.",
         "youtubeId": "hdyEE5YDQBg"
       },
       {
-        "title": "A1.1 Spanish  Beginner Level",
-        "description": "At the beginner level, our teachers sometimes help with Turkish.",
+        "title": "A1.1 İspanyolca Başlangıç Seviyesi",
+        "description": "Başlangıç seviyesinde öğretmenlerimiz bazen Türkçe yardım ediyorlar.",
         "youtubeId": "_x1uuq4Ta2c"
       },
       {
-        "title": "A2.1 Spanish Basic Level",
-        "description": "Our students reach have reached this level are now advanced enoungh to have a simple conversion",
+        "title": "A2.1 İspanyolca Temel Seviye",
+        "description": "Bu seviyeye gelmiş öğrencilerimiz artık basit sohbetler yapabilecek kadar ilerlemiş oluyorlar",
         "youtubeId": "MMYkbSAKdN4"
       },
       {
-        "title": "A2.1 Spanish Basic Level",
-        "description": "Our teachers take care to make the lesson fun by using creative methods and objects from daily life. ",
+        "title": "A2.1 İspanyolca Temel Seviye",
+        "description": "Öğretmenlerimiz yaratıcı yöntemler ve gündelik hayattan objeler kullanarak derslerin eğlenceli geçmesine  özen gösteriyorlar.",
         "youtubeId": "aJg6gEIYsFs"
       },
       {
-        "title": "A2.2 Spanish Intermediate Level",
-        "description": "Our students at A2.2 level can make detailed descriptions with a wide vocabulary and comprehensive use of grammar.",
+        "title": "A2.2 İspanyolca Orta Seviye",
+        "description": "A2.2 seviyesinde ki öğrencilerimiz geniş kelime haznesi ve kapsamlı gramer kullanımı ile detaylı tasvirler yapabiliyor. ",
         "youtubeId": "H5tmRgVsBSY"
       },
       {
-        "title": "A2.3 Spanish Intermediate Level",
-        "description": "At level A2.3, dialogues now reach a normal speaking tempo and use special terms.",
+        "title": "A2.3 İspanyolca Orta Seviye",
+        "description": "A2.3 seviyesinde diyaloglar artık normal konuşma temposuna ulaşıyor ve özel terimleri kullanılıyor.",
         "youtubeId": "0jxqVyG5tt8"
       },
       {
-        "title": "B1.2 Advance Spanish",
-        "description": "Advanced students have no trouble understanding and using the fast spoken language of Spanish.",
+        "title": "B1.6 İspanyolca İleri Seviye",
+        "description": "İleri seviyedeki öğrenciler İspanyolca'nın hızlı konuşma dilini anlamakta ve kullanmakta hiç zorlanmıyorlar.",
         "youtubeId": "srggR7eHxc8"
       },
       {
         "title": "B1.6 Spanish Advanced Level",
-        "description": "Advanced students are now fully adapted to the pace of spanish",
+        "description": "İleri seviyedeki öğrencileri İspanyolca'nın hızına artık tamamıyla adapte oluyorlar.",
         "youtubeId": "nsnLOSRtrd4"
       }
     ]
