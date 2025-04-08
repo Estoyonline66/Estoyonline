@@ -360,68 +360,68 @@
     
     ],
     
-    "title": "Seviye Planlaması",
+    "title": "TÜM SEVİYELERİN PROGRAMI ",
     "levels": [
       {
-        "title": "Beginner Level A1",
+        "title": "Başlangıç Seviyesi A1",
         "items": [
-          { "level": "A1.1", "duration": "40 minutes Book:", "book": "Hall 1" },
-          { "level": "A1.2", "duration": "30 minutes Book:", "book": "Hall 1" }
+          { "level": "A1.1", "duration": "40 saat - Kitap:", "book": "Aula 1" },
+          { "level": "A1.2", "duration": "30 saat - Kitap:", "book": "Aula 1" }
         ]
       },
       {
-        "title": "Basic Level A2",
+        "title": "Temel Seviye A2",
         "items": [
-          { "level": "A1.1", "duration": "30 hours Book:", "book": "Area 2" },
-          { "level": "A1.2", "duration": "30 hours Book:", "book": "Area 2" },
-          { "level": "A2.1", "duration": "30 hours Book:", "book": "Area 2" },
-          { "level": "A2.2", "duration": "30 hours Book:", "book": "Area 2" },
-          { "level": "A3.1", "duration": "30 hours Book:", "book": "Area 2" },
-          { "level": "A3.2", "duration": "30 hours Book:", "book": "Area 2" }
+          { "level": "A1.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A1.2", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A2.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A2.2", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A3.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A3.2", "duration": "30 saat - Kitap:", "book": "Aula  2" }
         ]
       },
       {
-        "title": "Intermediate Level B1",
+        "title": "Orta Seviye B1",
         "items": [
-          { "level": "B1.1", "duration": "30 minutes Book:", "book": "Hall 3" },
-          { "level": "B1.2", "duration": "30 minutes Book:", "book": "Hall 3" },
-          { "level": "B1.3", "duration": "30 minutes Book:", "book": "Hall 3" },
-          { "level": "B1.4", "duration": "30 minutes Book:", "book": "Hall 3" },
-          { "level": "B1.5", "duration": "30 minutes Book:", "book": "Hall 3" },
-          { "level": "B1.6", "duration": "30 minutes Book:", "book": "Hall 3" }
+          { "level": "B1.1", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.2", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.3", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.4", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.5", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.6", "duration": "30 saat - Kitap:", "book": "Aula  3" }
         ]
       },
       {
-        "title": "Advanced Level B2",
+        "title": "İleri Seviye B2",
         "items": [
-          { "level": "B2.1", "duration": "30 hours Kitap:", "book": "Hall 4" },
-          { "level": "B2.2", "duration": "30 hours Kitap:", "book": "Hall 4" },
-          { "level": "B2.3", "duration": "30 hours Kitap:", "book": "Hall 4 & 5" },
-          { "level": "B2.4", "duration": "30 hours Kitap:", "book": "Hall 4 & 5" },
-          { "level": "B2.5", "duration": "30 hours Kitap:", "book": "Hall 5" },
-          { "level": "B2.6", "duration": "30 hours Kitap:", "book": "Hall 5" }
+          { "level": "B2.1", "duration": "30 saat - Kitap:", "book": "Aula  4" },
+          { "level": "B2.2", "duration": "30 saat - Kitap:", "book": "Aula  4" },
+          { "level": "B2.3", "duration": "30 saat - Kitap:", "book": "Aula  4 & 5" },
+          { "level": "B2.4", "duration": "30 saat - Kitap:", "book": "Aula  4 & 5" },
+          { "level": "B2.5", "duration": "30 saat - Kitap:", "book": "Aula  5" },
+          { "level": "B2.6", "duration": "30 saat - Kitap:", "book": "Aula  5" }
         ]
       },
       {
-        "title": "Very Advanced Level C1",
+        "title": "Çok İleri Seviye C1",
         "items": [
-          { "level": "C1.1", "duration": "30 minutes Book:", "book": "Vitamins" },
-          { "level": "C1.2", "duration": "30 minutes Book:", "book": "Vitamins" },
-          { "level": "C1.3", "duration": "30 minutes Book:", "book": "Vitamins" },
-          { "level": "C1.4", "duration": "30 minutes Book:", "book": "Vitamins" },
-          { "level": "C1.5", "duration": "30 minutes Book:", "book": "Vitamins" },
-          { "level": "C1.6", "duration": "30 minutes Book:", "book": "Vitamins" }
+          { "level": "C1.1", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.2", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.3", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.4", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.5", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.6", "duration": "30 saat - Kitap:", "book": "Vitamina" }
         ]
       },
       {
-        "title": "Master Level C2",
+        "title": "Master Seviye C2",
         "items": [
-          { "level": "C2.1", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.2", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.3", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.4", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.5", "duration": "30 hours Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.6", "duration": "30 hours Book:", "book": "Nuevo Prisma" }
+          { "level": "C2.1", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.2", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.3", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.4", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.5", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.6", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" }
         ]
       } 
     ]
@@ -488,10 +488,10 @@
   },
   "contact": {
     "PageTitle": "Bize yazın",
-    "needAssistance": "Bize Türkçe yazabilirsin.",
+    "needAssistance": "Bize Türkçe yazabilirsin",
     "contactDescription": "Hemen bir WhatsApp mesajı gönderin",
     "officeAddressTitle": "Okulumuz",
-    "officeAddressDescription": "Barcelona España",
+    "officeAddressDescription": "Barcelona - España",
     "officeContactButton": "Whatsapp (530) 77 00 789"
   }
 }

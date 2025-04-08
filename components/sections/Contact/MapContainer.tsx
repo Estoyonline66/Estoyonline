@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
 // Define your location (latitude, longitude)
-const position: [number, number] = [41.37899241474301, 2.189141492246618]; // coordinate according to the originial website
+const position: [number, number] = [41.384867441618674, 2.16944012016164]; // coordinate according to the originial website
 
 // Custom Leaflet marker icon (to avoid missing marker issue)
 const customIcon = new L.Icon({
