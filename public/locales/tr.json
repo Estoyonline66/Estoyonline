@@ -487,11 +487,11 @@
     ]
   },
   "contact": {
-    "PageTitle": "Contact us",
-    "needAssistance": "Do you need assistance?",
-    "contactDescription": "Do you need assistance?",
+    "PageTitle": "Bize yazın",
+    "needAssistance": "Sorunuz mu var? bize Türkçe yazabilirsiniz",
+    "contactDescription": "Hemen WhatsApp mesajı gönderin",
     "officeAddressTitle": "Office Address",
-    "officeAddressDescription": "9 Station Rd, West Drayton UB7 7BT",
+    "officeAddressDescription": "Barcelona España",
     "officeContactButton": "Whatsapp (530) 77 00 789"
   }
 }
