@@ -81,8 +81,8 @@
   },
 
   "teachers":{
-    "PageTitle": "Öğretmenler",
-    "teachersTitle": "İspanyolca öğretmenlerimizle tanışın, kelimeleriniz İspanya güneşiyle ısınsın",
+    "PageTitle": "Öğretmenlerimiz",
+    "teachersTitle": "Ana dili İspanyolca olan öğretmenlerimizle tanışın, kelimeleriniz güneşle ısınsın",
     "teachersTitleRed": "",
     "teachersTitle2": ".",
     "teacher": [
@@ -488,9 +488,9 @@
   },
   "contact": {
     "PageTitle": "Bize yazın",
-    "needAssistance": "Sorunuz mu var? bize Türkçe yazabilirsiniz",
-    "contactDescription": "Hemen WhatsApp mesajı gönderin",
-    "officeAddressTitle": "Office Address",
+    "needAssistance": "Bize Türkçe yazabilirsin.",
+    "contactDescription": "Hemen bir WhatsApp mesajı gönderin",
+    "officeAddressTitle": "Okulumuz",
     "officeAddressDescription": "Barcelona España",
     "officeContactButton": "Whatsapp (530) 77 00 789"
   }
