@@ -20,11 +20,14 @@ const MapComponent = () => {
     <MapContainer  center={position} zoom={13} scrollWheelZoom={false} style={{ height: "400px", width: "100%", zIndex: "0" }}>
       {/* OpenStreetMap Tile Layer */}
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      
+  
       {/* Marker with Popup */}
+	  /*
       <Marker position={position} icon={customIcon}>
         <Popup>📍Estoyonline.es Office Location</Popup>
       </Marker>
+	  */
+
     </MapContainer>
   );
 };
