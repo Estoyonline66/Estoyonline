@@ -116,16 +116,13 @@ export default function TeacherCard({
       >
         
         <div
-          // On desktop, trigger onHover on mouse enter; on mobile, on click.
-          onMouseEnter={() => !isMobile && onHover(id)}
-          onClick={() => isMobile && onHover(id)}
-          className={
-            clsx(
-              "w-full bg-black overflow-hidden rounded-md h-72 relative",
-              isMobile&&"delay-300"
-            )
-          }
-        >
+		  onMouseEnter={() => onHover(id)}
+		  onClick={() => onHover(id)}
+		  className={clsx(
+			"w-full bg-black overflow-hidden rounded-md h-72 relative",
+			isMobile && "delay-300"
+		  )}
+		>
           <video
             onEnded={() => {
               setPlay(false);

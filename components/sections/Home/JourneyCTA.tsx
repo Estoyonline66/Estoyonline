@@ -84,15 +84,14 @@ const VideoItem = ({
   }, [activeVideo, id, hasPlayed]);
 
   return (
-    <li
-      // On hover, notify the parent so it can set this video as active.
-      onMouseEnter={() => !isMobile?onHover(id):null}
-      onClick={() => isMobile?onHover(id):null}
-      className={clsx(
-        "w-full sm:w-full lg:w-1/2 mx-auto max-h-52 sm:max-h-64 cursor-pointer bg-primary relative rounded-md duration-500 overflow-hidden",
-        show ? "scale-100 opacity-100" : "scale-0 opacity-0"
-      )}
-    >
+<li
+  onMouseEnter={() => onHover(id)}
+  onClick={() => onHover(id)}
+  className={clsx(
+    "w-full sm:w-full lg:w-1/2 mx-auto max-h-52 sm:max-h-64 cursor-pointer bg-primary relative rounded-md duration-500 overflow-hidden",
+    show ? "scale-100 opacity-100" : "scale-0 opacity-0"
+  )}
+>
       <video
         ref={vidRef}
         onEnded={() => {
