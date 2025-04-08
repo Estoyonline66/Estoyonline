@@ -98,7 +98,7 @@ export function AccordionItem({
           {content.map((item, index) => (
             <div key={index} className="mb-1">
               <h3 className="text-lg font-bold">{item.contentTitle}</h3>
-              <p className="text-gray-600">{item.contentDescription}</p>
+              <p className="text-gray-600 whitespace-pre-line">{item.contentDescription}</p>
             </div>
           ))}
         </div>
