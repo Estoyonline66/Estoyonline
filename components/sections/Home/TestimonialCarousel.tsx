@@ -28,70 +28,84 @@ export default function TestimonialCarousel() {
       firstComment: "İspanyolca öğrenmenin bu kadar keyifli olduğunu bilseydim çok daha önce başlardım 🥰 her dersi sabırsızlıkla bekliyorum iyi ki tanıdım sizleri 🌺🌺",
       lastComment: "If I had known that learning Spanish was this enjoyable",
       personName: "yasemen.avsar",
-      timeAgo: "20 mins"
+      timeAgo: "20 min"
     },
     {
       image: "/Images/umaysirke.jpg",
       firstComment: "Aleja ve onun öğretme yöntemini hep çok sevdim ve bir öğretmenin nasıl olması, nasıl eğlenerek öğretmesi konusunda hep onu örnek veririm 😍",
       lastComment: "I have always loved Aleja and her teaching method.",
       personName: "umaysirke",
-      timeAgo: "2h"
+      timeAgo: "2 h"
     },
     {
       image: "/Images/ugurege.jpg",
       firstComment: "Yıllar önce tanıştığım Aleja ve ekibi sayesinde İspanyolcayı rahatça konuşabilecek ve okuyabilecek şekilde ilerlettim. B1.4 seviyesine kadar sadece bu okuldan ders alarak geldim",
       lastComment: "Thanks to Aleja and her team, whom I met years ago",
       personName: "ugurege",
-      timeAgo: "5h"
+      timeAgo: "5 h"
     },
     {
-      image: "/Images/testimonialImage (1).png",
+      image: "/Images/muge_dusun.jpg",
       firstComment: "Hola Şarkılarla İspanyolca dersi çok keyifli. Bilmediğim İspanyol şarkıcıları ve ispanyol kültürünü öğreniyorum. Arkadaşlarıma tavsiye edeceğim. İyiki sizi tanımışım.",
       lastComment: "Şarkılarla yapılan İspanyolca dersleri çok eğlenceli.",
       personName: "muge_dusun",
-      timeAgo: "5min"
+      timeAgo: "5 min"
     },
     {
       image: "/Images/meltem_sonmez_canseco.jpg",
       firstComment: "Harika ogretmenler, harika metodlar. Derslerin nasil gectigini anlamiyorum bile. 2020 den beri sizlerle Ispanyolca ogreniyorum, dersler cok keyifli ve verimli geciyor. Seviyem sizin yardimlarinizla cok iyi seviyeye geldi.",
       lastComment: "Harika öğretmenler, harika yöntemler...",
       personName: "meltem_sonmez_canseco",
-      timeAgo: "10min"
+      timeAgo: "10 min"
     },
     {
-      image: "/Images/ulucozuyener.jppg",
+      image: "/Images/ulucozuyener.jpg",
       firstComment: "İspanyolca'ya 3 sene önce sıfırdan başladım. @alejaescuderotuc ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
       lastComment: "3 yıl önce sıfırdan İspanyolca öğrenmeye başladım.",
       personName: "ulucozuyener",
-      timeAgo: "9h"
+      timeAgo: "9 h"
     },
     {
-      image: "/Images/testimonialImage (1).png",
+      image: "/Images/17limerence.jpg",
       firstComment: `Gerçekten wow dedim. Bir öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz. "Yakında öğrendiğim her şeyi derslerime uygulamaya başlayacağım" ne kadar güzel bir cümle, heyecanınızı ben bile hissettim 😊Hoşuma gitti❤️ Hocam❤️`,
       lastComment: `Gerçekten "wow" dedim. Bir öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz.`,
       personName: "17limerence",
-      timeAgo: "10h"
+      timeAgo: "10 h"
     },
     {
-      image: "/Images/testimonialImage (1).png",
-      firstComment: `Daha 1 seviye geçip diğerine geçtim. Carolina ile derslerimiz çok eğleneceli geçiyor, çok verimli, bilgilerle dolu dolu, hocamız çok güler yüzlü ve çok yardımcıdır. İyi ki yolumuz kesişti @estoyonline.es sizi seviyorum, sizinle konuşma korkusunu aştım ve çok motive oldum dili öğrenmeye devam etmek için. Herkese şiddetle kursunuzu tavsiye ederim!😍`,
-      lastComment: `Pandemiden beri harika bir yolculuk oldu.`,
+      image: "/Images/allaunal_embroidery.jpg",
+      firstComment: `Daha 1 seviye geçip diğerine geçtim. Carolina ile derslerimiz çok eğlenceli geçiyor, çok verimli, bilgilerle dolu dolu, hocamız çok güler yüzlü ve çok yardımcıdır. İyi ki yolumuz kesişti @estoyonline.es sizi seviyorum, sizinle konuşma korkusunu aştım ve çok motive oldum dili öğrenmeye devam etmek için. Herkese şiddetle kursunuzu tavsiye ederim!😍`,
+      lastComment: `sizinle konuşma korkusunu aştım ve çok motive oldum.`,
       personName: "allaunal_embroidery",
       timeAgo: "1h"
     },
     {
-      image: "/Images/testimonialImage (1).png",
-      firstComment: `Recomiendo las lecciones de Aleja, son muy divertido`,
-      lastComment: `Pandemiden beri harika bir yolculuk oldu.`,
+      image: "/Images/ebru_basaran35.jpg",
+      firstComment: `Recomiendo las lecciones de Aleja, son muy divertidas`,
+      lastComment: `son muy divertidas`,
       personName: "ebru_basaran35",
-      timeAgo: "7mins"
+      timeAgo: "7 min"
     },
     {
-      image: "/Images/testimonialImage (1).png",
+      image: "/Images/yollarinrengi.jpg",
       firstComment: `Aleja ve ekibine Teşekkürler. İspanyolca öğrenirken en iyi yani ogretmenlerin İspanyol ve Türkçe biliyor olmaları..Anlamamız kolay oluyor..bir yabancı dil öğretmeni olarak üçüncü bir dil İspanyolca ya iki ay önce başladım.. A1.1 deyim zamanım oldukça öğrenmeye devam edeceğim.. teşekkürler @clasesconaleja ve Melis yeni kurda görüşmek üzere`,
       lastComment: `Aleja ve ekibine teşekkürler.`,
-      personName: "yollarinrengL",
+      personName: "yollarinrengi",
       timeAgo: "just now"
+    },
+	{
+      image: "/Images/zenteksen.jpg",
+      firstComment: `2021'den beri Aleja, Carolina, Daniela ve Sabrina ile İspanyolca öğreniyorum. Aslında İspanyolca öğrenmeye 2019'da başlamıştım ama sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi ve şu an Buenos Aires'te rahatlıkla konuşarak hem günlük ihtiyaçlarımı giderebiliyorum hem de ana dili İspanyolca olan insanlarla günlük sohbetler yapabiliyor ve onları rahatlıkla anlayabiliyorum. Dün Buenos Aires’li bir ailenin evine öğle yemeği için konuk oldum ve tamamı Arjantinli olan 7 kişilik bir aileyle İspanyolca sohbet edip yemek yiyerek zaman geçirdim. Onlarla son derece rahat bir şekilde akıcı konuşarak anlaşabilmek beni çok mutlu etti. ❤️❤️ Tabii ki derslerime devam ederek İspanyolcamı daha ileri seviyelere taşıyacağım. Aleja ve ekibine bana öğrettikleri her şey için teşekkür ediyorum, sizi çok seviyorum. 🥰🙏🍀`,
+      lastComment: `Tabii ki derslerime devam ederek İspanyolcamı daha ileri seviyelere taşıyacağım.`,
+      personName: "zenteksen",
+      timeAgo: "19 sem"
+    },
+	{
+      image: "/Images/merterdem.jpg",
+      firstComment: `Pandemiden beri Aleja ve Dani ile keyifli dersler yapıyoruz. Enerjileriyle motivasyonumu korumama yardım ettiler. İspanyolca öğrenmek isteyenlere kesinlikle öneriyorum. 🙌😍`,
+      lastComment: `Enerjileriyle motivasyonumu korumama yardım ettiler..`,
+      personName: "_merterdem_",
+      timeAgo: "24 h"
     }
   ];
 
