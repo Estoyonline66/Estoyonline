@@ -38,11 +38,11 @@ export default function Page() {
         <OnlineSpanishTwo />
         <ExtraSpanish />
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-5 px-3 md:px-10 lg:px-[10rem]">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-5 px-3 md:px-10 lg:px-[10rem]">
           {Data?.cards?.map((card, index) => (
             <li
               key={index}
-              className="bg-[#0068FF] px-3 py-9 min-h-[226px] rounded-lg text-center text-white space-y-1 transition-transform duration-300 transform hover:scale-105 z-[-1]"
+              className="bg-[#0068FF] px-3 py-9 max-h-[150px] rounded-lg text-center text-white space-y-1 transition-transform duration-300 transform hover:scale-105 z-[-1]"
             >
               <h1 className="text-xl font-bold">{card.title}</h1>
               <p className="text-md">{card.description}</p>
