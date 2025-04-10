@@ -15,10 +15,10 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
   return (
     <div className="overflow-x-auto w-full">
       <table className="w-full table-fixed border border-gray-300 text-left">
-        <thead className="bg-[#F8BA10] text-white py-5">
+        <thead className="bg-[#F8BA10] text-[#EB0004] py-5">
           <tr>
             {columns.map((col) => (
-              <th key={String(col.key)} className="px-4 py-4 border border-gray-300 text-sm md:text-base">
+              <th key={String(col.key)} className=" ${col.width} px-4 py-4 border border-gray-300 text-sm md:text-base">
                 {col.header}
               </th>
             ))}
