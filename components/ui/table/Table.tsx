@@ -1,9 +1,10 @@
 import React from "react";
 
 export interface Column<T> {
-  key: keyof T; // Restrict keys to properties of T
+  key: keyof T;
   header: string;
   render?: (value: T[keyof T], row: T) => React.ReactNode;
+  width?: string; // <- Burayı ekle
 }
 
 export interface TableProps<T> {

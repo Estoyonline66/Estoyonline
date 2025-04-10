@@ -40,7 +40,7 @@ export default function Courses() {
       </section>
 
           
-      <section className="relative bg-[#0068FF] w-full h-[60rem] flex justify-center items-center z-[-1]">
+      <section className="relative bg-[#0068FF] w-full h-[85rem] flex justify-center items-center z-[-1]">
         <BgSvg />
         <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
           <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
