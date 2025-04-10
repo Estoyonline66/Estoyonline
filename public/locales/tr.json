@@ -82,9 +82,9 @@
 
   "teachers":{
     "PageTitle": "Öğretmenlerimiz",
-    "teachersTitle": "Ana dili İspanyolca olan öğretmenlerimizle tanışın, kelimeleriniz güneşle ısınsın",
+    "teachersTitle": "Ana dili İspanyolca olan öğretmenlerimizle tanışın...",
     "teachersTitleRed": "",
-    "teachersTitle2": ".",
+    "teachersTitle2": "Kelimeleriniz güneşle ısınsın",
     "teacher": [
       {
         "name": "ALEJA",
@@ -376,7 +376,7 @@
         "month": "16 Eylül"
       }
 	  ,{
-        "title": "Konuşma Kursu A1 Başlangıç",
+        "title": "Konuşma Kursu A1-Başlangıç",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:30 - 2 saat",
@@ -384,7 +384,7 @@
         "month": "10 Haziran"
       } 
 	   ,{
-        "title": "Konuşma Kursu A2 Orta",
+        "title": "Konuşma Kursu A2-Orta",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:30 - 2 saat",
@@ -392,7 +392,7 @@
         "month": "6 Mayıs"
       } 
 	    ,{
-        "title": "Konuşma Kursu B1-B2 İleri",
+        "title": "Konuşma Kursu B1-B2-İleri",
         "bold": "Cumartesi",
         "lesson": "İlk ders",
         "time": "10:00 - 2 saat",
@@ -517,11 +517,11 @@
     "cards": [
       {
         "title": "Ödemeler",
-        "description": "Tüm ödemeler kredi kartı ile yapılmaktadır"
+        "description": "Tüm ödemeler kredi kartı ile yapılır"
       },
       {
         "title": "Para iadesi",
-        "description": "Dersler başladıktan sonra derse katılmamış olsanız bile para iadesi veya kurs değişikliği yapılamaz."
+        "description": "Dersler başladıktan sonra derse katılmamış olsanız bile para iadesi veya kurs değişikliği yapılamaz"
       }
     ]
   },
