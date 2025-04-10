@@ -27,27 +27,27 @@ export default function RatindAndAchievements() {
 
   const calculateSkipper = (length: number) => Math.floor(length / 20);
   const successStoriesCount = useCounter({
-    to: 700,
-    delay: 100,
-    skip: calculateSkipper(700),
+    to: 45,
+    delay: 50,
+    skip: calculateSkipper(45),
     start: startCounter,
   });
   const ExpertInstructorsCount = useCounter({
-    to: 200,
-    delay: 100,
-    skip: calculateSkipper(200),
+    to: 10,
+    delay: 50,
+    skip: calculateSkipper(10),
     start: startCounter,
   });
   const StudentsCount = useCounter({
-    to: 80,
-    delay: 100,
-    skip: calculateSkipper(80),
+    to: 300,
+    delay: 50,
+    skip: calculateSkipper(300),
     start: startCounter,
   });
   const TrendingSubjectsCount = useCounter({
-    to: 500,
-    delay: 100,
-    skip: calculateSkipper(500),
+    to: 1500,
+    delay: 50,
+    skip: calculateSkipper(1500),
     start: startCounter,
   });
   return (
@@ -64,7 +64,7 @@ export default function RatindAndAchievements() {
         <em className="not-italic text-xs">{Data.counterTitle2?Data.counterTitle2:defaultData.counterTitle2}</em>
       </li>
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
-        <strong className="text-xl">{StudentsCount.current}K+</strong>
+        <strong className="text-xl">{StudentsCount.current}K</strong>
         <em className="not-italic text-xs">{Data.counterTitle3?Data.counterTitle3:defaultData.counterTitle3}</em>
       </li>
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">

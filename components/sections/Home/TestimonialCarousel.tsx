@@ -24,21 +24,21 @@ export default function TestimonialCarousel() {
     timeAgo:string;
   }[] = [
     {
-      image: "/Images/testimonialImage (3).png",
+      image: "/Images/yasemin.avsar.jpg",
       firstComment: "İspanyolca öğrenmenin bu kadar keyifli olduğunu bilseydim çok daha önce başlardım 🥰 her dersi sabırsızlıkla bekliyorum iyi ki tanıdım sizleri 🌺🌺",
       lastComment: "If I had known that learning Spanish was this enjoyable",
       personName: "yasemen.avsar",
       timeAgo: "20 mins"
     },
     {
-      image: "/Images/testimonialImage (2).png",
+      image: "/Images/umaysirke.jpg",
       firstComment: "Aleja ve onun öğretme yöntemini hep çok sevdim ve bir öğretmenin nasıl olması, nasıl eğlenerek öğretmesi konusunda hep onu örnek veririm 😍",
       lastComment: "I have always loved Aleja and her teaching method.",
       personName: "umaysirke",
       timeAgo: "2h"
     },
     {
-      image: "/Images/testimonialImage (1).png",
+      image: "/Images/ugurege.jpg",
       firstComment: "Yıllar önce tanıştığım Aleja ve ekibi sayesinde İspanyolcayı rahatça konuşabilecek ve okuyabilecek şekilde ilerlettim. B1.4 seviyesine kadar sadece bu okuldan ders alarak geldim",
       lastComment: "Thanks to Aleja and her team, whom I met years ago",
       personName: "ugurege",
@@ -52,14 +52,14 @@ export default function TestimonialCarousel() {
       timeAgo: "5min"
     },
     {
-      image: "/Images/testimonialImage (1).png",
+      image: "/Images/meltem_sonmez_canseco.jpg",
       firstComment: "Harika ogretmenler, harika metodlar. Derslerin nasil gectigini anlamiyorum bile. 2020 den beri sizlerle Ispanyolca ogreniyorum, dersler cok keyifli ve verimli geciyor. Seviyem sizin yardimlarinizla cok iyi seviyeye geldi.",
       lastComment: "Harika öğretmenler, harika yöntemler...",
       personName: "meltem_sonmez_canseco",
       timeAgo: "10min"
     },
     {
-      image: "/Images/testimonialImage (1).png",
+      image: "/Images/ulucozuyener.jppg",
       firstComment: "İspanyolca'ya 3 sene önce sıfırdan başladım. @alejaescuderotuc ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
       lastComment: "3 yıl önce sıfırdan İspanyolca öğrenmeye başladım.",
       personName: "ulucozuyener",
@@ -67,8 +67,8 @@ export default function TestimonialCarousel() {
     },
     {
       image: "/Images/testimonialImage (1).png",
-      firstComment: `Gerçekten "wow" dedim öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz. "Yakında öğrendiğim her şeyi derslerime uygulamaya başlayacağım" ne kadar güzel bir cümle heyecanınızı ben bile hissettim 😊Hoşuma gitti❤️ Hocam❤️`,
-      lastComment: `Gerçekten "Vay be!" dedim. Siz bir öğretmensiniz ve hala kendinizi geliştiriyorsunuz.`,
+      firstComment: `Gerçekten wow dedim. Bir öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz. "Yakında öğrendiğim her şeyi derslerime uygulamaya başlayacağım" ne kadar güzel bir cümle, heyecanınızı ben bile hissettim 😊Hoşuma gitti❤️ Hocam❤️`,
+      lastComment: `Gerçekten "wow" dedim. Bir öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz.`,
       personName: "17limerence",
       timeAgo: "10h"
     },

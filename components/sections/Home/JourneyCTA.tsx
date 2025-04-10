@@ -191,7 +191,7 @@ export default function JourneyCTA() {
               : defaultData.homeSubAboutTitle}
           </h3>
           
-          <TranslatedLink href={"/courses"}>
+          <TranslatedLink href={"/teachers"}>
             <StyledButton className="!mt-2">
               {Data.homeSubAboutButton
                 ? Data.homeSubAboutButton
