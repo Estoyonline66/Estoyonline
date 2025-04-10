@@ -14,7 +14,7 @@ export interface TableProps<T> {
 const Table = <T,>({ columns, data }: TableProps<T>) => {
   return (
     <div className="overflow-x-auto w-full">
-      <table className="w-full border border-gray-300 text-left">
+      <table className="w-full table-fixed border border-gray-300 text-left">
         <thead className="bg-[#F8BA10] text-white py-5">
           <tr>
             {columns.map((col) => (

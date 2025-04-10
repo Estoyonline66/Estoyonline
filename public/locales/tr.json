@@ -435,19 +435,19 @@
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
-        { "key": "course", "header": "Kurslar - Türkiye'de yaşayanlar için" },
-        { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat" }
+        { "key": "course", "header": "Kurslar - Türkiye'de yaşayanlar için" , "width": "w-1/2"},
+        { "key": "duration", "header": "Süre" , "width": "w-1/4" },
+        { "key": "price", "header": "Fiyat" , "width": "w-1/4" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Turizm İspanyolcası Kursları                     ." },
-        { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat" }
+        { "key": "course", "header": "Turizm İspanyolcası Kursları","width": "w-1/2" },
+        { "key": "duration", "header": "Süre", "width": "w-1/4"  },
+        { "key": "price", "header": "Fiyat" , "width": "w-1/4" }
       ],
       "extraSpanishColumns": [
-		{ "key": "course", "header": "Kurslar - Yurdışında yaşayanlar için" },
-        { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat" }
+		{ "key": "course", "header": "Kurslar - Yurdışında yaşayanlar için","width": "w-1/2"},
+        { "key": "duration", "header": "Süre", "width": "w-1/4"  },
+        { "key": "price", "header": "Fiyat" , "width": "w-1/4" }
       ]
     },
     "courses": {
@@ -475,16 +475,12 @@
     },
     "cards": [
       {
-        "title": "People Living in Turkey",
-        "description": "Payment is made by credit card. We send you a link for payment."
+        "title": "Ödemeler",
+        "description": "Tüm ödemeler kredi kartı ile yapılmaktadır"
       },
       {
-        "title": "Those Abroad",
-        "description": "Payment is made by credit card or money transfer."
-      },
-      {
-        "title": "Refund Policy",
-        "description": "Once classes have started, no refunds or course changes will be made, even if you do not attend the class."
+        "title": "Para iadesi",
+        "description": "Dersler başladıktan sonra derse katılmamış olsanız bile para iadesi veya kurs değişikliği yapılamaz."
       }
     ]
   },
