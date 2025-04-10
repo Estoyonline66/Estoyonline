@@ -18,9 +18,12 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
         <thead className="bg-[#F8BA10] text-[#EB0004] py-5">
           <tr>
             {columns.map((col) => (
-              <th key={String(col.key)} className=" ${col.width} px-4 py-4 border border-gray-300 text-sm md:text-base">
-                {col.header}
-              </th>
+             <th
+			  key={String(col.key)}
+			  className={`${col.width} px-4 py-4 border border-gray-300 text-sm md:text-base`}
+			>
+			  {col.header}
+			</th>
             ))}
           </tr>
         </thead>
