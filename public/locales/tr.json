@@ -129,7 +129,7 @@
     ]
   },
   "videos":{
-    "PageTitle": "DDERSLERİMİZDEN ÖRNEK VİDEOLAR",
+    "PageTitle": "Derslerimizden Örnek Videolar",
     "videos": [
       {
         "title": "A1.1 İspanyolca Başlangıç Seviyesi",
@@ -180,7 +180,7 @@
   },
 
   "courses": {
-    "PageTitle": "Courses",
+    "PageTitle": "Online Kurslar",
     "accordionData": [
       {
         "title": "A1 SEVİYESİ BAŞLANGIÇ KURSLARI",
@@ -430,47 +430,47 @@
   },
 
   "price": {
-    "PageTitle": "Prices",
+    "PageTitle": "Kurs Fiyatları",
     "title": "Online Spanish Course Prices",
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
-        { "key": "course", "header": "Course" },
-        { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+        { "key": "course", "header": "Kurslar - Türkiye'de yaşayanları için" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Course" },
-        { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+        { "key": "course", "header": "Turizm İspanyolcası" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat" }
       ],
       "extraSpanishColumns": [
-        { "key": "course", "header": "Course" },
-        { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+		{ "key": "course", "header": "Kurslar - Yurdışında yaşayanları için" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat" }
       ]
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.2 / Intermediate / Upper Levels", "duration": "49 hours - 4 months", "price": "5600 TL" },
-        { "course": "Supplementary Courses", "duration": "30 hours - 3 months", "price": "4250 TL" },
-        { "course": "Private Lessons - Adults", "duration": "16 hours - 2 months", "price": "2,200 TL" },
-        { "course": "Private Lessons - Children", "duration": "60 minute", "price": "22 EUR" },
-        { "course": "A1.1 Beginner Level", "duration": "45 minutes", "price": "17 EUR" }
+        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "5.600 TL" },
+        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "4.500 TL" },
+        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "4.250 TL" },
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "2.200 TL" },
+        { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
+		 { "course": "Özel ders - çocuklar", "duration": "45 dakika", "price": "17 EUR" }
       ],
       "onlineSpanishTwoTable": [
-        { "course": "A1.2 / Intermediate / Upper Levels", "duration": "49 hours - 4 months", "price": "5600 TL" },
-        { "course": "Supplementary Courses", "duration": "30 hours - 3 months", "price": "4250 TL" },
-        { "course": "Private Lessons - Adults", "duration": "16 hours - 2 months", "price": "2,200 TL" },
-        { "course": "Private Lessons - Children", "duration": "60 minute", "price": "22 EUR" },
-        { "course": "A1.1 Beginner Level", "duration": "45 minutes", "price": "17 EUR" }
+        { "course": "Başlangıç (Modül A)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" },
+        { "course": "Orta seviye (Modül B)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" }
+       
       ],
       "extraSpanishTable": [
-        { "course": "A1.2 / Intermediate / Upper Levels", "duration": "49 hours - 4 months", "price": "5600 TL" },
-        { "course": "Supplementary Courses", "duration": "30 hours - 3 months", "price": "4250 TL" },
-        { "course": "Private Lessons - Adults", "duration": "16 hours - 2 months", "price": "2,200 TL" },
-        { "course": "Private Lessons - Children", "duration": "60 minute", "price": "22 EUR" },
-        { "course": "A1.1 Beginner Level", "duration": "45 minutes", "price": "17 EUR" }
+       { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "190 EUR" },
+        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "160 EUR" },
+        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "145 EUR" },
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR" },
+        { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
+		 { "course": "Özel ders - çocuklar", "duration": "45 dakika", "price": "17 EUR" }
       ]
     },
     "cards": [
