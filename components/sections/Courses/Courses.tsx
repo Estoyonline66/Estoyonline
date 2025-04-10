@@ -26,13 +26,13 @@ export default function Courses() {
                 className="bg-[#FB2C3621] rounded-lg text-[#333] p-6 min-h-[160px] text-center shadow-lg scale-100 duration-300 hover:scale-105"
             >
                 <h1 className="text-2xl font-semibold line-clamp-2 min-h-[3em] leading-normal">{card.title}</h1>
-                <p className="text-sm">
-                  <span className="font-semibold">{card.bold}</span> {card.time}
+                <p className="text-md">
+                  <span className="font-bold">{card.bold}</span> {card.time}
                 </p>
-                <p className="text-sm">{card.week}</p>
-                <p className="text-sm">
+                <p className="text-md">{card.week}</p>
+                <p className="text-md">
                   <span>{card.lesson}</span>{" "}
-                  <span className="font-semibold">{card.month}</span>
+                  <span className="font-bold">{card.month}</span>
                 </p>
             </li>
             ))}
@@ -51,7 +51,7 @@ export default function Courses() {
                    <b className="pb-2">{level.title}</b>
                    {level.items.map((item, idx) => (
                     <p key={idx} className="font-light">
-                      <span className="font-semibold">{item.level}</span> &nbsp; {item.duration} {item.book}
+                      <span className="font-bold">{item.level}</span> &nbsp; {item.duration} {item.book}
                      </p>
                    ))}
                 </div>
