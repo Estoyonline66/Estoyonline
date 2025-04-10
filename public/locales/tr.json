@@ -376,7 +376,7 @@
         "month": "16 Eylül"
       }
 	  ,{
-        "title": "Konuşma Kursu A1-Başlangıç",
+        "title": "Konuşma Kursu Başlangıç A1",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:30 - 2 saat",
@@ -384,7 +384,7 @@
         "month": "10 Haziran"
       } 
 	   ,{
-        "title": "Konuşma Kursu A2-Orta",
+        "title": "Konuşma Kursu Orta A2",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:30 - 2 saat",
@@ -392,7 +392,7 @@
         "month": "6 Mayıs"
       } 
 	    ,{
-        "title": "Konuşma Kursu B1-B2-İleri",
+        "title": "Konuşma Kursu İleri B1-B2",
         "bold": "Cumartesi",
         "lesson": "İlk ders",
         "time": "10:00 - 2 saat",
@@ -478,17 +478,17 @@
       "onlineSpanishOneColumns": [
         { "key": "course", "header": "Kurslar" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat (Türkiye'de yaşayanlar için)" }
+        { "key": "price", "header": "Fiyat - Türkiye'de yaşayanlar için" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Turizm İspanyolcası Kursları                     ." },
+        { "key": "course", "header": "Turizm İspanyolcası Kursları" },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Fiyat" }
       ],
       "extraSpanishColumns": [
 		{ "key": "course", "header": "Kurslar" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat (Yurdışında yaşayanlar için)" }
+        { "key": "price", "header": "Fiyat - Yurdışında yaşayanlar için" }
       ]
     },
     "courses": {
