@@ -22,7 +22,7 @@ export default function Teachers() {
       <section className="w-full flex items-center justify-center px-4 py-10 text-center">
         <strong className="font-bold text-base sm:text-xl lg:text-2xl ">
           {Data.teachersTitle} <em className="text-secondary not-italic">{Data.teachersTitleRed}</em> 
-		  <br>
+		   <br />
 		  {Data.teachersTitle2}
         </strong>
       </section>
