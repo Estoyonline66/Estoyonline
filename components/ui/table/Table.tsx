@@ -1,10 +1,9 @@
 import React from "react";
 
 export interface Column<T> {
-  key: keyof T;
+  key: keyof T; // Restrict keys to properties of T
   header: string;
   render?: (value: T[keyof T], row: T) => React.ReactNode;
-  width?: string; // <- Burayı ekle
 }
 
 export interface TableProps<T> {
@@ -19,12 +18,9 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
         <thead className="bg-[#F8BA10] text-[#EB0004] py-5">
           <tr>
             {columns.map((col) => (
-             <th
-			  key={String(col.key)}
-			  className={`${col.width} px-4 py-4 border border-gray-300 text-sm md:text-base`}
-			>
-			  {col.header}
-			</th>
+              <th key={String(col.key)} className="w-auto px-4 py-4 border border-gray-300 text-sm md:text-base">
+                {col.header}
+              </th>
             ))}
           </tr>
         </thead>

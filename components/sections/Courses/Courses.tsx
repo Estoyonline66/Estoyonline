@@ -19,11 +19,11 @@ export default function Courses() {
     <>
       <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
          <h2 className="text-2xl font-bold mb-4">2025 kurs takvimi</h2>
-		<ul className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+		<ul className="grid grid-cols-1 sm:grid-cols-3 gap-10">
             {cardCourses.map((card, index) => (
             <li
                 key={index}
-                className="bg-[#FB2C3621] rounded-lg text-[#333] p-6 max-h-[100px] text-center shadow-lg scale-100 duration-300 hover:scale-105"
+                className="bg-[#FB2C3621] rounded-lg text-[#333] p-6 min-h-[160px] text-center shadow-lg scale-100 duration-300 hover:scale-105"
             >
                 <h1 className="text-2xl font-semibold line-clamp-2 min-h-[3em] leading-normal">{card.title}</h1>
                 <p className="text-md">
