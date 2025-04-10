@@ -32,12 +32,6 @@ export default function RatindAndAchievements() {
     skip: calculateSkipper(45),
     start: startCounter,
   });
-  const ExpertInstructorsCount = useCounter({
-    to: 45,
-    delay: 100,
-    skip: calculateSkipper(45),
-    start: startCounter,
-  });
   const StudentsCount = useCounter({
     to: 300,
     delay: 100,
@@ -58,10 +52,6 @@ export default function RatindAndAchievements() {
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{successStoriesCount.current}+</strong>
         <em className="not-italic text-xs">{Data.counterTitle?Data.counterTitle:defaultData.counterTitle}</em>
-      </li>
-      <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
-        <strong className="text-xl">{ExpertInstructorsCount.current}+</strong>
-        <em className="not-italic text-xs">{Data.counterTitle2?Data.counterTitle2:defaultData.counterTitle2}</em>
       </li>
       <li className="p-2 flex text-white flex-col gap-3 items-center justify-center">
         <strong className="text-xl">{StudentsCount.current}+</strong>

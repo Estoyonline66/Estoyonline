@@ -95,8 +95,8 @@ export default function TestimonialCarousel() {
     },
 	{
       image: "/Images/zenteksen.jpg",
-      firstComment: `2021'den beri Aleja, Carolina, Daniela ve Sabrina ile İspanyolca öğreniyorum. Aslında İspanyolca öğrenmeye 2019'da başlamıştım ama sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi ve şu an Buenos Aires'te rahatlıkla konuşarak hem günlük ihtiyaçlarımı giderebiliyorum hem de ana dili İspanyolca olan insanlarla günlük sohbetler yapabiliyor ve onları rahatlıkla anlayabiliyorum. Dün Buenos Aires’li bir ailenin evine öğle yemeği için konuk oldum ve tamamı Arjantinli olan 7 kişilik bir aileyle İspanyolca sohbet edip yemek yiyerek zaman geçirdim. Onlarla son derece rahat bir şekilde akıcı konuşarak anlaşabilmek beni çok mutlu etti. ❤️❤️ Tabii ki derslerime devam ederek İspanyolcamı daha ileri seviyelere taşıyacağım. Aleja ve ekibine bana öğrettikleri her şey için teşekkür ediyorum, sizi çok seviyorum. 🥰🙏🍀`,
-      lastComment: `Tabii ki derslerime devam ederek İspanyolcamı daha ileri seviyelere taşıyacağım.`,
+      firstComment: `Aslında İspanyolca öğrenmeye 2019'da başlamıştım ama sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi. Dün Buenos Aires’li bir ailenin evine konuk oldum ve  Arjantinli olan 7 kişilik bir aileyle İspanyolca sohbet edip zaman geçirdim. Onlarla son derece rahat bir şekilde akıcı konuşarak anlaşabilmek beni çok mutlu etti. ❤️❤️ `,
+      lastComment: ` Sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi.`,
       personName: "zenteksen",
       timeAgo: "19 sem"
     },
