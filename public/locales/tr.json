@@ -435,17 +435,17 @@
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
-        { "key": "course", "header": "Kurslar - Türkiye'de yaşayanlar için " },
+        { "key": "course", "header": "Kurslar - Türkiye'de yaşayanlar için" },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Fiyat" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Turizm İspanyolcası                           ." },
+        { "key": "course", "header": "Turizm İspanyolcası Kursları                     ." },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Fiyat" }
       ],
       "extraSpanishColumns": [
-		{ "key": "course", "header": "Kurslar - Yurdışında yaşayanları için" },
+		{ "key": "course", "header": "Kurslar - Yurdışında yaşayanlar için" },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Fiyat" }
       ]
