@@ -245,7 +245,7 @@
         "lesson": "İlk ders",
         "time": "11:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "17 Nisan"
+        "month": "24 Nisan"
       },
 	   {
         "title": "A1.1 Başlangıç",
@@ -256,20 +256,52 @@
         "month": "24 Nisan"
       },
 	   {
-        "title": "A1.2",
-        "bold": "Salı",
+        "title": "A1.1 Başlangıç",
+        "bold": "Pzt - Çarş",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 2 gün",
+        "month": "5 Mayıs"
+      },
+	   {
+        "title": "A1.1 Başlangıç",
+        "bold": "Çarşamba",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "18 Mart"
+        "month": "6 Mayıs"
+      },
+	  {
+        "title": "A1.1 Başlangıç",
+        "bold": "Çarşamba",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "9 Temmuz"
+      },
+	   {
+        "title": "A1.2",
+        "bold": "Cuma",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "27 Haziran"
       },
 	  {
         "title": "A2.1",
         "bold": "Salı",
         "lesson": "İlk ders",
+        "time": "18:30 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "22 Nisan"
+      },
+	  {
+        "title": "A2.1",
+        "bold": "Pazartesi",
+        "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "27 Nisan"
+        "month": "9 Haziran"
       },
 	  {
         "title": "A2.2",
@@ -277,23 +309,39 @@
         "lesson": "İlk ders",
         "time": "18:30 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "16 Mayıs"
+        "month": "6 Haziran"
       },
 	  {
         "title": "A2.3",
         "bold": "Pazartesi",
         "lesson": "İlk ders",
-        "time": "18:30 - 2,5 saat",
+        "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "5 Mayıs"
+        "month": "21 Nisan"
       },
 	  {
+        "title": "B1.1",
+        "bold": "Çarşamba",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "18 Haziran"
+      },
+	   {
         "title": "B1.2",
         "bold": "Pazartesi",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
         "month": "14 Nisan"
+      },
+	  {
+        "title": "B1.2",
+        "bold": "Cuma",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "11 Temmuz"
       },
 	  {
         "title": "B1.5",
@@ -328,37 +376,30 @@
         "month": "16 Eylül"
       }
 	  ,{
-        "title": "Turizm Konuşma Başlangıç",
-        "bold": "Cumartesi",
+        "title": "Konuşma Kursu A1 Başlangıç",
+        "bold": "Salı",
         "lesson": "İlk ders",
-        "time": "18:30 - 2 saat",
+        "time": "19:30 - 2 saat",
         "week": "Haftada 1 gün",
-        "month": "12 Nisan"
+        "month": "10 Haziran"
       } 
-	  ,{
-        "title": "Konuşma Kursu Orta",
+	   ,{
+        "title": "Konuşma Kursu A2 Orta",
+        "bold": "Salı",
+        "lesson": "İlk ders",
+        "time": "19:30 - 2 saat",
+        "week": "Haftada 1 gün",
+        "month": "6 Mayıs"
+      } 
+	    ,{
+        "title": "Konuşma Kursu B1-B2 İleri",
         "bold": "Cumartesi",
         "lesson": "İlk ders",
-        "time": "18:30 - 2 saat",
+        "time": "10:00 - 2 saat",
         "week": "Haftada 1 gün",
-        "month": "12 Nisan"
-      }
-	    ,{
-        "title": "Şarkılarla İspanyolca Orta",
-        "bold": "Cumartesi",
-        "lesson": "İlk ders",
-        "time": "10:30 - 2 saat",
-        "week": "Haftada 1 gün",
-        "month": "5 Nisan"
-      }
-	    ,{
-        "title": "Gramer Güzeldir Orta",
-        "bold": "Çarşamba",
-        "lesson": "İlk ders",
-        "time": "18:30 - 2 saat",
-        "week": "Haftada 1 gün",
-        "month": "26 Mart"
-      }
+        "month": "10 Mayıs"
+      } 
+	   
     
     ],
     
