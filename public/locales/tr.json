@@ -172,7 +172,7 @@
         "youtubeId": "srggR7eHxc8"
       },
       {
-        "title": "B1.6 Spanish Advanced Level",
+        "title": "B1.6 İspanyolca İleri Seviye",
         "description": "İleri seviyedeki öğrencileri İspanyolca'nın hızına artık tamamıyla adapte oluyorlar.",
         "youtubeId": "nsnLOSRtrd4"
       }
@@ -488,7 +488,7 @@
       "extraSpanishColumns": [
 		{ "key": "course", "header": "Kurslar" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat - Yurdışında yaşayanlar için" }
+        { "key": "price", "header": "Fiyat - Yurtdışında yaşayanlar için" }
       ]
     },
     "courses": {
