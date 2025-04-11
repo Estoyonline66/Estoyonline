@@ -60,7 +60,7 @@ export default function TestimonialCarousel() {
     },
     {
       image: "/Images/ulucozuyener.jpg",
-      firstComment: "İspanyolca'ya 3 sene önce sıfırdan başladım. @alejaescuderotuc ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
+      firstComment: "İspanyolca'ya 3 sene önce sıfırdan başladım. @estoyonline.es ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
       lastComment: "3 yıl önce sıfırdan İspanyolca öğrenmeye başladım.",
       personName: "ulucozuyener",
       timeAgo: "9 h"
@@ -106,6 +106,20 @@ export default function TestimonialCarousel() {
       lastComment: `Enerjileriyle motivasyonumu korumama yardım ettiler..`,
       personName: "_merterdem_",
       timeAgo: "24 h"
+    },
+	{
+      image: "/Images/kemal_yesra.jpg",
+      firstComment: `Bugün sertifikamı aldım. Aleja’ya ve kadrosuna çok teşekkür ederim, çok profesyoneller. Tüm öğretmenlerin yabancı olması ve ilk dersten itibaren İspanyolca konuşmaları ilk başlarda beni korkutmuştu. Ama düşündüğüm gibi olmadı. Kesinlikle Aleja’yı ve kadrosunu tavsiye ediyorum.`,
+      lastComment: `Çok profesyoneller`,
+      personName: "kemal_yesra",
+      timeAgo: "14 h"
+    },
+	{
+      image: "/Images/nebibekum.jpg",
+      firstComment: `Dersler çok eğlenceli, bol bol konuşuyoruz, oyunlar oynuyoruz, bunları yaparken gramer ve yeni kelimeleri öğrenmiş oluyoruz. Öğretmenimiz Türkçe biliyor, evet çok az kullanıyor ama anlamadığımız konuları Türkçe kullanarak tekrar açıklıyor.  Sıradaki seviyeye geçmek için sabırsızlanıyorum 😊.`,
+      lastComment: `Dersler çok eğlenceli, bol bol konuşuyoruz,`,
+      personName: "nebibekum",
+      timeAgo: "12 h"
     }
   ];
 
