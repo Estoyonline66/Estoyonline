@@ -415,8 +415,6 @@
       {
         "title": "Temel Seviye A2",
         "items": [
-          { "level": "A1.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
-          { "level": "A1.2", "duration": "30 saat - Kitap:", "book": "Aula  2" },
           { "level": "A2.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
           { "level": "A2.2", "duration": "30 saat - Kitap:", "book": "Aula  2" },
           { "level": "A3.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
