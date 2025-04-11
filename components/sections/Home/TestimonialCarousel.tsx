@@ -26,21 +26,21 @@ export default function TestimonialCarousel() {
     {
       image: "/Images/yasemin.avsar.jpg",
       firstComment: "İspanyolca öğrenmenin bu kadar keyifli olduğunu bilseydim çok daha önce başlardım 🥰 her dersi sabırsızlıkla bekliyorum iyi ki tanıdım sizleri 🌺🌺",
-      lastComment: "If I had known that learning Spanish was this enjoyable",
+      lastComment: "her dersi sabırsızlıkla bekliyorum",
       personName: "yasemen.avsar",
       timeAgo: "20 min"
     },
     {
       image: "/Images/umaysirke.jpg",
       firstComment: "Aleja ve onun öğretme yöntemini hep çok sevdim ve bir öğretmenin nasıl olması, nasıl eğlenerek öğretmesi konusunda hep onu örnek veririm 😍",
-      lastComment: "I have always loved Aleja and her teaching method.",
+      lastComment: "Aleja ve onun öğretme yöntemini hep çok sevdim",
       personName: "umaysirke",
       timeAgo: "2 h"
     },
     {
       image: "/Images/ugurege.jpg",
       firstComment: "Yıllar önce tanıştığım Aleja ve ekibi sayesinde İspanyolcayı rahatça konuşabilecek ve okuyabilecek şekilde ilerlettim. B1.4 seviyesine kadar sadece bu okuldan ders alarak geldim",
-      lastComment: "Thanks to Aleja and her team, whom I met years ago",
+      lastComment: "B1.4 seviyesine kadar sadece bu okuldan ders alarak geldim",
       personName: "ugurege",
       timeAgo: "5 h"
     },
@@ -53,15 +53,15 @@ export default function TestimonialCarousel() {
     },
     {
       image: "/Images/meltem_sonmez_canseco.jpg",
-      firstComment: "Harika ogretmenler, harika metodlar. Derslerin nasil gectigini anlamiyorum bile. 2020 den beri sizlerle Ispanyolca ogreniyorum, dersler cok keyifli ve verimli geciyor. Seviyem sizin yardimlarinizla cok iyi seviyeye geldi.",
-      lastComment: "Harika öğretmenler, harika yöntemler...",
+      firstComment: "Harika öğretmenler, harika metodlar. Derslerin nasil gectigini anlamiyorum bile. 2020 den beri sizlerle Ispanyolca ogreniyorum, dersler cok keyifli ve verimli geciyor. Seviyem sizin yardimlarinizla cok iyi seviyeye geldi.",
+      lastComment: "Harika öğretmenler, harika metodlar.",
       personName: "meltem_sonmez_canseco",
       timeAgo: "10 min"
     },
     {
       image: "/Images/ulucozuyener.jpg",
       firstComment: "İspanyolca'ya 3 sene önce sıfırdan başladım. @estoyonline.es ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
-      lastComment: "3 yıl önce sıfırdan İspanyolca öğrenmeye başladım.",
+      lastComment: "@estoyonline.es ve @danielasalzman sayesinde B2.2 seviyesine geldim",
       personName: "ulucozuyener",
       timeAgo: "9 h"
     },
