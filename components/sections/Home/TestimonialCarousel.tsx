@@ -74,7 +74,7 @@ export default function TestimonialCarousel() {
     },
     {
       image: "/Images/allaunal_embroidery.jpg",
-      firstComment: `Daha 1 seviye geçip diğerine geçtim. Carolina ile derslerimiz çok eğlenceli geçiyor, çok verimli, bilgilerle dolu dolu, hocamız çok güler yüzlü ve çok yardımcıdır. İyi ki yolumuz kesişti @estoyonline.es sizi seviyorum, sizinle konuşma korkusunu aştım ve çok motive oldum dili öğrenmeye devam etmek için. Herkese şiddetle kursunuzu tavsiye ederim!😍`,
+      firstComment: `Daha 1 seviye geçip diğerine geçtim. Carolina ile derslerimiz çok eğlenceli geçiyor, çok verimli, bilgilerle dolu dolu, hocamız çok güler yüzlü ve çok yardımcıdır. İyi ki yolumuz kesişti @estoyonline.es sizi seviyorum, sizinle konuşma korkusunu aştım ve çok motive oldum dili öğrenmeye devam etmek için. 😍`,
       lastComment: `sizinle konuşma korkusunu aştım ve çok motive oldum.`,
       personName: "allaunal_embroidery",
       timeAgo: "1h"
@@ -88,14 +88,14 @@ export default function TestimonialCarousel() {
     },
     {
       image: "/Images/yollarinrengi.jpg",
-      firstComment: `Aleja ve ekibine Teşekkürler. İspanyolca öğrenirken en iyi yani ogretmenlerin İspanyol ve Türkçe biliyor olmaları..Anlamamız kolay oluyor..bir yabancı dil öğretmeni olarak üçüncü bir dil İspanyolca ya iki ay önce başladım.. A1.1 deyim zamanım oldukça öğrenmeye devam edeceğim.. teşekkürler @clasesconaleja ve Melis yeni kurda görüşmek üzere`,
+      firstComment: `Aleja ve ekibine Teşekkürler. İspanyolca öğrenirken en iyi yani ogretmenlerin İspanyol ve Türkçe biliyor olmaları..Anlamamız kolay oluyor..bir yabancı dil öğretmeni olarak üçüncü bir dil İspanyolca ya iki ay önce başladım.. A1.1 deyim zamanım oldukça öğrenmeye devam edeceğim.. yeni kurda görüşmek üzere`,
       lastComment: `Aleja ve ekibine teşekkürler.`,
       personName: "yollarinrengi",
       timeAgo: "just now"
     },
 	{
       image: "/Images/zenteksen.jpg",
-      firstComment: `Aslında İspanyolca öğrenmeye 2019'da başlamıştım ama sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi. Dün Buenos Aires’li bir ailenin evine konuk oldum ve  Arjantinli olan 7 kişilik bir aileyle İspanyolca sohbet edip zaman geçirdim. Onlarla son derece rahat bir şekilde akıcı konuşarak anlaşabilmek beni çok mutlu etti. ❤️❤️ `,
+      firstComment: `Aslında İspanyolca öğrenmeye 2019'da başlamıştım ama sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi. Dün Buenos Aires’li bir aileye ve  Arjantinli olan 7 kişilik bir aileyle İspanyolca sohbet edip zaman geçirdim. Onlarla son derece rahat bir şekilde akıcı konuşarak anlaşabilmek beni çok mutlu etti. ❤️❤️ `,
       lastComment: ` Sizlerle çalışmaya başladıktan sonra İspanyolcam çok ilerledi.`,
       personName: "zenteksen",
       timeAgo: "19 sem"
