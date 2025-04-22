@@ -500,7 +500,6 @@
         { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "4.500 TL" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "4.250 TL" },
         { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "2.200 TL" }
-
       ],
       "onlineSpanishThreeTable": [
          { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
@@ -509,15 +508,13 @@
       "onlineSpanishTwoTable": [
         { "course": "Başlangıç (Modül A)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" },
         { "course": "Orta seviye (Modül B)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" }
-       
       ],
       "extraSpanishTable": [
        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "190 EUR" },
         { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "160 EUR" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "145 EUR" },
-        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR" },
-        { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
-		 { "course": "Özel ders - çocuklar", "duration": "45 dakika", "price": "17 EUR" }
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR" }
+     
       ]
     },
     "cards": [
