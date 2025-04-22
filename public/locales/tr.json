@@ -479,7 +479,7 @@
         { "key": "price", "header": "Fiyat - Türkiye'de yaşayanlar için" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Birebir Özel Ders" },
+        { "key": "course", "header": "Bire Bir Özel Ders" },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Fiyat" }
       ],
