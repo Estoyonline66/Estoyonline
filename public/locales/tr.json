@@ -495,8 +495,8 @@
         { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "4.500 TL" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "4.250 TL" },
         { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "2.200 TL" },
-     { "course": "Başlangıç (Modül A)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" },
-        { "course": "Orta seviye (Modül B)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" }
+     { "course": "Turizim İspanyolcası Başlangıç (Modül A)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" },
+        { "course": "Turizim İspanyolcası Orta (Modül B)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" }
       ],
       "onlineSpanishTwoTable": [
           { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
