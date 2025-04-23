@@ -246,14 +246,9 @@
           "contentTitle": "Registration",
           "contentDescription": "Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
         },
-        {
-          "contentTitle": "Certificate",
-          "contentDescription": "These courses do not include exams, and therefore, no certificates are issued."
-        }
+        {"contentTitle": "Certificate", "contentDescription": "These courses do not include exams, and therefore, no certificates are issued." }
       ]
-    }
-  ]
-      },
+    },
       {
         "title": "PRIVATE LESSONS FOR CHILDREN / ADULTS",
         "content": [
