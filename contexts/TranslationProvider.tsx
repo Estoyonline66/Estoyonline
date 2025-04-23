@@ -28,7 +28,7 @@ const initialLang = supportedLanguages.includes(detectedLangFromPath) ? detected
 
 const [language, setLanguage] = useState<string>(() => {
   if (typeof window !== "undefined") {
-    return getCookie("language") || initialLang;
+    return /* getCookie("language") || */ initialLang;
   }
   return initialLang;
 });
