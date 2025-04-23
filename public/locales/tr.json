@@ -57,7 +57,7 @@
   "home": {
     "HeroTitle": "Dünya",
     "HeroYellowTitle": "İspanyolca konuşuyor,",
-    "HeroTitle2": "sıra sende!",
+    "HeroTitle2": "şimdi sıra sende!",
      "HeroDescription": "",
     "HeroButton": "Kursları incele",
     "LearnSpanishtitle": "Butik okulumuzda eğlenerek İspanyolca öğrenin",
@@ -129,7 +129,7 @@
     ]
   },
   "videos":{
-    "PageTitle": "Derslerimizden Videolar",
+    "PageTitle": "Örnek Ders Videoları",
     "videos": [
       {
         "title": "A1.1 İspanyolca Başlangıç Seviyesi",

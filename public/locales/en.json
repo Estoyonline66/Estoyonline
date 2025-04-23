@@ -57,11 +57,11 @@
   "home": {
     "HeroTitle": "The world",
     "HeroYellowTitle": "speaks Spanish,",
-    "HeroTitle2": "your turn!",
+    "HeroTitle2": "now it's your turn!",
     "HeroDescription": "",
     "HeroButton": "Explore courses",
     "LearnSpanishtitle": "Learn Spanish while having fun at our boutique school",
-    "LearnSpanishdescription": "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience. Fun activities and games boost motivation, reduce stress, and make language learning easier. They also promote natural language use and help strengthen social bonds. Learning a language in a fun way not only improves retention but also enhances your overall language skills effectively. All our teachers are native Spanish speakers from Spain and Latin America. For beginner-level classes, we also have teachers who speak Turkish. All classes are held online via Zoom.",
+    "LearnSpanishdescription": "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience. Fun activities and games boost motivation, reduce stress, and make language learning easier. They also promote natural language use and help strengthen social bonds. Learning a language in a fun way not only improves retention but also enhances your overall language skills effectively. All our teachers are native Spanish speakers from Spain and Latin America. For beginner-level classes, we also have teachers who speak English. All classes are held online via Zoom.",
     "LearnSpanishbutton": "View Sample Classes",
     "homeAboutTitle": "Hola, hello, I am",
     "homeAboutTitle2": "",
@@ -69,12 +69,12 @@
     "homeAboutDescriptionBold": "",
     "homeAboutDescription2": "I can’t wait to tell you more about our boutique school and online lessons.",
     "homeAboutDescriptionBold2": "I look forward to hearing from you on WhatsApp.",
-    "homeAboutButton": "WhatsApp (530) 77 00 789",
-    "homeSubAboutTitle": "With our native Spanish-speaking teachers, you can learn Spanish naturally and enjoyably. We can't wait to meet you.",
+    "homeAboutButton": "WhatsApp +34 633 45 22 68",
+    "homeSubAboutTitle": "With our native Spanish-speaking teachers, you'll learn Spanish naturally and enjoyably. We can't wait to meet you.",
     "homeSubAboutButton": "Meet the teachers",
     "homeSubAboutVideos": ["/videos/teachers/aleja1.mp4"],
-    "testimonies": "What have our students said about us?",
-    "counterTitle": "Different types of lessons",
+    "testimonies": "What do our students say about us?",
+    "counterTitle": "Types of courses",
     "counterTitle2": "Teachers",
     "counterTitle3": "Active students",
     "counterTitle4": "Certificates awarded"
@@ -84,67 +84,52 @@
     "teachersTitle": "Meet our native Spanish-speaking teachers...",
     "teachersTitleRed": "",
     "teachersTitle2": "Let the sun warm your words",
-    "teacher": [
-      {
-        "name": "ALEJA",
-        "about": "She lived in Istanbul for 10 years, working as a teacher at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for those who wanted to practice Spanish. Throughout her teaching career, she improved her skills with international training courses like ELE, DELE, AVE, and Int House. In 2019, she moved to Spain and decided to start her own school. She developed modern, fun, and conversation-based methods for her school. She continues to improve the teaching process with her team of teachers, adapting new technologies and modern techniques to Spanish lessons. She reflects on which details to focus on by reviewing class recordings. She visits Turkey once a year to meet students in Istanbul, Izmir, Ankara, Bodrum, and Cappadocia. She loves tango and rowing off the coast of Barcelona. She enjoys improving her Turkish and continues to take advanced Turkish lessons.",
-        "media": "/videos/teachers/aleja1.mp4"
-      },
-      {
-        "name": "CAROLINA",
-        "about": "She is a passionate teacher who has worked at all educational levels. She lived in Patagonia, surrounded by nature, for 15 years, where she worked as a teacher and teacher trainer. Music is her other passion. She plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She took musical comedy lessons and participated in many musicals. In 2021, she obtained a certification to teach Spanish to foreigners and began working online and in-person at various platforms and institutes. She emphasizes using games and alternative tools in conversation classes, private lessons, and regular courses to facilitate learning.",
-        "media": "/videos/teachers/caro.mp4"
-      },
-      {
-        "name": "DANIELA",
-        "about": "She is from Argentina and lives in Buenos Aires. She loves teaching. She began teaching Spanish to foreigners in 2004 and opened her own school in 2008, which became part of a university in 2015. In addition to her native Spanish, she speaks French, English, Portuguese, Hebrew, and Italian. She graduated in Communication Sciences and studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. In her free time, she enjoys spending time with her children, family, and traveling.",
-        "media": "/videos/teachers/dani.mp4"
-      },
-      {
-        "name": "MELISSA",
-        "about": "She was born and raised in Colombia and currently lives there. She worked as a librarian and taught library skills at all levels. She completed her master's degree in Béziers, France. Melissa learned Turkish long ago and speaks it at an advanced level. Since 2010, she has taught French, English, and Spanish at various academies (Oxford, Just English) and schools in Turkey (ISTEK in Antalya, Başarı in Kütahya, etc.). In her free time, she enjoys knitting dolls, singing with friends, and cooking. At our school, she teaches A1 beginner-level classes that require Turkish support.",
-        "media": "/videos/teachers/meli.mp4"
-      },
-      {
-        "name": "SABRINA",
-        "about": "She has always loved words. She adores reading and editing texts. She studied journalism and worked as a sports reporter on radio and in newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies. She researched purposeful learning and attended creative writing workshops. In 2021, she combined her passions: communication, education, and cultural exchange. For this purpose, she obtained an ELE Spanish teaching certification. She used digital tools and games as teaching methods at various academies and e-learning platforms. In 2022, she began working at the Teacher Training Institute to train ELE teachers.",
-        "media": "/videos/teachers/sabri.mp4"
-      },
-      {
-        "name": "MAITA",
-        "about": "Maita is an English and Spanish teacher. She received English education from a very young age. She studied architecture at university but discovered she wanted to be a language teacher and changed careers. She focused on personalized language teaching based on students' needs and improved her skills in this area through various courses. She is experienced in effectively using digital tools in her classes and emphasizes games as a teaching method. Another passion of hers is cooking. She loves exploring the intricacies of Spanish and Latin American cuisine.",
-        "media": "/videos/teachers/maia.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita is from Ecuador. She graduated in Communication from Universidad de las Américas in Quito and holds a certification in Spanish grammar and teaching methodology. She worked as a teacher at the Instituto Internacional de Español, gaining experience in teaching Spanish to foreigners. She worked at institutions like Just English, British Town Language Schools, and Likia Just Kids in Istanbul, teaching Turkish students at all levels. In recent years, she started giving private and group online lessons to students from different countries, allowing her to interact with diverse cultures. She is involved in graphic design and photography. She loves listening to music, salsa dancing, and traveling. At our school, she teaches A1 beginner-level classes that require Turkish support.",
-        "media": "/videos/teachers/anita.mp4"
-      },
-      {
-        "name": "VIRGINIA",
-        "about": "Virginia continued her life filled with literature by pursuing a teaching career. She studied at the University of Buenos Aires, completed her degree in literature, and became a language and literature teacher. For five years, she explored the rich culture of Italy. This experience deepened her understanding of literature. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
-        "media": "/videos/teachers/vir.mp4"
-      }
-    ]
+ "teacher": [
+    {
+      "name": "ALEJA",
+      "about": "Aleja previously taught at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for Spanish practice. Throughout her teaching career, she enhanced her skills with international training courses, including ELE, DELE, AVE, and Int House certifications. In 2019, she founded her own school in Spain, developing modern, engaging, and conversation-focused teaching methods. She and her team continuously refine their teaching approach by incorporating new technologies and reviewing class recordings to identify areas for improvement. Her personal interests include tango and rowing off the coast of Barcelona.",
+      "media": "/videos/teachers/aleja1.mp4"
+    },
+    {
+      "name": "CAROLINA",
+      "about": "Carolina is a passionate teacher with experience at all educational levels. For 15 years, she lived in Patagonia, where she worked as a teacher and teacher trainer. Music is another of her passions; she plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She has also taken musical comedy lessons and participated in numerous musicals. In 2021, she obtained a certification in teaching Spanish to foreigners and began teaching online and in-person at various platforms and institutes. To facilitate learning, she emphasizes the use of games and alternative tools in conversation classes, private lessons, and regular courses.",
+      "media": "/videos/teachers/caro.mp4"
+    },
+    {
+      "name": "DANIELA",
+      "about": "Daniela is from Argentina and lives in Buenos Aires. She is passionate about teaching and began teaching Spanish to foreigners in 2004. In 2008, she opened her own school, which became part of a university in 2015. In addition to her native Spanish, she is fluent in French, English, Portuguese, Hebrew, and Italian. She holds a degree in Communication Sciences and has studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. She enjoys spending her free time with her children and family and traveling.",
+      "media": "/videos/teachers/dani.mp4"
+    },
+    {
+      "name": "MELISSA",
+      "about": "Melissa was born and raised in Colombia and currently resides there. She has worked as a librarian and taught library skills at all levels. She holds a master's degree from Béziers, France. Since 2010, she has taught French, English, and Spanish at various academies. In her free time, she enjoys knitting dolls, singing with friends, and cooking.",
+      "media": "/videos/teachers/meli.mp4"
+    },
+    {
+      "name": "SABRINA",
+      "about": "Sabrina has always been passionate about language. She enjoys reading and editing texts. She studied journalism and worked as a sports reporter for radio and newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies, researching purposeful learning and participating in creative writing workshops. In 2021, she combined her passions for communication, education, and cultural exchange, obtaining an ELE Spanish teaching certification. She incorporates digital tools and games into her teaching methods at various academies and e-learning platforms. In 2022, she began training ELE teachers at the Teacher Training Institute.",
+      "media": "/videos/teachers/sabri.mp4"
+    },
+    {
+      "name": "MAITA",
+      "about": "Maita is a teacher of English and Spanish. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
+      "media": "/videos/teachers/maia.mp4"
+    },
+    {
+      "name": "ANITA",
+      "about": "Anita is from Ecuador and holds a degree in Communication from Universidad de las Américas in Quito. She also has a certification in Spanish grammar and teaching methodology. She gained experience teaching Spanish to foreigners at the Instituto Internacional de Español. In recent years, she has been teaching private and group online lessons to students from various countries, allowing her to interact with diverse cultures. She enjoys graphic design, photography, listening to music, salsa dancing, and traveling.",
+      "media": "/videos/teachers/anita.mp4"
+    },
+    {
+      "name": "VIRGINIA",
+      "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
+      "media": "/videos/teachers/vir.mp4"
+    }
+  ]
   },
   "videos": {
-    "PageTitle": "Videos from Our Lessons",
+    "PageTitle": "Sample Classroom Videos",
     "videos": [
-      {
-        "title": "A1.1 Beginner Level Spanish",
-        "description": "From the very first lesson at the beginner level, you start speaking Spanish.",
-        "youtubeId": "JP1dSslQqVc"
-      },
-      {
-        "title": "A1.1 Beginner Level Spanish",
-        "description": "Our students achieve basic speaking proficiency and use simple grammar structures within a few weeks.",
-        "youtubeId": "hdyEE5YDQBg"
-      },
-      {
-        "title": "A1.1 Beginner Level Spanish",
-        "description": "At the beginner level, our teachers sometimes provide assistance in Turkish.",
-        "youtubeId": "_x1uuq4Ta2c"
-      },
       {
         "title": "A2.1 Basic Level Spanish",
         "description": "By this level, our students have progressed enough to hold simple conversations.",
@@ -179,52 +164,95 @@
   },
   "courses": {
     "PageTitle": "Online Courses",
-    "accordionData": [
-      {
-        "title": "A1 LEVEL BEGINNER COURSES",
-        "content": [
-          { "contentTitle": "General Information", "contentDescription": "This course is for those new to Spanish. Some students may have learned some Spanish before or started with an app. However, a solid foundation must still be built from scratch. A small amount of Turkish is used in the first lessons, which is gradually reduced as students begin to understand Spanish." },
-          { "contentTitle": "Lessons", "contentDescription": "Lessons are held online via Zoom once a week. Each lesson lasts 2.5 hours with a 15-minute break in the middle. All lessons are recorded, and students can download and review the recordings later. Lesson materials and all important information are stored in Google Classroom and can be accessed anytime.\nThere are two courses at the beginner level:\nThe A1.1 course totals 40 hours. (Standard course lasts 4 months, intensive course lasts 2 months)\nThe A1.2 course totals 30 hours. (Lasts 3 months)" },
-          { "contentTitle": "Teachers", "contentDescription": "Our teachers are very experienced and creative in teaching Spanish through fun. A native Spanish-speaking teacher who can speak Turkish at a basic level is assigned." },
-          { "contentTitle": "Registration", "contentDescription": "Each course has a maximum of 13 students. Before registration, a free trial lesson is conducted with each student to assess their Spanish level. During the trial lesson, other details about the course are shared, and all questions are answered (in Turkish). The trial lesson is free and lasts about 20 minutes. To schedule a trial lesson, please send us a WhatsApp message." },
-          { "contentTitle": "Certificate", "contentDescription": "At the end of each course, an oral exam is conducted, and a certificate indicating the student's level is issued." }
-        ]
-      },
-      {
-        "title": "INTERMEDIATE - ADVANCED LEVEL COURSES",
-        "content": [
-          { "contentTitle": "General Information", "contentDescription": "In intermediate and advanced courses, in addition to focusing on grammar and vocabulary, speaking and listening exercises are conducted. Fun applications are also used to evaluate each student's progress.\nFrom the A1.2 level, students begin Spanish reading practice. Each student reads book chapters and shares them with classmates, improving fluency, learning new words, and gaining confidence in speaking. At more advanced levels, newspaper articles and essays are used to expand vocabulary." },
-          { "contentTitle": "Lessons", "contentDescription": "Lessons are held online via Zoom once a week. Each lesson lasts 2.5 hours with a 15-minute break in the middle. All lessons are recorded, and students can download and review the recordings later. Lesson materials and all important information are stored in Google Classroom and can be accessed anytime. Each course lasts 30 hours. (3 months)" },
-          { "contentTitle": "Teachers", "contentDescription": "Teachers who can answer detailed grammar questions and have experience in intermediate/advanced level classes are assigned." },
-          { "contentTitle": "Registration", "contentDescription": "Each course has a maximum of 13 students. Before registration, a free trial lesson is conducted with each student to assess their Spanish level. During the trial lesson, other details about the course are shared, and all questions are answered. To schedule a trial lesson, please send us a WhatsApp message." },
-          { "contentTitle": "Certificate", "contentDescription": "At the end of each course, an oral exam is conducted, and a certificate indicating the student's level is issued." }
-        ]
-      },
-      {
-        "title": "TOURISM SPANISH COURSE",
-        "content": [
-          { "contentTitle": "General Information", "contentDescription": "This course is designed for tourism sector employees who want to speak Spanish or those who want to use Spanish fluently for travel. It is an intensive course, making it suitable for those who want to learn Spanish very quickly. Three levels are taught in 4.5 months. You can start from scratch or from an intermediate level.\nThe course program follows the Common European Framework of Reference for Languages (CEFR). Special Spanish materials for the tourism sector are used, with a focus on fluent speaking practice." },
-          { "contentTitle": "Lessons", "contentDescription": "Lessons are held online via Zoom twice a week. Each lesson lasts 2.5 hours with a 15-minute break in the middle. All lessons are recorded, and students can download and review the recordings later. Lesson materials and all important information are stored in Google Classroom and can be accessed anytime. The entire course consists of 2 modules (180 hours total)." },
-          { "contentTitle": "Module A - Beginner Level", "contentDescription": "For those who have never learned Spanish or are just starting. It lasts 90 hours and covers A1.1, A1.2, and A2.1 levels. (Total duration: 4.5 months)" },
-          { "contentTitle": "Module B - Intermediate Level", "contentDescription": "For those who can speak comfortably in the present tense and have learned the past tense (Pretérito Indefinido). If your Spanish level is at least A2.1, you can start with Module B. It lasts 90 hours and covers A2.2, A2.3, and A2.4 levels. (Total duration: 4.5 months)" },
-          { "contentTitle": "Books Used", "contentDescription": "Tourism 1 - SGEL publications • Tourism 2 - SGEL publications • Tourism Professionals - Enclave ELE publications • Welcome Back (A1-A2) - Enclave ELE publications. Teachers also use their own materials and conduct communicative exercises to strengthen speaking in every lesson." },
-          { "contentTitle": "Teachers", "contentDescription": "Teachers have deep experience in ELE teaching. In Module A, a native Spanish-speaking teacher who can speak Turkish is assigned. In Module B, a native Spanish-speaking teacher is assigned." },
-          { "contentTitle": "Registration", "contentDescription": "Each course has a maximum of 13 students. Before registration, a free trial lesson is conducted with each student to assess their Spanish level. During the trial lesson, other details about the course are shared, and all questions are answered (in Turkish). The trial lesson is free and lasts about 20 minutes. To schedule a trial lesson, please send us a WhatsApp message." },
-          { "contentTitle": "Certificate", "contentDescription": "At the end of each course, an oral exam is conducted, and a certificate indicating the student's level is issued." }
-        ]
-      },
-      {
-        "title": "COMPLEMENTARY COURSES",
-        "content": [
-          { "contentTitle": "A. Spanish Conversation Course", "contentDescription": "Conversation and language practice courses aim to make speaking skills fluent for students who have passed the initial levels. Each lesson covers a different topic. This course teaches many words and terms on various subjects, focusing on everyday language use and intonation. Each student gets plenty of speaking practice opportunities. Conversation courses are offered at two different levels.\nTo join the beginner level, you must have completed the A1.1 course.\nIf you have completed the A2.1 level, you can join the more advanced conversation course.\nSince the teachers for this course do not speak Turkish, real communication is established in Spanish. The course totals 16 hours. Each course has a maximum of 10 students." },
-          { "contentTitle": "B. Pasado Pisado - Spanish Past Tense Course", "contentDescription": "In the Pasado Pisado Course, students focus on the three past tenses in Spanish (pretérito indefinido, pretérito imperfecto, and pretérito perfecto). The past tense is one of the topics that requires the most practice when learning Spanish. The grammar structure is examined in detail. Written and oral practice and speaking exercises are conducted. By the end of the course, you will start using the correct past tense fluently.\nYou must have completed the A1.2 level to join this course.\nThe course totals 16 hours. Each course has a maximum of 10 students." },
-          { "contentTitle": "C. Learn Spanish with Songs Course", "contentDescription": "This course is for those who want to understand the lyrics of popular Spanish songs and learn new words and expressions while having fun. Understanding the music Spanish speakers listen to in their daily lives will greatly improve your language level. We will also explore the biographies of Latin American singers and practice speaking together. The teacher for this course is both a Spanish teacher and a professional musician.\nYou must have completed at least the A2.1 level to join this course.\nThe course totals 16 hours. Each course has a maximum of 10 students." },
-          { "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood Course", "contentDescription": "The Amo el subjuntivo course is ideal for students who want to improve their Spanish levels and master this challenging topic. This course teaches all usage types of the subjunctive mood and its forms in different tenses. At the end of each topic, grammar practice and speaking exercises are conducted. The teacher is a philology expert.\nYou must have completed at least the A2.4 level to join this course.\nThe course totals 16 hours. Each course has a maximum of 10 students." },
-          { "contentTitle": "E. Grammar is Beautiful Course", "contentDescription": "The Grammar is Beautiful course is for students who have reached a certain level in grammar but still cannot use it perfectly. Each lesson covers a different grammar topic, totaling 8 lessons. In the final lesson, all grammar topics covered during the course are reviewed to solidify your knowledge. The teacher has special training in intermediate-level grammar teaching.\nStudents who have completed the A2.2 level can join this course.\nThe course totals 16 hours. Each course has a maximum of 10 students." },
-          { "contentTitle": "Lessons", "contentDescription": "Since no homework is assigned, joining complementary courses alongside regular lessons does not overwhelm students and greatly accelerates the learning process. Lessons are held online via Zoom once a week. Each lesson lasts 2 hours. All lessons are recorded, and students can download and review the recordings later. Lesson materials and all important information are stored in Google Classroom and can be accessed anytime." },
-          { "contentTitle": "Registration", "contentDescription": "Before registration, a free trial lesson is conducted with each student to assess their Spanish level. During the trial lesson, other details about the course are shared, and all questions are answered. To schedule a trial lesson, please send us a WhatsApp message." },
-          { "contentTitle": "Certificate", "contentDescription": "There are no exams in these courses, so no certificates are issued." }
-        ]
+  "accordionData": [
+    {
+      "title": "A1 LEVEL BEGINNER COURSES",
+      "content": [
+        {
+          "contentTitle": "General Information",
+          "contentDescription": "This course is designed for students new to Spanish. While some may have prior exposure through apps or other means, a solid foundation is built from the beginning. In the initial lessons, limited English is used to aid comprehension, gradually decreasing as students' Spanish proficiency develops."
+        },
+        {
+          "contentTitle": "Lessons",
+          "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom.\n\nThe beginner level includes two courses:\n- A1.1 course: 40 hours (Standard: 4 months, Intensive: 2 months)\n- A1.2 course: 30 hours (3 months)"
+        },
+        {
+          "contentTitle": "Teachers",
+          "contentDescription": "Our experienced teachers use engaging and interactive methods to teach Spanish. A native Spanish-speaking teacher with basic English proficiency is assigned to this level."
+        },
+        {
+          "contentTitle": "Registration",
+          "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions (in English). To schedule a trial lesson, please contact us via WhatsApp."
+        },
+        {
+          "contentTitle": "Certificate",
+          "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
+        }
+      ]
+    },
+    {
+      "title": "INTERMEDIATE - ADVANCED LEVEL COURSES",
+      "content": [
+        {
+          "contentTitle": "General Information",
+          "contentDescription": "Intermediate and advanced courses focus on developing speaking and listening skills alongside grammar and vocabulary. Interactive applications are used to track student progress.\n\nFrom the A1.2 level, students engage in Spanish reading practice, sharing and discussing book chapters to improve fluency, expand vocabulary, and build confidence. At higher levels, newspaper articles and essays are incorporated to further enhance vocabulary."
+        },
+        {
+          "contentTitle": "Lessons",
+          "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom. Each course is 30 hours in length (3 months)."
+        },
+        {
+          "contentTitle": "Teachers",
+          "contentDescription": "Experienced teachers with expertise in intermediate/advanced level instruction and the ability to address complex grammar questions are assigned to these courses."
+        },
+        {
+          "contentTitle": "Registration",
+          "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
+        },
+        {
+          "contentTitle": "Certificate",
+          "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
+        }
+      ]
+    },
+    {
+      "title": "COMPLEMENTARY COURSES",
+      "content": [
+        {
+          "contentTitle": "A. Spanish Conversation Course",
+          "contentDescription": "These courses aim to develop fluent speaking skills for students who have completed the introductory levels. Each lesson covers a different topic, focusing on everyday language use and intonation while expanding vocabulary. Students have ample opportunities for speaking practice. Conversation courses are offered at two levels:\n\n- Beginner level: Requires completion of the A1.1 course.\n- Advanced level: Requires completion of the A2.1 level.\n\nThese courses are conducted entirely in Spanish to foster authentic communication. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "B. Pasado Pisado - Spanish Past Tense Course",
+          "contentDescription": "This course focuses on mastering the three past tenses in Spanish (pretérito indefinido, pretérito imperfecto, and pretérito perfecto), an area that often requires significant practice. The course provides a detailed examination of the grammatical structure, along with written, oral, and speaking exercises. By the end, students will use the past tense with confidence and fluency.\n\nCompletion of the A1.2 level is a prerequisite for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "C. Learn Spanish with Songs Course",
+          "contentDescription": "This course is designed for students who want to enhance their language skills in a fun and engaging way by understanding the lyrics of popular Spanish songs. Students will learn new vocabulary and expressions, gain insights into the music Spanish speakers listen to in their daily lives, explore the biographies of Latin American singers, and practice speaking together. The instructor is both a Spanish teacher and a professional musician.\n\nCompletion of at least the A2.1 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood Course",
+          "contentDescription": "This course is ideal for students seeking to master the subjunctive mood in Spanish. It covers all usage types and forms of the subjunctive across different tenses, with grammar practice and speaking exercises at the end of each topic. The instructor is a philology expert.\n\nCompletion of at least the A2.4 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "E. Grammar is Beautiful Course",
+          "contentDescription": "This course is for students who have attained a certain level of grammar knowledge but wish to improve their accuracy and fluency. Each lesson covers a different grammar topic, totaling 8 lessons. The final lesson is a comprehensive review to solidify understanding. The instructor has specialized training in teaching intermediate-level grammar.\n\nStudents who have completed the A2.2 level are eligible for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "Lessons",
+          "contentDescription": "Complementary courses are designed to be taken alongside regular lessons without overwhelming students, allowing for accelerated learning. Lessons are conducted online via Zoom once a week for 2 hours. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom."
+        },
+        {
+          "contentTitle": "Registration",
+          "contentDescription": "Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
+        },
+        {
+          "contentTitle": "Certificate",
+          "contentDescription": "These courses do not include exams, and therefore, no certificates are issued."
+        }
+      ]
+    }
+  ]
       },
       {
         "title": "PRIVATE LESSONS FOR CHILDREN / ADULTS",
@@ -468,17 +496,12 @@
       "onlineSpanishOneColumns": [
         { "key": "course", "header": "Group Courses" },
         { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price - For residents of Turkey" }
+        { "key": "price", "header": "Price" }
       ],
       "onlineSpanishTwoColumns": [
         { "key": "course", "header": "One-on-One Private Lessons" },
         { "key": "duration", "header": "Duration" },
         { "key": "price", "header": "Price" }
-      ],
-      "extraSpanishColumns": [
-        { "key": "course", "header": "Group Courses" },
-        { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price - For residents abroad" }
       ]
     },
     "courses": {
@@ -486,20 +509,14 @@
         { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 months", "price": "5,600 TL" },
         { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 months", "price": "4,500 TL" },
         { "course": "A1.2 / Intermediate / Advanced levels", "duration": "30 hours - 3 months", "price": "4,250 TL" },
-        { "course": "Complementary courses", "duration": "16 hours - 2 months", "price": "2,200 TL" },
-        { "course": "Tourism Spanish Beginner (A)", "duration": "90 hours - 4.5 months", "price": "12,700 TL" },
-        { "course": "Tourism Spanish Intermediate (B)", "duration": "90 hours - 4.5 months", "price": "12,700 TL" }
+        { "course": "Complementary courses", "duration": "16 hours - 2 months", "price": "2,200 TL" }
+        
       ],
       "onlineSpanishTwoTable": [
         { "course": "Private lesson - adults", "duration": "1 hour", "price": "22 EUR" },
         { "course": "Private lesson - children", "duration": "45 minutes", "price": "17 EUR" }
       ],
-      "extraSpanishTable": [
-        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 months", "price": "190 EUR" },
-        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 months", "price": "160 EUR" },
-        { "course": "A1.2 / Intermediate / Advanced levels", "duration": "30 hours - 3 months", "price": "145 EUR" },
-        { "course": "Complementary courses", "duration": "16 hours - 2 months", "price": "90 EUR" }
-      ]
+     
     },
     "cards": [
       {
@@ -514,10 +531,10 @@
   },
   "contact": {
     "PageTitle": "Contact Us",
-    "needAssistance": "You can write to us in Turkish...",
+    "needAssistance": "You can write to us in English...",
     "contactDescription": "We look forward to your WhatsApp message for all your questions.",
     "officeAddressTitle": "Our School",
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12, 08340 Vilassar de Mar, Barcelona, Spain",
-    "officeContactButton": "WhatsApp (530) 77 00 789"
+    "officeContactButton": "WhatsApp +34 633 45 22 68"
   }
 }
