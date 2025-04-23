@@ -51,7 +51,7 @@ const [language, setLanguage] = useState<string>(() => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setCookie("language", language);
+     // setCookie("language", language);
     }
   }, [language]);
 
