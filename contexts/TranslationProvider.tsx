@@ -33,6 +33,13 @@ const [language, setLanguage] = useState<string>(() => {
   return initialLang;
 });
 
+useEffect(() => {
+  const newLang = pathname?.split("/")[1];
+  if (supportedLanguages.includes(newLang) && newLang !== language) {
+    setLanguage(newLang);
+  }
+}, [pathname]);
+
   const [translations, setTranslations] = useState<Translations>({});
 
   useEffect(() => {
