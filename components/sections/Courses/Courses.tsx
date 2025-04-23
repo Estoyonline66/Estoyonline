@@ -18,7 +18,7 @@ export default function Courses() {
   return (
     <>
       <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
-         <h2 className="text-2xl font-bold mb-4">2025 kurs takvimi</h2>
+        <h2 className="text-2xl font-bold mb-4">{t("courses.scheduleTitle")}</h2>
 		<ul className="grid grid-cols-1 sm:grid-cols-3 gap-10">
             {cardCourses.map((card, index) => (
             <li

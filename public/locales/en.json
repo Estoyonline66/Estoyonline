@@ -164,6 +164,7 @@
   },
   "courses": {
     "PageTitle": "Online Courses",
+	 "scheduleTitle": "2025 Course Schedule",  
   "accordionData": [
     {
       "title": "A1 LEVEL BEGINNER COURSES",
