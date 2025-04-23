@@ -26,7 +26,7 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
     if (typeof window !== "undefined") {
       return getCookie("language") || "tr";
     }
-    return "tr";
+    return "es";
   });
 
   const [translations, setTranslations] = useState<Translations>({});
