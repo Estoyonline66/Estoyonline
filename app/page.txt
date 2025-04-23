@@ -1,0 +1,25 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function RootPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const language = navigator.language || navigator.languages?.[0] || '';
+
+    if (language.toLowerCase().includes('tr')) {
+      router.replace('/tr');
+      return;
+    }
+    if (timezone === 'Europe/Istanbul') {
+      router.replace('/tr');
+      return;
+    }
+    router.replace('/en');
+  }, []);
+
+  return <div>Yönlendiriliyorsunuz…</div>;
+}
