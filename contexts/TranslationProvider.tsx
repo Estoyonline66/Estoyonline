@@ -21,13 +21,17 @@ const TranslationContext = createContext<TranslationContextType | undefined>(und
 export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const pathname = usePathname();
-  
-  const [language, setLanguage] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      return getCookie("language") || "tr";
-    }
-    return "es";
-  });
+
+const detectedLangFromPath = pathname?.split("/")[1];
+const supportedLanguages = ["en", "tr"];
+const initialLang = supportedLanguages.includes(detectedLangFromPath) ? detectedLangFromPath : "tr";
+
+const [language, setLanguage] = useState<string>(() => {
+  if (typeof window !== "undefined") {
+    return getCookie("language") || initialLang;
+  }
+  return initialLang;
+});
 
   const [translations, setTranslations] = useState<Translations>({});
 
