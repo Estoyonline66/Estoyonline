@@ -13,7 +13,9 @@ type Testimonial = {
 
 const TestimonialCarousel = () => {
   const { t } = useTranslation();
-  const testimonials: Testimonial[] = t("home.testimonialsList");
+  // Eğer JSON’da home.testimonialsList yoksa bile [], map’i kırmaz
+  const testimonials: Testimonial[] =
+    t<Testimonial[]>("home.testimonialsList") || [];
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
