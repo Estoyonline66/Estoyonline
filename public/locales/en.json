@@ -72,60 +72,113 @@
     "homeAboutButton": "WhatsApp +34 633 45 22 68",
     "homeSubAboutTitle": "With our native Spanish-speaking teachers, you'll learn Spanish naturally and enjoyably. We can't wait to meet you.",
     "homeSubAboutButton": "Meet the teachers",
-    "homeSubAboutVideos": ["/videos/teachers/aleja1.mp4"],
+    "homeSubAboutVideos": [
+      "/videos/teachers/aleja1.mp4"
+    ],
     "testimonies": "What do our students say about us?",
     "counterTitle": "Types of courses",
     "counterTitle2": "Teachers",
     "counterTitle3": "Active students",
-    "counterTitle4": "Certificates awarded"
+    "counterTitle4": "Certificates awarded",
+    "testimonialsList": [
+      {
+        "image": "/Images/yasemin.avsar.jpg",
+        "firstComment": "If I had known how enjoyable learning Spanish could be, I would have started much earlier 🥰 I eagerly await every lesson, so glad I found you 🌺🌺",
+        "lastComment": "I eagerly await every lesson",
+        "personName": "yasemen.avsar",
+        "timeAgo": "20 min"
+      },
+      {
+        "image": "/Images/umaysirke.jpg",
+        "firstComment": "I’ve always loved Aleja and her teaching style. I often give her as an example of how fun and effective a teacher can be 😍",
+        "lastComment": "I’ve always loved Aleja and her teaching style",
+        "personName": "umaysirke",
+        "timeAgo": "2 h"
+      },
+      {
+        "image": "/Images/ugurege.jpg",
+        "firstComment": "Gracias estoyonline ❤️ Learning a new language has never been so enjoyable and full of energy.",
+        "lastComment": "so enjoyable and full of energy",
+        "personName": "ugurege",
+        "timeAgo": "5 h"
+      },
+      {
+        "image": "/Images/muge_dusun.jpg",
+        "firstComment": "It's amazing how much I’ve improved with just a few lessons! ¡Gracias! 💪",
+        "lastComment": "how much I’ve improved",
+        "personName": "muge_dusun",
+        "timeAgo": "5 min"
+      },
+      {
+        "image": "/Images/meltem_sonmez_canseco.jpg",
+        "firstComment": "Every class is a joy 🌞 Aleja’s positive energy is contagious!",
+        "lastComment": "Aleja’s positive energy is contagious",
+        "personName": "meltem_sonmez_canseco",
+        "timeAgo": "10 min"
+      },
+      {
+        "image": "/Images/ulucozuyener.jpg",
+        "firstComment": "From zero to speaking full sentences. Highly recommended!",
+        "lastComment": "From zero to speaking full sentences",
+        "personName": "ulucozuyener",
+        "timeAgo": "9 h"
+      },
+      {
+        "image": "/Images/17limerence.jpg",
+        "firstComment": "I was honestly like 'wow'. You're a teacher and still pushing yourself to grow. The sentence 'I'll start applying everything I’ve learned soon' was so inspiring—I felt your excitement 😊 I loved it ❤️ Teacher ❤️",
+        "lastComment": "I was honestly like 'wow'. You're a teacher and still pushing yourself to grow.",
+        "personName": "17limerence",
+        "timeAgo": "10 h"
+      }
+    ]
   },
   "teachers": {
     "PageTitle": "Our Teachers",
     "teachersTitle": "Meet our native Spanish-speaking teachers...",
     "teachersTitleRed": "",
     "teachersTitle2": "Let the sun warm your words",
- "teacher": [
-    {
-      "name": "ALEJA",
-      "about": "Aleja previously taught at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for Spanish practice. Throughout her teaching career, she enhanced her skills with international training courses, including ELE, DELE, AVE, and Int House certifications. In 2019, she founded her own school in Spain, developing modern, engaging, and conversation-focused teaching methods. She and her team continuously refine their teaching approach by incorporating new technologies and reviewing class recordings to identify areas for improvement. Her personal interests include tango and rowing off the coast of Barcelona.",
-      "media": "/videos/teachers/aleja1.mp4"
-    },
-    {
-      "name": "CAROLINA",
-      "about": "Carolina is a passionate teacher with experience at all educational levels. For 15 years, she lived in Patagonia, where she worked as a teacher and teacher trainer. Music is another of her passions; she plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She has also taken musical comedy lessons and participated in numerous musicals. In 2021, she obtained a certification in teaching Spanish to foreigners and began teaching online and in-person at various platforms and institutes. To facilitate learning, she emphasizes the use of games and alternative tools in conversation classes, private lessons, and regular courses.",
-      "media": "/videos/teachers/caro.mp4"
-    },
-    {
-      "name": "DANIELA",
-      "about": "Daniela is from Argentina and lives in Buenos Aires. She is passionate about teaching and began teaching Spanish to foreigners in 2004. In 2008, she opened her own school, which became part of a university in 2015. In addition to her native Spanish, she is fluent in French, English, Portuguese, Hebrew, and Italian. She holds a degree in Communication Sciences and has studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. She enjoys spending her free time with her children and family and traveling.",
-      "media": "/videos/teachers/dani.mp4"
-    },
-    {
-      "name": "MELISSA",
-      "about": "Melissa was born and raised in Colombia and currently resides there. She has worked as a librarian and taught library skills at all levels. She holds a master's degree from Béziers, France. Since 2010, she has taught French, English, and Spanish at various academies. In her free time, she enjoys knitting dolls, singing with friends, and cooking.",
-      "media": "/videos/teachers/meli.mp4"
-    },
-    {
-      "name": "SABRINA",
-      "about": "Sabrina has always been passionate about language. She enjoys reading and editing texts. She studied journalism and worked as a sports reporter for radio and newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies, researching purposeful learning and participating in creative writing workshops. In 2021, she combined her passions for communication, education, and cultural exchange, obtaining an ELE Spanish teaching certification. She incorporates digital tools and games into her teaching methods at various academies and e-learning platforms. In 2022, she began training ELE teachers at the Teacher Training Institute.",
-      "media": "/videos/teachers/sabri.mp4"
-    },
-    {
-      "name": "MAITA",
-      "about": "Maita is a teacher of English and Spanish. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
-      "media": "/videos/teachers/maia.mp4"
-    },
-    {
-      "name": "ANITA",
-      "about": "Anita is from Ecuador and holds a degree in Communication from Universidad de las Américas in Quito. She also has a certification in Spanish grammar and teaching methodology. She gained experience teaching Spanish to foreigners at the Instituto Internacional de Español. In recent years, she has been teaching private and group online lessons to students from various countries, allowing her to interact with diverse cultures. She enjoys graphic design, photography, listening to music, salsa dancing, and traveling.",
-      "media": "/videos/teachers/anita.mp4"
-    },
-    {
-      "name": "VIRGINIA",
-      "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
-      "media": "/videos/teachers/vir.mp4"
-    }
-  ]
+    "teacher": [
+      {
+        "name": "ALEJA",
+        "about": "Aleja previously taught at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for Spanish practice. Throughout her teaching career, she enhanced her skills with international training courses, including ELE, DELE, AVE, and Int House certifications. In 2019, she founded her own school in Spain, developing modern, engaging, and conversation-focused teaching methods. She and her team continuously refine their teaching approach by incorporating new technologies and reviewing class recordings to identify areas for improvement. Her personal interests include tango and rowing off the coast of Barcelona.",
+        "media": "/videos/teachers/aleja1.mp4"
+      },
+      {
+        "name": "CAROLINA",
+        "about": "Carolina is a passionate teacher with experience at all educational levels. For 15 years, she lived in Patagonia, where she worked as a teacher and teacher trainer. Music is another of her passions; she plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She has also taken musical comedy lessons and participated in numerous musicals. In 2021, she obtained a certification in teaching Spanish to foreigners and began teaching online and in-person at various platforms and institutes. To facilitate learning, she emphasizes the use of games and alternative tools in conversation classes, private lessons, and regular courses.",
+        "media": "/videos/teachers/caro.mp4"
+      },
+      {
+        "name": "DANIELA",
+        "about": "Daniela is from Argentina and lives in Buenos Aires. She is passionate about teaching and began teaching Spanish to foreigners in 2004. In 2008, she opened her own school, which became part of a university in 2015. In addition to her native Spanish, she is fluent in French, English, Portuguese, Hebrew, and Italian. She holds a degree in Communication Sciences and has studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. She enjoys spending her free time with her children and family and traveling.",
+        "media": "/videos/teachers/dani.mp4"
+      },
+      {
+        "name": "MELISSA",
+        "about": "Melissa was born and raised in Colombia and currently resides there. She has worked as a librarian and taught library skills at all levels. She holds a master's degree from Béziers, France. Since 2010, she has taught French, English, and Spanish at various academies. In her free time, she enjoys knitting dolls, singing with friends, and cooking.",
+        "media": "/videos/teachers/meli.mp4"
+      },
+      {
+        "name": "SABRINA",
+        "about": "Sabrina has always been passionate about language. She enjoys reading and editing texts. She studied journalism and worked as a sports reporter for radio and newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies, researching purposeful learning and participating in creative writing workshops. In 2021, she combined her passions for communication, education, and cultural exchange, obtaining an ELE Spanish teaching certification. She incorporates digital tools and games into her teaching methods at various academies and e-learning platforms. In 2022, she began training ELE teachers at the Teacher Training Institute.",
+        "media": "/videos/teachers/sabri.mp4"
+      },
+      {
+        "name": "MAITA",
+        "about": "Maita is a teacher of English and Spanish. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
+        "media": "/videos/teachers/maia.mp4"
+      },
+      {
+        "name": "ANITA",
+        "about": "Anita is from Ecuador and holds a degree in Communication from Universidad de las Américas in Quito. She also has a certification in Spanish grammar and teaching methodology. She gained experience teaching Spanish to foreigners at the Instituto Internacional de Español. In recent years, she has been teaching private and group online lessons to students from various countries, allowing her to interact with diverse cultures. She enjoys graphic design, photography, listening to music, salsa dancing, and traveling.",
+        "media": "/videos/teachers/anita.mp4"
+      },
+      {
+        "name": "VIRGINIA",
+        "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
+        "media": "/videos/teachers/vir.mp4"
+      }
+    ]
   },
   "videos": {
     "PageTitle": "Sample Classroom Videos",
@@ -164,100 +217,106 @@
   },
   "courses": {
     "PageTitle": "Online Courses",
-	 "scheduleTitle": "2025 Course Schedule",  
-  "accordionData": [
-    {
-      "title": "A1 LEVEL BEGINNER COURSES",
-      "content": [
-        {
-          "contentTitle": "General Information",
-          "contentDescription": "This course is designed for students new to Spanish. While some may have prior exposure through apps or other means, a solid foundation is built from the beginning. In the initial lessons, limited English is used to aid comprehension, gradually decreasing as students' Spanish proficiency develops."
-        },
-        {
-          "contentTitle": "Lessons",
-          "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom.\n\nThe beginner level includes two courses:\n- A1.1 course: 40 hours (Standard: 4 months, Intensive: 2 months)\n- A1.2 course: 30 hours (3 months)"
-        },
-        {
-          "contentTitle": "Teachers",
-          "contentDescription": "Our experienced teachers use engaging and interactive methods to teach Spanish. A native Spanish-speaking teacher with basic English proficiency is assigned to this level."
-        },
-        {
-          "contentTitle": "Registration",
-          "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions (in English). To schedule a trial lesson, please contact us via WhatsApp."
-        },
-        {
-          "contentTitle": "Certificate",
-          "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
-        }
-      ]
-    },
-    {
-      "title": "INTERMEDIATE - ADVANCED LEVEL COURSES",
-      "content": [
-        {
-          "contentTitle": "General Information",
-          "contentDescription": "Intermediate and advanced courses focus on developing speaking and listening skills alongside grammar and vocabulary. Interactive applications are used to track student progress.\n\nFrom the A1.2 level, students engage in Spanish reading practice, sharing and discussing book chapters to improve fluency, expand vocabulary, and build confidence. At higher levels, newspaper articles and essays are incorporated to further enhance vocabulary."
-        },
-        {
-          "contentTitle": "Lessons",
-          "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom. Each course is 30 hours in length (3 months)."
-        },
-        {
-          "contentTitle": "Teachers",
-          "contentDescription": "Experienced teachers with expertise in intermediate/advanced level instruction and the ability to address complex grammar questions are assigned to these courses."
-        },
-        {
-          "contentTitle": "Registration",
-          "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
-        },
-        {
-          "contentTitle": "Certificate",
-          "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
-        }
-      ]
-    },
-    {
-      "title": "COMPLEMENTARY COURSES",
-      "content": [
-        {
-          "contentTitle": "A. Spanish Conversation Course",
-          "contentDescription": "These courses aim to develop fluent speaking skills for students who have completed the introductory levels. Each lesson covers a different topic, focusing on everyday language use and intonation while expanding vocabulary. Students have ample opportunities for speaking practice. Conversation courses are offered at two levels:\n\n- Beginner level: Requires completion of the A1.1 course.\n- Advanced level: Requires completion of the A2.1 level.\n\nThese courses are conducted entirely in Spanish to foster authentic communication. Each course is 16 hours and has a maximum of 10 students."
-        },
-        {
-          "contentTitle": "B. Pasado Pisado - Spanish Past Tense Course",
-          "contentDescription": "This course focuses on mastering the three past tenses in Spanish (pretérito indefinido, pretérito imperfecto, and pretérito perfecto), an area that often requires significant practice. The course provides a detailed examination of the grammatical structure, along with written, oral, and speaking exercises. By the end, students will use the past tense with confidence and fluency.\n\nCompletion of the A1.2 level is a prerequisite for this course. Each course is 16 hours and has a maximum of 10 students."
-        },
-        {
-          "contentTitle": "C. Learn Spanish with Songs Course",
-          "contentDescription": "This course is designed for students who want to enhance their language skills in a fun and engaging way by understanding the lyrics of popular Spanish songs. Students will learn new vocabulary and expressions, gain insights into the music Spanish speakers listen to in their daily lives, explore the biographies of Latin American singers, and practice speaking together. The instructor is both a Spanish teacher and a professional musician.\n\nCompletion of at least the A2.1 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
-        },
-        {
-          "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood Course",
-          "contentDescription": "This course is ideal for students seeking to master the subjunctive mood in Spanish. It covers all usage types and forms of the subjunctive across different tenses, with grammar practice and speaking exercises at the end of each topic. The instructor is a philology expert.\n\nCompletion of at least the A2.4 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
-        },
-        {
-          "contentTitle": "E. Grammar is Beautiful Course",
-          "contentDescription": "This course is for students who have attained a certain level of grammar knowledge but wish to improve their accuracy and fluency. Each lesson covers a different grammar topic, totaling 8 lessons. The final lesson is a comprehensive review to solidify understanding. The instructor has specialized training in teaching intermediate-level grammar.\n\nStudents who have completed the A2.2 level are eligible for this course. Each course is 16 hours and has a maximum of 10 students."
-        },
-        {
-          "contentTitle": "Lessons",
-          "contentDescription": "Complementary courses are designed to be taken alongside regular lessons without overwhelming students, allowing for accelerated learning. Lessons are conducted online via Zoom once a week for 2 hours. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom."
-        },
-        {
-          "contentTitle": "Registration",
-          "contentDescription": "Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
-        },
-        {"contentTitle": "Certificate", "contentDescription": "These courses do not include exams, and therefore, no certificates are issued." }
-      ]
-    },
+    "scheduleTitle": "2025 Course Schedule",
+    "accordionData": [
+      {
+        "title": "A1 LEVEL BEGINNER COURSES",
+        "content": [
+          {
+            "contentTitle": "General Information",
+            "contentDescription": "This course is designed for students new to Spanish. While some may have prior exposure through apps or other means, a solid foundation is built from the beginning. In the initial lessons, limited English is used to aid comprehension, gradually decreasing as students' Spanish proficiency develops."
+          },
+          {
+            "contentTitle": "Lessons",
+            "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom.\n\nThe beginner level includes two courses:\n- A1.1 course: 40 hours (Standard: 4 months, Intensive: 2 months)\n- A1.2 course: 30 hours (3 months)"
+          },
+          {
+            "contentTitle": "Teachers",
+            "contentDescription": "Our experienced teachers use engaging and interactive methods to teach Spanish. A native Spanish-speaking teacher with basic English proficiency is assigned to this level."
+          },
+          {
+            "contentTitle": "Registration",
+            "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions (in English). To schedule a trial lesson, please contact us via WhatsApp."
+          },
+          {
+            "contentTitle": "Certificate",
+            "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
+          }
+        ]
+      },
+      {
+        "title": "INTERMEDIATE - ADVANCED LEVEL COURSES",
+        "content": [
+          {
+            "contentTitle": "General Information",
+            "contentDescription": "Intermediate and advanced courses focus on developing speaking and listening skills alongside grammar and vocabulary. Interactive applications are used to track student progress.\n\nFrom the A1.2 level, students engage in Spanish reading practice, sharing and discussing book chapters to improve fluency, expand vocabulary, and build confidence. At higher levels, newspaper articles and essays are incorporated to further enhance vocabulary."
+          },
+          {
+            "contentTitle": "Lessons",
+            "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom. Each course is 30 hours in length (3 months)."
+          },
+          {
+            "contentTitle": "Teachers",
+            "contentDescription": "Experienced teachers with expertise in intermediate/advanced level instruction and the ability to address complex grammar questions are assigned to these courses."
+          },
+          {
+            "contentTitle": "Registration",
+            "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
+          },
+          {
+            "contentTitle": "Certificate",
+            "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
+          }
+        ]
+      },
+      {
+        "title": "COMPLEMENTARY COURSES",
+        "content": [
+          {
+            "contentTitle": "A. Spanish Conversation Course",
+            "contentDescription": "These courses aim to develop fluent speaking skills for students who have completed the introductory levels. Each lesson covers a different topic, focusing on everyday language use and intonation while expanding vocabulary. Students have ample opportunities for speaking practice. Conversation courses are offered at two levels:\n\n- Beginner level: Requires completion of the A1.1 course.\n- Advanced level: Requires completion of the A2.1 level.\n\nThese courses are conducted entirely in Spanish to foster authentic communication. Each course is 16 hours and has a maximum of 10 students."
+          },
+          {
+            "contentTitle": "B. Pasado Pisado - Spanish Past Tense Course",
+            "contentDescription": "This course focuses on mastering the three past tenses in Spanish (pretérito indefinido, pretérito imperfecto, and pretérito perfecto), an area that often requires significant practice. The course provides a detailed examination of the grammatical structure, along with written, oral, and speaking exercises. By the end, students will use the past tense with confidence and fluency.\n\nCompletion of the A1.2 level is a prerequisite for this course. Each course is 16 hours and has a maximum of 10 students."
+          },
+          {
+            "contentTitle": "C. Learn Spanish with Songs Course",
+            "contentDescription": "This course is designed for students who want to enhance their language skills in a fun and engaging way by understanding the lyrics of popular Spanish songs. Students will learn new vocabulary and expressions, gain insights into the music Spanish speakers listen to in their daily lives, explore the biographies of Latin American singers, and practice speaking together. The instructor is both a Spanish teacher and a professional musician.\n\nCompletion of at least the A2.1 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
+          },
+          {
+            "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood Course",
+            "contentDescription": "This course is ideal for students seeking to master the subjunctive mood in Spanish. It covers all usage types and forms of the subjunctive across different tenses, with grammar practice and speaking exercises at the end of each topic. The instructor is a philology expert.\n\nCompletion of at least the A2.4 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
+          },
+          {
+            "contentTitle": "E. Grammar is Beautiful Course",
+            "contentDescription": "This course is for students who have attained a certain level of grammar knowledge but wish to improve their accuracy and fluency. Each lesson covers a different grammar topic, totaling 8 lessons. The final lesson is a comprehensive review to solidify understanding. The instructor has specialized training in teaching intermediate-level grammar.\n\nStudents who have completed the A2.2 level are eligible for this course. Each course is 16 hours and has a maximum of 10 students."
+          },
+          {
+            "contentTitle": "Lessons",
+            "contentDescription": "Complementary courses are designed to be taken alongside regular lessons without overwhelming students, allowing for accelerated learning. Lessons are conducted online via Zoom once a week for 2 hours. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom."
+          },
+          {
+            "contentTitle": "Registration",
+            "contentDescription": "Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
+          },
+          {
+            "contentTitle": "Certificate",
+            "contentDescription": "These courses do not include exams, and therefore, no certificates are issued."
+          }
+        ]
+      },
       {
         "title": "PRIVATE LESSONS FOR CHILDREN / ADULTS",
         "content": [
-          { "contentTitle": "General Information", "contentDescription": "Those over 14 years old take adult private lessons.\nThose aged 6-13 take children's private lessons.\n\nPrivate lessons are available for those whose schedules do not fit group lessons or who want to learn Spanish much faster. Adult private lessons are customized based on the student's interests and topics they are curious about. Video recordings of these lessons are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\nIn children's private lessons, vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship in children's lessons involves very different and special dynamics. Therefore, our teachers assigned specifically for children have deep experience working with kids. If parents request, lessons can be recorded. The teacher also sends a weekly progress report to the parents. Children's private lessons last 45 minutes.\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
+          {
+            "contentTitle": "General Information",
+            "contentDescription": "Those over 14 years old take adult private lessons.\nThose aged 6-13 take children's private lessons.\n\nPrivate lessons are available for those whose schedules do not fit group lessons or who want to learn Spanish much faster. Adult private lessons are customized based on the student's interests and topics they are curious about. Video recordings of these lessons are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\nIn children's private lessons, vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship in children's lessons involves very different and special dynamics. Therefore, our teachers assigned specifically for children have deep experience working with kids. If parents request, lessons can be recorded. The teacher also sends a weekly progress report to the parents. Children's private lessons last 45 minutes.\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message."
+          }
         ]
       }
     ],
-    "title": "Level Planning",
+    "title": "ALL LEVELS PROGRAM",
     "cardCourses": [
       {
         "title": "A1.1 Beginner",
@@ -420,66 +479,185 @@
         "month": "May 10"
       }
     ],
-    "title": "ALL LEVELS PROGRAM",
     "levels": [
       {
         "title": "Beginner Level A1",
         "items": [
-          { "level": "A1.1", "duration": "40 hours - Book:", "book": "Aula 1" },
-          { "level": "A1.2", "duration": "30 hours - Book:", "book": "Aula 1" }
+          {
+            "level": "A1.1",
+            "duration": "40 hours - Book:",
+            "book": "Aula 1"
+          },
+          {
+            "level": "A1.2",
+            "duration": "30 hours - Book:",
+            "book": "Aula 1"
+          }
         ]
       },
       {
         "title": "Basic Level A2",
         "items": [
-          { "level": "A2.1", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A2.2", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A3.1", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A3.2", "duration": "30 hours - Book:", "book": "Aula 2" }
+          {
+            "level": "A2.1",
+            "duration": "30 hours - Book:",
+            "book": "Aula 2"
+          },
+          {
+            "level": "A2.2",
+            "duration": "30 hours - Book:",
+            "book": "Aula 2"
+          },
+          {
+            "level": "A3.1",
+            "duration": "30 hours - Book:",
+            "book": "Aula 2"
+          },
+          {
+            "level": "A3.2",
+            "duration": "30 hours - Book:",
+            "book": "Aula 2"
+          }
         ]
       },
       {
         "title": "Intermediate Level B1",
         "items": [
-          { "level": "B1.1", "duration": "30 hours - Book:", "book": "Aula 3" },
-          { "level": "B1.2", "duration": "30 hours - Book:", "book": "Aula 3" },
-          { "level": "B1.3", "duration": "30 hours - Book:", "book": "Aula 3" },
-          { "level": "B1.4", "duration": "30 hours - Book:", "book": "Aula 3" },
-          { "level": "B1.5", "duration": "30 hours - Book:", "book": "Aula 3" },
-          { "level": "B1.6", "duration": "30 hours - Book:", "book": "Aula 3" }
+          {
+            "level": "B1.1",
+            "duration": "30 hours - Book:",
+            "book": "Aula 3"
+          },
+          {
+            "level": "B1.2",
+            "duration": "30 hours - Book:",
+            "book": "Aula 3"
+          },
+          {
+            "level": "B1.3",
+            "duration": "30 hours - Book:",
+            "book": "Aula 3"
+          },
+          {
+            "level": "B1.4",
+            "duration": "30 hours - Book:",
+            "book": "Aula 3"
+          },
+          {
+            "level": "B1.5",
+            "duration": "30 hours - Book:",
+            "book": "Aula 3"
+          },
+          {
+            "level": "B1.6",
+            "duration": "30 hours - Book:",
+            "book": "Aula 3"
+          }
         ]
       },
       {
         "title": "Advanced Level B2",
         "items": [
-          { "level": "B2.1", "duration": "30 hours - Book:", "book": "Aula 4" },
-          { "level": "B2.2", "duration": "30 hours - Book:", "book": "Aula 4" },
-          { "level": "B2.3", "duration": "30 hours - Book:", "book": "Aula 4 & 5" },
-          { "level": "B2.4", "duration": "30 hours - Book:", "book": "Aula 4 & 5" },
-          { "level": "B2.5", "duration": "30 hours - Book:", "book": "Aula 5" },
-          { "level": "B2.6", "duration": "30 hours - Book:", "book": "Aula 5" }
+          {
+            "level": "B2.1",
+            "duration": "30 hours - Book:",
+            "book": "Aula 4"
+          },
+          {
+            "level": "B2.2",
+            "duration": "30 hours - Book:",
+            "book": "Aula 4"
+          },
+          {
+            "level": "B2.3",
+            "duration": "30 hours - Book:",
+            "book": "Aula 4 & 5"
+          },
+          {
+            "level": "B2.4",
+            "duration": "30 hours - Book:",
+            "book": "Aula 4 & 5"
+          },
+          {
+            "level": "B2.5",
+            "duration": "30 hours - Book:",
+            "book": "Aula 5"
+          },
+          {
+            "level": "B2.6",
+            "duration": "30 hours - Book:",
+            "book": "Aula 5"
+          }
         ]
       },
       {
         "title": "Very Advanced Level C1",
         "items": [
-          { "level": "C1.1", "duration": "30 hours - Book:", "book": "Vitamina" },
-          { "level": "C1.2", "duration": "30 hours - Book:", "book": "Vitamina" },
-          { "level": "C1.3", "duration": "30 hours - Book:", "book": "Vitamina" },
-          { "level": "C1.4", "duration": "30 hours - Book:", "book": "Vitamina" },
-          { "level": "C1.5", "duration": "30 hours - Book:", "book": "Vitamina" },
-          { "level": "C1.6", "duration": "30 hours - Book:", "book": "Vitamina" }
+          {
+            "level": "C1.1",
+            "duration": "30 hours - Book:",
+            "book": "Vitamina"
+          },
+          {
+            "level": "C1.2",
+            "duration": "30 hours - Book:",
+            "book": "Vitamina"
+          },
+          {
+            "level": "C1.3",
+            "duration": "30 hours - Book:",
+            "book": "Vitamina"
+          },
+          {
+            "level": "C1.4",
+            "duration": "30 hours - Book:",
+            "book": "Vitamina"
+          },
+          {
+            "level": "C1.5",
+            "duration": "30 hours - Book:",
+            "book": "Vitamina"
+          },
+          {
+            "level": "C1.6",
+            "duration": "30 hours - Book:",
+            "book": "Vitamina"
+          }
         ]
       },
       {
         "title": "Master Level C2",
         "items": [
-          { "level": "C2.1", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.2", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.3", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.4", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.5", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
-          { "level": "C2.6", "duration": "30 hours - Book:", "book": "Nuevo Prisma" }
+          {
+            "level": "C2.1",
+            "duration": "30 hours - Book:",
+            "book": "Nuevo Prisma"
+          },
+          {
+            "level": "C2.2",
+            "duration": "30 hours - Book:",
+            "book": "Nuevo Prisma"
+          },
+          {
+            "level": "C2.3",
+            "duration": "30 hours - Book:",
+            "book": "Nuevo Prisma"
+          },
+          {
+            "level": "C2.4",
+            "duration": "30 hours - Book:",
+            "book": "Nuevo Prisma"
+          },
+          {
+            "level": "C2.5",
+            "duration": "30 hours - Book:",
+            "book": "Nuevo Prisma"
+          },
+          {
+            "level": "C2.6",
+            "duration": "30 hours - Book:",
+            "book": "Nuevo Prisma"
+          }
         ]
       }
     ]
@@ -490,29 +668,69 @@
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
-        { "key": "course", "header": "Group Courses" },
-        { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+        {
+          "key": "course",
+          "header": "Group Courses"
+        },
+        {
+          "key": "duration",
+          "header": "Duration"
+        },
+        {
+          "key": "price",
+          "header": "Price"
+        }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "One-on-One Private Lessons" },
-        { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+        {
+          "key": "course",
+          "header": "One-on-One Private Lessons"
+        },
+        {
+          "key": "duration",
+          "header": "Duration"
+        },
+        {
+          "key": "price",
+          "header": "Price"
+        }
       ]
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 months", "price": "5,600 TL" },
-        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 months", "price": "4,500 TL" },
-        { "course": "A1.2 / Intermediate / Advanced levels", "duration": "30 hours - 3 months", "price": "4,250 TL" },
-        { "course": "Complementary courses", "duration": "16 hours - 2 months", "price": "2,200 TL" }
-        
+        {
+          "course": "A1.1 beginner level (evening)",
+          "duration": "40 hours - 4 months",
+          "price": "5,600 TL"
+        },
+        {
+          "course": "A1.1 beginner level (morning)",
+          "duration": "40 hours - 4 months",
+          "price": "4,500 TL"
+        },
+        {
+          "course": "A1.2 / Intermediate / Advanced levels",
+          "duration": "30 hours - 3 months",
+          "price": "4,250 TL"
+        },
+        {
+          "course": "Complementary courses",
+          "duration": "16 hours - 2 months",
+          "price": "2,200 TL"
+        }
       ],
       "onlineSpanishTwoTable": [
-        { "course": "Private lesson - adults", "duration": "1 hour", "price": "22 EUR" },
-        { "course": "Private lesson - children", "duration": "45 minutes", "price": "17 EUR" }
+        {
+          "course": "Private lesson - adults",
+          "duration": "1 hour",
+          "price": "22 EUR"
+        },
+        {
+          "course": "Private lesson - children",
+          "duration": "45 minutes",
+          "price": "17 EUR"
+        }
       ]
-     
     },
     "cards": [
       {
