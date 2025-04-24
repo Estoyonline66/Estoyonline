@@ -96,6 +96,7 @@ export interface SeoData {
 
 // -----------------
 export interface PriceData {
+ scheduleTitle?: string;
   title: string;
   levels: LevelsProps[];
   cardCourses: CoursesData[];
