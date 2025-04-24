@@ -6,7 +6,7 @@ import { getCookie, setCookie } from "@/lib/utils/__cookies";
 
 // Define translation types
 interface Translations {
-  [key: string]: string;
+  [key: string]: any;
 }
 
 interface TranslationContextType {
@@ -22,23 +22,16 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const pathname = usePathname();
 
-const detectedLangFromPath = pathname?.split("/")[1];
-const supportedLanguages = ["en", "tr"];
-const initialLang = supportedLanguages.includes(detectedLangFromPath) ? detectedLangFromPath : "tr";
+  const detectedLangFromPath = pathname?.split("/")[1];
+  const supportedLanguages = ["en", "tr"];
+  const initialLang = supportedLanguages.includes(detectedLangFromPath) ? detectedLangFromPath : "tr";
 
-const [language, setLanguage] = useState<string>(() => {
-  if (typeof window !== "undefined") {
-    return /* getCookie("language") || */ initialLang;
-  }
-  return initialLang;
-});
-
-useEffect(() => {
-  const newLang = pathname?.split("/")[1];
-  if (supportedLanguages.includes(newLang) && newLang !== language) {
-    setLanguage(newLang);
-  }
-}, [pathname]);
+  const [language, setLanguage] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return getCookie("language") || initialLang;
+    }
+    return initialLang;
+  });
 
   const [translations, setTranslations] = useState<Translations>({});
 
@@ -58,19 +51,35 @@ useEffect(() => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-     // setCookie("language", language);
+      setCookie("language", language);
     }
   }, [language]);
+
+  // Sync language when URL path changes
+  useEffect(() => {
+    const newLang = pathname?.split("/")[1];
+    if (supportedLanguages.includes(newLang) && newLang !== language) {
+      setLanguage(newLang);
+    }
+  }, [pathname]);
 
   // Function to update language and route
   const changeLanguage = (lang: string) => {
     setLanguage(lang);
-    const newPath = `/${lang}${pathname.replace(/^\/(en|es|fr|tr)/, "")}`;
-    router.push(newPath); // Update URL dynamically
+    const newPath = `/${lang}${pathname.replace(/^\/(en|tr)/, "")}`;
+    router.push(newPath);
   };
-    function t<T>(key: string){
-      return (translations[key] || key) as T
+
+  // Nested key lookup for translations (supports “home.testimonialsList”)
+  function t<T>(key: string): T {
+    const keys = key.split(".");
+    let result: any = translations;
+    for (const k of keys) {
+      result = result?.[k];
+      if (result === undefined) break;
     }
+    return (result !== undefined ? result : key) as T;
+  }
 
   return (
     <TranslationContext.Provider value={{ t, setLanguage: changeLanguage, language }}>
