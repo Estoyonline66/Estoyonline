@@ -17,17 +17,19 @@ export default function Home() {
   const router = useRouter();
   const pathname = usePathname();
 
-useEffect(() => {
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  useEffect(() => {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  if (timezone === 'Europe/Istanbul' && !pathname.startsWith('/tr')) {
-    router.replace('/tr');
-  }
+    // Eğer saat dilimi Europe/Istanbul ise ve sayfa /tr değilse, yönlendir
+    if (timezone === 'Europe/Istanbul' && !pathname.startsWith('/tr')) {
+      router.replace('/tr');
+    }
 
-  if (timezone !== 'Europe/Istanbul' && pathname.startsWith('/tr')) {
-    router.replace('/en');
-  }
-}, [pathname, router]); // ✅ eksik bağımlılıklar eklendi
+    // İsteğe bağlı: İstanbul dışıysa ve sayfa /tr ise → /en'e yönlendir
+    // if (timezone !== 'Europe/Istanbul' && pathname.startsWith('/tr')) {
+    //   router.replace('/en');
+    // }
+  }, []);
 
   return (
     <>
