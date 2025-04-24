@@ -65,7 +65,7 @@ export function AccordionItem({
     handlePosition();
 
     }
-  }, [isActive]);
+  }, [activeIndex]); // ✅ eksik bağımlılık eklendi
 
   return (
     <div

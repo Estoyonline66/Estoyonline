@@ -1,16 +1,23 @@
 "use client";
 import React from "react";
-//import { useTranslation } from "@/lib/i18n";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import Image from "next/image";
 
+type Testimonial = {
+  image: string;
+  firstComment: string;
+  lastComment: string;
+  personName: string;
+  timeAgo: string;
+};
+
 const TestimonialCarousel = () => {
   const { t } = useTranslation();
-  const testimonials = t("home.testimonialsList");
+  const testimonials: Testimonial[] = t("home.testimonialsList");
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {testimonials.map((testimonial: any, index: number) => (
+      {testimonials.map((testimonial, index) => (
         <div key={index} className="bg-white rounded-xl p-6 shadow">
           <div className="flex items-center mb-4">
             <Image
