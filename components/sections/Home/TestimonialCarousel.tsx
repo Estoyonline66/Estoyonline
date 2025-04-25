@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
-//import { useTranslation } from "@/lib/i18n";
-import { useTranslation } from "@/components/providers/TranslationProvider";
+import { useTranslation } from "@/lib/i18n";
 import Image from "next/image";
 
 const TestimonialCarousel = () => {
