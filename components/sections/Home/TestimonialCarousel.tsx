@@ -8,8 +8,23 @@ import { HeartIcon } from "lucide-react";
 
 export default function TestimonialCarousel() {
   const { t } = useTranslation();
-  const testimonials = t('testimonials.items', { returnObjects: true }) as TestimonialItem[];
-  const title = t('testimonials.title');
+  const testimonialsData = t("testimonials");
+  
+  // Fallback verileri
+  const defaultTestimonials = {
+    title: "Öğrencilerimiz Ne Diyor?",
+    items: [
+      {
+        image: "",
+        firstComment: "",
+        lastComment: "",
+        personName: "",
+        timeAgo: ""
+      }
+    ]
+  };
+
+  const { title, items: testimonials = [] } = testimonialsData || defaultTestimonials;
 
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center bg-white py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 dark:bg-gray-800">
@@ -24,20 +39,18 @@ export default function TestimonialCarousel() {
       />
       <div className="relative flex w-full flex-col items-center bg-white dark:bg-gray-700 justify-center z-[1] overflow-hidden">
         <Marquee pauseOnHover className="[--duration:50s]">
-          {testimonials.map((testimony, index) => (
+          {testimonials.map((testimony: TestimonialItem, index: number) => (
             <div
               key={index}
               className="relative h-full bg-white dark:bg-gray-600 w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-80 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0 dark:border-gray-500"
             >
               <div className="flex gap-2">
-                {/* Image */}
                 <span className="w-8 h-8 rounded-full overflow-hidden shrink-0">
                   <ImageBox
                     src={testimony.image}
                     className="w-full h-full object-cover object-center"
                   />
                 </span>
-                {/* Content */}
                 <div className="w-full flex flex-col gap-3">
                   <div className="w-full flex min-[360px]:items-center justify-between flex-col-reverse min-[360px]:flex-row">
                     <strong className="text-sm shrink max-w-full min-[360px]:max-w-[40%] break-words dark:text-white">
