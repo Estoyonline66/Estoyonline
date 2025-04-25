@@ -66,8 +66,8 @@ export default function Navbar({isHome}:props) {
             stroke:isHome&&scrollPercentage<5?"#fff":"#000",
             strokeOpacity: 1
           }} svg={{
-            className:"size-6 min-[498px]:size-8 brightness-125"
-          }} />:<X className="size-6 min-[498px]:size-8"/>}
+            className:"size-10 min-[498px]:size-8 brightness-125"
+          }} />:<X className="size-10 min-[498px]:size-8"/>}
         </Button>
       }
 
