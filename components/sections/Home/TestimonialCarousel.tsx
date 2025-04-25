@@ -6,25 +6,32 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { TestimonialItem } from "@/types/PropTypes";
 import { HeartIcon } from "lucide-react";
 
+interface TestimonialData {
+  title: string;
+  items: TestimonialItem[];
+}
+
 export default function TestimonialCarousel() {
   const { t } = useTranslation();
-  const testimonialsData = t("testimonials");
+  
+  // Dil dosyasından verileri alırken tip güvenliği sağlıyoruz
+  const testimonialsData = t("testimonials") as unknown as TestimonialData;
   
   // Fallback verileri
-  const defaultTestimonials = {
+  const defaultTestimonials: TestimonialData = {
     title: "Öğrencilerimiz Ne Diyor?",
     items: [
       {
-        image: "",
-        firstComment: "",
-        lastComment: "",
-        personName: "",
-        timeAgo: ""
+        image: "/Images/default-avatar.jpg",
+        firstComment: "Harika bir eğitim deneyimi yaşadım",
+        lastComment: "Harika deneyim",
+        personName: "Öğrenci",
+        timeAgo: "1 gün önce"
       }
     ]
   };
 
-  const { title, items: testimonials = [] } = testimonialsData || defaultTestimonials;
+  const { title = defaultTestimonials.title, items = defaultTestimonials.items } = testimonialsData || {};
 
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center bg-white py-20 px-4 relative overflow-x-hidden md:px-10 lg:px-20 dark:bg-gray-800">
@@ -39,7 +46,7 @@ export default function TestimonialCarousel() {
       />
       <div className="relative flex w-full flex-col items-center bg-white dark:bg-gray-700 justify-center z-[1] overflow-hidden">
         <Marquee pauseOnHover className="[--duration:50s]">
-          {testimonials.map((testimony: TestimonialItem, index: number) => (
+          {items.map((testimony, index) => (
             <div
               key={index}
               className="relative h-full bg-white dark:bg-gray-600 w-fit max-w-[100vw] min-[300px]:max-w-[70vw] min-[498px]:max-w-80 cursor-pointer overflow-hidden rounded-xl border p-4 mx-0 dark:border-gray-500"
