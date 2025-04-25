@@ -532,5 +532,109 @@
     "officeAddressTitle": "Our School",
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12, 08340 Vilassar de Mar, Barcelona, Spain",
     "officeContactButton": "WhatsApp +34 633 45 22 68"
+  },
+  "testimonials": {
+    "title": "What Our Students Say?",
+    "items": [
+      {
+        "image": "/Images/yasemin.avsar.jpg",
+        "firstComment": "If I had known learning Spanish could be this enjoyable, I would have started much earlier 🥰 I look forward to every lesson with excitement, so glad I met you all 🌺🌺",
+        "lastComment": "I look forward to every lesson with excitement",
+        "personName": "yasemen.avsar",
+        "timeAgo": "20 minutes ago"
+      },
+      {
+        "image": "/Images/umaysirke.jpg",
+        "firstComment": "I've always loved Aleja and her teaching methods. I always give her as an example of how a teacher should be and how to teach while having fun 😍",
+        "lastComment": "I've always loved Aleja and her teaching methods",
+        "personName": "umaysirke",
+        "timeAgo": "2 hours ago"
+      },
+      {
+        "image": "/Images/ugurege.jpg",
+        "firstComment": "Thanks to Aleja and her team whom I met years ago, I've progressed to the point where I can comfortably speak and read Spanish. I reached B1.4 level just by taking lessons from this school",
+        "lastComment": "I reached B1.4 level just by taking lessons from this school",
+        "personName": "ugurege",
+        "timeAgo": "5 hours ago"
+      },
+      {
+        "image": "/Images/muge_dusun.jpg",
+        "firstComment": "Hola! Spanish lessons with songs are so enjoyable. I'm learning about Spanish singers and culture that I didn't know before. I'll recommend it to my friends. So glad I met you.",
+        "lastComment": "Spanish lessons with songs are so much fun.",
+        "personName": "muge_dusun",
+        "timeAgo": "5 minutes ago"
+      },
+      {
+        "image": "/Images/meltem_sonmez_canseco.jpg",
+        "firstComment": "Amazing teachers, amazing methods. I don't even notice how time flies during lessons. I've been learning Spanish with you since 2020, the lessons are very enjoyable and productive. My level has improved significantly with your help.",
+        "lastComment": "Amazing teachers, amazing methods.",
+        "personName": "meltem_sonmez_canseco",
+        "timeAgo": "10 minutes ago"
+      },
+      {
+        "image": "/Images/ulucozuyener.jpg",
+        "firstComment": "I started Spanish from scratch 3 years ago. Thanks to @estoyonline.es and @danielasalzman, I reached B2.2 level. I highly recommend it to anyone who wants to learn Spanish.😍",
+        "lastComment": "Thanks to @estoyonline.es and @danielasalzman, I reached B2.2 level",
+        "personName": "ulucozuyener",
+        "timeAgo": "9 hours ago"
+      },
+      {
+        "image": "/Images/17limerence.jpg",
+        "firstComment": "I literally said 'wow'. You're a teacher and you're still improving yourself. 'I'll soon start applying everything I learn to my lessons' - what a beautiful sentence, I could even feel your excitement 😊 I loved it❤️ Teacher❤️",
+        "lastComment": "I literally said \"wow\". You're a teacher and you're still improving yourself.",
+        "personName": "17limerence",
+        "timeAgo": "10 hours ago"
+      },
+      {
+        "image": "/Images/allaunal_embroidery.jpg",
+        "firstComment": "I've just completed one level and moved to the next. Our lessons with Carolina are very fun, productive, full of information, our teacher is very cheerful and helpful. So glad our paths crossed @estoyonline.es I love you, I overcame my fear of speaking with you and became very motivated to continue learning the language. 😍",
+        "lastComment": "I overcame my fear of speaking and became very motivated.",
+        "personName": "allaunal_embroidery",
+        "timeAgo": "1 hour ago"
+      },
+      {
+        "image": "/Images/ebru_basaran35.jpg",
+        "firstComment": "Recomiendo las lecciones de Aleja, son muy divertidas",
+        "lastComment": "son muy divertidas",
+        "personName": "ebru_basaran35",
+        "timeAgo": "7 minutes ago"
+      },
+      {
+        "image": "/Images/yollarinrengi.jpg",
+        "firstComment": "Thanks to Aleja and her team. The best part about learning Spanish is that the teachers are Spanish and also know Turkish.. It makes understanding easier.. As a foreign language teacher myself, I started learning Spanish as a third language two months ago.. I'm at A1.1 level and will continue learning when I have time.. See you in the next course",
+        "lastComment": "Thanks to Aleja and her team.",
+        "personName": "yollarinrengi",
+        "timeAgo": "just now"
+      },
+      {
+        "image": "/Images/zenteksen.jpg",
+        "firstComment": "I actually started learning Spanish in 2019, but after starting to work with you, my Spanish improved a lot. Yesterday I spent time chatting in Spanish with a family from Buenos Aires and a family of 7 Argentinians. Being able to communicate with them fluently and comfortably made me very happy. ❤️❤️",
+        "lastComment": "After starting to work with you, my Spanish improved a lot.",
+        "personName": "zenteksen",
+        "timeAgo": "19 hours ago"
+      },
+      {
+        "image": "/Images/merterdem.jpg",
+        "firstComment": "Since the pandemic, we've been having enjoyable lessons with Aleja and Dani. Their energy has helped me maintain my motivation. I definitely recommend them to anyone who wants to learn Spanish. 🙌😍",
+        "lastComment": "Their energy has helped me maintain my motivation..",
+        "personName": "_merterdem_",
+        "timeAgo": "24 hours ago"
+      },
+      {
+        "image": "/Images/kemal_yesra.jpg",
+        "firstComment": "I received my certificate today. Many thanks to Aleja and her staff, they are very professional. At first, I was scared that all teachers were foreigners and spoke Spanish from the first lesson. But it wasn't as I thought. I definitely recommend Aleja and her team.",
+        "lastComment": "They are very professional",
+        "personName": "kemal_yesra",
+        "timeAgo": "14 hours ago"
+      },
+      {
+        "image": "/Images/nebibekum.jpg",
+        "firstComment": "Lessons are very fun, we talk a lot, play games, and while doing these we learn grammar and new words. Our teacher knows Turkish, yes she uses it very little but explains topics we don't understand by using Turkish. I can't wait to move to the next level 😊.",
+        "lastComment": "Lessons are very fun, we talk a lot,",
+        "personName": "nebibekum",
+        "timeAgo": "12 hours ago"
+      }
+    ]
   }
+
 }

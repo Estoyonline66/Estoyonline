@@ -103,3 +103,16 @@ export interface PriceData {
   accordionData: AccordionProps[];
   home: HomeProps[];
 }
+
+export interface TestimonialItem {
+  image: string;
+  firstComment: string;
+  lastComment: string;
+  personName: string;
+  timeAgo: string;
+}
+
+export interface TestimonialCarouselProps {
+  title: string;
+  items: TestimonialItem[];
+}
