@@ -1,45 +1,45 @@
 {
-  "seo": {
-    "pages": [
+  "seo":{
+    "pages":[
       {
-        "route": "/",
-        "datas": {
-          "title": "Estoyonline | Start your spanish learning journey",
+        "route":"/",
+        "datas":{
+          "title":"Estoyonline | Start your spanish learning journey",
           "description": "Learn Spanish online with native teachers and let the sun warm your words."
         }
       },
       {
-        "route": "/teachers",
-        "datas": {
-          "title": "Estoyonline | Teachers",
+        "route":"/teachers",
+        "datas":{
+          "title":"Estoyonline | Teachers",
           "description": "Know more about our teachers."
         }
       },
       {
-        "route": "/contact",
-        "datas": {
-          "title": "Estoyonline | Contact us",
+        "route":"/contact",
+        "datas":{
+          "title":"Estoyonline | Contact us",
           "description": "Get in touch with us and begin your learning journey."
         }
       },
       {
-        "route": "/courses",
-        "datas": {
-          "title": "Estoyonline | Courses",
+        "route":"/courses",
+        "datas":{
+          "title":"Estoyonline | Courses",
           "description": "FInd the course of your interest."
         }
       },
       {
-        "route": "/price",
-        "datas": {
-          "title": "Estoyonline | Pricing",
+        "route":"/price",
+        "datas":{
+          "title":"Estoyonline | Pricing",
           "description": "Find the best price"
         }
       },
       {
-        "route": "/videos",
-        "datas": {
-          "title": "Estoyonline | Videos | Understand our learning process",
+        "route":"/videos",
+        "datas":{
+          "title":"Estoyonline | Videos | Understand our learning process",
           "description": "Find out how our leaning system works."
         }
       }
@@ -58,7 +58,7 @@
     "HeroTitle": "Dünya",
     "HeroYellowTitle": "İspanyolca konuşuyor,",
     "HeroTitle2": "şimdi sıra sende!",
-    "HeroDescription": "",
+     "HeroDescription": "",
     "HeroButton": "Kursları incele",
     "LearnSpanishtitle": "Butik okulumuzda eğlenerek İspanyolca öğrenin",
     "LearnSpanishdescription": "Barselona merkezli EstoyOnline.es butik okulumuzda İspanyolcayı geleneksel metotlardan çok farklı olarak, eğlenerek öğretiyoruz.  Kullandığımız modern metotlar sayesinde online İspanyolca öğrenmek artık çok eğlenceli ve keyifli bir süreç. Eğlenceli aktiviteler ve oyunlar motivasyonunuzu artırır ve stresinizi azaltır, böylece dil öğrenmeyi kolaylaştırır. Ayrıca doğal dil kullanımını teşvik eder ve sosyal bağları güçlendirir. Eğlenceli bir şekilde dil öğrenmek, kalıcılığı sağlar ve etkili bir şekilde dil becerilerinizi geliştirmenize katkıda bulunur. Okulumuzdaki İspanya ve Latin Amerika'da yaşayan öğretmenlerin tümünün ana dili İspanyolca'dır. Başlangıç seviyesi derslerini veren öğretmenlerimiz Türkçe  bilmektedir. Tüm derslerimiz Zoom üzerinden online yapılmaktadır.",
@@ -72,67 +72,15 @@
     "homeAboutButton": "Whatsapp (530) 77 00 789",
     "homeSubAboutTitle": "Ana dili İspanyolca olan öğretmenlerimizle İspanyolca'yı doğal ve eğlenceli bir şekilde öğrenebilirsin. Seninle tanışmak için sabırsızlanıyoruz.",
     "homeSubAboutButton": "Öğretmenlerle tanış",
-    "homeSubAboutVideos": [
-      "/videos/teachers/aleja1.mp4"
-    ],
+    "homeSubAboutVideos":["/videos/teachers/aleja1.mp4"],
     "testimonies": "Öğrencilerimiz bizim için ne dedi?",
     "counterTitle": "Farklı içerikte ders",
     "counterTitle2": "Öğretmen",
     "counterTitle3": "Aktif öğrenci",
-    "counterTitle4": "Verilen sertifika",
-    "testimonialsList": [
-      {
-        "image": "/Images/yasemin.avsar.jpg",
-        "firstComment": "İspanyolca öğrenmenin bu kadar keyifli olduğunu bilseydim çok daha önce başlardım 🥰 her dersi sabırsızlıkla bekliyorum iyi ki tanıdım sizleri 🌺🌺",
-        "lastComment": "her dersi sabırsızlıkla bekliyorum",
-        "personName": "yasemen.avsar",
-        "timeAgo": "20 min"
-      },
-      {
-        "image": "/Images/umaysirke.jpg",
-        "firstComment": "Aleja ve onun öğretme yöntemini hep çok sevdim ve bir öğretmenin nasıl olması, nasıl eğlenerek öğretmesi konusunda hep onu örnek veririm 😍",
-        "lastComment": "Aleja ve onun öğretme yöntemini hep çok sevdim",
-        "personName": "umaysirke",
-        "timeAgo": "2 h"
-      },
-      {
-        "image": "/Images/ugurege.jpg",
-        "firstComment": "Yıllar önce tanıştığım Aleja ve ekibi sayesinde İspanyolcayı rahatça konuşabilecek ve okuyabilecek şekilde ilerlettim. B1.4 seviyesine kadar sadece bu okuldan ders alarak geldim",
-        "lastComment": "B1.4 seviyesine kadar sadece bu okuldan ders alarak geldim",
-        "personName": "ugurege",
-        "timeAgo": "5 h"
-      },
-      {
-        "image": "/Images/muge_dusun.jpg",
-        "firstComment": "Hola Şarkılarla İspanyolca dersi çok keyifli. Bilmediğim İspanyol şarkıcıları ve ispanyol kültürünü öğreniyorum. Arkadaşlarıma tavsiye edeceğim. İyiki sizi tanımışım.",
-        "lastComment": "Şarkılarla yapılan İspanyolca dersleri çok eğlenceli.",
-        "personName": "muge_dusun",
-        "timeAgo": "5 min"
-      },
-      {
-        "image": "/Images/meltem_sonmez_canseco.jpg",
-        "firstComment": "Harika öğretmenler, harika metodlar. Derslerin nasil gectigini anlamiyorum bile. 2020 den beri sizlerle Ispanyolca ogreniyorum, dersler cok keyifli ve verimli geciyor. Seviyem sizin yardimlarinizla cok iyi seviyeye geldi.",
-        "lastComment": "Harika öğretmenler, harika metodlar.",
-        "personName": "meltem_sonmez_canseco",
-        "timeAgo": "10 min"
-      },
-      {
-        "image": "/Images/ulucozuyener.jpg",
-        "firstComment": "İspanyolca'ya 3 sene önce sıfırdan başladım. @estoyonline.es ve @danielasalzman sayesinde B2.2 seviyesine geldim. İspanyolca öğrenmek isteyenlere şiddetle tavsiye ederim.😍",
-        "lastComment": "@estoyonline.es ve @danielasalzman sayesinde B2.2 seviyesine geldim",
-        "personName": "ulucozuyener",
-        "timeAgo": "9 h"
-      },
-      {
-        "image": "/Images/17limerence.jpg",
-        "firstComment": "Gerçekten wow dedim. Bir öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz. \"Yakında öğrendiğim her şeyi derslerime uygulamaya başlayacağım\" ne kadar güzel bir cümle, heyecanınızı ben bile hissettim 😊Hoşuma gitti❤️ Hocam❤️",
-        "lastComment": "Gerçekten \"wow\" dedim. Bir öğretmensiniz ve hâlâ kendinizi geliştiriyorsunuz.",
-        "personName": "17limerence",
-        "timeAgo": "10 h"
-      }
-    ]
+    "counterTitle4": "Verilen sertifika"
   },
-  "teachers": {
+
+  "teachers":{
     "PageTitle": "Öğretmenlerimiz",
     "teachersTitle": "Ana dili İspanyolca olan öğretmenlerimizle tanışın...",
     "teachersTitleRed": "",
@@ -141,46 +89,46 @@
       {
         "name": "ALEJA",
         "about": "10 yıl boyunca İstanbul'da yaşadı, Saint Michel Lisesi ve Cervantes Enstitüsünde öğretmen olarak çalıştı. İspanyolca pratik yapmak isteyenleri bir araya getiren 'Solo hablamos Español' buluşmalarını organize etti. Öğretmenliği boyunca ELE, DELE, AVE, Int House vb. birçok uluslararası formasyon kursları ile kendini geliştirdi. 2019 yılında İspanya'ya taşındı ve kendi okulunu kurmaya karar verdi. Okulu için eğlence ve konuşmaya dayalı, modern metotlar geliştirdi. Ekibindeki öğretmenler ile birlikte eğitim süreçlerini iyileştirmeye devam ediyor. Özellikle yeni teknoloji ve modern tekniklerini İspanyolca derslerine adapte etmeye çalışıyor. Ders kayıtlarını izleyerek hangi detaylara önem verilmesi gerektiği üzerine kafa yoruyor. Yılda bir kez Türkiye'ye giderek İstanbul, İzmir, Ankara, Bodrum, Kapadokya gibi yerlerde öğrencileri ile bir araya geliyor. Tangoyu ve Barselona açıklarında kürek çekmeyi çok seviyor.  Türkçesini geliştirmekten büyük bir keyif alıyor ve ileri seviye Türkçe dersleri almaya devam ediyor.",
-        "media": "/videos/teachers/aleja1.mp4"
+        "media":"/videos/teachers/aleja1.mp4"
       },
       {
         "name": "CAROLINA",
         "about": "Eğitim konusunda tutkulu bir öğretmendir ve tüm eğitim kademelerinde çalışmıştır. 15 yıl boyunca doğayla iç içe Patagonya'da yaşadı ve burada öğretmen ve öğretmen eğitmeni olarak çalışmaya devam etti. Müzik onun diğer tutkusudur. Çeşitli enstrümanlar (gitar, klavye, ukulele vb.) çalıyor ve korolarda şarkı söylüyor. Müzikal komedi dersleri aldı, birçok müzikalde yer aldı. 2021 yılında yabancılar için İspanyolca öğretmeni sertifikası alarak çeşitli platformlarda ve enstitülerde online ve yüz yüze çalışmaya başladı. Konuşma kurslarında, özel derslerde ve düzenli kurslarda öğrenmeyi kolaylaştıran oyunlar ve alternatif araçlar kullanmaya özen gösteriyor. ",
-        "media": "/videos/teachers/caro.mp4"
+        "media":"/videos/teachers/caro.mp4"
       },
       {
         "name": "DANIELA",
         "about": "Arjantinlidir, Buenos Aires'te yaşamaktadır. Öğretmeyi çok sever. 2004 yılında yabancılara İspanyolca öğretmeye başladı ve 2008 yılında kendi okulunu açtı. Okul 2015 yılında Üniversitenin bir parçası haline geldi. Ana dili olan İspanyolca'nın yanı sıra Fransızca, İngilizce, Portekizce, İbranice ve İtalyanca da konuşmaktadır. İletişim Bilimleri bölümünden mezun oldu. Buenos Aires Üniversitesi'nde Edebiyat ve Tel Aviv Üniversitesi'nde Dilbilim ve Fransız Edebiyatı okudu. Boş zamanlarında çocuklarıyla birlikte olmayı, ailesiyle vakit geçirmeyi ve seyahat etmeyi seviyor. ",
-        "media": "/videos/teachers/dani.mp4"
+        "media":"/videos/teachers/dani.mp4"
       },
       {
         "name": "MELISSA",
         "about": "Kolombiya'da doğup büyümüştür ve şu anda Kolombiya'da yaşamaktadır. Kütüphaneci olarak çalıştı ve her seviyede kütüphane öğretmenliği yaptı. Yüksek lisansını Béziers, Fransa'da tamamladı. Melissa uzun süre önce Türkçe öğrenmiştir ve ileri düzeyde Türkçe konuşmaktadır. 2010 yılından bu yana çeşitli akademilerde (Oxford, Just English) ve Türkiye'deki okullarda (Antalya'da İSTEK, Kütahya Başarı, vb) Fransızca, İngilizce ve İspanyolca dersleri verdi. Boş zamanlarında örgü bebek örmekten, arkadaşlarıyla şarkı söylemekten ve yemek yapmaktan hoşlanır. Okulumuzda Türkçe destek gerektiren A1 başlangıç derslerini vermektedir.",
-        "media": "/videos/teachers/meli.mp4"
+        "media":"/videos/teachers/meli.mp4"
       },
       {
         "name": "SABRINA",
         "about": "Kelimeleri hep  çok sevmiştir. Okumaya ve metinleri düzeltmeye bayılır. Gazetecilik öğrenimi gördü,  radyoda ve gazetelerde spor muhabiri olarak çalıştı. 2011'den bu yana CoPeHU pedagoji çalışmalarına katılmaktadır. Amaçlı öğrenme üzerine araştırmalar yaptı ve yaratıcı yazarlık atölyelerine katıldı. 2021'de birçok tutkusunu birleştirdi: İletişim, eğitim ve kültürel değişim. Bu amaçla ELE İspanyolca öğretmeni sertifikası aldı. Çeşitli akademi ve e-öğrenme platformlarında dijital araçları ve oyunu öğretme yöntemi olarak kullandı. 2022 yılında Öğretmen Eğitim Enstitüsü'nde ELE öğretmenleri yetiştirmek üzere çalışmaya başladı. ",
-        "media": "/videos/teachers/sabri.mp4"
+        "media":"/videos/teachers/sabri.mp4"
       },
       {
         "name": "MAITA",
         "about": "Maita İngilizce ve İspanyolca öğretmenidir. Çok küçük yaşlardan itibaren İngilizce eğitimi gördü. Üniversitede mimarlık okudu. Ama bu sırada dil öğretmeni olmak istediğini keşfetti ve kariyer değişikliğine gitti. Öğrencilerin ihtiyaçlarına göre kişiselleştirilmiş dil öğretimine yoğunlaştı ve bu konuda çeşitli kurslar ile kendini geliştirdi.  Derslerinde dijital araçları etkili biçimde kullanma konusunda tecrübelidir. Ayrıca eğitim yöntemi olarak oyunlara ağırlık verir. Maita'nın bir başka tutkusu ise yemek yapmaktır. İspanyol ve Latin Amerika mutfağının inceliklerini keşfetmeye bayılır.",
-        "media": "/videos/teachers/maia.mp4"
+        "media":"/videos/teachers/maia.mp4"
       },
       {
         "name": "ANITA",
         "about": "Anita Ekvatorludur. Quito Universidad de las Américas  İletişim mezunudur. Ayrıca İspanyolca eğitimi dilbilgisi ve metodoloji sertifikasına sahiptir. Instituto Internacional de Español'da öğretmen olarak çalıştı, yabancılara İspanyolca eğitimi konusunda tecrübe kazandı. İstanbul Just English, British Town Dil Okulları, Likia Just Kids vb kurumlarda çalıştı. Türk öğrencilere tüm seviyelerde eğitim verdi. Son yıllarda farklı ülkelerden öğrencilere özel ve grup online dersleri vermeye başladı böylece farklı kültürlerle kaynaşma fırsatı buldu. Grafik tasarımı ve fotoğrafçılıkla uğraşır.  Müzik dinlemeyi, salsa dansını ve seyahat etmeyi çok sever. Okulumuzda Türkçe destek gerektiren A1 başlangıç derslerini vermektedir.",
-        "media": "/videos/teachers/anita.mp4"
+        "media":"/videos/teachers/anita.mp4"
       },
       {
         "name": "VIRGINIA",
         "about": "Virginia edebiyatla dolu hayatına öğretmenlik kariyeri ile devam etti.  Buenos Aires Üniversitesi'nde okudu, edebiyat lisansını tamamladı, dil ve edebiyat öğretmeni oldu. Beş yıl boyunca İtalya'nın zengin kültürünü keşfetti. Bu deneyim, edebiyatı daha derinlemesine anlamasını sağladı. Şu anda Buenos Aires'te bir devlet okulunda dil ve edebiyat öğretmenliği yapıyor, öğrencileriyle edebiyat sevdasını paylaşıyor.  Aynı zamanda okulumuzda orta ve ileri düzey İspanyolca dersleri veriyor. Kalan zamanlarında Buenos Aires sokaklarında bisiklet sürmeyi ve evindeki bahçesinde organik sebze yetiştirmeyi çok seviyor.",
-        "media": "/videos/teachers/vir.mp4"
+        "media":"/videos/teachers/vir.mp4"
       }
     ]
   },
-  "videos": {
+  "videos":{
     "PageTitle": "Örnek Ders Videoları",
     "videos": [
       {
@@ -230,145 +178,67 @@
       }
     ]
   },
+
   "courses": {
     "PageTitle": "Online Kurslar",
-    "scheduleTitle": "2025 Kurs Takvimi",
+	"scheduleTitle": "2025 Kurs Takvimi",  
     "accordionData": [
       {
         "title": "A1 SEVİYESİ BAŞLANGIÇ KURSLARI",
         "content": [
-          {
-            "contentTitle": "Genel Bilgi",
-            "contentDescription": "Bu kurs İspanyolca'ya yeni başlayanlar içindir.  Bazı öğrenciler daha önce bir miktar İspanyolca öğrenmiş veya bir uygulama aracılığıyla başlangıç yapmış olabilirler. Ancak yine de sağlam bir temel oluşturmak için sıfırdan başlanması gerekir. İlk derslerde  az miktarda Türkçe kullanılır sonra yavaş yavaş  Türkçe azaltılır çünkü öğrenciler İspanyolca anlamaya başlarlar"
-          },
-          {
-            "contentTitle": "Dersler",
-            "contentDescription": "Dersler Zoom üzerinden online olarak haftada 1 kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir.\nBaşlangıç seviyesinde 2 kurs vardır: \nA1.1 kursu toplam 40 saattir. (Standart kurs 4 ay sürer, yoğun kurs 2 ay sürer)\nA1.2 kursu toplam 30 saattir. (3 ay sürer)"
-          },
-          {
-            "contentTitle": "Öğretmenler",
-            "contentDescription": "Öğretmenlerimiz özellikle eğlenerek İspanyolca'yı öğretme konusunda çok deneyimli ve yaratıcıdır. Temel seviyede Türkçe konuşabilen ve anadili İspanyolca olan bir öğretmen görev alır"
-          },
-          {
-            "contentTitle": "Kayıt",
-            "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır (Türkçe olarak). Deneme dersi ücretsizdir ve yaklaşık 20 dakika sürmektedir. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin."
-          },
-          {
-            "contentTitle": "Sertifika",
-            "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir."
-          }
+          { "contentTitle": "Genel Bilgi", "contentDescription": "Bu kurs İspanyolca'ya yeni başlayanlar içindir.  Bazı öğrenciler daha önce bir miktar İspanyolca öğrenmiş veya bir uygulama aracılığıyla başlangıç yapmış olabilirler. Ancak yine de sağlam bir temel oluşturmak için sıfırdan başlanması gerekir. İlk derslerde  az miktarda Türkçe kullanılır sonra yavaş yavaş  Türkçe azaltılır çünkü öğrenciler İspanyolca anlamaya başlarlar" },
+          { "contentTitle": "Dersler", "contentDescription": "Dersler Zoom üzerinden online olarak haftada 1 kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir.\nBaşlangıç seviyesinde 2 kurs vardır: \nA1.1 kursu toplam 40 saattir. (Standart kurs 4 ay sürer, yoğun kurs 2 ay sürer)\nA1.2 kursu toplam 30 saattir. (3 ay sürer)" },
+          { "contentTitle": "Öğretmenler", "contentDescription": "Öğretmenlerimiz özellikle eğlenerek İspanyolca'yı öğretme konusunda çok deneyimli ve yaratıcıdır. Temel seviyede Türkçe konuşabilen ve anadili İspanyolca olan bir öğretmen görev alır" },
+          { "contentTitle": "Kayıt", "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır (Türkçe olarak). Deneme dersi ücretsizdir ve yaklaşık 20 dakika sürmektedir. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin." },
+          { "contentTitle": "Sertifika", "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir." }
         ]
       },
       {
         "title": "ORTA - ÜST SEVİYE KURSLAR",
         "content": [
-          {
-            "contentTitle": "Genel Bilgi",
-            "contentDescription": "Orta ve üst seviye kurslarda gramer ve kelime üzerine eğilmenin yanı sıra konuşma ve dinleme alıştırmaları yapılır. Ayrıca her öğrencinin gelişimini değerlendirmek için eğlenceli uygulamalar aracılığıyla testler düzenlenir. \nA1.2 seviyesinden itibaren öğrenciler İspanyolca kitap okuma pratiğine başlarlar. Her öğrenci, kitap bölümlerini sınıf arkadaşlarıyla paylaşarak okur. Böylece akıcı konuşma pratiğini geliştirip, yeni kelimeler öğrenir  ve konuşurken özgüven kazanır. Daha ileri seviyelerde, kelime dağarcığını büyütebilmek için gazete haberleri ve makaleler kullanılır. "
-          },
-          {
-            "contentTitle": "Dersler",
-            "contentDescription": "Dersler Zoom üzerinden online olarak haftada 1 kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir. Bir kursun toplam süresi 30 saattir. (3 ay sürer)"
-          },
-          {
-            "contentTitle": "Öğretmenler",
-            "contentDescription": "Öğrencilerin detaylı dilbilgisi sorularını yanıtlayabilecek ve orta/ileri seviye derslerde tecrübesi olan öğretmenler görev yapar."
-          },
-          {
-            "contentTitle": "Kayıt",
-            "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin."
-          },
-          {
-            "contentTitle": "Sertifika",
-            "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir."
-          }
+          { "contentTitle": "Genel Bilgi", "contentDescription": "Orta ve üst seviye kurslarda gramer ve kelime üzerine eğilmenin yanı sıra konuşma ve dinleme alıştırmaları yapılır. Ayrıca her öğrencinin gelişimini değerlendirmek için eğlenceli uygulamalar aracılığıyla testler düzenlenir. \nA1.2 seviyesinden itibaren öğrenciler İspanyolca kitap okuma pratiğine başlarlar. Her öğrenci, kitap bölümlerini sınıf arkadaşlarıyla paylaşarak okur. Böylece akıcı konuşma pratiğini geliştirip, yeni kelimeler öğrenir  ve konuşurken özgüven kazanır. Daha ileri seviyelerde, kelime dağarcığını büyütebilmek için gazete haberleri ve makaleler kullanılır. " },
+          { "contentTitle": "Dersler", "contentDescription": "Dersler Zoom üzerinden online olarak haftada 1 kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir. Bir kursun toplam süresi 30 saattir. (3 ay sürer)" },
+          { "contentTitle": "Öğretmenler", "contentDescription": "Öğrencilerin detaylı dilbilgisi sorularını yanıtlayabilecek ve orta/ileri seviye derslerde tecrübesi olan öğretmenler görev yapar." },
+          { "contentTitle": "Kayıt", "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin." },
+          { "contentTitle": "Sertifika", "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir." }
         ]
       },
       {
         "title": "TURİZM İSPANYOLCASI KURSU",
         "content": [
-          {
-            "contentTitle": "Genel Bilgi",
-            "contentDescription": "İspanyolca konuşmak isteyen turizm sektörü çalışanları veya seyahat için İspanyolca'yı akıcı kullanmak isteyenler için hazırlanmış bir kurstur.  Yoğunlaştırılmış bir kurs olduğu için çok hızlı İspanyolca öğrenmek isteyenler  için de uygundur.  4,5 ayda 3 seviye öğretilir. Sıfırdan veya orta seviyeden başlanabilir. \n Kurs programı Avrupa Ortak Dil Referans Çerçevesini (MCER) referans alır. Turizm sektörüne özel İspanyolca materyaller kullanılır ve özellikle akıcı konuşma pratikleri yapılır"
-          },
-          {
-            "contentTitle": "Dersler",
-            "contentDescription": "Dersler Zoom üzerinden online olarak haftada iki kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir. Tüm kurs 2 modülden (toplam 180 saat) oluşmaktadır. \n"
-          },
-          {
-            "contentTitle": "Modül A - Başlangıç seviyesi",
-            "contentDescription": "Daha önce hiç İspanyolca bilmeyen veya yeni öğrenmeye başlamış kişiler içindir. 90 saat sürer ve A1.1, A1.2 ve A2.1 seviyelerini kapsar. (Toplam 4,5 ay sürer)"
-          },
-          {
-            "contentTitle": "Modül B - Orta seviye",
-            "contentDescription": "Şimdiki zamanla rahat konuşabilen ve geçmiş zamanla (Pretérito Indefinido) konuşmayı öğrenmiş kişilere yöneliktir. İspanyolca seviyeniz en az A2.1 ise Modül B'den kursa başlayabilirsiniz. 90 saat sürer ve A2.2, A2.3 ve A2.4 seviyeleri kapsarlar. (Toplam 4,5 ay sürer)"
-          },
-          {
-            "contentTitle": "Kullanılan kitaplar",
-            "contentDescription": "Turizm 1- SGEL yayınları • Turizm 2- SGEL yayınları • Turizm Profesyonelleri- Enclave ELE yayınları • Tekrar hoş geldiniz (A1-A2)- Enclave ELE yayınları. Ayrıca öğretmenler kendi hazırladıkları materyalleri kullanırlar ve tüm derslerde konuşmayı güçlendirmek için iletişimsel egzersizler yapılır."
-          },
-          {
-            "contentTitle": "Öğretmenler",
-            "contentDescription": "Öğretmenler ELE öğretimi konusunda derin deneyime sahiptir. Modül A’da Türkçe konuşabilen ve anadili İspanyolca olan bir öğretmen, Modül B’de ana dili İspanyolca olan bir öğretmen görev alır."
-          },
-          {
-            "contentTitle": "Kayıt",
-            "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır (Türkçe olarak). Deneme dersi ücretsizdir ve yaklaşık 20 dakika sürmektedir. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin."
-          },
-          {
-            "contentTitle": "Sertifika",
-            "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir."
-          }
+          { "contentTitle": "Genel Bilgi", "contentDescription": "İspanyolca konuşmak isteyen turizm sektörü çalışanları veya seyahat için İspanyolca'yı akıcı kullanmak isteyenler için hazırlanmış bir kurstur.  Yoğunlaştırılmış bir kurs olduğu için çok hızlı İspanyolca öğrenmek isteyenler  için de uygundur.  4,5 ayda 3 seviye öğretilir. Sıfırdan veya orta seviyeden başlanabilir. \n Kurs programı Avrupa Ortak Dil Referans Çerçevesini (MCER) referans alır. Turizm sektörüne özel İspanyolca materyaller kullanılır ve özellikle akıcı konuşma pratikleri yapılır" },
+          { "contentTitle": "Dersler", "contentDescription": "Dersler Zoom üzerinden online olarak haftada iki kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir. Tüm kurs 2 modülden (toplam 180 saat) oluşmaktadır. \n" },
+           { "contentTitle": "Modül A - Başlangıç seviyesi", "contentDescription": "Daha önce hiç İspanyolca bilmeyen veya yeni öğrenmeye başlamış kişiler içindir. 90 saat sürer ve A1.1, A1.2 ve A2.1 seviyelerini kapsar. (Toplam 4,5 ay sürer)" },
+		  { "contentTitle": "Modül B - Orta seviye", "contentDescription": "Şimdiki zamanla rahat konuşabilen ve geçmiş zamanla (Pretérito Indefinido) konuşmayı öğrenmiş kişilere yöneliktir. İspanyolca seviyeniz en az A2.1 ise Modül B'den kursa başlayabilirsiniz. 90 saat sürer ve A2.2, A2.3 ve A2.4 seviyeleri kapsarlar. (Toplam 4,5 ay sürer)" },
+			{ "contentTitle": "Kullanılan kitaplar", "contentDescription": "Turizm 1- SGEL yayınları • Turizm 2- SGEL yayınları • Turizm Profesyonelleri- Enclave ELE yayınları • Tekrar hoş geldiniz (A1-A2)- Enclave ELE yayınları. Ayrıca öğretmenler kendi hazırladıkları materyalleri kullanırlar ve tüm derslerde konuşmayı güçlendirmek için iletişimsel egzersizler yapılır." },
+		  { "contentTitle": "Öğretmenler", "contentDescription": "Öğretmenler ELE öğretimi konusunda derin deneyime sahiptir. Modül A’da Türkçe konuşabilen ve anadili İspanyolca olan bir öğretmen, Modül B’de ana dili İspanyolca olan bir öğretmen görev alır." },
+          { "contentTitle": "Kayıt", "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır (Türkçe olarak). Deneme dersi ücretsizdir ve yaklaşık 20 dakika sürmektedir. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin." },
+          { "contentTitle": "Sertifika", "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir." }
         ]
       },
       {
         "title": "TAMAMLAYICI KURSLAR",
         "content": [
-          {
-            "contentTitle": "A. İspanyolca Konuşma Kursu",
-            "contentDescription": "Konuşma ve dil pratiği kursları ilk seviyeleri geçmiş öğrencilerin konuşma becerilerini  akıcı hale getirmek amacını taşır. Her derste farklı bir konu işlenir.  Bu kursta çok farklı konularda birçok kelime ve terim öğretilir, günlük dil kullanımı ve tonlama üzerine çalışılır. Her öğrenci bol bol konuşma pratiği fırsatına sahip olur. Konuşma kursları 2 ayrı seviyede yapılmaktadır.\nBaşlangıç seviyesine katılmak için A.1.1 kursunu bitirmiş olmanız gerekir. \nA2.1 seviyesini bitirmiş iseniz daha ileri seviyedeki konuşma kursuna katılabilirsiniz. \nBu kursun öğretmenleri Türkçe bilmedikleri için öğrenci ile İspanyolca kullanarak gerçek bir iletişim kurulur. Kurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur"
-          },
-          {
-            "contentTitle": "B. Pasado Pisado - İspanyolca'da Geçmiş Zaman Kursu",
-            "contentDescription": "Pasado Pisado Kursunda öğrenci İspanyolca'daki 3 ayrı geçmiş zaman  (pretérito indefinido, pretérito imperfecto ve pretérito perfecto) kalıbına  yoğunlaşır.  Geçmiş zaman İspanyolca öğrenirken en çok pratik yapılması gereken konulardan biridir. Gramer yapısı detaylı biçimde incelenir. Yazılı ve sözlü pratik kullanım ve konuşmaya çalışmaları yapılır. Kurs bitiminde doğru geçmiş zaman kalıbını akıcı biçimde kullanmaya başlarsınız. \nBu kurs için A1.2 seviyesini bitirmiş olmanız gerekir. \nKurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur."
-          },
-          {
-            "contentTitle": "C. Şarkılarla İspanyolca Kursu",
-            "contentDescription": "İspanyolca popüler şarkıların sözlerini anlamak, yeni kelime ve ifadeleri eğlenerek öğrenmek isteyenler içindir. İspanyolca konuşanların günlük hayatlarında dinledikleri müzikleri anlayabilmek dil seviyenizi çok yükseltecektir.  Ayrıca Latin Amerika şarkıcılarının biyografilerini  inceleyip beraber konuşma pratiği yapacağız.  Ders öğretmenimiz hem İspanyolca öğretmeni hem de profesyonel müzisyendir.\n Bu kurs için en az A.2.1 seviyesini bitirmiş olmanız gerekir. \nKurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur. "
-          },
-          {
-            "contentTitle": "D. Amo El Subjuntivo  - Dilek Kipi Kursu",
-            "contentDescription": "Amo el subjuntivo kursu, İspanyolca seviyelerini geliştirmek ve bu zor konuyu mükemmel biçimde öğrenmek isteyen öğrenciler için ideal bir kurstur. Bu kursta dilek/istek kiplerinin tüm kullanım tiplerini ve farklı zamanlardaki kalıplar öğretilir. Ayrıca derste işlenen her konunun sonunda dilbilgisi kalıbını etkin kullanma ve konuşma pratiği yapılır. Ders öğretmeni filoloji uzmanıdır. \nBu kursa katılmak için en az A2.4 seviyesini geçmiş olmanız gerekir.\n Kurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur."
-          },
-          {
-            "contentTitle": "E. Gramer güzeldir kursu ",
-            "contentDescription": "Gramer güzeldir kursu, dilbilgisi seviyesini belirli bir noktaya getirmiş ancak hala tam doğru şekilde kullanamayan öğrenciler içindir. Her derste farklı bir gramer konusu işlenir ve toplam 8 ders yapılır. Son derste kurs boyunca üzerinde çalışılan tüm gramer konuları tekrar edilerek dilbilginiz perçinlenir. Öğretmen orta seviye gramer eğitimi konusunda özel formasyona sahiptir. \nBu kursa A2.2 seviyesini tamamlamış öğrenciler katılabilir.\n Kurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur. "
-          },
-          {
-            "contentTitle": "Dersler",
-            "contentDescription": "Ödev verilmediği için düzenli derslerin yanında tamamlayıcı katılmak öğrenciyi zorlamaz ve öğrenim sürecini çok hızlandırır. Dersler Zoom üzerinden online olarak haftada 1 kez yapılır. Her ders 2 saat sürer. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir."
-          },
-          {
-            "contentTitle": "Kayıt",
-            "contentDescription": "Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır. Deneme dersi için lütfen bize Whatsapp mesajı gönderin."
-          },
-          {
-            "contentTitle": "Sertifika",
-            "contentDescription": "Bu kurslarda sınav yoktur, dolayısıyla sertifika verilmez.  "
-          }
+          { "contentTitle": "A. İspanyolca Konuşma Kursu", "contentDescription": "Konuşma ve dil pratiği kursları ilk seviyeleri geçmiş öğrencilerin konuşma becerilerini  akıcı hale getirmek amacını taşır. Her derste farklı bir konu işlenir.  Bu kursta çok farklı konularda birçok kelime ve terim öğretilir, günlük dil kullanımı ve tonlama üzerine çalışılır. Her öğrenci bol bol konuşma pratiği fırsatına sahip olur. Konuşma kursları 2 ayrı seviyede yapılmaktadır.\nBaşlangıç seviyesine katılmak için A.1.1 kursunu bitirmiş olmanız gerekir. \nA2.1 seviyesini bitirmiş iseniz daha ileri seviyedeki konuşma kursuna katılabilirsiniz. \nBu kursun öğretmenleri Türkçe bilmedikleri için öğrenci ile İspanyolca kullanarak gerçek bir iletişim kurulur. Kurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur" },
+          { "contentTitle": "B. Pasado Pisado - İspanyolca'da Geçmiş Zaman Kursu", "contentDescription": "Pasado Pisado Kursunda öğrenci İspanyolca'daki 3 ayrı geçmiş zaman  (pretérito indefinido, pretérito imperfecto ve pretérito perfecto) kalıbına  yoğunlaşır.  Geçmiş zaman İspanyolca öğrenirken en çok pratik yapılması gereken konulardan biridir. Gramer yapısı detaylı biçimde incelenir. Yazılı ve sözlü pratik kullanım ve konuşmaya çalışmaları yapılır. Kurs bitiminde doğru geçmiş zaman kalıbını akıcı biçimde kullanmaya başlarsınız. \nBu kurs için A1.2 seviyesini bitirmiş olmanız gerekir. \nKurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur." },
+          { "contentTitle": "C. Şarkılarla İspanyolca Kursu", "contentDescription": "İspanyolca popüler şarkıların sözlerini anlamak, yeni kelime ve ifadeleri eğlenerek öğrenmek isteyenler içindir. İspanyolca konuşanların günlük hayatlarında dinledikleri müzikleri anlayabilmek dil seviyenizi çok yükseltecektir.  Ayrıca Latin Amerika şarkıcılarının biyografilerini  inceleyip beraber konuşma pratiği yapacağız.  Ders öğretmenimiz hem İspanyolca öğretmeni hem de profesyonel müzisyendir.\n Bu kurs için en az A.2.1 seviyesini bitirmiş olmanız gerekir. \nKurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur. " },
+          { "contentTitle": "D. Amo El Subjuntivo  - Dilek Kipi Kursu", "contentDescription": "Amo el subjuntivo kursu, İspanyolca seviyelerini geliştirmek ve bu zor konuyu mükemmel biçimde öğrenmek isteyen öğrenciler için ideal bir kurstur. Bu kursta dilek/istek kiplerinin tüm kullanım tiplerini ve farklı zamanlardaki kalıplar öğretilir. Ayrıca derste işlenen her konunun sonunda dilbilgisi kalıbını etkin kullanma ve konuşma pratiği yapılır. Ders öğretmeni filoloji uzmanıdır. \nBu kursa katılmak için en az A2.4 seviyesini geçmiş olmanız gerekir.\n Kurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur." },
+          { "contentTitle": "E. Gramer güzeldir kursu ", "contentDescription": "Gramer güzeldir kursu, dilbilgisi seviyesini belirli bir noktaya getirmiş ancak hala tam doğru şekilde kullanamayan öğrenciler içindir. Her derste farklı bir gramer konusu işlenir ve toplam 8 ders yapılır. Son derste kurs boyunca üzerinde çalışılan tüm gramer konuları tekrar edilerek dilbilginiz perçinlenir. Öğretmen orta seviye gramer eğitimi konusunda özel formasyona sahiptir. \nBu kursa A2.2 seviyesini tamamlamış öğrenciler katılabilir.\n Kurs toplam 16 saattir. Kursun en fazla 10 öğrencisi olur. " },
+          { "contentTitle": "Dersler", "contentDescription": "Ödev verilmediği için düzenli derslerin yanında tamamlayıcı katılmak öğrenciyi zorlamaz ve öğrenim sürecini çok hızlandırır. Dersler Zoom üzerinden online olarak haftada 1 kez yapılır. Her ders 2 saat sürer. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir." },
+          { "contentTitle": "Kayıt", "contentDescription": "Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır. Deneme dersi için lütfen bize Whatsapp mesajı gönderin." },
+           { "contentTitle": "Sertifika", "contentDescription": "Bu kurslarda sınav yoktur, dolayısıyla sertifika verilmez.  " }
         ]
       },
       {
         "title": "ÇOCUKLAR / YETİŞKİNLER İÇİN ÖZEL DERSLER",
         "content": [
-          {
-            "contentTitle": "Genel Bilgi",
-            "contentDescription": "14 yaşından büyükler yetişkin özel dersleri alırlar.\n6-13 yaş arasındakiler ise çocuk özel derslerine katılır.\n\nGrup derslerine zamanı uygun olmayanlar veya İspanyolca'yı çok daha çabuk öğrenmek isteyenler özel dersler alabilirler. Yetişkin özel dersleri öğrencinin ilgi alanlarına ve merak ettiği konulara göre özelleştirilir. Bu derslerin video kaydı tutulmaz. Ders saatleri öğretmen ile görüşerek ayarlanır. Yetişkin özel dersleri 1 saat sürer, dilerseniz haftada  2 kere ders yapabilirsiniz. Toplam ders sayısı sizin talebinize bağlıdır. Bu konuda öğretmeniniz size en uygun programı tavsiye edecektir.\nÇocuk özel derslerinde oyunlar, şarkılar ve eğlenceli etkinlikler aracılığıyla öğrenciye kelime ve dil bilgisi öğretilir. Çocuk derslerinin  öğrenci öğretmen ilişkisi çok farklı ve özel dinamikler barındırır.  Bu nedenle çocuklara özel olarak görevlendirdiğimiz öğretmenler  çocuklarla çalışma konusunda derin tecrübeye sahiptir. Velilerin istemesi halinde dersler kayıt altına alınabilir Öğretmen ayrıca haftada bir kez veliye çocuğun nasıl ilerlediğini anlatan bir rapor gönderir. Çocuk özel dersleri  45 dk. sürer. \nÖzel ders ödemeleri 5 veya 10 saatlik paketler halinde yapılır. Daha detaylı bilgi için lütfen bize  Whatsapp mesajı gönderin."
-          }
+          { "contentTitle": "Genel Bilgi", "contentDescription": "14 yaşından büyükler yetişkin özel dersleri alırlar.\n6-13 yaş arasındakiler ise çocuk özel derslerine katılır.\n\nGrup derslerine zamanı uygun olmayanlar veya İspanyolca'yı çok daha çabuk öğrenmek isteyenler özel dersler alabilirler. Yetişkin özel dersleri öğrencinin ilgi alanlarına ve merak ettiği konulara göre özelleştirilir. Bu derslerin video kaydı tutulmaz. Ders saatleri öğretmen ile görüşerek ayarlanır. Yetişkin özel dersleri 1 saat sürer, dilerseniz haftada  2 kere ders yapabilirsiniz. Toplam ders sayısı sizin talebinize bağlıdır. Bu konuda öğretmeniniz size en uygun programı tavsiye edecektir.\nÇocuk özel derslerinde oyunlar, şarkılar ve eğlenceli etkinlikler aracılığıyla öğrenciye kelime ve dil bilgisi öğretilir. Çocuk derslerinin  öğrenci öğretmen ilişkisi çok farklı ve özel dinamikler barındırır.  Bu nedenle çocuklara özel olarak görevlendirdiğimiz öğretmenler  çocuklarla çalışma konusunda derin tecrübeye sahiptir. Velilerin istemesi halinde dersler kayıt altına alınabilir Öğretmen ayrıca haftada bir kez veliye çocuğun nasıl ilerlediğini anlatan bir rapor gönderir. Çocuk özel dersleri  45 dk. sürer. \nÖzel ders ödemeleri 5 veya 10 saatlik paketler halinde yapılır. Daha detaylı bilgi için lütfen bize  Whatsapp mesajı gönderin." }
         ]
       }
-    ],
-    "title": "TÜM SEVİYELERİN PROGRAMI ",
+    ], 
+	
+	 "title": "Seviye Planlaması",
+	
     "cardCourses": [
       {
         "title": "A1.1 Başlangıç",
@@ -378,7 +248,7 @@
         "week": "Haftada 1 gün",
         "month": "8 Mayıs"
       },
-      {
+	   {
         "title": "A1.1 Başlangıç",
         "bold": "Perşembe",
         "lesson": "İlk ders",
@@ -386,7 +256,7 @@
         "week": "Haftada 1 gün",
         "month": "8 Mayıs"
       },
-      {
+	   {
         "title": "A1.1 Başlangıç",
         "bold": "Pzt - Çarş",
         "lesson": "İlk ders",
@@ -394,7 +264,7 @@
         "week": "Haftada 2 gün",
         "month": "12 Mayıs"
       },
-      {
+	   {
         "title": "A1.1 Başlangıç",
         "bold": "Çarşamba",
         "lesson": "İlk ders",
@@ -402,7 +272,7 @@
         "week": "Haftada 1 gün",
         "month": "6 Mayıs"
       },
-      {
+	  {
         "title": "A1.1 Başlangıç",
         "bold": "Çarşamba",
         "lesson": "İlk ders",
@@ -410,7 +280,7 @@
         "week": "Haftada 1 gün",
         "month": "9 Temmuz"
       },
-      {
+	   {
         "title": "A1.2",
         "bold": "Cuma",
         "lesson": "İlk ders",
@@ -418,7 +288,7 @@
         "week": "Haftada 1 gün",
         "month": "27 Haziran"
       },
-      {
+	  {
         "title": "A2.1",
         "bold": "Salı",
         "lesson": "İlk ders",
@@ -426,7 +296,7 @@
         "week": "Haftada 1 gün",
         "month": "29 Nisan"
       },
-      {
+	  {
         "title": "A2.1",
         "bold": "Pazartesi",
         "lesson": "İlk ders",
@@ -434,7 +304,7 @@
         "week": "Haftada 1 gün",
         "month": "9 Haziran"
       },
-      {
+	  {
         "title": "A2.2",
         "bold": "Cuma",
         "lesson": "İlk ders",
@@ -442,7 +312,7 @@
         "week": "Haftada 1 gün",
         "month": "6 Haziran"
       },
-      {
+	  {
         "title": "A2.3",
         "bold": "Pazartesi",
         "lesson": "İlk ders",
@@ -450,7 +320,7 @@
         "week": "Haftada 1 gün",
         "month": "21 Nisan"
       },
-      {
+	  {
         "title": "B1.1",
         "bold": "Çarşamba",
         "lesson": "İlk ders",
@@ -458,7 +328,7 @@
         "week": "Haftada 1 gün",
         "month": "18 Haziran"
       },
-      {
+	   {
         "title": "B1.2",
         "bold": "Pazartesi",
         "lesson": "İlk ders",
@@ -466,7 +336,7 @@
         "week": "Haftada 1 gün",
         "month": "14 Nisan"
       },
-      {
+	  {
         "title": "B1.2",
         "bold": "Cuma",
         "lesson": "İlk ders",
@@ -474,7 +344,7 @@
         "week": "Haftada 1 gün",
         "month": "11 Temmuz"
       },
-      {
+	  {
         "title": "B1.5",
         "bold": "Salı",
         "lesson": "İlk ders",
@@ -482,7 +352,7 @@
         "week": "Haftada 1 gün",
         "month": "6 Mayıs"
       },
-      {
+	  {
         "title": "B2.4",
         "bold": "Perşembe",
         "lesson": "İlk ders",
@@ -490,7 +360,7 @@
         "week": "Haftada 1 gün",
         "month": "17 Nisan"
       },
-      {
+	  {
         "title": "Turizm Modül A",
         "bold": "Salı - Perş",
         "lesson": "İlk ders",
@@ -498,336 +368,147 @@
         "week": "Haftada 2 gün",
         "month": "16 Eylül"
       },
-      {
+	  {
         "title": "Turizm Modül B",
         "bold": "Salı - Perş",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 2 gün",
         "month": "16 Eylül"
-      },
-      {
+      }
+	  ,{
         "title": "Konuşma Kursu Başlangıç A1",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:30 - 2 saat",
         "week": "Haftada 1 gün",
         "month": "10 Haziran"
-      },
-      {
+      } 
+	   ,{
         "title": "Konuşma Kursu Orta A2",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:30 - 2 saat",
         "week": "Haftada 1 gün",
         "month": "6 Mayıs"
-      },
-      {
+      } 
+	    ,{
         "title": "Konuşma Kursu İleri B1-B2",
         "bold": "Cumartesi",
         "lesson": "İlk ders",
         "time": "10:00 - 2 saat",
         "week": "Haftada 1 gün",
         "month": "10 Mayıs"
-      }
+      } 
+	   
+    
     ],
+    
+    "title": "TÜM SEVİYELERİN PROGRAMI ",
     "levels": [
       {
         "title": "Başlangıç Seviyesi A1",
         "items": [
-          {
-            "level": "A1.1",
-            "duration": "40 saat - Kitap:",
-            "book": "Aula 1"
-          },
-          {
-            "level": "A1.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula 1"
-          }
+          { "level": "A1.1", "duration": "40 saat - Kitap:", "book": "Aula 1" },
+          { "level": "A1.2", "duration": "30 saat - Kitap:", "book": "Aula 1" }
         ]
       },
       {
         "title": "Temel Seviye A2",
         "items": [
-          {
-            "level": "A2.1",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  2"
-          },
-          {
-            "level": "A2.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  2"
-          },
-          {
-            "level": "A3.1",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  2"
-          },
-          {
-            "level": "A3.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  2"
-          }
+          { "level": "A2.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A2.2", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A3.1", "duration": "30 saat - Kitap:", "book": "Aula  2" },
+          { "level": "A3.2", "duration": "30 saat - Kitap:", "book": "Aula  2" }
         ]
       },
       {
         "title": "Orta Seviye B1",
         "items": [
-          {
-            "level": "B1.1",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  3"
-          },
-          {
-            "level": "B1.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  3"
-          },
-          {
-            "level": "B1.3",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  3"
-          },
-          {
-            "level": "B1.4",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  3"
-          },
-          {
-            "level": "B1.5",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  3"
-          },
-          {
-            "level": "B1.6",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  3"
-          }
+          { "level": "B1.1", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.2", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.3", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.4", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.5", "duration": "30 saat - Kitap:", "book": "Aula  3" },
+          { "level": "B1.6", "duration": "30 saat - Kitap:", "book": "Aula  3" }
         ]
       },
       {
         "title": "İleri Seviye B2",
         "items": [
-          {
-            "level": "B2.1",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  4"
-          },
-          {
-            "level": "B2.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  4"
-          },
-          {
-            "level": "B2.3",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  4 & 5"
-          },
-          {
-            "level": "B2.4",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  4 & 5"
-          },
-          {
-            "level": "B2.5",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  5"
-          },
-          {
-            "level": "B2.6",
-            "duration": "30 saat - Kitap:",
-            "book": "Aula  5"
-          }
+          { "level": "B2.1", "duration": "30 saat - Kitap:", "book": "Aula  4" },
+          { "level": "B2.2", "duration": "30 saat - Kitap:", "book": "Aula  4" },
+          { "level": "B2.3", "duration": "30 saat - Kitap:", "book": "Aula  4 & 5" },
+          { "level": "B2.4", "duration": "30 saat - Kitap:", "book": "Aula  4 & 5" },
+          { "level": "B2.5", "duration": "30 saat - Kitap:", "book": "Aula  5" },
+          { "level": "B2.6", "duration": "30 saat - Kitap:", "book": "Aula  5" }
         ]
       },
       {
         "title": "Çok İleri Seviye C1",
         "items": [
-          {
-            "level": "C1.1",
-            "duration": "30 saat - Kitap:",
-            "book": "Vitamina"
-          },
-          {
-            "level": "C1.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Vitamina"
-          },
-          {
-            "level": "C1.3",
-            "duration": "30 saat - Kitap:",
-            "book": "Vitamina"
-          },
-          {
-            "level": "C1.4",
-            "duration": "30 saat - Kitap:",
-            "book": "Vitamina"
-          },
-          {
-            "level": "C1.5",
-            "duration": "30 saat - Kitap:",
-            "book": "Vitamina"
-          },
-          {
-            "level": "C1.6",
-            "duration": "30 saat - Kitap:",
-            "book": "Vitamina"
-          }
+          { "level": "C1.1", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.2", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.3", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.4", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.5", "duration": "30 saat - Kitap:", "book": "Vitamina" },
+          { "level": "C1.6", "duration": "30 saat - Kitap:", "book": "Vitamina" }
         ]
       },
       {
         "title": "Master Seviye C2",
         "items": [
-          {
-            "level": "C2.1",
-            "duration": "30 saat - Kitap:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.2",
-            "duration": "30 saat - Kitap:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.3",
-            "duration": "30 saat - Kitap:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.4",
-            "duration": "30 saat - Kitap:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.5",
-            "duration": "30 saat - Kitap:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.6",
-            "duration": "30 saat - Kitap:",
-            "book": "Nuevo Prisma"
-          }
+          { "level": "C2.1", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.2", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.3", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.4", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.5", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" },
+          { "level": "C2.6", "duration": "30 saat - Kitap:", "book": "Nuevo Prisma" }
         ]
-      }
+      } 
     ]
   },
+
   "price": {
     "PageTitle": "Kurs Fiyatları",
     "title": "Online Spanish Course Prices",
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
-        {
-          "key": "course",
-          "header": "Grup Kursları"
-        },
-        {
-          "key": "duration",
-          "header": "Süre"
-        },
-        {
-          "key": "price",
-          "header": "Fiyat - Türkiye'de yaşayanlar için"
-        }
+        { "key": "course", "header": "Grup Kursları" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat - Türkiye'de yaşayanlar için" }
       ],
       "onlineSpanishTwoColumns": [
-        {
-          "key": "course",
-          "header": "Bire Bir Özel Ders"
-        },
-        {
-          "key": "duration",
-          "header": "Süre"
-        },
-        {
-          "key": "price",
-          "header": "Fiyat"
-        }
+        { "key": "course", "header": "Bire Bir Özel Ders" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat" }
       ],
       "extraSpanishColumns": [
-        {
-          "key": "course",
-          "header": "Grup Kursları"
-        },
-        {
-          "key": "duration",
-          "header": "Süre"
-        },
-        {
-          "key": "price",
-          "header": "Fiyat - Yurtdışında yaşayanlar için"
-        }
+		{ "key": "course", "header": "Grup Kursları" },
+        { "key": "duration", "header": "Süre" },
+        { "key": "price", "header": "Fiyat - Yurtdışında yaşayanlar için" }
       ]
     },
     "courses": {
       "onlineSpanishOneTable": [
-        {
-          "course": "A1.1 başlangıç seviyesi (akşam)",
-          "duration": "40 saat - 4 ay",
-          "price": "5.600 TL"
-        },
-        {
-          "course": "A1.1 başlangıç seviyesi (sabah)",
-          "duration": "40 saat - 4 ay",
-          "price": "4.500 TL"
-        },
-        {
-          "course": "A1.2 / Orta / Üst seviyeler",
-          "duration": "30 saat - 3 ay",
-          "price": "4.250 TL"
-        },
-        {
-          "course": "Tamamlayıcı kurslar",
-          "duration": "16 saat - 2 ay ",
-          "price": "2.200 TL"
-        },
-        {
-          "course": "Turizm İspanyolcası Başlangıç (A)",
-          "duration": "90 saat - 4,5 ay",
-          "price": "12.700  TL"
-        },
-        {
-          "course": "Turizm İspanyolcası Orta (B)",
-          "duration": "90 saat - 4,5 ay",
-          "price": "12.700  TL"
-        }
+        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "5.600 TL" },
+        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "4.500 TL" },
+        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "4.250 TL" },
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "2.200 TL" },
+		{ "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" },
+        { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" }
       ],
       "onlineSpanishTwoTable": [
-        {
-          "course": "Özel ders - yetişkinler",
-          "duration": "1 saat",
-          "price": "22 EUR"
-        },
-        {
-          "course": "Özel ders - çocuklar",
-          "duration": "45 dakika",
-          "price": "17 EUR"
-        }
-      ],
+          { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
+		 { "course": "Özel ders - çocuklar", "duration": "45 dakika", "price": "17 EUR" }
+         ],
       "extraSpanishTable": [
-        {
-          "course": "A1.1 başlangıç seviyesi (akşam)",
-          "duration": "40 saat - 4 ay",
-          "price": "190 EUR"
-        },
-        {
-          "course": "A1.1 başlangıç seviyesi (sabah)",
-          "duration": "40 saat - 4 ay",
-          "price": "160 EUR"
-        },
-        {
-          "course": "A1.2 / Orta / Üst seviyeler",
-          "duration": "30 saat - 3 ay",
-          "price": "145 EUR"
-        },
-        {
-          "course": "Tamamlayıcı kurslar",
-          "duration": "16 saat - 2 ay ",
-          "price": "90 EUR"
-        }
+       { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "190 EUR" },
+        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "160 EUR" },
+        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "145 EUR" },
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR" }
+      
       ]
     },
     "cards": [

@@ -1,25 +1,16 @@
 "use client";
 import React from "react";
-import { useTranslation } from "@/contexts/TranslationProvider";
+//import { useTranslation } from "@/lib/i18n";
+import { useTranslation } from "@/components/providers/TranslationProvider";
 import Image from "next/image";
-
-type Testimonial = {
-  image: string;
-  firstComment: string;
-  lastComment: string;
-  personName: string;
-  timeAgo: string;
-};
 
 const TestimonialCarousel = () => {
   const { t } = useTranslation();
-  // Eğer JSON’da home.testimonialsList yoksa bile [], map’i kırmaz
-  const testimonials: Testimonial[] =
-    t<Testimonial[]>("home.testimonialsList") || [];
+  const testimonials = t("home.testimonialsList");
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {testimonials.map((testimonial, index) => (
+      {testimonials.map((testimonial: any, index: number) => (
         <div key={index} className="bg-white rounded-xl p-6 shadow">
           <div className="flex items-center mb-4">
             <Image
