@@ -220,23 +220,23 @@
       "title": "COMPLEMENTARY COURSES",
       "content": [
         {
-          "contentTitle": "A. Spanish Conversation Course",
+          "contentTitle": "A. Spanish Conversation",
           "contentDescription": "These courses aim to develop fluent speaking skills for students who have completed the introductory levels. Each lesson covers a different topic, focusing on everyday language use and intonation while expanding vocabulary. Students have ample opportunities for speaking practice. Conversation courses are offered at two levels:\n\n- Beginner level: Requires completion of the A1.1 course.\n- Advanced level: Requires completion of the A2.1 level.\n\nThese courses are conducted entirely in Spanish to foster authentic communication. Each course is 16 hours and has a maximum of 10 students."
         },
         {
-          "contentTitle": "B. Pasado Pisado - Spanish Past Tense Course",
+          "contentTitle": "B. Pasado Pisado - Spanish Past Tense",
           "contentDescription": "This course focuses on mastering the three past tenses in Spanish (pretérito indefinido, pretérito imperfecto, and pretérito perfecto), an area that often requires significant practice. The course provides a detailed examination of the grammatical structure, along with written, oral, and speaking exercises. By the end, students will use the past tense with confidence and fluency.\n\nCompletion of the A1.2 level is a prerequisite for this course. Each course is 16 hours and has a maximum of 10 students."
         },
         {
-          "contentTitle": "C. Learn Spanish with Songs Course",
+          "contentTitle": "C. Learn Spanish with Songs",
           "contentDescription": "This course is designed for students who want to enhance their language skills in a fun and engaging way by understanding the lyrics of popular Spanish songs. Students will learn new vocabulary and expressions, gain insights into the music Spanish speakers listen to in their daily lives, explore the biographies of Latin American singers, and practice speaking together. The instructor is both a Spanish teacher and a professional musician.\n\nCompletion of at least the A2.1 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
         },
         {
-          "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood Course",
+          "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood",
           "contentDescription": "This course is ideal for students seeking to master the subjunctive mood in Spanish. It covers all usage types and forms of the subjunctive across different tenses, with grammar practice and speaking exercises at the end of each topic. The instructor is a philology expert.\n\nCompletion of at least the A2.4 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
         },
         {
-          "contentTitle": "E. Grammar is Beautiful Course",
+          "contentTitle": "E. Grammar is Beautiful",
           "contentDescription": "This course is for students who have attained a certain level of grammar knowledge but wish to improve their accuracy and fluency. Each lesson covers a different grammar topic, totaling 8 lessons. The final lesson is a comprehensive review to solidify understanding. The instructor has specialized training in teaching intermediate-level grammar.\n\nStudents who have completed the A2.2 level are eligible for this course. Each course is 16 hours and has a maximum of 10 students."
         },
         {
@@ -485,19 +485,19 @@
     ]
   },
   "price": {
-    "PageTitle": "Course Prices",
-    "title": "Online Spanish Course Prices",
-    "title2": "Extra Spanish Course Prices",
+    "PageTitle": "Course Fees",
+    "title": "Online Spanish Course Prices"
+
     "tables": {
       "onlineSpanishOneColumns": [
         { "key": "course", "header": "Group Courses" },
         { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+        { "key": "price", "header": "Fee" }
       ],
       "onlineSpanishTwoColumns": [
         { "key": "course", "header": "One-on-One Private Lessons" },
         { "key": "duration", "header": "Duration" },
-        { "key": "price", "header": "Price" }
+        { "key": "price", "header": "Fee" }
       ]
     },
     "courses": {

@@ -470,24 +470,24 @@
   },
 
   "price": {
-    "PageTitle": "Kurs Fiyatları",
+    "PageTitle": "Kurs Ücretleri",
     "title": "Online Spanish Course Prices",
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
         { "key": "course", "header": "Grup Kursları" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat - Türkiye'de yaşayanlar için" }
+        { "key": "price", "header": "Ücret - Türkiye'de yaşayanlar için" }
       ],
       "onlineSpanishTwoColumns": [
         { "key": "course", "header": "Bire Bir Özel Ders" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat" }
+        { "key": "price", "header": "Ücret" }
       ],
       "extraSpanishColumns": [
 		{ "key": "course", "header": "Grup Kursları" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Fiyat - Yurtdışında yaşayanlar için" }
+        { "key": "price", "header": "Ücret - Yurtdışında yaşayanlar için" }
       ]
     },
     "courses": {
