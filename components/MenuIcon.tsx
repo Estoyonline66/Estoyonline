@@ -7,16 +7,17 @@ export default function MenuIcon(props: {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="60"
-      height="50"
-      viewBox="0 0 60 50"
+      width="32"
+      height="22"
+      viewBox="0 0 32 22"
       fill="none"
       {...props.svg}
     >
       <path
-        d="M5 25H55M5 10H55M15 40H55"
+        d="M1 11H31M1 1H31M11 21H31"
         stroke="#FEFEFE"
-        strokeWidth="4"
+        strokeOpacity="0.996078"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         {...props.path}
