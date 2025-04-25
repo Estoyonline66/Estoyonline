@@ -54,7 +54,7 @@ export default function Navbar({isHome}:props) {
     }>
       {/* logo */}
       <TranslatedLink href={"/"} className="w-fit">
-        <WebsiteLogo svg={{className:"h-8 md:h-10 lg:h-12 w-fit"}}/>
+        <WebsiteLogo svg={{className:"h-10 md:h-10 lg:h-12 w-fit"}}/>
       </TranslatedLink>
 
       
