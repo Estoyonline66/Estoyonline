@@ -36,7 +36,7 @@ export default function Page() {
         </span>
         <OnlineSpanishOne />
         <OnlineSpanishTwo />
-        <ExtraSpanish />
+       {t("price.extraSpanish.options")?.length > 0 && <ExtraSpanish />}
 
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-5 px-3 md:px-10 lg:px-[10rem]">
           {Data?.cards?.map((card, index) => (

@@ -251,9 +251,9 @@
       ]
     },
       {
-        "title": "PRIVATE LESSONS FOR CHILDREN / ADULTS",
+        "title": "PRIVATE LESSONS FOR ADULTS/KIDS",
         "content": [
-          { "contentTitle": "General Information", "contentDescription": "Those over 14 years old take adult private lessons.\nThose aged 6-13 take children's private lessons.\n\nPrivate lessons are available for those whose schedules do not fit group lessons or who want to learn Spanish much faster. Adult private lessons are customized based on the student's interests and topics they are curious about. Video recordings of these lessons are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\nIn children's private lessons, vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship in children's lessons involves very different and special dynamics. Therefore, our teachers assigned specifically for children have deep experience working with kids. If parents request, lessons can be recorded. The teacher also sends a weekly progress report to the parents. Children's private lessons last 45 minutes.\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
+          { "contentTitle": "General Information", "contentDescription": "Those over 14 years old take adult private lessons.\nThose aged 6-13 take kid's private lessons.\n\nPrivate lessons are available for those whose schedules do not fit group lessons or who want to learn Spanish much faster. Adult private lessons are customized based on the student's interests and topics they are curious about. Video recordings of these lessons are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\nIn children's private lessons, vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship in children's lessons involves very different and special dynamics. Therefore, our teachers assigned specifically for children have deep experience working with kids. If parents request, lessons can be recorded. The teacher also sends a weekly progress report to the parents. Children's private lessons last 45 minutes.\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
         ]
       }
     ],
@@ -510,7 +510,7 @@
       ],
       "onlineSpanishTwoTable": [
         { "course": "Private lesson - adults", "duration": "1 hour", "price": "22 GBP" },
-        { "course": "Private lesson - children", "duration": "45 minutes", "price": "17 GBP" }
+        { "course": "Private lesson - kids", "duration": "45 minutes", "price": "17 GBP" }
       ]
      
     },
