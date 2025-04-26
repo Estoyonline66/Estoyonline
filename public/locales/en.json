@@ -502,15 +502,15 @@
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 months", "price": "5,600 TL" },
-        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 months", "price": "4,500 TL" },
-        { "course": "A1.2 / Intermediate / Advanced levels", "duration": "30 hours - 3 months", "price": "4,250 TL" },
-        { "course": "Complementary courses", "duration": "16 hours - 2 months", "price": "2,200 TL" }
+        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 months", "price": "190 GBP" },
+        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 months", "price": "160 GBP" },
+        { "course": "A1.2 / Intermediate / Advanced levels", "duration": "30 hours - 3 months", "price": "145 GBP" },
+        { "course": "Complementary courses", "duration": "16 hours - 2 months", "price": "90 GBP" }
         
       ],
       "onlineSpanishTwoTable": [
-        { "course": "Private lesson - adults", "duration": "1 hour", "price": "22 EUR" },
-        { "course": "Private lesson - children", "duration": "45 minutes", "price": "17 EUR" }
+        { "course": "Private lesson - adults", "duration": "1 hour", "price": "22 GBP" },
+        { "course": "Private lesson - children", "duration": "45 minutes", "price": "17 GBP" }
       ]
      
     },
