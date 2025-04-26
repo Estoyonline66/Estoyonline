@@ -19,13 +19,8 @@ interface PriceData {
 
 export default function Page() {
   const { t } = useTranslation();
-
-  // Sayfa başlığı ve kartları çeviriden al
+  // fetch price data from translation file
   const Data: PriceData = t("price");
-
-  // ExtraSpanish tablosunu kontrol et (tr/en json içindeki doğru yer!)
-  const extraOptions = t("price.courses.extraSpanishTable");
-  const showExtraSpanish = Array.isArray(extraOptions) && extraOptions.length > 0;
 
   return (
     <>
@@ -39,10 +34,9 @@ export default function Page() {
         <span className="fixed pointer-events-none w-fit max-w-[20vw] -right-0 top-10 sm:h-screen block -z-10 overflow-x-hidden">
           <DoubleRight className="h-full relative left-5" />
         </span>
-
         <OnlineSpanishOne />
         <OnlineSpanishTwo />
-        {showExtraSpanish && <ExtraSpanish />}
+        <ExtraSpanish />
 
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-5 px-3 md:px-10 lg:px-[10rem]">
           {Data?.cards?.map((card, index) => (
