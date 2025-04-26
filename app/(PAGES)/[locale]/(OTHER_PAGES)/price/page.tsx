@@ -19,10 +19,12 @@ interface PriceData {
 
 export default function Page() {
   const { t } = useTranslation();
+
+  // Sayfa başlığı ve kartları çeviriden al
   const Data: PriceData = t("price");
 
-  // Güvenli kontrol: ExtraSpanish verisi dizi mi ve boş değil mi?
-  const extraOptions = t("price.extraSpanish.options");
+  // ExtraSpanish tablosunu kontrol et (tr/en json içindeki doğru yer!)
+  const extraOptions = t("price.courses.extraSpanishTable");
   const showExtraSpanish = Array.isArray(extraOptions) && extraOptions.length > 0;
 
   return (
@@ -40,7 +42,6 @@ export default function Page() {
 
         <OnlineSpanishOne />
         <OnlineSpanishTwo />
-
         {showExtraSpanish && <ExtraSpanish />}
 
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-5 px-3 md:px-10 lg:px-[10rem]">
