@@ -1,52 +1,56 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import GeneralHero from "@/components/GeneralHero";
 import Meta from "@/components/Meta";
 import MapComponent from "@/components/sections/Contact/MapContainer";
-import {
-  MapPinCustom,
-  MessagePhone,
-  SingleLineShortLeft,
-  SingleLineShortRight,
-} from "@/components/shapes";
-import StyledButton from "@/components/StyledButton";
+import { MessagePhone } from "@/components/shapes";
 import { useTranslation } from "@/contexts/TranslationProvider";
-import { useIsMobile } from "@/lib/hooks/useMobile";
 import { ContactData } from "@/types/PropTypes";
-import clsx from "clsx";
 
 export default function Contact() {
   const { t } = useTranslation();
   const Data: ContactData = t("contact");
 
-  const sm = useIsMobile(640); // Koşulsuz çalışıyor ✅
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <>
       <Meta route="/contact" />
+
       <GeneralHero
         icon={
           <MessagePhone
-            path={{ fill: "none", stroke: "#FEFEFE" }}
+            path={{
+              fill: "none",
+              stroke: "#FEFEFE",
+            }}
           />
         }
         text={Data.PageTitle}
       />
-      {/* Buradan itibaren senin JSX */}
-      <section className="w-full mt-10 bg-white isolate relative grid grid-cols-1 sm:grid-cols-2 items-center justify-center overflow-hidden">
-        {/* ... */}
+
+      <section className="w-full mt-10 bg-white grid grid-cols-1 sm:grid-cols-2 items-center justify-center overflow-hidden">
+        <div className="w-full h-full px-4 py-14 md:px-10 lg:px-20 flex flex-col gap-5">
+          <strong className="text-lg sm:text-xl lg:text-2xl">
+            {Data.needAssistance}
+          </strong>
+          <p>{Data.contactDescription}</p>
+          <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
+            <a href={Data.whatsapplink} target="_blank" rel="noopener noreferrer">
+              <button className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition">
+                {Data.officeContactButton}
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col items-center px-4 py-14 md:px-10 lg:px-20 gap-5">
+          <strong>{Data.officeAddressTitle}</strong>
+          <address className="w-full text-center max-w-[25ch]">
+            {Data.officeAddressDescription}
+          </address>
+        </div>
       </section>
-      <section className="w-full mt-10 z-[-1]">
+
+      <section className="w-full mt-10">
         <MapComponent />
       </section>
     </>
