@@ -1,51 +1,53 @@
 {
+{
   "seo": {
     "pages": [
       {
         "route": "/",
         "datas": {
-          "title": "Estoyonline | Start your Spanish learning journey",
-          "description": "Learn Spanish online with native teachers and let the sun warm your words."
+          "title": "EstoyOnline | Start your Spanish learning journey",
+          "description": "At our boutique school, EstoyOnline.es, based in Barcelona, we teach Spanish in a fun and engaging way, much different from traditional methods. Thanks to our modern techniques, learning Spanish online has become an enjoyable and exciting process."
         }
       },
       {
         "route": "/teachers",
         "datas": {
-          "title": "Estoyonline | Teachers",
-          "description": "Learn more about our teachers."
+          "title": "EstoyOnline | Teachers",
+          "description": "Our teachers are native Spanish speakers."
         }
       },
       {
         "route": "/contact",
         "datas": {
-          "title": "Estoyonline | Contact us",
-          "description": "Get in touch with us and begin your learning journey."
+          "title": "EstoyOnline | Contact us",
+          "description": "Get in touch with us to start learning Spanish right away."
         }
       },
       {
         "route": "/courses",
         "datas": {
-          "title": "Estoyonline | Courses",
-          "description": "Find the course that interests you."
+          "title": "EstoyOnline | Courses",
+          "description": "Find the Spanish course that best suits your level."
         }
       },
       {
         "route": "/price",
         "datas": {
-          "title": "Estoyonline | Pricing",
-          "description": "Find the best price"
+          "title": "EstoyOnline | Pricing",
+          "description": "Discover the best prices for learning Spanish."
         }
       },
       {
         "route": "/videos",
         "datas": {
-          "title": "Estoyonline | Videos | Understand our learning process",
-          "description": "Discover how our learning system works."
+          "title": "EstoyOnline | Videos | Our Spanish lessons are so much fun",
+          "description": "Our students have a great time while taking Spanish lessons."
         }
       }
     ]
-  },
-  "navbar": {
+  }
+},
+ "navbar": {
     "links": {
       "Teachers": "/teachers",
       "Online Courses": "/courses",

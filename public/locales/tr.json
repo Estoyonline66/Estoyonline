@@ -1,6 +1,108 @@
 {
-  "seo":{
-    "pages":[
+{
+  "seo": {
+    "pages": [
+      {
+        "route": "/",
+        "datas": {
+          "title": "EstoyOnline | İspanyolca öğrenmeye başlayın",
+          "description": "Barselona merkezli EstoyOnline.es butik okulumuzda İspanyolcayı geleneksel metotlardan çok farklı olarak, eğlenceli bir şekilde öğretiyoruz. Kullandığımız modern metotlar sayesinde online İspanyolca öğrenmek artık çok eğlenceli ve keyifli bir süreç."
+        }
+      },
+      {
+        "route": "/teachers",
+        "datas": {
+          "title": "EstoyOnline | Öğretmenler",
+          "description": "Öğretmenlerimizin ana dili İspanyolcadır."
+        }
+      },
+      {
+        "route": "/contact",
+        "datas": {
+          "title": "EstoyOnline | Bize ulaşın",
+          "description": "İspanyolca öğrenmeye başlamak için hemen bizimle iletişime geçin."
+        }
+      },
+      {
+        "route": "/courses",
+        "datas": {
+          "title": "EstoyOnline | Kurslar",
+          "description": "Seviyenize en uygun İspanyolca kursunu bulun."
+        }
+      },
+      {
+        "route": "/price",
+        "datas": {
+          "title": "EstoyOnline | Fiyatlar",
+          "description": "İspanyolca öğrenmek için en uygun fiyatları keşfedin."
+        }
+      },
+      {
+        "route": "/videos",
+        "datas": {
+          "title": "EstoyOnline | Videolar | İspanyolca derslerimiz çok eğlenceli",
+          "description": "Öğrencilerimiz İspanyolca derslerinde çok eğleniyor."
+        }
+      }
+    ]
+  }
+},
+    "pages": [
+      {
+        "route": "/",
+        "datas": {
+          "title": "EstoyOnline | İspanyolca öğrenmeye başlayın",
+          "description": "Barselona merkezli EstoyOnline.es butik okulumuzda İspanyolcayı geleneksel metotlardan çok farklı olarak, eğlenerek öğretiyoruz. Kullandığımız modern metotlar sayesinde online İspanyolca öğrenmek artık çok eğlenceli ve keyifli bir süreç."
+        }
+      },
+      {
+        "route": "/teachers",
+        "datas": {
+          "title": "EstoyOnline | Öğretmenler",
+          "description": "Öğretmenlerimizin ana dili İspanyolcadır."
+        }
+      },
+      {
+        "route": "/contact",
+        "datas": {
+          "title": "EstoyOnline | Bize ulaşın",
+          "description": "İspanyolca öğrenmek hemen başlamak için bize bir mesaj göndermeniz yeterli."
+        }
+      },
+      {
+        "route": "/courses",
+        "datas": {
+          "title": "EstoyOnline | Kurslar",
+          "description": "Seviyenize en uygun kursu bulun."
+        }
+      },
+      {
+        "route": "/price",
+        "datas": {
+          "title": "EstoyOnline | Fiyatlar",
+          "description": "İspanyolca öğrenmek için bulabileceğiniz en iyi fiyatlar"
+        }
+      },
+      {
+        "route": "/videos",
+        "datas": {
+          "title": "EstoyOnline | Videolar | Öğrenme sürecimizi anlayın",
+          "description": "Öğrencilerimizin eğlenere."
+        }
+      }
+    ]
+  },
+  "navbar": {
+    "links": {
+      "Öğretmenler": "/teachers",
+      "Online Kurslar": "/courses",
+      "Videolar": "/videos",
+      "Fiyat": "/price",
+      "İletişim": "/contact"
+    }
+  }
+},
+   "pages":[
       {
         "route":"/",
         "datas":{
