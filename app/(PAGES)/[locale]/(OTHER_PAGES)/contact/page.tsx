@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import GeneralHero from "@/components/GeneralHero";
 import Meta from "@/components/Meta";
 import MapComponent from "@/components/sections/Contact/MapContainer";
@@ -16,9 +18,22 @@ import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
 
 export default function Contact() {
-  const sm = useIsMobile(640);
   const { t } = useTranslation();
   const Data: ContactData = t("contact");
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const sm = mounted ? useIsMobile(640) : false;
+
+  if (!mounted) {
+    // İlk renderda window olmadığı için boş bir şey gösteriyoruz
+    return null;
+  }
+
   return (
     <>
       <Meta route="/contact" />
@@ -51,15 +66,13 @@ export default function Contact() {
           </strong>
           <p>{Data.contactDescription}</p>
           <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
-            <a href={Data.whatsapplink} target="_blank">
+            <a href={Data.whatsapplink} target="_blank" rel="noopener noreferrer">
               <StyledButton
                 icon={
                   <MessagePhone
                     path={{
                       fill: "var(--styledButtonHoveredTextColor)",
-                      style: {
-                        transitionDuration: "300ms",
-                      },
+                      style: { transitionDuration: "300ms" },
                     }}
                     svg={{
                       className: "size-4",
@@ -73,7 +86,8 @@ export default function Contact() {
             </a>
           </div>
         </div>
-        <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-5">
+
+        <div className="w-full isolate flex flex-col items-center px-4 relative py-14 md:px-10 lg:px-20 gap-5">
           <span
             className={clsx(
               "absolute size-full bg-[#DEEBFE] top-0 left-0 -z-10",
