@@ -14,15 +14,27 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
   const sm = useIsMobile(640);
   const { t } = useTranslation();
   const Data: ContactData = t("contact");
+
+  const [isClient, setIsClient] = useState(false);
+
+  // This ensures that the component is rendered on the client-side only
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; // Render nothing until the component is mounted on the client-side
+  }
+
   return (
     <>
       <Meta route="/contact" />
-
       <GeneralHero
         icon={
           <MessagePhone
