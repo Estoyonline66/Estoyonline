@@ -26,6 +26,7 @@ export default function AboutFounder() {
     "homeAboutDescription2": "",
     "homeAboutDescriptionBold2": "",
     "homeAboutButton": "",
+	"homewhatsapplink": ""
   };
   
   const imageRef = useIntersectionObserver<HTMLDivElement>({
