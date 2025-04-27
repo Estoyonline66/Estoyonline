@@ -7,18 +7,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EstoyOnline.co - Aprende Español e Inglés con Profesores Expertos",
-  description: "Domina el español e inglés con cursos interactivos, clases en vivo y recursos personalizados.",
+  title: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
+  description: "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment.  With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
   keywords: [
     "EstoyOnline",
-    "learn Spanish",
-    "learn English",
+    "learn Spanish online",
     "Spanish courses",
-    "English courses",
     "clases de español",
-    "clases de inglés",
     "curso de español online",
-    "curso de inglés online",
     "profesores de idiomas",
     "language tutors",
     "educación en español",
@@ -27,27 +23,27 @@ export const metadata: Metadata = {
     "online language courses",
   ],
   openGraph: {
-    title: "EstoyOnline.co - Aprende Español e Inglés con Expertos",
-    description: "Mejora tu español e inglés con clases en línea, materiales interactivos y ejercicios prácticos.",
-    url: "https://estoyonline.co",
-    siteName: "EstoyOnline.co",
+   title: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
+  description: "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment.  With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
+    url: "https://estoyonline.es",
+    siteName: "EstoyOnline.es",
     images: [
       {
         url: "https://your-image-host.com/path-to-image.png",
         width: 1200,
         height: 630,
-        alt: "EstoyOnline - Aprende español e inglés en línea",
+        alt: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@EstoyOnline",
-    title: "EstoyOnline.co - Aprende Español e Inglés de Forma Divertida y Efectiva",
-    description: "Únete a nuestra comunidad y mejora tu español e inglés con profesores calificados.",
+    site: "",
+	title: "EstoyOnline.es - Learn Spanish naturally and enjoyably",		
+ description: "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment.  With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
     images: [
-      "https://your-image-host.com/path-to-image.png",
+    "https://estoyonline.es/Images/logo.png",
     ],
   },
   robots: "index, follow",
@@ -72,16 +68,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
-              name: "EstoyOnline.co",
-              url: "https://estoyonline.co",
+              "@type": "OnlineSpanish",
+              name: "EstoyOnline.es",
+              url: "https://estoyonline.es",
               logo: "https://your-image-host.com/path-to-logo.png",
-              description:
-                "Plataforma educativa para aprender español e inglés con clases en vivo y recursos interactivos.",
+           description: "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment.  With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
               sameAs: [
-                "https://www.facebook.com/EstoyOnline",
-                "https://twitter.com/EstoyOnline",
-                "https://www.instagram.com/EstoyOnline",
+                "https://www.instagram.com/estoyonline.es/"
               ],
               languages: ["es", "en"],
             }),

@@ -24,6 +24,8 @@ export interface HomeProps {
   counterTitle2: string;
   counterTitle3: string;
   counterTitle4: string;
+  homewhatsapplink: string;
+  
 }
 export interface TeachersTeacher {
   name: string;
