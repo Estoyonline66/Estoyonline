@@ -1,5 +1,4 @@
 {
-{
   "seo": {
     "pages": [
       {
@@ -47,106 +46,6 @@
     ]
   }
 },
-    "pages": [
-      {
-        "route": "/",
-        "datas": {
-          "title": "EstoyOnline | İspanyolca öğrenmeye başlayın",
-          "description": "Barselona merkezli EstoyOnline.es butik okulumuzda İspanyolcayı geleneksel metotlardan çok farklı olarak, eğlenerek öğretiyoruz. Kullandığımız modern metotlar sayesinde online İspanyolca öğrenmek artık çok eğlenceli ve keyifli bir süreç."
-        }
-      },
-      {
-        "route": "/teachers",
-        "datas": {
-          "title": "EstoyOnline | Öğretmenler",
-          "description": "Öğretmenlerimizin ana dili İspanyolcadır."
-        }
-      },
-      {
-        "route": "/contact",
-        "datas": {
-          "title": "EstoyOnline | Bize ulaşın",
-          "description": "İspanyolca öğrenmek hemen başlamak için bize bir mesaj göndermeniz yeterli."
-        }
-      },
-      {
-        "route": "/courses",
-        "datas": {
-          "title": "EstoyOnline | Kurslar",
-          "description": "Seviyenize en uygun kursu bulun."
-        }
-      },
-      {
-        "route": "/price",
-        "datas": {
-          "title": "EstoyOnline | Fiyatlar",
-          "description": "İspanyolca öğrenmek için bulabileceğiniz en iyi fiyatlar"
-        }
-      },
-      {
-        "route": "/videos",
-        "datas": {
-          "title": "EstoyOnline | Videolar | Öğrenme sürecimizi anlayın",
-          "description": "Öğrencilerimizin eğlenere."
-        }
-      }
-    ]
-  },
-  "navbar": {
-    "links": {
-      "Öğretmenler": "/teachers",
-      "Online Kurslar": "/courses",
-      "Videolar": "/videos",
-      "Fiyat": "/price",
-      "İletişim": "/contact"
-    }
-  }
-},
-   "pages":[
-      {
-        "route":"/",
-        "datas":{
-          "title":"Estoyonline | Start your spanish learning journey",
-          "description": "Learn Spanish online with native teachers and let the sun warm your words."
-        }
-      },
-      {
-        "route":"/teachers",
-        "datas":{
-          "title":"Estoyonline | Teachers",
-          "description": "Know more about our teachers."
-        }
-      },
-      {
-        "route":"/contact",
-        "datas":{
-          "title":"Estoyonline | Contact us",
-          "description": "Get in touch with us and begin your learning journey."
-        }
-      },
-      {
-        "route":"/courses",
-        "datas":{
-          "title":"Estoyonline | Courses",
-          "description": "FInd the course of your interest."
-        }
-      },
-      {
-        "route":"/price",
-        "datas":{
-          "title":"Estoyonline | Pricing",
-          "description": "Find the best price"
-        }
-      },
-      {
-        "route":"/videos",
-        "datas":{
-          "title":"Estoyonline | Videos | Understand our learning process",
-          "description": "Find out how our leaning system works."
-        }
-      }
-    ]
-  },
   "navbar": {
     "links": {
       "Öğretmenler": "/teachers",
@@ -156,7 +55,7 @@
       "İletişim": "/contact"
     }
   },
-  "home": {
+"home": {
     "HeroTitle": "Dünya",
     "HeroYellowTitle": "İspanyolca konuşuyor,",
     "HeroTitle2": "şimdi sıra sende!",
