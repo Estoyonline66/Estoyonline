@@ -87,7 +87,7 @@ export default function AboutFounder() {
               </p>
 
               <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
-              <a href=Data.homewhatsapplink target='_blank'><StyledButton icon={<MessagePhone path={{
+              <a href={Data.homewhatsapplink} target='_blank'><StyledButton icon={<MessagePhone path={{
                 fill: "var(--styledButtonHoveredTextColor)",
                 style:{
                   transitionDuration: "300ms"
