@@ -51,7 +51,7 @@ export default function Contact() {
           </strong>
           <p>{Data.contactDescription}</p>
           <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
-            <a href="https://wa.me/905307700789" target="_blank">
+            <a href={Data.whatsapplink} target="_blank">
               <StyledButton
                 icon={
                   <MessagePhone

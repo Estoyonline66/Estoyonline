@@ -528,7 +528,8 @@
     "contactDescription": "Tüm soruların için WhatsApp mesajını bekliyoruz.",
     "officeAddressTitle": "Okulumuz",
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12 ,08340 Vilassar de Mar, Barcelona  España",
-    "officeContactButton": "Whatsapp (530) 77 00 789"
+    "officeContactButton": "Whatsapp (530) 77 00 789",
+	 "whatsapplink": "https://wa.me/905307700789"
   },
 
   "testimonials": {

@@ -82,6 +82,7 @@ export interface ContactData{
   officeAddressTitle: string;
   officeAddressDescription: string;
   officeContactButton: string;
+   whatsapplink: string;
 }
 
 // seo types
