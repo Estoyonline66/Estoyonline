@@ -126,7 +126,7 @@ export default function RootLayout({
               description:
                 "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
               sameAs: [
-                "https://www.instagram.com/estoyonline.es/",
+                "https://www.instagram.com/estoyonline.es/",  "https://www.instagram.com/estoyonline_spanish/",
               ],
               address: {
                 "@type": "PostalAddress",

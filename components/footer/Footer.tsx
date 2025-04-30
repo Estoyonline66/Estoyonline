@@ -12,7 +12,8 @@ export default function Footer() {
     const {t} = useTranslation()
     const navigationData = t<{
       links: Record<string, string>
-    }>("navbar")
+    }>("navbar");
+	const instagramUrl = t<string>("social.instagram");
   
   return (
       <footer className='py-10 w-full bg-[#E9E8E8] flex items-center justify-center relative z-10 flex-col gap-7'>
@@ -39,7 +40,7 @@ export default function Footer() {
             }
           </nav>
 
-            <a href="https://www.instagram.com/estoyonline.es/">
+            <a href={instagramUrl}>
             <Button variant="ghost">
             <Instagram className='size-6 sm:size-10 text-neutral-800'/>
           </Button></a>
