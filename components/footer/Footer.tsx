@@ -7,10 +7,11 @@ import { Instagram } from 'lucide-react'
 import WebsiteLogo from '../shapes/logo'
 import TranslatedLink from '../TranslatedLink'
 import { Button } from '../ui/button'
+import { ContactData } from "@/types/PropTypes";
 
 export default function Footer() {
     const {t} = useTranslation();
-	 const Data: ContactData = t("social");
+	 const Data: ContactData = t("contact");
     const navigationData = t<{
       links: Record<string, string>
     }>("navbar")
@@ -40,7 +41,7 @@ export default function Footer() {
             }
           </nav>
 
-            <a href={Data.instagram}>
+            <a href={Data.instagramlink}>
             <Button variant="ghost">
             <Instagram className='size-6 sm:size-10 text-neutral-800'/>
           </Button></a>

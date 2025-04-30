@@ -533,7 +533,9 @@
     "officeAddressTitle": "Our School",
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12, 08340 Vilassar de Mar, Barcelona, Spain",
     "officeContactButton": "WhatsApp +34 633 45 22 68",
-	 "whatsapplink": "https://wa.me/34633452268"
+	 "whatsapplink": "https://wa.me/34633452268", 
+	 "instagramlink": "https://www.instagram.com/estoyonline.en/"
+  
   },
   "testimonials": {
     "title": "What Our Students Say?",
@@ -637,8 +639,5 @@
         "timeAgo": "12 hours ago"
       }
     ]
-  },
-  "social": {
-  "instagram": "https://www.instagram.com/estoyonline_spanish/"
-}
+  }
 }
