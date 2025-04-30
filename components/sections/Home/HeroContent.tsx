@@ -5,18 +5,31 @@ import TranslatedLink from "@/components/TranslatedLink";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { HomeProps } from "@/types/PropTypes";
 import React from "react";
+import { useRouter, usePathname } from "next/navigation";
 
 
 export default function HeroContent() {
   const { t } = useTranslation();
   const Data: HomeProps = t("home");
-  const defaultData = {
-   "HeroTitle": "The world",
-    "HeroYellowTitle": "speaks Spanish,",
-    "HeroTitle2": "now it's your turn!",
-     "HeroDescription": "",
-    "HeroButton": "Explore courses",
-  };
+  
+   const router = useRouter();
+   const pathname = usePathname();
+   
+ const defaultData = pathname.startsWith('/tr')
+    ? {
+        HeroTitle: "Dünya",
+        HeroYellowTitle: "İspanyolca konuşuyor,",
+        HeroTitle2: "şimdi sıra sende!",
+        HeroDescription: "",
+        HeroButton: "Kursları incele",
+      }
+    : {
+        HeroTitle: "The world",
+        HeroYellowTitle: "speaks Spanish,",
+        HeroTitle2: "now it's your turn!",
+        HeroDescription: "",
+        HeroButton: "Explore courses",
+      };
   return (
     <div className="w-fit p-1 flex flex-col gap-5 animate-[pulse_1s_linear_forwards] text-white relative max-w-[95vw] min-[498px]:max-w-sm sm:max-w-lg lg:max-w-xl">
       <strong className="text-3xl sm:text-6xl font-bold lg:text-6xl">
