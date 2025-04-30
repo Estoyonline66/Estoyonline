@@ -13,7 +13,7 @@ export default function Footer() {
     links: Record<string, string>
   }>('navbar');
 
-  const instagramUrl = t('social.instagram');
+const instagramUrl = social.instagram;
 
   return (
     <footer className='py-10 w-full bg-[#E9E8E8] flex items-center justify-center relative z-10 flex-col gap-7'>
