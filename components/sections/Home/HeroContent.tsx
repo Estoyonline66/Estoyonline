@@ -11,8 +11,7 @@ import { useRouter, usePathname } from "next/navigation";
 export default function HeroContent() {
   const { t } = useTranslation();
   const Data: HomeProps = t("home");
-  
-   const router = useRouter();
+
    const pathname = usePathname();
    
  const defaultData = pathname.startsWith('/tr')
