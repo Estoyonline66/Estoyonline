@@ -9,7 +9,8 @@ import TranslatedLink from '../TranslatedLink'
 import { Button } from '../ui/button'
 
 export default function Footer() {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
+	 const Data: ContactData = t("social");
     const navigationData = t<{
       links: Record<string, string>
     }>("navbar")
@@ -39,7 +40,7 @@ export default function Footer() {
             }
           </nav>
 
-            <a href="https://www.instagram.com/estoyonline.es/">
+            <a href={Data.instagram}>
             <Button variant="ghost">
             <Instagram className='size-6 sm:size-10 text-neutral-800'/>
           </Button></a>
