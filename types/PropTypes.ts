@@ -25,6 +25,7 @@ export interface HomeProps {
   counterTitle3: string;
   counterTitle4: string;
   homewhatsapplink: string;
+
   
 }
 export interface TeachersTeacher {
@@ -85,6 +86,7 @@ export interface ContactData{
   officeAddressDescription: string;
   officeContactButton: string;
    whatsapplink: string;
+      instagramlink: string;
 }
 
 // seo types
