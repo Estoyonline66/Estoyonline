@@ -5,7 +5,7 @@ import TranslatedLink from "@/components/TranslatedLink";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { HomeProps } from "@/types/PropTypes";
 import React from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 
 export default function HeroContent() {
