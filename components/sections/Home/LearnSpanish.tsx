@@ -18,8 +18,8 @@ export default function LearnSpanish() {
   const Data: HomeProps = t('home')
   const defaultData = {
     "LearnSpanishtitle": "Learn Spanish in a fun way at our boutique school.",
-    "LearnSpanishdescription": "At our boutique school Estyonline.es, based in Barcelona, we teach Spanish in fun and engaging way, completely different from traditional methods. Thanks the method techniques we use, learning spanish online has become an enjoyable and exciting process. Fun activities and game increase your motivation and reduce your stress, making language learning easier. Additionally, they encourage natural language use and strengthen social connections. Learning a language in an enjoyable way enhances retention and effectively helps improve your language skills.Our School has teachers from Spain, Italy, Argentina, and Colombia who are native Spanish speakers. The teacher who conduct beginner-level lessons also speak Turish. All our lessons are conducted online via Zoom",
-    "LearnSpanishbutton": "Sample videos from Lesson",
+    "LearnSpanishdescription": "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience. Fun activities and games boost motivation, reduce stress, and make language learning easier. They also promote natural language use and help strengthen social bonds. Learning a language in a fun way not only improves retention but also enhances your overall language skills effectively. All our teachers are native Spanish speakers from Spain and Latin America. All classes are held online via Zoom.",
+    "LearnSpanishbutton": "Course Fees",
   };
   
   const generalSect = useIntersectionObserver({
@@ -71,7 +71,7 @@ export default function LearnSpanish() {
             show.body?"-translate-y-5 opacity-100":"translate-y-0 opacity-0"
           )
         }>{Data.LearnSpanishdescription?Data.LearnSpanishdescription:defaultData.LearnSpanishdescription}</p>
-        <TranslatedLink href="/videos">
+        <TranslatedLink href="/price">
         <StyledButton >{Data.LearnSpanishbutton?Data.LearnSpanishbutton:defaultData.LearnSpanishbutton}</StyledButton>
         </TranslatedLink>
       </div>
