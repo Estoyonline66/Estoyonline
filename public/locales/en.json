@@ -505,7 +505,7 @@
       "onlineSpanishOneTable": [
         { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 mo", "price": "240 EUR" },
         { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 mo", "price": "200 EUR" },
-        { "course": "A1.2 / Intermed. / Advanced levels", "duration": "30 hours - 3 mo", "price": "190 EUR" },
+        { "course": "A1.2 / Intermed. / Adv. levels", "duration": "30 hours - 3 mo", "price": "190 EUR" },
         { "course": "Comp. courses", "duration": "16 hours - 2 mo", "price": "120 EUR" }
         
       ],
