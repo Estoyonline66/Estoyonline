@@ -32,7 +32,7 @@
       {
         "route": "/price",
         "datas": {
-          "title": "EstoyOnline | Fiyatlar",
+          "title": "EstoyOnline | Fiyat",
           "description": "İspanyolca öğrenmek için en uygun fiyatları keşfedin."
         }
       },

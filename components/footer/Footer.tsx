@@ -24,7 +24,7 @@ export default function Footer() {
                     </TranslatedLink>
           </div>
 
-          <nav className="w-full min-[498px]:w-fit flex flex-col min-[498px]:flex-row items-center gap-5 text-sm md:text-base lg:text-lg">
+          <nav className="w-full min-[498px]:w-fit flex flex-col min-[498px]:flex-row items-center gap-5 text-2xl md:text-base lg:text-lg">
           {
               navigationData.links&&Object.keys(navigationData.links||{
                 "Teachers":"/teachers",
