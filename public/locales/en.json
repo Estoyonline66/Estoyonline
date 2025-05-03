@@ -260,47 +260,7 @@
     ],
     "title": "Level Planning",
     "cardCourses": [
-      {
-        "title": "A1.1 Beginner",
-        "bold": "Thursday",
-        "lesson": "First lesson",
-        "time": "11:00 - 2.5 hours",
-        "week": "Once a week",
-        "month": "May 8"
-      },
-      {
-        "title": "A1.1 Beginner",
-        "bold": "Thursday",
-        "lesson": "First lesson",
-        "time": "19:00 - 2.5 hours",
-        "week": "Once a week",
-        "month": "May 8"
-      },
-      {
-        "title": "A1.1 Beginner",
-        "bold": "Mon - Wed",
-        "lesson": "First lesson",
-        "time": "19:00 - 2.5 hours",
-        "week": "Twice a week",
-        "month": "May 12"
-      },
-      {
-        "title": "A1.1 Beginner",
-        "bold": "Wednesday",
-        "lesson": "First lesson",
-        "time": "19:00 - 2.5 hours",
-        "week": "Once a week",
-        "month": "May 6"
-      },
-      {
-        "title": "A1.1 Beginner",
-        "bold": "Wednesday",
-        "lesson": "First lesson",
-        "time": "19:00 - 2.5 hours",
-        "week": "Once a week",
-        "month": "July 9"
-      },
-      {
+       {
         "title": "A1.2",
         "bold": "Friday",
         "lesson": "First lesson",
