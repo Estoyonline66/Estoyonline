@@ -263,7 +263,7 @@
         {
         "title": "A1.1 Beginner",
         "bold": "Tuesday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "May 20"
@@ -271,7 +271,7 @@
 	    {
         "title": "A1.1 Beginner",
         "bold": "Mon - Wed",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Twice a week",
         "month": "May 21"
@@ -279,7 +279,7 @@
 	  {
         "title": "A1.2",
         "bold": "Friday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "June 27"
@@ -287,7 +287,7 @@
       {
         "title": "A2.1",
         "bold": "Tuesday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "6:30 pm - 2.5 hours",
         "week": "Once a week",
         "month": "April 29"
@@ -295,7 +295,7 @@
       {
         "title": "A2.1",
         "bold": "Monday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "June 9"
@@ -303,7 +303,7 @@
       {
         "title": "A2.2",
         "bold": "Friday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "6:30 pm - 2.5 hours",
         "week": "Once a week",
         "month": "June 6"
@@ -311,7 +311,7 @@
       {
         "title": "A2.3",
         "bold": "Monday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "April 21"
@@ -319,7 +319,7 @@
       {
         "title": "B1.1",
         "bold": "Wednesday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "June 18"
@@ -327,7 +327,7 @@
       {
         "title": "B1.2",
         "bold": "Monday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "April 14"
@@ -335,7 +335,7 @@
       {
         "title": "B1.2",
         "bold": "Friday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "July 11"
@@ -343,7 +343,7 @@
       {
         "title": "B1.5",
         "bold": "Tuesday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "May 6"
@@ -351,7 +351,7 @@
       {
         "title": "B2.4",
         "bold": "Thursday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
         "month": "April 17"
@@ -359,7 +359,7 @@
       {
         "title": "Tourism Module A",
         "bold": "Tue - Thu",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Twice a week",
         "month": "September 16"
@@ -367,7 +367,7 @@
       {
         "title": "Tourism Module B",
         "bold": "Tue - Thu",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Twice a week",
         "month": "September 16"
@@ -375,7 +375,7 @@
       {
         "title": "Conversation Course Beginner A1",
         "bold": "Saturday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "6:30 pm - 2 hours",
         "week": "Once a week",
         "month": "June 10"
@@ -383,7 +383,7 @@
       {
         "title": "Conversation Course Intermediate A2",
         "bold": "Tuesday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "7:30 pm - 2 hours",
         "week": "Once a week",
         "month": "May 6"
@@ -391,7 +391,7 @@
       {
         "title": "Conversation Course Advanced B1-B2",
         "bold": "Saturday",
-        "lesson": "First lesson",
+        "lesson": "First class",
         "time": "10 am - 2 hours",
         "week": "Once a week",
         "month": "May 10"
