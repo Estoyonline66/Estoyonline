@@ -259,21 +259,13 @@
       },
 	   {
         "title": "A1.1 Başlangıç",
-        "bold": "Pzt - Çarş",
+        "bold": "Salı - Perş",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 2 gün",
-        "month": "12 Mayıs"
+        "month": "20 Mayıs"
       },
 	   {
-        "title": "A1.1 Başlangıç",
-        "bold": "Çarşamba",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "6 Mayıs"
-      },
-	  {
         "title": "A1.1 Başlangıç",
         "bold": "Çarşamba",
         "lesson": "İlk ders",
