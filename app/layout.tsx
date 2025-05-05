@@ -7,7 +7,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
+  title: "EstoyOnline.es - Enjoy learning Spanish naturally",
   description:
     "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
   keywords: [
@@ -74,17 +74,17 @@ export const metadata: Metadata = {
     "İspanyolca konuşma becerilerini geliştirme",
   ],
   openGraph: {
-    title: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
+    title: "EstoyOnline.es - Enjoy learning Spanish naturally",
     description:
       "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
     url: "https://estoyonline.es",
     siteName: "EstoyOnline.es",
     images: [
       {
-        url: "https://estoyonline.es/Images/logo.png", // düzenlendi (senin örneğinde eksikti)
+        url: "https://estoyonline.es/Images/estoyonline_sun.png", // düzenlendi (senin örneğinde eksikti)
         width: 1200,
         height: 630,
-        alt: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
+        alt: "EstoyOnline.es - Enjoy learning Spanish naturally",
       },
     ],
     type: "website",
@@ -92,11 +92,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@estoyonline", // twitter handle eklendi
-    title: "EstoyOnline.es - Learn Spanish naturally and enjoyably",
+    title: "EstoyOnline.es - Enjoy learning Spanish naturally",
     description:
       "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
     images: [
-      "https://estoyonline.es/Images/logo.png",
+      "https://estoyonline.es/Images/estoyonline_sun.png",
     ],
   },
   robots: "index, follow",
@@ -122,7 +122,7 @@ export default function RootLayout({
               "@type": "EducationalOrganization",
               name: "EstoyOnline.es",
               url: "https://estoyonline.es",
-              logo: "https://estoyonline.es/Images/logo.png",
+              logo: "https://estoyonline.es/Images/estoyonline_sun.png",
               description:
                 "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
               sameAs: [
