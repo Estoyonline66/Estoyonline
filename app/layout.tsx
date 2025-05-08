@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "EstoyOnline.es - Enjoy learning Spanish naturally",
   description:
-    "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
+    "At our online Spanish school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
   keywords: [
     // English
     "EstoyOnline",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EstoyOnline.es - Enjoy learning Spanish naturally",
     description:
-      "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
+      "At our online Spanish school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
     url: "https://estoyonline.es",
     siteName: "EstoyOnline.es",
     images: [
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     site: "@estoyonline", // twitter handle eklendi
     title: "EstoyOnline.es - Enjoy learning Spanish naturally",
     description:
-      "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
+      "At our online Spanish school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
     images: [
       "https://estoyonline.es/Images/estoyonline_sun.png",
     ],
@@ -124,7 +124,7 @@ export default function RootLayout({
               url: "https://estoyonline.es",
               logo: "https://estoyonline.es/Images/estoyonline_sun.png",
               description:
-                "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
+                "At our online Spanish school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience.",
               sameAs: [
                 "https://www.instagram.com/estoyonline.es/",  "https://www.instagram.com/estoyonline_spanish/",
               ],

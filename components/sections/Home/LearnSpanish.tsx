@@ -17,8 +17,8 @@ export default function LearnSpanish() {
   const { t } = useTranslation()
   const Data: HomeProps = t('home')
   const defaultData = {
-    "LearnSpanishtitle": "Learn Spanish in a fun way at our boutique school.",
-    "LearnSpanishdescription": "At our boutique school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience. Fun activities and games boost motivation, reduce stress, and make language learning easier. They also promote natural language use and help strengthen social bonds. Learning a language in a fun way not only improves retention but also enhances your overall language skills effectively. All our teachers are native Spanish speakers from Spain and Latin America. All classes are held online via Zoom.",
+    "LearnSpanishtitle": "Learn Spanish in a fun way at our online Spanish school.",
+    "LearnSpanishdescription": "At our online Spanish school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience. Fun activities and games boost motivation, reduce stress, and make language learning easier. They also promote natural language use and help strengthen social bonds. Learning a language in a fun way not only improves retention but also enhances your overall language skills effectively. All our teachers are native Spanish speakers from Spain and Latin America. All classes are held online via Zoom.",
     "LearnSpanishbutton": "Course Fees",
   };
   

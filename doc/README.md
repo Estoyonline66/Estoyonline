@@ -76,8 +76,8 @@ Below is an example snippet illustrating the JSON structure:
     "HeroTitle2": "Will You?",
     "HeroDescription": "Learn Spanish online with native teachers and let the sun warm your words",
     "HeroButton": "Explore Courses",
-    "LearnSpanishtitle": "Learn Spanish in a fun way at our boutique school.",
-    "LearnSpanishdescription": "At our boutique school Estyonline.es, based in Barcelona, we teach Spanish in fun and engaging ways...",
+    "LearnSpanishtitle": "Learn Spanish in a fun way at our online Spanish school.",
+    "LearnSpanishdescription": "At our online Spanish school Estoyonline.es, based in Barcelona, we teach Spanish in fun and engaging ways...",
     "LearnSpanishbutton": "Sample videos from Lesson"
     // ... other homepage content
   }
