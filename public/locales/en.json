@@ -262,20 +262,13 @@
     "cardCourses": [
         {
         "title": "A1.1 Beginner",
-        "bold": "Tuesday",
+        "bold": "Wednesday",
         "lesson": "First class",
         "time": "7 pm - 2.5 hours",
         "week": "Once a week",
-        "month": "May 20"
+        "month": "Jun 10"
       },
-	    {
-        "title": "A1.1 Beginner",
-        "bold": "Mon - Wed",
-        "lesson": "First class",
-        "time": "7 pm - 2.5 hours",
-        "week": "Twice a week",
-        "month": "May 21"
-      },
+	   
 	  {
         "title": "A1.2",
         "bold": "Friday",
