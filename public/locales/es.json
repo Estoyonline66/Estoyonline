@@ -4,776 +4,609 @@
       {
         "route": "/",
         "datas": {
-          "title": "Estoyonline | Comienza tu viaje de aprendizaje de español",
-          "description": "Aprende español en línea con profesores nativos y deja que el sol caliente tus palabras."
+          "title": "EstoyOnline | Start your Spanish learning journey",
+          "description": "At our online Spanish school, EstoyOnline.es, based in Barcelona, we teach Spanish in a fun and engaging way, much different from traditional methods. Thanks to our modern techniques, learning Spanish online has become an enjoyable and exciting process."
         }
       },
       {
         "route": "/teachers",
         "datas": {
-          "title": "Estoyonline | Profesores",
-          "description": "Conoce más sobre nuestros profesores."
+          "title": "EstoyOnline | Teachers",
+          "description": "Our teachers are native Spanish speakers."
         }
       },
       {
         "route": "/contact",
         "datas": {
-          "title": "Estoyonline | Contáctanos",
-          "description": "Ponte en contacto con nosotros y comienza tu viaje de aprendizaje."
+          "title": "EstoyOnline | Contact us",
+          "description": "Get in touch with us to start learning Spanish right away."
         }
       },
       {
         "route": "/courses",
         "datas": {
-          "title": "Estoyonline | Cursos",
-          "description": "Encuentra el curso de tu interés."
+          "title": "EstoyOnline | Courses",
+          "description": "Find the Spanish course that best suits your level."
         }
       },
       {
         "route": "/price",
         "datas": {
-          "title": "Estoyonline | Precios",
-          "description": "Encuentra el mejor precio."
+          "title": "EstoyOnline | Pricing",
+          "description": "Discover the best prices for learning Spanish."
         }
       },
       {
         "route": "/videos",
         "datas": {
-          "title": "Estoyonline | Videos | Comprende nuestro proceso de aprendizaje",
-          "description": "Descubre cómo funciona nuestro sistema de aprendizaje."
+          "title": "EstoyOnline | Videos | Our Spanish lessons are so much fun",
+          "description": "Our students have a great time while taking Spanish lessons."
         }
       }
     ]
-  },
-  "navbar": {
+},
+ "navbar": {
     "links": {
-      "Profesores": "/teachers",
-      "Cursos": "/courses",
+      "Teachers": "/teachers",
+      "Online Courses": "/courses",
       "Videos": "/videos",
-      "Precio": "/price",
-      "Contacto": "/contact"
+      "Pricing": "/price",
+      "Contact": "/contact"
     }
   },
   "home": {
-    "HeroTitle": "El Mundo",
-    "HeroYellowTitle": "Habla Español,",
-    "HeroTitle2": "¿Y Tú?",
-    "HeroDescription": "Aprende español en línea con profesores nativos y deja que el sol caliente tus palabras",
-    "HeroButton": "Explorar Cursos",
-    "LearnSpanishtitle": "Aprende español de manera divertida en nuestra escuela online Spanish.",
-    "LearnSpanishdescription": "En nuestra escuela online Spanish Estoyonline.es, con sede en Barcelona, enseñamos español de una manera divertida y atractiva, completamente diferente a los métodos tradicionales. Gracias a las técnicas de nuestro método, aprender español en línea se ha convertido en un proceso agradable y emocionante. Las actividades divertidas y los juegos aumentan tu motivación y reducen tu estrés, facilitando el aprendizaje del idioma. Además, fomentan el uso natural del lenguaje y fortalecen las conexiones sociales. Aprender un idioma de manera divertida mejora la retención y ayuda a mejorar tus habilidades lingüísticas de manera efectiva. Nuestra escuela cuenta con profesores de España, Italia, Argentina y Colombia, quienes son hablantes nativos de español. Los profesores que imparten clases para principiantes también hablan turco. Todas nuestras clases se realizan en línea a través de Zoom.",
-    "LearnSpanishbutton": "Videos de muestra de la lección",
-    "homeAboutTitle": "¡Hola! Hello! Soy",
-    "homeAboutTitle2": "el fundador de Estoyonline.es",
-    "homeAboutDescription": "Una escuela de español en línea",
-    "homeAboutDescriptionBold": "con más de 300 estudiantes.",
-    "homeAboutDescription2": "Estamos emocionados de contarte todo sobre nuestra escuela online Spanish y nuestras lecciones en detalle. ¡Agendemos una clase gratuita! Estoy esperando tu mensaje por WhatsApp.",
-    "homeAboutDescriptionBold2": "¡Envíanos un mensaje ahora!",
-    "homeAboutButton": "WhatsApp (530) 77 00 789",
-    "homeSubAboutTitle": "¡Comienza tu viaje de aprendizaje del español hoy!",
-    "homeSubAboutButton": "Explorar Cursos",
-    "homeSubAboutVideos":["/videos/teachers/aleja2.mp4","/videos/teachers/aleja1.mp4","/videos/teachers/aleja1.mp4","/videos/teachers/aleja1.mp4"],
-    "testimonies": "Lo que nuestros clientes dicen sobre nosotros",
-    "counterTitle": "Historias de Éxito",
-    "counterTitle2": "Instructores Expertos",
-    "counterTitle3": "Estudiantes",
-    "counterTitle4": "Temas de Tendencia"
+    "HeroTitle": "The world",
+    "HeroYellowTitle": "speaks Spanish,",
+    "HeroTitle2": "now it's your turn!",
+    "HeroDescription": "",
+    "HeroButton": "Explore courses",
+    "LearnSpanishtitle": "Learn Spanish while having fun at our online Spanish school",
+    "LearnSpanishdescription": "At our online Spanish school based in Barcelona, EstoyOnline.es, we teach Spanish in a way that's very different from traditional methods—through fun and enjoyment. With our modern techniques, learning Spanish online becomes a truly enjoyable and engaging experience. Fun activities and games boost motivation, reduce stress, and make language learning easier. They also promote natural language use and help strengthen social bonds. Learning a language in a fun way not only improves retention but also enhances your overall language skills effectively. All our teachers are native Spanish speakers from Spain and Latin America. All classes are held online via Zoom.",
+    "LearnSpanishbutton": "Course Fees",
+    "homeAboutTitle": "Hola, I am",
+    "homeAboutTitle2": "",
+    "homeAboutDescription": "I'm the founder of EstoyOnline.es, a Spanish school with over 300 active students.",
+    "homeAboutDescriptionBold": "",
+    "homeAboutDescription2": "I can’t wait to tell you more about our online Spanish school and online lessons.",
+    "homeAboutDescriptionBold2": "I look forward to hearing from you on WhatsApp.",
+    "homeAboutButton": "WhatsApp +34 633 45 22 68",
+    "homeSubAboutTitle": "With our native Spanish-speaking teachers, you'll learn Spanish naturally and enjoyably. We can't wait to meet you.",
+    "homeSubAboutButton": "Meet the teachers",
+    "homeSubAboutVideos": ["/videos/teachers/aleja1.mp4"],
+    "testimonies": "What do our students say about us?",
+    "counterTitle": "Types of courses",
+    "counterTitle2": "Teachers",
+    "counterTitle3": "Active students",
+    "counterTitle4": "Certificates awarded",
+	 "homewhatsapplink": "https://wa.me/34633452268"
   },
-
   "teachers": {
-    "PageTitle": "Profesores",
-    "teachersTitle": "Aprende ",
-    "teachersTitleRed": "Español en línea",
-    "teachersTitle2": "con profesores nativos y deja que el sol caliente tus palabras",
-    "teacher": [
-      {
-        "name": "DIANA MELISSA",
-        "about": "Nacida y criada en Colombia, actualmente vive en Colombia. Ha trabajado como bibliotecaria y ha enseñado servicios bibliotecarios en todos los niveles. Completó su maestría en Béziers, Francia. Melissa aprendió turco hace mucho tiempo y lo habla a nivel avanzado. Desde 2010, ha enseñado francés, inglés y español en varias academias (Oxford, Just English) y escuelas en Turquía (ISTEK en Antalya, Kütahya Başarı, etc.). En su tiempo libre, disfruta tejiendo muñecas, cantando con sus amigos y cocinando. Nuestra escuela ofrece cursos para principiantes A1 que requieren apoyo en turco.",
-        "media": "/videos/teachers/aleja2.mp4"
-      },
-      {
-        "name": "ALEJA",
-        "about": "Vivió en Estambul durante 10 años, trabajando como profesora en el Liceo Saint Michel y en el Instituto Cervantes. Organizó los encuentros \"Solo hablamos Español\" que reunían a quienes querían practicar español. Durante su carrera docente, se perfeccionó con muchos cursos de formación internacional como ELE, DELE, AVE, Int House, etc. Se mudó a España en 2019 y decidió establecer su propia escuela. Desarrolló métodos modernos para su escuela, basados en la diversión y la conversación. Continúa mejorando los procesos educativos junto con los profesores de su equipo.",
-        "media": "/videos/teachers/aleja1.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita es de Ecuador. Se graduó en Comunicación en la Universidad de las Américas en Quito. También tiene un certificado en gramática y metodología para la enseñanza del español. Trabajó como profesora en el Instituto Internacional de Español, adquiriendo experiencia en la enseñanza de español para extranjeros. Trabajó en instituciones como Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. Enseñó a estudiantes turcos de todos los niveles. En los últimos años, comenzó a dar clases particulares y grupales en línea a estudiantes de diferentes países, lo que le permitió integrarse con diferentes culturas.",
-        "media": "/videos/teachers/aleja1.mp4"
-      },
-      {
-        "name": "ALEJA",
-        "about": "Vivió en Estambul durante 10 años, trabajando como profesora en el Liceo Saint Michel y en el Instituto Cervantes. Organizó los encuentros \"Solo hablamos Español\" que reunían a quienes querían practicar español. Durante su carrera docente, se perfeccionó con muchos cursos de formación internacional como ELE, DELE, AVE, Int House, etc. Se mudó a España en 2019 y decidió establecer su propia escuela. Desarrolló métodos modernos para su escuela, basados en la diversión y la conversación. Continúa mejorando los procesos educativos junto con los profesores de su equipo.",
-        "media": "/videos/teachers/aleja1.mp4"
-      },
-      {
-        "name": "ANITA",
-        "about": "Anita es de Ecuador. Se graduó en Comunicación en la Universidad de las Américas en Quito. También tiene un certificado en gramática y metodología para la enseñanza del español. Trabajó como profesora en el Instituto Internacional de Español, adquiriendo experiencia en la enseñanza de español para extranjeros. Trabajó en instituciones como Istanbul Just English, British Town Language Schools, Likia Just Kids, etc. Enseñó a estudiantes turcos de todos los niveles. En los últimos años, comenzó a dar clases particulares y grupales en línea a estudiantes de diferentes países, lo que le permitió integrarse con diferentes culturas.",
-        "media": "/videos/teachers/aleja1.mp4"
-      }
-    ]
+    "PageTitle": "Our Teachers",
+    "teachersTitle": "Meet our native Spanish-speaking teachers...",
+    "teachersTitleRed": "",
+    "teachersTitle2": "Let the sun warm your words",
+ "teacher": [
+    {
+      "name": "ALEJA",
+      "about": "Aleja previously taught at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for Spanish practice. Throughout her teaching career, she enhanced her skills with international training courses, including ELE, DELE, AVE, and Int House certifications. In 2019, she founded her own school in Spain, developing modern, engaging, and conversation-focused teaching methods. She and her team continuously refine their teaching approach by incorporating new technologies and reviewing class recordings to identify areas for improvement. Her personal interests include tango and rowing off the coast of Barcelona.",
+      "media": "/videos/teachers/aleja1.mp4"
+    },
+    {
+      "name": "CAROLINA",
+      "about": "Carolina is a passionate teacher with experience at all educational levels. For 15 years, she lived in Patagonia, where she worked as a teacher and teacher trainer. Music is another of her passions; she plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She has also taken musical comedy lessons and participated in numerous musicals. In 2021, she obtained a certification in teaching Spanish to foreigners and began teaching online and in-person at various platforms and institutes. To facilitate learning, she emphasizes the use of games and alternative tools in conversation classes, private lessons, and regular courses.",
+      "media": "/videos/teachers/caro.mp4"
+    },
+    {
+      "name": "DANIELA",
+      "about": "Daniela is from Argentina and lives in Buenos Aires. She is passionate about teaching and began teaching Spanish to foreigners in 2004. In 2008, she opened her own school, which became part of a university in 2015. In addition to her native Spanish, she is fluent in French, English, Portuguese, Hebrew, and Italian. She holds a degree in Communication Sciences and has studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. She enjoys spending her free time with her children and family and traveling.",
+      "media": "/videos/teachers/dani.mp4"
+    },
+    {
+      "name": "MELISSA",
+      "about": "Melissa was born and raised in Colombia and currently resides there. She has worked as a librarian and taught library skills at all levels. She holds a master's degree from Béziers, France. Since 2010, she has taught French, English, and Spanish at various academies. In her free time, she enjoys knitting dolls, singing with friends, and cooking.",
+      "media": "/videos/teachers/meli.mp4"
+    },
+    {
+      "name": "SABRINA",
+      "about": "Sabrina has always been passionate about language. She enjoys reading and editing texts. She studied journalism and worked as a sports reporter for radio and newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies, researching purposeful learning and participating in creative writing workshops. In 2021, she combined her passions for communication, education, and cultural exchange, obtaining an ELE Spanish teaching certification. She incorporates digital tools and games into her teaching methods at various academies and e-learning platforms. In 2022, she began training ELE teachers at the Teacher Training Institute.",
+      "media": "/videos/teachers/sabri.mp4"
+    },
+    {
+      "name": "MAITA",
+      "about": "Maita is a teacher of English and Spanish. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
+      "media": "/videos/teachers/maia.mp4"
+    },
+    {
+      "name": "ANITA",
+      "about": "Anita is from Ecuador and holds a degree in Communication from Universidad de las Américas in Quito. She also has a certification in Spanish grammar and teaching methodology. She gained experience teaching Spanish to foreigners at the Instituto Internacional de Español. In recent years, she has been teaching private and group online lessons to students from various countries, allowing her to interact with diverse cultures. She enjoys graphic design, photography, listening to music, salsa dancing, and traveling.",
+      "media": "/videos/teachers/anita.mp4"
+    },
+    {
+      "name": "VIRGINIA",
+      "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
+      "media": "/videos/teachers/vir.mp4"
+    }
+  ]
   },
-
   "videos": {
-    "PageTitle": "Videos",
+    "PageTitle": "Sample Classroom Videos",
     "videos": [
       {
-        "title": "A1.1 Español Nivel Principiante",
-        "description": "En el nivel inicial, comienzas a hablar español desde la primera lección.",
-        "youtubeId": "JP1dSslQqVc"
-      },
-      {
-        "title": "A1.1 Español Nivel Principiante",
-        "description": "Nuestros estudiantes alcanzan competencia básica en conversación y usan estructuras gramaticales simples en pocas semanas.",
-        "youtubeId": "hdyEE5YDQBg"
-      },
-      {
-        "title": "A1.1 Español Nivel Principiante",
-        "description": "En el nivel principiante, nuestros profesores a veces brindan ayuda en turco.",
-        "youtubeId": "_x1uuq4Ta2c"
-      },
-      {
-        "title": "A2.1 Español Nivel Básico",
-        "description": "Nuestros estudiantes que han alcanzado este nivel ahora son lo suficientemente avanzados para tener conversaciones simples.",
+        "title": "A2.1 Basic Level Spanish",
+        "description": "By this level, our students have progressed enough to hold simple conversations.",
         "youtubeId": "MMYkbSAKdN4"
       },
       {
-        "title": "A2.1 Español Nivel Básico",
-        "description": "Nuestros profesores se esfuerzan por hacer las clases divertidas usando métodos creativos y objetos de la vida cotidiana.",
+        "title": "A2.1 Basic Level Spanish",
+        "description": "Our teachers use creative methods and everyday objects to ensure lessons are enjoyable.",
         "youtubeId": "aJg6gEIYsFs"
       },
       {
-        "title": "A2.2 Español Nivel Intermedio",
-        "description": "Nuestros estudiantes de nivel A2.2 pueden hacer descripciones detalladas con un vocabulario amplio y uso completo de la gramática.",
+        "title": "A2.2 Intermediate Level Spanish",
+        "description": "Students at the A2.2 level can make detailed descriptions with a broad vocabulary and comprehensive grammar usage.",
         "youtubeId": "H5tmRgVsBSY"
       },
       {
-        "title": "A2.3 Español Nivel Intermedio",
-        "description": "En el nivel A2.3, los diálogos ahora alcanzan un tempo de habla normal y utilizan términos especializados.",
+        "title": "A2.3 Intermediate Level Spanish",
+        "description": "At the A2.3 level, dialogues reach a normal speaking pace, and specialized terms are used.",
         "youtubeId": "0jxqVyG5tt8"
       },
       {
-        "title": "B1.2 Español Avanzado",
-        "description": "Los estudiantes avanzados no tienen problemas para entender y usar el español hablado rápidamente.",
+        "title": "B1.6 Advanced Level Spanish",
+        "description": "Advanced students have no difficulty understanding and using the fast-paced spoken Spanish.",
         "youtubeId": "srggR7eHxc8"
       },
       {
-        "title": "B1.6 Español Nivel Avanzado",
-        "description": "Los estudiantes avanzados ahora están completamente adaptados al ritmo del español.",
+        "title": "B1.6 Advanced Level Spanish",
+        "description": "Advanced students are now fully adapted to the speed of Spanish.",
         "youtubeId": "nsnLOSRtrd4"
       }
     ]
   },
-
   "courses": {
-    "PageTitle": "Cursos",
-    "accordionData": [
+    "PageTitle": "Online Courses",
+	 "scheduleTitle": "2025 Course Schedule",  
+  "accordionData": [
+    {
+      "title": "A1 LEVEL BEGINNER COURSES",
+      "content": [
+        {
+          "contentTitle": "General Information",
+          "contentDescription": "This course is designed for students new to Spanish. While some may have prior exposure through apps or other means, a solid foundation is built from the beginning. In the initial lessons, limited English is used to aid comprehension, gradually decreasing as students' Spanish proficiency develops."
+        },
+        {
+          "contentTitle": "Lessons",
+          "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom.\n\nThe beginner level includes two courses:\n- A1.1 course: 40 hours (Standard: 4 months, Intensive: 2 months)\n- A1.2 course: 30 hours (3 months)"
+        },
+        {
+          "contentTitle": "Teachers",
+          "contentDescription": "Our experienced teachers use engaging and interactive methods to teach Spanish. A native Spanish-speaking teacher with basic English proficiency is assigned to this level."
+        },
+        {
+          "contentTitle": "Registration",
+          "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions (in English). To schedule a trial lesson, please contact us via WhatsApp."
+        },
+        {
+          "contentTitle": "Certificate",
+          "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
+        }
+      ]
+    },
+    {
+      "title": "INTERMEDIATE - ADVANCED LEVEL COURSES",
+      "content": [
+        {
+          "contentTitle": "General Information",
+          "contentDescription": "Intermediate and advanced courses focus on developing speaking and listening skills alongside grammar and vocabulary. Interactive applications are used to track student progress.\n\nFrom the A1.2 level, students engage in Spanish reading practice, sharing and discussing book chapters to improve fluency, expand vocabulary, and build confidence. At higher levels, newspaper articles and essays are incorporated to further enhance vocabulary."
+        },
+        {
+          "contentTitle": "Lessons",
+          "contentDescription": "Lessons are conducted online via Zoom, held once a week for 2.5 hours, including a 15-minute break. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom. Each course is 30 hours in length (3 months)."
+        },
+        {
+          "contentTitle": "Teachers",
+          "contentDescription": "Experienced teachers with expertise in intermediate/advanced level instruction and the ability to address complex grammar questions are assigned to these courses."
+        },
+        {
+          "contentTitle": "Registration",
+          "contentDescription": "Each course is limited to a maximum of 13 students. Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
+        },
+        {
+          "contentTitle": "Certificate",
+          "contentDescription": "Upon completion of each course, students will take an oral exam and receive a certificate indicating their achieved level."
+        }
+      ]
+    },
+    {
+      "title": "COMPLEMENTARY COURSES",
+      "content": [
+        {
+          "contentTitle": "A. Spanish Conversation",
+          "contentDescription": "These courses aim to develop fluent speaking skills for students who have completed the introductory levels. Each lesson covers a different topic, focusing on everyday language use and intonation while expanding vocabulary. Students have ample opportunities for speaking practice. Conversation courses are offered at two levels:\n\n- Beginner level: Requires completion of the A1.1 course.\n- Advanced level: Requires completion of the A2.1 level.\n\nThese courses are conducted entirely in Spanish to foster authentic communication. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "B. Pasado Pisado - Spanish Past Tense",
+          "contentDescription": "This course focuses on mastering the three past tenses in Spanish (pretérito indefinido, pretérito imperfecto, and pretérito perfecto), an area that often requires significant practice. The course provides a detailed examination of the grammatical structure, along with written, oral, and speaking exercises. By the end, students will use the past tense with confidence and fluency.\n\nCompletion of the A1.2 level is a prerequisite for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "C. Learn Spanish with Songs",
+          "contentDescription": "This course is designed for students who want to enhance their language skills in a fun and engaging way by understanding the lyrics of popular Spanish songs. Students will learn new vocabulary and expressions, gain insights into the music Spanish speakers listen to in their daily lives, explore the biographies of Latin American singers, and practice speaking together. The instructor is both a Spanish teacher and a professional musician.\n\nCompletion of at least the A2.1 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "D. Amo El Subjuntivo - Subjunctive Mood",
+          "contentDescription": "This course is ideal for students seeking to master the subjunctive mood in Spanish. It covers all usage types and forms of the subjunctive across different tenses, with grammar practice and speaking exercises at the end of each topic. The instructor is a philology expert.\n\nCompletion of at least the A2.4 level is required for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "E. Grammar is Beautiful",
+          "contentDescription": "This course is for students who have attained a certain level of grammar knowledge but wish to improve their accuracy and fluency. Each lesson covers a different grammar topic, totaling 8 lessons. The final lesson is a comprehensive review to solidify understanding. The instructor has specialized training in teaching intermediate-level grammar.\n\nStudents who have completed the A2.2 level are eligible for this course. Each course is 16 hours and has a maximum of 10 students."
+        },
+        {
+          "contentTitle": "Lessons",
+          "contentDescription": "Complementary courses are designed to be taken alongside regular lessons without overwhelming students, allowing for accelerated learning. Lessons are conducted online via Zoom once a week for 2 hours. All lessons are recorded and available for students to download and review. Course materials and essential information are accessible at any time through Google Classroom."
+        },
+        {
+          "contentTitle": "Registration",
+          "contentDescription": "Prior to registration, a free 20-minute trial lesson is offered to assess the student's Spanish level, provide course details, and answer any questions. To schedule a trial lesson, please contact us via WhatsApp."
+        },
+        {"contentTitle": "Certificate", "contentDescription": "These courses do not include exams, and therefore, no certificates are issued." }
+      ]
+    },
       {
-        "title": "CURSOS DE NIVEL A1 (PRINCIPIANTE)",
+        "title": "PRIVATE LESSONS FOR ADULTS/KIDS",
         "content": [
-          {
-            "contentTitle": "Información General",
-            "contentDescription": "Este curso es para principiantes en español. Algunos estudiantes pueden haber aprendido algo de español antes o haber comenzado con una aplicación. Sin embargo, es necesario comenzar desde cero para construir una base sólida. Se utiliza una pequeña cantidad de turco en las primeras lecciones, que luego se reduce gradualmente a medida que los estudiantes comienzan a entender el español."
-          },
-          {
-            "contentTitle": "Lecciones",
-            "contentDescription": "Las clases se imparten en línea una vez a la semana a través de Zoom. Cada clase dura 2.5 horas con un descanso de 15 minutos en el medio. Todas las clases se graban y los estudiantes pueden descargar y ver las grabaciones más tarde. Los materiales del curso y toda la información importante se almacenan en Google Classroom y se pueden acceder en cualquier momento. Hay 2 cursos en el nivel principiante: El curso A1.1 tiene una duración total de 40 horas. (El curso estándar dura 4 meses, el curso intensivo dura 2 meses) El curso A1.2 tiene una duración total de 30 horas. (Dura 3 meses)."
-          },
-          {
-            "contentTitle": "Profesores",
-            "contentDescription": "Nuestros profesores son muy experimentados y creativos, especialmente en la enseñanza del español de manera divertida. Se asigna un profesor que puede hablar turco en el nivel A1.1 y es hablante nativo de español."
-          },
-          {
-            "contentTitle": "Registros",
-            "contentDescription": "Cada curso tiene un máximo de 13 estudiantes. Antes de la inscripción, se realiza una clase de prueba gratuita con cada estudiante para comprender su nivel de español. En la clase de prueba, se brindan otros detalles sobre el curso y se responden todas las preguntas (en turco). La clase de prueba es gratuita y dura aproximadamente 20 minutos. Por favor, envíenos un mensaje por WhatsApp para una clase de prueba."
-          },
-          {
-            "contentTitle": "Certificado",
-            "contentDescription": "Al final de cada módulo, se realiza un examen oral y escrito, y se entrega un certificado que indica el nivel del estudiante."
-          }
-        ]
-      },
-      {
-        "title": "CURSOS DE NIVEL INTERMEDIO - AVANZADO",
-        "content": [
-          {
-            "contentTitle": "Información General",
-            "contentDescription": "Los cursos de nivel intermedio y avanzado se centran en la gramática y el vocabulario, así como en ejercicios de conversación y comprensión auditiva. Además, se administran pruebas a través de aplicaciones divertidas para evaluar el progreso de cada estudiante. A partir del nivel A1.2, los estudiantes comienzan a practicar la lectura de libros en español. Cada estudiante comparte secciones del libro con sus compañeros. De esta manera, desarrollan fluidez, aprenden nuevas palabras y ganan confianza al hablar. En niveles más avanzados, se utilizan artículos de periódicos y noticias para ampliar el vocabulario."
-          },
-          {
-            "contentTitle": "Lecciones",
-            "contentDescription": "Las clases se imparten en línea una vez a la semana a través de Zoom. Cada clase dura 2.5 horas con un descanso de 15 minutos en el medio. Todas las clases se graban y los estudiantes pueden descargar y ver las grabaciones más tarde. Los materiales del curso y toda la información importante se almacenan en Google Classroom y se pueden acceder en cualquier momento. La duración total de un curso es de 30 horas. (Dura 3 meses)."
-          },
-          {
-            "contentTitle": "Profesores",
-            "contentDescription": "Hay profesores disponibles que pueden responder preguntas detalladas sobre gramática y tienen experiencia en cursos de nivel intermedio/avanzado. Cada curso tiene un máximo de 13 estudiantes. Antes de la inscripción, se realiza una clase de prueba gratuita con cada estudiante para comprender su nivel de español. En la clase de prueba, se brindan otros detalles sobre el curso y se responden todas las preguntas. Por favor, envíenos un mensaje por WhatsApp para una clase de prueba."
-          },
-          {
-            "contentTitle": "Certificado",
-            "contentDescription": "Al final de cada módulo, se realiza un examen oral y escrito, y se entrega un certificado que indica el nivel del estudiante."
-          }
-        ]
-      },
-      {
-        "title": "CURSO DE PREPARACIÓN PARA YDS ESPAÑOL",
-        "content": [
-          {
-            "contentTitle": "Información General",
-            "contentDescription": "Es un curso especialmente preparado para aquellos que desean tener éxito en el examen de lengua extranjera español (YDS). Se aplica un programa de educación en español con una técnica de prueba especial. Se realizan prácticas de resolución de pruebas en español de manera rápida. Aquellos que deseen asistir al curso deben tener al menos un nivel A2.4."
-          },
-          {
-            "contentTitle": "Lecciones",
-            "contentDescription": "Las clases se imparten en línea dos veces a la semana a través de Zoom. Cada clase dura 2.5 horas con un descanso de 15 minutos en el medio. Todas las clases se graban y los estudiantes pueden descargar y ver las grabaciones más tarde. Los materiales del curso y toda la información importante se almacenan en Google Classroom y se pueden acceder en cualquier momento. Hay 2 clases por semana y dura 6 meses. El curso completo consta de 6 niveles (120 horas en total). Comienza en el nivel B1.1 y termina en el nivel B1.6. Se avanza un nivel cada mes. Libros utilizados Se utilizan materiales especiales preparados por los profesores. Además, se utiliza el libro Módulo YDS Español para las tareas."
-          },
-          {
-            "contentTitle": "Profesores",
-            "contentDescription": "Las clases son impartidas por 2 profesores diferentes. Los profesores son filólogos expertos que conocen bien la técnica de prueba y son hablantes nativos de español."
-          },
-          {
-            "contentTitle": "Registros",
-            "contentDescription": "Cada curso tiene un máximo de 13 estudiantes. Antes de la inscripción, se realiza una clase de prueba gratuita con cada estudiante para comprender su nivel de español. En la clase de prueba, se brindan otros detalles sobre el curso y se responden todas las preguntas (en turco). La clase de prueba es gratuita y dura aproximadamente 20 minutos. Por favor, envíenos un mensaje por WhatsApp para una clase de prueba."
-          },
-          {
-            "contentTitle": "Certificado",
-            "contentDescription": "Al final del curso, se realiza un examen oral y escrito, y se entrega un certificado que indica el nivel del estudiante."
-          }
-        ]
-      },
-      {
-        "title": "CURSO DE ESPAÑOL PARA TURISMO",
-        "content": [
-          {
-            "contentTitle": "Información General",
-            "contentDescription": "Este es un curso diseñado para empleados del sector turístico que desean hablar español o aquellos que quieren usar el español con fluidez para viajar. Al ser un curso intensivo, también es adecuado para aquellos que desean aprender español muy rápidamente. Se enseñan 3 niveles en 4.5 meses. Se puede comenzar desde cero o desde un nivel intermedio. El programa del curso se basa en el Marco Común Europeo de Referencia para las Lenguas (MCER). Se utilizan materiales de español específicos para el sector turístico y se realizan especialmente prácticas de conversación fluida."
-          },
-          {
-            "contentTitle": "Lecciones",
-            "contentDescription": "Las clases se imparten en línea dos veces a la semana a través de Zoom. Cada clase dura 2.5 horas con un descanso de 15 minutos en el medio. Todas las clases se graban y los estudiantes pueden descargar y ver las grabaciones más tarde. Los materiales del curso y toda la información importante se almacenan en Google Classroom y se pueden acceder en cualquier momento. El curso completo consta de 2 módulos (180 horas en total). Módulo A: Nivel principiante; para aquellos que nunca han hablado español antes o están comenzando a aprender. Dura 90 horas y cubre los niveles A1.1, A1.2 y A2.1. (Dura 4.5 meses en total) Módulo B: Nivel intermedio; para aquellos que pueden hablar cómodamente en tiempo presente y han aprendido a hablar en tiempo pasado (Pretérito Indefinido). Si tu nivel de español es al menos A2.1, puedes comenzar el curso desde el Módulo B. Dura 90 horas y cubre los niveles A2.2, A2.3 y A2.4. (Dura 4.5 meses en total) Libros utilizados Turismo 1- Publicaciones SGEL • Turismo 2- Publicaciones SGEL • Profesionales del Turismo- Publicaciones Enclave ELE • Welcome back (A1-A2)- Publicaciones Enclave ELE. Además, los profesores utilizan sus propios materiales preparados y se realizan ejercicios comunicativos en todas las lecciones para fortalecer la conversación."
-          },
-          {
-            "contentTitle": "Profesores",
-            "contentDescription": "Los profesores tienen amplia experiencia en la enseñanza de ELE. El Módulo A está a cargo de un profesor hablante nativo de español que también habla turco, y el Módulo B está a cargo de un profesor hablante nativo de español."
-          },
-          {
-            "contentTitle": "Registros",
-            "contentDescription": "Cada curso tiene un máximo de 13 estudiantes. Antes de la inscripción, se realiza una clase de prueba gratuita con cada estudiante para comprender su nivel de español. En la clase de prueba, se brindan otros detalles sobre el curso y se responden todas las preguntas (en turco). La clase de prueba es gratuita y dura aproximadamente 20 minutos. Por favor, envíenos un mensaje por WhatsApp para una clase de prueba."
-          },
-          {
-            "contentTitle": "Certificado",
-            "contentDescription": "Al final de cada módulo, se realiza un examen oral y escrito, y se entrega un certificado que indica el nivel del estudiante."
-          }
-        ]
-      },
-      {
-        "title": "CURSOS COMPLEMENTARIOS",
-        "content": [
-          {
-            "contentTitle": "Curso de Conversación en Español",
-            "contentDescription": "Los cursos de práctica de conversación y lenguaje tienen como objetivo mejorar las habilidades de conversación de los estudiantes que han superado el primer nivel. Cada lección cubre un tema diferente. En este curso, se enseñan muchas palabras y términos sobre diversos temas, y se estudia el uso diario del lenguaje y la entonación. Cada estudiante tiene muchas oportunidades para practicar la conversación. Los cursos de conversación se imparten en dos niveles diferentes. Para unirse al nivel principiante, debes haber completado el curso A1.1. Si has completado el nivel A2.1, puedes asistir al curso de conversación más avanzado. Dado que los profesores de este curso no hablan turco, se establece una comunicación real con el estudiante utilizando el español. El curso tiene una duración total de 16 horas. El curso tiene un máximo de 10 estudiantes."
-          },
-          {
-            "contentTitle": "Pasado Pisado - Curso de Tiempos Pasados en Español",
-            "contentDescription": "En el curso Pasado Pisado, los estudiantes se centran en los 3 tiempos pasados diferentes en español (pretérito indefinido, pretérito imperfecto y pretérito perfecto). El tiempo pasado es uno de los temas más practicados al aprender español. Se examina la estructura gramatical en detalle. Se realizan prácticas de uso oral y escrito y ejercicios de conversación. Al final del curso, comenzarás a usar los tiempos pasados correctamente con fluidez. Para este curso, debes haber completado el nivel A1.2. El curso tiene una duración total de 16 horas. El curso tiene un máximo de 10 estudiantes."
-          },
-          {
-            "contentTitle": "Curso de Español con Canciones",
-            "contentDescription": "Es para aquellos que quieren entender las letras de canciones populares en español y aprender nuevas palabras y expresiones mientras se divierten. Entender la música que los hablantes de español escuchan en su vida diaria aumentará mucho tu nivel de idioma. También examinaremos las biografías de cantantes latinoamericanos y practicaremos la conversación juntos. Nuestro profesor del curso es tanto profesor de español como músico profesional. Para este curso, debes haber completado al menos el nivel A2.1. El curso tiene una duración total de 16 horas. El curso tiene un máximo de 10 estudiantes."
-          },
-          {
-            "contentTitle": "Amo el Subjuntivo - Aprende los Fundamentos",
-            "contentDescription": "El curso Amo el subjuntivo es ideal para estudiantes que desean mejorar su español y dominar perfectamente este tema difícil. Este curso enseña todos los tipos de uso del modo subjuntivo y patrones en diferentes tiempos. Además, al final de cada tema, hay práctica en el uso efectivo de patrones gramaticales y conversación. El profesor del curso es filólogo. Para tomar este curso debes haber superado al menos el nivel A2.4. El curso tiene una duración total de 16 horas. El curso tiene un máximo de 10 estudiantes."
-          },
-          {
-            "contentTitle": "Curso de Gramática es Bella",
-            "contentDescription": "El curso Amo el subjuntivo es ideal para estudiantes que desean mejorar su español y dominar perfectamente este tema difícil. Este curso enseña todos los tipos de uso del modo subjuntivo y patrones en diferentes tiempos. Además, al final de cada tema, hay práctica en el uso efectivo de patrones gramaticales y conversación. El profesor del curso es filólogo. Para tomar este curso debes haber superado al menos el nivel A2.4. El curso tiene una duración total de 16 horas. El curso tiene un máximo de 10 estudiantes."
-          },
-          {
-            "contentTitle": "Lecciones",
-            "contentDescription": "Dado que no se asignan tareas, asistir a clases complementarias junto con las clases regulares no supone una carga para el estudiante y acelera considerablemente el proceso de aprendizaje. Las clases se imparten en línea una vez a la semana a través de Zoom. Cada clase dura 2 horas. Todas las clases se graban y los estudiantes pueden descargar y ver las grabaciones más tarde. Los materiales del curso y toda la información importante se almacenan en Google Classroom y se pueden acceder en cualquier momento."
-          },
-          {
-            "contentTitle": "Registros",
-            "contentDescription": "Antes de la inscripción, se realiza una clase de prueba gratuita con cada estudiante para comprender su nivel de español. En la clase de prueba, también se brindan otros detalles sobre el curso y se responden todas las preguntas. Por favor, envíenos un mensaje por WhatsApp para una clase de prueba."
-          },
-          {
-            "contentTitle": "Certificado",
-            "contentDescription": "No hay exámenes en estos cursos, por lo que no se otorgan certificados."
-          }
-        ]
-      },
-      {
-        "title": "CLASES PARTICULARES PARA NIÑOS / ADULTOS",
-        "content": [
-          {
-            "contentTitle": "Información General",
-            "contentDescription": "Las clases particulares para adultos están disponibles para mayores de 14 años. Los niños entre 6 y 13 años asisten a clases particulares para niños. Aquellos que no tienen tiempo para clases grupales o quieren aprender español mucho más rápido pueden tomar clases particulares. Las clases particulares para adultos se personalizan según los intereses y temas de interés del estudiante. Estas lecciones no se graban con videos. Los horarios de las clases se acuerdan consultando con el profesor. Las clases particulares para adultos duran 1 hora, puedes tomar clases dos veces por semana si lo deseas. El número total de clases depende de tu solicitud. Tu profesor te recomendará el programa más adecuado. En las clases particulares para niños, se enseña vocabulario y gramática a través de juegos, canciones y actividades divertidas. La relación estudiante-profesor en las clases para niños tiene dinámicas muy diferentes y especiales. Por esta razón, los profesores que asignamos específicamente para niños tienen amplia experiencia en trabajar con niños. Si los padres lo solicitan, las clases pueden grabarse. El profesor también envía un informe semanal a los padres sobre el progreso del niño. Las clases particulares para niños duran 45 minutos. Los pagos de las clases particulares se realizan en paquetes de 5 o 10 horas. Para obtener información más detallada, por favor envíenos un mensaje por WhatsApp."
-          }
+          { "contentTitle": "General Information", "contentDescription": "People aged 14 and up take Adult Private Lessons.\nThese lessons are customized based on the student's interests and topics they are curious about. Video recordings are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\n\nFor children aged 6-13, Kid's Private Lessons are available. Vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship is unique and special in children's lessons, and our teachers have deep experience working with kids. If requested, lessons can be recorded, and a weekly progress report is sent to the parents. Children's private lessons last 45 minutes.\n\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
         ]
       }
     ],
+    "title": "Level Planning",
     "cardCourses": [
-      {
-        "title": "A1.1 Inicio",
-        "bold": "Único",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "21 de febrero"
+        {
+        "title": "A1.1 Beginner",
+        "bold": "Wednesday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "Jun 10"
       },
-      {
-        "title": "A1.1 Inicio",
-        "bold": "Sábado",
-        "lesson": "Primera clase",
-        "time": "18:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "1 de marzo"
-      },
-      {
-        "title": "A1.1 Inicio",
-        "bold": "Martes-Jueves",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "2 días a la semana",
-        "month": "4 de marzo"
-      },
-      {
-        "title": "A1.1 Inicio",
-        "bold": "Lunes-Miércoles",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "2 días a la semana",
-        "month": "10 de marzo"
-      },
-      {
-        "title": "A1.1 Inicio",
-        "bold": "Miércoles",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "19 de marzo"
-      },
-      {
+	   
+	  {
         "title": "A1.2",
-        "bold": "Martes",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "18 de febrero"
-      },
-      {
-        "title": "A2.2",
-        "bold": "Único",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "16 de mayo"
-      },
-      {
-        "title": "A2.3",
-        "bold": "Lunes",
-        "lesson": "Primera clase",
-        "time": "18:30 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "14 de abril"
-      },
-      {
-        "title": "A2.4",
-        "bold": "Martes",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "18 de marzo"
-      },
-      {
-        "title": "B1.1",
-        "bold": "Miércoles",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "12 de marzo"
-      },
-      {
-        "title": "B1.5",
-        "bold": "Martes",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "22 de abril"
-      },
-      {
-        "title": "B2.4",
-        "bold": "Jueves",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "20 de marzo"
-      },
-      {
-        "title": "B1.1",
-        "bold": "Miércoles",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "12 de marzo"
-      },
-      {
-        "title": "B1.5",
-        "bold": "Martes",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "22 de abril"
-      },
-      {
-        "title": "B2.4",
-        "bold": "Jueves",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "20 de marzo"
-      },
-      {
-        "title": "Turismo Módulo-A",
-        "bold": "Martes-Jueves",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "2 días a la semana",
-        "month": "4 de marzo"
-      },
-      {
-        "title": "Turismo Módulo-B",
-        "bold": "Lunes-Miércoles",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "2 días a la semana",
-        "month": "12 de marzo"
-      },
-      {
-        "title": "Preparatorio YDS Español Intermedio",
-        "bold": "Lunes-Miércoles",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2.5 horas",
-        "week": "2 días a la semana",
-        "month": "3 de marzo"
-      },
-      {
-        "title": "Curso de Conversación Inicio",
-        "bold": "Sábado",
-        "lesson": "Primera clase",
-        "time": "18:30 - 2 horas",
-        "week": "1 día a la semana",
-        "month": "8 de marzo"
-      },
-      {
-        "title": "Curso de Conversación Intermedio",
-        "bold": "Sábado",
-        "lesson": "Primera clase",
-        "time": "18:30 - 2 horas",
-        "week": "1 día a la semana",
-        "month": "8 de marzo"
-      },
-      {
-        "title": "Pasado Pisado Intermedio",
-        "bold": "Martes",
-        "lesson": "Primera clase",
-        "time": "19:00 - 2 horas",
-        "week": "1 día a la semana",
-        "month": "25 de febrero"
-      },
-      {
-        "title": "Español Intermedio con Canciones",
-        "bold": "Sábado",
-        "lesson": "Primera clase",
-        "time": "10:30 - 2 horas",
-        "week": "1 día a la semana",
-        "month": "1 de marzo"
-      },
-      {
-        "title": "Gramática es Bella Intermedio",
-        "bold": "Sábado",
-        "lesson": "Primera clase",
-        "time": "10:30 - 2 horas",
-        "week": "1 día a la semana",
-        "month": "5 de marzo"
+        "bold": "Friday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 27"
       },
       {
         "title": "A2.1",
-        "bold": "Único",
-        "lesson": "Primera clase",
-        "time": "18:30 - 2.5 horas",
-        "week": "1 día a la semana",
-        "month": "7 de marzo"
+        "bold": "Tuesday",
+        "lesson": "First class",
+        "time": "6:30 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 29"
+      },
+      {
+        "title": "A2.1",
+        "bold": "Monday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 9"
+      },
+      {
+        "title": "A2.2",
+        "bold": "Friday",
+        "lesson": "First class",
+        "time": "6:30 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 6"
+      },
+      {
+        "title": "A2.3",
+        "bold": "Monday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 21"
+      },
+      {
+        "title": "B1.1",
+        "bold": "Wednesday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 18"
+      },
+      {
+        "title": "B1.2",
+        "bold": "Monday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 14"
+      },
+      {
+        "title": "B1.2",
+        "bold": "Friday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "July 11"
+      },
+      {
+        "title": "B1.5",
+        "bold": "Tuesday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "May 6"
+      },
+      {
+        "title": "B2.4",
+        "bold": "Thursday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 17"
+      },
+      {
+        "title": "Tourism Module A",
+        "bold": "Tue - Thu",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Twice a week",
+        "month": "September 16"
+      },
+      {
+        "title": "Tourism Module B",
+        "bold": "Tue - Thu",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Twice a week",
+        "month": "September 16"
+      },
+      {
+        "title": "Conversation Course Beginner A1",
+        "bold": "Saturday",
+        "lesson": "First class",
+        "time": "6:30 pm - 2 hours",
+        "week": "Once a week",
+        "month": "June 10"
+      },
+      {
+        "title": "Conversation Course Intermediate A2",
+        "bold": "Tuesday",
+        "lesson": "First class",
+        "time": "7:30 pm - 2 hours",
+        "week": "Once a week",
+        "month": "May 6"
+      },
+      {
+        "title": "Conversation Course Advanced B1-B2",
+        "bold": "Saturday",
+        "lesson": "First class",
+        "time": "10 am - 2 hours",
+        "week": "Once a week",
+        "month": "May 10"
       }
     ],
-    "title": "Todos los Niveles",
+    "title": "ALL LEVELS PROGRAM",
     "levels": [
       {
-        "title": "Nivel Principiante A1",
+        "title": "Beginner Level A1",
         "items": [
-          {
-            "level": "A1.1",
-            "duration": "40 minutos Libro:",
-            "book": "Aula 1"
-          },
-          { "level": "A1.2", "duration": "30 minutos Libro:", "book": "Aula 1" }
+          { "level": "A1.1", "duration": "40 hours - Book:", "book": "Aula 1" },
+          { "level": "A1.2", "duration": "30 hours - Book:", "book": "Aula 1" }
         ]
       },
       {
-        "title": "Nivel Básico A2",
+        "title": "Basic Level A2",
         "items": [
-          { "level": "A2.1", "duration": "30 horas Libro:", "book": "Área 2" },
-          { "level": "A2.2", "duration": "30 horas Libro:", "book": "Área 2" },
-          { "level": "A2.3", "duration": "30 horas Libro:", "book": "Área 2" },
-          { "level": "A2.4", "duration": "30 horas Libro:", "book": "Área 2" }
+          { "level": "A2.1", "duration": "30 hours - Book:", "book": "Aula 2" },
+          { "level": "A2.2", "duration": "30 hours - Book:", "book": "Aula 2" },
+          { "level": "A3.1", "duration": "30 hours - Book:", "book": "Aula 2" },
+          { "level": "A3.2", "duration": "30 hours - Book:", "book": "Aula 2" }
         ]
       },
       {
-        "title": "Nivel Intermedio B1",
+        "title": "Intermediate Level B1",
         "items": [
-          {
-            "level": "B1.1",
-            "duration": "30 minutos Libro:",
-            "book": "Aula 3"
-          },
-          {
-            "level": "B1.2",
-            "duration": "30 minutos Libro:",
-            "book": "Aula 3"
-          },
-          {
-            "level": "B1.3",
-            "duration": "30 minutos Libro:",
-            "book": "Aula 3"
-          },
-          {
-            "level": "B1.4",
-            "duration": "30 minutos Libro:",
-            "book": "Aula 3"
-          },
-          {
-            "level": "B1.5",
-            "duration": "30 minutos Libro:",
-            "book": "Aula 3"
-          },
-          { "level": "B1.6", "duration": "30 minutos Libro:", "book": "Aula 3" }
+          { "level": "B1.1", "duration": "30 hours - Book:", "book": "Aula 3" },
+          { "level": "B1.2", "duration": "30 hours - Book:", "book": "Aula 3" },
+          { "level": "B1.3", "duration": "30 hours - Book:", "book": "Aula 3" },
+          { "level": "B1.4", "duration": "30 hours - Book:", "book": "Aula 3" },
+          { "level": "B1.5", "duration": "30 hours - Book:", "book": "Aula 3" },
+          { "level": "B1.6", "duration": "30 hours - Book:", "book": "Aula 3" }
         ]
       },
       {
-        "title": "Nivel Avanzado B2",
+        "title": "Advanced Level B2",
         "items": [
-          { "level": "B2.1", "duration": "30 horas Libro:", "book": "Aula 4" },
-          { "level": "B2.2", "duration": "30 horas Libro:", "book": "Aula 4" },
-          {
-            "level": "B2.3",
-            "duration": "30 horas Libro:",
-            "book": "Aula 4 y 5"
-          },
-          {
-            "level": "B2.4",
-            "duration": "30 horas Libro:",
-            "book": "Aula 4 y 5"
-          },
-          { "level": "B2.5", "duration": "30 horas Libro:", "book": "Aula 5" },
-          { "level": "B2.6", "duration": "30 horas Libro:", "book": "Aula 5" }
+          { "level": "B2.1", "duration": "30 hours - Book:", "book": "Aula 4" },
+          { "level": "B2.2", "duration": "30 hours - Book:", "book": "Aula 4" },
+          { "level": "B2.3", "duration": "30 hours - Book:", "book": "Aula 4 & 5" },
+          { "level": "B2.4", "duration": "30 hours - Book:", "book": "Aula 4 & 5" },
+          { "level": "B2.5", "duration": "30 hours - Book:", "book": "Aula 5" },
+          { "level": "B2.6", "duration": "30 hours - Book:", "book": "Aula 5" }
         ]
       },
       {
-        "title": "Nivel Muy Avanzado C1",
+        "title": "Very Advanced Level C1",
         "items": [
-          {
-            "level": "C1.1",
-            "duration": "30 minutos Libro:",
-            "book": "Vitamins"
-          },
-          {
-            "level": "C1.2",
-            "duration": "30 minutos Libro:",
-            "book": "Vitamins"
-          },
-          {
-            "level": "C1.3",
-            "duration": "30 minutos Libro:",
-            "book": "Vitamins"
-          },
-          {
-            "level": "C1.4",
-            "duration": "30 minutos Libro:",
-            "book": "Vitamins"
-          },
-          {
-            "level": "C1.5",
-            "duration": "30 minutos Libro:",
-            "book": "Vitamins"
-          },
-          {
-            "level": "C1.6",
-            "duration": "30 minutos Libro:",
-            "book": "Vitamins"
-          }
+          { "level": "C1.1", "duration": "30 hours - Book:", "book": "Vitamina" },
+          { "level": "C1.2", "duration": "30 hours - Book:", "book": "Vitamina" },
+          { "level": "C1.3", "duration": "30 hours - Book:", "book": "Vitamina" },
+          { "level": "C1.4", "duration": "30 hours - Book:", "book": "Vitamina" },
+          { "level": "C1.5", "duration": "30 hours - Book:", "book": "Vitamina" },
+          { "level": "C1.6", "duration": "30 hours - Book:", "book": "Vitamina" }
         ]
       },
       {
-        "title": "Nivel Maestría C2",
+        "title": "Master Level C2",
         "items": [
-          {
-            "level": "C2.1",
-            "duration": "30 horas Libro:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.2",
-            "duration": "30 horas Libro:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.3",
-            "duration": "30 horas Libro:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.4",
-            "duration": "30 horas Libro:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.5",
-            "duration": "30 horas Libro:",
-            "book": "Nuevo Prisma"
-          },
-          {
-            "level": "C2.6",
-            "duration": "30 horas Libro:",
-            "book": "Nuevo Prisma"
-          }
+          { "level": "C2.1", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.2", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.3", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.4", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.5", "duration": "30 hours - Book:", "book": "Nuevo Prisma" },
+          { "level": "C2.6", "duration": "30 hours - Book:", "book": "Nuevo Prisma" }
         ]
       }
     ]
   },
   "price": {
-    "PageTitle": "Precios",
-    "title": "Precios de Cursos de Español en Línea",
-    "title2": "Precios de Cursos Complementarios de Español",
+    "PageTitle": "Course Fees",
+    "title": "Online Spanish Course Prices",
+
     "tables": {
       "onlineSpanishOneColumns": [
-        { "key": "course", "header": "Curso" },
-        { "key": "duration", "header": "Duración" },
-        { "key": "price", "header": "Precio" }
+        { "key": "course", "header": "Group Courses" },
+        { "key": "duration", "header": "Duration" },
+        { "key": "price", "header": "Fee" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Curso" },
-        { "key": "duration", "header": "Duración" },
-        { "key": "price", "header": "Precio" }
-      ],
-      "extraSpanishColumns": [
-        { "key": "course", "header": "Curso" },
-        { "key": "duration", "header": "Duración" },
-        { "key": "price", "header": "Precio" }
+        { "key": "course", "header": "One-on-One Private Lessons" },
+        { "key": "duration", "header": "Duration" },
+        { "key": "price", "header": "Fee" }
       ]
     },
     "courses": {
       "onlineSpanishOneTable": [
-        {
-          "course": "A1.2 / Niveles Intermedio-Avanzado",
-          "duration": "49 horas - 4 meses",
-          "price": "5600 TL"
-        },
-        {
-          "course": "Cursos Complementarios",
-          "duration": "30 horas - 3 meses",
-          "price": "4250 TL"
-        },
-        {
-          "course": "Clases Particulares - Adultos",
-          "duration": "16 horas - 2 meses",
-          "price": "2,200 TL"
-        },
-        {
-          "course": "Clases Particulares - Niños",
-          "duration": "60 minutos",
-          "price": "22 EUR"
-        },
-        {
-          "course": "Nivel Principiante A1.1",
-          "duration": "45 minutos",
-          "price": "17 EUR"
-        }
+        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 mo", "price": "240 EUR" },
+        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 mo", "price": "200 EUR" },
+        { "course": "A1.2 / Intermed. / Adv. levels", "duration": "30 hours - 3 mo", "price": "190 EUR" },
+        { "course": "Comp. courses", "duration": "16 hours - 2 mo", "price": "120 EUR" }
+        
       ],
       "onlineSpanishTwoTable": [
-        {
-          "course": "A1.2 / Niveles Intermedio-Avanzado",
-          "duration": "49 horas - 4 meses",
-          "price": "5600 TL"
-        },
-        {
-          "course": "Cursos Complementarios",
-          "duration": "30 horas - 3 meses",
-          "price": "4250 TL"
-        },
-        {
-          "course": "Clases Particulares - Adultos",
-          "duration": "16 horas - 2 meses",
-          "price": "2,200 TL"
-        },
-        {
-          "course": "Clases Particulares - Niños",
-          "duration": "60 minutos",
-          "price": "22 EUR"
-        },
-        {
-          "course": "Nivel Principiante A1.1",
-          "duration": "45 minutos",
-          "price": "17 EUR"
-        }
-      ],
-      "extraSpanishTable": [
-        {
-          "course": "A1.2 / Niveles Intermedio-Avanzado",
-          "duration": "49 horas - 4 meses",
-          "price": "5600 TL"
-        },
-        {
-          "course": "Cursos Complementarios",
-          "duration": "30 horas - 3 meses",
-          "price": "4250 TL"
-        },
-        {
-          "course": "Clases Particulares - Adultos",
-          "duration": "16 horas - 2 meses",
-          "price": "2,200 TL"
-        },
-        {
-          "course": "Clases Particulares - Niños",
-          "duration": "60 minutos",
-          "price": "22 EUR"
-        },
-        {
-          "course": "Nivel Principiante A1.1",
-          "duration": "45 minutos",
-          "price": "17 EUR"
-        }
+        { "course": "Private lesson - adults", "duration": "1 hour", "price": "25 EUR" },
+        { "course": "Private lesson - kids", "duration": "45 minutes", "price": "20 EUR" }
       ]
+     
     },
     "cards": [
       {
-        "title": "Residentes en Turquía",
-        "description": "El pago se realiza con tarjeta de crédito. Le enviaremos un enlace para el pago."
+        "title": "Payments",
+        "description": "All payments are made by credit card."
       },
       {
-        "title": "Residentes en el Extranjero",
-        "description": "El pago se realiza mediante tarjeta de crédito o transferencia bancaria."
-      },
-      {
-        "title": "Política de Reembolsos",
-        "description": "Una vez iniciadas las clases, no se realizarán reembolsos ni cambios de curso, incluso si no asiste a las clases."
+        "title": "Refunds",
+        "description": "No refunds or course changes are allowed after lessons have started, even if you have not attended."
       }
     ]
   },
   "contact": {
-    "PageTitle": "Contáctenos",
-    "needAssistance": "¿Necesita ayuda?",
-    "contactDescription": "¿Necesita asistencia?",
-    "officeAddressTitle": "Dirección de la Oficina",
-    "officeAddressDescription": "9 Station Rd, West Drayton UB7 7BT",
-    "officeContactButton": "WhatsApp (530) 77 00 789"
+    "PageTitle": "Contact Us",
+    "needAssistance": "Feel free to write to us in English or Spanish...",
+    "contactDescription": "Please send your questions to us on WhatsApp",
+    "officeAddressTitle": "Our School",
+    "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12, 08340 Vilassar de Mar, Barcelona, Spain",
+    "officeContactButton": "WhatsApp +34 633 45 22 68",
+	 "whatsapplink": "https://wa.me/34633452268", 
+	 "instagramlink": "https://www.instagram.com/estoyonline_spanish/"
+  
+  },
+  "testimonials": {
+    "title": "What Our Students Say?",
+    "items": [
+      {
+        "image": "/Images/yasemin.avsar.jpg",
+        "firstComment": "If I had known learning Spanish could be this enjoyable, I would have started much earlier 🥰 I look forward to every lesson with excitement, so glad I met you all 🌺🌺",
+        "lastComment": "I look forward to every lesson with excitement",
+        "personName": "yasemen.avsar",
+        "timeAgo": "20 minutes ago"
+      },
+      {
+        "image": "/Images/umaysirke.jpg",
+        "firstComment": "I've always loved Aleja and her teaching methods. I always give her as an example of how a teacher should be and how to teach while having fun 😍",
+        "lastComment": "I've always loved Aleja and her teaching methods",
+        "personName": "umaysirke",
+        "timeAgo": "2 hours ago"
+      },
+      {
+        "image": "/Images/ugurege.jpg",
+        "firstComment": "Thanks to Aleja and her team whom I met years ago, I've progressed to the point where I can comfortably speak and read Spanish. I reached B1.4 level just by taking lessons from this school",
+        "lastComment": "I reached B1.4 level just by taking lessons from this school",
+        "personName": "ugurege",
+        "timeAgo": "5 hours ago"
+      },
+      {
+        "image": "/Images/muge_dusun.jpg",
+        "firstComment": "Hola! Spanish lessons with songs are so enjoyable. I'm learning about Spanish singers and culture that I didn't know before. I'll recommend it to my friends. So glad I met you.",
+        "lastComment": "Spanish lessons with songs are so much fun.",
+        "personName": "muge_dusun",
+        "timeAgo": "5 minutes ago"
+      },
+      {
+        "image": "/Images/meltem_sonmez_canseco.jpg",
+        "firstComment": "Amazing teachers, amazing methods. I don't even notice how time flies during lessons. I've been learning Spanish with you since 2020, the lessons are very enjoyable and productive. My level has improved significantly with your help.",
+        "lastComment": "Amazing teachers, amazing methods.",
+        "personName": "meltem_sonmez_canseco",
+        "timeAgo": "10 minutes ago"
+      },
+      {
+        "image": "/Images/ulucozuyener.jpg",
+        "firstComment": "I started Spanish from scratch 3 years ago. Thanks to @estoyonline.es and @danielasalzman, I reached B2.2 level. I highly recommend it to anyone who wants to learn Spanish.😍",
+        "lastComment": "Thanks to @estoyonline.es and @danielasalzman, I reached B2.2 level",
+        "personName": "ulucozuyener",
+        "timeAgo": "9 hours ago"
+      },
+      {
+        "image": "/Images/17limerence.jpg",
+        "firstComment": "I literally said 'wow'. You're a teacher and you're still improving yourself. 'I'll soon start applying everything I learn to my lessons' - what a beautiful sentence, I could even feel your excitement 😊 I loved it❤️ Teacher❤️",
+        "lastComment": "I literally said \"wow\". You're a teacher and you're still improving yourself.",
+        "personName": "17limerence",
+        "timeAgo": "10 hours ago"
+      },
+      {
+        "image": "/Images/allaunal_embroidery.jpg",
+        "firstComment": "I've just completed one level and moved to the next. Our lessons with Carolina are very fun, productive, full of information, our teacher is very cheerful and helpful. So glad our paths crossed @estoyonline.es I love you, I overcame my fear of speaking with you and became very motivated to continue learning the language. 😍",
+        "lastComment": "I overcame my fear of speaking and became very motivated.",
+        "personName": "allaunal_embroidery",
+        "timeAgo": "1 hour ago"
+      },
+      {
+        "image": "/Images/ebru_basaran35.jpg",
+        "firstComment": "Recomiendo las lecciones de Aleja, son muy divertidas",
+        "lastComment": "son muy divertidas",
+        "personName": "ebru_basaran35",
+        "timeAgo": "7 minutes ago"
+      },
+      {
+        "image": "/Images/yollarinrengi.jpg",
+        "firstComment": "Thanks to Aleja and her team. The best part about learning Spanish is that the teachers are Spanish. It makes understanding easier.. As a foreign language teacher myself, I started learning Spanish as a third language two months ago.. I'm at A1.1 level and will continue learning when I have time.. See you in the next course",
+        "lastComment": "Thanks to Aleja and her team.",
+        "personName": "yollarinrengi",
+        "timeAgo": "just now"
+      },
+      {
+        "image": "/Images/zenteksen.jpg",
+        "firstComment": "I actually started learning Spanish in 2019, but after starting to work with you, my Spanish improved a lot. Yesterday I spent time chatting in Spanish with a family from Buenos Aires and a family of 7 Argentinians. Being able to communicate with them fluently and comfortably made me very happy. ❤️❤️",
+        "lastComment": "After starting to work with you, my Spanish improved a lot.",
+        "personName": "zenteksen",
+        "timeAgo": "19 hours ago"
+      },
+      {
+        "image": "/Images/merterdem.jpg",
+        "firstComment": "Since the pandemic, we've been having enjoyable lessons with Aleja and Dani. Their energy has helped me maintain my motivation. I definitely recommend them to anyone who wants to learn Spanish. 🙌😍",
+        "lastComment": "Their energy has helped me maintain my motivation..",
+        "personName": "_merterdem_",
+        "timeAgo": "24 hours ago"
+      },
+      {
+        "image": "/Images/kemal_yesra.jpg",
+        "firstComment": "I received my certificate today. Many thanks to Aleja and her staff, they are very professional. At first, I was scared that all teachers were foreigners and spoke Spanish from the first lesson. But it wasn't as I thought. I definitely recommend Aleja and her team.",
+        "lastComment": "They are very professional",
+        "personName": "kemal_yesra",
+        "timeAgo": "14 hours ago"
+      },
+      {
+        "image": "/Images/nebibekum.jpg",
+        "firstComment": "Lessons are very fun, we talk a lot, play games, and while doing these we learn grammar and new words. I can't wait to move to the next level 😊.",
+        "lastComment": "Lessons are very fun, we talk a lot,",
+        "personName": "nebibekum",
+        "timeAgo": "12 hours ago"
+      }
+    ]
   }
 }
