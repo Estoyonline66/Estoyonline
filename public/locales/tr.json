@@ -295,7 +295,7 @@
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "9 Haziran"
+        "month": "16 Haziran"
       },
 	  {
         "title": "A2.2",
@@ -306,12 +306,12 @@
         "month": "6 Haziran"
       },
 	  {
-        "title": "A2.3",
+        "title": "A2.4",
         "bold": "Pazartesi",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "21 Nisan"
+        "month": "21 Haziran"
       },
 	  {
         "title": "B1.1",
@@ -322,14 +322,6 @@
         "month": "18 Haziran"
       },
 	   {
-        "title": "B1.2",
-        "bold": "Pazartesi",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "14 Nisan"
-      },
-	  {
         "title": "B1.2",
         "bold": "Cuma",
         "lesson": "İlk ders",
@@ -343,7 +335,7 @@
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
-        "month": "6 Mayıs"
+        "month": "3 Haziran"
       },
 	  {
         "title": "B2.4",
@@ -386,11 +378,11 @@
       } 
 	   ,{
         "title": "Konuşma Kursu Orta A2",
-        "bold": "Salı",
+        "bold": "Cumartesi",
         "lesson": "İlk ders",
-        "time": "19:30 - 2 saat",
+        "time": "10:00 - 2 saat",
         "week": "Haftada 1 gün",
-         "month": "24 Mayıs"
+         "month": "7 Haziran"
       } 
 	    ,{
         "title": "Konuşma Kursu İleri B1-B2",
