@@ -40,19 +40,18 @@ export default function Freecourse() {
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
         <Image
           src="/freeclass.jpeg"
-          alt="Free Spanish Course"
+          alt="Free Online Spanish Course"
           width={768}
           height={768}
           className="w-full max-w-3xl rounded-xl shadow-lg"
         />
         <div className="mt-6 text-center max-w-2xl">
           <h2 className="text-xl font-semibold mb-4">
-            Would you like to get to know our school?
+            Don't miss the online free course!
           </h2>
-          <p className="mb-2">There’s no need to travel to Barcelona!</p>
-          <p className="mb-2">
+           <p className="mb-2">
             Next week, we’re starting a free mini course made up of 4 classes.
-            It will take place on Wednesdays and Saturdays from 18:30 pm to 19:30 pm
+            It will take place on Wednesdays and Saturdays from 6:30 pm to 7:30 pm
           </p>
           <p className="mb-2">
             This mini course is designed for beginner students who want to start learning Spanish.
@@ -61,8 +60,8 @@ export default function Freecourse() {
             If you’d like to sign up, simply send us a text message on the school’s WhatsApp and we’ll send you the Zoom link along with the materials for each class.
           </p>
           <p className="font-semibold mt-4">
-            Don’t miss out on this great opportunity!<br />
-            WhatsApp: +34-633-452-268
+            Don’t miss out on this great opportunity!
+    
           </p>
         </div>
       </section>
