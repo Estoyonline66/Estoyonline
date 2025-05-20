@@ -33,6 +33,7 @@ export default function Navbar({isHome}:props) {
   const defaultLink = {
     "":"/teachers",
     "":"/courses",
+	 "":"/freecourse",
     "":"/videos",
     "":"/price",
     "":"/contact"
