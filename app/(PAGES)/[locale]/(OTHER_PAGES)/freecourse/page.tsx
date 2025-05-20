@@ -47,7 +47,7 @@ export default function Freecourse() {
         />
         <div className="mt-6 text-center max-w-2xl">
           <h2 className="text-xl font-semibold mb-4">
-            Don't miss the online free course!
+            Free Online Spanish Course
           </h2>
            <p className="mb-2">
             Next week, we’re starting a free mini course made up of 4 classes.
