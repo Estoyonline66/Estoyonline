@@ -1,11 +1,33 @@
-"use client"
+"use client";
 
-import React from 'react'
+import React from "react";
+import Script from "next/script";
 
 type Props = {
-    children:React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-export default function layout({children}: Props) {
-  return children
+export default function Layout({ children }: Props) {
+  return (
+    <>
+      {/* Google Ads Tag (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-1040846615"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-1040846615');
+          `,
+        }}
+      />
+      {children}
+    </>
+  );
 }
