@@ -57,7 +57,7 @@ export default function Freecourse() {
             This mini course is designed for beginner students who want to start learning Spanish.
           </p>
           <p className="mb-2">
-            If you’d like to sign up, simply send us a text message on the school’s WhatsApp and we’ll send you the Zoom link along with the materials for each class.
+            If you’d like to sign up, simply send us a message on the school’s WhatsApp and we’ll send you the Zoom link along with the materials for each class.
           </p>
           <p className="font-semibold mt-4">
             Don’t miss out on this great opportunity!
