@@ -241,14 +241,7 @@
 	 "title": "Seviye Planlaması",
 	
     "cardCourses": [
-      {
-        "title": "A1.1 Başlangıç",
-        "bold": "Perşembe",
-        "lesson": "İlk ders",
-        "time": "11:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "22 Mayıs"
-      },
+     
 	   {
         "title": "A1.1 Başlangıç",
         "bold": "Pazartesi",
@@ -350,7 +343,7 @@
         "lesson": "İlk ders",
         "time": "18:30 - 2 saat",
         "week": "Haftada 1 gün",
-        "month": "17 Mayıs"
+        "month": "31 Mayıs"
       } 
 	  ,{
         "title": "Konuşma Kursu Başlangıç A1",
@@ -359,15 +352,15 @@
         "time": "19:30 - 2 saat",
         "week": "Haftada 1 gün",
         "month": "10 Haziran"
-      } 
-	   ,{
-        "title": "Konuşma Kursu Orta A2",
-        "bold": "Cumartesi",
+      }  ,{
+      "title": "Konuşma Kursu Orta A2",
+        "bold": "Salı",
         "lesson": "İlk ders",
-        "time": "10:00 - 2 saat",
+        "time": "19:30 - 2 saat",
         "week": "Haftada 1 gün",
-         "month": "7 Haziran"
+        "month": "10 Haziran"
       } 
+	   
 	    ,{
         "title": "Konuşma Kursu İleri B1-B2",
         "bold": "Cumartesi",
