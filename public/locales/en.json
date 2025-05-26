@@ -49,7 +49,6 @@
     "links": {
       "Teachers": "/teachers",
       "Online Courses": "/courses",
-	//  "Free Course": "/freecourse",
       "Videos": "/videos",
       "Pricing": "/price",
       "Contact": "/contact"
