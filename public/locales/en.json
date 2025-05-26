@@ -49,7 +49,7 @@
     "links": {
       "Teachers": "/teachers",
       "Online Courses": "/courses",
-	  "Free Course": "/freecourse",
+	//  "Free Course": "/freecourse",
       "Videos": "/videos",
       "Pricing": "/price",
       "Contact": "/contact"
@@ -504,7 +504,7 @@
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12, 08340 Vilassar de Mar, Barcelona, Spain",
     "officeContactButton": "WhatsApp +34 633 45 22 68",
 	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline_spanish/"
+	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
   
   },
   "freecourse": {
@@ -515,7 +515,7 @@
     "officeAddressDescription": "",
     "officeContactButton": "WhatsApp +34 633 45 22 68",
 	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline_spanish/"
+	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
   
   },
   "testimonials": {
