@@ -264,7 +264,7 @@
         "title": "A1.1 Beginner",
         "bold": "Wednesday",
         "lesson": "First class",
-        "time": "7 pm-Philippine time  / 13:00-Spain time ",
+        "time": "7 pm Philippine time (13:00 Spain time) ",
         "week": "Once a week 2.5 hours",
         "month": "Jun 11"
       },
@@ -273,7 +273,7 @@
         "title": "A1.1 Beginner",
         "bold": "Wednesday",
         "lesson": "First class",
-        "time": "19:00-Spain time ",
+        "time": "19:00 Spain time ",
         "week": "Once a week 2.5 hours",
         "month": "Jun 11"
       },
@@ -281,81 +281,81 @@
 "title": "A1.2",
 "bold": "Friday",
 "lesson": "First class",
-"time": "18:00 - 2.5 hours",
-"week": "Once a week",
+"time": "18:00 ",
+"week": "Once a week 2.5 hours",
 "month": "June 13"
 },
 {
 "title": "A2.1",
 "bold": "Monday",
 "lesson": "First class",
-"time": "18:00 - 2.5 hours",
-"week": "Once a week",
+"time": "18:00",
+"week": "Once a week 2.5 hours",
 "month": "June 16"
 },
 {
 "title": "A2.2",
 "bold": "Friday",
 "lesson": "First class",
-"time": "18:30 - 2.5 hours",
-"week": "Once a week",
+"time": "18:30",
+"week": "Once a week 2.5 hours",
 "month": "June 6"
 },
 {
 "title": "A2.4",
 "bold": "Monday",
 "lesson": "First class",
-"time": "19:00 - 2.5 hours",
-"week": "Once a week",
+"time": "19:00",
+"week": "Once a week 2.5 hours",
 "month": "June 21"
 },
 {
 "title": "B1.1",
 "bold": "Wednesday",
 "lesson": "First class",
-"time": "19:00 - 2.5 hours",
-"week": "Once a week",
+"time": "19:00",
+"week": "Once a week 2.5 hours",
 "month": "June 18"
 },
 {
 "title": "B1.2",
 "bold": "Friday",
 "lesson": "First class",
-"time": "19:00 - 2.5 hours",
-"week": "Once a week",
+"time": "19:00",
+"week": "Once a week 2.5 hours",
 "month": "July 11"
 },
 {
 "title": "B1.5",
 "bold": "Tuesday",
 "lesson": "First class",
-"time": "19:00 - 2.5 hours",
-"week": "Once a week",
+"time": "19:00",
+"week": "Once a week 2.5 hours",
 "month": "June 3"
 }
 
 ,{
-"title": "Speaking Course Beginner A1",
+"title": "Conversation Course Beginner A1",
 "bold": "Tuesday",
 "lesson": "First class",
-"time": "18:30 - 2 hours",
-"week": "Once a week",
+"time": "18:30",
+"week": "Once a week 2 hours",
 "month": "June 10"
 } ,{
-"title": "Speaking Course Intermediate A2",
+"title": "Conversation Course Intermediate A2",
 "bold": "Tuesday",
 "lesson": "First class",
-"time": "18:30 - 2 hours",
-"week": "Once a week",
+"time": "18:30",
+"week": "Once a week 2 hours",
 "month": "June 10"
 }
 
 ,{
-"title": "Advanced Speaking Course B1-B2",
+"title": "Advanced Conversation Course B1-B2",
 "bold": "Saturday",
 "lesson": "First class",
-"time": "9:00 - 2 hours",
-"week": "Once a week",
+"time": "9:00",
+"week": "Once a week 2 hours ",
 "month": "May 24"
 }
     ],
