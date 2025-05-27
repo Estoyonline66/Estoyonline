@@ -258,6 +258,14 @@
         "week": "Haftada 2 gün",
         "month": "9 Haziran"
       },
+	  {
+        "title": "A1.1 Başlangıç",
+        "bold": "Perşembe",
+        "lesson": "İlk ders",
+        "time": "11:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "12 Haziran"
+      },
 	   {
         "title": "A1.1 Başlangıç",
         "bold": "Çarşamba",
