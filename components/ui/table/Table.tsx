@@ -38,8 +38,7 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
           ) : (
             <tr>
               <td colSpan={columns.length} className="px-4 py-2 text-center text-sm md:text-base text-gray-400">
-                No data available or please refresh the page to load contents
-              </td>
+               </td>
             </tr>
           )}
         </tbody>
