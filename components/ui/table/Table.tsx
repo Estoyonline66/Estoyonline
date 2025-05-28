@@ -36,10 +36,7 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
               </tr>
             ))
           ) : (
-            <tr>
-              <td colSpan={columns.length} className="px-4 py-2 text-center text-sm md:text-base text-gray-400">
-               </td>
-            </tr>
+           
           )}
         </tbody>
       </table>
