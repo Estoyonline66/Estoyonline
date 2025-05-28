@@ -113,7 +113,7 @@
     },
     {
       "name": "MAITA",
-      "about": "Maita is a teacher of English and Spanish. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
+      "about": "Maita is Spanish and English teacher. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
       "media": "/videos/teachers/maia.mp4"
     },
     {
@@ -125,7 +125,12 @@
       "name": "VIRGINIA",
       "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
       "media": "/videos/teachers/vir.mp4"
-    }
+    },
+      {
+        "name": "IVAN",
+        "about": "After graduating from Rosario University, Ivan began his teaching career. Continuously improving himself, he studied grammar and methodology at Atico and obtained his ELE instructor certificate from the Tía Tula Institute in Salamanca. He also earned a TESOL diploma. With extensive teaching experience, he has worked at Just English, Blue Apple, and Neşe Erberk schools. He has learned English, Italian, and Turkish. He loves spending quality time with his family and enjoys nature walks",
+        "media":"/videos/teachers/ivan.mp4"
+      }
   ]
   },
   "videos": {
