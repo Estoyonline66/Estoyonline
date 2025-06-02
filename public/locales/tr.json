@@ -245,147 +245,114 @@
 	
 	 "title": "Seviye Planlaması",
 	
-    "cardCourses": [
-     
-	   {
-        "title": "A1.1 Başlangıç",
-        "bold": "Pazartesi",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "9 Haziran"
-      },
-	   {
-        "title": "A1.1 Başlangıç",
-        "bold": "Pzt - Cuma",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 2 gün",
-        "month": "9 Haziran"
-      },
-	  {
-        "title": "A1.1 Başlangıç",
-        "bold": "Perşembe",
-        "lesson": "İlk ders",
-        "time": "11:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "12 Haziran"
-      },
-	   {
-        "title": "A1.1 Başlangıç",
-        "bold": "Çarşamba",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "9 Temmuz"
-      },
-	   {
-        "title": "A1.2",
-        "bold": "Cuma",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "13 Haziran"
-      },
-	  {
-        "title": "A2.1",
-        "bold": "Pazartesi",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "16 Haziran"
-      },
-	  {
-        "title": "A2.2",
-        "bold": "Cuma",
-        "lesson": "İlk ders",
-        "time": "18:30 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "6 Haziran"
-      },
-	  {
-        "title": "A2.4",
-        "bold": "Pazartesi",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "21 Haziran"
-      },
-	  {
-        "title": "B1.1",
-        "bold": "Salı",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "10 Haziran"
-      },
-	   {
-        "title": "B1.2",
-        "bold": "Çarşamba",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "11 Haziran"
-      },
-	  {
-        "title": "B1.5",
-        "bold": "Cuma",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "13 Haziran"
-      },
-	  {
-        "title": "Turizm Modül A",
-        "bold": "Salı - Perş",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 2 gün",
-        "month": "16 Eylül"
-      },
-	  {
-        "title": "Turizm Modül B",
-        "bold": "Salı - Perş",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 2 gün",
-        "month": "16 Eylül"
-      } ,{
-        "title": "Konuşma Kursu Başlangıç A1",
-        "bold": "Cumartesi",
-        "lesson": "İlk ders",
-        "time": "18:30 - 2 saat",
-        "week": "Haftada 1 gün",
-        "month": "14 Haziran"
-      } 
-	  ,{
-        "title": "Konuşma Kursu Başlangıç A1",
-        "bold": "Salı",
-        "lesson": "İlk ders",
-        "time": "19:30 - 2 saat",
-        "week": "Haftada 1 gün",
-        "month": "10 Haziran"
-      }  ,{
-      "title": "Konuşma Kursu Orta A2",
-        "bold": "Salı",
-        "lesson": "İlk ders",
-        "time": "19:30 - 2 saat",
-        "week": "Haftada 1 gün",
-        "month": "10 Haziran"
-      } 
-	   
-	    ,{
-        "title": "Konuşma Kursu İleri B1-B2",
-        "bold": "Cumartesi",
-        "lesson": "İlk ders",
-        "time": "10:00 - 2 saat",
-        "week": "Haftada 1 gün",
-         "month": "19 Temmuz"
-      } 
-	   
-    
-    ],
-    
+    "cardCourses": 
+[
+  {
+    "title": "A1.1 Başlangıç",
+    "bold": "Çarşamba",
+    "lesson": "İlk ders",
+     "time": "19:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "11 Haziran"
+  },
+  {
+    "title": "A1.1 Başlangıç",
+    "bold": "Çarşamba",
+    "lesson": "İlk ders",
+    "time": "19:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "11 Haziran"
+  },
+  {
+    "title": "A1.2",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "18:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "13 Haziran"
+  },
+  {
+    "title": "A2.1",
+    "bold": "Pazartesi",
+    "lesson": "İlk ders",
+    "time": "18:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "16 Haziran"
+  },
+  {
+    "title": "A2.2",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "18:30 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "6 Haziran"
+  },
+  {
+    "title": "A2.4",
+    "bold": "Pazartesi",
+    "lesson": "İlk ders",
+    "time": "18:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "21 Haziran"
+  },
+  {
+    "title": "B1.1",
+    "bold": "Salı",
+    "lesson": "İlk ders",
+    "time": "18:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "10 Haziran"
+  },
+  {
+    "title": "B1.2",
+    "bold": "Çarşamba",
+    "lesson": "İlk ders",
+    "time": "18:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "11 Haziran"
+  },
+  {
+    "title": "B1.5",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "18:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "13 Haziran"
+  },
+  {
+    "title": "Konuşma Kursu Başlangıç A1",
+    "bold": "Cumartesi",
+    "lesson": "İlk ders",
+    "time": "17:30 - 2 saat",
+    "week": "Haftada 1 gün",
+    "month": "14 Haziran"
+  },
+  {
+    "title": "Konuşma Kursu Başlangıç A1",
+    "bold": "Salı",
+    "lesson": "İlk ders",
+    "time": "19:30 - 2 saat",
+    "week": "Haftada 1 gün",
+    "month": "10 Haziran"
+  },
+  {
+    "title": "Konuşma Kursu Orta A2",
+    "bold": "Salı",
+    "lesson": "İlk ders",
+    "time": "18:30 - 2 saat",
+    "week": "Haftada 1 gün",
+    "month": "7 Haziran"
+  },
+  {
+    "title": "Konuşma Kursu İleri B1-B2",
+    "bold": "Cumartesi",
+    "lesson": "İlk ders",
+    "time": "09:00 - 2 saat",
+    "week": "Haftada 1 gün",
+    "month": "19 Temmuz"
+  }
+],
+
     "title": "TÜM SEVİYELERİN PROGRAMI ",
     "levels": [
       {
