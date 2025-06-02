@@ -313,27 +313,27 @@
       },
 	  {
         "title": "B1.1",
-        "bold": "Çarşamba",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "18 Haziran"
-      },
-	   {
-        "title": "B1.2",
-        "bold": "Cuma",
-        "lesson": "İlk ders",
-        "time": "19:00 - 2,5 saat",
-        "week": "Haftada 1 gün",
-        "month": "11 Temmuz"
-      },
-	  {
-        "title": "B1.5",
         "bold": "Salı",
         "lesson": "İlk ders",
         "time": "19:00 - 2,5 saat",
         "week": "Haftada 1 gün",
         "month": "10 Haziran"
+      },
+	   {
+        "title": "B1.2",
+        "bold": "Çarşamba",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "11 Haziran"
+      },
+	  {
+        "title": "B1.5",
+        "bold": "Cuma",
+        "lesson": "İlk ders",
+        "time": "19:00 - 2,5 saat",
+        "week": "Haftada 1 gün",
+        "month": "13 Haziran"
       },
 	  {
         "title": "Turizm Modül A",
@@ -356,7 +356,7 @@
         "lesson": "İlk ders",
         "time": "18:30 - 2 saat",
         "week": "Haftada 1 gün",
-        "month": "7 Haziran"
+        "month": "14 Haziran"
       } 
 	  ,{
         "title": "Konuşma Kursu Başlangıç A1",
