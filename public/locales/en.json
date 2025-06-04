@@ -279,7 +279,7 @@
     "title": "A1.1 Beginner",
     "bold": "Wednesday",
     "lesson": "First class",
-    "time": "7:30 pm Spain time",
+    "time": "6:30 pm UK time (7:30 pm Spain time)",
     "week": "Once a week 2.5 hours",
     "month": "Jun 11"
   },
@@ -290,6 +290,14 @@
     "time": "6 pm Spain time",
     "week": "Once a week 2.5 hours",
     "month": "June 13"
+  },
+  {
+    "title": "A1.2",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "6 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "July 16"
   },
   {
     "title": "A2.1",
