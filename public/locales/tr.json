@@ -296,14 +296,7 @@
     "week": "Haftada 1 gün",
     "month": "13 Haziran"
   },
-  {
-    "title": "A2.1",
-    "bold": "Çarşamba",
-    "lesson": "İlk ders",
-    "time": "18:30 - 2,5saat",
-    "week": "Haftada 1 gün",
-    "month": "18 Haziran"
-  },
+ 
   {
     "title": "A2.1",
     "bold": "Pazartesi",
@@ -312,6 +305,16 @@
     "week": "Haftada 1 gün",
     "month": "16 Haziran"
   },
+  
+   {
+    "title": "A2.1",
+    "bold": "Çarşamba",
+    "lesson": "İlk ders",
+    "time": "18:30 - 2,5saat",
+    "week": "Haftada 1 gün",
+    "month": "18 Haziran"
+  },
+  
   {
     "title": "A2.2",
     "bold": "Cuma",
