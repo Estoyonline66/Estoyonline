@@ -136,13 +136,23 @@
   "videos": {
     "PageTitle": "Sample Classroom Videos",
     "videos": [
-      {
-        "title": "A2.1 Basic Level Spanish",
+		{
+        "title": "A1.1 Beginner Level Spanish",
+        "description": "Even as a complete beginner, you’ll be speaking Spanish from your first lessons.",
+        "youtubeId": "6dBBCP9_lPo"
+      },
+	  {
+        "title": "A1.1 Beginner Level Spanish",
+        "description": "In just a few weeks, our students gain fundamental speaking ability and apply simple grammar patterns.",
+        "youtubeId": "JP1dSslQqVc"
+      },
+	 {
+        "title": "A2.1 intermediate Level Spanish",
         "description": "By this level, our students have progressed enough to hold simple conversations.",
         "youtubeId": "MMYkbSAKdN4"
       },
       {
-        "title": "A2.1 Basic Level Spanish",
+        "title": "A2.1 intermediate Level Spanish",
         "description": "Our teachers use creative methods and everyday objects to ensure lessons are enjoyable.",
         "youtubeId": "aJg6gEIYsFs"
       },
@@ -157,7 +167,7 @@
         "youtubeId": "0jxqVyG5tt8"
       },
       {
-        "title": "B1.6 Advanced Level Spanish",
+        "title": "B1.2 Advanced Level Spanish",
         "description": "Advanced students have no difficulty understanding and using the fast-paced spoken Spanish.",
         "youtubeId": "srggR7eHxc8"
       },
