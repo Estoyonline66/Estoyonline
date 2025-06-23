@@ -277,22 +277,21 @@
     "cardCourses": 
 	
 	[
- 
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "7 pm Philippine time (1 pm Spain time)",
+    "week": "Once a week 2.5 hours",
+    "month": "July 2"
+  },
   {
     "title": "A1.1 Beginner",
     "bold": "Wednesday",
     "lesson": "First class",
     "time": "6:30 pm UK time (7:30 pm Spain time)",
     "week": "Once a week 2.5 hours",
-    "month": "Jun 18"
-  },
-  {
-    "title": "A1.2",
-    "bold": "Friday",
-    "lesson": "First class",
-    "time": "6 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "June 13"
+    "month": "July 2"
   },
   {
     "title": "A1.2",
@@ -304,19 +303,19 @@
   },
   {
     "title": "A2.1",
-    "bold": "Monday",
+    "bold": "Wednesday",
     "lesson": "First class",
     "time": "6 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "June 16"
+    "month": "Sep 24"
   },
   {
     "title": "A2.2",
-    "bold": "Friday",
+    "bold": "Monday",
     "lesson": "First class",
     "time": "5:30 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "June 13"
+    "month": "Sep 1"
   },
   {
     "title": "A2.4",
@@ -327,20 +326,12 @@
     "month": "July 21"
   },
   {
-    "title": "B1.1",
+    "title": "B1.2",
     "bold": "Tuesday",
     "lesson": "First class",
     "time": "6 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "June 17"
-  },
-  {
-    "title": "B1.2",
-    "bold": "Wednesday",
-    "lesson": "First class",
-    "time": "6 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "June 18"
+    "month": "July 2"
   },
   {
     "title": "B1.5",
@@ -348,15 +339,15 @@
     "lesson": "First class",
     "time": "6 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "June 20"
+    "month": "July 5"
   },
   {
     "title": "Conversation Course Beginner A1",
-    "bold": "Saturday",
+    "bold": "Wednesday",
     "lesson": "First class",
-    "time": "5:30 pm Spain time",
+    "time": "6:30 pm Spain time",
     "week": "Once a week 2 hours",
-    "month": "June 21"
+    "month": "July 2"
   },
   {
     "title": "Conversation Course Inter. A2",
@@ -364,7 +355,7 @@
     "lesson": "First class",
     "time": "6:30 pm Spain time",
     "week": "Once a week 2 hours",
-    "month": "June 17"
+    "month": "July 1"
   },
   {
     "title": "Conversation Course Adv. B1-B2",
@@ -375,7 +366,6 @@
     "month": "July 19"
   }
 ]
-	
 	
 	,
     "title": "ALL LEVELS PROGRAM",

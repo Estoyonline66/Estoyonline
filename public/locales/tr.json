@@ -246,32 +246,15 @@
 	 "title": "Seviye Planlaması",
 	
     "cardCourses": 
-	
-	
-	[
+
+[
   {
     "title": "A1.1 Başlangıç",
     "bold": "Pazartesi",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "16 Haziran"
-  },
-  {
-    "title": "A1.1 Başlangıç",
-    "bold": "Pzt - Perş",
-    "lesson": "İlk ders",
-    "time": "19:00 - 2,5 saat",
-    "week": "Haftada 2 gün",
-    "month": "16 Haziran"
-  },
-  {
-    "title": "A1.1 Başlangıç",
-    "bold": "Perşembe",
-    "lesson": "İlk ders",
-    "time": "11:00 - 2,5 saat",
-    "week": "Haftada 1 gün",
-    "month": "19 Haziran"
+    "month": "7 Temmuz"
   },
   {
     "title": "A1.1 Başlangıç",
@@ -279,15 +262,7 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "9 Temmuz"
-  },
-  {
-    "title": "A1.2",
-    "bold": "Cuma",
-    "lesson": "İlk ders",
-    "time": "19:00 - 2,5 saat",
-    "week": "Haftada 1 gün",
-    "month": "13 Haziran"
+    "month": "6 Ağustos"
   },
   {
     "title": "A1.2",
@@ -299,27 +274,27 @@
   },
   {
     "title": "A2.1",
-    "bold": "Pazartesi",
-    "lesson": "İlk ders",
-    "time": "19:00 - 2,5 saat",
-    "week": "Haftada 1 gün",
-    "month": "16 Haziran"
-  },
-  {
-    "title": "A2.1",
     "bold": "Çarşamba",
     "lesson": "İlk ders",
     "time": "18:30 - 2,5saat",
     "week": "Haftada 1 gün",
-    "month": "18 Haziran"
+    "month": "24 Eylül"
   },
   {
     "title": "A2.2",
-    "bold": "Cuma",
+    "bold": "Pazartesi",
     "lesson": "İlk ders",
     "time": "18:30 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "13 Haziran"
+    "month": "1 Eylül"
+  },
+  {
+    "title": "A2.2",
+    "bold": "Çarşamba",
+    "lesson": "İlk ders",
+    "time": "18:30 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "3 Eylül"
   },
   {
     "title": "A2.4",
@@ -330,20 +305,12 @@
     "month": "21 Temmuz"
   },
   {
-    "title": "B1.1",
+    "title": "B1.2",
     "bold": "Salı",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "17 Haziran"
-  },
-  {
-    "title": "B1.2",
-    "bold": "Çarşamba",
-    "lesson": "İlk ders",
-    "time": "19:00 - 2,5 saat",
-    "week": "Haftada 1 gün",
-    "month": "18 Haziran"
+    "month": "2 Eylül"
   },
   {
     "title": "B1.5",
@@ -351,7 +318,7 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "20 Haziran"
+    "month": "11 Temmuz"
   },
   {
     "title": "Turizm Modül A",
@@ -371,11 +338,11 @@
   },
   {
     "title": "Konuşma Kursu Başlangıç A1",
-    "bold": "Cumartesi",
+    "bold": "Çarşamba",
     "lesson": "İlk ders",
-    "time": "18:30 - 2 saat",
+    "time": "19:30 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "21 Haziran"
+    "month": "2 Temmuz"
   },
   {
     "title": "Konuşma Kursu Orta A2",
@@ -383,7 +350,7 @@
     "lesson": "İlk ders",
     "time": "19:30 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "17 Haziran"
+    "month": "1 Temmuz"
   },
   {
     "title": "Konuşma Kursu İleri B1-B2",
