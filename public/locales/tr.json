@@ -297,6 +297,14 @@
     "month": "3 Eylül"
   },
   {
+    "title": "A2.3",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "18:30 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "12 Eylül"
+  },
+  {
     "title": "A2.4",
     "bold": "Pazartesi",
     "lesson": "İlk ders",
@@ -358,7 +366,7 @@
     "lesson": "İlk ders",
     "time": "10:00 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "19 Temmuz"
+    "month": "12 Temmuz"
   }
 ]
 

@@ -318,6 +318,14 @@
     "month": "Sep 1"
   },
   {
+    "title": "A2.3",
+    "bold": "Friday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 12"
+  },
+  {
     "title": "A2.4",
     "bold": "Monday",
     "lesson": "First class",
@@ -363,10 +371,9 @@
     "lesson": "First class",
     "time": "9 am Spain time",
     "week": "Once a week 2 hours",
-    "month": "July 19"
+    "month": "July 12"
   }
 ]
-	
 	,
     "title": "ALL LEVELS PROGRAM",
     "levels": [
