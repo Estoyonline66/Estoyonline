@@ -276,7 +276,116 @@
     "title": "Level Planning",
     "cardCourses": 
 	
+	
 	[
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "7 pm Philippine time (1 pm Spain time)",
+    "week": "Once a week 2.5 hours",
+    "month": "July 16"
+  },
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "6:30 pm UK time (7:30 pm Spain time)",
+    "week": "Once a week 2.5 hours",
+    "month": "July 16"
+  },
+  {
+    "title": "A1.2",
+    "bold": "Monday",
+    "lesson": "First class",
+    "time": "6 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "July 7"
+  },
+  {
+    "title": "A2.1",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "6 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 24"
+  },
+  {
+    "title": "A2.2",
+    "bold": "Monday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 1"
+  },
+  {
+    "title": "A2.3",
+    "bold": "Friday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 12"
+  },
+  {
+    "title": "A2.4",
+    "bold": "Tuesday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Aug 5"
+  },
+  {
+    "title": "B1.2",
+    "bold": "Tuesday",
+    "lesson": "First class",
+    "time": "6 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 2"
+  },
+  {
+    "title": "B1.3",
+    "bold": "Monday",
+    "lesson": "İlk ders",
+    "time": "6 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "July 14"
+  },
+  {
+    "title": "B1.5",
+    "bold": "Friday",
+    "lesson": "First class",
+    "time": "6 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep5"
+  },
+  {
+    "title": "Conversation Course Beginner A1",
+    "bold": "Saturday",
+    "lesson": "First class",
+    "time": "5 pm Spain time",
+    "week": "Once a week 2 hours",
+    "month": "july 19"
+  },
+  {
+    "title": "Conversation Course Inter. A2",
+    "bold": "Tuesday",
+    "lesson": "First class",
+    "time": "6:30 pm Spain time",
+    "week": "Once a week 2 hours",
+    "month": "July 1"
+  },
+  {
+    "title": "Conversation Course Adv. B1-B2",
+    "bold": "Saturday",
+    "lesson": "First class",
+    "time": "9 am Spain time",
+    "week": "Once a week 2 hours",
+    "month": "July 12"
+  }
+]
+	
+	
+	,
   {
     "title": "A1.1 Beginner",
     "bold": "Wednesday",

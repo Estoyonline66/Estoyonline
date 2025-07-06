@@ -247,6 +247,7 @@
 	
     "cardCourses": 
 
+
 [
   {
     "title": "A1.1 Başlangıç",
@@ -266,11 +267,11 @@
   },
   {
     "title": "A1.2",
-    "bold": "Çarşamba",
+    "bold": "Pazartesi",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "16 Temmuz"
+    "month": "7 Temmuz"
   },
   {
     "title": "A2.1",
@@ -306,11 +307,11 @@
   },
   {
     "title": "A2.4",
-    "bold": "Pazartesi",
+    "bold": "Salı",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "21 Temmuz"
+    "month": "5 Ağustos"
   },
   {
     "title": "B1.2",
@@ -321,12 +322,20 @@
     "month": "2 Eylül"
   },
   {
+    "title": "B1.3",
+    "bold": "Pazartesi",
+    "lesson": "İlk ders",
+    "time": "19:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "14 Temmuz"
+  },
+  {
     "title": "B1.5",
     "bold": "Cuma",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "11 Temmuz"
+    "month": "5 Eylül"
   },
   {
     "title": "Turizm Modül A",
@@ -346,11 +355,11 @@
   },
   {
     "title": "Konuşma Kursu Başlangıç A1",
-    "bold": "Çarşamba",
+    "bold": "Cumartesi",
     "lesson": "İlk ders",
-    "time": "19:30 - 2 saat",
+    "time": "18:00 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "2 Temmuz"
+    "month": "19 Temmuz"
   },
   {
     "title": "Konuşma Kursu Orta A2",
