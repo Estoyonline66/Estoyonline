@@ -498,8 +498,8 @@
         "items": [
           { "level": "A2.1", "duration": "30 hours - Book:", "book": "Aula 2" },
           { "level": "A2.2", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A3.1", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A3.2", "duration": "30 hours - Book:", "book": "Aula 2" }
+          { "level": "A2.3", "duration": "30 hours - Book:", "book": "Aula 2" },
+          { "level": "A2.4", "duration": "30 hours - Book:", "book": "Aula 2" }
         ]
       },
       {
