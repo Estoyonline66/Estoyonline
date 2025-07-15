@@ -247,15 +247,14 @@
 	
     "cardCourses": 
 
-
 [
   {
-    "title": "A1.1 Başlangıç",
-    "bold": "Pazartesi",
+    "title": "A1.1 Başlangıç (yogun)",
+    "bold": "Pzt - Çar",
     "lesson": "İlk ders",
-    "time": "19:00 - 2,5 saat",
+    "time": "11:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "7 Temmuz"
+    "month": "4 Ağustos"
   },
   {
     "title": "A1.1 Başlangıç",
@@ -266,12 +265,20 @@
     "month": "6 Ağustos"
   },
   {
+    "title": "A1.1 Başlangıç",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "18:30 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "5 Eylül"
+  },
+  {
     "title": "A1.2",
-    "bold": "Pazartesi",
+    "bold": "Perşembe",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "7 Temmuz"
+    "month": "4 Eylül"
   },
   {
     "title": "A2.1",
@@ -327,7 +334,7 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "14 Temmuz"
+    "month": "1 Eylül"
   },
   {
     "title": "B1.5",
@@ -336,6 +343,14 @@
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
     "month": "5 Eylül"
+  },
+  {
+    "title": "B2.5",
+    "bold": "Perşembe",
+    "lesson": "İlk ders",
+    "time": "19:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "7 Ağustos"
   },
   {
     "title": "Turizm Modül A",
@@ -359,7 +374,7 @@
     "lesson": "İlk ders",
     "time": "18:00 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "19 Temmuz"
+    "month": "2 Ağustos"
   },
   {
     "title": "Konuşma Kursu Orta A2",
@@ -367,7 +382,7 @@
     "lesson": "İlk ders",
     "time": "19:30 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "1 Temmuz"
+    "month": "2 Eylül"
   },
   {
     "title": "Konuşma Kursu İleri B1-B2",
@@ -375,15 +390,20 @@
     "lesson": "İlk ders",
     "time": "10:00 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "12 Temmuz"
+    "month": "6 Eylül"
+  },
+  {
+    "title": "Gramer güzeldir kursu",
+    "bold": "Salı",
+    "lesson": "İlk ders",
+    "time": "19:00 - 2 saat",
+    "week": "Haftada 1 gün",
+    "month": "2 Eylül"
   }
 ]
 
 
 ,
-
-
-
 
 
 
