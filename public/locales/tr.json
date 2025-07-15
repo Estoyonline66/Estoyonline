@@ -475,12 +475,12 @@
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "5.600 TL" },
-        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "4.500 TL" },
-        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "4.250 TL" },
-        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "2.200 TL" },
-		{ "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" },
-        { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "12.700  TL" }
+        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "6.700 TL" },
+        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "5.500 TL" },
+        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "5.100 TL" },
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "2.650 TL" },
+		{ "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "15.240  TL" },
+        { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "15.240  TL" }
       ],
       "onlineSpanishTwoTable": [
           { "course": "Özel ders - yetişkinler", "duration": "1 saat", "price": "22 EUR" },
