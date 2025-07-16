@@ -277,28 +277,43 @@
     "cardCourses": 
 	
 	[
- 
+  {
+    "title": "A1.1 Beginner (intensive)",
+    "bold": "Mon - Wed",
+    "lesson": "First class",
+    "time": "10:00 am Spain time",
+    "week": "Twice a week 2.5 hours",
+    "month": "Aug 4"
+  },
   {
     "title": "A1.1 Beginner",
     "bold": "Wednesday",
     "lesson": "First class",
-    "time": "6:30 pm UK time (7:30 pm Spain time)",
+    "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "July 16"
+    "month": "Aug 6"
+  },
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Friday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 5"
   },
   {
     "title": "A1.2",
-    "bold": "Monday",
+    "bold": "Thursday",
     "lesson": "First class",
-    "time": "6 pm Spain time",
+    "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "July 7"
+    "month": "Sep 4"
   },
   {
     "title": "A2.1",
     "bold": "Wednesday",
     "lesson": "First class",
-    "time": "6 pm Spain time",
+    "time": "5:30 pm Spain time",
     "week": "Once a week 2.5 hours",
     "month": "Sep 24"
   },
@@ -309,6 +324,14 @@
     "time": "5:30 pm Spain time",
     "week": "Once a week 2.5 hours",
     "month": "Sep 1"
+  },
+  {
+    "title": "A2.2",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 3"
   },
   {
     "title": "A2.3",
@@ -330,52 +353,67 @@
     "title": "B1.2",
     "bold": "Tuesday",
     "lesson": "First class",
-    "time": "6 pm Spain time",
+    "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
     "month": "Sep 2"
   },
   {
     "title": "B1.3",
     "bold": "Monday",
-    "lesson": "İlk ders",
-    "time": "6 pm Spain time",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "July 14"
+    "month": "Sep 1"
   },
   {
     "title": "B1.5",
     "bold": "Friday",
     "lesson": "First class",
-    "time": "6 pm Spain time",
+    "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
-    "month": "Sep5"
+    "month": "Sep 5"
   },
   {
-    "title": "Conversation Course Beginner A1",
+    "title": "B2.5",
+    "bold": "Thursday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Aug 7"
+  },
+  {
+    "title": "Speaking Course Beginner A1",
     "bold": "Saturday",
     "lesson": "First class",
-    "time": "5 pm Spain time",
+    "time": "5:00 pm Spain time",
     "week": "Once a week 2 hours",
-    "month": "july 19"
+    "month": "Aug 2"
   },
   {
-    "title": "Conversation Course Inter. A2",
+    "title": "Speaking Course Intermediate A2",
     "bold": "Tuesday",
     "lesson": "First class",
     "time": "6:30 pm Spain time",
     "week": "Once a week 2 hours",
-    "month": "July 1"
+    "month": "Sep 2"
   },
   {
-    "title": "Conversation Course Adv. B1-B2",
+    "title": "Speaking Course Advanced B1-B2",
     "bold": "Saturday",
     "lesson": "First class",
-    "time": "9 am Spain time",
+    "time": "9:00 am Spain time",
     "week": "Once a week 2 hours",
-    "month": "July 12"
+    "month": "Sep 6"
+  },
+  {
+    "title": "Grammar is Beautiful Course",
+    "bold": "Tuesday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2 hours",
+    "month": "Sep 2"
   }
 ]
-	
 	
 	,
     "title": "ALL LEVELS PROGRAM",
