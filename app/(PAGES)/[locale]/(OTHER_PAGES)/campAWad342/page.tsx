@@ -212,7 +212,7 @@ export default function CampAWad342() {
                   <option value="Beginner">Beginner</option>
                   <option value="Intermediate">Intermediate</option>
                   <option value="Advanced">Advanced</option>
-                  <option value="I don&apos;t know my level">I don&apos;t know my level</option>
+                  <option value="I am not sure">I am not sure</option>
                 </select>
                 {errors.level && <p className="text-red-500 text-sm mt-1">{errors.level}</p>}
               </div>
