@@ -21,7 +21,7 @@ export default function ResultsPage() {
         const response = await fetch('/api/save-form-data');
         
         if (!response.ok) {
-          throw new Error(`Veri alınamadı: ${response.status}`);
+          throw new Error(`HTTP ${response.status}`);
         }
 
         const result = await response.json();
@@ -29,7 +29,6 @@ export default function ResultsPage() {
         
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Bilinmeyen hata');
-        console.error('Fetch error:', err);
       } finally {
         setLoading(false);
       }
@@ -46,32 +45,34 @@ export default function ResultsPage() {
       <h1 className="text-2xl font-bold mb-6">Başvurular</h1>
       
       {data.length === 0 ? (
-        <p>Henüz başvuru yok.</p>
+        <p>Henüz başvuru bulunmamaktadır.</p>
       ) : (
-        <table className="min-w-full bg-white border">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-2 border">No</th>
-              <th className="p-2 border">Tarih</th>
-              <th className="p-2 border">İsim</th>
-              <th className="p-2 border">Email</th>
-              <th className="p-2 border">WhatsApp</th>
-              <th className="p-2 border">Seviye</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row) => (
-              <tr key={row.no} className="hover:bg-gray-50">
-                <td className="p-2 border">{row.no}</td>
-                <td className="p-2 border">{row.date}</td>
-                <td className="p-2 border">{row.name}</td>
-                <td className="p-2 border">{row.email}</td>
-                <td className="p-2 border">{row.whatsapp}</td>
-                <td className="p-2 border">{row.level}</td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="p-2 border">#</th>
+                <th className="p-2 border">Tarih</th>
+                <th className="p-2 border">İsim</th>
+                <th className="p-2 border">Email</th>
+                <th className="p-2 border">WhatsApp</th>
+                <th className="p-2 border">Seviye</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((row) => (
+                <tr key={row.no} className="hover:bg-gray-50">
+                  <td className="p-2 border">{row.no}</td>
+                  <td className="p-2 border">{row.date}</td>
+                  <td className="p-2 border">{row.name}</td>
+                  <td className="p-2 border">{row.email}</td>
+                  <td className="p-2 border">{row.whatsapp}</td>
+                  <td className="p-2 border">{row.level}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
