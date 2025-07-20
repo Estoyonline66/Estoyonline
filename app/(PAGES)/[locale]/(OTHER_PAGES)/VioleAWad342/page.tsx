@@ -143,16 +143,7 @@ export default function VioleAWad342() {
           {isSubmitted ? (
             <div className="p-4 mb-4 text-green-700 bg-green-100 rounded">
               Your information has been received. We will contact you as soon as possible.
-              <div className="mt-2">
-                <a 
-                  href="/en/VioleAWad342_res" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 underline"
-                >
-                  View all submissions
-                </a>
-              </div>
+           
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
