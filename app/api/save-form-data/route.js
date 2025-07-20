@@ -7,7 +7,7 @@ export async function POST(request) {
     // Vercel'de /tmp, local'de ./tmp kullan
     const tmpDir = process.env.VERCEL ? '/tmp' : path.join(process.cwd(), 'tmp');
     const dataFilePath = path.join(tmpDir, 'campAWad342_res.txt');
-
+    
     // Dizin yoksa oluştur
     try {
       await fs.access(tmpDir);
@@ -23,63 +23,41 @@ export async function POST(request) {
     try {
       const fileContent = await fs.readFile(dataFilePath, 'utf8');
       entries = fileContent.split('\n').filter(line => line.trim() !== '');
-    } catch (error) {
-      if (error.code === 'ENOENT') {
+    } catch (err) {
+      // Dosya yoksa başlık satırını ekle
+      if (err.code === 'ENOENT') {
         entries.push('No.|Date|Name|Email|WhatsApp|Level');
       } else {
-        throw error;
+        throw err;
       }
     }
     
-    // Yeni kayıt
+    // Yeni kaydı ekle
     const newEntry = [
-      entries.length,
-      formattedDate || new Date().toISOString(),
+      entries.length - 1,
+      formattedDate,
       name,
       email,
       whatsapp,
       level
     ].join('|');
     
-    await fs.writeFile(dataFilePath, [...entries, newEntry].join('\n'));
+    entries.push(newEntry);
     
-    return NextResponse.json({ 
-      success: true,
-      message: 'Data saved successfully'
-    }, { status: 200 });
+    // Dosyayı yaz
+    await fs.writeFile(dataFilePath, entries.join('\n'));
     
-  } catch (error) {
-    console.error('API Error:', error);
+    return NextResponse.json({ message: 'Data saved successfully' }, { status: 200 });
+  } catch (err) {
+    console.error('Error saving data:', err);
     return NextResponse.json(
-      { 
-        success: false,
-        error: 'Internal Server Error',
-        details: error.message 
-      },
+      { message: 'Error saving data', error: err.message },
       { status: 500 }
     );
   }
 }
 
+// Diğer HTTP metodlarını engelle
 export async function GET() {
-  try {
-    const tmpDir = process.env.VERCEL ? '/tmp' : path.join(process.cwd(), 'tmp');
-    const dataFilePath = path.join(tmpDir, 'campAWad342_res.txt');
-
-    const fileContent = await fs.readFile(dataFilePath, 'utf8');
-    const submissions = fileContent.split('\n')
-      .filter(line => line.trim() !== '')
-      .slice(1) // Başlık satırını atla
-      .map(row => {
-        const [no, date, name, email, whatsapp, level] = row.split('|');
-        return { no, date, name, email, whatsapp, level };
-      });
-
-    return NextResponse.json({ data: submissions }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json(
-      { data: [], message: 'No data yet' },
-      { status: 200 }
-    );
-  }
+  return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
 }
