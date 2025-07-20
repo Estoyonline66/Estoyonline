@@ -51,12 +51,12 @@ export default function ResultsPage() {
           <table className="min-w-full bg-white border">
             <thead>
               <tr className="bg-gray-100">
-                <th className="p-2 border">#</th>
-                <th className="p-2 border">Tarih</th>
-                <th className="p-2 border">İsim</th>
+                <th className="p-2 border">No.</th>
+                <th className="p-2 border">Date</th>
+                <th className="p-2 border">Name</th>
                 <th className="p-2 border">Email</th>
                 <th className="p-2 border">WhatsApp</th>
-                <th className="p-2 border">Seviye</th>
+                <th className="p-2 border">Level</th>
               </tr>
             </thead>
             <tbody>
