@@ -12,7 +12,7 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
-import { useState, ChangeEvent } from "react"; // ChangeEvent'i import ettik
+import { useState, ChangeEvent, FormEvent } from "react"; // FormEvent'i ekledik
 
 export default function CampAWad342() {
   const sm = useIsMobile(640);
@@ -86,7 +86,7 @@ export default function CampAWad342() {
     return valid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       try {
