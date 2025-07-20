@@ -76,18 +76,18 @@ export default function CampAWad342Results() {
                 <th className="py-2 px-4 border">Level</th>
               </tr>
             </thead>
-            <tbody>
-              {data.map((row) => (
-                <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  <td className="py-2 px-4 border">{row.no}</td>
-                  <td className="py-2 px-4 border">{row.date}</td>
-                  <td className="py-2 px-4 border">{row.name}</td>
-                  <td className="py-2 px-4 border">{row.email}</td>
-                  <td className="py-2 px-4 border">{row.whatsapp}</td>
-                  <td className="py-2 px-4 border">{row.level}</td>
-                </tr>
-              ))}
-            </tbody>
+    <tbody>
+  {data.map((row) => (
+    <tr key={row.no} className={parseInt(row.no) % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+      <td className="py-2 px-4 border">{row.no}</td>
+      <td className="py-2 px-4 border">{row.date}</td>
+      <td className="py-2 px-4 border">{row.name}</td>
+      <td className="py-2 px-4 border">{row.email}</td>
+      <td className="py-2 px-4 border">{row.whatsapp}</td>
+      <td className="py-2 px-4 border">{row.level}</td>
+    </tr>
+  ))}
+</tbody>
           </table>
         </div>
       )}
