@@ -15,14 +15,14 @@ import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
 import Image from "next/image";
 
-export default function camp-AWad342() {
+export default function campAWad342() {
   const sm = useIsMobile(640);
   const { t } = useTranslation();
-  const Data: ContactData = t("camp-AWad342");
+  const Data: ContactData = t("campAWad342");
 
   return (
     <>
-      <Meta route="/camp-AWad342" />
+      <Meta route="/campAWad342" />
 
       <GeneralHero
         icon={
