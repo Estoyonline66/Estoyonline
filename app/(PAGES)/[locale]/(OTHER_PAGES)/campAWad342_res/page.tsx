@@ -77,7 +77,7 @@ export default function CampAWad342Results() {
               </tr>
             </thead>
             <tbody>
-              {data.map((row, index) => (
+              {data.map((row) => (
                 <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                   <td className="py-2 px-4 border">{row.no}</td>
                   <td className="py-2 px-4 border">{row.date}</td>
