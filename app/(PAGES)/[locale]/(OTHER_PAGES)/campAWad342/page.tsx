@@ -1,7 +1,6 @@
 "use client";
 import GeneralHero from "@/components/GeneralHero";
 import Meta from "@/components/Meta";
-// import MapComponent from "@/components/sections/Contact/MapContainer";
 import {
   MapPinCustom,
   MessagePhone,
@@ -13,12 +12,116 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
-import Image from "next/image";
+import { useState } from "react";
 
 export default function CampAWad342() {
   const sm = useIsMobile(640);
   const { t } = useTranslation();
   const Data: ContactData = t("campAWad342");
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    whatsapp: '',
+    level: ''
+  });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    whatsapp: '',
+    level: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = {
+      name: '',
+      email: '',
+      whatsapp: '',
+      level: ''
+    };
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      valid = false;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      valid = false;
+    }
+
+    if (!formData.whatsapp.trim()) {
+      newErrors.whatsapp = 'WhatsApp number is required';
+      valid = false;
+    } else if (!/^\+?[0-9\s\-]+$/.test(formData.whatsapp)) {
+      newErrors.whatsapp = 'Please enter a valid phone number';
+      valid = false;
+    }
+
+    if (!formData.level) {
+      newErrors.level = 'Please select your Spanish level';
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        const now = new Date();
+        const timestamp = now.toISOString();
+        const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
+        
+        const response = await fetch('/api/save-form-data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            timestamp,
+            formattedDate
+          }),
+        });
+
+        if (response.ok) {
+          setIsSubmitted(true);
+          setFormData({
+            name: '',
+            email: '',
+            whatsapp: '',
+            level: ''
+          });
+        } else {
+          alert('There was an error submitting the form. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('There was an error submitting the form. Please try again.');
+      }
+    }
+  };
 
   return (
     <>
@@ -36,33 +139,94 @@ export default function CampAWad342() {
         text={Data.PageTitle}
       />
 
-      {/* Yeni Görsel ve Metin */}
+      {/* Form Section */}
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
-        <Image
-          src="/freeclass.jpeg"
-          alt="Free Online Spanish Course"
-          width={768}
-          height={768}
-          className="w-full max-w-3xl rounded-xl shadow-lg"
-        />
         <div className="mt-6 text-center max-w-2xl">
           <h2 className="text-xl font-semibold mb-4">
-            Free Online Spanish Course
+            Please fill out the form and click submit to benefit from the discount campaign
           </h2>
-           <p className="mb-2">
-            Next week, we’re starting a free mini course made up of 4 classes.
-            It will take place on Wednesdays and Saturdays from 6:30 pm to 7:30 pm
-          </p>
-          <p className="mb-2">
-            This mini course is designed for beginner students who want to start learning Spanish.
-          </p>
-          <p className="mb-2">
-            If you’d like to sign up, simply send us a message on the school’s WhatsApp and we’ll send you the Zoom link along with the materials for each class.
-          </p>
-          <p className="font-semibold mt-4">
-            Don’t miss out on this great opportunity!
-    
-          </p>
+          
+          {isSubmitted ? (
+            <div className="p-4 mb-4 text-green-700 bg-green-100 rounded">
+              Your information has been received. We will contact you as soon as possible.
+              <div className="mt-2">
+                <a 
+                  href="/en/campAWad342_res" 
+                  target="_blank"
+                  className="text-blue-600 underline"
+                >
+                  View all submissions
+                </a>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-left mb-1">Name*</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded"
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-left mb-1">Email*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded"
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="whatsapp" className="block text-left mb-1">WhatsApp Number*</label>
+                <input
+                  type="text"
+                  id="whatsapp"
+                  name="whatsapp"
+                  value={formData.whatsapp}
+                  onChange={handleChange}
+                  placeholder="+90 555 123 4567"
+                  className="w-full p-2 border rounded"
+                />
+                {errors.whatsapp && <p className="text-red-500 text-sm mt-1">{errors.whatsapp}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="level" className="block text-left mb-1">Spanish Level*</label>
+                <select
+                  id="level"
+                  name="level"
+                  value={formData.level}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded"
+                >
+                  <option value="">Select your level</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                  <option value="I don't know my level">I don't know my level</option>
+                </select>
+                {errors.level && <p className="text-red-500 text-sm mt-1">{errors.level}</p>}
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
+              >
+                Submit
+              </button>
+            </form>
+          )}
         </div>
       </section>
 
@@ -123,11 +287,6 @@ export default function CampAWad342() {
           </address>
         </div>
       </section>
-
-      {/* Harita kaldırıldı */}
-      {/* <section className="w-full mt-10 z-[-1]">
-        <MapComponent />
-      </section> */}
     </>
   );
 }

@@ -34,7 +34,6 @@ export default function Navbar({isHome}:props) {
     "":"/teachers",
     "":"/courses",
 	 "":"/freecourse",
-	 "":"/campAWad342",
     "":"/videos",
     "":"/price",
     "":"/contact"
