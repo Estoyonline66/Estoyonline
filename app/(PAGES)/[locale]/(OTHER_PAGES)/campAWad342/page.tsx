@@ -12,7 +12,7 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
-import { useState, ChangeEvent, FormEvent } from "react"; // FormEvent'i ekledik
+import { useState, ChangeEvent, FormEvent } from "react";
 
 export default function CampAWad342() {
   const sm = useIsMobile(640);
@@ -32,7 +32,6 @@ export default function CampAWad342() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Tip tanımı eklendi
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -86,40 +85,41 @@ export default function CampAWad342() {
     return valid;
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  
-  try {
-    const response = await fetch('/api/save-form-data', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...formData,
-        formattedDate: new Date().toLocaleString()
-      }),
-    });
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validateForm()) return;
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Failed to submit form');
+    try {
+      const now = new Date();
+      const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
+      
+      const response = await fetch('/api/save-form-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formattedDate
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          whatsapp: '',
+          level: ''
+        });
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was an error submitting the form. Please try again.');
     }
-
-    setIsSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      whatsapp: '',
-      level: ''
-    });
-
-  } catch (error) {
-    console.error('Submission error:', error);
-    alert(error.message);
-  }
-};
+  };
 
   return (
     <>
@@ -137,7 +137,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         text={Data.PageTitle}
       />
 
-      {/* Form Section */}
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
         <div className="mt-6 text-center max-w-2xl">
           <h2 className="text-xl font-semibold mb-4">
@@ -151,6 +150,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <a 
                   href="/en/campAWad342_res" 
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-600 underline"
                 >
                   View all submissions
@@ -212,7 +212,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <option value="Beginner">Beginner</option>
                   <option value="Intermediate">Intermediate</option>
                   <option value="Advanced">Advanced</option>
-                  <option value="I am not sure">I am not sure</option>
+                  <option value="I don&apos;t know my level">I don&apos;t know my level</option>
                 </select>
                 {errors.level && <p className="text-red-500 text-sm mt-1">{errors.level}</p>}
               </div>
@@ -244,7 +244,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           </strong>
           <p>{Data.contactDescription}</p>
           <div className="w-full mt-2 flex items-center justify-center sm:justify-start">
-            <a href={Data.whatsapplink} target="_blank">
+            <a href={Data.whatsapplink} target="_blank" rel="noopener noreferrer">
               <StyledButton
                 icon={
                   <MessagePhone
@@ -260,13 +260,12 @@ const handleSubmit = async (e: React.FormEvent) => {
                   />
                 }
               >
-                {" "}
                 {Data.officeContactButton}
               </StyledButton>
             </a>
           </div>
         </div>
-        <div className="w-full isolate flex flex-col items-center  px-4 relative py-14 md:px-10 lg:px-20 gap-5">
+        <div className="w-full isolate flex flex-col items-center px-4 relative py-14 md:px-10 lg:px-20 gap-5">
           <span
             className={clsx(
               "absolute size-full bg-[#DEEBFE] top-0 left-0 -z-10",
