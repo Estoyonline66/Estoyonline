@@ -12,7 +12,7 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import { useIsMobile } from "@/lib/hooks/useMobile";
 import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react"; // ChangeEvent'i import ettik
 
 export default function CampAWad342() {
   const sm = useIsMobile(640);
@@ -32,13 +32,14 @@ export default function CampAWad342() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e) => {
+  // Tip tanımı eklendi
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-    if (errors[name]) {
+    if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({
         ...prev,
         [name]: ''
