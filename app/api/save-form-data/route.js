@@ -4,9 +4,10 @@ import path from 'path';
 
 const dataFilePath = path.join(process.cwd(), 'public', 'campAWad342_res.txt');
 
-export async function POST(request: Request) {
+export async function POST(request) {
   try {
-    const { name, email, whatsapp, level, formattedDate } = await request.json();
+    const requestBody = await request.json();
+    const { name, email, whatsapp, level, formattedDate } = requestBody;
     
     // Dosya varsa oku, yoksa başlık satırını oluştur
     let fileContent = '';
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
   }
 }
 
-// OPTIONAL: Diğer HTTP metodlarını engellemek için
+// Diğer HTTP metodlarını engellemek için
 export async function GET() {
   return NextResponse.json({ message: 'Method not allowed' }, { status: 405 });
 }
