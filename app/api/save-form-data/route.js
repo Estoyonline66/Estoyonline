@@ -1,27 +1,27 @@
 import { NextResponse } from 'next/server';
 import path from 'path';
-import { writeFile, mkdir, access } from 'fs/promises';
+import { promises as fs } from 'fs';
 
-export async function POST(request: Request) {
+export async function POST(request) {
   try {
     // Vercel'de /tmp dizinini kullanıyoruz
-    const tmpDir = path.join(process.cwd(), 'tmp');
+    const tmpDir = process.env.VERCEL ? '/tmp' : path.join(process.cwd(), 'tmp');
     const dataFilePath = path.join(tmpDir, 'campAWad342_res.txt');
     
     // Dizin yoksa oluştur
     try {
-      await access(tmpDir);
+      await fs.access(tmpDir);
     } catch {
-      await mkdir(tmpDir, { recursive: true });
+      await fs.mkdir(tmpDir, { recursive: true });
     }
 
     const { name, email, whatsapp, level, formattedDate } = await request.json();
     
-    let entries: string[] = [];
+    let entries = [];
     
     // Dosya varsa oku
     try {
-      const fileContent = await readFile(dataFilePath, 'utf8');
+      const fileContent = await fs.readFile(dataFilePath, 'utf8');
       entries = fileContent.split('\n').filter(line => line.trim() !== '');
     } catch (error) {
       // Dosya yoksa başlık satırını ekle
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     entries.push(newEntry);
     
     // Dosyayı yaz
-    await writeFile(dataFilePath, entries.join('\n'));
+    await fs.writeFile(dataFilePath, entries.join('\n'));
     
     return NextResponse.json({ message: 'Data saved successfully' }, { status: 200 });
   } catch (error) {
@@ -55,16 +55,6 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-}
-
-// Vercel'in /tmp dizinini kullanarak dosya okuma
-async function readFile(filePath: string, encoding: BufferEncoding) {
-  if (process.env.VERCEL) {
-    // Vercel'de /tmp kullan
-    const tmpPath = path.join('/tmp', path.basename(filePath));
-    return await fs.promises.readFile(tmpPath, encoding);
-  }
-  return await fs.promises.readFile(filePath, encoding);
 }
 
 // Diğer HTTP metodlarını engelle
