@@ -1,27 +1,45 @@
 "use client";
 import { useEffect, useState } from 'react';
 
+// Tip tanımları
+type FormSubmission = {
+  no: string;
+  date: string;
+  name: string;
+  email: string;
+  whatsapp: string;
+  level: string;
+};
+
 export default function ResultsPage() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<FormSubmission[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/save-form-data');
-        if (!response.ok) throw new Error('Failed to fetch');
         
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
-        if (result.data) {
-          // Başlık satırını atla ve verileri işle
-          const formattedData = result.data.slice(1).map(row => {
-            const [no, date, name, email, whatsapp, level] = row.split('|');
-            return { no, date, name, email, whatsapp, level };
-          });
+        
+        if (result.data && Array.isArray(result.data)) {
+          const formattedData = result.data.slice(1) // Başlık satırını atla
+            .map((row: string) => {
+              const [no, date, name, email, whatsapp, level] = row.split('|');
+              return { no, date, name, email, whatsapp, level } as FormSubmission;
+            })
+            .filter((item: FormSubmission) => item.no); // Boş satırları filtrele
+            
           setData(formattedData);
         }
-      } catch (error) {
-        console.error('Fetch error:', error);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+        console.error('Fetch error:', err);
       } finally {
         setLoading(false);
       }
@@ -30,7 +48,8 @@ export default function ResultsPage() {
     fetchData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="p-4">Loading...</div>;
+  if (error) return <div className="p-4 text-red-500">Error: {error}</div>;
 
   return (
     <div className="container mx-auto p-4">
@@ -52,7 +71,7 @@ export default function ResultsPage() {
               </tr>
             </thead>
             <tbody>
-              {data.map((row) => (
+              {data.map((row: FormSubmission) => (
                 <tr key={row.no} className="hover:bg-gray-50">
                   <td className="p-2 border">{row.no}</td>
                   <td className="p-2 border">{row.date}</td>
