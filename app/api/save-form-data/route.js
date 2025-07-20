@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 
 const getDataFilePath = () => {
   const tmpDir = process.env.VERCEL ? '/tmp' : path.join(process.cwd(), 'tmp');
-  return path.join(tmpDir, 'VioleAWad342_res.txt');
+  return path.join(tmpDir, 'campAWad342_res.txt');
 };
 
 export async function POST(request) {

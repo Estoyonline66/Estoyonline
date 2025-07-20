@@ -14,10 +14,10 @@ import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
 import { useState, ChangeEvent, FormEvent } from "react";
 
-export default function VioleAWad342() {
+export default function CampAWad342() {
   const sm = useIsMobile(640);
   const { t } = useTranslation();
-  const Data: ContactData = t("VioleAWad342");
+  const Data: ContactData = t("campAWad342");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -123,7 +123,7 @@ export default function VioleAWad342() {
 
   return (
     <>
-      <Meta route="/VioleAWad342" />
+      <Meta route="/campAWad342" />
 
       <GeneralHero
         icon={
@@ -148,7 +148,7 @@ export default function VioleAWad342() {
               Your information has been received. We will contact you as soon as possible.
               <div className="mt-2">
                 <a 
-                  href="/en/VioleAWad342_res" 
+                  href="/en/campAWad342_res" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 underline"
