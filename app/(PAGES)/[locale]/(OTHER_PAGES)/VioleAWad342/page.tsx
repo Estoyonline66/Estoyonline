@@ -90,9 +90,6 @@ export default function VioleAWad342() {
     if (!validateForm()) return;
 
     try {
-      const now = new Date();
-      const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
-      
       const response = await fetch('/api/save-form-data', {
         method: 'POST',
         headers: {
@@ -100,7 +97,7 @@ export default function VioleAWad342() {
         },
         body: JSON.stringify({
           ...formData,
-          formattedDate
+          formattedDate: new Date().toISOString() // Using ISO format for consistency
         }),
       });
 
@@ -113,7 +110,7 @@ export default function VioleAWad342() {
           level: ''
         });
       } else {
-        throw new Error('Failed to submit form');
+        throw new Error(await response.text());
       }
     } catch (error) {
       console.error('Submission error:', error);
@@ -140,7 +137,7 @@ export default function VioleAWad342() {
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
         <div className="mt-6 text-center max-w-2xl">
           <h2 className="text-xl font-semibold mb-4">
-            Please fill out the form and click submit to benefit from the discount campaign
+            Just fill the form and claim your discount
           </h2>
           
           {isSubmitted ? (

@@ -1,30 +1,29 @@
+// app/api/save-form-data/route.js
 import { NextResponse } from 'next/server';
 import path from 'path';
 import { promises as fs } from 'fs';
 
-const getDataFilePath = () => {
-  const tmpDir = process.env.VERCEL ? '/tmp' : path.join(process.cwd(), 'tmp');
-  return path.join(tmpDir, 'VioleAWad342_res.txt');
-};
+// Persistent storage path (works on Vercel)
+const DATA_FILE_PATH = '/tmp/persistent_VioleAWad342_data.txt';
 
 export async function POST(request) {
   try {
-    const dataFilePath = getDataFilePath();
-    const { name, email, whatsapp, level } = await request.json();
+    const { name, email, whatsapp, level, formattedDate } = await request.json();
     
-    // Dizin yoksa oluştur
+    // Ensure directory exists
     try {
-      await fs.access(path.dirname(dataFilePath));
+      await fs.access(path.dirname(DATA_FILE_PATH));
     } catch {
-      await fs.mkdir(path.dirname(dataFilePath), { recursive: true });
+      await fs.mkdir(path.dirname(DATA_FILE_PATH), { recursive: true });
     }
 
     let entries = [];
     try {
-      const content = await fs.readFile(dataFilePath, 'utf8');
+      const content = await fs.readFile(DATA_FILE_PATH, 'utf8');
       entries = content.split('\n').filter(line => line.trim() !== '');
     } catch (err) {
       if (err.code === 'ENOENT') {
+        // Initialize with header if file doesn't exist
         entries.push('No.|Date|Name|Email|WhatsApp|Level');
       } else {
         throw err;
@@ -33,14 +32,14 @@ export async function POST(request) {
 
     const newEntry = [
       entries.length,
-      new Date().toLocaleString('tr-TR'),
+      formattedDate,
       name,
       email,
       whatsapp,
       level
     ].join('|');
 
-    await fs.writeFile(dataFilePath, [...entries, newEntry].join('\n'));
+    await fs.writeFile(DATA_FILE_PATH, [...entries, newEntry].join('\n'));
     
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
@@ -54,12 +53,10 @@ export async function POST(request) {
 
 export async function GET() {
   try {
-    const dataFilePath = getDataFilePath();
-    const content = await fs.readFile(dataFilePath, 'utf8');
-    
+    const content = await fs.readFile(DATA_FILE_PATH, 'utf8');
     const submissions = content.split('\n')
       .filter(line => line.trim() !== '')
-      .slice(1) // Başlık satırını atla
+      .slice(1) // Skip header
       .map(row => {
         const [no, date, name, email, whatsapp, level] = row.split('|');
         return { no, date, name, email, whatsapp, level };
