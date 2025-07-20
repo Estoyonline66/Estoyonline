@@ -1,16 +1,14 @@
 import { NextResponse } from 'next/server';
-import path from 'path';
 import { promises as fs } from 'fs';
 import ftp from 'basic-ftp';
 
 const DATA_FILE_PATH = '/tmp/persistent_VioleAWad342_data.txt';
 
-// Enhanced FTP Client with timeout
 class CustomFTPClient extends ftp.Client {
   constructor() {
     super();
     this.ftp.verbose = true;
-    this.timeout = 10000; // 10 seconds timeout
+    this.timeout = 10000;
   }
 }
 
@@ -29,11 +27,9 @@ async function backupToFTP() {
       throw new Error(`Local file not found: ${err.message}`);
     }
 
-    // Read file stats for debugging
     const stats = await fs.stat(DATA_FILE_PATH);
     console.log(`File size: ${stats.size} bytes`);
 
-    // Connect to FTP
     console.log(`Connecting to ${process.env.FTP_HOST}...`);
     await client.access({
       host: process.env.FTP_HOST,
@@ -43,11 +39,9 @@ async function backupToFTP() {
       port: process.env.FTP_PORT || 21
     });
 
-    // Verify connection
     const workingDir = await client.pwd();
     console.log(`Connected to FTP. Current directory: ${workingDir}`);
 
-    // Upload file
     console.log('Starting file upload...');
     await client.uploadFrom(await fs.readFile(DATA_FILE_PATH), 'violeawad342_backup.txt');
     uploadSuccess = true;
@@ -61,26 +55,52 @@ async function backupToFTP() {
       host: process.env.FTP_HOST,
       time: new Date().toISOString()
     });
-    throw err; // Re-throw to ensure we know it failed
+    throw err;
   } finally {
     client.close();
     console.log(`FTP connection closed. Upload success: ${uploadSuccess}`);
   }
 }
 
-export async function POST(request) {
+export async function POST(req) {  // Changed from 'request' to 'req'
   try {
-    // ... [previous form handling code remains the same until after file write]
+    const { name, email, whatsapp, level, formattedDate } = await req.json();
+    
+    // Ensure directory exists
+    try {
+      await fs.mkdir('/tmp', { recursive: true });
+    } catch (err) {
+      console.log('Directory already exists or could not be created');
+    }
+
+    let entries = [];
+    try {
+      const content = await fs.readFile(DATA_FILE_PATH, 'utf8');
+      entries = content.split('\n').filter(line => line.trim() !== '');
+    } catch (err) {
+      if (err.code === 'ENOENT') {
+        entries.push('No.|Date|Name|Email|WhatsApp|Level');
+      } else {
+        throw err;
+      }
+    }
+
+    const newEntry = [
+      entries.length,
+      formattedDate || new Date().toISOString(),
+      name,
+      email,
+      whatsapp,
+      level
+    ].join('|');
 
     await fs.writeFile(DATA_FILE_PATH, [...entries, newEntry].join('\n'));
     
-    // Enhanced backup with error tracking
     try {
       await backupToFTP();
       console.log('Backup completed after form submission');
     } catch (err) {
       console.error('Background backup failed, but form was saved:', err);
-      // Consider sending an alert email here if needed
     }
     
     return NextResponse.json({ success: true }, { status: 200 });
@@ -91,6 +111,30 @@ export async function POST(request) {
       stack: err.stack,
       time: new Date().toISOString()
     });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET() {
+  try {
+    const content = await fs.readFile(DATA_FILE_PATH, 'utf8');
+    const submissions = content.split('\n')
+      .filter(line => line.trim() !== '')
+      .slice(1)
+      .map(row => {
+        const [no, date, name, email, whatsapp, level] = row.split('|');
+        return { no, date, name, email, whatsapp, level };
+      });
+
+    return NextResponse.json({ data: submissions }, { status: 200 });
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      return NextResponse.json({ data: [] }, { status: 200 });
+    }
+    console.error('GET Error:', err);
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 }
