@@ -15,7 +15,7 @@ import { ContactData } from "@/types/PropTypes";
 import clsx from "clsx";
 import Image from "next/image";
 
-export default function campAWad342() {
+export default function CampAWad342() {
   const sm = useIsMobile(640);
   const { t } = useTranslation();
   const Data: ContactData = t("campAWad342");
