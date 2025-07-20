@@ -86,43 +86,40 @@ export default function CampAWad342() {
     return valid;
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-      try {
-        const now = new Date();
-        const timestamp = now.toISOString();
-        const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
-        
-        const response = await fetch('/api/save-form-data', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...formData,
-            timestamp,
-            formattedDate
-          }),
-        });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  try {
+    const response = await fetch('/api/save-form-data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+        formattedDate: new Date().toLocaleString()
+      }),
+    });
 
-        if (response.ok) {
-          setIsSubmitted(true);
-          setFormData({
-            name: '',
-            email: '',
-            whatsapp: '',
-            level: ''
-          });
-        } else {
-          alert('There was an error submitting the form. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        alert('There was an error submitting the form. Please try again.');
-      }
+    const result = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to submit form');
     }
-  };
+
+    setIsSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      whatsapp: '',
+      level: ''
+    });
+
+  } catch (error) {
+    console.error('Submission error:', error);
+    alert(error.message);
+  }
+};
 
   return (
     <>
