@@ -69,7 +69,7 @@ export async function POST(req) {  // Changed from 'request' to 'req'
     // Ensure directory exists
     try {
       await fs.mkdir('/tmp', { recursive: true });
-    } catch (err) {
+    } catch {
       console.log('Directory already exists or could not be created');
     }
 
