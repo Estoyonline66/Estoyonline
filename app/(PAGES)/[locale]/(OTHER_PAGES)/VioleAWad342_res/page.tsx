@@ -37,7 +37,7 @@ export default function ResultsPage() {
     fetchData();
   }, []);
 
-  if (loading) return <div className="p-4">Yükleniyor...</div>;
+  if (loading) return <div className="p-4">Loading...</div>;
   if (error) return <div className="p-4 text-red-500">Hata: {error}</div>;
 
   return (
