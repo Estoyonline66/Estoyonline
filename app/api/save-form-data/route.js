@@ -1,143 +1,94 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
+import os from 'os';
+import path from 'path';
 import { Client } from 'basic-ftp';
 
-const DATA_FILE_PATH = '/tmp/persistent_VioleAWad342_data.txt';
-
-class CustomFTPClient extends Client {
-  constructor() {
-    super();
-    this.ftp.verbose = true;
-    this.timeout = 10000;
-  }
-}
-
-async function backupToFTP() {
-  const client = new CustomFTPClient();
-  let uploadSuccess = false;
+// 📌 FTP bağlantısı ve dosya yükleme
+async function uploadToFTP(filename: string, content: string) {
+  const client = new Client();
+  const localPath = path.join(os.tmpdir(), filename);
+  await fs.writeFile(localPath, content, 'utf8');
 
   try {
-    console.log('Starting FTP backup process...');
-    
-    // Verify local file exists
-    try {
-      await fs.access(DATA_FILE_PATH);
-      console.log('Local data file exists');
-    } catch (err) {
-      throw new Error(`Local file not found: ${err.message}`);
-    }
-
-    const stats = await fs.stat(DATA_FILE_PATH);
-    console.log(`File size: ${stats.size} bytes`);
-
-    console.log(`Connecting to ${process.env.FTP_HOST}...`);
     await client.access({
       host: process.env.FTP_HOST,
       user: process.env.FTP_USER,
       password: process.env.FTP_PASSWORD,
-      secure: process.env.FTP_SECURE === 'false',
+      secure: true,
+      secureOptions: {
+        rejectUnauthorized: false
+      },
       port: process.env.FTP_PORT || 21
     });
 
-    const workingDir = await client.pwd();
-    console.log(`Connected to FTP. Current directory: ${workingDir}`);
-
-    console.log('Starting file upload...');
-    await client.uploadFrom(DATA_FILE_PATH, 'violeawad342_backup.txt');
-    uploadSuccess = true;
-    console.log('FTP backup completed successfully!');
-
-  } catch (err) {
-    console.error('FTP Backup Error:', {
-      message: err.message,
-      stack: err.stack,
-      code: err.code,
-      host: process.env.FTP_HOST,
-      time: new Date().toISOString()
-    });
-    throw err;
+    await client.uploadFrom(localPath, filename);
+    console.log(`✅ FTP upload complete: ${filename}`);
   } finally {
     client.close();
-    console.log(`FTP connection closed. Upload success: ${uploadSuccess}`);
   }
 }
 
-export async function POST(req) {  // Changed from 'request' to 'req'
+// 📩 Form Submit (POST)
+export async function POST(req) {
   try {
-    const { name, email, whatsapp, level, formattedDate } = await req.json();
-    
-    // Ensure directory exists
-    try {
-      await fs.mkdir('/tmp', { recursive: true });
-    } catch {
-      console.log('Directory already exists or could not be created');
-    }
+    const { name, email, whatsapp, level } = await req.json();
+    const timestamp = new Date().toISOString();
+    const filename = `violeawad342_${timestamp.replace(/[:.]/g, '-')}.txt`;
 
-    let entries = [];
-    try {
-      const content = await fs.readFile(DATA_FILE_PATH, 'utf8');
-      entries = content.split('\n').filter(line => line.trim() !== '');
-    } catch (err) {
-      if (err.code === 'ENOENT') {
-        entries.push('No.|Date|Name|Email|WhatsApp|Level');
-      } else {
-        throw err;
-      }
-    }
+    const headers = 'No.|Date|Name|Email|WhatsApp|Level';
+    const entry = `1|${timestamp}|${name}|${email}|${whatsapp}|${level}`;
+    const content = `${headers}\n${entry}`;
 
-    const newEntry = [
-      entries.length,
-      formattedDate || new Date().toISOString(),
-      name,
-      email,
-      whatsapp,
-      level
-    ].join('|');
+    await uploadToFTP(filename, content);
 
-    await fs.writeFile(DATA_FILE_PATH, [...entries, newEntry].join('\n'));
-    
-    try {
-      await backupToFTP();
-      console.log('Backup completed after form submission');
-    } catch (err) {
-      console.error('Background backup failed, but form was saved:', err);
-    }
-    
     return NextResponse.json({ success: true }, { status: 200 });
-
   } catch (err) {
-    console.error('POST Error:', {
-      error: err.message,
-      stack: err.stack,
-      time: new Date().toISOString()
-    });
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    console.error('❌ POST Error:', err);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
 
+// 📤 Verileri Görüntüle (GET)
 export async function GET() {
+  const client = new Client();
   try {
-    const content = await fs.readFile(DATA_FILE_PATH, 'utf8');
-    const submissions = content.split('\n')
-      .filter(line => line.trim() !== '')
-      .slice(1)
-      .map(row => {
-        const [no, date, name, email, whatsapp, level] = row.split('|');
-        return { no, date, name, email, whatsapp, level };
-      });
+    await client.access({
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
+      password: process.env.FTP_PASSWORD,
+      secure: true,
+      secureOptions: {
+        rejectUnauthorized: false
+      },
+      port: process.env.FTP_PORT || 21
+    });
+
+    const list = await client.list();
+    const txtFiles = list
+      .filter(f => f.name.startsWith('violeawad342_') && f.name.endsWith('.txt'))
+      .sort((a, b) => b.name.localeCompare(a.name)); // En yeni en üstte
+
+    if (txtFiles.length === 0) {
+      return NextResponse.json({ data: [] }, { status: 200 });
+    }
+
+    const latestFile = txtFiles[0].name;
+    const localPath = path.join(os.tmpdir(), latestFile);
+    await client.downloadTo(localPath, latestFile);
+    const content = await fs.readFile(localPath, 'utf8');
+
+    const rows = content.trim().split('\n').slice(1); // Header'ı atla
+    const submissions = rows.map(row => {
+      const [no, date, name, email, whatsapp, level] = row.split('|');
+      return { no, date, name, email, whatsapp, level };
+    });
 
     return NextResponse.json({ data: submissions }, { status: 200 });
   } catch (err) {
-    if (err.code === 'ENOENT') {
-      return NextResponse.json({ data: [] }, { status: 200 });
-    }
-    console.error('GET Error:', err);
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    console.error('❌ GET Error:', err);
+    return NextResponse.json({ error: 'Could not read from FTP' }, { status: 500 });
+  } finally {
+    client.close();
   }
 }

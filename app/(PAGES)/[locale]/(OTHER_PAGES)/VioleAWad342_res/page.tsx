@@ -21,7 +21,7 @@ export default function ResultsPage() {
         const response = await fetch('/api/save-form-data');
         
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
+       throw new Error(`Sunucudan veri alınamadı (HTTP ${response.status})`);
         }
 
         const result = await response.json();
