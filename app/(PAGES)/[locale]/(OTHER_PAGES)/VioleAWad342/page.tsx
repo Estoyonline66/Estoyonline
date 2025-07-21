@@ -137,8 +137,7 @@ export default function VioleAWad342() {
 				}}
 			  />
 			}
-          />
-        }
+      
         text={Data.PageTitle}
       />
 
