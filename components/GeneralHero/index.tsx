@@ -3,7 +3,7 @@ import { BigDotSmallDot, SingleLineShortLeft, SingleLineShortRight, SmallDot } f
 import { SunLogo } from '../shapes/SunLogo'
 
 type Props = {
-    icon:React.ReactNode,
+    icon?: React.ReactNode; // icon opsiyonel hale getirildi
     text: string
 }
 
