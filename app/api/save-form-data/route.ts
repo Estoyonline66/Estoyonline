@@ -19,7 +19,7 @@ async function uploadToFTP(filename: string, content: string) {
       secureOptions: {
         rejectUnauthorized: false
       },
-      port: process.env.FTP_PORT || 21
+       port: process.env.FTP_PORT ? Number(process.env.FTP_PORT) : 21
     });
 
     await client.uploadFrom(localPath, filename);
