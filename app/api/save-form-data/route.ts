@@ -1,8 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import os from 'os';
 import path from 'path';
 import { Client } from 'basic-ftp';
+
+export async function POST(req: NextRequest) {
 
 
 async function uploadToFTP(filename: string, content: string) {
@@ -91,4 +93,6 @@ export async function GET() {
   } finally {
     client.close();
   }
+}
+
 }
