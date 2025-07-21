@@ -43,7 +43,7 @@ async function backupToFTP() {
     console.log(`Connected to FTP. Current directory: ${workingDir}`);
 
     console.log('Starting file upload...');
-    await client.uploadFrom(await fs.readFile(DATA_FILE_PATH), 'violeawad342_backup.txt');
+    await client.uploadFrom(DATA_FILE_PATH, 'violeawad342_backup.txt');
     uploadSuccess = true;
     console.log('FTP backup completed successfully!');
 
