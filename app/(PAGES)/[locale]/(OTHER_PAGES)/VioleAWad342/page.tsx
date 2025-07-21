@@ -1,5 +1,5 @@
 "use client";
-import GeneralHero from "@/components/GeneralHero/index.tsx";
+import GeneralHero from "@/components/GeneralHero";
 import Meta from "@/components/Meta";
 import {
   MapPinCustom,
@@ -121,6 +121,7 @@ export default function VioleAWad342() {
   return (
     <>
       <Meta route="/VioleAWad342" />
+
       <GeneralHero
         icon={
           <MessagePhone
