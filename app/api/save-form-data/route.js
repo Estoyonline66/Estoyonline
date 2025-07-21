@@ -4,7 +4,7 @@ import { Client } from 'basic-ftp';
 
 const DATA_FILE_PATH = '/tmp/persistent_VioleAWad342_data.txt';
 
-class CustomFTPClient extends ftp.Client {
+class CustomFTPClient extends Client {
   constructor() {
     super();
     this.ftp.verbose = true;
