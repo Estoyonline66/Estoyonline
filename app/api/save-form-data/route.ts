@@ -5,6 +5,18 @@ import os from 'os';
 import path from 'path';
 import { Client } from 'basic-ftp';
 
+// New function to format date
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
 async function getLatestFileContent(client: Client) {
   const list = await client.list();
   const txtFiles = list
@@ -40,9 +52,9 @@ export async function POST(req: NextRequest) {
 
     const { name, email, whatsapp, level } = await req.json();
     const timestamp = new Date().toISOString();
+    const formattedDate = formatDate(timestamp); // Use formatted date
     const filename = `violeawad342_${timestamp.replace(/[:.]/g, '-')}.txt`;
 
-    // Get the latest file content
     const existingContent = await getLatestFileContent(client);
     let newContent = '';
     let nextNumber = 1;
@@ -52,16 +64,12 @@ export async function POST(req: NextRequest) {
       const lastRow = rows[rows.length - 1];
       const lastNumber = parseInt(lastRow.split('|')[0]);
       nextNumber = isNaN(lastNumber) ? 1 : lastNumber + 1;
-      
-      // Keep headers and existing rows
       newContent = existingContent.trim() + '\n';
     } else {
-      // Create new headers if no file exists
       newContent = 'No.|Date|Name|Email|WhatsApp|Level\n';
     }
 
-    // Add new entry
-    const entry = `${nextNumber}|${timestamp}|${name}|${email}|${whatsapp}|${level}`;
+    const entry = `${nextNumber}|${formattedDate}|${name}|${email}|${whatsapp}|${level}`;
     newContent += entry;
 
     await uploadToFTP(client, filename, newContent);
@@ -90,7 +98,7 @@ export async function GET() {
     const content = await getLatestFileContent(client);
     if (!content) return NextResponse.json({ data: [] }, { status: 200 });
 
-    const rows = content.trim().split('\n').slice(1); // Skip header
+    const rows = content.trim().split('\n').slice(1);
     const submissions = rows.map(row => {
       const [no, date, name, email, whatsapp, level] = row.split('|');
       return { no, date, name, email, whatsapp, level };
