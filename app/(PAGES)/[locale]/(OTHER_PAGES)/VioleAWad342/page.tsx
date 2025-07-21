@@ -109,7 +109,7 @@ export default function VioleAWad342() {
           whatsapp: '',
           level: ''
         });
-		
+		 window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         throw new Error(await response.text());
       }
