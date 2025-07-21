@@ -102,10 +102,14 @@ export default function VioleAWad342() {
       });
 
       if (response.ok) {
-	setIsSubmitted(true);
-      // Refresh the page and scroll to top
-      router.refresh();
-      window.scrollTo(0, 0);
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          whatsapp: '',
+          level: ''
+        });
+		
       } else {
         throw new Error(await response.text());
       }
