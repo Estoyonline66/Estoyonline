@@ -1,5 +1,5 @@
 "use client";
-import GeneralHero from "@/components/GeneralHero";
+import GeneralHero from "@/components/GeneralHero/index.tsx";
 import Meta from "@/components/Meta";
 import {
   MapPinCustom,
