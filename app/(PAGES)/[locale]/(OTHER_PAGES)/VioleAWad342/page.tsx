@@ -124,13 +124,19 @@ export default function VioleAWad342() {
       <Meta route="/VioleAWad342" />
 
       <GeneralHero
-        icon={
-          <MessagePhone
-            path={{
-              fill: "none",
-              stroke: "#FEFEFE",
-			strokeWidth: 1
-            }}
+       icon={
+			  <MessagePhone
+				path={{
+				  fill: "none",
+				  stroke: "#FEFEFE",
+				}}
+				svg={{
+				  style: {
+					display: "none"
+				  }
+				}}
+			  />
+			}
           />
         }
         text={Data.PageTitle}
