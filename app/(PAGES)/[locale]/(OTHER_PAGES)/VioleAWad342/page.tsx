@@ -109,6 +109,8 @@ export default function VioleAWad342() {
           whatsapp: '',
           level: ''
         });
+	
+		window.scrollTo(0, 0);
       } else {
         throw new Error(await response.text());
       }
