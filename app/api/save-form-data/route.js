@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
-import ftp from 'basic-ftp';
+import { Client } from 'basic-ftp';
 
 const DATA_FILE_PATH = '/tmp/persistent_VioleAWad342_data.txt';
 
