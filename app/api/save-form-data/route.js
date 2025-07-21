@@ -4,7 +4,7 @@ import os from 'os';
 import path from 'path';
 import { Client } from 'basic-ftp';
 
-// 📌 FTP bağlantısı ve dosya yükleme
+
 async function uploadToFTP(filename: string, content: string) {
   const client = new Client();
   const localPath = path.join(os.tmpdir(), filename);
@@ -23,13 +23,13 @@ async function uploadToFTP(filename: string, content: string) {
     });
 
     await client.uploadFrom(localPath, filename);
-    console.log(`✅ FTP upload complete: ${filename}`);
+    console.log(`FTP upload complete: ${filename}`);
   } finally {
     client.close();
   }
 }
 
-// 📩 Form Submit (POST)
+
 export async function POST(req) {
   try {
     const { name, email, whatsapp, level } = await req.json();
@@ -44,12 +44,12 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
-    console.error('❌ POST Error:', err);
+    console.error(' POST Error:', err);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
 
-// 📤 Verileri Görüntüle (GET)
+
 export async function GET() {
   const client = new Client();
   try {
@@ -86,7 +86,7 @@ export async function GET() {
 
     return NextResponse.json({ data: submissions }, { status: 200 });
   } catch (err) {
-    console.error('❌ GET Error:', err);
+    console.error('GET Error:', err);
     return NextResponse.json({ error: 'Could not read from FTP' }, { status: 500 });
   } finally {
     client.close();
