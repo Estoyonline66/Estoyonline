@@ -121,7 +121,6 @@ export default function VioleAWad342() {
   return (
     <>
       <Meta route="/VioleAWad342" />
-
       <GeneralHero
         icon={
           <MessagePhone

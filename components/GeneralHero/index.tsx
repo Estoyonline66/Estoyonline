@@ -7,7 +7,6 @@ type Props = {
     text: string
 }
 
-
 export default function GeneralHero({icon,text}: Props) {
   return (
     <section className='w-full bg-primary isolate relative flex items-center justify-center gap-3 py-14 overflow-hidden'>
