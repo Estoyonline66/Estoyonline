@@ -4,9 +4,6 @@ import os from 'os';
 import path from 'path';
 import { Client } from 'basic-ftp';
 
-export async function POST(req: NextRequest) {
-
-
 async function uploadToFTP(filename: string, content: string) {
   const client = new Client();
   const localPath = path.join(os.tmpdir(), filename);
@@ -21,7 +18,7 @@ async function uploadToFTP(filename: string, content: string) {
       secureOptions: {
         rejectUnauthorized: false
       },
-       port: process.env.FTP_PORT ? Number(process.env.FTP_PORT) : 21
+      port: process.env.FTP_PORT ? Number(process.env.FTP_PORT) : 21
     });
 
     await client.uploadFrom(localPath, filename);
@@ -31,8 +28,7 @@ async function uploadToFTP(filename: string, content: string) {
   }
 }
 
-
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   try {
     const { name, email, whatsapp, level } = await req.json();
     const timestamp = new Date().toISOString();
@@ -46,11 +42,10 @@ export async function POST(req) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
-    console.error(' POST Error:', err);
+    console.error('POST Error:', err);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
 
 export async function GET() {
   const client = new Client();
@@ -63,7 +58,7 @@ export async function GET() {
       secureOptions: {
         rejectUnauthorized: false
       },
-      port: process.env.FTP_PORT || 21
+      port: process.env.FTP_PORT ? Number(process.env.FTP_PORT) : 21
     });
 
     const list = await client.list();
@@ -93,6 +88,4 @@ export async function GET() {
   } finally {
     client.close();
   }
-}
-
 }
