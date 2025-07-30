@@ -18,19 +18,23 @@ export default function VioleAWad342() {
   const sm = useIsMobile(640);
   const { t } = useTranslation();
   const Data: ContactData = t("VioleAWad342");
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     whatsapp: '',
     level: ''
   });
+
   const [errors, setErrors] = useState({
     name: '',
     email: '',
     whatsapp: '',
     level: ''
   });
+
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -89,15 +93,17 @@ export default function VioleAWad342() {
     e.preventDefault();
     if (!validateForm()) return;
 
+    setIsSubmitting(true);
+
     try {
-      const response = await fetch('/api/save-form-data', {
+      const response = await fetch('/api/save-form-data/VioleAWad342', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           ...formData,
-          formattedDate: new Date().toISOString() // Using ISO format for consistency
+          formattedDate: new Date().toISOString()
         }),
       });
 
@@ -109,15 +115,19 @@ export default function VioleAWad342() {
           whatsapp: '',
           level: ''
         });
-		   setTimeout(() => {
-			window.scrollTo({ top: 0, behavior: "smooth" });
-		  }, 300);
+
+        // Scroll up after short delay, then hide the "Sending..." message
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          setIsSubmitting(false);
+        }, 100);
       } else {
         throw new Error(await response.text());
       }
     } catch (error) {
       console.error('Submission error:', error);
       alert('There was an error submitting the form. Please try again.');
+      setIsSubmitting(false);
     }
   };
 
@@ -126,20 +136,19 @@ export default function VioleAWad342() {
       <Meta route="/VioleAWad342" />
 
       <GeneralHero
-       icon={
-			  <MessagePhone
-				path={{
-				  fill: "none",
-				  stroke: "#FEFEFE",
-				}}
-				svg={{
-				  style: {
-					display: "none"
-				  }
-				}}
-			  />
-			}
-      
+        icon={
+          <MessagePhone
+            path={{
+              fill: "none",
+              stroke: "#FEFEFE",
+            }}
+            svg={{
+              style: {
+                display: "none"
+              }
+            }}
+          />
+        }
         text={Data.PageTitle}
       />
 
@@ -148,11 +157,16 @@ export default function VioleAWad342() {
           <h2 className="text-xl font-semibold mb-4">
             Just fill the form and claim your discount
           </h2>
-          
+
+          {isSubmitting && (
+            <div className="p-2 mb-4 text-blue-700 bg-blue-100 rounded text-center">
+              Sending...
+            </div>
+          )}
+
           {isSubmitted ? (
             <div className="p-4 mb-4 text-green-700 bg-green-100 rounded">
               Your information has been received. We will contact you as soon as possible.
-           
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
@@ -168,7 +182,7 @@ export default function VioleAWad342() {
                 />
                 {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-left mb-1">Email*</label>
                 <input
@@ -181,7 +195,7 @@ export default function VioleAWad342() {
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
-              
+
               <div>
                 <label htmlFor="whatsapp" className="block text-left mb-1">WhatsApp Number*</label>
                 <input
@@ -195,7 +209,7 @@ export default function VioleAWad342() {
                 />
                 {errors.whatsapp && <p className="text-red-500 text-sm mt-1">{errors.whatsapp}</p>}
               </div>
-              
+
               <div>
                 <label htmlFor="level" className="block text-left mb-1">Spanish Level*</label>
                 <select
@@ -213,12 +227,13 @@ export default function VioleAWad342() {
                 </select>
                 {errors.level && <p className="text-red-500 text-sm mt-1">{errors.level}</p>}
               </div>
-              
+
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition disabled:opacity-50"
               >
-                Send
+                {isSubmitting ? "Sending..." : "Send"}
               </button>
             </form>
           )}
@@ -262,6 +277,7 @@ export default function VioleAWad342() {
             </a>
           </div>
         </div>
+
         <div className="w-full isolate flex flex-col items-center px-4 relative py-14 md:px-10 lg:px-20 gap-5">
           <span
             className={clsx(

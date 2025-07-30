@@ -18,7 +18,7 @@ export default function ResultsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/save-form-data');
+        const response = await fetch('/api/save-form-data/VioleAWad342');
         
         if (!response.ok) {
        throw new Error(`Sunucudan veri alınamadı (HTTP ${response.status})`);
