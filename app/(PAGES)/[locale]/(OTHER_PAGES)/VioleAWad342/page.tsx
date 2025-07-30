@@ -117,10 +117,11 @@ export default function VioleAWad342() {
         });
 
         // Scroll up after short delay, then hide the "Sending..." message
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          setIsSubmitting(false);
-        }, 100);
+      setTimeout(() => {
+		  document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+		  document.body.scrollTo({ top: 0, behavior: "smooth" });
+		  setIsSubmitting(false);
+		}, 300);
       } else {
         throw new Error(await response.text());
       }
