@@ -135,22 +135,24 @@ export default function VioleAWad342() {
     <>
       <Meta route="/VioleAWad342" />
 
-      <GeneralHero
-        icon={
-          <MessagePhone
-            path={{
-              fill: "none",
-              stroke: "#FEFEFE",
-            }}
-            svg={{
-              style: {
-                display: "none"
-              }
-            }}
-          />
+   <div className="w-full text-center sm:text-left">
+  <GeneralHero
+    icon={
+      <MessagePhone
+        path={{
+          fill: "none",
+          stroke: "#FEFEFE",
+        }}
+        svg={{
+          style: {
+            display: "none"
+          }}
         }
-        text={Data.PageTitle}
       />
+    }
+    text={Data.PageTitle}
+  />
+</div>
 
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
         <div className="mt-6 text-center max-w-2xl">
