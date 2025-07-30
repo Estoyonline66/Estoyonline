@@ -109,7 +109,9 @@ export default function VioleAWad342() {
           whatsapp: '',
           level: ''
         });
-		 window.scrollTo({ top: 0, behavior: "smooth" });
+		   setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		  }, 300);
       } else {
         throw new Error(await response.text());
       }
