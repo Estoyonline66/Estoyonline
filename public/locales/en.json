@@ -278,6 +278,30 @@
 	
 	[
   {
+    "title": "A1.1 Beginner",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "7:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 3"
+  },
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Thursday",
+    "lesson": "First class",
+    "time": "7:00 pm US-NY time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 4"
+  },
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Tuesday",
+    "lesson": "First class",
+    "time": "7:30 pm Korea time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 2"
+  },
+  {
     "title": "A1.1 Beginner (intensive)",
     "bold": "Mon - Wed",
     "lesson": "First class",
@@ -292,14 +316,6 @@
     "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
     "month": "Aug 6"
-  },
-  {
-    "title": "A1.1 Beginner",
-    "bold": "Friday",
-    "lesson": "First class",
-    "time": "5:30 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 5"
   },
   {
     "title": "A1.2",
@@ -414,6 +430,8 @@
     "month": "Sep 2"
   }
 ]
+	
+	
 	
 	,
     "title": "ALL LEVELS PROGRAM",
