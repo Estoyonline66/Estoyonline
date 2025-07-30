@@ -136,12 +136,17 @@ export default function VioleAWad342() {
     <>
       <Meta route="/VioleAWad342" />
 
-   <div className="w-full text-center sm:text-left">
- <GeneralHero
-  icon={<span className="hidden" />}
-  text={Data.PageTitle}
-/>
-</div>
+  <GeneralHero
+        icon={
+          <MessagePhone
+            path={{
+              fill: "none",
+              stroke: "#FEFEFE",
+            }}
+          />
+        }
+        text={Data.PageTitle}
+      />
 
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
         <div className="mt-6 text-center max-w-2xl">

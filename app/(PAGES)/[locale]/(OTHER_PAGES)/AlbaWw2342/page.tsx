@@ -137,10 +137,17 @@ export default function AlbaWw2342() {
       <Meta route="/AlbaWw2342" />
 
 
-<GeneralHero
- 
-  text={Data.PageTitle}
-/>
+ <GeneralHero
+        icon={
+          <MessagePhone
+            path={{
+              fill: "none",
+              stroke: "#FEFEFE",
+            }}
+          />
+        }
+        text={Data.PageTitle}
+      />
 
 
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
