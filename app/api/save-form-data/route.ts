@@ -20,7 +20,7 @@ function formatDate(dateString: string): string {
 async function getLatestFileContent(client: Client) {
   const list = await client.list();
   const txtFiles = list
-    .filter(f => f.name.startsWith('violeawad342_') && f.name.endsWith('.txt'))
+    .filter(f => f.name.startsWith('VioleAWad342_') && f.name.endsWith('.txt'))
     .sort((a, b) => b.name.localeCompare(a.name));
 
   if (txtFiles.length === 0) return null;
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     const { name, email, whatsapp, level } = await req.json();
     const timestamp = new Date().toISOString();
     const formattedDate = formatDate(timestamp); // Use formatted date
-    const filename = `violeawad342_${timestamp.replace(/[:.]/g, '-')}.txt`;
+    const filename = `VioleAWad342_${timestamp.replace(/[:.]/g, '-')}.txt`;
 
     const existingContent = await getLatestFileContent(client);
     let newContent = '';
