@@ -137,22 +137,10 @@ export default function VioleAWad342() {
       <Meta route="/VioleAWad342" />
 
    <div className="w-full text-center sm:text-left">
-  <GeneralHero
-    icon={
-      <MessagePhone
-        path={{
-          fill: "none",
-          stroke: "#FEFEFE",
-        }}
-        svg={{
-          style: {
-            display: "none"
-          }}
-        }
-      />
-    }
-    text={Data.PageTitle}
-  />
+ <GeneralHero
+  icon={<span className="hidden" />}
+  text={Data.PageTitle}
+/>
 </div>
 
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
