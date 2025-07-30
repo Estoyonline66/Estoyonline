@@ -138,7 +138,7 @@ export default function AlbaWw2342() {
 
 
 <GeneralHero
-  icon={<span className="size-0" />} // "size-0" ile tamamen küçült
+ 
   text={Data.PageTitle}
 />
 
