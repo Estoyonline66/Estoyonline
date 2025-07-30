@@ -136,12 +136,12 @@ export default function AlbaWw2342() {
     <>
       <Meta route="/AlbaWw2342" />
 
-   <div className="w-full text-center sm:text-left">
- <GeneralHero
-  icon={<span className="hidden" />}
+
+<GeneralHero
+  icon={<span className="size-0" />} // "size-0" ile tamamen küçült
   text={Data.PageTitle}
 />
-</div>
+
 
       <section className="w-full px-4 py-10 flex flex-col items-center bg-white">
         <div className="mt-6 text-center max-w-2xl">
