@@ -16,8 +16,17 @@ export default function ResultsPage() {
   const courseParam = searchParams.get("course");
 
   // "_" -> " " dönüştürüp ekranda gösterelim
- // const courseBase = courseParam ? courseParam.split("_")[0] : null;
-  const courseReadable = courseParam ? courseParam.replace(/_/g, " ") : null;
+// courseParam ör: "A1.1_sabah_Türkiye_Xy7p"
+const courseReadable = courseParam
+  ? courseParam.replace(/_[^_]{4}$/, "") // sondaki "_" ve 4 karakteri kaldır
+  : null;
+
+// ekranda göster
+{courseReadable && (
+  <h2 className="text-lg font-semibold mb-2">
+    {courseReadable.replace(/_/g, " ")}
+  </h2>
+)}
 
   // Kurs linkleri (alt çizgili versiyon)
   const courseLinks: Record<string, string> = {
