@@ -91,7 +91,7 @@ export default function ResultsPage() {
       )}
 
       <h1 className="text-xl font-bold mb-4">
-        {t("Öğrenci Adı", "Student Name")}
+        {t("Lütfen öğrencinin adını yazın", "Please write student name")}
       </h1>
 
       <input
