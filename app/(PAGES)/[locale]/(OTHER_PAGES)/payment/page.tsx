@@ -13,43 +13,27 @@ export default function ResultsPage() {
   const isTurkish = pathname.startsWith("/tr/");
   const t = (tr: string, en: string) => (isTurkish ? tr : en);
 
-  const courseParam = searchParams.get("course"); // ?course=...
+  const courseParam = searchParams.get("course");
   const courseBase = courseParam ? courseParam.split("_")[0] : null;
 
-  // Kurs linkleri (değişmedi)
+  // Kurs linkleri
   const courseLinks: Record<string, string> = {
-    "A1.1 başlangıç kursu Türkiye_ab1X":
-      "https://buy.stripe.com/4gw28H6PG9Eq8ne8xi?prefilled_metadata[abx]=11",
-    "A1.1 başlangıç kursu Yurtdışı_q9Z2":
-      "https://buy.stripe.com/eVa5kTb5W7wi5b2bJq?prefilled_metadata[abx]=12",
-    "A1.1 sabah Türkiye_Xy7p":
-      "https://buy.stripe.com/aFaeVc9kj7aDemH5fPdMI18?prefilled_metadata[abx]=4",
-    "Üst seviyeler Türkiye_T6mQ":
-      "https://buy.stripe.com/eVa4gPgqg4k6eLC00N?prefilled_metadata[abx]=10",
-    "Üst seviyeler Yurtdışı_J8d4":
-      "https://buy.stripe.com/dR614Db5W03Q46Y9Bh?prefilled_metadata[abx]=13",
-    "Tamamlayıcı kurs Türkiye_w2Np":
-      "https://buy.stripe.com/00gdRp2zqbMyeLC00Q?prefilled_metadata[abx]=9",
-    "Tamamlayıcı kurs Yurtdışı_Lp5k":
-      "https://buy.stripe.com/4gw7t13Du7wicDu5lb?prefilled_metadata[abx]=8",
-    "Complementary course 120 EUR_v7Qe":
-      "https://buy.stripe.com/14AcN4aon2Un7YjaA9dMI1c?prefilled_metadata[abx]=2",
-    "10 derslik yetişkin özel ders paketi_Az1R":
-      "https://buy.stripe.com/14k7t11vmg2O5b28x8?prefilled_metadata[abx]=16",
-    "5 derslik yetişkin özel ders paketi_Nm8t":
-      "https://buy.stripe.com/14kcNlei84k6dHy14F?prefilled_metadata[abx]=15",
-    "3 derslik özel ders paketi_Gf4W":
-      "https://buy.stripe.com/fZu6oG54352vbav8s1dMI1d?prefilled_metadata[abx]=1",
-    "5 derslik 5 kişilik özel ders paketi_Yr2P":
-      "https://buy.stripe.com/7sY3cu0NN0MfguPdMldMI1a?prefilled_metadata[abx]=3",
-    "5 derslik 2 kişilik özel ders paketi_Zx9L":
-      "https://buy.stripe.com/9AQdRp7TK9Eq1YQ9Bw?prefilled_metadata[abx]=6",
-    "10 derslik çocuk özel ders paketi_Kd3U":
-      "https://buy.stripe.com/6oE8x52zqeYKeLCeVU?prefilled_metadata[abx]=5",
-    "5 derslik çocuk özel ders paketi_Hq7S":
-      "https://buy.stripe.com/6oE14D2zq9Eqavm9Bs?prefilled_metadata[abx]=7",
-    "Examen_Rt6B":
-      "https://buy.stripe.com/9AQ9B9ca0eYKcDu00F?prefilled_metadata[abx]=14",
+    "A1.1 başlangıç kursu Türkiye_ab1X": "https://buy.stripe.com/4gw28H6PG9Eq8ne8xi?prefilled_metadata[abx]=11",
+    "A1.1 başlangıç kursu Yurtdışı_q9Z2": "https://buy.stripe.com/eVa5kTb5W7wi5b2bJq?prefilled_metadata[abx]=12",
+    "A1.1 sabah Türkiye_Xy7p": "https://buy.stripe.com/aFaeVc9kj7aDemH5fPdMI18?prefilled_metadata[abx]=4",
+    "Üst seviyeler Türkiye_T6mQ": "https://buy.stripe.com/eVa4gPgqg4k6eLC00N?prefilled_metadata[abx]=10",
+    "Üst seviyeler Yurtdışı_J8d4": "https://buy.stripe.com/dR614Db5W03Q46Y9Bh?prefilled_metadata[abx]=13",
+    "Tamamlayıcı kurs Türkiye_w2Np": "https://buy.stripe.com/00gdRp2zqbMyeLC00Q?prefilled_metadata[abx]=9",
+    "Tamamlayıcı kurs Yurtdışı_Lp5k": "https://buy.stripe.com/4gw7t13Du7wicDu5lb?prefilled_metadata[abx]=8",
+    "Complementary course 120 EUR_v7Qe": "https://buy.stripe.com/14AcN4aon2Un7YjaA9dMI1c?prefilled_metadata[abx]=2",
+    "10 derslik yetişkin özel ders paketi_Az1R": "https://buy.stripe.com/14k7t11vmg2O5b28x8?prefilled_metadata[abx]=16",
+    "5 derslik yetişkin özel ders paketi_Nm8t": "https://buy.stripe.com/14kcNlei84k6dHy14F?prefilled_metadata[abx]=15",
+    "3 derslik özel ders paketi_Gf4W": "https://buy.stripe.com/fZu6oG54352vbav8s1dMI1d?prefilled_metadata[abx]=1",
+    "5 derslik 5 kişilik özel ders paketi_Yr2P": "https://buy.stripe.com/7sY3cu0NN0MfguPdMldMI1a?prefilled_metadata[abx]=3",
+    "5 derslik 2 kişilik özel ders paketi_Zx9L": "https://buy.stripe.com/9AQdRp7TK9Eq1YQ9Bw?prefilled_metadata[abx]=6",
+    "10 derslik çocuk özel ders paketi_Kd3U": "https://buy.stripe.com/6oE8x52zqeYKeLCeVU?prefilled_metadata[abx]=5",
+    "5 derslik çocuk özel ders paketi_Hq7S": "https://buy.stripe.com/6oE14D2zq9Eqavm9Bs?prefilled_metadata[abx]=7",
+    "Examen_Rt6B": "https://buy.stripe.com/9AQ9B9ca0eYKcDu00F?prefilled_metadata[abx]=14",
   };
 
   const isValidCourse = courseParam && courseLinks[courseParam];
@@ -107,7 +91,7 @@ export default function ResultsPage() {
       )}
 
       <h1 className="text-xl font-bold mb-4">
-        {t("Lütfen öğrencinin adını yazınız.", "Please enter the student's name.")}
+        {t("Öğrenci Adı", "Student Name")}
       </h1>
 
       <input
@@ -115,7 +99,7 @@ export default function ResultsPage() {
         value={studentName}
         onChange={(e) => setStudentName(e.target.value)}
         className="border p-2 w-full rounded mb-2"
-        placeholder={t("Ad Soyad", "First Last Name")}
+        placeholder={t("Öğrenci Adı", "Student Name")}
       />
 
       {error && <p className="text-red-500 mb-2">{error}</p>}
@@ -124,7 +108,7 @@ export default function ResultsPage() {
         onClick={handleContinue}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
       >
-        {t("Devam Et", "Continue")}
+        {t("Ödeme işlemine devam et", "Continue Payment")}
       </button>
     </div>
   );
