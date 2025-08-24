@@ -561,6 +561,17 @@
 	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
   
   },
+   "payment": {
+    "PageTitle": "Free Online Course",
+    "needAssistance": "",
+    "contactDescription": "Please send us a message on WhatsApp",
+    "officeAddressTitle": "Barcelona",
+    "officeAddressDescription": "",
+    "officeContactButton": "WhatsApp +34 633 45 22 68",
+	 "whatsapplink": "https://wa.me/34633452268", 
+	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
+  
+  },
   
   "VioleAWad342": {
     "PageTitle": "Your special discount",
