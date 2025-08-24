@@ -1,16 +1,22 @@
 "use client";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
 export default function ResultsPage() {
   const [studentName, setStudentName] = useState("");
   const [error, setError] = useState("");
 
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  // Dil kontrolü
+  const isTurkish = pathname.startsWith("/tr/");
+  const t = (tr: string, en: string) => (isTurkish ? tr : en);
+
   const courseParam = searchParams.get("course"); // ?course=...
   const courseBase = courseParam ? courseParam.split("_")[0] : null;
 
-  // Anahtar içeren kurs listesi
+  // Kurs linkleri (değişmedi)
   const courseLinks: Record<string, string> = {
     "A1.1 başlangıç kursu Türkiye_ab1X":
       "https://buy.stripe.com/4gw28H6PG9Eq8ne8xi?prefilled_metadata[abx]=11",
@@ -53,7 +59,7 @@ export default function ResultsPage() {
     const parts = trimmed.split(" ");
 
     if (parts.length < 2) {
-      setError("Lütfen ad ve soyad giriniz.");
+      setError(t("Lütfen ad ve soyad giriniz.", "Please enter first and last name."));
       return;
     }
 
@@ -63,12 +69,12 @@ export default function ResultsPage() {
     const nameRegex = /^[A-Za-zÇçĞğİıÖöŞşÜü]+$/u;
 
     if (firstName.length < 3 || !nameRegex.test(firstName)) {
-      setError("Ad en az 3 harften oluşmalı ve sayı içermemeli.");
+      setError(t("Ad en az 3 harften oluşmalı ve sayı içermemeli.", "First name must be at least 3 letters and contain no numbers."));
       return;
     }
 
     if (lastName.length < 3 || !nameRegex.test(lastName)) {
-      setError("Soyad en az 3 harften oluşmalı ve sayı içermemeli.");
+      setError(t("Soyad en az 3 harften oluşmalı ve sayı içermemeli.", "Last name must be at least 3 letters and contain no numbers."));
       return;
     }
 
@@ -87,7 +93,9 @@ export default function ResultsPage() {
   if (!isValidCourse) {
     return (
       <div className="container mx-auto p-6">
-        <p className="text-red-600 font-semibold">Geçersiz kurs linki</p>
+        <p className="text-red-600 font-semibold">
+          {t("Geçersiz kurs linki", "Invalid course link")}
+        </p>
       </div>
     );
   }
@@ -99,7 +107,7 @@ export default function ResultsPage() {
       )}
 
       <h1 className="text-xl font-bold mb-4">
-        Lütfen öğrencinin adını yazınız.
+        {t("Lütfen öğrencinin adını yazınız.", "Please enter the student's name.")}
       </h1>
 
       <input
@@ -107,7 +115,7 @@ export default function ResultsPage() {
         value={studentName}
         onChange={(e) => setStudentName(e.target.value)}
         className="border p-2 w-full rounded mb-2"
-        placeholder="Ad Soyad"
+        placeholder={t("Ad Soyad", "First Last Name")}
       />
 
       {error && <p className="text-red-500 mb-2">{error}</p>}
@@ -116,7 +124,7 @@ export default function ResultsPage() {
         onClick={handleContinue}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
       >
-        Devam Et
+        {t("Devam Et", "Continue")}
       </button>
     </div>
   );
