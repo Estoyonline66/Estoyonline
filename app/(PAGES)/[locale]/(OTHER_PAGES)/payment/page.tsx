@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useSearchParams, usePathname } from "next/navigation";
 
-export default function ResultsPage() {
+export default function PaymentPage() {
   const [studentName, setStudentName] = useState("");
   const [error, setError] = useState("");
 
@@ -15,20 +15,12 @@ export default function ResultsPage() {
 
   const courseParam = searchParams.get("course");
 
-  // "_" -> " " dönüştürüp ekranda gösterelim
-// courseParam ör: "A1.1_sabah_Türkiye_Xy7p"
-const courseReadable = courseParam
-  ? courseParam.replace(/_[^_]{4}$/, "") // sondaki "_" ve 4 karakteri kaldır
-  : null;
+  // Kurs adını gösterme (son 4 karakterli anahtar ve "_" kaldır)
+  const courseReadable = courseParam
+    ? courseParam.replace(/_[^_]{4}$/, "").replace(/_/g, " ")
+    : null;
 
-// ekranda göster
-{courseReadable && (
-  <h2 className="text-lg font-semibold mb-2">
-    {courseReadable.replace(/_/g, " ")}
-  </h2>
-)}
-
-  // Kurs linkleri (alt çizgili versiyon)
+  // Kurs linkleri (alt çizgili format)
   const courseLinks: Record<string, string> = {
     "A1.1_başlangıç_kursu_Türkiye_ab1X": "https://buy.stripe.com/4gw28H6PG9Eq8ne8xi?prefilled_metadata[abx]=11",
     "A1.1_başlangıç_kursu_Yurtdışı_q9Z2": "https://buy.stripe.com/eVa5kTb5W7wi5b2bJq?prefilled_metadata[abx]=12",
@@ -59,7 +51,7 @@ const courseReadable = courseParam
       return;
     }
 
-    const nameRegex = /^\p{L}+$/u; // Unicode harfler
+    const nameRegex = /^\p{L}+$/u; // Tüm Unicode harfleri
 
     const firstName = parts[0];
     if (firstName.length < 3 || !nameRegex.test(firstName)) {
@@ -104,8 +96,7 @@ const courseReadable = courseParam
         <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>
       )}
 
- 
-	  <h1 className="text-xl font-bold mb-4"> {t("Lütfen öğrencinin adını yazın", "Please write student name")}</h1>
+   <h1 className="text-xl font-bold mb-4"> {t("Lütfen öğrencinin adını yazın", "Please write student name")}</h1>
 
       <input
         type="text"
