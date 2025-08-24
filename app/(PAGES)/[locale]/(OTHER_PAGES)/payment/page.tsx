@@ -47,19 +47,21 @@ export default function ResultsPage() {
       return;
     }
 
+    const nameRegex = /^\p{L}+$/u; // Tüm Unicode harfler
+
     const firstName = parts[0];
-    const lastName = parts.slice(1).join(" ");
-
-    const nameRegex = /^[A-Za-zÇçĞğİıÖöŞşÜü]+$/u;
-
     if (firstName.length < 3 || !nameRegex.test(firstName)) {
       setError(t("Ad en az 3 harften oluşmalı ve sayı içermemeli.", "First name must be at least 3 letters and contain no numbers."));
       return;
     }
 
-    if (lastName.length < 3 || !nameRegex.test(lastName)) {
-      setError(t("Soyad en az 3 harften oluşmalı ve sayı içermemeli.", "Last name must be at least 3 letters and contain no numbers."));
-      return;
+    const lastName = parts.slice(1).join(" ");
+    const lastWords = lastName.split(" ");
+    for (const word of lastWords) {
+      if (word.length < 3 || !nameRegex.test(word)) {
+        setError(t("Soyad en az 3 harften oluşmalı ve sayı içermemeli.", "Last name must be at least 3 letters and contain no numbers."));
+        return;
+      }
     }
 
     setError("");
@@ -90,9 +92,10 @@ export default function ResultsPage() {
         <h2 className="text-lg font-semibold mb-2">{courseBase}</h2>
       )}
 
-      <h1 className="text-xl font-bold mb-4">
-        {t("Lütfen öğrencinin adını yazın", "Please write student name")}
-      </h1>
+      <h1 className="text-xl font-bold mb-4"> {t("Lütfen öğrencinin adını yazın", "Please write student name")}</h1>
+	  
+	       
+	  
 
       <input
         type="text"
