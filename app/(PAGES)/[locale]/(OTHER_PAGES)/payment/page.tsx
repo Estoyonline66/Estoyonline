@@ -16,7 +16,7 @@ export default function ResultsPage() {
   const courseParam = searchParams.get("course");
 
   // "_" -> " " dönüştürüp ekranda gösterelim
-  const courseBase = courseParam ? courseParam.split("_")[0] : null;
+ // const courseBase = courseParam ? courseParam.split("_")[0] : null;
   const courseReadable = courseParam ? courseParam.replace(/_/g, " ") : null;
 
   // Kurs linkleri (alt çizgili versiyon)
