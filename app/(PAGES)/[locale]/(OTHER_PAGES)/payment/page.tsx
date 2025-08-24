@@ -6,19 +6,37 @@ export default function ResultsPage() {
   const [error, setError] = useState("");
 
   const handleContinue = () => {
-    // Kontrol: en az 3 karakterli ad ve soyad içermeli
-    const parts = studentName.trim().split(" ");
-    if (
-      studentName.trim().length < 3 ||
-      parts.length < 2 ||
-      parts.some((p) => p.length < 2)
-    ) {
-      setError("Lütfen geçerli bir ad ve soyad giriniz.");
+    const trimmed = studentName.trim();
+
+    // Ad ve soyadı ayır
+    const parts = trimmed.split(" ");
+
+    if (parts.length < 2) {
+      setError("Lütfen ad ve soyad giriniz.");
+      return;
+    }
+
+    const firstName = parts[0];
+    const lastName = parts.slice(1).join(" ");
+
+    // Kurallar:
+    // 1. Ad en az 3 karakter olmalı
+    // 2. Soyad en az 3 karakter olmalı
+    // 3. Ad ve soyad sadece harflerden oluşmalı (numerik karakter olmamalı)
+    const nameRegex = /^[A-Za-zÇçĞğİıÖöŞşÜü]+$/u;
+
+    if (firstName.length < 3 || !nameRegex.test(firstName)) {
+      setError("Ad en az 3 harften oluşmalı ve sayı içermemeli.");
+      return;
+    }
+
+    if (lastName.length < 3 || !nameRegex.test(lastName)) {
+      setError("Soyad en az 3 harften oluşmalı ve sayı içermemeli.");
       return;
     }
 
     setError("");
-    alert(`Devam ediliyor: ${studentName}`);
+    alert(`Devam ediliyor: ${firstName} ${lastName}`);
     // Burada yönlendirme veya başka işlem yapılabilir
   };
 
