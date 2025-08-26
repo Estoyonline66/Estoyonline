@@ -38,6 +38,16 @@ export default function PaymentPage() {
     "10_derslik_çocuk_özel_ders_paketi_Kd3U": "https://buy.stripe.com/6oE8x52zqeYKeLCeVU?prefilled_metadata[abx]=5",
     "5_derslik_çocuk_özel_ders_paketi_Hq7S": "https://buy.stripe.com/6oE14D2zq9Eqavm9Bs?prefilled_metadata[abx]=7",
     "Examen_Rt6B": "https://buy.stripe.com/9AQ9B9ca0eYKcDu00F?prefilled_metadata[abx]=14",
+    
+    // Yeni grup dersleri
+  // Yeni grup dersleri güncel link formatı
+"10_derslik_2_kişilik_grup": "https://buy.stripe.com/3cI9AScwveD5fqLbEddMI1f?prefilled_metadata[abx]=17",
+"10_derslik_3_kişilik_grup": "https://buy.stripe.com/aFabJ0cwv1Qj4M70ZzdMI1g?prefilled_metadata[abx]=18",
+"5_derslik_3_kişilik_grup": "https://buy.stripe.com/bJe14m0NN52v3I36jTdMI1h?prefilled_metadata[abx]=19",
+"10_derslik_4_kişilik_grup": "https://buy.stripe.com/3cIbJ0gML8eH3I39w5dMI1i?prefilled_metadata[abx]=20",
+"5_derslik_4_kişilik_grup": "https://buy.stripe.com/3cI00i1RRgLdbaveQpdMI1j?prefilled_metadata[abx]=21",
+"10_derslik_5_kişilik_grup": "https://buy.stripe.com/bJe7sK7cbdz17YjbEddMI1k?prefilled_metadata[abx]=22",
+
   };
 
   const isValidCourse = courseParam && courseLinks[courseParam];
@@ -96,7 +106,7 @@ export default function PaymentPage() {
         <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>
       )}
 
-   <h1 className="text-xl font-bold mb-4"> {t("Lütfen öğrencinin adını yazın", "Please write student name")}</h1>
+      <h1 className="text-xl font-bold mb-4"> {t("Lütfen öğrencinin adını yazın", "Please write student name")}</h1>
 
       <input
         type="text"
