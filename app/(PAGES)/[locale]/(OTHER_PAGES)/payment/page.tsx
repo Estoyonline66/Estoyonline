@@ -41,12 +41,14 @@ export default function PaymentPage() {
     
     // Yeni grup dersleri
   // Yeni grup dersleri güncel link formatı
-"10_derslik_2_kişilik_grup": "https://buy.stripe.com/3cI9AScwveD5fqLbEddMI1f?prefilled_metadata[abx]=17",
-"10_derslik_3_kişilik_grup": "https://buy.stripe.com/aFabJ0cwv1Qj4M70ZzdMI1g?prefilled_metadata[abx]=18",
-"5_derslik_3_kişilik_grup": "https://buy.stripe.com/bJe14m0NN52v3I36jTdMI1h?prefilled_metadata[abx]=19",
-"10_derslik_4_kişilik_grup": "https://buy.stripe.com/3cIbJ0gML8eH3I39w5dMI1i?prefilled_metadata[abx]=20",
-"5_derslik_4_kişilik_grup": "https://buy.stripe.com/3cI00i1RRgLdbaveQpdMI1j?prefilled_metadata[abx]=21",
-"10_derslik_5_kişilik_grup": "https://buy.stripe.com/bJe7sK7cbdz17YjbEddMI1k?prefilled_metadata[abx]=22",
+// Yeni grup dersleri (Stripe linkleri, prefilled_metadata[abx] ile)
+"10_derslik_2_kişilik_grup_A1b2": "https://buy.stripe.com/3cI9AScwveD5fqLbEddMI1f?prefilled_metadata[abx]=17",
+"10_derslik_3_kişilik_grup_C3d4": "https://buy.stripe.com/aFabJ0cwv1Qj4M70ZzdMI1g?prefilled_metadata[abx]=18",
+"5_derslik_3_kişilik_grup_E5f6": "https://buy.stripe.com/bJe14m0NN52v3I36jTdMI1h?prefilled_metadata[abx]=19",
+"10_derslik_4_kişilik_grup_G7h8": "https://buy.stripe.com/3cIbJ0gML8eH3I39w5dMI1i?prefilled_metadata[abx]=20",
+"5_derslik_4_kişilik_grup_I9j0": "https://buy.stripe.com/3cI00i1RRgLdbaveQpdMI1j?prefilled_metadata[abx]=21",
+"10_derslik_5_kişilik_grup_K1l2": "https://buy.stripe.com/bJe7sK7cbdz17YjbEddMI1k?prefilled_metadata[abx]=22",
+
 
   };
 
