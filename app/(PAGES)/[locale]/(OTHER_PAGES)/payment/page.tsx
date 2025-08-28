@@ -66,8 +66,8 @@ export default function PaymentPage() {
     const nameRegex = /^\p{L}+$/u; // Tüm Unicode harfleri
 
     const firstName = parts[0];
-    if (firstName.length < 3 || !nameRegex.test(firstName)) {
-      setError(t("Ad en az 3 harften oluşmalı ve sayı içermemeli.", "First name must be at least 3 letters and contain no numbers."));
+    if (firstName.length < 2 || !nameRegex.test(firstName)) {
+      setError(t("Ad en az 2 harften oluşmalı ve sayı içermemeli.", "First name must be at least 3 letters and contain no numbers."));
       return;
     }
 
