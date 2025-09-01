@@ -42,6 +42,7 @@ export default function PaymentPage() {
         setError("Payment link oluşturulamadı.");
       }
     } catch (err) {
+	console.error(err); // hatayı logla
       setError("Bir hata oluştu.");
     }
   };
