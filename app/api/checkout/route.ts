@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   try {
     const { studentName, courseKey } = await req.json();
 
-    // Kurs listesi
+    // Kurs bilgileri
     const courseMap: Record<string, { name: string; amount: number; currency: string }> = {
       "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 50000, currency: "try" },
       "Complementary_course_120_EUR_v7Qe": { name: "Complementary Course", amount: 12000, currency: "eur" },
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: course.currency,
             product_data: { name: course.name },
-            unit_amount: course.amount, // kuruş/cent
+            unit_amount: course.amount,
           },
           quantity: 1,
         },
@@ -47,14 +47,13 @@ export async function POST(req: NextRequest) {
           optional: false,
         },
       ],
-      metadata: {
-        studentName,
-        courseKey,
-      },
+      metadata: { studentName, courseKey },
     });
 
     return NextResponse.json({ url: session.url });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err) {
+    // TypeScript uyumlu
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
