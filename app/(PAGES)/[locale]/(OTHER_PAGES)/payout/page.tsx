@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useSearchParams, usePathname } from "next/navigation";
 
 export default function PaymentPage() {
-  const [studentName, setStudentName] = useState("");
-  const [error, setError] = useState("");
+  const [studentName, setStudentName] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -36,13 +36,15 @@ export default function PaymentPage() {
       });
 
       const data = await res.json();
+
       if (data.url) {
         window.location.href = data.url;
       } else {
         setError("Payment link oluşturulamadı.");
       }
     } catch (err) {
-	console.error(err); // hatayı logla
+      // eslint-disable-next-line no-console
+      console.error(err);
       setError("Bir hata oluştu.");
     }
   };
@@ -59,7 +61,9 @@ export default function PaymentPage() {
 
   return (
     <div className="container mx-auto p-6">
-      {courseReadable && <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>}
+      {courseReadable && (
+        <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>
+      )}
 
       <h1 className="text-xl font-bold mb-4">
         {t("Lütfen öğrencinin adını yazın", "Please write student name")}
