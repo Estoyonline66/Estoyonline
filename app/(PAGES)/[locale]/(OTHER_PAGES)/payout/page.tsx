@@ -1,4 +1,6 @@
+// app/(PAGES)/[locale]/(OTHER_PAGES)/payout/page.tsx
 "use client";
+
 import { useState } from "react";
 import { useSearchParams, usePathname } from "next/navigation";
 
@@ -43,7 +45,6 @@ export default function PaymentPage() {
         setError("Payment link oluşturulamadı.");
       }
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error(err);
       setError("Bir hata oluştu.");
     }
