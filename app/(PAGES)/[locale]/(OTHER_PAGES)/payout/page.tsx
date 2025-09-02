@@ -1,91 +1,60 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-
-const courseMap: Record<
-  string,
-  { name: string; amount: number; currency: string; participants: number }
-> = {
-  "10_derslik_yetişkin_özel_ders_paketi_Az1R": {
-    name: "Özel Ders (1 yetişkin, 10 ders)",
-    amount: 22000,
-    currency: "eur",
-    participants: 1,
-  },
-  "10_derslik_2_kişilik_grup_A1b2": {
-    name: "Özel Ders (2 yetişkin, 10 ders)",
-    amount: 30000,
-    currency: "eur",
-    participants: 2,
-  },
-  "10_derslik_3_kişilik_grup_C3d4": {
-    name: "Özel Ders (3 yetişkin, 10 ders)",
-    amount: 36000,
-    currency: "eur",
-    participants: 3,
-  },
-  "10_derslik_çocuk_özel_ders_paketi_Kd3U": {
-    name: "Özel Ders (1 çocuk, 10 ders)",
-    amount: 17000,
-    currency: "eur",
-    participants: 1,
-  },
-  "10_derslik_2_çocuk_grup_Bb7N": {
-    name: "Özel Ders (2 çocuk, 10 ders)",
-    amount: 24000,
-    currency: "eur",
-    participants: 2,
-  },
-  // ... diğer kurslar
-};
+import { courseMap } from "../api/checkout/text";  // doğru yola dikkat
 
 export default function PaymentPage() {
   const searchParams = useSearchParams();
   const courseKey = searchParams.get("course") || "";
+
   const course = courseMap[courseKey];
-  const participants = course?.participants || 1;
+  if (!course) {
+    return (
+      <div className="container mx-auto p-6">
+        <p className="text-red-600 font-semibold">
+          Geçersiz kurs
+        </p>
+      </div>
+    );
+  }
 
   const [studentNames, setStudentNames] = useState<string[]>([]);
 
   useEffect(() => {
-    setStudentNames(Array(participants).fill("")); // öğrenci sayısı kadar boş input
-  }, [participants]);
+    setStudentNames(Array(course.participantCount).fill(""));
+  }, [course.participantCount]);
 
-  const handleNameChange = (index: number, value: string) => {
-    const updated = [...studentNames];
-    updated[index] = value;
-    setStudentNames(updated);
+  const handleChange = (i: number, val: string) => {
+    const arr = [...studentNames];
+    arr[i] = val;
+    setStudentNames(arr);
   };
 
-  const placeholder =
-    participants === 1
-      ? "Lütfen öğrencinin adını yazın"
-      : "Lütfen öğrencilerin adını yazın";
+  const placeholder = course.participantCount > 1
+    ? "Lütfen öğrencilerin adını yazın"
+    : "Lütfen öğrencinin adını yazın";
 
-  const handleCheckout = async () => {
-    const res = await fetch("/api/checkout_sessions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ studentNames, courseKey }),
-    });
-
-    const data = await res.json();
-    if (data.url) window.location.href = data.url;
+  const handleContinue = async () => {
+    // validation & API çağrısı
+    // ...
   };
 
   return (
-    <div>
-      <h1>{course?.name || "Geçersiz kurs"}</h1>
-      {studentNames.map((name, idx) => (
+    <div className="container mx-auto p-6">
+      <h2 className="text-lg font-semibold mb-2">{course.name}</h2>
+      {studentNames.map((v, i) => (
         <input
-          key={idx}
+          key={i}
           type="text"
-          placeholder={`${placeholder} (${idx + 1})`}
-          value={name}
-          onChange={(e) => handleNameChange(idx, e.target.value)}
+          value={v}
+          onChange={(e) => handleChange(i, e.target.value)}
+          className="border p-2 w-full rounded mb-2"
+          placeholder={`${placeholder}${course.participantCount > 1 ? ` (${i + 1})` : ""}`}
         />
       ))}
-      <button onClick={handleCheckout}>Stripe ile Öde</button>
+      <button onClick={handleContinue} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Ödeme işlemini başlat
+      </button>
     </div>
   );
 }
