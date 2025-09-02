@@ -1,59 +1,158 @@
 "use client";
+
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import { courseMap } from "../api/checkout/text";  // doğru yola dikkat
+import { useSearchParams, usePathname } from "next/navigation";
 
 export default function PaymentPage() {
-  const searchParams = useSearchParams();
-  const courseKey = searchParams.get("course") || "";
+  const [studentNames, setStudentNames] = useState<string[]>([""]);
+  const [error, setError] = useState<string>("");
 
-  const course = courseMap[courseKey];
-  if (!course) {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const isTurkish = pathname.startsWith("/tr/");
+  const t = (tr: string, en: string) => (isTurkish ? tr : en);
+
+  const courseParam = searchParams.get("course");
+
+  const courseReadable = courseParam
+    ? courseParam.replace(/_[^_]{4}$/, "").replace(/_/g, " ")
+    : null;
+
+  // kurs linkine göre kişi sayısını belirle
+  const getRequiredStudents = () => {
+    if (!courseParam) return 1;
+    if (courseParam.includes("2_kişilik") || courseParam.includes("2_çocuk")) return 2;
+    if (courseParam.includes("3_kişilik") || courseParam.includes("3_çocuk")) return 3;
+    if (courseParam.includes("4_kişilik")) return 4;
+    if (courseParam.includes("5_kişilik")) return 5;
+    return 1;
+  };
+
+  const requiredStudents = getRequiredStudents();
+
+  // kişi sayısı değiştiğinde studentNames array’i güncellenir
+  useEffect(() => {
+    setStudentNames((prev) => {
+      const copy = [...prev];
+      while (copy.length < requiredStudents) copy.push("");
+      while (copy.length > requiredStudents) copy.pop();
+      return copy;
+    });
+  }, [requiredStudents]);
+
+  const handleNameChange = (index: number, value: string) => {
+    const updated = [...studentNames];
+    updated[index] = value;
+    setStudentNames(updated);
+  };
+
+  const handleContinue = async () => {
+    const nameRegex = /^\p{L}+$/u;
+
+    for (let i = 0; i < requiredStudents; i++) {
+      const trimmed = (studentNames[i] || "").trim();
+      const parts = trimmed.split(" ");
+
+      if (parts.length < 2) {
+        setError(
+          t(
+            `Öğrenci ${i + 1}: Lütfen ad ve soyad giriniz.`,
+            `Student ${i + 1}: Please enter first and last name.`
+          )
+        );
+        return;
+      }
+
+      const firstName = parts[0];
+      if (firstName.length < 2 || !nameRegex.test(firstName)) {
+        setError(
+          t(
+            `Öğrenci ${i + 1}: Ad en az 2 harf olmalı ve sayı içermemeli.`,
+            `Student ${i + 1}: First name must be at least 2 letters and contain no numbers.`
+          )
+        );
+        return;
+      }
+
+      const lastName = parts.slice(1).join(" ");
+      const lastWords = lastName.split(" ");
+      for (const word of lastWords) {
+        if (word.length < 3 || !nameRegex.test(word)) {
+          setError(
+            t(
+              `Öğrenci ${i + 1}: Soyad en az 3 harf olmalı ve sayı içermemeli.`,
+              `Student ${i + 1}: Last name must be at least 3 letters and contain no numbers.`
+            )
+          );
+          return;
+        }
+      }
+    }
+
+    setError("");
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ studentNames, courseKey: courseParam }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setError(t("Payment link oluşturulamadı.", "Payment link could not be created."));
+      }
+    } catch (err) {
+      console.error(err);
+      setError(t("Bir hata oluştu.", "An error occurred."));
+    }
+  };
+
+  if (!courseParam) {
     return (
       <div className="container mx-auto p-6">
         <p className="text-red-600 font-semibold">
-          Geçersiz kurs
+          {t("Geçersiz kurs linki", "Invalid course link")}
         </p>
       </div>
     );
   }
 
-  const [studentNames, setStudentNames] = useState<string[]>([]);
-
-  useEffect(() => {
-    setStudentNames(Array(course.participantCount).fill(""));
-  }, [course.participantCount]);
-
-  const handleChange = (i: number, val: string) => {
-    const arr = [...studentNames];
-    arr[i] = val;
-    setStudentNames(arr);
-  };
-
-  const placeholder = course.participantCount > 1
-    ? "Lütfen öğrencilerin adını yazın"
-    : "Lütfen öğrencinin adını yazın";
-
-  const handleContinue = async () => {
-    // validation & API çağrısı
-    // ...
-  };
-
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-lg font-semibold mb-2">{course.name}</h2>
-      {studentNames.map((v, i) => (
+      {courseReadable && <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>}
+
+      <h1 className="text-xl font-bold mb-4">
+        {requiredStudents === 1
+          ? t("Lütfen öğrencinin adını yazın", "Please write student name")
+          : t("Lütfen öğrencilerin adını yazın", "Please write student names")}
+      </h1>
+
+      {studentNames.map((name, i) => (
         <input
           key={i}
           type="text"
-          value={v}
-          onChange={(e) => handleChange(i, e.target.value)}
+          value={name}
+          onChange={(e) => handleNameChange(i, e.target.value)}
           className="border p-2 w-full rounded mb-2"
-          placeholder={`${placeholder}${course.participantCount > 1 ? ` (${i + 1})` : ""}`}
+          placeholder={
+            requiredStudents === 1
+              ? t("Öğrenci Adı", "Student Name")
+              : t(`Öğrenci ${i + 1} Adı`, `Student ${i + 1} Name`)
+          }
         />
       ))}
-      <button onClick={handleContinue} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        Ödeme işlemini başlat
+
+      {error && <p className="text-red-500 mb-2">{error}</p>}
+
+      <button
+        onClick={handleContinue}
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        {t("Ödeme işlemine devam et", "Continue Payment")}
       </button>
     </div>
   );
