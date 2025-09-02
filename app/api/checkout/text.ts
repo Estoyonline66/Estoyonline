@@ -1,12 +1,11 @@
-// app/api/checkout/text.ts
-
 export interface CourseInfo {
   name: string;
-  amount: number;
+  amount: number; // kuruş/cent cinsinden
   currency: string;
 }
 
 export const courseMap: Record<string, CourseInfo> = {
+  // Grupales
   "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 670000, currency: "try" },
   "A1.1_başlangıç_kursu_Yurtdışı_q9Z2": { name: "A1.1 Başlangıç (Yurtdışı)", amount: 19000, currency: "eur" },
   "A1.1_sabah_Türkiye_Xy7p": { name: "A1.1 Sabah (Türkiye)", amount: 550000, currency: "try" },
