@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(req: NextRequest) {
   try {
-    const { studentName, courseKey } = await req.json();
+    const { studentNames, courseKey } = await req.json();
 
     const courseMap: Record<string, { name: string; amount: number; currency: string }> = {
       "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 670000, currency: "try" },
@@ -38,7 +38,9 @@ export async function POST(req: NextRequest) {
     };
 
     const course = courseMap[courseKey];
-    if (!course) return NextResponse.json({ error: "Invalid course" }, { status: 400 });
+    if (!course) {
+      return NextResponse.json({ error: "Invalid course" }, { status: 400 });
+    }
 
     const origin = req.headers.get("origin") || "https://estoyonline.es";
 
@@ -57,7 +59,10 @@ export async function POST(req: NextRequest) {
       ],
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/cancel`,
-      metadata: { studentName, courseKey }, // sadece metadata
+      metadata: {
+        courseKey,
+        studentNames: Array.isArray(studentNames) ? studentNames.join(", ") : studentNames,
+      },
     });
 
     return NextResponse.json({ url: session.url });
