@@ -13,7 +13,8 @@ export const courseMap: Record<string, CourseInfo> = {
   "Üst_seviyeler_Yurtdışı_J8d4": { name: "Üst Seviyeler (Yurtdışı)", amount: 14500, currency: "eur" },
   "Tamamlayıcı_kurs_Türkiye_w2Np": { name: "Tamamlayıcı Kurs (Türkiye)", amount: 265000, currency: "try" },
   "Tamamlayıcı_kurs_Yurtdışı_Lp5k": { name: "Tamamlayıcı Kurs (Yurtdışı)", amount: 9000, currency: "eur" },
-  "Complementary_course_120_EUR_v7Qe": { name: "Complementary Course", amount: 12000, currency: "eur" },
+  "Complementary_course_v7Qe": { name: "Complementary Course", amount: 12000, currency: "eur" },
+  "Upper_level_courses_R82e": { name: "Complementary Course", amount: 19000, currency: "eur" },
   "Examen_Rt6B": { name: "Examen", amount: 1500, currency: "eur" },
 
   // Özel dersler – yetişkin
