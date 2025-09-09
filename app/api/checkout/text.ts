@@ -15,7 +15,8 @@ export const courseMap: Record<string, CourseInfo> = {
   "Tamamlayıcı_kurs_Yurtdışı_Lp5k": { name: "Tamamlayıcı Kurs (Yurtdışı)", amount: 9000, currency: "eur" },
   "Complementary_course_v7Qe": { name: "Complementary Course", amount: 12000, currency: "eur" },
   "Upper_level_courses_R82e": { name: "Upper level courses", amount: 19000, currency: "eur" },
-  "Examen_Rt6B": { name: "Examen", amount: 5000, currency: "try" },
+  "Examen_Rt6B": { name: "Examen", amount: 1500, currency: "eur" },
+   "Test_Rt6B": { name: "Test", amount: 30, currency: "try" },
 
   // Özel dersler – yetişkin
   "10_derslik_yetişkin_özel_ders_paketi_Az1R": { name: "Özel Ders (1 yetişkin, 10 ders)", amount: 22000, currency: "eur" },

@@ -8,19 +8,20 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(req: NextRequest) {
   try {
-    const { studentNames, courseKey } = await req.json();
+    const { studentNames, courseKey, locale } = await req.json();
 
-    // Debug logları
     console.log("📩 Received courseKey:", courseKey);
     const course = courseMap[courseKey];
     console.log("📦 Resolved course:", course);
+    console.log("🌐 Locale:", locale);
 
     if (!course) {
       return NextResponse.json({ error: "Invalid course" }, { status: 400 });
     }
 
     const origin = req.headers.get("origin") || "https://estoyonline.es";
-    console.log("🌍 Origin:", origin);
+    const pathPrefix = locale === "tr" ? "/tr" : "/en";
+    console.log("🌍 Origin:", origin, "Path prefix:", pathPrefix);
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -35,9 +36,9 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${origin}/payment?course=${encodeURIComponent(courseKey)}&status=success`,
-      cancel_url: `${origin}/payment?course=${encodeURIComponent(courseKey)}&status=cancel`,
-      metadata: { studentNames: JSON.stringify(studentNames), courseKey },
+      success_url: `${origin}${pathPrefix}/payment?course=${encodeURIComponent(courseKey)}&status=success`,
+      cancel_url: `${origin}${pathPrefix}/payment?course=${encodeURIComponent(courseKey)}&status=cancel`,
+      metadata: { studentNames: JSON.stringify(studentNames), courseKey, locale },
     });
 
     console.log("✅ Stripe session created:", session.id);

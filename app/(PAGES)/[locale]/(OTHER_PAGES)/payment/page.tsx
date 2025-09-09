@@ -68,11 +68,15 @@ export default function PaymentPage() {
 
     setError("");
     try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ studentNames, courseKey: courseParam }),
-      });
+     const res = await fetch("/api/checkout", {
+		  method: "POST",
+		  headers: { "Content-Type": "application/json" },
+		  body: JSON.stringify({
+			studentNames,
+			courseKey: courseParam,
+			locale: isTurkish ? "tr" : "en", // burası eklendi
+		  }),
+		});
       const data = await res.json();
       if (data.url) window.location.href = data.url;
       else setError(t("Payment link oluşturulamadı.", "Payment link could not be created."));
