@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
   try {
     const { studentNames, courseKey } = await req.json();
 
+    // Debug logları
     console.log("📩 Received courseKey:", courseKey);
     const course = courseMap[courseKey];
     console.log("📦 Resolved course:", course);
@@ -34,8 +35,8 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${origin}/payment?course=${courseKey}&status=success`,
-      cancel_url: `${origin}/payment?course=${courseKey}&status=cancel`,
+      success_url: `${origin}/payment?course=${encodeURIComponent(courseKey)}&status=success`,
+      cancel_url: `${origin}/payment?course=${encodeURIComponent(courseKey)}&status=cancel`,
       metadata: { studentNames: JSON.stringify(studentNames), courseKey },
     });
 
