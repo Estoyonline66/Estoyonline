@@ -250,11 +250,11 @@
 [
   {
     "title": "A1.1 Başlangıç",
-    "bold": "Çarşamba",
+    "bold": "Cumartesi",
     "lesson": "İlk ders",
-    "time": "19:00 - 2,5 saat",
+    "time": "17:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "17 Eylül"
+    "month": "4 Ekim"
   },
   {
     "title": "A1.2",
@@ -306,11 +306,11 @@
   },
   {
     "title": "Konuşma Kursu Başlangıç A1",
-    "bold": "Cumartesi",
+    "bold": "Çarşamba",
     "lesson": "İlk ders",
-    "time": "18:00 - 2 saat",
+    "time": "19:30 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "20 Eylül"
+    "month": "1 Ekim"
   },
   {
     "title": "Konuşma Kursu Orta A2",
@@ -337,7 +337,6 @@
     "month": "2 Eylül"
   }
 ]
-
 ,
 
 
