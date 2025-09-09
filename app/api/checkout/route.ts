@@ -28,8 +28,8 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${origin}/payout?course=${courseKey}&status=success`,
-      cancel_url: `${origin}/payout?course=${courseKey}&status=cancel`,
+      success_url: `${origin}/payment?course=${courseKey}&status=success`,
+      cancel_url: `${origin}/payment?course=${courseKey}&status=cancel`,
       metadata: { studentNames: JSON.stringify(studentNames), courseKey },
     });
 

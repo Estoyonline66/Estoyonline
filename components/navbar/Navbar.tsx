@@ -35,7 +35,6 @@ export default function Navbar({isHome}:props) {
     "":"/courses",
 	 "":"/freecourse",
 	  "":"/payment",
-	   "":"/payout",
     "":"/videos",
     "":"/price",
     "":"/contact"
