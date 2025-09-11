@@ -250,6 +250,14 @@
 [
   {
     "title": "A1.1 Başlangıç",
+    "bold": "Pazartesi",
+    "lesson": "İlk ders",
+    "time": "19:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "6 Ekim"
+  },
+  {
+    "title": "A1.1 Başlangıç",
     "bold": "Cumartesi",
     "lesson": "İlk ders",
     "time": "17:00 - 2,5 saat",
@@ -327,16 +335,9 @@
     "time": "10:00 - 2 saat",
     "week": "Haftada 1 gün",
     "month": "11 Ekim"
-  },
-  {
-    "title": "Gramer güzeldir kursu",
-    "bold": "Salı",
-    "lesson": "İlk ders",
-    "time": "19:00 - 2 saat",
-    "week": "Haftada 1 gün",
-    "month": "2 Eylül"
   }
 ]
+
 ,
 
 
