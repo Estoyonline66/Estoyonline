@@ -246,7 +246,8 @@
 	 "title": "Seviye Planlaması",
 	
     "cardCourses": 
-
+	
+	
 [
   {
     "title": "A1.1 Başlangıç",
@@ -263,6 +264,14 @@
     "time": "17:00 - 2,5 saat",
     "week": "Haftada 1 gün",
     "month": "4 Ekim"
+  },
+  {
+    "title": "A1.1 Başlangıç",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "11:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "3 Ekim"
   },
   {
     "title": "A1.2",
@@ -337,6 +346,10 @@
     "month": "11 Ekim"
   }
 ]
+
+
+
+
 
 ,
 
