@@ -32,22 +32,23 @@ export default function PaymentPage() {
     if (status === "success") {
       setStatusMessage(
         isExamen
-          ? "Su pago ha sido recibido, gracias"
-          : t("Ödemeniz alınmıştır. Teşekkürler", "Your payment has been received, thank you")
+          ? "Tu pago ha sido recibido, gracias"
+          : t(
+              "Ödemeniz alınmıştır. Teşekkürler",
+              "Your payment has been received, thank you"
+            )
       );
     } else if (status === "cancel") {
-      setStatusMessage(
-        isExamen
-          ? "Pago cancelado"
-          : null
-      );
+      setStatusMessage(isExamen ? "Pago cancelado" : null);
     }
   }, [status]);
 
   const getRequiredStudents = () => {
     if (!courseParam) return 1;
-    if (courseParam.includes("2_kişilik") || courseParam.includes("2_çocuk")) return 2;
-    if (courseParam.includes("3_kişilik") || courseParam.includes("3_çocuk")) return 3;
+    if (courseParam.includes("2_kişilik") || courseParam.includes("2_çocuk"))
+      return 2;
+    if (courseParam.includes("3_kişilik") || courseParam.includes("3_çocuk"))
+      return 3;
     if (courseParam.includes("4_kişilik")) return 4;
     if (courseParam.includes("5_kişilik")) return 5;
     return 1;
@@ -122,55 +123,88 @@ export default function PaymentPage() {
         setError(
           isExamen
             ? "No se pudo crear el enlace de pago"
-            : t("Payment link oluşturulamadı.", "Payment link could not be created.")
+            : t(
+                "Payment link oluşturulamadı.",
+                "Payment link could not be created."
+              )
         );
     } catch {
-      setError(isExamen ? "Ocurrió un error" : t("Bir hata oluştu.", "An error occurred."));
+      setError(
+        isExamen ? "Ocurrió un error" : t("Bir hata oluştu.", "An error occurred.")
+      );
     }
   };
 
   if (!courseParam)
-    return <p>{isExamen ? "Enlace de curso inválido" : t("Geçersiz kurs linki", "Invalid course link")}</p>;
+    return (
+      <p>
+        {isExamen
+          ? "Enlace de curso inválido"
+          : t("Geçersiz kurs linki", "Invalid course link")}
+      </p>
+    );
 
   return (
     <div className="container mx-auto p-6">
-      {statusMessage && <h2 className="text-2xl font-bold mb-4 text-green-600">{statusMessage}</h2>}
-      {courseReadable && <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>}
-      <h1 className="text-xl font-bold mb-4">
-        {isExamen
-          ? "Por favor escriba el nombre del estudiante"
-          : t(
-              requiredStudents === 1 ? "Lütfen öğrencinin adını yazın" : "Lütfen öğrenci(ler)in adını yazın",
-              requiredStudents === 1 ? "Please write student name" : "Please write student name(s)"
-            )}
-      </h1>
+      {statusMessage && (
+        <h2 className="text-2xl font-bold mb-4 text-green-600">
+          {statusMessage}
+        </h2>
+      )}
+      {courseReadable && (
+        <h2 className="text-lg font-semibold mb-2">{courseReadable}</h2>
+      )}
 
-      {Array.from({ length: requiredStudents }, (_, i) => (
-        <input
-          key={i}
-          type="text"
-          value={studentNames[i] || ""}
-          onChange={(e) => handleNameChange(i, e.target.value)}
-          className="border p-2 w-full rounded mb-2"
-          placeholder={
-            isExamen
-              ? `Nombre del estudiante ${i + 1}`
+      {/* sadece success değilse form alanlarını göster */}
+      {status !== "success" && (
+        <>
+          <h1 className="text-xl font-bold mb-4">
+            {isExamen
+              ? "Por favor escriba el nombre del estudiante"
               : t(
-                  requiredStudents === 1 ? "Öğrenci Adı" : `Öğrenci ${i + 1} Adı`,
-                  requiredStudents === 1 ? "Student Name" : `Student ${i + 1} Name`
-                )
-          }
-        />
-      ))}
+                  requiredStudents === 1
+                    ? "Lütfen öğrencinin adını yazın"
+                    : "Lütfen öğrenci(ler)in adını yazın",
+                  requiredStudents === 1
+                    ? "Please write student name"
+                    : "Please write student name(s)"
+                )}
+          </h1>
 
-      {error && <p className="text-red-500 mb-2">{error}</p>}
+          {Array.from({ length: requiredStudents }, (_, i) => (
+            <input
+              key={i}
+              type="text"
+              value={studentNames[i] || ""}
+              onChange={(e) => handleNameChange(i, e.target.value)}
+              className="border p-2 w-full rounded mb-2"
+              placeholder={
+                isExamen
+                  ? `Nombre del estudiante ${i + 1}`
+                  : t(
+                      requiredStudents === 1
+                        ? "Öğrenci Adı"
+                        : `Öğrenci ${i + 1} Adı`,
+                      requiredStudents === 1
+                        ? "Student Name"
+                        : `Student ${i + 1} Name`
+                    )
+              }
+            />
+          ))}
 
-      <button
-        onClick={handleContinue}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      >
-        {isExamen ? "Continuar con el pago" : t("Ödeme işlemine devam et", "Continue Payment")}
-      </button>
+          {error && <p className="text-red-500 mb-2">{error}</p>}
+
+          <button
+            onClick={handleContinue}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            {isExamen
+              ? "Continuar con el pago"
+              : t("Ödeme işlemine devam et", "Continue Payment")}
+          </button>
+        </>
+      )}
     </div>
   );
 }
