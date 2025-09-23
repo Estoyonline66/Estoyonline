@@ -276,22 +276,32 @@
     "title": "Level Planning",
     "cardCourses": 
 	
+	
+	
 	[
   {
     "title": "A1.1 Beginner",
+    "bold": "Saturday",
+    "lesson": "First class",
+    "time": "5:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Oct 11"
+  },
+  {
+    "title": "A1.2",
+    "bold": "Monday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Nov 3"
+  },
+  {
+    "title": "A2.1",
     "bold": "Monday",
     "lesson": "First class",
     "time": "6:00 pm Spain time",
     "week": "Once a week 2.5 hours",
     "month": "Oct 6"
-  },
-  {
-    "title": "A1.2",
-    "bold": "Thursday",
-    "lesson": "First class",
-    "time": "6:00 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 11"
   },
   {
     "title": "A2.1",
@@ -356,16 +366,11 @@
     "time": "9:00 am Spain time",
     "week": "Once a week 2 hours",
     "month": "Oct 11"
-  },
-  {
-    "title": "Grammar is Beautiful Course",
-    "bold": "Tuesday",
-    "lesson": "First class",
-    "time": "6:00 pm Spain time",
-    "week": "Once a week 2 hours",
-    "month": "Sep 2"
   }
 ]
+	
+	
+	
 	
 	,
     "title": "ALL LEVELS PROGRAM",
