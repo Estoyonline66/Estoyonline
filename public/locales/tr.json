@@ -275,11 +275,19 @@
   },
   {
     "title": "A1.2",
-    "bold": "Perşembe",
+    "bold": "Pazartesi",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "11 Eylül"
+    "month": "3 Kasım"
+  },
+  {
+    "title": "A2.1",
+    "bold": "Pazartesi",
+    "lesson": "İlk ders",
+    "time": "19:00 - 2,5 saat",
+    "week": "Haftada 1 gün",
+    "month": "6 Ekim"
   },
   {
     "title": "A2.1",
@@ -346,7 +354,6 @@
     "month": "11 Ekim"
   }
 ]
-
 
 
 
