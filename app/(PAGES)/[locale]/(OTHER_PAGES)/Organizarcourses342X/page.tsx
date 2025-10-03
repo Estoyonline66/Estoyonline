@@ -309,7 +309,7 @@ const handleEditCourse = (index: number) => {
         </div>
         
         {/* Ekleme/Düzenleme Formu */}
-        <div className="p-6 border-b">
+      <div ref={formRef} className="p-6 border-b">
           <h2 className="text-xl font-semibold mb-4 text-gray-800">
             {isAdding ? 'Agregar Nuevo Curso' : editingIndex !== null ? 'Editar Curso' : 'Operaciones de Curso'}
           </h2>
