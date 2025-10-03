@@ -14,9 +14,8 @@ export async function POST(request: Request) {
 
     const coursesData = await request.json();
     
-    // ÖNEMLİ: Her zaman AYNI dosya adını kullan
+    // Her zaman AYNI dosya adını kullan
     const { url } = await put('courses/courses-data.json', JSON.stringify(coursesData), {
-      access: 'public',
       contentType: 'application/json',
       token: blobToken,
     });

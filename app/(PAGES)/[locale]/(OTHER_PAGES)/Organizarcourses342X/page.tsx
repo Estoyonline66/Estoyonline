@@ -247,7 +247,7 @@ const handleSaveChanges = async () => {
       cardCourses: courses
     };
 
-    console.log('📤 Saving courses...', coursesData);
+    console.log('📤 Saving courses to blob...');
 
     const response = await fetch('/api/courses/save', {
       method: 'POST',
@@ -261,7 +261,7 @@ const handleSaveChanges = async () => {
 
     if (response.ok) {
       alert('✅ ¡Cursos guardados exitosamente! Los cambios se verán reflejados automáticamente.');
-      console.log('✅ Courses saved:', result.url);
+      console.log('✅ Courses saved to:', result.url);
     } else {
       console.error('❌ Save error:', result);
       alert('❌ Error: ' + (result.error || 'Unknown error'));
@@ -271,6 +271,10 @@ const handleSaveChanges = async () => {
     alert('❌ Error al guardar los cambios');
   }
 };
+
+
+
+
   // Şifre giriş ekranı
   if (!isAuthenticated) {
     return (
