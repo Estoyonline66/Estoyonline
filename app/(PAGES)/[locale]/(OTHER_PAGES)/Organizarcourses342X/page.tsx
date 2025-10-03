@@ -377,7 +377,7 @@ export default function CourseManagementPage() {
             <div className="text-center py-12">
               <div className="text-gray-400 text-6xl mb-4">📚</div>
               <p className="text-gray-500 text-lg">Henüz hiç kurs eklenmemiş</p>
-              <p className="text-gray-400 text-sm mt-2">Yukarıdaki "Yeni Kurs Ekle" butonuna tıklayarak kurs eklemeye başlayın</p>
+              <p className="text-gray-400 text-sm mt-2">Yukarıdaki Yeni Kurs Ekle butonuna tıklayarak kurs eklemeye başlayın</p>
             </div>
           )}
           
