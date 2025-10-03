@@ -62,19 +62,19 @@ function SortableItem({ course, index, onEdit, onDelete }: {
       <div className="flex-1">
         <div className="flex flex-wrap gap-4">
           <div>
-            <span className="font-semibold">Başlık:</span> {course.title}
+            <span className="font-semibold">Título:</span> {course.title}
           </div>
           <div>
-            <span className="font-semibold">Gün:</span> {course.bold}
+            <span className="font-semibold">Día:</span> {course.bold}
           </div>
           <div>
-            <span className="font-semibold">Saat:</span> {course.time}
+            <span className="font-semibold">Hora:</span> {course.time}
           </div>
           <div>
-            <span className="font-semibold">Program:</span> {course.week}
+            <span className="font-semibold">Programa:</span> {course.week}
           </div>
           <div>
-            <span className="font-semibold">Başlangıç:</span> {course.month}
+            <span className="font-semibold">Comienzo:</span> {course.month}
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
           }}
           className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition-colors"
         >
-          Düzenle
+          Editar
         </button>
         <button 
           onClick={(e) => {
@@ -96,7 +96,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
           }}
           className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors"
         >
-          Sil
+          Eliminar
         </button>
       </div>
     </div>
@@ -118,6 +118,9 @@ export default function CourseManagementPage() {
     month: ''
   });
   const [isAdding, setIsAdding] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -132,6 +135,19 @@ export default function CourseManagementPage() {
       setCourses(data.cardCourses);
     }
   }, [data]);
+
+  // Şifre kontrolü
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    const correctPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
+    
+    if (password === correctPassword) {
+      setIsAuthenticated(true);
+      setError('');
+    } else {
+      setError('Contraseña incorrecta');
+    }
+  };
 
   // Sürükle-bırak işlemini yönet
   const handleDragEnd = (event: DragEndEvent) => {
@@ -160,21 +176,22 @@ export default function CourseManagementPage() {
         month: ''
       });
       setIsAdding(false);
-      alert('Kurs başarıyla eklendi!');
+      alert('¡Curso agregado con éxito!');
     } else {
-      alert('Lütfen tüm alanları doldurun!');
+      alert('¡Por favor complete todos los campos!');
     }
   };
 
   // Kurs düzenle
   const handleEditCourse = (index: number) => {
     setEditingIndex(index);
-    setNewCourse(courses[index]);
+    setNewCourse({ ...courses[index] });
+    setIsAdding(false);
   };
 
   // Kurs güncelle
   const handleUpdateCourse = () => {
-    if (editingIndex !== null && newCourse.title && newCourse.bold && newCourse.time && newCourse.week && newCourse.month) {
+    if (editingIndex !== null) {
       const updatedCourses = [...courses];
       updatedCourses[editingIndex] = { ...newCourse };
       setCourses(updatedCourses);
@@ -187,18 +204,16 @@ export default function CourseManagementPage() {
         week: '',
         month: ''
       });
-      alert('Kurs başarıyla güncellendi!');
-    } else {
-      alert('Lütfen tüm alanları doldurun!');
+      alert('¡Curso actualizado con éxito!');
     }
   };
 
   // Kurs sil
   const handleDeleteCourse = (index: number) => {
-    if (confirm('Bu kursu silmek istediğinizden emin misiniz?')) {
+    if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
       const updatedCourses = courses.filter((_, i) => i !== index);
       setCourses(updatedCourses);
-      alert('Kurs başarıyla silindi!');
+      alert('¡Curso eliminado con éxito!');
     }
   };
 
@@ -218,78 +233,128 @@ export default function CourseManagementPage() {
 
   // Verileri kaydet
   const handleSaveChanges = () => {
-    console.log("Güncellenmiş kurslar:", courses);
-    // Burada verileri API'ye gönderebilirsiniz
-    alert('Değişiklikler konsola kaydedildi!');
+    console.log("Cursos actualizados:", courses);
+    alert('¡Cambios guardados en la consola!');
   };
 
+  // Şifre giriş ekranı
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold text-gray-800">Acceso Administrativo</h1>
+            <p className="text-gray-600 mt-2">Ingrese la contraseña para acceder</p>
+          </div>
+          
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Contraseña
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="Ingrese la contraseña"
+                required
+              />
+            </div>
+            
+            {error && (
+              <div className="text-red-600 text-sm text-center">{error}</div>
+            )}
+            
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            >
+              Acceder
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // Ana içerik
   return (
     <div className="container mx-auto p-6 max-w-6xl">
       <div className="bg-white rounded-lg shadow-lg border">
-        <div className="p-6 border-b">
-          <h1 className="text-3xl font-bold text-gray-800">Kurs Bilgileri Yönetimi</h1>
-          <p className="text-gray-600 mt-2">Kurs programlarını düzenleyin, sıralayın ve yönetin</p>
+        <div className="p-6 border-b flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-800">Gestión de Cursos</h1>
+            <p className="text-gray-600 mt-2">Organice, ordene y administre los programas de cursos</p>
+          </div>
+          <button 
+            onClick={() => setIsAuthenticated(false)}
+            className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors text-sm"
+          >
+            Cerrar Sesión
+          </button>
         </div>
         
         {/* Ekleme/Düzenleme Formu */}
         <div className="p-6 border-b">
           <h2 className="text-xl font-semibold mb-4 text-gray-800">
-            {isAdding ? 'Yeni Kurs Ekle' : editingIndex !== null ? 'Kursu Düzenle' : 'Kurs İşlemleri'}
+            {isAdding ? 'Agregar Nuevo Curso' : editingIndex !== null ? 'Editar Curso' : 'Operaciones de Curso'}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Kurs Başlığı *</label>
+              <label className="block text-sm font-medium mb-2 text-gray-700">Título del Curso *</label>
               <input
                 type="text"
                 value={newCourse.title}
                 onChange={(e) => setNewCourse({...newCourse, title: e.target.value})}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Örn: A1.1 Beginner"
+                placeholder="Ej: A1.1 Principiante"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Gün *</label>
+              <label className="block text-sm font-medium mb-2 text-gray-700">Día *</label>
               <input
                 type="text"
                 value={newCourse.bold}
                 onChange={(e) => setNewCourse({...newCourse, bold: e.target.value})}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Örn: Monday"
+                placeholder="Ej: Lunes"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Saat *</label>
+              <label className="block text-sm font-medium mb-2 text-gray-700">Hora *</label>
               <input
                 type="text"
                 value={newCourse.time}
                 onChange={(e) => setNewCourse({...newCourse, time: e.target.value})}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Örn: 6:00 pm Spain time"
+                placeholder="Ej: 6:00 pm hora de España"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Haftalık Program *</label>
+              <label className="block text-sm font-medium mb-2 text-gray-700">Programa Semanal *</label>
               <input
                 type="text"
                 value={newCourse.week}
                 onChange={(e) => setNewCourse({...newCourse, week: e.target.value})}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Örn: Once a week 2.5 hours"
+                placeholder="Ej: Una vez por semana 2.5 horas"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Başlangıç Tarihi *</label>
+              <label className="block text-sm font-medium mb-2 text-gray-700">Fecha de Inicio *</label>
               <input
                 type="text"
                 value={newCourse.month}
                 onChange={(e) => setNewCourse({...newCourse, month: e.target.value})}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Örn: Oct 11"
+                placeholder="Ej: 11 Oct"
               />
             </div>
           </div>
@@ -301,13 +366,13 @@ export default function CourseManagementPage() {
                   onClick={handleAddCourse}
                   className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium"
                 >
-                  ✓ Kurs Ekle
+                  ✓ Agregar Curso
                 </button>
                 <button 
                   onClick={handleCancel}
                   className="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors font-medium"
                 >
-                  ✗ İptal
+                  ✗ Cancelar
                 </button>
               </>
             ) : editingIndex !== null ? (
@@ -316,13 +381,13 @@ export default function CourseManagementPage() {
                   onClick={handleUpdateCourse}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                 >
-                  ✓ Güncelle
+                  ✓ Actualizar
                 </button>
                 <button 
                   onClick={handleCancel}
                   className="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors font-medium"
                 >
-                  ✗ İptal
+                  ✗ Cancelar
                 </button>
               </>
             ) : (
@@ -330,7 +395,7 @@ export default function CourseManagementPage() {
                 onClick={() => setIsAdding(true)}
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
               >
-                + Yeni Kurs Ekle
+                + Nuevo Curso
               </button>
             )}
           </div>
@@ -340,16 +405,16 @@ export default function CourseManagementPage() {
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h2 className="text-xl font-semibold text-gray-800">Kurs Listesi</h2>
+              <h2 className="text-xl font-semibold text-gray-800">Lista de Cursos</h2>
               <p className="text-gray-600 text-sm mt-1">
-                Kursları sürükleyip bırakarak sıralayabilirsiniz
+                Arrastre y suelte para ordenar los cursos
               </p>
             </div>
             <button 
               onClick={handleSaveChanges}
               className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium"
             >
-              💾 Değişiklikleri Kaydet
+              💾 Guardar Cambios
             </button>
           </div>
           
@@ -376,15 +441,15 @@ export default function CourseManagementPage() {
           {courses.length === 0 && (
             <div className="text-center py-12">
               <div className="text-gray-400 text-6xl mb-4">📚</div>
-              <p className="text-gray-500 text-lg">Henüz hiç kurs eklenmemiş</p>
-              <p className="text-gray-400 text-sm mt-2">Yukarıdaki Yeni Kurs Ekle butonuna tıklayarak kurs eklemeye başlayın</p>
+              <p className="text-gray-500 text-lg">Todavía no se han agregado cursos</p>
+              <p className="text-gray-400 text-sm mt-2">Haga clic en el botón Nuevo Curso para comenzar</p>
             </div>
           )}
           
           {courses.length > 0 && (
             <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
               <p className="text-blue-800 text-sm">
-                <strong>Toplam {courses.length} kurs</strong> - Kursları sürükleyerek sıralayabilir, düzenleyebilir veya silebilirsiniz.
+                <strong>Total {courses.length} cursos</strong> - Arrastre para ordenar, edite o elimine cursos.
               </p>
             </div>
           )}
