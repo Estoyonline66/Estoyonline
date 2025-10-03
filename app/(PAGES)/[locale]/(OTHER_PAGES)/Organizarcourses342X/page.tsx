@@ -220,7 +220,7 @@ export default function CourseManagementPage() {
   const handleSaveChanges = () => {
     console.log("Güncellenmiş kurslar:", courses);
     // Burada verileri API'ye gönderebilirsiniz
-    alert("Değişiklikler konsola kaydedildi! Gerçek uygulamada bu verileri API'ye göndermeniz gerekir.");
+    alert('Değişiklikler konsola kaydedildi!');
   };
 
   return (
