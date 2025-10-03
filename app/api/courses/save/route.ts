@@ -7,9 +7,12 @@ export async function POST(request: Request) {
     
     // Kurs verilerini Vercel Blob'a kaydet
     const { url } = await put('courses-data.json', JSON.stringify(coursesData), {
-      access: 'public',
+      // Eski versiyonda 'access' yerine 'public' kullanılıyor
+      // Yeni versiyonda token-based auth kullanılıyor
       contentType: 'application/json',
     });
+
+    console.log('Courses data saved to blob:', url);
 
     return NextResponse.json({ 
       success: true, 
