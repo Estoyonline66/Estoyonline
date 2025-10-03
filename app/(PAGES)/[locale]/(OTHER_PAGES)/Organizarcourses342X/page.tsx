@@ -185,11 +185,12 @@ export default function CourseManagementPage() {
 
   // Kurs düzenle
   const handleEditCourse = (index: number) => {
-    setEditingIndex(index);
-    setNewCourse({ ...courses[index] });
-    setIsAdding(false);
-  };
-
+		  console.log("Editar tıklandı, index:", index);
+		  console.log("Seçilen kurs:", courses[index]);
+		  setEditingIndex(index);
+		  setNewCourse({ ...courses[index] });
+		  setIsAdding(false);
+};
   // Kurs güncelle
   const handleUpdateCourse = () => {
     if (editingIndex !== null) {
