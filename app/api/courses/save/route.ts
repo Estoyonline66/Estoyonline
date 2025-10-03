@@ -24,14 +24,13 @@ export async function POST(request: Request) {
     // JSON string’e çevir
     const jsonString = JSON.stringify(coursesData);
 
-   const { url } = await put(
+  const { url } = await put(
   'courses/courses-data.json',
   new Blob([jsonString], { type: 'application/json' }),
   {
     token: blobToken,
     contentType: 'application/json',
-    access: 'public',
-    addRandomSuffix: false,
+    addRandomSuffix: false, // overwrite
   }
 );
 
