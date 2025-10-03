@@ -12,13 +12,19 @@ export async function POST(request: Request) {
       );
     }
 
-    // Request body'yi doğrudan string olarak oku
-    const body = await request.text();
+    // JSON'ı parse et
+    const coursesData = await request.json();
     
-    console.log('📤 Saving courses data, length:', body.length);
+    console.log('📤 Saving courses data:', {
+      cardCoursesCount: coursesData.cardCourses?.length || 0,
+      scheduleTitle: coursesData.scheduleTitle,
+      title: coursesData.title
+    });
 
-    // Blob'a kaydet - doğrudan body string'ini kullan
-    const { url } = await put('courses/courses-data.json', body, {
+    // JSON.stringify ile tekrar string'e çevir (encoding sorununu çözmek için)
+    const jsonString = JSON.stringify(coursesData);
+    
+    const { url } = await put('courses/courses-data.json', jsonString, {
       token: blobToken,
     });
 
@@ -30,12 +36,9 @@ export async function POST(request: Request) {
       message: 'Kurs verileri başarıyla kaydedildi' 
     });
   } catch (error) {
-    console.error('❌ Kurs verileri kaydedilirken hata:', error);
+    console.error('❌ Save error:', error);
     return NextResponse.json(
-      { 
-        error: 'Kurs verileri kaydedilemedi',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
+      { error: 'Failed to save courses: ' + (error instanceof Error ? error.message : 'Unknown error') },
       { status: 500 }
     );
   }
