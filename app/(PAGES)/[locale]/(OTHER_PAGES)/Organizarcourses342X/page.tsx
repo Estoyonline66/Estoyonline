@@ -31,7 +31,7 @@ interface CourseCard {
   month: string;
 }
 
-// Sortable item component
+// Sortable item component - DÜZELTİLMİŞ
 function SortableItem({ course, index, onEdit, onDelete }: {
   course: CourseCard;
   index: number;
@@ -83,7 +83,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
         <button 
           onClick={(e) => {
             e.stopPropagation();
-            onEdit(index);
+            onEdit(index); // Burada doğru fonksiyonu çağırıyoruz
           }}
           className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition-colors"
         >
@@ -92,7 +92,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
         <button 
           onClick={(e) => {
             e.stopPropagation();
-            onDelete(index);
+            onDelete(index); // Burada doğru fonksiyonu çağırıyoruz
           }}
           className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors"
         >
@@ -146,7 +146,7 @@ export default function CourseManagementPage() {
       setError('');
     } else {
       setError('Contraseña incorrecta');
-	   console.log('Debug - Entered:', password, 'Expected:', correctPassword);
+	   
     }
   };
 
@@ -426,16 +426,16 @@ export default function CourseManagementPage() {
           >
             <SortableContext items={courses.map((_, index) => index.toString())} strategy={verticalListSortingStrategy}>
               <div className="space-y-3">
-                {courses.map((course, index) => (
-                  <SortableItem
-                    key={index}
-                    course={course}
-                    index={index}
-                    onEdit={handleEditCourse}
-                    onDelete={handleDeleteCourse}
-                  />
-                ))}
-              </div>
+             {courses.map((course, index) => (
+			  <SortableItem
+				key={index}
+				course={course}
+				index={index}
+				onEdit={handleEditCourse} // Fonksiyonları prop olarak geçiriyoruz
+				onDelete={handleDeleteCourse} // Fonksiyonları prop olarak geçiriyoruz
+			  />
+			))}
+						  </div>
             </SortableContext>
           </DndContext>
           
