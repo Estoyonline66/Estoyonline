@@ -146,6 +146,7 @@ export default function CourseManagementPage() {
       setError('');
     } else {
       setError('Contraseña incorrecta');
+	   console.log('Debug - Entered:', password, 'Expected:', correctPassword);
     }
   };
 
