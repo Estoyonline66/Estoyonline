@@ -1,7 +1,9 @@
 import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
-// Edge Runtime default zaten aktif
+// Edge Runtime default (export const runtime = "edge"; yazmana gerek yok, ama istersen ekleyebilirsin)
+// export const runtime = "edge";
+
 export async function POST(request: Request) {
   try {
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
@@ -25,10 +27,10 @@ export async function POST(request: Request) {
     // JSON string
     const jsonString = JSON.stringify(coursesData);
 
-    // Edge Runtime için -> Uint8Array (Content-Length sorunsuz hesaplanır)
-    const body = new TextEncoder().encode(jsonString);
+    // Edge Runtime için: Uint8Array → ArrayBuffer
+    const body = new TextEncoder().encode(jsonString).buffer;
 
-    // overwrite: aynı dosya adı kullan
+    // overwrite: aynı dosya adı kullanıldığında otomatik overwrite yapar
     const { url } = await put('courses/courses-data.json', body, {
       token: blobToken,
     });
