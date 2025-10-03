@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       new Blob([jsonString], { type: 'application/json' }),
       {
         token: blobToken,
-        contentType: 'application/json',
+   
       }
     );
 
