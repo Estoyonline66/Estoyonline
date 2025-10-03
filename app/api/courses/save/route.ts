@@ -1,7 +1,9 @@
 import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
-// Edge Runtime (Next.js 13+ route handlers default olarak Edge)
+// Node.js runtime kullan
+export const runtime = "nodejs";
+
 export async function POST(request: Request) {
   try {
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
@@ -22,12 +24,13 @@ export async function POST(request: Request) {
       title: coursesData.title,
     });
 
-    // 🔑 Edge Runtime için string gönderiyoruz
-    const jsonString = JSON.stringify(coursesData);
+    // Node.js runtime için Buffer kullan
+    const body = Buffer.from(JSON.stringify(coursesData));
 
-    // overwrite: aynı dosya adı kullanıldığında otomatik overwrite yapar
-    const { url } = await put('courses/courses-data.json', jsonString, {
+    // overwrite: aynı dosya adı kullanıldığında otomatik overwrite olur
+    const { url } = await put('courses/courses-data.json', body, {
       token: blobToken,
+      contentType: 'application/json', // Buffer ile birlikte güvenli
     });
 
     console.log('✅ Courses data saved to blob:', url);
