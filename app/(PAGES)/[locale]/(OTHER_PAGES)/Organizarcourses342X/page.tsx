@@ -31,7 +31,7 @@ interface CourseCard {
   month: string;
 }
 
-// Sortable item component - DÜZELTİLMİŞ
+// Sortable item component
 function SortableItem({ course, index, onEdit, onDelete }: {
   course: CourseCard;
   index: number;
@@ -56,8 +56,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
       ref={setNodeRef}
       style={style}
       {...attributes}
-      {...listeners}
-      className="flex items-center justify-between p-4 mb-3 bg-gray-50 rounded border cursor-move hover:bg-gray-100 transition-colors"
+      className="flex items-center justify-between p-4 mb-3 bg-gray-50 rounded border hover:bg-gray-100 transition-colors"
     >
       <div className="flex-1">
         <div className="flex flex-wrap gap-4">
@@ -79,11 +78,11 @@ function SortableItem({ course, index, onEdit, onDelete }: {
         </div>
       </div>
       
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-center">
         <button 
           onClick={(e) => {
             e.stopPropagation();
-            onEdit(index); // Burada doğru fonksiyonu çağırıyoruz
+            onEdit(index);
           }}
           className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition-colors"
         >
@@ -92,12 +91,20 @@ function SortableItem({ course, index, onEdit, onDelete }: {
         <button 
           onClick={(e) => {
             e.stopPropagation();
-            onDelete(index); // Burada doğru fonksiyonu çağırıyoruz
+            onDelete(index);
           }}
           className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors"
         >
           Eliminar
         </button>
+
+        {/* Drag handle */}
+        <span
+          {...listeners}
+          className="ml-3 cursor-grab text-gray-400 hover:text-gray-600 select-none"
+        >
+          ⠿
+        </span>
       </div>
     </div>
   );
@@ -146,7 +153,6 @@ export default function CourseManagementPage() {
       setError('');
     } else {
       setError('Contraseña incorrecta');
-	   
     }
   };
 
@@ -158,7 +164,6 @@ export default function CourseManagementPage() {
       setCourses((items) => {
         const oldIndex = items.findIndex((_, index) => index.toString() === active.id);
         const newIndex = items.findIndex((_, index) => index.toString() === over.id);
-        
         return arrayMove(items, oldIndex, newIndex);
       });
     }
@@ -185,12 +190,11 @@ export default function CourseManagementPage() {
 
   // Kurs düzenle
   const handleEditCourse = (index: number) => {
-		  console.log("Editar tıklandı, index:", index);
-		  console.log("Seçilen kurs:", courses[index]);
-		  setEditingIndex(index);
-		  setNewCourse({ ...courses[index] });
-		  setIsAdding(false);
-};
+    setEditingIndex(index);
+    setNewCourse({ ...courses[index] });
+    setIsAdding(false);
+  };
+
   // Kurs güncelle
   const handleUpdateCourse = () => {
     if (editingIndex !== null) {
@@ -427,16 +431,16 @@ export default function CourseManagementPage() {
           >
             <SortableContext items={courses.map((_, index) => index.toString())} strategy={verticalListSortingStrategy}>
               <div className="space-y-3">
-             {courses.map((course, index) => (
-			  <SortableItem
-				key={index}
-				course={course}
-				index={index}
-				onEdit={handleEditCourse} // Fonksiyonları prop olarak geçiriyoruz
-				onDelete={handleDeleteCourse} // Fonksiyonları prop olarak geçiriyoruz
-			  />
-			))}
-						  </div>
+                {courses.map((course, index) => (
+                  <SortableItem
+                    key={index}
+                    course={course}
+                    index={index}
+                    onEdit={handleEditCourse}
+                    onDelete={handleDeleteCourse}
+                  />
+                ))}
+              </div>
             </SortableContext>
           </DndContext>
           
