@@ -1,6 +1,6 @@
 // app/(PAGES)/[locale]/(OTHER_PAGES)/Organizarcourses342X/page.tsx
 "use client";
-
+import { put } from "@vercel/blob";
 import React, { useState, useEffect } from 'react';
 import {
   DndContext,
@@ -193,6 +193,7 @@ export default function CourseManagementPage() {
     setEditingIndex(index);
     setNewCourse({ ...courses[index] });
     setIsAdding(false);
+	 window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Kurs güncelle
@@ -238,10 +239,28 @@ export default function CourseManagementPage() {
   };
 
   // Verileri kaydet
-  const handleSaveChanges = () => {
-    console.log("Cursos actualizados:", courses);
-    alert('¡Cambios guardados en la consola!');
-  };
+// Verileri kaydet
+const handleSaveChanges = async () => {
+  try {
+    // courses listesini JSON'a çevir
+    const jsonData = JSON.stringify({ cardCourses: courses }, null, 2);
+
+    // Vercel Blob'a yaz (varsa overwrite eder)
+    const { url } = await put(
+      "courses.json", // blob dosya adı
+      new Blob([jsonData], { type: "application/json" }),
+      {
+        access: "public", // public veya private erişim
+      }
+    );
+
+    alert("¡Todos los cursos se han guardado correctamente en Vercel Blob!");
+    console.log("URL del archivo:", url);
+  } catch (error) {
+    console.error("Error guardando cursos:", error);
+    alert("Error al guardar los cursos");
+  }
+};
 
   // Şifre giriş ekranı
   if (!isAuthenticated) {
