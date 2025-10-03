@@ -248,14 +248,16 @@
     "cardCourses": 
 	
 	
-[
+	
+	[
   {
     "title": "A1.1 Başlangıç",
     "bold": "Pazartesi",
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "6 Ekim"
+    "month": "6 Ekim",
+    "teacher": "Anita"
   },
   {
     "title": "A1.1 Başlangıç",
@@ -263,7 +265,8 @@
     "lesson": "İlk ders",
     "time": "17:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "4 Ekim"
+    "month": "4 Ekim",
+    "teacher": "Meli"
   },
   {
     "title": "A1.1 Başlangıç",
@@ -271,7 +274,17 @@
     "lesson": "İlk ders",
     "time": "11:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "3 Ekim"
+    "month": "3 Ekim",
+    "teacher": "Iván"
+  },
+  {
+    "title": "A1.2",
+    "bold": "Cuma",
+    "lesson": "İlk ders",
+    "time": "11:00-13:30",
+    "week": "Haftada 1 gün",
+    "month": "17 Ekim",
+    "teacher": "Ivan"
   },
   {
     "title": "A1.2",
@@ -279,7 +292,8 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "3 Kasım"
+    "month": "3 Kasım",
+    "teacher": "Meli"
   },
   {
     "title": "A2.1",
@@ -287,7 +301,8 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "6 Ekim"
+    "month": "6 Ekim",
+    "teacher": "Sabri"
   },
   {
     "title": "A2.1",
@@ -295,7 +310,8 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "26 Eylül"
+    "month": "26 Eylül",
+    "teacher": "Meli"
   },
   {
     "title": "A2.2",
@@ -303,7 +319,8 @@
     "lesson": "İlk ders",
     "time": "18:30 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "1 Eylül"
+    "month": "1 Eylül",
+    "teacher": "Caro"
   },
   {
     "title": "A2.2",
@@ -311,7 +328,8 @@
     "lesson": "İlk ders",
     "time": "18:30 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "3 Eylül"
+    "month": "3 Eylül",
+    "teacher": "Caro"
   },
   {
     "title": "A2.3",
@@ -319,7 +337,8 @@
     "lesson": "İlk ders",
     "time": "19:00 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "9 Eylül"
+    "month": "9 Eylül",
+    "teacher": "Sabri"
   },
   {
     "title": "B1.2",
@@ -327,7 +346,8 @@
     "lesson": "İlk ders",
     "time": "18:30 - 2,5 saat",
     "week": "Haftada 1 gün",
-    "month": "5 Eylül"
+    "month": "5 Eylül",
+    "teacher": "Caro"
   },
   {
     "title": "Konuşma Kursu Başlangıç A1",
@@ -335,15 +355,17 @@
     "lesson": "İlk ders",
     "time": "19:30 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "1 Ekim"
+    "month": "1 Ekim",
+    "teacher": "Meli"
   },
   {
     "title": "Konuşma Kursu Orta A2",
-    "bold": "Çarşamba",
+    "bold": "Perşembe",
     "lesson": "İlk ders",
     "time": "19:30 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "17 Eylül"
+    "month": "2 Ekim",
+    "teacher": "Sabri"
   },
   {
     "title": "Konuşma Kursu İleri B1-B2",
@@ -351,10 +373,10 @@
     "lesson": "İlk ders",
     "time": "10:00 - 2 saat",
     "week": "Haftada 1 gün",
-    "month": "11 Ekim"
+    "month": "11 Ekim",
+    "teacher": "Sabri"
   }
 ]
-
 
 
 
