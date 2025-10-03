@@ -3,13 +3,22 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
+    const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+    
+    if (!blobToken) {
+      return NextResponse.json(
+        { error: 'BLOB_READ_WRITE_TOKEN is not configured' },
+        { status: 500 }
+      );
+    }
+
     const coursesData = await request.json();
     
-    // Kurs verilerini Vercel Blob'a kaydet
-    const { url } = await put('courses-data.json', JSON.stringify(coursesData), {
+    // ÖNEMLİ: Her zaman AYNI dosya adını kullan
+    const { url } = await put('courses/courses-data.json', JSON.stringify(coursesData), {
       access: 'public',
       contentType: 'application/json',
-      token: process.env.BLOB_READ_WRITE_TOKEN,
+      token: blobToken,
     });
 
     console.log('✅ Courses data saved to blob:', url);
