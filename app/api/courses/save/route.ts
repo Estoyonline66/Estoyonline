@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
-    
+
     if (!blobToken) {
       return NextResponse.json(
         { error: 'BLOB_READ_WRITE_TOKEN is not configured' },
@@ -12,28 +12,36 @@ export async function POST(request: Request) {
       );
     }
 
-    // JSON'ı parse et
+    // JSON verisini al
     const coursesData = await request.json();
-    
+
     console.log('📤 Saving courses data:', {
       cardCoursesCount: coursesData.cardCourses?.length || 0,
       scheduleTitle: coursesData.scheduleTitle,
       title: coursesData.title
     });
 
-    // JSON.stringify ile tekrar string'e çevir (encoding sorununu çözmek için)
+    // JSON string’e çevir
     const jsonString = JSON.stringify(coursesData);
-    
-    const { url } = await put('courses/courses-data.json', jsonString, {
-      token: blobToken,
-    });
+
+    // Blob’a kaydet (overwrite için addRandomSuffix: false)
+    const { url } = await put(
+      'courses/courses-data.json',
+      Buffer.from(jsonString),
+      {
+        token: blobToken,
+        contentType: 'application/json',
+        access: 'public',
+        addRandomSuffix: false, // 🔑 overwrite için
+      }
+    );
 
     console.log('✅ Courses data saved to blob:', url);
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       url,
-      message: 'Kurs verileri başarıyla kaydedildi' 
+      message: 'Kurs verileri başarıyla kaydedildi'
     });
   } catch (error) {
     console.error('❌ Save error:', error);
