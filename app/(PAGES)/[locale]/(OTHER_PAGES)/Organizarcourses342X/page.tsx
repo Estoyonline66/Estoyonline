@@ -239,28 +239,10 @@ export default function CourseManagementPage() {
   };
 
   // Verileri kaydet
-// Verileri kaydet
-const handleSaveChanges = async () => {
-  try {
-    // courses listesini JSON'a çevir
-    const jsonData = JSON.stringify({ cardCourses: courses }, null, 2);
-
-    // Vercel Blob'a yaz (varsa overwrite eder)
-    const { url } = await put(
-      "courses.json", // blob dosya adı
-      new Blob([jsonData], { type: "application/json" }),
-      {
-        access: "public", // public veya private erişim
-      }
-    );
-
-    alert("¡Todos los cursos se han guardado correctamente en Vercel Blob!");
-    console.log("URL del archivo:", url);
-  } catch (error) {
-    console.error("Error guardando cursos:", error);
-    alert("Error al guardar los cursos");
-  }
-};
+  const handleSaveChanges = () => {
+    console.log("Cursos actualizados:", courses);
+    alert('¡Cambios guardados en la consola!');
+  };
 
   // Şifre giriş ekranı
   if (!isAuthenticated) {
