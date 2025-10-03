@@ -188,15 +188,18 @@ export default function CourseManagementPage() {
     }
   };
 
-  // Kurs düzenle
- const handleEditCourse = (index: number) => {
-  console.log("Editar tıklandı, index:", index);
-  console.log("Seçilen kurs:", courses[index]);
+const formRef = useRef<HTMLDivElement | null>(null);
+
+const handleEditCourse = (index: number) => {
   setEditingIndex(index);
   setNewCourse({ ...courses[index] });
   setIsAdding(false);
-};
 
+  // scroll et
+  if (formRef.current) {
+    formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
   // Kurs güncelle
   const handleUpdateCourse = () => {
