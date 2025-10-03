@@ -1,6 +1,7 @@
 import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
+// Edge Runtime default zaten aktif
 export async function POST(request: Request) {
   try {
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
@@ -24,15 +25,13 @@ export async function POST(request: Request) {
     // JSON string
     const jsonString = JSON.stringify(coursesData);
 
-    // overwrite (dosya adı aynı olduğundan otomatik overwrite olacak)
-    const { url } = await put(
-      'courses/courses-data.json',
-      new Blob([jsonString], { type: 'application/json' }),
-      {
-        token: blobToken,
-   
-      }
-    );
+    // Edge Runtime için -> Uint8Array (Content-Length sorunsuz hesaplanır)
+    const body = new TextEncoder().encode(jsonString);
+
+    // overwrite: aynı dosya adı kullan
+    const { url } = await put('courses/courses-data.json', body, {
+      token: blobToken,
+    });
 
     console.log('✅ Courses data saved to blob:', url);
 
