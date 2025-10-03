@@ -1,6 +1,6 @@
 // app/(PAGES)/[locale]/(OTHER_PAGES)/Organizarcourses342X/page.tsx
 "use client";
-import { put } from "@vercel/blob";
+
 import React, { useState, useEffect } from 'react';
 import {
   DndContext,
