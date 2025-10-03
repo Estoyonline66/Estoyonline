@@ -1,7 +1,7 @@
 import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 
-// Node.js runtime kullan
+// Node.js runtime kullanıyoruz
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
@@ -24,13 +24,13 @@ export async function POST(request: Request) {
       title: coursesData.title,
     });
 
-    // Node.js runtime için Buffer kullan
-    const body = Buffer.from(JSON.stringify(coursesData));
+    // Node.js runtime için string gönderiyoruz (Buffer kullanmıyoruz)
+    const jsonString = JSON.stringify(coursesData);
 
     // overwrite: aynı dosya adı kullanıldığında otomatik overwrite olur
-    const { url } = await put('courses/courses-data.json', body, {
+    const { url } = await put('courses/courses-data.json', jsonString, {
       token: blobToken,
-      contentType: 'application/json', // Buffer ile birlikte güvenli
+      contentType: 'application/json', // string ile birlikte güvenli
     });
 
     console.log('✅ Courses data saved to blob:', url);
