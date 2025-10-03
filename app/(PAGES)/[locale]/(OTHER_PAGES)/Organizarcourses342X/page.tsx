@@ -239,6 +239,7 @@ export default function CourseManagementPage() {
   };
 
 // Verileri Vercel Blob'a kaydet
+// Verileri Vercel Blob'a kaydet
 const handleSaveChanges = async () => {
   try {
     const coursesData = {
@@ -247,6 +248,8 @@ const handleSaveChanges = async () => {
       levels: data?.levels || [],
       cardCourses: courses
     };
+
+    console.log('📤 Saving courses to blob...', coursesData);
 
     const response = await fetch('/api/courses/save', {
       method: 'POST',
@@ -259,16 +262,19 @@ const handleSaveChanges = async () => {
     const result = await response.json();
 
     if (response.ok) {
-      alert('¡Cambios guardados exitosamente en Vercel Blob!');
-      console.log('Blob URL:', result.url);
+      alert('✅ ¡Cambios guardados exitosamente en Vercel Blob!');
+      console.log('🔗 Blob URL:', result.url);
     } else {
-      alert('Error al guardar los cambios: ' + result.error);
+      console.error('❌ Save error:', result);
+      alert('❌ Error al guardar los cambios: ' + (result.error || 'Unknown error'));
     }
   } catch (error) {
-    console.error('Error saving to blob:', error);
-    alert('Error al guardar los cambios');
+    console.error('❌ Error saving to blob:', error);
+    alert('❌ Error al guardar los cambios');
   }
 };
+
+
   // Şifre giriş ekranı
   if (!isAuthenticated) {
     return (
