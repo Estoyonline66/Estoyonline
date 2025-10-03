@@ -22,11 +22,11 @@ export async function POST(request: Request) {
       title: coursesData.title,
     });
 
-    // JSON string → Blob olarak gönder
-    const body = new Blob([JSON.stringify(coursesData)], { type: 'application/json' });
+    // 🔑 Edge Runtime için string gönderiyoruz
+    const jsonString = JSON.stringify(coursesData);
 
-    // overwrite: aynı dosya adı kullanıldığında otomatik overwrite olur
-    const { url } = await put('courses/courses-data.json', body, {
+    // overwrite: aynı dosya adı kullanıldığında otomatik overwrite yapar
+    const { url } = await put('courses/courses-data.json', jsonString, {
       token: blobToken,
     });
 
