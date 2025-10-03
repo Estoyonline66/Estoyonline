@@ -238,12 +238,37 @@ export default function CourseManagementPage() {
     });
   };
 
-  // Verileri kaydet
-  const handleSaveChanges = () => {
-    console.log("Cursos actualizados:", courses);
-    alert('¡Cambios guardados en la consola!');
-  };
+// Verileri Vercel Blob'a kaydet
+const handleSaveChanges = async () => {
+  try {
+    const coursesData = {
+      scheduleTitle: data?.scheduleTitle || "Programa de Cursos",
+      title: data?.title || "Niveles de Español",
+      levels: data?.levels || [],
+      cardCourses: courses
+    };
 
+    const response = await fetch('/api/courses/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(coursesData),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert('¡Cambios guardados exitosamente en Vercel Blob!');
+      console.log('Blob URL:', result.url);
+    } else {
+      alert('Error al guardar los cambios: ' + result.error);
+    }
+  } catch (error) {
+    console.error('Error saving to blob:', error);
+    alert('Error al guardar los cambios');
+  }
+};
   // Şifre giriş ekranı
   if (!isAuthenticated) {
     return (
