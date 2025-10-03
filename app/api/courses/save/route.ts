@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       title: coursesData.title,
     });
 
-    // Node.js runtime için string gönderiyoruz (Buffer kullanmıyoruz)
+    // 🔑 Saf string gönderiyoruz, Buffer veya Blob kullanmıyoruz
     const jsonString = JSON.stringify(coursesData);
 
     // overwrite: aynı dosya adı kullanıldığında otomatik overwrite olur
