@@ -24,6 +24,7 @@ export async function POST(request: Request) {
       const testResult = await put('test-files/test.txt', testContent, {
         token: blobToken,
         contentType: 'text/plain',
+		  access: 'public', // ← BURAYA EKLEDİK
       });
       
       console.log('✅ Test dosyası başarılı:', testResult.url);
@@ -48,6 +49,7 @@ export async function POST(request: Request) {
     const { url } = await put('courses/courses-data.json', jsonString, {
       token: blobToken,
       contentType: 'application/json', // string ile birlikte güvenli
+	    access: 'public', // ← BURAYA EKLEDİK
     });
 
     console.log('✅ Courses data saved to blob:', url);
