@@ -15,6 +15,23 @@ export async function POST(request: Request) {
       );
     }
 
+    // 🧪 ÖNCE TEST DOSYASINI DENEYELİM
+    console.log('🧪 Test dosyası denemesi...');
+    
+    const testContent = `Test dosyası - ${new Date().toISOString()}\nMerhaba Dünya!`;
+    
+    try {
+      const testResult = await put('test-files/test.txt', testContent, {
+        token: blobToken,
+        contentType: 'text/plain',
+      });
+      
+      console.log('✅ Test dosyası başarılı:', testResult.url);
+    } catch (testError) {
+      console.error('❌ Test dosyası hatası:', testError);
+      // Test hatasında devam et, belki courses farklı davranır
+    }
+
     // JSON verisini al
     const coursesData = await request.json();
 
