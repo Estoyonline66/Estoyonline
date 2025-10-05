@@ -14,7 +14,7 @@ interface CourseCard {
 }
 
 export default function CourseManagement() {
-  const router = useRouter();
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [courses, setCourses] = useState<CourseCard[]>([]);
