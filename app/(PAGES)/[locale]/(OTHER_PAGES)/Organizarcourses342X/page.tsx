@@ -21,6 +21,13 @@ import { CSS } from '@dnd-kit/utilities';
 import { useTranslation } from '@/contexts/TranslationProvider';
 import { PriceData } from '@/types/PropTypes';
 
+export default function CourseManagementPage({ params }: { params: { locale: string } }) {
+  const { t } = useTranslation();
+  const locale = params.locale; // ✅ buradan alıyoruz
+
+  const data: PriceData = t("courses");
+
+
 interface CourseCard {
   title: string;
   bold: string;
@@ -97,7 +104,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
 }
 
 export default function CourseManagementPage() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const data: PriceData = t("courses");
   
   const [courses, setCourses] = useState<CourseCard[]>([]);
