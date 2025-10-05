@@ -85,7 +85,7 @@ export default function CourseManagement() {
                     newCourses[i].teacher = e.target.value;
                     setCourses(newCourses);
                   }}
-                  className="border p-1 w-full"
+                  className="border p-1 w-full text-sm"
                 />
               </td>
             </tr>
