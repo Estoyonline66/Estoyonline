@@ -97,7 +97,7 @@ function SortableItem({ course, index, onEdit, onDelete }: {
 }
 
 export default function CourseManagementPage() {
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
   const data: PriceData = t("courses");
   
   const [courses, setCourses] = useState<CourseCard[]>([]);
