@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { SortableItem } from "./SortableItem"; // SortableItem component oluşturulmalı
-import { useRouter } from "next/navigation";
+import { SortableItem } from "./SortableItem";
 
 interface CourseCard {
   title: string;
@@ -22,8 +21,6 @@ export default function CourseManagement() {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const router = useRouter();
-
   const handleLogin = () => {
     if (password === process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD) {
       setLoggedIn(true);
@@ -32,7 +29,6 @@ export default function CourseManagement() {
     }
   };
 
-  // 🗂️ Fetch courses from blob
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -48,7 +44,6 @@ export default function CourseManagement() {
     fetchCourses();
   }, []);
 
-  // 🔀 Drag & Drop handler
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over) return;
@@ -59,7 +54,6 @@ export default function CourseManagement() {
     }
   };
 
-  // 💾 Save courses to blob
   const saveCourses = async () => {
     setSaving(true);
     try {
@@ -148,93 +142,91 @@ export default function CourseManagement() {
             <tbody>
               {courses.map((c, i) => (
                 <SortableItem key={c.title} id={c.title}>
-                  <tr className="text-center">
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.title}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].title = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.bold || ""}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].bold = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.lesson || ""}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].lesson = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.time || ""}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].time = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.week || ""}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].week = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.month || ""}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].month = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <input
-                        value={c.teacher || ""}
-                        onChange={(e) => {
-                          const newCourses = [...courses];
-                          newCourses[i].teacher = e.target.value;
-                          setCourses(newCourses);
-                        }}
-                        className="border p-1 w-full"
-                      />
-                    </td>
-                    <td className="border px-2 py-1">
-                      <button
-                        onClick={() => deleteCourse(i)}
-                        className="bg-red-600 text-white px-3 py-1 rounded"
-                      >
-                        Sil
-                      </button>
-                    </td>
-                  </tr>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.title}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].title = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.bold || ""}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].bold = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.lesson || ""}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].lesson = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.time || ""}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].time = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.week || ""}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].week = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.month || ""}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].month = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <input
+                      value={c.teacher || ""}
+                      onChange={(e) => {
+                        const newCourses = [...courses];
+                        newCourses[i].teacher = e.target.value;
+                        setCourses(newCourses);
+                      }}
+                      className="border p-1 w-full"
+                    />
+                  </td>
+                  <td className="border px-2 py-1">
+                    <button
+                      onClick={() => deleteCourse(i)}
+                      className="bg-red-600 text-white px-3 py-1 rounded"
+                    >
+                      Sil
+                    </button>
+                  </td>
                 </SortableItem>
               ))}
             </tbody>
