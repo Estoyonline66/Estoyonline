@@ -29,11 +29,13 @@ export default function CourseManagement() {
     }
   };
 
+  // 📥 Kursları blob'dan fetch et (cache-busting ile)
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const res = await fetch(
-          "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json"
+          `https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json?_ts=${Date.now()}`,
+          { cache: "no-cache" }
         );
         const data = await res.json();
         setCourses(data.cardCourses || []);
