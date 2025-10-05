@@ -1,24 +1,9 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-import {
-  DndContext,
-  closestCenter,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragEndEvent,
-} from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-  useSortable,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { useRouter } from "next/navigation";
 
 interface CourseCard {
-  id: string;
+  id?: string;
   title: string;
   bold: string;
   lesson: string;
@@ -29,58 +14,53 @@ interface CourseCard {
 }
 
 export default function CourseManagement() {
+  const router = useRouter();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
   const [courses, setCourses] = useState<CourseCard[]>([]);
   const [saving, setSaving] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState("");
 
-  const PASSWORD = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD || "";
+  const adminPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
 
-  // Fetch courses from blob
+  // Login kontrolü
+  const handleLogin = () => {
+    if (passwordInput === adminPassword) {
+      setLoggedIn(true);
+      setPasswordInput("");
+    } else {
+      alert("❌ Şifre hatalı!");
+    }
+  };
+
+  // Blob'dan kursları çek
   useEffect(() => {
+    if (!loggedIn) return;
+
     const fetchCourses = async () => {
       try {
         const res = await fetch(
           "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json"
         );
+        if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
+
         const data = await res.json();
-        // Ensure each course has an id
-        const coursesWithId = (data.cardCourses || []).map((c: any, idx: number) => ({
-          ...c,
-          id: c.id || `course-${idx}`,
-        }));
+        // course'lara id ekle
+        const coursesWithId: CourseCard[] = (data.cardCourses || []).map(
+          (c: CourseCard, idx: number) => ({
+            ...c,
+            id: c.id || `course-${idx}`,
+          })
+        );
         setCourses(coursesWithId);
       } catch (err) {
         console.error("Failed to fetch courses:", err);
       }
     };
+
     fetchCourses();
-  }, []);
+  }, [loggedIn]);
 
-  // Login handler
-  const handleLogin = () => {
-    if (password === PASSWORD) {
-      setLoggedIn(true);
-      setLoginError("");
-    } else {
-      setLoginError("Şifre yanlış!");
-    }
-  };
-
-  // DnD setup
-  const sensors = useSensors(useSensor(PointerSensor));
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (over && active.id !== over.id) {
-      const oldIndex = courses.findIndex((c) => c.id === active.id);
-      const newIndex = courses.findIndex((c) => c.id === over.id);
-      setCourses(arrayMove(courses, oldIndex, newIndex));
-    }
-  };
-
-  // Save courses to blob
+  // Kursları kaydet
   const saveCourses = async () => {
     setSaving(true);
     try {
@@ -89,6 +69,7 @@ export default function CourseManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cardCourses: courses }),
       });
+
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Save failed");
       alert("✅ Kurslar başarıyla kaydedildi!");
@@ -100,49 +81,23 @@ export default function CourseManagement() {
     }
   };
 
-  // Add new course
-  const addCourse = () => {
-    const newCourse: CourseCard = {
-      id: `course-${Date.now()}`,
-      title: "New Course",
-      bold: "",
-      lesson: "",
-      time: "",
-      week: "",
-      month: "",
-      teacher: "",
-    };
-    setCourses([...courses, newCourse]);
-  };
-
-  // Delete course
-  const deleteCourse = (id: string) => {
-    setCourses(courses.filter((c) => c.id !== id));
-  };
-
-  // Editable course field
-  const updateCourseField = (id: string, field: keyof CourseCard, value: string) => {
-    setCourses(courses.map((c) => (c.id === id ? { ...c, [field]: value } : c)));
-  };
-
   if (!loggedIn) {
     return (
       <div className="p-10 max-w-sm mx-auto">
         <h2 className="text-xl font-bold mb-5">Admin Login</h2>
         <input
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={passwordInput}
+          onChange={(e) => setPasswordInput(e.target.value)}
           placeholder="Şifre"
           className="border p-2 w-full mb-3"
         />
         <button
           onClick={handleLogin}
-          className="bg-blue-600 text-white px-5 py-2 rounded w-full"
+          className="w-full bg-blue-600 text-white px-5 py-2 rounded"
         >
-          Giriş
+          Giriş Yap
         </button>
-        {loginError && <p className="text-red-600 mt-2">{loginError}</p>}
       </div>
     );
   }
@@ -151,41 +106,74 @@ export default function CourseManagement() {
     <div className="p-10">
       <h2 className="text-xl font-bold mb-5">Lista de Cursos</h2>
 
-      <button
-        onClick={addCourse}
-        className="mb-3 bg-green-600 text-white px-4 py-2 rounded"
-      >
-        Add Course
-      </button>
-
-      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <SortableContext items={courses.map((c) => c.id)} strategy={verticalListSortingStrategy}>
-          <table className="w-full border-collapse border border-gray-300 text-sm">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="border px-2 py-1">Title</th>
-                <th className="border px-2 py-1">Bold</th>
-                <th className="border px-2 py-1">Lesson</th>
-                <th className="border px-2 py-1">Time</th>
-                <th className="border px-2 py-1">Week</th>
-                <th className="border px-2 py-1">Month</th>
-                <th className="border px-2 py-1">Teacher</th>
-                <th className="border px-2 py-1">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {courses.map((c) => (
-                <SortableRow
-                  key={c.id}
-                  course={c}
-                  updateCourseField={updateCourseField}
-                  deleteCourse={deleteCourse}
+      <table className="w-full border-collapse border border-gray-300 text-sm">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="border px-2 py-1">Title</th>
+            <th className="border px-2 py-1">Bold</th>
+            <th className="border px-2 py-1">Lesson</th>
+            <th className="border px-2 py-1">Time</th>
+            <th className="border px-2 py-1">Week</th>
+            <th className="border px-2 py-1">Month</th>
+            <th className="border px-2 py-1">Teacher</th>
+            <th className="border px-2 py-1">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {courses.map((c, i) => (
+            <tr key={c.id || i} className="text-center">
+              <td className="border px-2 py-1">{c.title}</td>
+              <td className="border px-2 py-1">{c.bold}</td>
+              <td className="border px-2 py-1">{c.lesson}</td>
+              <td className="border px-2 py-1">{c.time}</td>
+              <td className="border px-2 py-1">{c.week}</td>
+              <td className="border px-2 py-1">{c.month}</td>
+              <td className="border px-2 py-1">
+                <input
+                  value={c.teacher || ""}
+                  onChange={(e) => {
+                    const newCourses = [...courses];
+                    newCourses[i].teacher = e.target.value;
+                    setCourses(newCourses);
+                  }}
+                  className="border p-1 w-full"
                 />
-              ))}
-            </tbody>
-          </table>
-        </SortableContext>
-      </DndContext>
+              </td>
+              <td className="border px-2 py-1 flex gap-1 justify-center">
+                <button
+                  className="bg-green-500 text-white px-2 rounded"
+                  onClick={() => {
+                    const newCourses = [...courses];
+                    newCourses.splice(i, 0, { ...c, id: `course-${Date.now()}` });
+                    setCourses(newCourses);
+                  }}
+                >
+                  Add
+                </button>
+                <button
+                  className="bg-yellow-500 text-white px-2 rounded"
+                  onClick={() => {
+                    const newCourses = [...courses];
+                    newCourses[i] = { ...c, title: c.title + " (Edited)" };
+                    setCourses(newCourses);
+                  }}
+                >
+                  Edit
+                </button>
+                <button
+                  className="bg-red-500 text-white px-2 rounded"
+                  onClick={() => {
+                    const newCourses = courses.filter((_, idx) => idx !== i);
+                    setCourses(newCourses);
+                  }}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       <button
         onClick={saveCourses}
@@ -195,84 +183,5 @@ export default function CourseManagement() {
         {saving ? "Saving..." : "Guardar Cambios"}
       </button>
     </div>
-  );
-}
-
-interface SortableRowProps {
-  course: CourseCard;
-  updateCourseField: (id: string, field: keyof CourseCard, value: string) => void;
-  deleteCourse: (id: string) => void;
-}
-
-function SortableRow({ course, updateCourseField, deleteCourse }: SortableRowProps) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
-    id: course.id,
-  });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
-  return (
-    <tr ref={setNodeRef} style={style} {...attributes} {...listeners} className="text-center">
-      <td className="border px-2 py-1">
-        <input
-          value={course.title}
-          onChange={(e) => updateCourseField(course.id, "title", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <input
-          value={course.bold}
-          onChange={(e) => updateCourseField(course.id, "bold", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <input
-          value={course.lesson}
-          onChange={(e) => updateCourseField(course.id, "lesson", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <input
-          value={course.time}
-          onChange={(e) => updateCourseField(course.id, "time", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <input
-          value={course.week}
-          onChange={(e) => updateCourseField(course.id, "week", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <input
-          value={course.month}
-          onChange={(e) => updateCourseField(course.id, "month", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <input
-          value={course.teacher || ""}
-          onChange={(e) => updateCourseField(course.id, "teacher", e.target.value)}
-          className="border p-1 w-full text-sm"
-        />
-      </td>
-      <td className="border px-2 py-1">
-        <button
-          onClick={() => deleteCourse(course.id)}
-          className="bg-red-600 text-white px-2 py-1 rounded text-xs"
-        >
-          Delete
-        </button>
-      </td>
-    </tr>
   );
 }
