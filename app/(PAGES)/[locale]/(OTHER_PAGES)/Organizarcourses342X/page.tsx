@@ -1,7 +1,7 @@
 import CourseManagement from "./CourseManagement";
 
-// 🚀 Tip kontrolünü gevşetiyoruz
-export default function Page(props: any) {
-  const locale = props?.params?.locale ?? "en";
+export default function Page(props: unknown) {
+  const params = (props as { params?: { locale?: string } }).params;
+  const locale = params?.locale ?? "en";
   return <CourseManagement locale={locale} />;
 }
