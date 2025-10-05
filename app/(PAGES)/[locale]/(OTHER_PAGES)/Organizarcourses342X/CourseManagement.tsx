@@ -1,14 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { DndContext, closestCenter } from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-  useSortable,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { SortableItem } from "./SortableItem"; // SortableItem component oluşturulmalı
+import { useRouter } from "next/navigation";
 
 interface CourseCard {
   title: string;
@@ -22,14 +18,21 @@ interface CourseCard {
 
 export default function CourseManagement() {
   const [courses, setCourses] = useState<CourseCard[]>([]);
-  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
+  const router = useRouter();
 
-  // 📥 Fetch courses from blob
+  const handleLogin = () => {
+    if (password === process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD) {
+      setLoggedIn(true);
+    } else {
+      alert("❌ Yanlış şifre");
+    }
+  };
+
+  // 🗂️ Fetch courses from blob
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -40,25 +43,23 @@ export default function CourseManagement() {
         setCourses(data.cardCourses || []);
       } catch (err) {
         console.error("Failed to fetch courses:", err);
-        setCourses([]);
-      } finally {
-        setLoading(false);
       }
     };
     fetchCourses();
   }, []);
 
-  // 🔑 Login
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setLoggedIn(true);
-    } else {
-      alert("❌ Şifre yanlış!");
+  // 🔀 Drag & Drop handler
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over) return;
+    if (active.id !== over.id) {
+      const oldIndex = courses.findIndex((c) => c.title === active.id);
+      const newIndex = courses.findIndex((c) => c.title === over.id);
+      setCourses(arrayMove(courses, oldIndex, newIndex));
     }
   };
 
-  // 📤 Save courses to blob
+  // 💾 Save courses to blob
   const saveCourses = async () => {
     setSaving(true);
     try {
@@ -67,6 +68,7 @@ export default function CourseManagement() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cardCourses: courses }),
       });
+
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Save failed");
       alert("✅ Kurslar başarıyla kaydedildi!");
@@ -78,83 +80,42 @@ export default function CourseManagement() {
     }
   };
 
-  // 🔄 Drag & Drop
-  const handleDragEnd = (event: any) => {
-    const { active, over } = event;
-    if (active.id !== over?.id) {
-      const oldIndex = courses.findIndex((c) => c.title === active.id);
-      const newIndex = courses.findIndex((c) => c.title === over.id);
-      setCourses(arrayMove(courses, oldIndex, newIndex));
-    }
+  const addCourse = () => {
+    const newCourse: CourseCard = {
+      title: "Yeni Kurs",
+      bold: "",
+      lesson: "",
+      time: "",
+      week: "",
+      month: "",
+      teacher: "",
+    };
+    setCourses([...courses, newCourse]);
   };
 
-  // ✅ Sortable item component
-  function SortableItem({ course }: { course: CourseCard }) {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-      useSortable({ id: course.title });
-
-    const style = {
-      transform: CSS.Transform.toString(transform),
-      transition,
-    };
-
-    return (
-      <tr ref={setNodeRef} style={style} {...attributes} {...listeners}>
-        <td className="border px-2 py-1">{course.title}</td>
-        <td className="border px-2 py-1">{course.bold}</td>
-        <td className="border px-2 py-1">{course.lesson}</td>
-        <td className="border px-2 py-1">{course.time}</td>
-        <td className="border px-2 py-1">{course.week}</td>
-        <td className="border px-2 py-1">{course.month}</td>
-        <td className="border px-2 py-1">
-          <input
-            value={course.teacher || ""}
-            onChange={(e) => {
-              const newCourses = [...courses];
-              newCourses[courses.indexOf(course)].teacher = e.target.value;
-              setCourses(newCourses);
-            }}
-            className="border p-1 w-full"
-          />
-        </td>
-        <td className="border px-2 py-1">
-          <button
-            onClick={() => {
-              setCourses(courses.filter((c) => c !== course));
-            }}
-            className="bg-red-500 text-white px-2 py-1 rounded"
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    );
-  }
+  const deleteCourse = (index: number) => {
+    const newCourses = [...courses];
+    newCourses.splice(index, 1);
+    setCourses(newCourses);
+  };
 
   if (!loggedIn) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <form
-          onSubmit={handleLogin}
-          className="border p-10 rounded shadow-lg w-full max-w-sm"
+      <div className="p-10 max-w-md mx-auto">
+        <h2 className="text-xl font-bold mb-5">Admin Login</h2>
+        <input
+          type="password"
+          placeholder="Şifre"
+          className="border p-2 w-full mb-3"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          onClick={handleLogin}
+          className="bg-blue-600 text-white px-5 py-2 rounded w-full"
         >
-          <h2 className="text-xl font-bold mb-5 text-center">
-            Admin Login
-          </h2>
-          <input
-            type="password"
-            placeholder="Şifre"
-            className="border p-2 w-full mb-3"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-5 py-2 w-full rounded"
-          >
-            Giriş
-          </button>
-        </form>
+          Giriş
+        </button>
       </div>
     );
   }
@@ -162,36 +123,124 @@ export default function CourseManagement() {
   return (
     <div className="p-10">
       <h2 className="text-xl font-bold mb-5">Lista de Cursos</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-          <SortableContext
-            items={courses.map((c) => c.title)}
-            strategy={verticalListSortingStrategy}
-          >
-            <table className="w-full border-collapse border border-gray-300 text-sm">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="border px-2 py-1">Title</th>
-                  <th className="border px-2 py-1">Bold</th>
-                  <th className="border px-2 py-1">Lesson</th>
-                  <th className="border px-2 py-1">Time</th>
-                  <th className="border px-2 py-1">Week</th>
-                  <th className="border px-2 py-1">Month</th>
-                  <th className="border px-2 py-1">Teacher</th>
-                  <th className="border px-2 py-1">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {courses.map((c) => (
-                  <SortableItem key={c.title} course={c} />
-                ))}
-              </tbody>
-            </table>
-          </SortableContext>
-        </DndContext>
-      )}
+      <button
+        onClick={addCourse}
+        className="mb-3 bg-green-600 text-white px-5 py-2 rounded"
+      >
+        + Yeni Kurs Ekle
+      </button>
+
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={courses.map((c) => c.title)} strategy={verticalListSortingStrategy}>
+          <table className="w-full border-collapse border border-gray-300 text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="border px-2 py-1">Title</th>
+                <th className="border px-2 py-1">Bold</th>
+                <th className="border px-2 py-1">Lesson</th>
+                <th className="border px-2 py-1">Time</th>
+                <th className="border px-2 py-1">Week</th>
+                <th className="border px-2 py-1">Month</th>
+                <th className="border px-2 py-1">Teacher</th>
+                <th className="border px-2 py-1">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((c, i) => (
+                <SortableItem key={c.title} id={c.title}>
+                  <tr className="text-center">
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.title}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].title = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.bold || ""}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].bold = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.lesson || ""}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].lesson = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.time || ""}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].time = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.week || ""}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].week = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.month || ""}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].month = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <input
+                        value={c.teacher || ""}
+                        onChange={(e) => {
+                          const newCourses = [...courses];
+                          newCourses[i].teacher = e.target.value;
+                          setCourses(newCourses);
+                        }}
+                        className="border p-1 w-full"
+                      />
+                    </td>
+                    <td className="border px-2 py-1">
+                      <button
+                        onClick={() => deleteCourse(i)}
+                        className="bg-red-600 text-white px-3 py-1 rounded"
+                      >
+                        Sil
+                      </button>
+                    </td>
+                  </tr>
+                </SortableItem>
+              ))}
+            </tbody>
+          </table>
+        </SortableContext>
+      </DndContext>
 
       <button
         onClick={saveCourses}
