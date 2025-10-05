@@ -72,9 +72,9 @@ export async function GET(request: Request) {
       );
     }
 
-    // @vercel/blob artık “get()” sağlamıyor — doğrudan fetch() kullan
-    const blobUrl =
-      "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com";
+const blobUrl =
+  "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
+
 
     const res = await fetch(blobUrl);
     if (!res.ok) {
