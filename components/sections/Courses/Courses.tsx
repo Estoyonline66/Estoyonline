@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/contexts/TranslationProvider";
+import { useParams } from "next/navigation"; // App Router paramları
 import { PriceData } from "@/types/PropTypes";
 
 interface CourseCard {
@@ -13,39 +14,44 @@ interface CourseCard {
   month: string;
 }
 
-interface CoursesProps {
-  locale: string; // parent component veya page'den alınacak
-}
-
-export default function Courses({ locale }: CoursesProps) {
+export default function Courses() {
   const { t } = useTranslation();
-  const Data: PriceData = t("courses"); // en.json veya tr.json
+  const params = useParams();
+  const locale = params?.locale ?? "tr"; // varsayılan TR
+
+  const Data: PriceData = t("courses");
 
   const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
+  const [levels, setLevels] = useState(Data?.levels || []);
 
   useEffect(() => {
-    const fetchCardCourses = async () => {
+    const fetchCourses = async () => {
       if (locale === "en") {
         try {
-          const blobUrl =
-            "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
+          const res = await fetch("/api/courses/save?locale=en");
+          const result = await res.json();
 
-          const res = await fetch(blobUrl);
-          if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
-
-          const data = await res.json();
-          setCardCourses(data.cardCourses || []); // sadece cardCourses
+          if (result.success) {
+            setCardCourses(result.data.cardCourses || []);
+            setLevels(result.data.levels || []);
+          } else {
+            console.error("Blob fetch failed:", result.error);
+            setCardCourses(Data?.cardCourses || []);
+            setLevels(Data?.levels || []);
+          }
         } catch (err) {
-          console.error("Error fetching cardCourses from blob:", err);
+          console.error("Error fetching courses from blob:", err);
           setCardCourses(Data?.cardCourses || []);
+          setLevels(Data?.levels || []);
         }
       } else {
-        // /tr veya diğer locale için statik JSON
+        // /tr veya diğer locale için statik JSON kullan
         setCardCourses(Data?.cardCourses || []);
+        setLevels(Data?.levels || []);
       }
     };
 
-    fetchCardCourses();
+    fetchCourses();
   }, [locale, Data]);
 
   return (
@@ -73,28 +79,28 @@ export default function Courses({ locale }: CoursesProps) {
             </li>
           ))}
         </ul>
+      </section>
 
-        {/* Level ve Program Bölümü */}
-        <section className="relative bg-[#0068FF] w-full h-[85rem] flex justify-center items-center z-[-1]">
-          <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
-            <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
-            <ul className="text-white flex flex-col gap-9">
-              {Data?.levels?.map((level, index) => (
-                <li key={index} className="flex flex-col">
-                  <div className="flex flex-col">
-                    <b className="pb-2">{level.title}</b>
-                    {level.items.map((item, idx) => (
-                      <p key={idx} className="font-light">
-                        <span className="font-bold">{item.level}</span> &nbsp;
-                        {item.duration} {item.book}
-                      </p>
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+      {/* Level ve Program Bölümü */}
+      <section className="relative bg-[#0068FF] w-full h-[85rem] flex justify-center items-center z-[-1]">
+        <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
+          <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
+          <ul className="text-white flex flex-col gap-9">
+            {levels.map((level, index) => (
+              <li key={index} className="flex flex-col">
+                <div className="flex flex-col">
+                  <b className="pb-2">{level.title}</b>
+                  {level.items.map((item, idx) => (
+                    <p key={idx} className="font-light">
+                      <span className="font-bold">{item.level}</span> &nbsp;{" "}
+                      {item.duration} {item.book}
+                    </p>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </>
   );
