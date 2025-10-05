@@ -13,8 +13,12 @@ interface CourseCard {
   month: string;
 }
 
-export default function Courses() {
-  const { t, locale } = useTranslation();
+interface CoursesProps {
+  locale: string; // parent component veya page'den alınacak
+}
+
+export default function Courses({ locale }: CoursesProps) {
+  const { t } = useTranslation();
   const Data: PriceData = t("courses"); // en.json veya tr.json
 
   const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
@@ -46,6 +50,7 @@ export default function Courses() {
 
   return (
     <>
+      {/* Kurs Kartları */}
       <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
         <h2 className="text-2xl font-bold mb-4">{Data?.scheduleTitle}</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10">
@@ -69,6 +74,7 @@ export default function Courses() {
           ))}
         </ul>
 
+        {/* Level ve Program Bölümü */}
         <section className="relative bg-[#0068FF] w-full h-[85rem] flex justify-center items-center z-[-1]">
           <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
             <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
