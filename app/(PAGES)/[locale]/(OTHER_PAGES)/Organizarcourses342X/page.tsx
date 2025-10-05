@@ -1,4 +1,3 @@
-// app/(PAGES)/[locale]/(OTHER_PAGES)/Organizarcourses342X/page.tsx
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -80,49 +79,31 @@ function SortableItem({ course, index, onEdit, onDelete }: {
       
       <div className="flex gap-2 items-center">
         <button 
-          onClick={(e) => {
-            e.stopPropagation();
-            onEdit(index);
-          }}
+          onClick={(e) => { e.stopPropagation(); onEdit(index); }}
           className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition-colors"
         >
           Editar
         </button>
         <button 
-          onClick={(e) => {
-            e.stopPropagation();
-            onDelete(index);
-          }}
+          onClick={(e) => { e.stopPropagation(); onDelete(index); }}
           className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700 transition-colors"
         >
           Eliminar
         </button>
-
-        {/* Drag handle */}
-        <span
-          {...listeners}
-          className="ml-3 cursor-grab text-gray-400 hover:text-gray-600 select-none"
-        >
-          ⠿
-        </span>
+        <span {...listeners} className="ml-3 cursor-grab text-gray-400 hover:text-gray-600 select-none">⠿</span>
       </div>
     </div>
   );
 }
 
 export default function CourseManagementPage() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const data: PriceData = t("courses");
   
   const [courses, setCourses] = useState<CourseCard[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [newCourse, setNewCourse] = useState<CourseCard>({
-    title: '',
-    bold: '',
-    lesson: 'First class',
-    time: '',
-    week: '',
-    month: ''
+    title: '', bold: '', lesson: 'First class', time: '', week: '', month: ''
   });
   const [isAdding, setIsAdding] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -131,37 +112,33 @@ export default function CourseManagementPage() {
 
   const sensors = useSensors(
     useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
   // İlk yüklemede mevcut kursları al
   useEffect(() => {
-    if (data?.cardCourses) {
-      setCourses(data.cardCourses);
+    if (locale === 'en') {
+      fetch('/api/courses/save?locale=en')
+        .then(res => res.json())
+        .then(result => { if (result.success) setCourses(result.data.cardCourses || []); })
+        .catch(err => console.error(err));
+    } else {
+      if (data?.cardCourses) setCourses(data.cardCourses);
     }
-  }, [data]);
+  }, [data, locale]);
 
   // Şifre kontrolü
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const correctPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
-    
-    if (password === correctPassword) {
-      setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Contraseña incorrecta');
-    }
+    if (password === correctPassword) { setIsAuthenticated(true); setError(''); }
+    else { setError('Contraseña incorrecta'); }
   };
 
-  // Sürükle-bırak işlemini yönet
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-
     if (over && active.id !== over.id) {
-      setCourses((items) => {
+      setCourses(items => {
         const oldIndex = items.findIndex((_, index) => index.toString() === active.id);
         const newIndex = items.findIndex((_, index) => index.toString() === over.id);
         return arrayMove(items, oldIndex, newIndex);
@@ -169,187 +146,58 @@ export default function CourseManagementPage() {
     }
   };
 
-  // Yeni kurs ekle
   const handleAddCourse = () => {
     if (newCourse.title && newCourse.bold && newCourse.time && newCourse.week && newCourse.month) {
       setCourses([...courses, { ...newCourse }]);
-      setNewCourse({
-        title: '',
-        bold: '',
-        lesson: 'First class',
-        time: '',
-        week: '',
-        month: ''
-      });
+      setNewCourse({ title:'', bold:'', lesson:'First class', time:'', week:'', month:'' });
       setIsAdding(false);
       alert('¡Curso agregado con éxito!');
-    } else {
-      alert('¡Por favor complete todos los campos!');
-    }
+    } else alert('¡Por favor complete todos los campos!');
   };
 
-  // Kurs düzenle
-  const handleEditCourse = (index: number) => {
-    setEditingIndex(index);
-    setNewCourse({ ...courses[index] });
-    setIsAdding(false);
-	 window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  // Kurs güncelle
+  const handleEditCourse = (index: number) => { setEditingIndex(index); setNewCourse({ ...courses[index] }); setIsAdding(false); window.scrollTo({ top:0, behavior:"smooth" }); };
   const handleUpdateCourse = () => {
     if (editingIndex !== null) {
-      const updatedCourses = [...courses];
-      updatedCourses[editingIndex] = { ...newCourse };
-      setCourses(updatedCourses);
-      setEditingIndex(null);
-      setNewCourse({
-        title: '',
-        bold: '',
-        lesson: 'First class',
-        time: '',
-        week: '',
-        month: ''
-      });
+      const updatedCourses = [...courses]; updatedCourses[editingIndex] = { ...newCourse }; setCourses(updatedCourses);
+      setEditingIndex(null); setNewCourse({ title:'', bold:'', lesson:'First class', time:'', week:'', month:'' });
       alert('¡Curso actualizado con éxito!');
     }
   };
+  const handleDeleteCourse = (index: number) => { if (confirm('¿Estás seguro de que quieres eliminar este curso?')) { setCourses(courses.filter((_, i) => i !== index)); alert('¡Curso eliminado con éxito!'); } };
+  const handleCancel = () => { setEditingIndex(null); setIsAdding(false); setNewCourse({ title:'', bold:'', lesson:'First class', time:'', week:'', month:'' }); };
 
-  // Kurs sil
-  const handleDeleteCourse = (index: number) => {
-    if (confirm('¿Estás seguro de que quieres eliminar este curso?')) {
-      const updatedCourses = courses.filter((_, i) => i !== index);
-      setCourses(updatedCourses);
-      alert('¡Curso eliminado con éxito!');
-    }
+  const handleSaveChanges = async () => {
+    if (locale !== 'en') { alert('Solo se pueden guardar cambios en /en/courses'); return; }
+    try {
+      const coursesData = { scheduleTitle: data?.scheduleTitle || "Programa de Cursos", title: data?.title || "Niveles de Español", levels: data?.levels || [], cardCourses: courses };
+      const response = await fetch('/api/courses/save?locale=en', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(coursesData) });
+      const result = await response.json();
+      if (response.ok) { alert('✅ ¡Cursos guardados exitosamente!'); console.log('✅ Courses saved to:', result.url); }
+      else { alert('❌ Error: '+(result.error||'Unknown error')); console.error(result); }
+    } catch (error) { console.error(error); alert('❌ Error al guardar los cambios'); }
   };
 
-  // İptal
-  const handleCancel = () => {
-    setEditingIndex(null);
-    setIsAdding(false);
-    setNewCourse({
-      title: '',
-      bold: '',
-      lesson: 'First class',
-      time: '',
-      week: '',
-      month: ''
-    });
-  };
-
-const handleSaveChanges = async () => {
-  try {
-    const coursesData = {
-      scheduleTitle: data?.scheduleTitle || "Programa de Cursos",
-      title: data?.title || "Niveles de Español",
-      levels: data?.levels || [],
-      cardCourses: courses
-    };
-
-    console.log('📤 Saving courses to blob...');
-
-    const response = await fetch('/api/courses/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(coursesData),
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      alert('✅ ¡Cursos guardados exitosamente! Los cambios se verán reflejados automáticamente.');
-      console.log('✅ Courses saved to:', result.url);
-    } else {
-      console.error('❌ Save error:', result);
-      alert('❌ Error: ' + (result.error || 'Unknown error'));
-    }
-  } catch (error) {
-    console.error('❌ Error saving:', error);
-    alert('❌ Error al guardar los cambios');
-  }
-};
-
-
-
-// Şifre giriş ekranı
-if (!isAuthenticated) {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">Acceso Administrativo</h1>
-          <p className="text-gray-600 mt-2">Ingrese la contraseña para acceder</p>
-        </div>
-        
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-              Contraseña
-            </label>
-            <div className="relative">
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
-                placeholder="Ingrese la contraseña"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  const passwordInput = document.getElementById('password') as HTMLInputElement;
-                  if (passwordInput) {
-                    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-                  }
-                }}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-              >
-                👁️
-              </button>
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
+          <div className="text-center mb-6"><h1 className="text-2xl font-bold">Acceso Administrativo</h1><p className="text-gray-600 mt-2">Ingrese la contraseña para acceder</p></div>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium mb-2 text-gray-700">Contraseña</label>
+              <div className="relative">
+                <input type="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10" placeholder="Ingrese la contraseña" required />
+                <button type="button" onClick={()=>{ const inp=document.getElementById('password') as HTMLInputElement; if(inp) inp.type=inp.type==='password'?'text':'password'; }} className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600">👁️</button>
+              </div>
             </div>
-          </div>
-          
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              id="rememberPassword"
-              onChange={(e) => {
-                if (e.target.checked && password) {
-                  localStorage.setItem('courses_admin_password', password);
-                } else {
-                  localStorage.removeItem('courses_admin_password');
-                }
-              }}
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-            />
-            <label htmlFor="rememberPassword" className="ml-2 block text-sm text-gray-700">
-              Recordar contraseña
-            </label>
-          </div>
-          
-          {error && (
-            <div className="text-red-600 text-sm text-center bg-red-50 p-2 rounded">{error}</div>
-          )}
-          
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            Acceder
-          </button>
-        </form>
+            {error && <div className="text-red-600 text-sm text-center bg-red-50 p-2 rounded">{error}</div>}
+            <button type="submit" className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium">Acceder</button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
-}
-
-
-  // Ana içerik
+    );
+  }
+ // Ana içerik
   return (
     <div className="container mx-auto p-6 max-w-6xl">
       <div className="bg-white rounded-lg shadow-lg border">
