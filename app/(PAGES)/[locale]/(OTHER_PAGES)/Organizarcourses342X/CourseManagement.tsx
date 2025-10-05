@@ -1,9 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import React, { useEffect, useState } from "react";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface CourseCard {
+  id: string;
   title: string;
   bold: string;
   lesson: string;
@@ -17,19 +32,25 @@ export default function CourseManagement() {
   const [courses, setCourses] = useState<CourseCard[]>([]);
   const [saving, setSaving] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
 
-  // 📥 Blob’dan kursları çek
+  const PASSWORD = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD || "";
+
+  // Fetch courses from blob
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const res = await fetch(
           "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json"
         );
-        if (!res.ok) throw new Error("Blob fetch failed");
         const data = await res.json();
-        setCourses(data.cardCourses || []);
+        // Ensure each course has an id
+        const coursesWithId = (data.cardCourses || []).map((c: any, idx: number) => ({
+          ...c,
+          id: c.id || `course-${idx}`,
+        }));
+        setCourses(coursesWithId);
       } catch (err) {
         console.error("Failed to fetch courses:", err);
       }
@@ -37,16 +58,29 @@ export default function CourseManagement() {
     fetchCourses();
   }, []);
 
-  // 🧩 Drag & Drop
-  const handleDragEnd = (result: any) => {
-    if (!result.destination) return;
-    const newCourses = Array.from(courses);
-    const [moved] = newCourses.splice(result.source.index, 1);
-    newCourses.splice(result.destination.index, 0, moved);
-    setCourses(newCourses);
+  // Login handler
+  const handleLogin = () => {
+    if (password === PASSWORD) {
+      setLoggedIn(true);
+      setLoginError("");
+    } else {
+      setLoginError("Şifre yanlış!");
+    }
   };
 
-  // 📤 Kaydetme fonksiyonu
+  // DnD setup
+  const sensors = useSensors(useSensor(PointerSensor));
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      const oldIndex = courses.findIndex((c) => c.id === active.id);
+      const newIndex = courses.findIndex((c) => c.id === over.id);
+      setCourses(arrayMove(courses, oldIndex, newIndex));
+    }
+  };
+
+  // Save courses to blob
   const saveCourses = async () => {
     setSaving(true);
     try {
@@ -66,60 +100,49 @@ export default function CourseManagement() {
     }
   };
 
-  // ➕ Add kurs
+  // Add new course
   const addCourse = () => {
-    setCourses([
-      ...courses,
-      {
-        title: "Yeni Kurs",
-        bold: "",
-        lesson: "",
-        time: "",
-        week: "",
-        month: "",
-        teacher: "",
-      },
-    ]);
+    const newCourse: CourseCard = {
+      id: `course-${Date.now()}`,
+      title: "New Course",
+      bold: "",
+      lesson: "",
+      time: "",
+      week: "",
+      month: "",
+      teacher: "",
+    };
+    setCourses([...courses, newCourse]);
   };
 
-  // ❌ Delete kurs
-  const deleteCourse = (index: number) => {
-    const newCourses = [...courses];
-    newCourses.splice(index, 1);
-    setCourses(newCourses);
+  // Delete course
+  const deleteCourse = (id: string) => {
+    setCourses(courses.filter((c) => c.id !== id));
   };
 
-  // 🔒 Login kontrolü
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (username === "admin" && password === "admin123") {
-      setLoggedIn(true);
-    } else {
-      alert("Yanlış kullanıcı adı veya parola");
-    }
+  // Editable course field
+  const updateCourseField = (id: string, field: keyof CourseCard, value: string) => {
+    setCourses(courses.map((c) => (c.id === id ? { ...c, [field]: value } : c)));
   };
 
   if (!loggedIn) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h2 className="text-2xl mb-4">Admin Login</h2>
-        <form onSubmit={handleLogin} className="flex flex-col gap-3 w-64">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="border p-2"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="border p-2"
-          />
-          <button className="bg-blue-600 text-white p-2 rounded">Login</button>
-        </form>
+      <div className="p-10 max-w-sm mx-auto">
+        <h2 className="text-xl font-bold mb-5">Admin Login</h2>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Şifre"
+          className="border p-2 w-full mb-3"
+        />
+        <button
+          onClick={handleLogin}
+          className="bg-blue-600 text-white px-5 py-2 rounded w-full"
+        >
+          Giriş
+        </button>
+        {loginError && <p className="text-red-600 mt-2">{loginError}</p>}
       </div>
     );
   }
@@ -127,138 +150,42 @@ export default function CourseManagement() {
   return (
     <div className="p-10">
       <h2 className="text-xl font-bold mb-5">Lista de Cursos</h2>
+
       <button
         onClick={addCourse}
-        className="mb-3 bg-green-600 text-white px-3 py-1 rounded"
+        className="mb-3 bg-green-600 text-white px-4 py-2 rounded"
       >
-        ➕ Add Course
+        Add Course
       </button>
 
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="courses">
-          {(provided) => (
-            <table
-              className="w-full border-collapse border border-gray-300 text-sm"
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="border px-2 py-1">Title</th>
-                  <th className="border px-2 py-1">Bold</th>
-                  <th className="border px-2 py-1">Lesson</th>
-                  <th className="border px-2 py-1">Time</th>
-                  <th className="border px-2 py-1">Week</th>
-                  <th className="border px-2 py-1">Month</th>
-                  <th className="border px-2 py-1">Teacher</th>
-                  <th className="border px-2 py-1">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {courses.map((c, i) => (
-                  <Draggable key={i} draggableId={`course-${i}`} index={i}>
-                    {(provided) => (
-                      <tr
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        className="text-center"
-                      >
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.title}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].title = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.bold}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].bold = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.lesson}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].lesson = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.time}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].time = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.week}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].week = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.month}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].month = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <input
-                            value={c.teacher || ""}
-                            onChange={(e) => {
-                              const newCourses = [...courses];
-                              newCourses[i].teacher = e.target.value;
-                              setCourses(newCourses);
-                            }}
-                            className="border p-1 w-full text-sm"
-                          />
-                        </td>
-                        <td className="border px-2 py-1">
-                          <button
-                            onClick={() => deleteCourse(i)}
-                            className="bg-red-600 text-white px-2 py-1 rounded"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </tbody>
-            </table>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={courses.map((c) => c.id)} strategy={verticalListSortingStrategy}>
+          <table className="w-full border-collapse border border-gray-300 text-sm">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="border px-2 py-1">Title</th>
+                <th className="border px-2 py-1">Bold</th>
+                <th className="border px-2 py-1">Lesson</th>
+                <th className="border px-2 py-1">Time</th>
+                <th className="border px-2 py-1">Week</th>
+                <th className="border px-2 py-1">Month</th>
+                <th className="border px-2 py-1">Teacher</th>
+                <th className="border px-2 py-1">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((c) => (
+                <SortableRow
+                  key={c.id}
+                  course={c}
+                  updateCourseField={updateCourseField}
+                  deleteCourse={deleteCourse}
+                />
+              ))}
+            </tbody>
+          </table>
+        </SortableContext>
+      </DndContext>
 
       <button
         onClick={saveCourses}
@@ -268,5 +195,84 @@ export default function CourseManagement() {
         {saving ? "Saving..." : "Guardar Cambios"}
       </button>
     </div>
+  );
+}
+
+interface SortableRowProps {
+  course: CourseCard;
+  updateCourseField: (id: string, field: keyof CourseCard, value: string) => void;
+  deleteCourse: (id: string) => void;
+}
+
+function SortableRow({ course, updateCourseField, deleteCourse }: SortableRowProps) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: course.id,
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <tr ref={setNodeRef} style={style} {...attributes} {...listeners} className="text-center">
+      <td className="border px-2 py-1">
+        <input
+          value={course.title}
+          onChange={(e) => updateCourseField(course.id, "title", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <input
+          value={course.bold}
+          onChange={(e) => updateCourseField(course.id, "bold", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <input
+          value={course.lesson}
+          onChange={(e) => updateCourseField(course.id, "lesson", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <input
+          value={course.time}
+          onChange={(e) => updateCourseField(course.id, "time", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <input
+          value={course.week}
+          onChange={(e) => updateCourseField(course.id, "week", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <input
+          value={course.month}
+          onChange={(e) => updateCourseField(course.id, "month", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <input
+          value={course.teacher || ""}
+          onChange={(e) => updateCourseField(course.id, "teacher", e.target.value)}
+          className="border p-1 w-full text-sm"
+        />
+      </td>
+      <td className="border px-2 py-1">
+        <button
+          onClick={() => deleteCourse(course.id)}
+          className="bg-red-600 text-white px-2 py-1 rounded text-xs"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
   );
 }
