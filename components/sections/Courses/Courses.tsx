@@ -24,7 +24,8 @@ export default function Courses() {
           const blobUrl =
             "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
-          const res = await fetch(blobUrl);
+const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" });
+
           if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
 
           const data = await res.json();
