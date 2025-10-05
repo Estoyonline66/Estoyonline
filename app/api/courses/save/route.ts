@@ -3,6 +3,9 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
+/**
+ * POST — Save updated course data to Vercel Blob
+ */
 export async function POST(request: Request) {
   try {
     const url = new URL(request.url);
@@ -50,6 +53,30 @@ export async function POST(request: Request) {
           "Failed to save courses: " +
           (error instanceof Error ? error.message : "Unknown error"),
       },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * ✅ GET — Fetch course data from Vercel Blob
+ */
+export async function GET() {
+  try {
+    const blobUrl =
+      "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
+
+    const res = await fetch(blobUrl);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch blob (${res.status})`);
+    }
+
+    const data = await res.json();
+    return NextResponse.json({ success: true, data });
+  } catch (error) {
+    console.error("❌ GET /api/courses/save failed:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to load course data" },
       { status: 500 }
     );
   }
