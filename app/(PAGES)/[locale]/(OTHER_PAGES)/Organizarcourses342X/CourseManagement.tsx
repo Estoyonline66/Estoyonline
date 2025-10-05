@@ -84,24 +84,98 @@ export default function CourseManagement({ locale }: CourseManagementProps) {
               ],
             },
           ],
-          cardCourses: [
-            {
-              title: "Sample Course 1",
-              bold: "Morning",
-              lesson: "First class",
-              time: "10:00 - 12:00",
-              week: "Monday & Wednesday",
-              month: "January",
-            },
-            {
-              title: "Sample Course 2",
-              bold: "Evening",
-              lesson: "First class",
-              time: "18:00 - 20:00",
-              week: "Tuesday & Thursday",
-              month: "February",
-            },
-          ],
+          cardCourses:
+	
+	[
+  {
+    "title": "A1.1 Beginner",
+    "bold": "Saturday",
+    "lesson": "First class",
+    "time": "5:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Oct 11"
+  },
+  {
+    "title": "A1.2",
+    "bold": "Monday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Nov 3"
+  },
+  {
+    "title": "A2.1",
+    "bold": "Monday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Oct 6"
+  },
+  {
+    "title": "A2.1",
+    "bold": "Friday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 26"
+  },
+  {
+    "title": "A2.2",
+    "bold": "Monday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 1"
+  },
+  {
+    "title": "A2.2",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 3"
+  },
+  {
+    "title": "A2.3",
+    "bold": "Tuesday",
+    "lesson": "First class",
+    "time": "6:00 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 9"
+  },
+  {
+    "title": "B1.2",
+    "bold": "Friday",
+    "lesson": "First class",
+    "time": "5:30 pm Spain time",
+    "week": "Once a week 2.5 hours",
+    "month": "Sep 5"
+  },
+  {
+    "title": "Speaking Course Beginner A1",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "6:30 pm Spain time",
+    "week": "Once a week 2 hours",
+    "month": "Oct 1"
+  },
+  {
+    "title": "Speaking Course Intermediate A2",
+    "bold": "Wednesday",
+    "lesson": "First class",
+    "time": "6:30 pm Spain time",
+    "week": "Once a week 2 hours",
+    "month": "Sep 17"
+  },
+  {
+    "title": "Speaking Course Advanced B1-B2",
+    "bold": "Saturday",
+    "lesson": "First class",
+    "time": "9:00 am Spain time",
+    "week": "Once a week 2 hours",
+    "month": "Oct 11"
+  }
+],
         };
 
         console.log("⏫ Uploading initial course data to blob...");
