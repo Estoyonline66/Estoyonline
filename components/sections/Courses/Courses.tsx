@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { PriceData } from "@/types/PropTypes";
@@ -14,14 +12,14 @@ interface CourseCard {
 }
 
 export default function Courses() {
-  const { t, locale } = useTranslation();
-  const Data: PriceData = t("courses"); // en.json veya tr.json
+  const { t, language } = useTranslation(); // ✅ değişiklik burada
+  const Data: PriceData = t("courses");
 
   const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
 
   useEffect(() => {
     const fetchCardCourses = async () => {
-      if (locale === "en") {
+      if (language === "en") { // ✅ locale → language
         try {
           const blobUrl =
             "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
@@ -30,19 +28,18 @@ export default function Courses() {
           if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
 
           const data = await res.json();
-          setCardCourses(data.cardCourses || []); // sadece cardCourses
+          setCardCourses(data.cardCourses || []);
         } catch (err) {
           console.error("Error fetching cardCourses from blob:", err);
           setCardCourses(Data?.cardCourses || []);
         }
       } else {
-        // /tr veya diğer locale için statik JSON
         setCardCourses(Data?.cardCourses || []);
       }
     };
 
     fetchCardCourses();
-  }, [locale, Data]);
+  }, [language, Data]); // ✅ dependency de değişti
 
   return (
     <>
