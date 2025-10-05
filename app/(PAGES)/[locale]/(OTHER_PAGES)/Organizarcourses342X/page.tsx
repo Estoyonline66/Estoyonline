@@ -1,10 +1,7 @@
-// -------------------------------
-// Server Component (Next.js Page)
-// -------------------------------
-
 import CourseManagement from "./CourseManagement";
 
-export default async function Page({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+// ⚡ Burada params tipini gevşetiyoruz (Promise değil, unknown değil)
+export default function Page({ params }: { params?: { locale?: string } }) {
+  const locale = params?.locale ?? "en";
   return <CourseManagement locale={locale} />;
 }
