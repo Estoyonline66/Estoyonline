@@ -176,36 +176,36 @@ export default function CourseManagement({ locale }: { locale: string }) {
     setNewCourse({ title: '', bold: '', lesson: 'First class', time: '', week: '', month: '' });
   };
 
-  const handleSaveChanges = async () => {
-    if (locale !== 'en') {
-      alert('Solo se pueden guardar cambios en /en/courses');
-      return;
+// Save changes
+const handleSaveChanges = async () => {
+  if (locale !== "en") {
+    alert("Solo se pueden guardar cambios en /en/courses");
+    return;
+  }
+
+  try {
+    const coursesData = {
+      cardCourses: courses, // sadece cardCourses
+    };
+
+    const response = await fetch("/api/courses/save?locale=en", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(coursesData),
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      alert("✅ Cursos guardados exitosamente!");
+    } else {
+      alert("❌ Error: " + (result.error || "Unknown error"));
     }
-    try {
-      const coursesData = {
-        scheduleTitle: data?.scheduleTitle || "Programa de Cursos",
-        title: data?.title || "Niveles de Español",
-        levels: data?.levels || [],
-        cardCourses: courses
-      };
-      const response = await fetch('/api/courses/save?locale=en', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(coursesData)
-      });
-      const result = await response.json();
-      if (response.ok) {
-        alert('✅ ¡Cursos guardados exitosamente!');
-        console.log('✅ Courses saved to:', result.url);
-      } else {
-        alert('❌ Error: ' + (result.error || 'Unknown error'));
-        console.error(result);
-      }
-    } catch (error) {
-      console.error(error);
-      alert('❌ Error al guardar los cambios');
-    }
-  };
+  } catch (err) {
+    console.error(err);
+    alert("❌ Error al guardar los cambios");
+  }
+};
+
 
   if (!isAuthenticated) {
     return (
