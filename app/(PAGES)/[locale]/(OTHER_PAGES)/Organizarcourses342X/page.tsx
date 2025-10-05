@@ -21,13 +21,6 @@ import { CSS } from '@dnd-kit/utilities';
 import { useTranslation } from '@/contexts/TranslationProvider';
 import { PriceData } from '@/types/PropTypes';
 
-export default function CourseManagementPage({ params }: { params: { locale: string } }) {
-  const { t } = useTranslation();
-  const locale = params.locale; // ✅ buradan alıyoruz
-
-  const data: PriceData = t("courses");
-
-
 interface CourseCard {
   title: string;
   bold: string;
@@ -103,10 +96,11 @@ function SortableItem({ course, index, onEdit, onDelete }: {
   );
 }
 
-export default function CourseManagementPage() {
-  const { t, locale } = useTranslation();
+export default function CourseManagementPage({ params }: { params: { locale: string } }) {
+  const { t } = useTranslation();
+  const locale = params.locale; // ✅ locale buradan geliyor
   const data: PriceData = t("courses");
-  
+
   const [courses, setCourses] = useState<CourseCard[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [newCourse, setNewCourse] = useState<CourseCard>({
@@ -204,7 +198,8 @@ export default function CourseManagementPage() {
       </div>
     );
   }
- // Ana içerik
+
+  // Ana içerik
   return (
     <div className="container mx-auto p-6 max-w-6xl">
       <div className="bg-white rounded-lg shadow-lg border">
