@@ -8,10 +8,33 @@ interface CourseCard {
   bold: string; // Día
   time: string;
   week: string;
-  month: string;
+  month: string; // Örn: "Oct 11"
   teacher?: string;
-  lesson?: string; // Blob’da kalacak ama tabloda görünmeyecek
+  lesson?: string;
 }
+
+// Helper: "Oct 11" => "2025-10-11"
+const parseBlobMonthToDate = (monthStr: string): string => {
+  try {
+    const date = new Date(`${monthStr} 2025`);
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  } catch {
+    return "";
+  }
+};
+
+// Helper: "2025-10-11" => "Oct 11"
+const formatDateToBlobMonth = (dateStr: string): string => {
+  try {
+    const date = new Date(dateStr);
+    return date.toLocaleString("en-US", { month: "short", day: "numeric" });
+  } catch {
+    return dateStr;
+  }
+};
 
 export default function CourseManagement() {
   const [courses, setCourses] = useState<CourseCard[]>([]);
@@ -35,7 +58,13 @@ export default function CourseManagement() {
           { cache: "no-cache" }
         );
         const data = await res.json();
-        setCourses(data.cardCourses || []);
+
+        // Blob'dan gelen month değerlerini yyyy-MM-dd formatına çevir
+        const formatted = (data.cardCourses || []).map((c: CourseCard) => ({
+          ...c,
+          month: parseBlobMonthToDate(c.month),
+        }));
+        setCourses(formatted);
       } catch (err) {
         console.error("Error al cargar cursos:", err);
       }
@@ -55,10 +84,16 @@ export default function CourseManagement() {
   const saveCourses = async () => {
     setSaving(true);
     try {
+      // Kaydetmeden önce month değerlerini blob formatına çevir
+      const payload = courses.map((c) => ({
+        ...c,
+        month: formatDateToBlobMonth(c.month),
+      }));
+
       const res = await fetch(`/api/courses/save?locale=en`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cardCourses: courses }),
+        body: JSON.stringify({ cardCourses: payload }),
       });
 
       const data = await res.json();
@@ -136,24 +171,24 @@ export default function CourseManagement() {
         </button>
       </div>
 
-      {/* Mobil yatay scroll */}
       <div className="overflow-x-auto">
-        <table className="min-w-[800px] text-sm border-collapse border border-gray-300 rounded-lg">
+        <table className="min-w-[900px] text-sm border-collapse border border-gray-300 rounded-lg">
           <thead className="bg-gray-100">
             <tr className="text-left">
               <th className="border px-2 py-2 w-[80px]">Acciones</th>
               <th className="border px-2 py-2 w-[250px]">Título</th>
               <th className="border px-2 py-2 w-[120px]">Día</th>
-              <th className="border px-2 py-2 w-[150px]">Hora</th>
-              <th className="border px-2 py-2 w-[150px]">Semana</th>
-              <th className="border px-2 py-2 w-[80px]">Mes</th>
+              <th className="border px-2 py-2 w-[200px]">Hora</th>
+              <th className="border px-2 py-2 w-[200px]">Semana</th>
+              <th className="border px-2 py-2 w-[120px]">Mes</th>
               <th className="border px-2 py-2 w-[150px]">Profesor</th>
+              <th className="border px-2 py-2 w-[80px]">Eliminar</th>
             </tr>
           </thead>
           <tbody>
             {courses.map((c, i) => (
               <tr key={i} className="hover:bg-gray-50">
-                {/* Sol tarafta oklar ve silme */}
+                {/* Oklar solda */}
                 <td className="border px-2 py-1 text-center">
                   <div className="flex flex-col items-center gap-1">
                     <button
@@ -169,12 +204,6 @@ export default function CourseManagement() {
                       className="p-1 disabled:opacity-30"
                     >
                       <ArrowDown size={16} />
-                    </button>
-                    <button
-                      onClick={() => deleteCourse(i)}
-                      className="p-1 text-red-600 hover:text-red-800"
-                    >
-                      <Trash2 size={16} />
                     </button>
                   </div>
                 </td>
@@ -248,20 +277,18 @@ export default function CourseManagement() {
                       newCourses[i].month = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="border p-1 w-full rounded"
+                    className="border p-1 w-full rounded text-center"
                   />
                 </td>
 
-                <td className="border px-2 py-1">
-                  <input
-                    value={c.teacher || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].teacher = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded"
-                  />
+                {/* Çöp kutusu sağda */}
+                <td className="border px-2 py-1 text-center">
+                  <button
+                    onClick={() => deleteCourse(i)}
+                    className="p-1 text-red-600 hover:text-red-800"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </td>
               </tr>
             ))}
