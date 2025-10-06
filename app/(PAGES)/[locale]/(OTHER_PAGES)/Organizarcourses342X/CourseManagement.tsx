@@ -5,7 +5,7 @@ import { ArrowUp, ArrowDown, Trash2, Plus, Save } from "lucide-react";
 
 interface CourseCard {
   title: string;
-  bold: string;
+  bold: string; // artık Día olacak (haftanın günü)
   lesson: string;
   time: string;
   week: string;
@@ -52,7 +52,7 @@ export default function CourseManagement() {
         body: JSON.stringify({
           cardCourses: courses.map((c) => ({
             ...c,
-            lesson: c.lesson || "First class", // mantener estático
+            lesson: c.lesson || "First class",
           })),
         }),
       });
@@ -81,10 +81,10 @@ export default function CourseManagement() {
   const addCourse = () => {
     const newCourse: CourseCard = {
       title: "Nuevo Curso",
-      bold: "",
+      bold: "Monday",
       lesson: "First class",
       time: "",
-      week: "",
+      week: "Once a week 2.5 hours",
       month: "",
       teacher: "",
     };
@@ -96,6 +96,21 @@ export default function CourseManagement() {
     newCourses.splice(index, 1);
     setCourses(newCourses);
   };
+
+  const daysOfWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  const weekOptions = [
+    "Once a week 2.5 hours",
+    "Once a week 2 hours",
+  ];
 
   if (!loggedIn) {
     return (
@@ -119,155 +134,19 @@ export default function CourseManagement() {
   }
 
   return (
-    <div className="p-10">
-      <div className="flex items-center justify-between mb-5">
-        <h2 className="text-2xl font-bold">Lista de Cursos</h2>
+    <div className="p-4 md:p-10">
+      <div className="flex flex-col md:flex-row items-center justify-between mb-5 gap-3">
+        <h2 className="text-2xl font-bold text-center md:text-left">Lista de Cursos</h2>
         <button
           onClick={addCourse}
-          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+          className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full md:w-auto"
         >
           <Plus size={18} /> Nuevo Curso
         </button>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full text-sm border border-gray-200 shadow-sm rounded-xl overflow-hidden">
+        <table className="min-w-[900px] w-full text-sm border border-gray-200 shadow-md rounded-lg overflow-hidden">
           <thead className="bg-gray-100 text-gray-700">
             <tr>
               <th className="p-2 w-[80px]">Mover</th>
-              <th className="p-2 w-[250px]">Título</th>
-              <th className="p-2 w-[160px]">Negrita</th>
-              <th className="p-2 w-[180px]">Hora</th>
-              <th className="p-2 w-[180px]">Semana</th>
-              <th className="p-2 w-[80px]">Mes</th>
-              <th className="p-2 w-[180px]">Profesor</th>
-              <th className="p-2 w-[80px]">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((c, i) => (
-              <tr
-                key={i}
-                className="border-t border-gray-200 hover:bg-gray-50 transition-colors"
-              >
-                <td className="text-center">
-                  <div className="flex flex-col items-center justify-center">
-                    <button
-                      onClick={() => moveCourse(i, "up")}
-                      disabled={i === 0}
-                      className={`p-1 rounded hover:bg-gray-200 ${
-                        i === 0 ? "opacity-30" : ""
-                      }`}
-                    >
-                      <ArrowUp size={16} />
-                    </button>
-                    <button
-                      onClick={() => moveCourse(i, "down")}
-                      disabled={i === courses.length - 1}
-                      className={`p-1 rounded hover:bg-gray-200 ${
-                        i === courses.length - 1 ? "opacity-30" : ""
-                      }`}
-                    >
-                      <ArrowDown size={16} />
-                    </button>
-                  </div>
-                </td>
-
-                <td>
-                  <input
-                    value={c.title}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].title = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-
-                <td>
-                  <input
-                    value={c.bold || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].bold = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-
-                <td>
-                  <input
-                    value={c.time || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].time = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-
-                <td>
-                  <input
-                    value={c.week || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].week = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-
-                <td>
-                  <input
-                    value={c.month || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].month = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="w-full border border-gray-300 rounded p-1 text-center"
-                  />
-                </td>
-
-                <td>
-                  <input
-                    value={c.teacher || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].teacher = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="w-full border border-gray-300 rounded p-1"
-                  />
-                </td>
-
-                <td className="text-center">
-                  <button
-                    onClick={() => deleteCourse(i)}
-                    className="text-red-600 hover:text-red-800"
-                    title="Eliminar curso"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <button
-        onClick={saveCourses}
-        disabled={saving}
-        className="mt-6 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded"
-      >
-        <Save size={18} />
-        {saving ? "Guardando..." : "Guardar Cambios"}
-      </button>
-    </div>
-  );
-}
