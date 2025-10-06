@@ -78,7 +78,7 @@ export default function CourseManagement() {
       bold: "Monday",
       time: "6:00 pm Spain time",
       week: "Once a week 2.5 hours",
-      month: "Oct 11",
+      month: "2025-10-06",
       teacher: "",
       lesson: "First class",
     };
@@ -94,7 +94,7 @@ export default function CourseManagement() {
 
   if (!loggedIn) {
     return (
-      <div className="p-10 max-w-md mx-auto text-center">
+      <div className="p-4 max-w-md mx-auto text-center">
         <h2 className="text-xl font-bold mb-5">Inicio de sesión del administrador</h2>
         <input
           type="password"
@@ -113,7 +113,6 @@ export default function CourseManagement() {
     );
   }
 
-  // Dropdown seçenekleri
   const days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
   const weeks = ["Once a week 2.5 hours","Once a week 2 hours"];
 
@@ -125,18 +124,10 @@ export default function CourseManagement() {
     hours.push(`${hour12}:30 ${ampm} Spain time`);
   }
 
-  const formatMonth = (dateStr: string) => {
-    if (!dateStr) return "";
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  };
-
   return (
-    <div className="p-4 md:p-10">
-      <div className="flex flex-col md:flex-row items-center justify-between mb-5 gap-3">
-        <h2 className="text-2xl font-bold text-center md:text-left">
-          Lista de Cursos
-        </h2>
+    <div className="p-4">
+      <div className="flex flex-col items-center justify-between mb-5 gap-3">
+        <h2 className="text-2xl font-bold text-center">Lista de Cursos</h2>
         <button
           onClick={addCourse}
           className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded"
@@ -145,22 +136,49 @@ export default function CourseManagement() {
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-sm">
-        <table className="min-w-full text-sm border-collapse">
+      {/* Mobil yatay scroll */}
+      <div className="overflow-x-auto">
+        <table className="min-w-[800px] text-sm border-collapse border border-gray-300 rounded-lg">
           <thead className="bg-gray-100">
             <tr className="text-left">
+              <th className="border px-2 py-2 w-[80px]">Acciones</th>
               <th className="border px-2 py-2 w-[250px]">Título</th>
               <th className="border px-2 py-2 w-[120px]">Día</th>
               <th className="border px-2 py-2 w-[150px]">Hora</th>
               <th className="border px-2 py-2 w-[150px]">Semana</th>
               <th className="border px-2 py-2 w-[80px]">Mes</th>
               <th className="border px-2 py-2 w-[150px]">Profesor</th>
-              <th className="border px-2 py-2 w-[80px] text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {courses.map((c, i) => (
               <tr key={i} className="hover:bg-gray-50">
+                {/* Sol tarafta oklar ve silme */}
+                <td className="border px-2 py-1 text-center">
+                  <div className="flex flex-col items-center gap-1">
+                    <button
+                      onClick={() => moveCourse(i, "up")}
+                      disabled={i === 0}
+                      className="p-1 disabled:opacity-30"
+                    >
+                      <ArrowUp size={16} />
+                    </button>
+                    <button
+                      onClick={() => moveCourse(i, "down")}
+                      disabled={i === courses.length - 1}
+                      className="p-1 disabled:opacity-30"
+                    >
+                      <ArrowDown size={16} />
+                    </button>
+                    <button
+                      onClick={() => deleteCourse(i)}
+                      className="p-1 text-red-600 hover:text-red-800"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                </td>
+
                 <td className="border px-2 py-1">
                   <input
                     value={c.title}
@@ -224,14 +242,14 @@ export default function CourseManagement() {
                 <td className="border px-2 py-1 text-center">
                   <input
                     type="date"
+                    value={c.month}
                     onChange={(e) => {
                       const newCourses = [...courses];
-                      newCourses[i].month = formatMonth(e.target.value);
+                      newCourses[i].month = e.target.value;
                       setCourses(newCourses);
                     }}
                     className="border p-1 w-full rounded"
                   />
-                  <div className="text-xs text-gray-500 mt-1">{c.month}</div>
                 </td>
 
                 <td className="border px-2 py-1">
@@ -245,31 +263,6 @@ export default function CourseManagement() {
                     className="border p-1 w-full rounded"
                   />
                 </td>
-
-                <td className="border px-2 py-1 text-center">
-                  <div className="flex flex-col items-center gap-1">
-                    <button
-                      onClick={() => moveCourse(i, "up")}
-                      disabled={i === 0}
-                      className="p-1 disabled:opacity-30"
-                    >
-                      <ArrowUp size={16} />
-                    </button>
-                    <button
-                      onClick={() => moveCourse(i, "down")}
-                      disabled={i === courses.length - 1}
-                      className="p-1 disabled:opacity-30"
-                    >
-                      <ArrowDown size={16} />
-                    </button>
-                    <button
-                      onClick={() => deleteCourse(i)}
-                      className="p-1 text-red-600 hover:text-red-800"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </div>
-                </td>
               </tr>
             ))}
           </tbody>
@@ -279,7 +272,7 @@ export default function CourseManagement() {
       <button
         onClick={saveCourses}
         disabled={saving}
-        className="mt-6 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded w-full md:w-auto"
+        className="mt-6 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded w-full"
       >
         <Save size={18} />
         {saving ? "Guardando..." : "Guardar Cambios"}
