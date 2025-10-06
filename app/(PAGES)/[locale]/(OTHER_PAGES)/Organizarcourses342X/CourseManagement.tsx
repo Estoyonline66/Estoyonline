@@ -215,6 +215,7 @@ export default function CourseManagement() {
                   </div>
                 </td>
 
+                {/* Título */}
                 <td className="px-2 py-1">
                   <input
                     value={c.title}
@@ -227,6 +228,7 @@ export default function CourseManagement() {
                   />
                 </td>
 
+                {/* Día */}
                 <td className="px-2 py-1">
                   <select
                     value={c.bold}
@@ -243,6 +245,7 @@ export default function CourseManagement() {
                   </select>
                 </td>
 
+                {/* Hora */}
                 <td className="px-2 py-1">
                   <select
                     value={c.time}
@@ -259,6 +262,7 @@ export default function CourseManagement() {
                   </select>
                 </td>
 
+                {/* Semana */}
                 <td className="px-2 py-1">
                   <select
                     value={c.week}
@@ -275,6 +279,7 @@ export default function CourseManagement() {
                   </select>
                 </td>
 
+                {/* Mes */}
                 <td className="px-2 py-1 text-center">
                   <input
                     type="date"
@@ -288,7 +293,20 @@ export default function CourseManagement() {
                   />
                 </td>
 
-                {/* Çöp kutusu sağda */}
+                {/* Profesor */}
+                <td className="px-2 py-1">
+                  <input
+                    value={c.teacher || ""}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].teacher = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="border p-1 w-full rounded"
+                  />
+                </td>
+
+                {/* Delete */}
                 <td className="px-2 py-1 text-center">
                   <button
                     onClick={() => deleteCourse(i)}
