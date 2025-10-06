@@ -150,3 +150,151 @@ export default function CourseManagement() {
           <thead className="bg-gray-100 text-gray-700">
             <tr>
               <th className="p-2 w-[80px]">Mover</th>
+              <th className="p-2 w-[250px]">Título</th>
+              <th className="p-2 w-[120px]">Día</th>
+              <th className="p-2 w-[180px]">Hora</th>
+              <th className="p-2 w-[180px]">Semana</th>
+              <th className="p-2 w-[80px]">Mes</th>
+              <th className="p-2 w-[180px]">Profesor</th>
+              <th className="p-2 w-[80px]">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {courses.map((c, i) => (
+              <tr
+                key={i}
+                className="border-t border-gray-200 hover:bg-gray-50 transition-colors"
+              >
+                <td className="text-center">
+                  <div className="flex flex-col items-center justify-center">
+                    <button
+                      onClick={() => moveCourse(i, "up")}
+                      disabled={i === 0}
+                      className={`p-1 rounded hover:bg-gray-200 ${
+                        i === 0 ? "opacity-30" : ""
+                      }`}
+                    >
+                      <ArrowUp size={16} />
+                    </button>
+                    <button
+                      onClick={() => moveCourse(i, "down")}
+                      disabled={i === courses.length - 1}
+                      className={`p-1 rounded hover:bg-gray-200 ${
+                        i === courses.length - 1 ? "opacity-30" : ""
+                      }`}
+                    >
+                      <ArrowDown size={16} />
+                    </button>
+                  </div>
+                </td>
+
+                <td>
+                  <input
+                    value={c.title}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].title = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="w-full border border-gray-300 rounded p-1"
+                  />
+                </td>
+
+                <td>
+                  <select
+                    value={c.bold || "Monday"}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].bold = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="w-full border border-gray-300 rounded p-1 bg-white"
+                  >
+                    {daysOfWeek.map((d) => (
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+
+                <td>
+                  <input
+                    value={c.time || ""}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].time = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="w-full border border-gray-300 rounded p-1"
+                  />
+                </td>
+
+                <td>
+                  <select
+                    value={c.week || weekOptions[0]}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].week = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="w-full border border-gray-300 rounded p-1 bg-white"
+                  >
+                    {weekOptions.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+
+                <td>
+                  <input
+                    value={c.month || ""}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].month = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="w-full border border-gray-300 rounded p-1 text-center"
+                  />
+                </td>
+
+                <td>
+                  <input
+                    value={c.teacher || ""}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].teacher = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="w-full border border-gray-300 rounded p-1"
+                  />
+                </td>
+
+                <td className="text-center">
+                  <button
+                    onClick={() => deleteCourse(i)}
+                    className="text-red-600 hover:text-red-800"
+                    title="Eliminar curso"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <button
+        onClick={saveCourses}
+        disabled={saving}
+        className="mt-6 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded w-full md:w-auto"
+      >
+        <Save size={18} />
+        {saving ? "Guardando..." : "Guardar Cambios"}
+      </button>
+    </div>
+  );
+}
