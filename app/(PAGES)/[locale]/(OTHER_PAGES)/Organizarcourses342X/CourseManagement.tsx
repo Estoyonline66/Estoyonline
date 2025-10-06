@@ -59,7 +59,6 @@ export default function CourseManagement() {
         );
         const data = await res.json();
 
-        // Blob'dan gelen month değerlerini yyyy-MM-dd formatına çevir
         const formatted = (data.cardCourses || []).map((c: CourseCard) => ({
           ...c,
           month: parseBlobMonthToDate(c.month),
@@ -84,7 +83,6 @@ export default function CourseManagement() {
   const saveCourses = async () => {
     setSaving(true);
     try {
-      // Kaydetmeden önce month değerlerini blob formatına çevir
       const payload = courses.map((c) => ({
         ...c,
         month: formatDateToBlobMonth(c.month),
@@ -117,7 +115,7 @@ export default function CourseManagement() {
       teacher: "",
       lesson: "First class",
     };
-    setCourses([...courses, newCourse]);
+    setCourses([newCourse, ...courses]); // en tepeye ekle
   };
 
   const deleteCourse = (index: number) => {
@@ -161,36 +159,45 @@ export default function CourseManagement() {
 
   return (
     <div className="p-4">
-      <div className="flex flex-col items-center justify-between mb-5 gap-3">
-        <h2 className="text-2xl font-bold text-center">Lista de Cursos</h2>
-        <button
-          onClick={addCourse}
-          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded"
-        >
-          <Plus size={18} /> Añadir Curso
-        </button>
+      <div className="flex flex-col items-center justify-between mb-5 gap-3 md:flex-row">
+        <h2 className="text-2xl font-bold text-center md:text-left">Lista de Cursos</h2>
+        <div className="flex gap-2">
+          <button
+            onClick={addCourse}
+            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
+          >
+            <Plus size={16} /> Nuevo
+          </button>
+          <button
+            onClick={saveCourses}
+            disabled={saving}
+            className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+          >
+            <Save size={16} /> {saving ? "Guardando..." : "Guardar"}
+          </button>
+        </div>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-[900px] text-sm border-collapse border border-gray-300 rounded-lg">
+        <table className="min-w-[900px] text-sm border-collapse border-separate border-spacing-0">
           <thead className="bg-gray-100">
             <tr className="text-left">
-              <th className="border px-2 py-2 w-[80px]">Acciones</th>
-              <th className="border px-2 py-2 w-[250px]">Título</th>
-              <th className="border px-2 py-2 w-[120px]">Día</th>
-              <th className="border px-2 py-2 w-[200px]">Hora</th>
-              <th className="border px-2 py-2 w-[200px]">Semana</th>
-              <th className="border px-2 py-2 w-[120px]">Mes</th>
-              <th className="border px-2 py-2 w-[150px]">Profesor</th>
-              <th className="border px-2 py-2 w-[80px]">Eliminar</th>
+              <th className="px-2 py-2 w-[120px]">Orden</th>
+              <th className="px-2 py-2 w-[250px]">Título</th>
+              <th className="px-2 py-2 w-[120px]">Día</th>
+              <th className="px-2 py-2 w-[200px]">Hora</th>
+              <th className="px-2 py-2 w-[200px]">Semana</th>
+              <th className="px-2 py-2 w-[120px]">Mes</th>
+              <th className="px-2 py-2 w-[150px]">Profesor</th>
+              <th className="px-2 py-2 w-[80px]">Eliminar</th>
             </tr>
           </thead>
           <tbody>
             {courses.map((c, i) => (
               <tr key={i} className="hover:bg-gray-50">
-                {/* Oklar solda */}
-                <td className="border px-2 py-1 text-center">
-                  <div className="flex flex-col items-center gap-1">
+                {/* Oklar yanyana solda */}
+                <td className="px-2 py-1 text-center">
+                  <div className="flex justify-center gap-1">
                     <button
                       onClick={() => moveCourse(i, "up")}
                       disabled={i === 0}
@@ -208,7 +215,7 @@ export default function CourseManagement() {
                   </div>
                 </td>
 
-                <td className="border px-2 py-1">
+                <td className="px-2 py-1">
                   <input
                     value={c.title}
                     onChange={(e) => {
@@ -220,7 +227,7 @@ export default function CourseManagement() {
                   />
                 </td>
 
-                <td className="border px-2 py-1">
+                <td className="px-2 py-1">
                   <select
                     value={c.bold}
                     onChange={(e) => {
@@ -236,7 +243,7 @@ export default function CourseManagement() {
                   </select>
                 </td>
 
-                <td className="border px-2 py-1">
+                <td className="px-2 py-1">
                   <select
                     value={c.time}
                     onChange={(e) => {
@@ -252,7 +259,7 @@ export default function CourseManagement() {
                   </select>
                 </td>
 
-                <td className="border px-2 py-1">
+                <td className="px-2 py-1">
                   <select
                     value={c.week}
                     onChange={(e) => {
@@ -268,7 +275,7 @@ export default function CourseManagement() {
                   </select>
                 </td>
 
-                <td className="border px-2 py-1 text-center">
+                <td className="px-2 py-1 text-center">
                   <input
                     type="date"
                     value={c.month}
@@ -282,7 +289,7 @@ export default function CourseManagement() {
                 </td>
 
                 {/* Çöp kutusu sağda */}
-                <td className="border px-2 py-1 text-center">
+                <td className="px-2 py-1 text-center">
                   <button
                     onClick={() => deleteCourse(i)}
                     className="p-1 text-red-600 hover:text-red-800"
@@ -295,15 +302,6 @@ export default function CourseManagement() {
           </tbody>
         </table>
       </div>
-
-      <button
-        onClick={saveCourses}
-        disabled={saving}
-        className="mt-6 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded w-full"
-      >
-        <Save size={18} />
-        {saving ? "Guardando..." : "Guardar Cambios"}
-      </button>
     </div>
   );
 }
