@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowUp, ArrowDown, Trash2, Plus, Save } from "lucide-react";
 
 interface CourseCard {
   title: string;
-  bold: string;
+  bold: string; // "bold" artık "Día" anlamına gelecek
   lesson: string;
   time: string;
   week: string;
@@ -23,10 +22,11 @@ export default function CourseManagement() {
     if (password === process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD) {
       setLoggedIn(true);
     } else {
-      alert("❌ Contraseña incorrecta");
+      alert("❌ Yanlış şifre");
     }
   };
 
+  // 📥 Kursları blob'dan fetch et (cache-busting)
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -37,52 +37,39 @@ export default function CourseManagement() {
         const data = await res.json();
         setCourses(data.cardCourses || []);
       } catch (err) {
-        console.error("Error al obtener los cursos:", err);
+        console.error("Failed to fetch courses:", err);
       }
     };
     fetchCourses();
   }, []);
 
+  // 📤 Kaydet
   const saveCourses = async () => {
     setSaving(true);
     try {
       const res = await fetch(`/api/courses/save?locale=en`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          cardCourses: courses.map((c) => ({
-            ...c,
-            lesson: c.lesson || "First class", // mantener estático
-          })),
-        }),
+        body: JSON.stringify({ cardCourses: courses }),
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Error al guardar");
+      if (!res.ok) throw new Error(data.error || "Save failed");
       alert("✅ Cursos guardados correctamente");
     } catch (err) {
-      console.error("Error al guardar:", err);
-      alert("❌ Error al guardar los cursos");
+      console.error("Save error:", err);
+      alert("❌ Error al guardar");
     } finally {
       setSaving(false);
     }
   };
 
-  const moveCourse = (index: number, direction: "up" | "down") => {
-    const newIndex = direction === "up" ? index - 1 : index + 1;
-    if (newIndex < 0 || newIndex >= courses.length) return;
-    const newCourses = [...courses];
-    const temp = newCourses[index];
-    newCourses[index] = newCourses[newIndex];
-    newCourses[newIndex] = temp;
-    setCourses(newCourses);
-  };
-
+  // 📦 Ekle / Sil
   const addCourse = () => {
     const newCourse: CourseCard = {
       title: "Nuevo Curso",
       bold: "",
-      lesson: "First class",
+      lesson: "",
       time: "",
       week: "",
       month: "",
@@ -97,83 +84,69 @@ export default function CourseManagement() {
     setCourses(newCourses);
   };
 
+  // 🔼🔽 Oklarla sırayı değiştirme
+  const moveCourse = (index: number, direction: "up" | "down") => {
+    const newCourses = [...courses];
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= newCourses.length) return;
+    const temp = newCourses[index];
+    newCourses[index] = newCourses[targetIndex];
+    newCourses[targetIndex] = temp;
+    setCourses(newCourses);
+  };
+
   if (!loggedIn) {
     return (
-      <div className="p-10 max-w-md mx-auto text-center">
-        <h2 className="text-2xl font-bold mb-5">Acceso de Administrador</h2>
+      <div className="p-10 max-w-md mx-auto">
+        <h2 className="text-xl font-bold mb-5">Admin Login</h2>
         <input
           type="password"
-          placeholder="Contraseña"
-          className="border p-2 w-full mb-3 rounded"
+          placeholder="Şifre"
+          className="border p-2 w-full mb-3"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
           onClick={handleLogin}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded w-full"
+          className="bg-blue-600 text-white px-5 py-2 rounded w-full"
         >
-          Entrar
+          Giriş
         </button>
       </div>
     );
   }
 
   return (
-    <div className="p-10">
-      <div className="flex items-center justify-between mb-5">
-        <h2 className="text-2xl font-bold">Lista de Cursos</h2>
-        <button
-          onClick={addCourse}
-          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
-        >
-          <Plus size={18} /> Nuevo Curso
-        </button>
-      </div>
+    <div className="p-5 sm:p-10 overflow-x-auto">
+      <h2 className="text-xl font-bold mb-5">Lista de Cursos</h2>
+      <button
+        onClick={addCourse}
+        className="mb-3 bg-green-600 text-white px-5 py-2 rounded"
+      >
+        + Nuevo Curso
+      </button>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm border border-gray-200 shadow-sm rounded-xl overflow-hidden">
-          <thead className="bg-gray-100 text-gray-700">
+      {/* 🔹 Tablo */}
+      <div className="w-full overflow-x-auto">
+        <table className="min-w-[900px] sm:min-w-full border-collapse border border-gray-300 text-sm">
+          <thead className="bg-gray-100">
             <tr>
-              <th className="p-2 w-[80px]">Mover</th>
-              <th className="p-2 w-[250px]">Título</th>
-              <th className="p-2 w-[160px]">Negrita</th>
-              <th className="p-2 w-[180px]">Hora</th>
-              <th className="p-2 w-[180px]">Semana</th>
-              <th className="p-2 w-[80px]">Mes</th>
-              <th className="p-2 w-[180px]">Profesor</th>
-              <th className="p-2 w-[80px]">Acciones</th>
+              <th className="border px-2 py-1 w-[30px]">#</th>
+              <th className="border px-2 py-1">Título</th>
+              <th className="border px-2 py-1 w-20">Día</th>
+              <th className="border px-2 py-1">Lección</th>
+              <th className="border px-2 py-1">Hora</th>
+              <th className="border px-2 py-1">Semana</th>
+              <th className="border px-2 py-1">Mes</th>
+              <th className="border px-2 py-1">Profesor</th>
+              <th className="border px-2 py-1">Acciones</th>
             </tr>
           </thead>
           <tbody>
             {courses.map((c, i) => (
-              <tr
-                key={i}
-                className="border-t border-gray-200 hover:bg-gray-50 transition-colors"
-              >
-                <td className="text-center">
-                  <div className="flex flex-col items-center justify-center">
-                    <button
-                      onClick={() => moveCourse(i, "up")}
-                      disabled={i === 0}
-                      className={`p-1 rounded hover:bg-gray-200 ${
-                        i === 0 ? "opacity-30" : ""
-                      }`}
-                    >
-                      <ArrowUp size={16} />
-                    </button>
-                    <button
-                      onClick={() => moveCourse(i, "down")}
-                      disabled={i === courses.length - 1}
-                      className={`p-1 rounded hover:bg-gray-200 ${
-                        i === courses.length - 1 ? "opacity-30" : ""
-                      }`}
-                    >
-                      <ArrowDown size={16} />
-                    </button>
-                  </div>
-                </td>
-
-                <td>
+              <tr key={i} className="text-center">
+                <td className="border px-2 py-1">{i + 1}</td>
+                <td className="border px-2 py-1">
                   <input
                     value={c.title}
                     onChange={(e) => {
@@ -181,11 +154,10 @@ export default function CourseManagement() {
                       newCourses[i].title = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="w-full border border-gray-300 rounded p-1"
+                    className="border p-1 w-full"
                   />
                 </td>
-
-                <td>
+                <td className="border px-2 py-1 w-20">
                   <input
                     value={c.bold || ""}
                     onChange={(e) => {
@@ -193,11 +165,21 @@ export default function CourseManagement() {
                       newCourses[i].bold = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="w-full border border-gray-300 rounded p-1"
+                    className="border p-1 w-full"
                   />
                 </td>
-
-                <td>
+                <td className="border px-2 py-1">
+                  <input
+                    value={c.lesson || ""}
+                    onChange={(e) => {
+                      const newCourses = [...courses];
+                      newCourses[i].lesson = e.target.value;
+                      setCourses(newCourses);
+                    }}
+                    className="border p-1 w-full"
+                  />
+                </td>
+                <td className="border px-2 py-1">
                   <input
                     value={c.time || ""}
                     onChange={(e) => {
@@ -205,11 +187,10 @@ export default function CourseManagement() {
                       newCourses[i].time = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="w-full border border-gray-300 rounded p-1"
+                    className="border p-1 w-full"
                   />
                 </td>
-
-                <td>
+                <td className="border px-2 py-1">
                   <input
                     value={c.week || ""}
                     onChange={(e) => {
@@ -217,11 +198,10 @@ export default function CourseManagement() {
                       newCourses[i].week = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="w-full border border-gray-300 rounded p-1"
+                    className="border p-1 w-full"
                   />
                 </td>
-
-                <td>
+                <td className="border px-2 py-1">
                   <input
                     value={c.month || ""}
                     onChange={(e) => {
@@ -229,11 +209,10 @@ export default function CourseManagement() {
                       newCourses[i].month = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="w-full border border-gray-300 rounded p-1 text-center"
+                    className="border p-1 w-full"
                   />
                 </td>
-
-                <td>
+                <td className="border px-2 py-1">
                   <input
                     value={c.teacher || ""}
                     onChange={(e) => {
@@ -241,17 +220,27 @@ export default function CourseManagement() {
                       newCourses[i].teacher = e.target.value;
                       setCourses(newCourses);
                     }}
-                    className="w-full border border-gray-300 rounded p-1"
+                    className="border p-1 w-full"
                   />
                 </td>
-
-                <td className="text-center">
+                <td className="border px-2 py-1 space-x-2">
+                  <button
+                    onClick={() => moveCourse(i, "up")}
+                    className="bg-gray-300 text-black px-2 py-1 rounded"
+                  >
+                    ↑
+                  </button>
+                  <button
+                    onClick={() => moveCourse(i, "down")}
+                    className="bg-gray-300 text-black px-2 py-1 rounded"
+                  >
+                    ↓
+                  </button>
                   <button
                     onClick={() => deleteCourse(i)}
-                    className="text-red-600 hover:text-red-800"
-                    title="Eliminar curso"
+                    className="bg-red-600 text-white px-3 py-1 rounded"
                   >
-                    <Trash2 size={18} />
+                    Sil
                   </button>
                 </td>
               </tr>
@@ -263,9 +252,8 @@ export default function CourseManagement() {
       <button
         onClick={saveCourses}
         disabled={saving}
-        className="mt-6 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded"
+        className="mt-5 bg-blue-600 text-white px-5 py-2 rounded"
       >
-        <Save size={18} />
         {saving ? "Guardando..." : "Guardar Cambios"}
       </button>
     </div>
