@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/contexts/TranslationProvider";
+import { useSearchParams } from "next/navigation";
 import { PriceData } from "@/types/PropTypes";
 
 interface CourseCard {
@@ -13,43 +14,54 @@ interface CourseCard {
 
 export default function Courses() {
   const { t, language } = useTranslation();
+  const searchParams = useSearchParams();
+  const isNew = searchParams.get("new") === "1";
   const Data: PriceData = t("courses");
 
   const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
 
   useEffect(() => {
     const fetchCardCourses = async () => {
-      if (language === "en") {
-        try {
-          const blobUrl =
-            "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
+      const blobUrl =
+        "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
-const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" });
-
+      try {
+        if (language === "en") {
+          // 🔹 İngilizce sayfa -> EN kısmını oku
+          const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, {
+            cache: "no-cache",
+          });
           if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
-
           const data = await res.json();
-
-          // Sadece cardCourses alanını bekliyoruz
-          setCardCourses(data.cardCourses || []);
-        } catch (err) {
-          console.error("Error fetching cardCourses from blob:", err);
+          setCardCourses(data.cardCoursesEn || []);
+        } else if (language === "tr" && isNew) {
+          // 🔹 Türkçe + ?new=1 -> TR kısmını oku (blob’dan)
+          const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, {
+            cache: "no-cache",
+          });
+          if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
+          const data = await res.json();
+          setCardCourses(data.cardCoursesTr || []);
+        } else {
+          // 🔹 Normal Türkçe sayfa -> tr.json’dan oku
           setCardCourses(Data?.cardCourses || []);
         }
-      } else {
+      } catch (err) {
+        console.error("Error fetching courses:", err);
+        // Fallback olarak JSON'daki veriyi kullan
         setCardCourses(Data?.cardCourses || []);
       }
     };
 
     fetchCardCourses();
-  }, [language, Data]);
+  }, [language, isNew, Data]);
 
   return (
     <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
       <h2 className="text-2xl font-bold mb-4">{Data?.scheduleTitle}</h2>
 
       {/* 🔹 Kurs Kartları */}
-      <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+      <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10 overflow-x-auto">
         {cardCourses.map((card, index) => (
           <li
             key={index}

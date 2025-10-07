@@ -1,325 +1,295 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-import { ArrowUp, ArrowDown, Save, Plus, Trash2 } from "lucide-react";
+import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
 
-interface CourseCard {
+interface Course {
   title: string;
-  bold: string; // Día
+  bold: string;
+  lesson: string;
   time: string;
   week: string;
-  month: string; // Örn: "Oct 11"
+  month: string;
   teacher?: string;
-  lesson?: string;
 }
 
-// Helper: "Oct 11" => "2025-10-11"
-const parseBlobMonthToDate = (monthStr: string): string => {
-  try {
-    const date = new Date(`${monthStr} 2025`);
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, "0");
-    const dd = String(date.getDate()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd}`;
-  } catch {
-    return "";
-  }
-};
+const blobUrl =
+  "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
-// Helper: "2025-10-11" => "Oct 11"
-const formatDateToBlobMonth = (dateStr: string): string => {
-  try {
-    const date = new Date(dateStr);
-    return date.toLocaleString("en-US", { month: "short", day: "numeric" });
-  } catch {
-    return dateStr;
-  }
-};
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
+
+// 🔹 24 saatlik 48 seçenek oluştur
+const hours = Array.from({ length: 24 * 2 }, (_, i) => {
+  const hour = Math.floor(i / 2);
+  const minute = i % 2 === 0 ? "00" : "30";
+  const formattedHour = hour.toString().padStart(2, "0");
+  return `${formattedHour}:${minute} Spain time`;
+});
 
 export default function CourseManagement() {
-  const [courses, setCourses] = useState<CourseCard[]>([]);
+  const [coursesEn, setCoursesEn] = useState<Course[]>([]);
+  const [coursesTr, setCoursesTr] = useState<Course[]>([]);
+  const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   const [saving, setSaving] = useState(false);
-  const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    if (password === process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD) {
-      setLoggedIn(true);
-    } else {
-      alert("❌ Contraseña incorrecta");
-    }
-  };
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch(
-          `https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json?_ts=${Date.now()}`,
-          { cache: "no-cache" }
-        );
+        const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" });
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
         const data = await res.json();
-
-        const formatted = (data.cardCourses || []).map((c: CourseCard) => ({
-          ...c,
-          month: parseBlobMonthToDate(c.month),
-        }));
-        setCourses(formatted);
+        setCoursesEn(data.cardCoursesEn || []);
+        setCoursesTr(data.cardCoursesTr || []);
       } catch (err) {
-        console.error("Error al cargar cursos:", err);
+        console.error("Error loading courses:", err);
       }
     };
     fetchCourses();
   }, []);
 
-  const moveCourse = (index: number, direction: "up" | "down") => {
-    const newCourses = [...courses];
-    const newIndex = direction === "up" ? index - 1 : index + 1;
-    if (newIndex < 0 || newIndex >= newCourses.length) return;
-    const [moved] = newCourses.splice(index, 1);
-    newCourses.splice(newIndex, 0, moved);
-    setCourses(newCourses);
-  };
-
   const saveCourses = async () => {
     setSaving(true);
     try {
-      const payload = courses.map((c) => ({
-        ...c,
-        month: formatDateToBlobMonth(c.month),
-      }));
-
-      const res = await fetch(`/api/courses/save?locale=en`, {
-        method: "POST",
+      const res = await fetch(blobUrl, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cardCourses: payload }),
+        body: JSON.stringify({
+          cardCoursesEn: coursesEn,
+          cardCoursesTr: coursesTr,
+        }),
       });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Error al guardar");
-      alert("✅ Cursos guardados correctamente");
+      if (!res.ok) throw new Error("Save failed");
+      alert("✅ Cursos guardados correctamente.");
     } catch (err) {
-      console.error("Error al guardar:", err);
-      alert("❌ Error al guardar los cursos");
+      console.error(err);
+      alert("❌ Error al guardar los cursos.");
     } finally {
       setSaving(false);
     }
   };
 
-  const addCourse = () => {
-    const newCourse: CourseCard = {
-      title: "Nuevo Curso",
-      bold: "Monday",
-      time: "6:00 pm Spain time",
-      week: "Once a week 2.5 hours",
-      month: "2025-10-06",
-      teacher: "",
-      lesson: "First class",
-    };
-    setCourses([newCourse, ...courses]); // en tepeye ekle
+  const moveRow = (index: number, direction: "up" | "down") => {
+    const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
+    const newIndex = direction === "up" ? index - 1 : index + 1;
+    if (newIndex < 0 || newIndex >= list.length) return;
+    [list[index], list[newIndex]] = [list[newIndex], list[index]];
+    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
   };
 
   const deleteCourse = (index: number) => {
-    if (!confirm("⚠️ ¿Estás seguro? Este curso será eliminado.")) return;
-    const newCourses = [...courses];
-    newCourses.splice(index, 1);
-    setCourses(newCourses);
+    if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
+      const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
+      list.splice(index, 1);
+      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+    }
   };
 
-  if (!loggedIn) {
-    return (
-      <div className="p-4 max-w-md mx-auto text-center">
-        <h2 className="text-xl font-bold mb-5">Inicio de sesión del administrador</h2>
-        <input
-          type="password"
-          placeholder="Contraseña"
-          className="border p-2 w-full mb-3 rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          onClick={handleLogin}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded w-full"
-        >
-          Entrar
-        </button>
-      </div>
-    );
-  }
+  const addCourse = () => {
+    const newCourse: Course = {
+      title: "Nuevo Curso",
+      bold: "Monday",
+      lesson: "First class",
+      time: "09:00 Spain time",
+      week: "Once a week 2.5 hours",
+      month: new Date().toISOString().split("T")[0],
+      teacher: "",
+    };
+    activeTab === "en"
+      ? setCoursesEn([newCourse, ...coursesEn])
+      : setCoursesTr([newCourse, ...coursesTr]);
+  };
 
-  const days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-  const weeks = ["Once a week 2.5 hours","Once a week 2 hours"];
+  const renderTable = (courses: Course[], setCourses: React.Dispatch<React.SetStateAction<Course[]>>) => (
+    <div className="overflow-x-auto w-full">
+      <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="p-2 text-left w-10"></th>
+            <th className="p-2 text-left w-[250px]">Título</th>
+            <th className="p-2 text-left w-[100px]">Día</th>
+            <th className="p-2 text-left w-[130px]">Hora</th>
+            <th className="p-2 text-left w-[130px]">Semana</th>
+            <th className="p-2 text-left w-[100px]">Mes</th>
+            <th className="p-2 text-left w-[200px]">Profesor</th>
+            <th className="p-2 text-center w-10"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {courses.map((c, i) => (
+            <tr key={i} className="border-b border-gray-200 hover:bg-gray-50">
+              {/* Oklar solda */}
+              <td className="px-2 py-1 text-center">
+                <div className="flex flex-col items-center gap-1">
+                  <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
+                    <ArrowUp size={16} />
+                  </button>
+                  <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
+                    <ArrowDown size={16} />
+                  </button>
+                </div>
+              </td>
 
-  const hours: string[] = [];
-  for (let h = 0; h < 24; h++) {
-    const hour12 = h % 12 === 0 ? 12 : h % 12;
-    const ampm = h < 12 ? "am" : "pm";
-    hours.push(`${hour12}:00 ${ampm} Spain time`);
-    hours.push(`${hour12}:30 ${ampm} Spain time`);
-  }
+              {/* Título */}
+              <td className="px-2 py-1">
+                <input
+                  value={c.title}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].title = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                />
+              </td>
+
+              {/* Día */}
+              <td className="px-2 py-1">
+                <select
+                  value={c.bold}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].bold = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {days.map((d) => (
+                    <option key={d}>{d}</option>
+                  ))}
+                </select>
+              </td>
+
+              {/* Hora */}
+              <td className="px-2 py-1">
+                <select
+                  value={c.time}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].time = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {hours.map((h) => (
+                    <option key={h}>{h}</option>
+                  ))}
+                </select>
+              </td>
+
+              {/* Semana */}
+              <td className="px-2 py-1">
+                <select
+                  value={c.week}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].week = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {weeks.map((w) => (
+                    <option key={w}>{w}</option>
+                  ))}
+                </select>
+              </td>
+
+              {/* Mes */}
+              <td className="px-2 py-1 text-center">
+                <input
+                  type="date"
+                  value={
+                    /^\d{4}-\d{2}-\d{2}$/.test(c.month)
+                      ? c.month
+                      : (() => {
+                          const [mon, day] = c.month.split(" ");
+                          const months: Record<string, string> = {
+                            Jan: "01", Feb: "02", Mar: "03", Apr: "04",
+                            May: "05", Jun: "06", Jul: "07", Aug: "08",
+                            Sep: "09", Oct: "10", Nov: "11", Dec: "12",
+                          };
+                          const year = new Date().getFullYear();
+                          return `${year}-${months[mon] || "01"}-${day.padStart(2, "0")}`;
+                        })()
+                  }
+                  onChange={(e) => {
+                    const list = [...courses];
+                    const d = new Date(e.target.value);
+                    const monthStr = d.toLocaleString("en", { month: "short" });
+                    const formatted = `${monthStr} ${d.getDate()}`;
+                    list[i].month = formatted;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded text-center"
+                />
+              </td>
+
+              {/* Profesor */}
+              <td className="px-2 py-1">
+                <input
+                  value={c.teacher || ""}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].teacher = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                />
+              </td>
+
+              {/* Çöp kutusu sağda */}
+              <td className="px-2 py-1 text-center">
+                <button
+                  onClick={() => deleteCourse(i)}
+                  className="p-1 text-red-600 hover:text-red-800"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 
   return (
-    <div className="p-4">
-      <div className="flex flex-col items-center justify-between mb-5 gap-3 md:flex-row">
-        <h2 className="text-2xl font-bold text-center md:text-left">Lista de Cursos</h2>
-        <div className="flex gap-2">
+    <div className="p-4 md:p-8">
+      <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
+        <div className="flex gap-3">
+          <button
+            onClick={() => setActiveTab("en")}
+            className={`px-4 py-2 rounded ${activeTab === "en" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+          >
+            🇬🇧 English Courses
+          </button>
+          <button
+            onClick={() => setActiveTab("tr")}
+            className={`px-4 py-2 rounded ${activeTab === "tr" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+          >
+            🇹🇷 Turkish Courses
+          </button>
+        </div>
+
+        <div className="flex gap-3">
           <button
             onClick={addCourse}
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
+            className="px-3 py-2 bg-green-500 text-white rounded text-sm"
           >
-            <Plus size={16} /> Nuevo
+            + Nuevo curso
           </button>
           <button
             onClick={saveCourses}
             disabled={saving}
-            className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+            className="px-3 py-2 bg-blue-500 text-white rounded text-sm disabled:opacity-50"
           >
-            <Save size={16} /> {saving ? "Guardando..." : "Guardar"}
+            💾 Guardar cambios
           </button>
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-[900px] text-sm border-collapse border-separate border-spacing-0">
-          <thead className="bg-gray-100">
-            <tr className="text-left">
-              <th className="px-2 py-2 w-[120px]">Orden</th>
-              <th className="px-2 py-2 w-[250px]">Título</th>
-              <th className="px-2 py-2 w-[120px]">Día</th>
-              <th className="px-2 py-2 w-[200px]">Hora</th>
-              <th className="px-2 py-2 w-[200px]">Semana</th>
-              <th className="px-2 py-2 w-[120px]">Mes</th>
-              <th className="px-2 py-2 w-[150px]">Profesor</th>
-              <th className="px-2 py-2 w-[80px]">Eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((c, i) => (
-              <tr key={i} className="hover:bg-gray-50">
-                {/* Oklar yanyana solda */}
-                <td className="px-2 py-1 text-center">
-                  <div className="flex justify-center gap-1">
-                    <button
-                      onClick={() => moveCourse(i, "up")}
-                      disabled={i === 0}
-                      className="p-1 disabled:opacity-30"
-                    >
-                      <ArrowUp size={16} />
-                    </button>
-                    <button
-                      onClick={() => moveCourse(i, "down")}
-                      disabled={i === courses.length - 1}
-                      className="p-1 disabled:opacity-30"
-                    >
-                      <ArrowDown size={16} />
-                    </button>
-                  </div>
-                </td>
-
-                {/* Título */}
-                <td className="px-2 py-1">
-                  <input
-                    value={c.title}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].title = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded"
-                  />
-                </td>
-
-                {/* Día */}
-                <td className="px-2 py-1">
-                  <select
-                    value={c.bold}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].bold = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded"
-                  >
-                    {days.map((d) => (
-                      <option key={d}>{d}</option>
-                    ))}
-                  </select>
-                </td>
-
-                {/* Hora */}
-                <td className="px-2 py-1">
-                  <select
-                    value={c.time}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].time = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded"
-                  >
-                    {hours.map((h) => (
-                      <option key={h}>{h}</option>
-                    ))}
-                  </select>
-                </td>
-
-                {/* Semana */}
-                <td className="px-2 py-1">
-                  <select
-                    value={c.week}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].week = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded"
-                  >
-                    {weeks.map((w) => (
-                      <option key={w}>{w}</option>
-                    ))}
-                  </select>
-                </td>
-
-                {/* Mes */}
-                <td className="px-2 py-1 text-center">
-                  <input
-                    type="date"
-                    value={c.month}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].month = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded text-center"
-                  />
-                </td>
-
-                {/* Profesor */}
-                <td className="px-2 py-1">
-                  <input
-                    value={c.teacher || ""}
-                    onChange={(e) => {
-                      const newCourses = [...courses];
-                      newCourses[i].teacher = e.target.value;
-                      setCourses(newCourses);
-                    }}
-                    className="border p-1 w-full rounded"
-                  />
-                </td>
-
-                {/* Delete */}
-                <td className="px-2 py-1 text-center">
-                  <button
-                    onClick={() => deleteCourse(i)}
-                    className="p-1 text-red-600 hover:text-red-800"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {activeTab === "en"
+        ? renderTable(coursesEn, setCoursesEn)
+        : renderTable(coursesTr, setCoursesTr)}
     </div>
   );
 }

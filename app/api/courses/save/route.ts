@@ -5,16 +5,6 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
-    const url = new URL(request.url);
-    const locale = url.searchParams.get("locale") || "en";
-
-    if (locale !== "en") {
-      return NextResponse.json(
-        { error: "Saving is only allowed for /en/courses" },
-        { status: 403 }
-      );
-    }
-
     const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
     if (!blobToken) {
       return NextResponse.json(
@@ -23,18 +13,30 @@ export async function POST(request: Request) {
       );
     }
 
-    // sadece cardCourses kaydedilecek
-    const { cardCourses } = await request.json();
+    // 🔹 Yeni yapı: EN ve TR kurslarını birlikte alıyoruz
+    const { cardCoursesEn, cardCoursesTr } = await request.json();
 
-    if (!cardCourses || !Array.isArray(cardCourses)) {
+    if (
+      (!cardCoursesEn || !Array.isArray(cardCoursesEn)) &&
+      (!cardCoursesTr || !Array.isArray(cardCoursesTr))
+    ) {
       return NextResponse.json(
-        { error: "Invalid cardCourses data" },
+        { error: "Invalid course data. Expected arrays for EN or TR." },
         { status: 400 }
       );
     }
 
-    const jsonString = JSON.stringify({ cardCourses }, null, 2);
+    // 🔹 Blob’a kaydedilecek JSON yapısı
+    const jsonString = JSON.stringify(
+      {
+        cardCoursesEn: cardCoursesEn || [],
+        cardCoursesTr: cardCoursesTr || [],
+      },
+      null,
+      2
+    );
 
+    // 🔹 Vercel Blob’a yaz
     const { url: savedUrl } = await put(
       "courses/courses-data.json",
       jsonString,
@@ -49,7 +51,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       url: savedUrl,
-      message: "✅ Kurs verileri başarıyla kaydedildi",
+      message: "✅ Los cursos se guardaron correctamente.",
     });
   } catch (error) {
     console.error("❌ Save error:", error);
@@ -64,11 +66,17 @@ export async function GET() {
   try {
     const blobUrl =
       "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
-    const res = await fetch(blobUrl);
+
+    const res = await fetch(blobUrl, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
+
     const data = await res.json();
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("❌ GET /api/courses/save failed:", error);
-    return NextResponse.json({ success: false }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Failed to fetch blob data" },
+      { status: 500 }
+    );
   }
 }
