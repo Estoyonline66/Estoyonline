@@ -19,7 +19,7 @@ const blobUrl =
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-const weeksTr = ["Haftada 1 gün", "Haftada 2 gün"];
+const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
 
 // 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
@@ -30,7 +30,7 @@ const hoursEn = Array.from({ length: 48 }, (_, i) => {
   return `${displayHour}:${minute} ${suffix} Spain time`;
 });
 
-// 🔹 Turkish time options — from 09:00 to 22:00, half-hour intervals
+// 🔹 Turkish time options — only hours 09:00–22:00, half-hour intervals
 const hoursTr: string[] = [];
 for (let hour = 9; hour <= 22; hour++) {
   hoursTr.push(`${hour.toString().padStart(2, "0")}:00`);
@@ -70,10 +70,8 @@ export default function CourseManagement() {
         }),
       });
       if (!res.ok) throw new Error("Save failed");
-      alert("✅ Cursos guardados correctamente.");
     } catch (err) {
       console.error(err);
-      alert("❌ Error al guardar los cursos.");
     } finally {
       setSaving(false);
     }
@@ -84,16 +82,15 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    if (activeTab === "en") setCoursesEn(list);
-    else setCoursesTr(list);
+    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
   };
 
-  const deleteCourse = (index: number) => {
+  const deleteCourse = async (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      if (activeTab === "en") setCoursesEn(list);
-      else setCoursesTr(list);
+      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+      await saveCourses(); // 🔹 Silme sonrası blob'a kaydet
     }
   };
 
@@ -102,42 +99,33 @@ export default function CourseManagement() {
       title: "Nuevo Curso",
       bold: activeTab === "en" ? "Monday" : "Pazartesi",
       lesson: activeTab === "en" ? "First class" : "İlk ders",
-      time: activeTab === "en" ? "9:00 am Spain time" : "09:00 - 2 saat",
+      time: activeTab === "en" ? "9:00 am Spain time" : "09:00",
       week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-    if (activeTab === "en") setCoursesEn([newCourse, ...coursesEn]);
-    else setCoursesTr([newCourse, ...coursesTr]);
+    activeTab === "en" ? setCoursesEn([newCourse, ...coursesEn]) : setCoursesTr([newCourse, ...coursesTr]);
   };
 
-  const formatDateEn = (month: string) => {
+  const formatTrMonth = (month: string) => {
     if (!month) return "";
-    const d = new Date(month);
-    return d.toLocaleDateString("en-GB").replace(/\//g, ".");
-  };
-
-  const formatDateTr = (month: string) => {
-    if (!month) return "";
-    const monthMap: { [key: string]: string } = {
-      Ocak: "01",
-      Şubat: "02",
-      Mart: "03",
-      Nisan: "04",
-      Mayıs: "05",
-      Haziran: "06",
-      Temmuz: "07",
-      Ağustos: "08",
-      Eylül: "09",
-      Ekim: "10",
-      Kasım: "11",
-      Aralık: "12",
-    };
     const match = month.match(/(\d+)\s([^\s]+)/);
     if (!match) return "";
     const day = match[1].padStart(2, "0");
+    const monthMap: { [key: string]: string } = {
+      Ocak: "01", Şubat: "02", Mart: "03", Nisan: "04", Mayıs: "05",
+      Haziran: "06", Temmuz: "07", Ağustos: "08", Eylül: "09",
+      Ekim: "10", Kasım: "11", Aralık: "12",
+    };
     const m = monthMap[match[2]] || "01";
     return `2025-${m}-${day}`;
+  };
+
+  const formatEnMonth = (month: string) => {
+    if (!month) return "";
+    const d = new Date(month);
+    if (!isNaN(d.getTime())) return d.toISOString().split("T")[0];
+    return month;
   };
 
   const renderTable = (
@@ -150,9 +138,9 @@ export default function CourseManagement() {
         <thead>
           <tr className="bg-gray-100">
             <th className="p-2 text-left w-10"></th>
-            <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left w-[130px]">{isTr ? "Día" : "Day"}</th>
-            <th className="p-2 text-left w-[200px]">Hora</th>
+            <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
+            <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
+            <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
             <th className="p-2 text-left w-[230px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
             <th className="p-2 text-left w-[200px]">Profesor</th>
@@ -191,9 +179,7 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? daysTr : days).map((d) => (
-                    <option key={d}>{d}</option>
-                  ))}
+                  {(isTr ? daysTr : days).map((d) => <option key={d}>{d}</option>)}
                 </select>
               </td>
               <td className="px-2 py-1">
@@ -201,53 +187,31 @@ export default function CourseManagement() {
                   value={isTr ? c.time.split(" - ")[0] : c.time}
                   onChange={(e) => {
                     const list = [...courses];
-                    if (isTr) {
-                      const duration = c.time.split(" - ")[1] || "2 saat";
-                      list[i].time = `${e.target.value} - ${duration}`;
-                    } else {
-                      list[i].time = e.target.value;
-                    }
+                    list[i].time = isTr ? `${e.target.value} - ${c.time.split(" - ")[1] || "2 saat"}` : e.target.value;
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? hoursTr : hoursEn).map((h) => (
-                    <option key={h}>{h}</option>
-                  ))}
+                  {(isTr ? hoursTr : hoursEn).map((h) => <option key={h}>{h}</option>)}
                 </select>
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={isTr ? `${c.week} ${c.time.split(" - ")[1] || "2 saat"}` : c.week}
+                  value={isTr ? c.week.replace(",", ".") : c.week}
                   onChange={(e) => {
                     const list = [...courses];
-                    if (isTr) {
-                      const parts = e.target.value.split(" ");
-                      const dayPart = parts.slice(0, 3).join(" ");
-                      const durationPart = parts.slice(3).join(" ") || "2 saat";
-                      list[i].week = dayPart;
-                      const hour = list[i].time.split(" - ")[0];
-                      list[i].time = `${hour} - ${durationPart}`;
-                    } else {
-                      list[i].week = e.target.value;
-                    }
+                    list[i].week = e.target.value;
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? weeksTr : weeks).map((w) => {
-                    if (isTr) {
-                      const duration = c.time.split(" - ")[1] || "2 saat";
-                      return <option key={w}>{`${w} ${duration}`}</option>;
-                    }
-                    return <option key={w}>{w}</option>;
-                  })}
+                  {(isTr ? weeksTr : weeks).map((w) => <option key={w}>{w}</option>)}
                 </select>
               </td>
               <td className="px-2 py-1 text-center">
                 <input
                   type="date"
-                  value={isTr ? formatDateTr(c.month) : formatDateEn(c.month)}
+                  value={isTr ? formatTrMonth(c.month) : formatEnMonth(c.month)}
                   onChange={(e) => {
                     const list = [...courses];
                     const d = new Date(e.target.value);
@@ -258,8 +222,7 @@ export default function CourseManagement() {
                       ];
                       list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
                     } else {
-                      const monthStr = d.toLocaleString("en", { month: "short" });
-                      list[i].month = `${monthStr} ${d.getDate()}`;
+                      list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()}`;
                     }
                     setCourses(list);
                   }}
@@ -309,11 +272,8 @@ export default function CourseManagement() {
             🇹🇷 Turkish Courses
           </button>
         </div>
-
         <div className="flex gap-3">
-          <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">
-            + Nuevo curso
-          </button>
+          <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">+ Nuevo curso</button>
           <button
             onClick={saveCourses}
             disabled={saving}
