@@ -82,15 +82,26 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+
+    if (activeTab === "en") {
+      setCoursesEn(list);
+    } else {
+      setCoursesTr(list);
+    }
   };
 
   const deleteCourse = async (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
-      await saveCourses(); // 🔹 Silme sonrası blob'a kaydet
+
+      if (activeTab === "en") {
+        setCoursesEn(list);
+      } else {
+        setCoursesTr(list);
+      }
+
+      await saveCourses(); // Silme sonrası blob'a kaydet
     }
   };
 
@@ -104,7 +115,12 @@ export default function CourseManagement() {
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-    activeTab === "en" ? setCoursesEn([newCourse, ...coursesEn]) : setCoursesTr([newCourse, ...coursesTr]);
+
+    if (activeTab === "en") {
+      setCoursesEn([newCourse, ...coursesEn]);
+    } else {
+      setCoursesTr([newCourse, ...coursesTr]);
+    }
   };
 
   const formatTrMonth = (month: string) => {
