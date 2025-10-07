@@ -136,7 +136,7 @@ export default function CourseManagement() {
       lesson: activeTab === "en" ? "First class" : "İlk ders",
       time: activeTab === "en" ? "9:00 am Spain time" : "09:00 - 2,5 saat",
       week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2,5 saat",
-      month: new Date().toISOString().split("T")[0],
+      month: activeTab === "en" ? "Oct 11" : "6 Ekim",
       teacher: "",
     };
 
@@ -163,9 +163,29 @@ export default function CourseManagement() {
 
   const formatEnMonth = (month: string) => {
     if (!month) return "";
+    
+    // "Oct 11" formatını parse et
+    const match = month.match(/([A-Za-z]+)\s+(\d+)/);
+    if (match) {
+      const monthName = match[1];
+      const day = match[2].padStart(2, "0");
+      
+      const monthMap: { [key: string]: string } = {
+        Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06",
+        Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12",
+        January: "01", February: "02", March: "03", April: "04", May: "05", June: "06",
+        July: "07", August: "08", September: "09", October: "10", November: "11", December: "12"
+      };
+      
+      const m = monthMap[monthName] || "01";
+      return `2025-${m}-${day}`;
+    }
+    
+    // Fallback: normal date parsing
     const d = new Date(month);
     if (!isNaN(d.getTime())) return d.toISOString().split("T")[0];
-    return month;
+    
+    return "";
   };
 
   const renderTable = (
