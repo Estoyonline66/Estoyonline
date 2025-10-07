@@ -153,27 +153,33 @@ export default function CourseManagement() {
     return month;
   };
 
-  const renderTable = (
-    courses: Course[],
-    setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
-    isTr: boolean
-  ) => (
-    <div className="overflow-x-auto w-full">
-      <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 text-left w-10"></th>
-            <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
-            <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
-            <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
-            <th className="p-2 text-left w-[230px]">Semana</th>
-            <th className="p-2 text-left w-[100px]">Mes</th>
-            <th className="p-2 text-left w-[200px]">Profesor</th>
-            <th className="p-2 text-center w-10"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {courses.map((c, i) => (
+const renderTable = (
+  courses: Course[],
+  setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
+  isTr: boolean
+) => (
+  <div className="overflow-x-auto w-full">
+    <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="p-2 text-left w-10"></th>
+          <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
+          <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
+          <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
+          <th className="p-2 text-left w-[230px]">Semana</th>
+          <th className="p-2 text-left w-[100px]">Mes</th>
+          <th className="p-2 text-left w-[200px]">Profesor</th>
+          <th className="p-2 text-center w-10"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {courses.map((c, i) => {
+          // 🔹 Türkçe haftalık seçenek düzeltmesi
+          const normalizedWeekValue = isTr
+            ? weeksTr.find((w) => w.startsWith(c.week)) || weeksTr[0]
+            : c.week;
+
+          return (
             <tr key={i} className="hover:bg-gray-50">
               <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
                 <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
@@ -222,7 +228,7 @@ export default function CourseManagement() {
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={isTr ? c.week.replace(",", ".") : c.week}
+                  value={normalizedWeekValue}
                   onChange={(e) => {
                     const list = [...courses];
                     list[i].week = e.target.value;
@@ -274,11 +280,13 @@ export default function CourseManagement() {
                 </button>
               </td>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+);
+
 
   return (
     <div className="p-4 md:p-8">
