@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
 
@@ -16,9 +17,9 @@ const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const daysTr = ["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"];
+const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-const weeksTr = ["Haftada 1 gün 2 saat","Haftada 2 gün 2,5 saat"];
+const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
 const hours = Array.from({ length: 48 }, (_, i) => {
   const hour = Math.floor(i / 2);
   const minute = i % 2 === 0 ? "00" : "30";
@@ -47,6 +48,7 @@ export default function CourseManagement() {
     fetchCourses();
   }, []);
 
+  // 🟢 Fonksiyonlar
   const saveCourses = async () => {
     setSaving(true);
     try {
@@ -74,35 +76,73 @@ export default function CourseManagement() {
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
 
-    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+    if (activeTab === "en") {
+      setCoursesEn(list);
+    } else {
+      setCoursesTr(list);
+    }
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+
+      if (activeTab === "en") {
+        setCoursesEn(list);
+      } else {
+        setCoursesTr(list);
+      }
     }
   };
 
   const addCourse = () => {
     const newCourse: Course = {
       title: "Nuevo Curso",
-      bold: activeTab === "tr" ? "Pazartesi" : "Monday",
-      lesson: "First class",
-      time: activeTab === "tr" ? "09:00" : "09:00 Spain time",
-      week: activeTab === "tr" ? "Haftada 1 gün 2 saat" : "Once a week 2.5 hours",
-      month: activeTab === "tr"
-        ? `${new Date().getDate()}.${new Date().getMonth()+1}.${new Date().getFullYear()}`
-        : "Oct 11",
+      bold: activeTab === "en" ? "Monday" : "Pazartesi",
+      lesson: activeTab === "en" ? "First class" : "İlk ders",
+      time: activeTab === "en" ? "09:00 Spain time" : "09:00 - 2 saat",
+      week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
+      month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-    activeTab === "en" ? setCoursesEn([newCourse, ...coursesEn]) : setCoursesTr([newCourse, ...coursesTr]);
+
+    if (activeTab === "en") {
+      setCoursesEn([newCourse, ...coursesEn]);
+    } else {
+      setCoursesTr([newCourse, ...coursesTr]);
+    }
+  };
+
+  const parseMonth = (month: string, isTr: boolean) => {
+    if (!month) return "";
+    if (!isTr) return month; // İngilizce kısmı bozma
+    // Türkçe ayı gün-ay formatına çevir
+    const monthMap: { [key: string]: string } = {
+      "Ocak": "01",
+      "Şubat": "02",
+      "Mart": "03",
+      "Nisan": "04",
+      "Mayıs": "05",
+      "Haziran": "06",
+      "Temmuz": "07",
+      "Ağustos": "08",
+      "Eylül": "09",
+      "Ekim": "10",
+      "Kasım": "11",
+      "Aralık": "12",
+    };
+    const match = month.match(/(\d+)\s([^\s]+)/);
+    if (!match) return "";
+    const day = match[1].padStart(2, "0");
+    const m = monthMap[match[2]] || "01";
+    return `2025-${m}-${day}`; // date input format
   };
 
   const renderTable = (
     courses: Course[],
-    setCourses: React.Dispatch<React.SetStateAction<Course[]>>
+    setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
+    isTr: boolean
   ) => (
     <div className="overflow-x-auto w-full">
       <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
@@ -110,7 +150,7 @@ export default function CourseManagement() {
           <tr className="bg-gray-100">
             <th className="p-2 text-left w-10"></th>
             <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left w-[100px]">{activeTab==="tr"?"Día":"Day"}</th>
+            <th className="p-2 text-left w-[100px]">{isTr ? "Día" : "Day"}</th>
             <th className="p-2 text-left w-[230px]">Hora</th>
             <th className="p-2 text-left w-[230px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
@@ -150,7 +190,9 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(activeTab==="tr"?daysTr:days).map((d) => <option key={d}>{d}</option>)}
+                  {(isTr ? daysTr : days).map((d) => (
+                    <option key={d}>{d}</option>
+                  ))}
                 </select>
               </td>
               <td className="px-2 py-1">
@@ -163,7 +205,9 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {hours.map((h) => <option key={h}>{h}</option>)}
+                  {hours.map((h) => (
+                    <option key={h}>{h}</option>
+                  ))}
                 </select>
               </td>
               <td className="px-2 py-1">
@@ -176,16 +220,28 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(activeTab==="tr"?weeksTr:weeks).map((w) => <option key={w}>{w}</option>)}
+                  {(isTr ? weeksTr : weeks).map((w) => (
+                    <option key={w}>{w}</option>
+                  ))}
                 </select>
               </td>
               <td className="px-2 py-1 text-center">
                 <input
-                  type="text"
-                  value={c.month}
+                  type="date"
+                  value={parseMonth(c.month, isTr)}
                   onChange={(e) => {
                     const list = [...courses];
-                    list[i].month = e.target.value;
+                    const d = new Date(e.target.value);
+                    if (isTr) {
+                      const monthNamesTr = [
+                        "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
+                        "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
+                      ];
+                      list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
+                    } else {
+                      const monthStr = d.toLocaleString("en", { month: "short" });
+                      list[i].month = `${monthStr} ${d.getDate()}`;
+                    }
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded text-center"
@@ -203,7 +259,10 @@ export default function CourseManagement() {
                 />
               </td>
               <td className="px-2 py-1 text-center">
-                <button onClick={() => deleteCourse(i)} className="p-1 text-red-600 hover:text-red-800">
+                <button
+                  onClick={() => deleteCourse(i)}
+                  className="p-1 text-red-600 hover:text-red-800"
+                >
                   <Trash2 size={16} />
                 </button>
               </td>
@@ -246,7 +305,9 @@ export default function CourseManagement() {
         </div>
       </div>
 
-      {activeTab === "en" ? renderTable(coursesEn, setCoursesEn) : renderTable(coursesTr, setCoursesTr)}
+      {activeTab === "en"
+        ? renderTable(coursesEn, setCoursesEn, false)
+        : renderTable(coursesTr, setCoursesTr, true)}
     </div>
   );
 }
