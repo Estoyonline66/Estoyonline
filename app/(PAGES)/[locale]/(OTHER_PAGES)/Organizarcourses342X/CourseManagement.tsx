@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
 
@@ -15,26 +16,26 @@ interface Course {
 const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
-const daysEn = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
-
-const weeksEn = ["Once a week 2.5 hours", "Once a week 2 hours"];
+const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
 const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
 
+// 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
-  const hour24 = 5 + Math.floor(i / 2);
+  const hour = Math.floor(i / 2);
   const minute = i % 2 === 0 ? "00" : "30";
-  const suffix = hour24 >= 12 ? "pm" : "am";
-  let hour12 = hour24 % 12;
-  if (hour12 === 0) hour12 = 12;
-  return `${hour12}:${minute} ${suffix} Spain time`;
+  const suffix = hour < 12 ? "am" : "pm";
+  const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+  return `${displayHour}:${minute} ${suffix} Spain time`;
 });
 
-const hoursTr = Array.from({ length: 26 }, (_, i) => {
-  const hour = 9 + Math.floor(i / 2);
-  const minute = i % 2 === 0 ? "00" : "30";
-  return `${hour}:${minute}`;
-});
+// 🔹 Turkish time options — from 09:00 to 22:00, half-hour intervals
+const hoursTr: string[] = [];
+for (let hour = 9; hour <= 22; hour++) {
+  hoursTr.push(`${hour.toString().padStart(2, "0")}:00`);
+  if (hour !== 22) hoursTr.push(`${hour.toString().padStart(2, "0")}:30`);
+}
 
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
@@ -82,26 +83,15 @@ export default function CourseManagement() {
     const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
-
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-
-    if (activeTab === "en") {
-      setCoursesEn(list);
-    } else {
-      setCoursesTr(list);
-    }
+    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-
-      if (activeTab === "en") {
-        setCoursesEn(list);
-      } else {
-        setCoursesTr(list);
-      }
+      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
     }
   };
 
@@ -109,8 +99,11 @@ export default function CourseManagement() {
     const newCourse: Course = {
       title: "Nuevo Curso",
       bold: activeTab === "en" ? "Monday" : "Pazartesi",
-      lesson: "First class",
-      time: activeTab === "en" ? "5:00 pm Spain time" : "9:00",
+      lesson: activeTab === "en" ? "First class" : "İlk ders",
+      time:
+        activeTab === "en"
+          ? "9:00 am Spain time"
+          : "09:00 - 2 saat",
       week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
       month: new Date().toISOString().split("T")[0],
       teacher: "",
@@ -123,16 +116,44 @@ export default function CourseManagement() {
     }
   };
 
-  const renderTable = (courses: Course[], setCourses: React.Dispatch<React.SetStateAction<Course[]>>) => (
+  const parseMonth = (month: string, isTr: boolean) => {
+    if (!month) return "";
+    if (!isTr) return month;
+    const monthMap: { [key: string]: string } = {
+      Ocak: "01",
+      Şubat: "02",
+      Mart: "03",
+      Nisan: "04",
+      Mayıs: "05",
+      Haziran: "06",
+      Temmuz: "07",
+      Ağustos: "08",
+      Eylül: "09",
+      Ekim: "10",
+      Kasım: "11",
+      Aralık: "12",
+    };
+    const match = month.match(/(\d+)\s([^\s]+)/);
+    if (!match) return "";
+    const day = match[1].padStart(2, "0");
+    const m = monthMap[match[2]] || "01";
+    return `2025-${m}-${day}`;
+  };
+
+  const renderTable = (
+    courses: Course[],
+    setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
+    isTr: boolean
+  ) => (
     <div className="overflow-x-auto w-full">
       <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
         <thead>
           <tr className="bg-gray-100">
             <th className="p-2 text-left w-10"></th>
             <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left w-[100px]">Día</th>
-            <th className="p-2 text-left w-[180px]">Hora</th>
-            <th className="p-2 text-left w-[180px]">Semana</th>
+            <th className="p-2 text-left w-[100px]">{isTr ? "Día" : "Day"}</th>
+            <th className="p-2 text-left w-[230px]">Hora</th>
+            <th className="p-2 text-left w-[230px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
             <th className="p-2 text-left w-[200px]">Profesor</th>
             <th className="p-2 text-center w-10"></th>
@@ -170,7 +191,7 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(activeTab === "en" ? daysEn : daysTr).map((d) => (
+                  {(isTr ? daysTr : days).map((d) => (
                     <option key={d}>{d}</option>
                   ))}
                 </select>
@@ -185,9 +206,14 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(activeTab === "en" ? hoursEn : hoursTr).map((h) => (
-                    <option key={h}>{h}</option>
-                  ))}
+                  {(isTr ? hoursTr : hoursEn).map((h) => {
+                    if (isTr) {
+                      const match = c.week.match(/(\d+(?:,\d+)?)\s*saat/);
+                      const duration = match ? match[0] : "2 saat";
+                      return <option key={h}>{`${h} - ${duration}`}</option>;
+                    }
+                    return <option key={h}>{h}</option>;
+                  })}
                 </select>
               </td>
               <td className="px-2 py-1">
@@ -200,18 +226,28 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(activeTab === "en" ? weeksEn : weeksTr).map((w) => (
+                  {(isTr ? weeksTr : weeks).map((w) => (
                     <option key={w}>{w}</option>
                   ))}
                 </select>
               </td>
               <td className="px-2 py-1 text-center">
                 <input
-                  type="text"
-                  value={c.month}
+                  type="date"
+                  value={parseMonth(c.month, isTr)}
                   onChange={(e) => {
                     const list = [...courses];
-                    list[i].month = e.target.value;
+                    const d = new Date(e.target.value);
+                    if (isTr) {
+                      const monthNamesTr = [
+                        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+                      ];
+                      list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
+                    } else {
+                      const monthStr = d.toLocaleString("en", { month: "short" });
+                      list[i].month = `${monthStr} ${d.getDate()}`;
+                    }
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded text-center"
@@ -279,7 +315,9 @@ export default function CourseManagement() {
         </div>
       </div>
 
-      {activeTab === "en" ? renderTable(coursesEn, setCoursesEn) : renderTable(coursesTr, setCoursesTr)}
+      {activeTab === "en"
+        ? renderTable(coursesEn, setCoursesEn, false)
+        : renderTable(coursesTr, setCoursesTr, true)}
     </div>
   );
 }
