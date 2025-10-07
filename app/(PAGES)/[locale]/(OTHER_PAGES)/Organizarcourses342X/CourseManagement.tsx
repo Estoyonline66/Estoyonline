@@ -84,14 +84,22 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+   if (activeTab === "en") {
+  setCoursesEn(list);
+} else {
+  setCoursesTr(list);
+}
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+      if (activeTab === "en") {
+  setCoursesEn(list);
+} else {
+  setCoursesTr(list);
+}
     }
   };
 
