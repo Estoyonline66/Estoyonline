@@ -17,9 +17,7 @@ const blobUrl =
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-
-// 🔹 24 saatlik 48 seçenek oluştur
-const hours = Array.from({ length: 24 * 2 }, (_, i) => {
+const hours = Array.from({ length: 48 }, (_, i) => {
   const hour = Math.floor(i / 2);
   const minute = i % 2 === 0 ? "00" : "30";
   const formattedHour = hour.toString().padStart(2, "0");
@@ -47,11 +45,12 @@ export default function CourseManagement() {
     fetchCourses();
   }, []);
 
+  // 🟢 Fonksiyonlar
   const saveCourses = async () => {
     setSaving(true);
     try {
-      const res = await fetch(blobUrl, {
-        method: "PUT",
+      const res = await fetch("/api/courses/save", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cardCoursesEn: coursesEn,
@@ -73,14 +72,24 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+
+    if (activeTab === "en") {
+      setCoursesEn(list);
+    } else {
+      setCoursesTr(list);
+    }
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
+
+      if (activeTab === "en") {
+        setCoursesEn(list);
+      } else {
+        setCoursesTr(list);
+      }
     }
   };
 
@@ -94,12 +103,18 @@ export default function CourseManagement() {
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-    activeTab === "en"
-      ? setCoursesEn([newCourse, ...coursesEn])
-      : setCoursesTr([newCourse, ...coursesTr]);
+
+    if (activeTab === "en") {
+      setCoursesEn([newCourse, ...coursesEn]);
+    } else {
+      setCoursesTr([newCourse, ...coursesTr]);
+    }
   };
 
-  const renderTable = (courses: Course[], setCourses: React.Dispatch<React.SetStateAction<Course[]>>) => (
+  const renderTable = (
+    courses: Course[],
+    setCourses: React.Dispatch<React.SetStateAction<Course[]>>
+  ) => (
     <div className="overflow-x-auto w-full">
       <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
         <thead>
@@ -107,8 +122,8 @@ export default function CourseManagement() {
             <th className="p-2 text-left w-10"></th>
             <th className="p-2 text-left w-[250px]">Título</th>
             <th className="p-2 text-left w-[100px]">Día</th>
-            <th className="p-2 text-left w-[130px]">Hora</th>
-            <th className="p-2 text-left w-[130px]">Semana</th>
+            <th className="p-2 text-left w-[180px]">Hora</th>
+            <th className="p-2 text-left w-[180px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
             <th className="p-2 text-left w-[200px]">Profesor</th>
             <th className="p-2 text-center w-10"></th>
@@ -116,20 +131,15 @@ export default function CourseManagement() {
         </thead>
         <tbody>
           {courses.map((c, i) => (
-            <tr key={i} className="border-b border-gray-200 hover:bg-gray-50">
-              {/* Oklar solda */}
-              <td className="px-2 py-1 text-center">
-                <div className="flex flex-col items-center gap-1">
-                  <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
-                    <ArrowUp size={16} />
-                  </button>
-                  <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
-                    <ArrowDown size={16} />
-                  </button>
-                </div>
+            <tr key={i} className="hover:bg-gray-50">
+              <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
+                <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
+                  <ArrowUp size={16} />
+                </button>
+                <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
+                  <ArrowDown size={16} />
+                </button>
               </td>
-
-              {/* Título */}
               <td className="px-2 py-1">
                 <input
                   value={c.title}
@@ -141,8 +151,6 @@ export default function CourseManagement() {
                   className="border p-1 w-full rounded"
                 />
               </td>
-
-              {/* Día */}
               <td className="px-2 py-1">
                 <select
                   value={c.bold}
@@ -158,8 +166,6 @@ export default function CourseManagement() {
                   ))}
                 </select>
               </td>
-
-              {/* Hora */}
               <td className="px-2 py-1">
                 <select
                   value={c.time}
@@ -175,8 +181,6 @@ export default function CourseManagement() {
                   ))}
                 </select>
               </td>
-
-              {/* Semana */}
               <td className="px-2 py-1">
                 <select
                   value={c.week}
@@ -192,25 +196,10 @@ export default function CourseManagement() {
                   ))}
                 </select>
               </td>
-
-              {/* Mes */}
               <td className="px-2 py-1 text-center">
                 <input
                   type="date"
-                  value={
-                    /^\d{4}-\d{2}-\d{2}$/.test(c.month)
-                      ? c.month
-                      : (() => {
-                          const [mon, day] = c.month.split(" ");
-                          const months: Record<string, string> = {
-                            Jan: "01", Feb: "02", Mar: "03", Apr: "04",
-                            May: "05", Jun: "06", Jul: "07", Aug: "08",
-                            Sep: "09", Oct: "10", Nov: "11", Dec: "12",
-                          };
-                          const year = new Date().getFullYear();
-                          return `${year}-${months[mon] || "01"}-${day.padStart(2, "0")}`;
-                        })()
-                  }
+                  value={c.month}
                   onChange={(e) => {
                     const list = [...courses];
                     const d = new Date(e.target.value);
@@ -222,8 +211,6 @@ export default function CourseManagement() {
                   className="border p-1 w-full rounded text-center"
                 />
               </td>
-
-              {/* Profesor */}
               <td className="px-2 py-1">
                 <input
                   value={c.teacher || ""}
@@ -235,8 +222,6 @@ export default function CourseManagement() {
                   className="border p-1 w-full rounded"
                 />
               </td>
-
-              {/* Çöp kutusu sağda */}
               <td className="px-2 py-1 text-center">
                 <button
                   onClick={() => deleteCourse(i)}
@@ -271,10 +256,7 @@ export default function CourseManagement() {
         </div>
 
         <div className="flex gap-3">
-          <button
-            onClick={addCourse}
-            className="px-3 py-2 bg-green-500 text-white rounded text-sm"
-          >
+          <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">
             + Nuevo curso
           </button>
           <button
@@ -287,9 +269,7 @@ export default function CourseManagement() {
         </div>
       </div>
 
-      {activeTab === "en"
-        ? renderTable(coursesEn, setCoursesEn)
-        : renderTable(coursesTr, setCoursesTr)}
+      {activeTab === "en" ? renderTable(coursesEn, setCoursesEn) : renderTable(coursesTr, setCoursesTr)}
     </div>
   );
 }
