@@ -209,18 +209,17 @@ export default function CourseManagement() {
         </thead>
         <tbody>
           {courses.map((c, i) => {
-            // 🔹 Türkçe haftalık seçenek düzeltmesi - basit ve güvenilir çözüm
+            // 🔹 Türkçe haftalık seçenek düzeltmesi
             const normalizedWeekValue = isTr
               ? (() => {
-                  // Time içinde "2,5 saat" varsa "Haftada 1 gün 2,5 saat" seç
+                  // Time içindeki süre bilgisine göre week değerini belirle
                   if (c.time.includes("2,5 saat")) {
                     return "Haftada 1 gün 2,5 saat";
                   }
-                  // Time içinde "2 saat" varsa "Haftada 1 gün 2 saat" seç
                   if (c.time.includes("2 saat")) {
                     return "Haftada 1 gün 2 saat";
                   }
-                  // Fallback: mevcut week değerini kullan
+                  // Eğer time'da süre bilgisi yoksa, mevcut week değerini kullan
                   return c.week;
                 })()
               : c.week;
@@ -264,15 +263,16 @@ export default function CourseManagement() {
                     value={isTr ? c.time.split(" - ")[0] : c.time}
                     onChange={(e) => {
                       const list = [...courses];
-                      // Time değiştiğinde week değerini de otomatik güncelle
-                      const newTime = isTr ? `${e.target.value} - ${c.time.split(" - ")[1] || "2,5 saat"}` : e.target.value;
+                      // Time değiştiğinde süre kısmını koru
+                      const currentDuration = isTr ? (c.time.split(" - ")[1] || "2,5 saat") : "";
+                      const newTime = isTr ? `${e.target.value} - ${currentDuration}` : e.target.value;
                       list[i].time = newTime;
                       
-                      // Türkçe tabında time değiştiğinde week'i de güncelle
+                      // Türkçe tabında time değiştiğinde week'i de güncelle (sadece saat değiştiğinde)
                       if (isTr) {
-                        if (newTime.includes("2,5 saat")) {
+                        if (currentDuration === "2,5 saat") {
                           list[i].week = "Haftada 1 gün 2,5 saat";
-                        } else if (newTime.includes("2 saat")) {
+                        } else if (currentDuration === "2 saat") {
                           list[i].week = "Haftada 1 gün 2 saat";
                         }
                       }
