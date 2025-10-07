@@ -7,7 +7,12 @@ export default function InitializeCourses() {
   const [message, setMessage] = useState<string | null>(null);
 
   const handleInitialize = async () => {
-    if (!confirm("⚠️ Bu işlem blob üzerindeki mevcut verileri silecek ve başlangıç datasını yükleyecektir. Devam etmek istiyor musunuz?")) return;
+    if (
+      !confirm(
+        "⚠️ Bu işlem blob üzerindeki mevcut verileri silecek ve başlangıç datasını yükleyecektir. Devam etmek istiyor musunuz?"
+      )
+    )
+      return;
 
     setLoading(true);
     setMessage(null);
@@ -18,16 +23,20 @@ export default function InitializeCourses() {
       });
 
       const text = await res.text(); // Önce raw text al
-      let data: any = {};
+      let data: unknown = {};
       try {
         data = text ? JSON.parse(text) : {};
       } catch (parseErr) {
         console.warn("JSON parse hatası:", parseErr);
       }
 
-      if (!res.ok) throw new Error(data.error || "Başlangıç verisi yüklenemedi.");
-
-      setMessage(data.message || "✅ Başlangıç verisi yüklendi.");
+      if (res.ok && typeof data === "object" && data !== null && "message" in data) {
+        setMessage((data as { message?: string }).message || "✅ Başlangıç verisi yüklendi.");
+      } else if (!res.ok) {
+        setMessage((data as { error?: string })?.error || "Başlangıç verisi yüklenemedi.");
+      } else {
+        setMessage("✅ Başlangıç verisi yüklendi.");
+      }
     } catch (err: unknown) {
       if (err instanceof Error) {
         setMessage(`❌ Hata: ${err.message}`);
