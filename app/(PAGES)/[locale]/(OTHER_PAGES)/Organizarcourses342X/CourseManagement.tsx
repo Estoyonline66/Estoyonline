@@ -175,9 +175,17 @@ const renderTable = (
       <tbody>
         {courses.map((c, i) => {
           // 🔹 Türkçe haftalık seçenek düzeltmesi
-          const normalizedWeekValue = isTr
-            ? weeksTr.find((w) => w.startsWith(c.week)) || weeksTr[0]
-            : c.week;
+         // 🔹 Türkçe haftalık seçenek düzeltmesi
+const normalizedWeekValue = isTr
+  ? (() => {
+      // time içindeki saat uzunluğuna göre doğru haftayı seç
+      if (c.time.includes("2,5")) return "Haftada 1 gün 2,5 saat";
+      if (c.time.includes("2 ")) return "Haftada 1 gün 2 saat";
+      // fallback: mevcut değeri başa göre eşleştir
+      return weeksTr.find((w) => w.startsWith(c.week)) || weeksTr[0];
+    })()
+  : c.week;
+
 
           return (
             <tr key={i} className="hover:bg-gray-50">
