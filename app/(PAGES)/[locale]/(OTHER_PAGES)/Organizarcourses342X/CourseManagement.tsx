@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
 
@@ -16,15 +15,25 @@ interface Course {
 const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+// EN options
+const daysEn = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const weeksEn = ["Once a week 2.5 hours", "Once a week 2 hours"];
+const hoursEn = Array.from({ length: 48 }, (_, i) => {
+  let hour = 5 + Math.floor(i / 2); // 5:00 am başlangıç
+  let minute = i % 2 === 0 ? "00" : "30";
+  let suffix = hour >= 12 ? "pm" : "am";
+  let hour12 = hour % 12;
+  if (hour12 === 0) hour12 = 12;
+  return `${hour12}:${minute} ${suffix} Spain time`;
+});
+
+// TR options
 const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
-const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
 const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
-const hours = Array.from({ length: 48 }, (_, i) => {
-  const hour = Math.floor(i / 2);
+const hoursTr = Array.from({ length: (22 - 9 + 1) * 2 }, (_, i) => {
+  const hour = 9 + Math.floor(i / 2);
   const minute = i % 2 === 0 ? "00" : "30";
-  const formattedHour = hour.toString().padStart(2, "0");
-  return `${formattedHour}:${minute} Spain time`;
+  return `${hour}:${minute}`;
 });
 
 export default function CourseManagement() {
@@ -48,7 +57,6 @@ export default function CourseManagement() {
     fetchCourses();
   }, []);
 
-  // 🟢 Fonksiyonlar
   const saveCourses = async () => {
     setSaving(true);
     try {
@@ -76,23 +84,14 @@ export default function CourseManagement() {
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
 
-    if (activeTab === "en") {
-      setCoursesEn(list);
-    } else {
-      setCoursesTr(list);
-    }
+    activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-
-      if (activeTab === "en") {
-        setCoursesEn(list);
-      } else {
-        setCoursesTr(list);
-      }
+      activeTab === "en" ? setCoursesEn(list) : setCoursesTr(list);
     }
   };
 
@@ -100,178 +99,139 @@ export default function CourseManagement() {
     const newCourse: Course = {
       title: "Nuevo Curso",
       bold: activeTab === "en" ? "Monday" : "Pazartesi",
-      lesson: activeTab === "en" ? "First class" : "İlk ders",
-      time: activeTab === "en" ? "09:00 Spain time" : "09:00 - 2 saat",
+      lesson: "First class",
+      time: activeTab === "en" ? "5:00 pm Spain time" : "9:00",
       week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-
-    if (activeTab === "en") {
-      setCoursesEn([newCourse, ...coursesEn]);
-    } else {
-      setCoursesTr([newCourse, ...coursesTr]);
-    }
+    activeTab === "en"
+      ? setCoursesEn([newCourse, ...coursesEn])
+      : setCoursesTr([newCourse, ...coursesTr]);
   };
 
-  const parseMonth = (month: string, isTr: boolean) => {
-    if (!month) return "";
-    if (!isTr) return month; // İngilizce kısmı bozma
-    // Türkçe ayı gün-ay formatına çevir
-    const monthMap: { [key: string]: string } = {
-      "Ocak": "01",
-      "Şubat": "02",
-      "Mart": "03",
-      "Nisan": "04",
-      "Mayıs": "05",
-      "Haziran": "06",
-      "Temmuz": "07",
-      "Ağustos": "08",
-      "Eylül": "09",
-      "Ekim": "10",
-      "Kasım": "11",
-      "Aralık": "12",
-    };
-    const match = month.match(/(\d+)\s([^\s]+)/);
-    if (!match) return "";
-    const day = match[1].padStart(2, "0");
-    const m = monthMap[match[2]] || "01";
-    return `2025-${m}-${day}`; // date input format
-  };
-
-  const renderTable = (
-    courses: Course[],
-    setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
-    isTr: boolean
-  ) => (
-    <div className="overflow-x-auto w-full">
-      <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 text-left w-10"></th>
-            <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left w-[100px]">{isTr ? "Día" : "Day"}</th>
-            <th className="p-2 text-left w-[230px]">Hora</th>
-            <th className="p-2 text-left w-[230px]">Semana</th>
-            <th className="p-2 text-left w-[100px]">Mes</th>
-            <th className="p-2 text-left w-[200px]">Profesor</th>
-            <th className="p-2 text-center w-10"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {courses.map((c, i) => (
-            <tr key={i} className="hover:bg-gray-50">
-              <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
-                <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
-                  <ArrowUp size={16} />
-                </button>
-                <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
-                  <ArrowDown size={16} />
-                </button>
-              </td>
-              <td className="px-2 py-1">
-                <input
-                  value={c.title}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].title = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                />
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={c.bold}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].bold = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {(isTr ? daysTr : days).map((d) => (
-                    <option key={d}>{d}</option>
-                  ))}
-                </select>
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={c.time}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].time = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {hours.map((h) => (
-                    <option key={h}>{h}</option>
-                  ))}
-                </select>
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={c.week}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].week = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {(isTr ? weeksTr : weeks).map((w) => (
-                    <option key={w}>{w}</option>
-                  ))}
-                </select>
-              </td>
-              <td className="px-2 py-1 text-center">
-                <input
-                  type="date"
-                  value={parseMonth(c.month, isTr)}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    const d = new Date(e.target.value);
-                    if (isTr) {
-                      const monthNamesTr = [
-                        "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
-                        "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
-                      ];
-                      list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
-                    } else {
-                      const monthStr = d.toLocaleString("en", { month: "short" });
-                      list[i].month = `${monthStr} ${d.getDate()}`;
-                    }
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded text-center"
-                />
-              </td>
-              <td className="px-2 py-1">
-                <input
-                  value={c.teacher || ""}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].teacher = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                />
-              </td>
-              <td className="px-2 py-1 text-center">
-                <button
-                  onClick={() => deleteCourse(i)}
-                  className="p-1 text-red-600 hover:text-red-800"
-                >
-                  <Trash2 size={16} />
-                </button>
-              </td>
+  const renderTable = (courses: Course[], setCourses: React.Dispatch<React.SetStateAction<Course[]>>) => {
+    const isTr = activeTab === "tr";
+    return (
+      <div className="overflow-x-auto w-full">
+        <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="p-2 text-left w-10"></th>
+              <th className="p-2 text-left w-[250px]">Título</th>
+              <th className="p-2 text-left w-[100px]">Día</th>
+              <th className="p-2 text-left w-[180px]">Hora</th>
+              <th className="p-2 text-left w-[180px]">Semana</th>
+              <th className="p-2 text-left w-[100px]">Mes</th>
+              <th className="p-2 text-left w-[200px]">Profesor</th>
+              <th className="p-2 text-center w-10"></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+          </thead>
+          <tbody>
+            {courses.map((c, i) => (
+              <tr key={i} className="hover:bg-gray-50">
+                <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
+                  <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
+                    <ArrowUp size={16} />
+                  </button>
+                  <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
+                    <ArrowDown size={16} />
+                  </button>
+                </td>
+                <td className="px-2 py-1">
+                  <input
+                    value={c.title}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].title = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  />
+                </td>
+                <td className="px-2 py-1">
+                  <select
+                    value={c.bold}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].bold = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  >
+                    {(isTr ? daysTr : daysEn).map((d) => (
+                      <option key={d}>{d}</option>
+                    ))}
+                  </select>
+                </td>
+                <td className="px-2 py-1">
+                  <select
+                    value={c.time}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].time = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  >
+                    {(isTr ? hoursTr : hoursEn).map((h) => (
+                      <option key={h}>{h}</option>
+                    ))}
+                  </select>
+                </td>
+                <td className="px-2 py-1">
+                  <select
+                    value={c.week}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].week = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  >
+                    {(isTr ? weeksTr : weeksEn).map((w) => (
+                      <option key={w}>{w}</option>
+                    ))}
+                  </select>
+                </td>
+                <td className="px-2 py-1 text-center">
+                  <input
+                    type="text"
+                    value={c.month}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].month = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded text-center"
+                  />
+                </td>
+                <td className="px-2 py-1">
+                  <input
+                    value={c.teacher || ""}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].teacher = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  />
+                </td>
+                <td className="px-2 py-1 text-center">
+                  <button
+                    onClick={() => deleteCourse(i)}
+                    className="p-1 text-red-600 hover:text-red-800"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
 
   return (
     <div className="p-4 md:p-8">
@@ -305,9 +265,7 @@ export default function CourseManagement() {
         </div>
       </div>
 
-      {activeTab === "en"
-        ? renderTable(coursesEn, setCoursesEn, false)
-        : renderTable(coursesTr, setCoursesTr, true)}
+      {activeTab === "en" ? renderTable(coursesEn, setCoursesEn) : renderTable(coursesTr, setCoursesTr)}
     </div>
   );
 }
