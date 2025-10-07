@@ -19,7 +19,7 @@ const blobUrl =
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
+const weeksTr = ["Haftada 1 gün 2,5 saat", "Haftada 1 gün 2 saat"];
 
 // 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
@@ -50,7 +50,22 @@ export default function CourseManagement() {
         if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
         const data = await res.json();
         setCoursesEn(data.cardCoursesEn || []);
-        setCoursesTr(data.cardCoursesTr || []);
+        
+        // Türkçe kursları yüklerken week değerlerini time'a göre düzelt
+        const fixedCoursesTr = (data.cardCoursesTr || []).map((course: Course) => {
+          let fixedWeek = course.week;
+          // Time içindeki süre bilgisine göre week değerini düzelt
+          if (course.time.includes("2,5 saat")) {
+            fixedWeek = "Haftada 1 gün 2,5 saat";
+          } else if (course.time.includes("2 saat")) {
+            fixedWeek = "Haftada 1 gün 2 saat";
+          }
+          return {
+            ...course,
+            week: fixedWeek
+          };
+        });
+        setCoursesTr(fixedCoursesTr);
       } catch (err) {
         console.error("Error loading courses:", err);
       }
@@ -119,8 +134,8 @@ export default function CourseManagement() {
       title: "Nuevo Curso",
       bold: activeTab === "en" ? "Monday" : "Pazartesi",
       lesson: activeTab === "en" ? "First class" : "İlk ders",
-      time: activeTab === "en" ? "9:00 am Spain time" : "09:00",
-      week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
+      time: activeTab === "en" ? "9:00 am Spain time" : "09:00 - 2,5 saat",
+      week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2,5 saat",
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
@@ -153,147 +168,173 @@ export default function CourseManagement() {
     return month;
   };
 
-const renderTable = (
-  courses: Course[],
-  setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
-  isTr: boolean
-) => (
-  <div className="overflow-x-auto w-full">
-    <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
-      <thead>
-        <tr className="bg-gray-100">
-          <th className="p-2 text-left w-10"></th>
-          <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
-          <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
-          <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
-          <th className="p-2 text-left w-[230px]">Semana</th>
-          <th className="p-2 text-left w-[100px]">Mes</th>
-          <th className="p-2 text-left w-[200px]">Profesor</th>
-          <th className="p-2 text-center w-10"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {courses.map((c, i) => {
-          // 🔹 Türkçe haftalık seçenek düzeltmesi
-         // 🔹 Türkçe haftalık seçenek düzeltmesi
-const normalizedWeekValue = isTr
-  ? (() => {
-      // time içindeki saat uzunluğuna göre doğru haftayı seç
-      if (c.time.includes("2,5")) return "Haftada 1 gün 2,5 saat";
-      if (c.time.includes("2 ")) return "Haftada 1 gün 2 saat";
-      // fallback: mevcut değeri başa göre eşleştir
-      return weeksTr.find((w) => w.startsWith(c.week)) || weeksTr[0];
-    })()
-  : c.week;
+  const renderTable = (
+    courses: Course[],
+    setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
+    isTr: boolean
+  ) => (
+    <div className="overflow-x-auto w-full">
+      <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="p-2 text-left w-10"></th>
+            <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
+            <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
+            <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
+            <th className="p-2 text-left w-[230px]">Semana</th>
+            <th className="p-2 text-left w-[100px]">Mes</th>
+            <th className="p-2 text-left w-[200px]">Profesor</th>
+            <th className="p-2 text-center w-10"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {courses.map((c, i) => {
+            // 🔹 Türkçe haftalık seçenek düzeltmesi - basit ve güvenilir çözüm
+            const normalizedWeekValue = isTr
+              ? (() => {
+                  // Time içinde "2,5 saat" varsa "Haftada 1 gün 2,5 saat" seç
+                  if (c.time.includes("2,5 saat")) {
+                    return "Haftada 1 gün 2,5 saat";
+                  }
+                  // Time içinde "2 saat" varsa "Haftada 1 gün 2 saat" seç
+                  if (c.time.includes("2 saat")) {
+                    return "Haftada 1 gün 2 saat";
+                  }
+                  // Fallback: mevcut week değerini kullan
+                  return c.week;
+                })()
+              : c.week;
 
-
-          return (
-            <tr key={i} className="hover:bg-gray-50">
-              <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
-                <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
-                  <ArrowUp size={16} />
-                </button>
-                <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
-                  <ArrowDown size={16} />
-                </button>
-              </td>
-              <td className="px-2 py-1">
-                <input
-                  value={c.title}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].title = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                />
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={c.bold}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].bold = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {(isTr ? daysTr : days).map((d) => <option key={d}>{d}</option>)}
-                </select>
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={isTr ? c.time.split(" - ")[0] : c.time}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].time = isTr ? `${e.target.value} - ${c.time.split(" - ")[1] || "2 saat"}` : e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {(isTr ? hoursTr : hoursEn).map((h) => <option key={h}>{h}</option>)}
-                </select>
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={normalizedWeekValue}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].week = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {(isTr ? weeksTr : weeks).map((w) => <option key={w}>{w}</option>)}
-                </select>
-              </td>
-              <td className="px-2 py-1 text-center">
-                <input
-                  type="date"
-                  value={isTr ? formatTrMonth(c.month) : formatEnMonth(c.month)}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    const d = new Date(e.target.value);
-                    if (isTr) {
-                      const monthNamesTr = [
-                        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
-                        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
-                      ];
-                      list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
-                    } else {
-                      list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()}`;
-                    }
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded text-center"
-                />
-              </td>
-              <td className="px-2 py-1">
-                <input
-                  value={c.teacher || ""}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].teacher = e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                />
-              </td>
-              <td className="px-2 py-1 text-center">
-                <button
-                  onClick={() => deleteCourse(i)}
-                  className="p-1 text-red-600 hover:text-red-800"
-                >
-                  <Trash2 size={16} />
-                </button>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  </div>
-);
+            return (
+              <tr key={i} className="hover:bg-gray-50">
+                <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
+                  <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
+                    <ArrowUp size={16} />
+                  </button>
+                  <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
+                    <ArrowDown size={16} />
+                  </button>
+                </td>
+                <td className="px-2 py-1">
+                  <input
+                    value={c.title}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].title = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  />
+                </td>
+                <td className="px-2 py-1">
+                  <select
+                    value={c.bold}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].bold = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  >
+                    {(isTr ? daysTr : days).map((d) => <option key={d}>{d}</option>)}
+                  </select>
+                </td>
+                <td className="px-2 py-1">
+                  <select
+                    value={isTr ? c.time.split(" - ")[0] : c.time}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      // Time değiştiğinde week değerini de otomatik güncelle
+                      const newTime = isTr ? `${e.target.value} - ${c.time.split(" - ")[1] || "2,5 saat"}` : e.target.value;
+                      list[i].time = newTime;
+                      
+                      // Türkçe tabında time değiştiğinde week'i de güncelle
+                      if (isTr) {
+                        if (newTime.includes("2,5 saat")) {
+                          list[i].week = "Haftada 1 gün 2,5 saat";
+                        } else if (newTime.includes("2 saat")) {
+                          list[i].week = "Haftada 1 gün 2 saat";
+                        }
+                      }
+                      
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  >
+                    {(isTr ? hoursTr : hoursEn).map((h) => <option key={h}>{h}</option>)}
+                  </select>
+                </td>
+                <td className="px-2 py-1">
+                  <select
+                    value={normalizedWeekValue}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].week = e.target.value;
+                      
+                      // Week değiştiğinde time değerini de güncelle
+                      if (isTr) {
+                        const currentTimePart = c.time.split(" - ")[0];
+                        if (e.target.value === "Haftada 1 gün 2,5 saat") {
+                          list[i].time = `${currentTimePart} - 2,5 saat`;
+                        } else if (e.target.value === "Haftada 1 gün 2 saat") {
+                          list[i].time = `${currentTimePart} - 2 saat`;
+                        }
+                      }
+                      
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  >
+                    {(isTr ? weeksTr : weeks).map((w) => <option key={w}>{w}</option>)}
+                  </select>
+                </td>
+                <td className="px-2 py-1 text-center">
+                  <input
+                    type="date"
+                    value={isTr ? formatTrMonth(c.month) : formatEnMonth(c.month)}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      const d = new Date(e.target.value);
+                      if (isTr) {
+                        const monthNamesTr = [
+                          "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                          "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+                        ];
+                        list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
+                      } else {
+                        list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()}`;
+                      }
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded text-center"
+                  />
+                </td>
+                <td className="px-2 py-1">
+                  <input
+                    value={c.teacher || ""}
+                    onChange={(e) => {
+                      const list = [...courses];
+                      list[i].teacher = e.target.value;
+                      setCourses(list);
+                    }}
+                    className="border p-1 w-full rounded"
+                  />
+                </td>
+                <td className="px-2 py-1 text-center">
+                  <button
+                    onClick={() => deleteCourse(i)}
+                    className="p-1 text-red-600 hover:text-red-800"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 
   return (
     <div className="p-4 md:p-8">
@@ -303,13 +344,13 @@ const normalizedWeekValue = isTr
             onClick={() => setActiveTab("en")}
             className={`px-4 py-2 rounded ${activeTab === "en" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
           >
-            🇬🇧 English Courses
+            🇬🇧 Para Extranjeros
           </button>
           <button
             onClick={() => setActiveTab("tr")}
             className={`px-4 py-2 rounded ${activeTab === "tr" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
           >
-            🇹🇷 Turkish Courses
+            🇹🇷 Para Turcos
           </button>
         </div>
         <div className="flex gap-3">
