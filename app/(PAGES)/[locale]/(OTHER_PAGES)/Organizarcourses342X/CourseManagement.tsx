@@ -42,6 +42,7 @@ export default function CourseManagement() {
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   const [saving, setSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("");
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -75,6 +76,7 @@ export default function CourseManagement() {
 
   const saveCoursesWithData = async (enData: Course[], trData: Course[]) => {
     setSaving(true);
+    setSaveMessage("");
     try {
       const res = await fetch("/api/courses/save", {
         method: "POST",
@@ -85,8 +87,14 @@ export default function CourseManagement() {
         }),
       });
       if (!res.ok) throw new Error("Save failed");
+      
+      // Başarılı kayıt mesajı
+      setSaveMessage("✅ Cambios guardados correctamente");
+      setTimeout(() => setSaveMessage(""), 3000); // 3 saniye sonra mesajı kaldır
     } catch (err) {
       console.error(err);
+      setSaveMessage("❌ Error al guardar los cambios");
+      setTimeout(() => setSaveMessage(""), 3000);
     } finally {
       setSaving(false);
     }
@@ -198,7 +206,7 @@ export default function CourseManagement() {
       <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
         <thead>
           <tr className="bg-gray-100">
-            <th className="p-2 text-left w-10"></th>
+            <th className="p-2 text-left w-20"></th>
             <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
             <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
             <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
@@ -227,13 +235,15 @@ export default function CourseManagement() {
 
             return (
               <tr key={i} className="hover:bg-gray-50">
-                <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
-                  <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
-                    <ArrowUp size={16} />
-                  </button>
-                  <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
-                    <ArrowDown size={16} />
-                  </button>
+                <td className="px-2 py-1 text-center">
+                  <div className="flex flex-row items-center justify-center gap-2">
+                    <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
+                      <ArrowUp size={16} />
+                    </button>
+                    <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
+                      <ArrowDown size={16} />
+                    </button>
+                  </div>
                 </td>
                 <td className="px-2 py-1">
                   <input
@@ -374,15 +384,22 @@ export default function CourseManagement() {
             🇹🇷 Para Turcos
           </button>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
           <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">+ Nuevo curso</button>
-          <button
-            onClick={saveCourses}
-            disabled={saving}
-            className="px-3 py-2 bg-blue-500 text-white rounded text-sm disabled:opacity-50"
-          >
-            💾 Guardar cambios
-          </button>
+          <div className="flex flex-col">
+            <button
+              onClick={saveCourses}
+              disabled={saving}
+              className="px-3 py-2 bg-blue-500 text-white rounded text-sm disabled:opacity-50"
+            >
+              💾 Guardar cambios
+            </button>
+            {saveMessage && (
+              <div className={`mt-1 text-xs ${saveMessage.includes("✅") ? "text-green-600" : "text-red-600"}`}>
+                {saveMessage}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
