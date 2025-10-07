@@ -43,7 +43,107 @@ export default function CourseManagement() {
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
+  // Şifre doğrulama
+  const adminPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD ;
+
+  useEffect(() => {
+    // Sayfa yüklendiğinde hatırlanan şifreyi kontrol et
+    const savedPassword = localStorage.getItem("coursesAdminPassword");
+    const savedRememberMe = localStorage.getItem("coursesRememberMe") === "true";
+    
+    if (savedRememberMe && savedPassword === adminPassword) {
+      setIsAuthenticated(true);
+    }
+  }, [adminPassword]);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (password === adminPassword) {
+      setIsAuthenticated(true);
+      setLoginError("");
+      
+      // "Beni hatırla" seçeneği işaretliyse şifreyi localStorage'a kaydet
+      if (rememberMe) {
+        localStorage.setItem("coursesAdminPassword", password);
+        localStorage.setItem("coursesRememberMe", "true");
+      } else {
+        localStorage.removeItem("coursesAdminPassword");
+        localStorage.removeItem("coursesRememberMe");
+      }
+    } else {
+      setLoginError("Contraseña incorrecta");
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setPassword("");
+    localStorage.removeItem("coursesAdminPassword");
+    localStorage.removeItem("coursesRememberMe");
+  };
+
+  // Login sayfası gösterimi
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+            Acceso de Administración
+          </h2>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Contraseña
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Ingrese la contraseña"
+                required
+              />
+            </div>
+            
+            <div className="flex items-center">
+              <input
+                id="rememberMe"
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              />
+              <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
+                Recordarme
+              </label>
+            </div>
+            
+            {loginError && (
+              <div className="text-red-600 text-sm text-center">
+                {loginError}
+              </div>
+            )}
+            
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Acceder
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // Ana uygulama
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -369,7 +469,8 @@ export default function CourseManagement() {
 
   return (
     <div className="p-4 md:p-8">
-      <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
+      {/* Logout butonu */}
+      <div className="flex justify-between items-center mb-5">
         <div className="flex gap-3">
           <button
             onClick={() => setActiveTab("en")}
@@ -384,6 +485,15 @@ export default function CourseManagement() {
             🇹🇷 Para Turcos
           </button>
         </div>
+        <button
+          onClick={handleLogout}
+          className="px-3 py-2 bg-red-500 text-white rounded text-sm hover:bg-red-600"
+        >
+          Cerrar Sesión
+        </button>
+      </div>
+
+      <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
         <div className="flex gap-3 items-center">
           <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">+ Nuevo curso</button>
           <div className="flex flex-col">
