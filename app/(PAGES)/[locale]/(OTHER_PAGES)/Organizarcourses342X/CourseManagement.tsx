@@ -37,6 +37,27 @@ for (let hour = 9; hour <= 22; hour++) {
   if (hour !== 22) hoursTr.push(`${hour.toString().padStart(2, "0")}:30`);
 }
 
+// 🟢 Yeni fonksiyon: blob tarihini input ve display için formatlar
+const formatDateForDisplay = (month: string, isTr: boolean) => {
+  if (!month) return "";
+  if (!isTr) {
+    // İngilizce tab: gg.mm.yyyy
+    const d = new Date(month);
+    return `${d.getDate().toString().padStart(2,"0")}.${(d.getMonth()+1).toString().padStart(2,"0")}.${d.getFullYear()}`;
+  } else {
+    // Türkçe tab: gg.mm.yyyy (blob örnek: "6 Ekim")
+    const monthNamesTr = [
+      "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
+      "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
+    ];
+    const [dayStr, monStr] = month.split(" ");
+    const mm = (monthNamesTr.indexOf(monStr)+1).toString().padStart(2,"0");
+    const dd = dayStr.padStart(2,"0");
+    const yyyy = "2025";
+    return `${dd}.${mm}.${yyyy}`;
+  }
+};
+
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
@@ -84,16 +105,22 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    if (activeTab === "en") setCoursesEn(list);
-    else setCoursesTr(list);
+    if (activeTab === "en") {
+      setCoursesEn(list);
+    } else {
+      setCoursesTr(list);
+    }
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      if (activeTab === "en") setCoursesEn(list);
-      else setCoursesTr(list);
+      if (activeTab === "en") {
+        setCoursesEn(list);
+      } else {
+        setCoursesTr(list);
+      }
     }
   };
 
@@ -111,30 +138,6 @@ export default function CourseManagement() {
     else setCoursesTr([newCourse, ...coursesTr]);
   };
 
-  const formatEnDate = (month: string) => {
-    if (!month) return "";
-    const [monStr, dayStr] = month.split(" ");
-    const monthMapEn: { [key: string]: string } = {
-      Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06",
-      Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12",
-    };
-    const mm = monthMapEn[monStr] || "01";
-    const dd = dayStr.padStart(2, "0");
-    return `2025-${mm}-${dd}`;
-  };
-
-  const formatTrDate = (month: string) => {
-    if (!month) return "";
-    const monthNamesTr = [
-      "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
-      "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
-    ];
-    const [dayStr, monStr] = month.split(" ");
-    const mm = (monthNamesTr.indexOf(monStr)+1).toString().padStart(2,"0");
-    const dd = dayStr.padStart(2,"0");
-    return `${dd}.${mm}.2025`;
-  };
-
   const renderTable = (
     courses: Course[],
     setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
@@ -146,8 +149,8 @@ export default function CourseManagement() {
           <tr className="bg-gray-100">
             <th className="p-2 text-left w-10"></th>
             <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left w-[130px]">{isTr ? "Día" : "Day"}</th>
-            <th className="p-2 text-left w-[200px]">Hora</th>
+            <th className="p-2 text-left w-[130px]">{isTr ? "Día" : "Day"}</th> {/* +30px */}
+            <th className="p-2 text-left w-[200px]">Hora</th> {/* -30px */}
             <th className="p-2 text-left w-[230px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
             <th className="p-2 text-left w-[200px]">Profesor</th>
@@ -193,28 +196,31 @@ export default function CourseManagement() {
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={isTr ? c.time.split(" - ")[0] : c.time}
+                  value={isTr ? c.time.split(" ")[0] : c.time}
                   onChange={(e) => {
                     const list = [...courses];
-                    if (isTr) {
-                      const duration = c.time.split(" - ")[1] || "2 saat";
-                      list[i].time = `${e.target.value} - ${duration}`;
-                    } else list[i].time = e.target.value;
+                    list[i].time = isTr ? `${e.target.value} - ${c.week.split(' ')[2] || '2 saat'}` : e.target.value;
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? hoursTr : hoursEn).map((h) => (
-                    <option key={h}>{h}</option>
-                  ))}
+                  {(isTr ? hoursTr : hoursEn).map((h) => {
+                    if (isTr) return <option key={h}>{h}</option>;
+                    return <option key={h}>{h}</option>;
+                  })}
                 </select>
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={isTr ? c.week : c.week}
+                  value={c.week}
                   onChange={(e) => {
                     const list = [...courses];
                     list[i].week = e.target.value;
+                    // Türkçe tab: time da güncelle
+                    if (isTr) {
+                      const timeParts = list[i].time.split(" - ");
+                      list[i].time = `${timeParts[0]} - ${e.target.value.split(" ").slice(2).join(" ")}`;
+                    }
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
@@ -227,7 +233,7 @@ export default function CourseManagement() {
               <td className="px-2 py-1 text-center">
                 <input
                   type="date"
-                  value={isTr ? formatTrDate(c.month) : formatEnDate(c.month)}
+                  value={formatDateForDisplay(c.month, isTr).split('.').reverse().join('-')}
                   onChange={(e) => {
                     const list = [...courses];
                     const d = new Date(e.target.value);
@@ -278,17 +284,13 @@ export default function CourseManagement() {
         <div className="flex gap-3">
           <button
             onClick={() => setActiveTab("en")}
-            className={`px-4 py-2 rounded ${
-              activeTab === "en" ? "bg-blue-600 text-white" : "bg-gray-200"
-            }`}
+            className={`px-4 py-2 rounded ${activeTab === "en" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
           >
             🇬🇧 English Courses
           </button>
           <button
             onClick={() => setActiveTab("tr")}
-            className={`px-4 py-2 rounded ${
-              activeTab === "tr" ? "bg-blue-600 text-white" : "bg-gray-200"
-            }`}
+            className={`px-4 py-2 rounded ${activeTab === "tr" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
           >
             🇹🇷 Turkish Courses
           </button>
