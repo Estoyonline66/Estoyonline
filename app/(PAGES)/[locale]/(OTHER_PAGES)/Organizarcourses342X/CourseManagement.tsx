@@ -49,7 +49,7 @@ export default function CourseManagement() {
   const [loginError, setLoginError] = useState("");
 
   // Şifre doğrulama
-  const adminPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD || "admin123";
+  const adminPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
 
   // Authentication kontrolü - her zaman çağrılmalı
   useEffect(() => {
