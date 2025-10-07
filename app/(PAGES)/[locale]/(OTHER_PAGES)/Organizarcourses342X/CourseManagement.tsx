@@ -19,7 +19,7 @@ const blobUrl =
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
+const weeksTr = ["Haftada 1 gün", "Haftada 2 gün"];
 
 // 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
@@ -36,27 +36,6 @@ for (let hour = 9; hour <= 22; hour++) {
   hoursTr.push(`${hour.toString().padStart(2, "0")}:00`);
   if (hour !== 22) hoursTr.push(`${hour.toString().padStart(2, "0")}:30`);
 }
-
-// 🟢 Yeni fonksiyon: blob tarihini input ve display için formatlar
-const formatDateForDisplay = (month: string, isTr: boolean) => {
-  if (!month) return "";
-  if (!isTr) {
-    // İngilizce tab: gg.mm.yyyy
-    const d = new Date(month);
-    return `${d.getDate().toString().padStart(2,"0")}.${(d.getMonth()+1).toString().padStart(2,"0")}.${d.getFullYear()}`;
-  } else {
-    // Türkçe tab: gg.mm.yyyy (blob örnek: "6 Ekim")
-    const monthNamesTr = [
-      "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
-      "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
-    ];
-    const [dayStr, monStr] = month.split(" ");
-    const mm = (monthNamesTr.indexOf(monStr)+1).toString().padStart(2,"0");
-    const dd = dayStr.padStart(2,"0");
-    const yyyy = "2025";
-    return `${dd}.${mm}.${yyyy}`;
-  }
-};
 
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
@@ -105,22 +84,16 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    if (activeTab === "en") {
-      setCoursesEn(list);
-    } else {
-      setCoursesTr(list);
-    }
+    if (activeTab === "en") setCoursesEn(list);
+    else setCoursesTr(list);
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      if (activeTab === "en") {
-        setCoursesEn(list);
-      } else {
-        setCoursesTr(list);
-      }
+      if (activeTab === "en") setCoursesEn(list);
+      else setCoursesTr(list);
     }
   };
 
@@ -129,13 +102,42 @@ export default function CourseManagement() {
       title: "Nuevo Curso",
       bold: activeTab === "en" ? "Monday" : "Pazartesi",
       lesson: activeTab === "en" ? "First class" : "İlk ders",
-      time: activeTab === "en" ? "9:00 am Spain time" : "09:00",
+      time: activeTab === "en" ? "9:00 am Spain time" : "09:00 - 2 saat",
       week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
     if (activeTab === "en") setCoursesEn([newCourse, ...coursesEn]);
     else setCoursesTr([newCourse, ...coursesTr]);
+  };
+
+  const formatDateEn = (month: string) => {
+    if (!month) return "";
+    const d = new Date(month);
+    return d.toLocaleDateString("en-GB").replace(/\//g, ".");
+  };
+
+  const formatDateTr = (month: string) => {
+    if (!month) return "";
+    const monthMap: { [key: string]: string } = {
+      Ocak: "01",
+      Şubat: "02",
+      Mart: "03",
+      Nisan: "04",
+      Mayıs: "05",
+      Haziran: "06",
+      Temmuz: "07",
+      Ağustos: "08",
+      Eylül: "09",
+      Ekim: "10",
+      Kasım: "11",
+      Aralık: "12",
+    };
+    const match = month.match(/(\d+)\s([^\s]+)/);
+    if (!match) return "";
+    const day = match[1].padStart(2, "0");
+    const m = monthMap[match[2]] || "01";
+    return `2025-${m}-${day}`;
   };
 
   const renderTable = (
@@ -149,8 +151,8 @@ export default function CourseManagement() {
           <tr className="bg-gray-100">
             <th className="p-2 text-left w-10"></th>
             <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left w-[130px]">{isTr ? "Día" : "Day"}</th> {/* +30px */}
-            <th className="p-2 text-left w-[200px]">Hora</th> {/* -30px */}
+            <th className="p-2 text-left w-[130px]">{isTr ? "Día" : "Day"}</th>
+            <th className="p-2 text-left w-[200px]">Hora</th>
             <th className="p-2 text-left w-[230px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
             <th className="p-2 text-left w-[200px]">Profesor</th>
@@ -196,51 +198,63 @@ export default function CourseManagement() {
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={isTr ? c.time.split(" ")[0] : c.time}
+                  value={isTr ? c.time.split(" - ")[0] : c.time}
                   onChange={(e) => {
                     const list = [...courses];
-                    list[i].time = isTr ? `${e.target.value} - ${c.week.split(' ')[2] || '2 saat'}` : e.target.value;
-                    setCourses(list);
-                  }}
-                  className="border p-1 w-full rounded"
-                >
-                  {(isTr ? hoursTr : hoursEn).map((h) => {
-                    if (isTr) return <option key={h}>{h}</option>;
-                    return <option key={h}>{h}</option>;
-                  })}
-                </select>
-              </td>
-              <td className="px-2 py-1">
-                <select
-                  value={c.week}
-                  onChange={(e) => {
-                    const list = [...courses];
-                    list[i].week = e.target.value;
-                    // Türkçe tab: time da güncelle
                     if (isTr) {
-                      const timeParts = list[i].time.split(" - ");
-                      list[i].time = `${timeParts[0]} - ${e.target.value.split(" ").slice(2).join(" ")}`;
+                      const duration = c.time.split(" - ")[1] || "2 saat";
+                      list[i].time = `${e.target.value} - ${duration}`;
+                    } else {
+                      list[i].time = e.target.value;
                     }
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? weeksTr : weeks).map((w) => (
-                    <option key={w}>{w}</option>
+                  {(isTr ? hoursTr : hoursEn).map((h) => (
+                    <option key={h}>{h}</option>
                   ))}
+                </select>
+              </td>
+              <td className="px-2 py-1">
+                <select
+                  value={isTr ? `${c.week} ${c.time.split(" - ")[1] || "2 saat"}` : c.week}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    if (isTr) {
+                      const parts = e.target.value.split(" ");
+                      const dayPart = parts.slice(0, 3).join(" ");
+                      const durationPart = parts.slice(3).join(" ") || "2 saat";
+                      list[i].week = dayPart;
+                      const hour = list[i].time.split(" - ")[0];
+                      list[i].time = `${hour} - ${durationPart}`;
+                    } else {
+                      list[i].week = e.target.value;
+                    }
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {(isTr ? weeksTr : weeks).map((w) => {
+                    if (isTr) {
+                      const duration = c.time.split(" - ")[1] || "2 saat";
+                      return <option key={w}>{`${w} ${duration}`}</option>;
+                    }
+                    return <option key={w}>{w}</option>;
+                  })}
                 </select>
               </td>
               <td className="px-2 py-1 text-center">
                 <input
                   type="date"
-                  value={formatDateForDisplay(c.month, isTr).split('.').reverse().join('-')}
+                  value={isTr ? formatDateTr(c.month) : formatDateEn(c.month)}
                   onChange={(e) => {
                     const list = [...courses];
                     const d = new Date(e.target.value);
                     if (isTr) {
                       const monthNamesTr = [
-                        "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
-                        "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
+                        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
                       ];
                       list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
                     } else {
