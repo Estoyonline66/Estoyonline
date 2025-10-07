@@ -21,7 +21,7 @@ const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumart
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
 const weeksTr = ["Haftada 1 gün 2 saat", "Haftada 2 gün 2,5 saat"];
 
-// English time options — 24 hours, half-hour intervals
+// 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
   const hour = Math.floor(i / 2);
   const minute = i % 2 === 0 ? "00" : "30";
@@ -30,7 +30,7 @@ const hoursEn = Array.from({ length: 48 }, (_, i) => {
   return `${displayHour}:${minute} ${suffix} Spain time`;
 });
 
-// Turkish time options — sadece saat
+// 🔹 Turkish time options — from 09:00 to 22:00, half-hour intervals
 const hoursTr: string[] = [];
 for (let hour = 9; hour <= 22; hour++) {
   hoursTr.push(`${hour.toString().padStart(2, "0")}:00`);
@@ -84,16 +84,22 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    if (activeTab === "en") setCoursesEn(list);
-    else setCoursesTr(list);
+    if (activeTab === "en") {
+      setCoursesEn(list);
+    } else {
+      setCoursesTr(list);
+    }
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      if (activeTab === "en") setCoursesEn(list);
-      else setCoursesTr(list);
+      if (activeTab === "en") {
+        setCoursesEn(list);
+      } else {
+        setCoursesTr(list);
+      }
     }
   };
 
@@ -107,35 +113,36 @@ export default function CourseManagement() {
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-    if (activeTab === "en") setCoursesEn([newCourse, ...coursesEn]);
-    else setCoursesTr([newCourse, ...coursesTr]);
+
+    if (activeTab === "en") {
+      setCoursesEn([newCourse, ...coursesEn]);
+    } else {
+      setCoursesTr([newCourse, ...coursesTr]);
+    }
   };
 
-  const parseMonthTr = (month: string) => {
+  const parseMonth = (month: string, isTr: boolean) => {
     if (!month) return "";
+    if (!isTr) return month;
     const monthMap: { [key: string]: string } = {
-      Ocak: "01", Şubat: "02", Mart: "03", Nisan: "04",
-      Mayıs: "05", Haziran: "06", Temmuz: "07", Ağustos: "08",
-      Eylül: "09", Ekim: "10", Kasım: "11", Aralık: "12",
+      Ocak: "01",
+      Şubat: "02",
+      Mart: "03",
+      Nisan: "04",
+      Mayıs: "05",
+      Haziran: "06",
+      Temmuz: "07",
+      Ağustos: "08",
+      Eylül: "09",
+      Ekim: "10",
+      Kasım: "11",
+      Aralık: "12",
     };
     const match = month.match(/(\d+)\s([^\s]+)/);
     if (!match) return "";
     const day = match[1].padStart(2, "0");
     const m = monthMap[match[2]] || "01";
     return `2025-${m}-${day}`;
-  };
-
-  const formatMonthEn = (month: string) => {
-    if (!month) return "";
-    // Örn: "Oct 11" -> 11.10.2025
-    const [monStr, dayStr] = month.split(" ");
-    const d = parseInt(dayStr, 10);
-    const monthNamesEn: { [key: string]: number } = {
-      Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6,
-      Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12
-    };
-    const m = monthNamesEn[monStr] || 1;
-    return `${d.toString().padStart(2,"0")}.${m.toString().padStart(2,"0")}.2025`;
   };
 
   const renderTable = (
@@ -149,8 +156,8 @@ export default function CourseManagement() {
           <tr className="bg-gray-100">
             <th className="p-2 text-left w-10"></th>
             <th className="p-2 text-left w-[250px]">Título</th>
-            <th className="p-2 text-left" style={{ width: "130px" }}>{isTr ? "Día" : "Day"}</th> {/* +30px */}
-            <th className="p-2 text-left" style={{ width: "200px" }}>Hora</th> {/* -30px */}
+            <th className="p-2 text-left w-[130px]">{isTr ? "Día" : "Day"}</th>
+            <th className="p-2 text-left w-[200px]">Hora</th>
             <th className="p-2 text-left w-[230px]">Semana</th>
             <th className="p-2 text-left w-[100px]">Mes</th>
             <th className="p-2 text-left w-[200px]">Profesor</th>
@@ -196,29 +203,29 @@ export default function CourseManagement() {
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={isTr ? c.time.split(" - ")[0] : c.time}
+                  value={c.time}
                   onChange={(e) => {
                     const list = [...courses];
-                    if (isTr) {
-                      const duration = c.time.split(" - ")[1] || "2 saat";
-                      list[i].time = `${e.target.value} - ${duration}`;
-                    } else {
-                      list[i].time = e.target.value;
-                    }
+                    list[i].time = e.target.value;
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? hoursTr : hoursEn).map((h) => (
-                    <option key={h}>{h}</option>
-                  ))}
+                  {(isTr ? hoursTr : hoursEn).map((h) => {
+                    if (isTr) {
+                      const match = c.time.match(/^(\d{2}:\d{2})/);
+                      const hourOnly = match ? match[1] : h;
+                      return <option key={h}>{hourOnly}</option>;
+                    }
+                    return <option key={h}>{h}</option>;
+                  })}
                 </select>
               </td>
               <td className="px-2 py-1">
                 <select
                   value={
                     isTr
-                      ? weeksTr.find(w => c.week.includes(w.split(" ")[2])) || weeksTr[0]
+                      ? c.week.includes(",") ? c.week : `${c.week} 2 saat`
                       : c.week
                   }
                   onChange={(e) => {
@@ -235,12 +242,50 @@ export default function CourseManagement() {
               </td>
               <td className="px-2 py-1 text-center">
                 <input
-                  type="text"
-                  value={isTr ? parseMonthTr(c.month) : formatMonthEn(c.month)}
+                  type="date"
+                  value={
+                    isTr
+                      ? (() => {
+                          if (!c.month) return "";
+                          const monthMap: { [key: string]: string } = {
+                            Ocak: "01", Şubat: "02", Mart: "03", Nisan: "04",
+                            Mayıs: "05", Haziran: "06", Temmuz: "07", Ağustos: "08",
+                            Eylül: "09", Ekim: "10", Kasım: "11", Aralık: "12",
+                          };
+                          const match = c.month.match(/(\d+)\s([^\s]+)/);
+                          if (!match) return "";
+                          const day = match[1].padStart(2, "0");
+                          const month = monthMap[match[2]] || "01";
+                          return `2025-${month}-${day}`;
+                        })()
+                      : (() => {
+                          if (!c.month) return "";
+                          const [monStr, dayStr] = c.month.split(" ");
+                          const d = parseInt(dayStr, 10);
+                          const monthNamesEn: { [key: string]: number } = {
+                            Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6,
+                            Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12
+                          };
+                          const m = monthNamesEn[monStr] || 1;
+                          return `2025-${m.toString().padStart(2,"0")}-${d.toString().padStart(2,"0")}`;
+                        })()
+                  }
                   onChange={(e) => {
                     const list = [...courses];
-                    if (isTr) list[i].month = e.target.value;
-                    else list[i].month = e.target.value; // İngilizce tab’da dd.mm.yyyy olacak
+                    const val = e.target.value;
+                    const [yyyy, mm, dd] = val.split("-");
+                    if (isTr) {
+                      const monthNamesTr = [
+                        "Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
+                        "Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"
+                      ];
+                      list[i].month = `${parseInt(dd,10)} ${monthNamesTr[parseInt(mm,10)-1]}`;
+                    } else {
+                      const monthNamesEn = [
+                        "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
+                      ];
+                      list[i].month = `${monthNamesEn[parseInt(mm,10)-1]} ${parseInt(dd,10)}`;
+                    }
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded text-center"
