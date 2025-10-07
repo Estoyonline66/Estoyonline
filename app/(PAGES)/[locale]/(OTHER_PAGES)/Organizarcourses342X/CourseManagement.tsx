@@ -206,14 +206,19 @@ export default function CourseManagement() {
                   }}
                   className="border p-1 w-full rounded"
                 >
-                  {(isTr ? hoursTr : hoursEn).map((h) => {
-                    if (isTr) {
-                      const match = c.week.match(/(\d+(?:,\d+)?)\s*saat/);
-                      const duration = match ? match[0] : "2 saat";
-                      return <option key={h}>{`${h} - ${duration}`}</option>;
-                    }
-                    return <option key={h}>{h}</option>;
-                  })}
+					{(isTr ? hoursTr : hoursEn).map((h) => {
+					  if (isTr) {
+						const match = c.week.match(/(\d+(?:,\d+)?)\s*saat/);
+						const duration = match ? match[0] : "2 saat";
+						return (
+						  <option key={h}>
+							{`${h} - ${duration}`}
+						  </option>
+						);
+					  }
+					  return <option key={h}>{h}</option>;
+					})}
+
                 </select>
               </td>
               <td className="px-2 py-1">
