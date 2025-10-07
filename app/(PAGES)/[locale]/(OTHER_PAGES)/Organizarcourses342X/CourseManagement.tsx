@@ -58,15 +58,15 @@ export default function CourseManagement() {
     fetchCourses();
   }, []);
 
-  const saveCourses = async () => {
+  const saveCoursesWithData = async (enData: Course[], trData: Course[]) => {
     setSaving(true);
     try {
       const res = await fetch("/api/courses/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          cardCoursesEn: coursesEn,
-          cardCoursesTr: coursesTr,
+          cardCoursesEn: enData,
+          cardCoursesTr: trData,
         }),
       });
       if (!res.ok) throw new Error("Save failed");
@@ -75,6 +75,10 @@ export default function CourseManagement() {
     } finally {
       setSaving(false);
     }
+  };
+
+  const saveCourses = async () => {
+    await saveCoursesWithData(coursesEn, coursesTr);
   };
 
   const moveRow = (index: number, direction: "up" | "down") => {
@@ -92,16 +96,21 @@ export default function CourseManagement() {
 
   const deleteCourse = async (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
-      const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
-      list.splice(index, 1);
-
       if (activeTab === "en") {
-        setCoursesEn(list);
+        const newCoursesEn = [...coursesEn];
+        newCoursesEn.splice(index, 1);
+        setCoursesEn(newCoursesEn);
+        
+        // Yeni state ile kaydet
+        await saveCoursesWithData(newCoursesEn, coursesTr);
       } else {
-        setCoursesTr(list);
+        const newCoursesTr = [...coursesTr];
+        newCoursesTr.splice(index, 1);
+        setCoursesTr(newCoursesTr);
+        
+        // Yeni state ile kaydet
+        await saveCoursesWithData(coursesEn, newCoursesTr);
       }
-
-      await saveCourses(); // Silme sonrası blob'a kaydet
     }
   };
 
