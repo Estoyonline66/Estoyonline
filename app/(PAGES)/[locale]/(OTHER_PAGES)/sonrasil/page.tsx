@@ -16,7 +16,14 @@ export default function InitializeCourses() {
       const res = await fetch("/api/courses/init", {
         method: "POST",
       });
-      const data = await res.json();
+
+      const text = await res.text(); // Önce raw text al
+      let data: any = {};
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch (parseErr) {
+        console.warn("JSON parse hatası:", parseErr);
+      }
 
       if (!res.ok) throw new Error(data.error || "Başlangıç verisi yüklenemedi.");
 
