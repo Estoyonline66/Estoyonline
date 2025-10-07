@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "@/contexts/TranslationProvider";
-import { useSearchParams } from "next/navigation";
 import { PriceData } from "@/types/PropTypes";
 
 interface CourseCard {
@@ -14,8 +13,6 @@ interface CourseCard {
 
 export default function Courses() {
   const { t, language } = useTranslation();
-  const searchParams = useSearchParams();
-  const isNew = searchParams.get("new") === "1";
   const Data: PriceData = t("courses");
 
   const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
@@ -26,35 +23,29 @@ export default function Courses() {
         "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
       try {
+        // 🔹 Hem İngilizce hem Türkçe sayfalar için blob'dan veri çek
+        const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, {
+          cache: "no-cache",
+        });
+        if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
+        const data = await res.json();
+        
         if (language === "en") {
           // 🔹 İngilizce sayfa -> EN kısmını oku
-          const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, {
-            cache: "no-cache",
-          });
-          if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
-          const data = await res.json();
           setCardCourses(data.cardCoursesEn || []);
-        } else if (language === "tr" && isNew) {
-          // 🔹 Türkçe + ?new=1 -> TR kısmını oku (blob’dan)
-          const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, {
-            cache: "no-cache",
-          });
-          if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
-          const data = await res.json();
-          setCardCourses(data.cardCoursesTr || []);
         } else {
-          // 🔹 Normal Türkçe sayfa -> tr.json’dan oku
-          setCardCourses(Data?.cardCourses || []);
+          // 🔹 Türkçe sayfa -> TR kısmını oku
+          setCardCourses(data.cardCoursesTr || []);
         }
       } catch (err) {
-        console.error("Error fetching courses:", err);
+        console.error("Error fetching courses from blob:", err);
         // Fallback olarak JSON'daki veriyi kullan
         setCardCourses(Data?.cardCourses || []);
       }
     };
 
     fetchCardCourses();
-  }, [language, isNew, Data]);
+  }, [language, Data]);
 
   return (
     <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
