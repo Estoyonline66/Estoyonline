@@ -287,7 +287,6 @@ const renderTable = (
   </div>
 );
 
-
   return (
     <div className="p-4 md:p-8">
       <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
