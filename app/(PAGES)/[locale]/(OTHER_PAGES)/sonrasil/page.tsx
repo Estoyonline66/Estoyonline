@@ -7,7 +7,7 @@ export default function InitializeCourses() {
   const [message, setMessage] = useState<string | null>(null);
 
   const handleInitialize = async () => {
-    if (!confirm("⚠️ Bu işlem blob üzerindeki mevcut verileri silecektir. Devam etmek istiyor musunuz?")) return;
+    if (!confirm("⚠️ Bu işlem blob üzerindeki mevcut verileri silecek ve başlangıç datasını yükleyecektir. Devam etmek istiyor musunuz?")) return;
 
     setLoading(true);
     setMessage(null);
@@ -21,8 +21,12 @@ export default function InitializeCourses() {
       if (!res.ok) throw new Error(data.error || "Başlangıç verisi yüklenemedi.");
 
       setMessage(data.message || "✅ Başlangıç verisi yüklendi.");
-    } catch (err: any) {
-      setMessage(`❌ Hata: ${err.message || err}`);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setMessage(`❌ Hata: ${err.message}`);
+      } else {
+        setMessage(`❌ Hata: ${String(err)}`);
+      }
     } finally {
       setLoading(false);
     }
