@@ -30,7 +30,7 @@ const hoursEn = Array.from({ length: 48 }, (_, i) => {
   return `${displayHour}:${minute} ${suffix} Spain time`;
 });
 
-// 🔹 Turkish time options — from 09:00 to 22:00, half-hour intervals
+// 🔹 Turkish time options — sadece saat, blob verisine uyumlu
 const hoursTr: string[] = [];
 for (let hour = 9; hour <= 22; hour++) {
   hoursTr.push(`${hour.toString().padStart(2, "0")}:00`);
@@ -84,22 +84,16 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-   if (activeTab === "en") {
-  setCoursesEn(list);
-} else {
-  setCoursesTr(list);
-}
+    if (activeTab === "en") setCoursesEn(list);
+    else setCoursesTr(list);
   };
 
   const deleteCourse = (index: number) => {
     if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
       const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
       list.splice(index, 1);
-      if (activeTab === "en") {
-  setCoursesEn(list);
-} else {
-  setCoursesTr(list);
-}
+      if (activeTab === "en") setCoursesEn(list);
+      else setCoursesTr(list);
     }
   };
 
@@ -108,38 +102,23 @@ export default function CourseManagement() {
       title: "Nuevo Curso",
       bold: activeTab === "en" ? "Monday" : "Pazartesi",
       lesson: activeTab === "en" ? "First class" : "İlk ders",
-      time:
-        activeTab === "en"
-          ? "9:00 am Spain time"
-          : "09:00 - 2 saat",
+      time: activeTab === "en" ? "9:00 am Spain time" : "09:00 - 2 saat",
       week: activeTab === "en" ? "Once a week 2.5 hours" : "Haftada 1 gün 2 saat",
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
 
-    if (activeTab === "en") {
-      setCoursesEn([newCourse, ...coursesEn]);
-    } else {
-      setCoursesTr([newCourse, ...coursesTr]);
-    }
+    if (activeTab === "en") setCoursesEn([newCourse, ...coursesEn]);
+    else setCoursesTr([newCourse, ...coursesTr]);
   };
 
   const parseMonth = (month: string, isTr: boolean) => {
     if (!month) return "";
     if (!isTr) return month;
     const monthMap: { [key: string]: string } = {
-      Ocak: "01",
-      Şubat: "02",
-      Mart: "03",
-      Nisan: "04",
-      Mayıs: "05",
-      Haziran: "06",
-      Temmuz: "07",
-      Ağustos: "08",
-      Eylül: "09",
-      Ekim: "10",
-      Kasım: "11",
-      Aralık: "12",
+      Ocak: "01", Şubat: "02", Mart: "03", Nisan: "04",
+      Mayıs: "05", Haziran: "06", Temmuz: "07", Ağustos: "08",
+      Eylül: "09", Ekim: "10", Kasım: "11", Aralık: "12",
     };
     const match = month.match(/(\d+)\s([^\s]+)/);
     if (!match) return "";
@@ -206,32 +185,31 @@ export default function CourseManagement() {
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={c.time}
+                  value={isTr ? c.time.split(" - ")[0] : c.time}
                   onChange={(e) => {
                     const list = [...courses];
-                    list[i].time = e.target.value;
+                    if (isTr) {
+                      const duration = c.time.split(" - ")[1] || "2 saat";
+                      list[i].time = `${e.target.value} - ${duration}`;
+                    } else {
+                      list[i].time = e.target.value;
+                    }
                     setCourses(list);
                   }}
                   className="border p-1 w-full rounded"
                 >
-					{(isTr ? hoursTr : hoursEn).map((h) => {
-					  if (isTr) {
-						const match = c.week.match(/(\d+(?:,\d+)?)\s*saat/);
-						const duration = match ? match[0] : "2 saat";
-						return (
-						  <option key={h}>
-							{`${h} - ${duration}`}
-						  </option>
-						);
-					  }
-					  return <option key={h}>{h}</option>;
-					})}
-
+                  {(isTr ? hoursTr : hoursEn).map((h) => (
+                    <option key={h}>{h}</option>
+                  ))}
                 </select>
               </td>
               <td className="px-2 py-1">
                 <select
-                  value={c.week}
+                  value={
+                    isTr
+                      ? weeksTr.find(w => c.week.includes(w.split(" ")[2])) || weeksTr[0]
+                      : c.week
+                  }
                   onChange={(e) => {
                     const list = [...courses];
                     list[i].week = e.target.value;
