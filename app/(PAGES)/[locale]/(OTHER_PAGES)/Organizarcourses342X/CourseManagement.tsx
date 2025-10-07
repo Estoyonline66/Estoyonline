@@ -30,7 +30,7 @@ const hoursEn = Array.from({ length: 48 }, (_, i) => {
   return `${displayHour}:${minute} ${suffix} Spain time`;
 });
 
-// 🔹 Turkish time options — 09:00–22:00, half-hour intervals
+// 🔹 Turkish time options — only hours 09:00–22:00, half-hour intervals
 const hoursTr: string[] = [];
 for (let hour = 9; hour <= 22; hour++) {
   hoursTr.push(`${hour.toString().padStart(2, "0")}:00`);
@@ -82,17 +82,27 @@ export default function CourseManagement() {
     const newIndex = direction === "up" ? index - 1 : index + 1;
     if (newIndex < 0 || newIndex >= list.length) return;
     [list[index], list[newIndex]] = [list[newIndex], list[index]];
-    if (activeTab === "en") setCoursesEn(list);
-    else setCoursesTr(list);
+
+    if (activeTab === "en") {
+      setCoursesEn(list);
+    } else {
+      setCoursesTr(list);
+    }
   };
 
   const deleteCourse = async (index: number) => {
-    if (!confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) return;
-    const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
-    list.splice(index, 1);
-    if (activeTab === "en") setCoursesEn(list);
-    else setCoursesTr(list);
-    await saveCourses(); // 🔹 Silme sonrası blob'a kaydet
+    if (confirm("⚠️ El curso se eliminará permanentemente. ¿Estás seguro?")) {
+      const list = activeTab === "en" ? [...coursesEn] : [...coursesTr];
+      list.splice(index, 1);
+
+      if (activeTab === "en") {
+        setCoursesEn(list);
+      } else {
+        setCoursesTr(list);
+      }
+
+      await saveCourses(); // Silme sonrası blob'a kaydet
+    }
   };
 
   const addCourse = () => {
@@ -105,8 +115,12 @@ export default function CourseManagement() {
       month: new Date().toISOString().split("T")[0],
       teacher: "",
     };
-    if (activeTab === "en") setCoursesEn([newCourse, ...coursesEn]);
-    else setCoursesTr([newCourse, ...coursesTr]);
+
+    if (activeTab === "en") {
+      setCoursesEn([newCourse, ...coursesEn]);
+    } else {
+      setCoursesTr([newCourse, ...coursesTr]);
+    }
   };
 
   const formatTrMonth = (month: string) => {
@@ -150,120 +164,108 @@ export default function CourseManagement() {
           </tr>
         </thead>
         <tbody>
-          {courses.map((c, i) => {
-            // 🔹 Türkçe semana seçimi: blob'dan gelen süreye göre doğru seçeneği bul
-            const weekOptions = isTr ? weeksTr : weeks;
-            let selectedWeek = c.week;
-            if (isTr) {
-              const durationMatch = c.time.match(/(\d+(?:,\d+)?)\s*saat/);
-              if (durationMatch) {
-                const duration = durationMatch[0].replace(",", ".");
-                selectedWeek = weeksTr.find(w => w.includes(duration)) || weeksTr[0];
-              }
-            }
-
-            return (
-              <tr key={i} className="hover:bg-gray-50">
-                <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
-                  <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
-                    <ArrowUp size={16} />
-                  </button>
-                  <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
-                    <ArrowDown size={16} />
-                  </button>
-                </td>
-                <td className="px-2 py-1">
-                  <input
-                    value={c.title}
-                    onChange={e => {
-                      const list = [...courses];
-                      list[i].title = e.target.value;
-                      setCourses(list);
-                    }}
-                    className="border p-1 w-full rounded"
-                  />
-                </td>
-                <td className="px-2 py-1">
-                  <select
-                    value={c.bold}
-                    onChange={e => {
-                      const list = [...courses];
-                      list[i].bold = e.target.value;
-                      setCourses(list);
-                    }}
-                    className="border p-1 w-full rounded"
-                  >
-                    {(isTr ? daysTr : days).map(d => <option key={d}>{d}</option>)}
-                  </select>
-                </td>
-                <td className="px-2 py-1">
-                  <select
-                    value={isTr ? c.time.split(" - ")[0] : c.time}
-                    onChange={e => {
-                      const list = [...courses];
-                      list[i].time = isTr
-                        ? `${e.target.value} - ${c.time.split(" - ")[1] || "2 saat"}`
-                        : e.target.value;
-                      setCourses(list);
-                    }}
-                    className="border p-1 w-full rounded"
-                  >
-                    {(isTr ? hoursTr : hoursEn).map(h => <option key={h}>{h}</option>)}
-                  </select>
-                </td>
-                <td className="px-2 py-1">
-                  <select
-                    value={selectedWeek}
-                    onChange={e => {
-                      const list = [...courses];
-                      list[i].week = e.target.value;
-                      setCourses(list);
-                    }}
-                    className="border p-1 w-full rounded"
-                  >
-                    {weekOptions.map(w => <option key={w}>{w}</option>)}
-                  </select>
-                </td>
-                <td className="px-2 py-1 text-center">
-                  <input
-                    type="date"
-                    value={isTr ? formatTrMonth(c.month) : formatEnMonth(c.month)}
-                    onChange={e => {
-                      const list = [...courses];
-                      const d = new Date(e.target.value);
-                      if (isTr) {
-                        const monthNamesTr = [
-                          "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
-                          "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
-                        ];
-                        list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
-                      } else {
-                        list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()}`;
-                      }
-                      setCourses(list);
-                    }}
-                    className="border p-1 w-full rounded text-center"
-                  />
-                </td>
-                <td className="px-2 py-1">
-                  <input
-                    value={c.teacher || ""}
-                    onChange={e => {
-                      const list = [...courses];
-                      list[i].teacher = e.target.value;
-                      setCourses(list);
-                    }}
-                    className="border p-1 w-full rounded"
-                  />
-                </td>
-                <td className="px-2 py-1 text-center">
-                  <button onClick={() => deleteCourse(i)} className="p-1 text-red-600 hover:text-red-800">
-                    <Trash2 size={16} />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+          {courses.map((c, i) => (
+            <tr key={i} className="hover:bg-gray-50">
+              <td className="px-2 py-1 text-center flex flex-col items-center gap-1">
+                <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
+                  <ArrowUp size={16} />
+                </button>
+                <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
+                  <ArrowDown size={16} />
+                </button>
+              </td>
+              <td className="px-2 py-1">
+                <input
+                  value={c.title}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].title = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                />
+              </td>
+              <td className="px-2 py-1">
+                <select
+                  value={c.bold}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].bold = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {(isTr ? daysTr : days).map((d) => <option key={d}>{d}</option>)}
+                </select>
+              </td>
+              <td className="px-2 py-1">
+                <select
+                  value={isTr ? c.time.split(" - ")[0] : c.time}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].time = isTr ? `${e.target.value} - ${c.time.split(" - ")[1] || "2 saat"}` : e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {(isTr ? hoursTr : hoursEn).map((h) => <option key={h}>{h}</option>)}
+                </select>
+              </td>
+              <td className="px-2 py-1">
+                <select
+                  value={isTr ? c.week.replace(",", ".") : c.week}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].week = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                >
+                  {(isTr ? weeksTr : weeks).map((w) => <option key={w}>{w}</option>)}
+                </select>
+              </td>
+              <td className="px-2 py-1 text-center">
+                <input
+                  type="date"
+                  value={isTr ? formatTrMonth(c.month) : formatEnMonth(c.month)}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    const d = new Date(e.target.value);
+                    if (isTr) {
+                      const monthNamesTr = [
+                        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+                      ];
+                      list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
+                    } else {
+                      list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()}`;
+                    }
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded text-center"
+                />
+              </td>
+              <td className="px-2 py-1">
+                <input
+                  value={c.teacher || ""}
+                  onChange={(e) => {
+                    const list = [...courses];
+                    list[i].teacher = e.target.value;
+                    setCourses(list);
+                  }}
+                  className="border p-1 w-full rounded"
+                />
+              </td>
+              <td className="px-2 py-1 text-center">
+                <button
+                  onClick={() => deleteCourse(i)}
+                  className="p-1 text-red-600 hover:text-red-800"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
