@@ -92,12 +92,12 @@ export default function PaymentPage() {
       }
       const lastName = parts.slice(1).join(" ");
       for (const word of lastName.split(" ")) {
-        if (word.length < 3 || !nameRegex.test(word)) {
+        if (word.length < 2 || !nameRegex.test(word)) {
           setError(
             isExamen
               ? `Estudiante ${i + 1}: el apellido debe tener al menos 3 letras y sin números`
               : t(
-                  `Öğrenci ${i + 1}: Soyad en az 3 harf olmalı ve sayı içermemeli.`,
+                  `Öğrenci ${i + 1}: Soyad en az 2 harf olmalı ve sayı içermemeli.`,
                   `Student ${i + 1}: Last name must be at least 3 letters and contain no numbers.`
                 )
           );
