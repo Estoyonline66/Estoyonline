@@ -46,15 +46,10 @@ useEffect(() => {
     const fetchTranslations = async () => {
       try {
         const response = await fetch(`/locales/${language}.json`);
-        if (!response.ok) {
-          throw new Error(`Failed to load translations: ${response.status}`);
-        }
         const data: Translations = await response.json();
         setTranslations(data);
       } catch (error) {
         console.error("Error loading translations:", error);
-        // Fallback: boş translations objesi - sayfa çalışmaya devam eder
-        setTranslations({});
       }
     };
 
