@@ -269,7 +269,7 @@
       {
         "title": "PRIVATE LESSONS FOR ADULTS/KIDS",
         "content": [
-          { "contentTitle": "General Information", "contentDescription": "People aged 14 and up take Adult Private Lessons.\nThese lessons are customized based on the student's interests and topics they are curious about. Video recordings are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\n\nFor children aged 6-13, Kid's Private Lessons are available. Vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship is unique and special in children's lessons, and our teachers have deep experience working with kids. If requested, lessons can be recorded, and a weekly progress report is sent to the parents. Children's private lessons last 45 minutes.\n\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
+          { "contentTitle": "General Information", "contentDescription": "People aged 14 and up take Adult Private Lessons.\nThese lessons are customized based on the student's interests and topics they are curious about. Video recordings are not kept. Lesson times are arranged with the teacher. Private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\n\nFor children aged 6-13, Kid's Private Lessons are available. Vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship is unique and special in children's lessons, and our teachers have deep experience working with kids. If requested, lessons can be recorded, and a weekly progress report is sent to the parents. \n\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
         ]
       }
     ],
@@ -462,8 +462,7 @@
         
       ],
       "onlineSpanishTwoTable": [
-        { "course": "Private lesson - adults", "duration": "1 hour", "price": "25 EUR" },
-        { "course": "Private lesson - kids", "duration": "45 minutes", "price": "20 EUR" }
+        { "course": "Private lesson", "duration": "1 hour", "price": "25 EUR" }
       ]
      
     },
