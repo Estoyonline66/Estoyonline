@@ -204,7 +204,7 @@ export default function CourseManagement() {
 
   const formatTrMonth = (month: string) => {
     if (!month) return "";
-    const match = month.match(/(\d+)\s([^\s]+)/);
+    const match = month.match(/(\d+)\s([^\s]+)(?:\s+(\d{4}))?/);
     if (!match) return "";
     const day = match[1].padStart(2, "0");
     const monthMap: { [key: string]: string } = {
@@ -213,14 +213,15 @@ export default function CourseManagement() {
       Ekim: "10", Kasım: "11", Aralık: "12",
     };
     const m = monthMap[match[2]] || "01";
-    return `2025-${m}-${day}`;
+    const year = match[3] || "2025";
+    return `${year}-${m}-${day}`;
   };
 
   const formatEnMonth = (month: string) => {
     if (!month) return "";
     
     // "Oct 11" formatını parse et
-    const match = month.match(/([A-Za-z]+)\s+(\d+)/);
+    const match = month.match(/([A-Za-z]+)\s+(\d+)(?:\s+(\d{4}))?/);
     if (match) {
       const monthName = match[1];
       const day = match[2].padStart(2, "0");
@@ -234,7 +235,8 @@ export default function CourseManagement() {
       };
       
       const m = monthMap[monthName] || "01";
-      return `2025-${m}-${day}`;
+      const year = match[3] || "2025";
+      return `${year}-${m}-${day}`;
     }
     
     // Fallback: normal date parsing
@@ -378,9 +380,9 @@ export default function CourseManagement() {
                           "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
                           "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
                         ];
-                        list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]}`;
+                        list[i].month = `${d.getDate()} ${monthNamesTr[d.getMonth()]} ${d.getFullYear()}`;
                       } else {
-                        list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()}`;
+                        list[i].month = `${d.toLocaleString("en", { month: "short" })} ${d.getDate()} ${d.getFullYear()}`;
                       }
                       setCourses(list);
                     }}
