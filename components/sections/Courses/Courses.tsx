@@ -35,7 +35,16 @@ export default function Courses() {
           setCardCourses(data.cardCoursesEn || []);
         } else {
           // 🔹 Türkçe sayfa -> TR kısmını oku
-          setCardCourses(data.cardCoursesTr || []);
+          const coursesTr = data.cardCoursesTr || [];
+          const cleanedCourses = coursesTr.map((course: any) => ({
+            ...course,
+            week: course.week
+              .replace(" 1 saat 15 dk", "")
+              .replace(" 2,5 saat", "")
+              .replace(" 2 saat", "")
+              .trim(),
+          }));
+          setCardCourses(cleanedCourses);
         }
       } catch (err) {
         console.error("Error fetching courses from blob:", err);
