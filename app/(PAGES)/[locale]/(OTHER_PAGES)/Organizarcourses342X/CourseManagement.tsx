@@ -17,9 +17,9 @@ const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"];
+const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar", "Salı - Perş"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-const weeksTr = ["Haftada 1 gün 2,5 saat", "Haftada 1 gün 2 saat"];
+const weeksTr = ["Haftada 1 gün 2,5 saat", "Haftada 1 gün 2 saat", "Haftada 2 gün 1 saat 15 dk"];
 
 // 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
@@ -80,6 +80,8 @@ export default function CourseManagement() {
             fixedWeek = "Haftada 1 gün 2,5 saat";
           } else if (course.time.includes("2 saat")) {
             fixedWeek = "Haftada 1 gün 2 saat";
+          } else if (course.time.includes("1 saat 15 dk")) {
+            fixedWeek = "Haftada 2 gün 1 saat 15 dk";
           }
           return {
             ...course,
@@ -277,6 +279,9 @@ export default function CourseManagement() {
                   if (c.time.includes("2 saat")) {
                     return "Haftada 1 gün 2 saat";
                   }
+                  if (c.time.includes("1 saat 15 dk")) {
+                    return "Haftada 2 gün 1 saat 15 dk";
+                  }
                   // Eğer time'da süre bilgisi yoksa, mevcut week değerini kullan
                   return c.week;
                 })()
@@ -334,6 +339,8 @@ export default function CourseManagement() {
                           list[i].week = "Haftada 1 gün 2,5 saat";
                         } else if (currentDuration === "2 saat") {
                           list[i].week = "Haftada 1 gün 2 saat";
+                        } else if (currentDuration === "1 saat 15 dk") {
+                          list[i].week = "Haftada 2 gün 1 saat 15 dk";
                         }
                       }
                       
@@ -358,6 +365,8 @@ export default function CourseManagement() {
                           list[i].time = `${currentTimePart} - 2,5 saat`;
                         } else if (e.target.value === "Haftada 1 gün 2 saat") {
                           list[i].time = `${currentTimePart} - 2 saat`;
+                        } else if (e.target.value === "Haftada 2 gün 1 saat 15 dk") {
+                          list[i].time = `${currentTimePart} - 1 saat 15 dk`;
                         }
                       }
                       
