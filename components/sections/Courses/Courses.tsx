@@ -36,7 +36,7 @@ export default function Courses() {
         } else {
           // 🔹 Türkçe sayfa -> TR kısmını oku
           const coursesTr = data.cardCoursesTr || [];
-          const cleanedCourses = coursesTr.map((course: any) => ({
+          const cleanedCourses = coursesTr.map((course: CourseCard) => ({
             ...course,
             week: course.week.replace(/(Haftada\s+\d+\s+gün).*/, "$1").trim(),
           }));
