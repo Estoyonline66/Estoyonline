@@ -6,13 +6,13 @@ export interface CourseInfo {
 
 export const courseMap: Record<string, CourseInfo> = {
   // Grupales
-  "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 670000, currency: "try" },
+  "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 798000, currency: "try" },
   "A1.1_başlangıç_kursu_Yurtdışı_q9Z2": { name: "A1.1 Başlangıç (Yurtdışı)", amount: 19000, currency: "eur" },
-  "A1.1_sabah_Türkiye_Xy7p": { name: "A1.1 Sabah (Türkiye)", amount: 550000, currency: "try" },
-  "Üst_seviyeler_Türkiye_T6mQ": { name: "Üst Seviyeler (Türkiye)", amount: 510000, currency: "try" },
+  "A1.1_sabah_Türkiye_Xy7p": { name: "A1.1 Sabah (Türkiye)", amount: 660000, currency: "try" },
+  "Üst_seviyeler_Türkiye_T6mQ": { name: "Üst Seviyeler (Türkiye)", amount: 612000, currency: "try" },
   "Üst_seviyeler_indirimli_Türkiye_D7k2": { name: "Üst Seviyeler İndirimli (Türkiye)", amount: 460000, currency: "try" },
   "Üst_seviyeler_Yurtdışı_J8d4": { name: "Üst Seviyeler (Yurtdışı)", amount: 14500, currency: "eur" },
-  "Tamamlayıcı_kurs_Türkiye_w2Np": { name: "Tamamlayıcı Kurs (Türkiye)", amount: 265000, currency: "try" },
+  "Tamamlayıcı_kurs_Türkiye_w2Np": { name: "Tamamlayıcı Kurs (Türkiye)", amount: 318000, currency: "try" },
   "Tamamlayıcı_kurs_Yurtdışı_Lp5k": { name: "Tamamlayıcı Kurs (Yurtdışı)", amount: 9000, currency: "eur" },
   "Complementary_course_ext_v7Qe": { name: "Complementary Course", amount: 12000, currency: "eur" },
   "Upper_level_courses_ext_R82e": { name: "Upper level courses", amount: 19000, currency: "eur" },
