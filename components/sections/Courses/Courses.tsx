@@ -38,11 +38,7 @@ export default function Courses() {
           const coursesTr = data.cardCoursesTr || [];
           const cleanedCourses = coursesTr.map((course: any) => ({
             ...course,
-            week: course.week
-              .replace(" 1 saat 15 dk", "")
-              .replace(" 2,5 saat", "")
-              .replace(" 2 saat", "")
-              .trim(),
+            week: course.week.replace(/(Haftada\s+\d+\s+gün).*/, "$1").trim(),
           }));
           setCardCourses(cleanedCourses);
         }
