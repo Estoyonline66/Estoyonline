@@ -57,7 +57,7 @@ export default function Courses() {
       <h2 className="text-2xl font-bold mb-4">{Data?.scheduleTitle}</h2>
 
       {/* 🔹 Kurs Kartları */}
-      <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10 overflow-x-auto">
+      <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10 p-4">
         {cardCourses.map((card, index) => (
           <li
             key={index}
