@@ -29,6 +29,7 @@ export default function Courses() {
     }
   }, []);
 
+
   useEffect(() => {
     const fetchCardCourses = async () => {
       const blobUrl =
@@ -42,15 +43,24 @@ export default function Courses() {
         if (!res.ok) throw new Error(`Blob fetch failed: ${res.status}`);
         const data = await res.json();
         
+        // Yıl bilgisini silmek için yardımcı fonksiyon (örn: "7 Şubat 2026" -> "7 Şubat")
+        const removeYear = (text: string) => text.replace(/\s+\d{4}$/, "").trim();
+
         if (language === "en") {
           // 🔹 İngilizce sayfa -> EN kısmını oku
-          setCardCourses(data.cardCoursesEn || []);
+          const coursesEn = data.cardCoursesEn || [];
+          const cleanedCoursesEn = coursesEn.map((course: CourseCard) => ({
+             ...course,
+             month: removeYear(course.month)
+          }));
+          setCardCourses(cleanedCoursesEn);
         } else {
           // 🔹 Türkçe sayfa -> TR kısmını oku
           const coursesTr = data.cardCoursesTr || [];
           const cleanedCourses = coursesTr.map((course: CourseCard) => ({
             ...course,
             week: course.week.replace(/(Haftada\s+\d+\s+gün).*/, "$1").trim(),
+            month: removeYear(course.month)
           }));
           setCardCourses(cleanedCourses);
         }
