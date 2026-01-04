@@ -35,8 +35,8 @@ export default function Page() {
           <DoubleRight className="h-full relative left-5" />
         </span>
         <OnlineSpanishOne />
-        <OnlineSpanishTwo />
         <ExtraSpanish />
+        <OnlineSpanishTwo />
 
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-4 lg:gap-5 px-3 md:px-10 lg:px-[10rem]">
           {Data?.cards?.map((card, index) => (

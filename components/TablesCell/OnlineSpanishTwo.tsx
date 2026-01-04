@@ -32,7 +32,7 @@ const OnlineSpanishTwo = () => {
         Data?.tables?.onlineSpanishTwoColumns?.map((col) => ({
           key: col.key, // No need to cast
           header: col.header,
-          className: col.key === "course" ? "w-[60%]" : "w-[20%]",
+          className: col.key === "course" ? "w-[50%]" : col.key === "price" ? "w-[30%]" : "w-[20%]",
         })) || [];
     
       // Ensure `data` is correctly structured
