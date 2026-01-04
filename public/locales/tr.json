@@ -58,7 +58,7 @@
     "HeroTitle": "Dünya",
     "HeroYellowTitle": "İspanyolca konuşuyor,",
     "HeroTitle2": "şimdi sıra sende!",
-     "HeroDescription": "",
+    "HeroDescription": "",
     "HeroButton": "Kursları incele",
     "LearnSpanishtitle": "Butik okulumuzda eğlenerek İspanyolca öğrenin",
     "LearnSpanishdescription": "Barselona merkezli EstoyOnline.es butik okulumuzda İspanyolcayı geleneksel metotlardan çok farklı olarak, eğlenerek öğretiyoruz.  Kullandığımız modern metotlar sayesinde online İspanyolca öğrenmek artık çok eğlenceli ve keyifli bir süreç. Eğlenceli aktiviteler ve oyunlar motivasyonunuzu artırır ve stresinizi azaltır, böylece dil öğrenmeyi kolaylaştırır. Ayrıca doğal dil kullanımını teşvik eder ve sosyal bağları güçlendirir. Eğlenceli bir şekilde dil öğrenmek, kalıcılığı sağlar ve etkili bir şekilde dil becerilerinizi geliştirmenize katkıda bulunur. Okulumuzdaki İspanya ve Latin Amerika'da yaşayan öğretmenlerin tümünün ana dili İspanyolca'dır. Başlangıç seviyesi derslerini veren öğretmenlerimiz Türkçe  bilmektedir. Tüm derslerimiz Zoom üzerinden online yapılmaktadır.",
@@ -78,9 +78,8 @@
     "counterTitle2": "Öğretmen",
     "counterTitle3": "Aktif öğrenci",
     "counterTitle4": "Verilen sertifika",
-	  "homewhatsapplink": "https://wa.me/34633452268"
+    "homewhatsapplink": "https://wa.me/34633452268"
   },
-
   "teachers":{
     "PageTitle": "Öğretmenlerimiz",
     "teachersTitle": "Ana dili İspanyolca olan öğretmenlerimizle tanışın...",
@@ -96,11 +95,6 @@
         "name": "CAROLINA",
         "about": "Eğitim konusunda tutkulu bir öğretmendir ve tüm eğitim kademelerinde çalışmıştır. 15 yıl boyunca doğayla iç içe Patagonya'da yaşadı ve burada öğretmen ve öğretmen eğitmeni olarak çalışmaya devam etti. Müzik onun diğer tutkusudur. Çeşitli enstrümanlar (gitar, klavye, ukulele vb.) çalıyor ve korolarda şarkı söylüyor. Müzikal komedi dersleri aldı, birçok müzikalde yer aldı. 2021 yılında yabancılar için İspanyolca öğretmeni sertifikası alarak çeşitli platformlarda ve enstitülerde online ve yüz yüze çalışmaya başladı. Konuşma kurslarında, özel derslerde ve düzenli kurslarda öğrenmeyi kolaylaştıran oyunlar ve alternatif araçlar kullanmaya özen gösteriyor. ",
         "media":"/videos/teachers/caro.mp4"
-      },
-      {
-        "name": "DANIELA",
-        "about": "Arjantinlidir, Buenos Aires'te yaşamaktadır. Öğretmeyi çok sever. 2004 yılında yabancılara İspanyolca öğretmeye başladı ve 2008 yılında kendi okulunu açtı. Okul 2015 yılında Üniversitenin bir parçası haline geldi. Ana dili olan İspanyolca'nın yanı sıra Fransızca, İngilizce, Portekizce, İbranice ve İtalyanca da konuşmaktadır. İletişim Bilimleri bölümünden mezun oldu. Buenos Aires Üniversitesi'nde Edebiyat ve Tel Aviv Üniversitesi'nde Dilbilim ve Fransız Edebiyatı okudu. Boş zamanlarında çocuklarıyla birlikte olmayı, ailesiyle vakit geçirmeyi ve seyahat etmeyi seviyor. ",
-        "media":"/videos/teachers/dani.mp4"
       },
       {
         "name": "MELISSA",
@@ -131,6 +125,11 @@
         "name": "IVAN",
         "about": "Ivan, Rosario Üniversitesini bitirdikten sonra öğretmenliğe başladı. Sürekli kendini geliştirirek Atico'da dilbilgisi ve metodoji üzerine çalıştı ve  Salamanca Tia Tula Enstitüsünde ELE eğitmeni sertifikası aldı. Ayrıca TESOL diplomasına sahip oldu. Çok deneyimli olup Just English, Blue Apple ve Neşe Erberk okullarında öğretmenlik yaptı. İngilizce, İtalyanca ve Türkçe öğrendi. Ailesiyle bol bol vakit geçirmeyi ve doğa gezintilerini çok seviyor. ",
         "media":"/videos/teachers/ivan.mp4"
+      },
+      {
+        "name": "DANIELA",
+        "about": "Arjantinlidir, Buenos Aires'te yaşamaktadır. Öğretmeyi çok sever. 2004 yılında yabancılara İspanyolca öğretmeye başladı ve 2008 yılında kendi okulunu açtı. Okul 2015 yılında Üniversitenin bir parçası haline geldi. Ana dili olan İspanyolca'nın yanı sıra Fransızca, İngilizce, Portekizce, İbranice ve İtalyanca da konuşmaktadır. İletişim Bilimleri bölümünden mezun oldu. Buenos Aires Üniversitesi'nde Edebiyat ve Tel Aviv Üniversitesi'nde Dilbilim ve Fransız Edebiyatı okudu. Boş zamanlarında çocuklarıyla birlikte olmayı, ailesiyle vakit geçirmeyi ve seyahat etmeyi seviyor. ",
+        "media":"/videos/teachers/dani.mp4"
       },
       {
         "name": "EMILY",
@@ -192,7 +191,7 @@
 
   "courses": {
     "PageTitle": "Online Kurslar",
-	"scheduleTitle": "2025 Kurs Takvimi",  
+    "scheduleTitle": "Kurs Takvimi",  
     "accordionData": [
       {
         "title": "A1 SEVİYESİ BAŞLANGIÇ KURSLARI",
@@ -220,9 +219,9 @@
           { "contentTitle": "Genel Bilgi", "contentDescription": "İspanyolca konuşmak isteyen turizm sektörü çalışanları veya seyahat için İspanyolca'yı akıcı kullanmak isteyenler için hazırlanmış bir kurstur.  Yoğunlaştırılmış bir kurs olduğu için çok hızlı İspanyolca öğrenmek isteyenler  için de uygundur.  4,5 ayda 3 seviye öğretilir. Sıfırdan veya orta seviyeden başlanabilir. \n Kurs programı Avrupa Ortak Dil Referans Çerçevesini (MCER) referans alır. Turizm sektörüne özel İspanyolca materyaller kullanılır ve özellikle akıcı konuşma pratikleri yapılır" },
           { "contentTitle": "Dersler", "contentDescription": "Dersler Zoom üzerinden online olarak haftada iki kez yapılır. Her ders 2,5 saat sürer ve ders ortasında 15 dakika ara olur. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir. Tüm kurs 2 modülden (toplam 180 saat) oluşmaktadır. \n" },
            { "contentTitle": "Modül A - Başlangıç seviyesi", "contentDescription": "Daha önce hiç İspanyolca bilmeyen veya yeni öğrenmeye başlamış kişiler içindir. 90 saat sürer ve A1.1, A1.2 ve A2.1 seviyelerini kapsar. (Toplam 4,5 ay sürer)" },
-		  { "contentTitle": "Modül B - Orta seviye", "contentDescription": "Şimdiki zamanla rahat konuşabilen ve geçmiş zamanla (Pretérito Indefinido) konuşmayı öğrenmiş kişilere yöneliktir. İspanyolca seviyeniz en az A2.1 ise Modül B'den kursa başlayabilirsiniz. 90 saat sürer ve A2.2, A2.3 ve A2.4 seviyeleri kapsarlar. (Toplam 4,5 ay sürer)" },
-			{ "contentTitle": "Kullanılan kitaplar", "contentDescription": "Turizm 1- SGEL yayınları • Turizm 2- SGEL yayınları • Turizm Profesyonelleri- Enclave ELE yayınları • Tekrar hoş geldiniz (A1-A2)- Enclave ELE yayınları. Ayrıca öğretmenler kendi hazırladıkları materyalleri kullanırlar ve tüm derslerde konuşmayı güçlendirmek için iletişimsel egzersizler yapılır." },
-		  { "contentTitle": "Öğretmenler", "contentDescription": "Öğretmenler ELE öğretimi konusunda derin deneyime sahiptir. Modül A’da Türkçe konuşabilen ve anadili İspanyolca olan bir öğretmen, Modül B’de ana dili İspanyolca olan bir öğretmen görev alır." },
+          { "contentTitle": "Modül B - Orta seviye", "contentDescription": "Şimdiki zamanla rahat konuşabilen ve geçmiş zamanla (Pretérito Indefinido) konuşmayı öğrenmiş kişilere yöneliktir. İspanyolca seviyeniz en az A2.1 ise Modül B'den kursa başlayabilirsiniz. 90 saat sürer ve A2.2, A2.3 ve A2.4 seviyeleri kapsarlar. (Toplam 4,5 ay sürer)" },
+            { "contentTitle": "Kullanılan kitaplar", "contentDescription": "Turizm 1- SGEL yayınları • Turizm 2- SGEL yayınları • Turizm Profesyonelleri- Enclave ELE yayınları • Tekrar hoş geldiniz (A1-A2)- Enclave ELE yayınları. Ayrıca öğretmenler kendi hazırladıkları materyalleri kullanırlar ve tüm derslerde konuşmayı güçlendirmek için iletişimsel egzersizler yapılır." },
+          { "contentTitle": "Öğretmenler", "contentDescription": "Öğretmenler ELE öğretimi konusunda derin deneyime sahiptir. Modül A’da Türkçe konuşabilen ve anadili İspanyolca olan bir öğretmen, Modül B’de ana dili İspanyolca olan bir öğretmen görev alır." },
           { "contentTitle": "Kayıt", "contentDescription": "Her kursun en fazla 13 öğrencisi olur. Kayıt öncesinde her öğrenciyle İspanyolca seviyesini anlamak için ücretsiz bir deneme dersi yapılır. Deneme dersinde ayrıca kurs hakkında diğer detaylar aktarılır ve tüm sorular yanıtlanır (Türkçe olarak). Deneme dersi ücretsizdir ve yaklaşık 20 dakika sürmektedir. Deneme dersi için lütfen  bize Whatsapp mesajı gönderin." },
           { "contentTitle": "Sertifika", "contentDescription": "Her kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir." }
         ]
@@ -247,14 +246,14 @@
         ]
       }
     ], 
-	
-	 "title": "Seviye Planlaması",
-	
+    
+     "title": "Seviye Planlaması",
+    
     "cardCourses": 
-	
-	
-	
-	[
+    
+    
+    
+    [
   {
     "title": "A1.1 Başlangıç",
     "bold": "Pazartesi",
@@ -473,7 +472,7 @@
         { "key": "price", "header": "Ücret" }
       ],
       "extraSpanishColumns": [
-		{ "key": "course", "header": "Grup Kursları" },
+    { "key": "course", "header": "Grup Kursları" },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Ücret - Yurtdışında yaşayanlar için" }
       ]
@@ -484,7 +483,7 @@
         { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "6.600 TL (toplam)" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "6.120 TL (toplam)" },
         { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "3.180 TL (toplam)" },
-		{ "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" },
+    { "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" },
         { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" }
       ],
       "onlineSpanishTwoTable": [
@@ -516,8 +515,8 @@
     "officeAddressTitle": "Okulumuz",
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12 ,08340 Vilassar de Mar, Barcelona  España",
     "officeContactButton": "Whatsapp +34 633 45 22 68",
-		 "whatsapplink": "https://wa.me/34633452268", 
-	  "instagramlink": "https://www.instagram.com/estoyonline.es/"
+     "whatsapplink": "https://wa.me/34633452268", 
+    "instagramlink": "https://www.instagram.com/estoyonline.es/"
   },
 
   "testimonials": {

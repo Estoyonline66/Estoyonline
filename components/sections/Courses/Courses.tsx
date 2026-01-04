@@ -16,6 +16,18 @@ export default function Courses() {
   const Data: PriceData = t("courses");
 
   const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
+  const [displayYear, setDisplayYear] = useState<number>(new Date().getFullYear());
+
+  useEffect(() => {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    // 15 Aralık'tan sonra bir sonraki yılı göster
+    if (now.getMonth() === 11 && now.getDate() >= 15) {
+      setDisplayYear(currentYear + 1);
+    } else {
+      setDisplayYear(currentYear);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchCardCourses = async () => {
@@ -54,7 +66,7 @@ export default function Courses() {
 
   return (
     <section className="w-full flex flex-col gap-5 py-20 px-5 md:px-20 lg:px-40 z-0">
-      <h2 className="text-2xl font-bold mb-4">{Data?.scheduleTitle}</h2>
+      <h2 className="text-2xl font-bold mb-4">{displayYear} {Data?.scheduleTitle}</h2>
 
       {/* 🔹 Kurs Kartları */}
       <ul className="grid grid-cols-1 sm:grid-cols-3 gap-10 p-4">

@@ -78,81 +78,71 @@
     "counterTitle2": "Teachers",
     "counterTitle3": "Active students",
     "counterTitle4": "Certificates awarded",
-	 "homewhatsapplink": "https://wa.me/34633452268"
+    "homewhatsapplink": "https://wa.me/34633452268"
   },
   "teachers": {
     "PageTitle": "Our Teachers",
     "teachersTitle": "Meet our native Spanish-speaking teachers...",
     "teachersTitleRed": "",
     "teachersTitle2": "Let the sun warm your words",
- "teacher": [
-    {
-      "name": "ALEJA",
-      "about": "Aleja previously taught at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for Spanish practice. Throughout her teaching career, she enhanced her skills with international training courses, including ELE, DELE, AVE, and Int House certifications. In 2019, she founded her own school in Spain, developing modern, engaging, and conversation-focused teaching methods. She and her team continuously refine their teaching approach by incorporating new technologies and reviewing class recordings to identify areas for improvement. Her personal interests include tango and rowing off the coast of Barcelona.",
-      "media": "/videos/teachers/aleja1.mp4"
-    },
-    {
-      "name": "CAROLINA",
-      "about": "Carolina is a passionate teacher with experience at all educational levels. For 15 years, she lived in Patagonia, where she worked as a teacher and teacher trainer. Music is another of her passions; she plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She has also taken musical comedy lessons and participated in numerous musicals. In 2021, she obtained a certification in teaching Spanish to foreigners and began teaching online and in-person at various platforms and institutes. To facilitate learning, she emphasizes the use of games and alternative tools in conversation classes, private lessons, and regular courses.",
-      "media": "/videos/teachers/caro.mp4"
-    },
-    {
-      "name": "DANIELA",
-      "about": "Daniela is from Argentina and lives in Buenos Aires. She is passionate about teaching and began teaching Spanish to foreigners in 2004. In 2008, she opened her own school, which became part of a university in 2015. In addition to her native Spanish, she is fluent in French, English, Portuguese, Hebrew, and Italian. She holds a degree in Communication Sciences and has studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. She enjoys spending her free time with her children and family and traveling.",
-      "media": "/videos/teachers/dani.mp4"
-    },
-    {
-      "name": "MELISSA",
-      "about": "Melissa was born and raised in Colombia and currently resides there. She has worked as a librarian and taught library skills at all levels. She holds a master's degree from Béziers, France. Since 2010, she has taught French, English, and Spanish at various academies. In her free time, she enjoys knitting dolls, singing with friends, and cooking.",
-      "media": "/videos/teachers/meli.mp4"
-    },
-    {
-      "name": "SABRINA",
-      "about": "Sabrina has always been passionate about language. She enjoys reading and editing texts. She studied journalism and worked as a sports reporter for radio and newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies, researching purposeful learning and participating in creative writing workshops. In 2021, she combined her passions for communication, education, and cultural exchange, obtaining an ELE Spanish teaching certification. She incorporates digital tools and games into her teaching methods at various academies and e-learning platforms. In 2022, she began training ELE teachers at the Teacher Training Institute.",
-      "media": "/videos/teachers/sabri.mp4"
-    },
-    {
-      "name": "MAITA",
-      "about": "Maita is Spanish and English teacher. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
-      "media": "/videos/teachers/maia.mp4"
-    },
-    {
-      "name": "ANITA",
-      "about": "Anita is from Ecuador and holds a degree in Communication from Universidad de las Américas in Quito. She also has a certification in Spanish grammar and teaching methodology. She gained experience teaching Spanish to foreigners at the Instituto Internacional de Español. In recent years, she has been teaching private and group online lessons to students from various countries, allowing her to interact with diverse cultures. She enjoys graphic design, photography, listening to music, salsa dancing, and traveling.",
-      "media": "/videos/teachers/anita.mp4"
-    },
-    {
-      "name": "VIRGINIA",
-      "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
-      "media": "/videos/teachers/vir.mp4"
-    },
+    "teacher": [
+      {
+        "name": "ALEJA",
+        "about": "Aleja previously taught at Saint Michel High School and the Cervantes Institute. She organized 'Solo hablamos Español' gatherings for Spanish practice. Throughout her teaching career, she enhanced her skills with international training courses, including ELE, DELE, AVE, and Int House certifications. In 2019, she founded her own school in Spain, developing modern, engaging, and conversation-focused teaching methods. She and her team continuously refine their teaching approach by incorporating new technologies and reviewing class recordings to identify areas for improvement. Her personal interests include tango and rowing off the coast of Barcelona.",
+        "media": "/videos/teachers/aleja1.mp4"
+      },
+      {
+        "name": "CAROLINA",
+        "about": "Carolina is a passionate teacher with experience at all educational levels. For 15 years, she lived in Patagonia, where she worked as a teacher and teacher trainer. Music is another of her passions; she plays various instruments (guitar, keyboard, ukulele, etc.) and sings in choirs. She has also taken musical comedy lessons and participated in numerous musicals. In 2021, she obtained a certification in teaching Spanish to foreigners and began teaching online and in-person at various platforms and institutes. To facilitate learning, she emphasizes the use of games and alternative tools in conversation classes, private lessons, and regular courses.",
+        "media": "/videos/teachers/caro.mp4"
+      },
+      {
+        "name": "MELISSA",
+        "about": "Melissa was born and raised in Colombia and currently resides there. She has worked as a librarian and taught library skills at all levels. She holds a master's degree from Béziers, France. Since 2010, she has taught French, English, and Spanish at various academies. In her free time, she enjoys knitting dolls, singing with friends, and cooking.",
+        "media": "/videos/teachers/meli.mp4"
+      },
+      {
+        "name": "ANITA",
+        "about": "Anita is from Ecuador and holds a degree in Communication from Universidad de las Américas in Quito. She also has a certification in Spanish grammar and teaching methodology. She gained experience teaching Spanish to foreigners at the Instituto Internacional de Español. In recent years, she has been teaching private and group online lessons to students from various countries, allowing her to interact with diverse cultures. She enjoys graphic design, photography, listening to music, salsa dancing, and traveling.",
+        "media": "/videos/teachers/anita.mp4"
+      },
+      {
+        "name": "VIRGINIA",
+        "about": "Virginia pursued her passion for literature by embarking on a teaching career. She studied at the University of Buenos Aires, earning a degree in literature, and became a language and literature teacher. She spent five years in Italy, an experience that deepened her understanding of literature and culture. She currently teaches language and literature at a public school in Buenos Aires, sharing her love of literature with her students. She also teaches intermediate and advanced Spanish classes at our school. In her free time, she enjoys cycling through the streets of Buenos Aires and growing organic vegetables in her garden.",
+        "media": "/videos/teachers/vir.mp4"
+      },
       {
         "name": "IVAN",
         "about": "After graduating from Rosario University, Ivan began his teaching career. Continuously improving himself, he studied grammar and methodology at Atico and obtained his ELE instructor certificate from the Tía Tula Institute in Salamanca. He also earned a TESOL diploma. With extensive teaching experience, he has worked at Just English, Blue Apple, and Neşe Erberk schools. He has learned English, Italian, and Turkish. He loves spending quality time with his family and enjoys nature walks",
         "media":"/videos/teachers/ivan.mp4"
+      },
+      {
+        "name": "SABRINA",
+        "about": "Sabrina has always been passionate about language. She enjoys reading and editing texts. She studied journalism and worked as a sports reporter for radio and newspapers. Since 2011, she has been involved in CoPeHU pedagogical studies, researching purposeful learning and participating in creative writing workshops. In 2021, she combined her passions for communication, education, and cultural exchange, obtaining an ELE Spanish teaching certification. She incorporates digital tools and games into her teaching methods at various academies and e-learning platforms. In 2022, she began training ELE teachers at the Teacher Training Institute.",
+        "media": "/videos/teachers/sabri.mp4"
+      },
+      {
+        "name": "DANIELA",
+        "about": "Daniela is from Argentina and lives in Buenos Aires. She is passionate about teaching and began teaching Spanish to foreigners in 2004. In 2008, she opened her own school, which became part of a university in 2015. In addition to her native Spanish, she is fluent in French, English, Portuguese, Hebrew, and Italian. She holds a degree in Communication Sciences and has studied Literature at the University of Buenos Aires and Linguistics and French Literature at Tel Aviv University. She enjoys spending her free time with her children and family and traveling.",
+        "media": "/videos/teachers/dani.mp4"
+      },
+      {
+        "name": "MAITA",
+        "about": "Maita is a teacher of English and Spanish. She initially studied architecture but discovered her passion for language teaching and changed her career path. She focuses on personalized language instruction based on individual student needs and has developed her skills in this area through various courses. She is experienced in effectively integrating digital tools into her classes and emphasizes the use of games as a teaching method. Another of her passions is cooking, and she enjoys exploring the intricacies of Spanish and Latin American cuisine.",
+        "media": "/videos/teachers/maia.mp4"
       }
-  ]
+    ]
   },
   "videos": {
     "PageTitle": "Sample Classroom Videos",
     "videos": [
-		{
-        "title": "A1.1 Beginner Level Spanish",
-        "description": "Even as a complete beginner, you’ll start speaking Spanish within your first few lessons",
-        "youtubeId": "6dBBCP9_lPo"
-      },
-	  {
-        "title": "A1.1 Beginner Level Spanish",
-        "description": "In just a few weeks, our students gain fundamental speaking ability and apply simple grammar patterns.",
-        "youtubeId": "JP1dSslQqVc"
-      },
-	 {
-        "title": "A2.1 intermediate Level Spanish",
+      {
+        "title": "A2.1 Basic Level Spanish",
         "description": "By this level, our students have progressed enough to hold simple conversations.",
         "youtubeId": "MMYkbSAKdN4"
       },
       {
-        "title": "A2.1 intermediate Level Spanish",
+        "title": "A2.1 Basic Level Spanish",
         "description": "Our teachers use creative methods and everyday objects to ensure lessons are enjoyable.",
         "youtubeId": "aJg6gEIYsFs"
       },
@@ -167,7 +157,7 @@
         "youtubeId": "0jxqVyG5tt8"
       },
       {
-        "title": "B1.2 Advanced Level Spanish",
+        "title": "B1.6 Advanced Level Spanish",
         "description": "Advanced students have no difficulty understanding and using the fast-paced spoken Spanish.",
         "youtubeId": "srggR7eHxc8"
       },
@@ -180,7 +170,7 @@
   },
   "courses": {
     "PageTitle": "Online Courses",
-	 "scheduleTitle": "2025 Course Schedule",  
+    "scheduleTitle": "2025 Course Schedule",  
   "accordionData": [
     {
       "title": "A1 LEVEL BEGINNER COURSES",
@@ -195,7 +185,7 @@
         },
         {
           "contentTitle": "Teachers",
-          "contentDescription": "Our experienced teachers use engaging and interactive methods to teach Spanish. A native Spanish-speaking teacher with English proficiency is assigned to this level."
+          "contentDescription": "Our experienced teachers use engaging and interactive methods to teach Spanish. A native Spanish-speaking teacher with basic English proficiency is assigned to this level."
         },
         {
           "contentTitle": "Registration",
@@ -269,110 +259,142 @@
       {
         "title": "PRIVATE LESSONS FOR ADULTS/KIDS",
         "content": [
-          { "contentTitle": "General Information", "contentDescription": "People aged 14 and up take Adult Private Lessons.\nThese lessons are customized based on the student's interests and topics they are curious about. Video recordings are not kept. Lesson times are arranged with the teacher. Private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\n\nFor children aged 6-13, Kid's Private Lessons are available. Vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship is unique and special in children's lessons, and our teachers have deep experience working with kids. If requested, lessons can be recorded, and a weekly progress report is sent to the parents. \n\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
+          { "contentTitle": "General Information", "contentDescription": "People aged 14 and up take Adult Private Lessons.\nThese lessons are customized based on the student's interests and topics they are curious about. Video recordings are not kept. Lesson times are arranged with the teacher. Adult private lessons last 1 hour, and you can have lessons twice a week if desired. The total number of lessons depends on your request. Your teacher will recommend the most suitable program for you.\n\nFor children aged 6-13, Kid's Private Lessons are available. Vocabulary and grammar are taught through games, songs, and fun activities. The teacher-student relationship is unique and special in children's lessons, and our teachers have deep experience working with kids. If requested, lessons can be recorded, and a weekly progress report is sent to the parents. Children's private lessons last 45 minutes.\n\nPayments for private lessons are made in packages of 5 or 10 hours. For more details, please send us a WhatsApp message." }
         ]
       }
     ],
     "title": "Level Planning",
-    "cardCourses": 
-	
-	
-	
-	[
-  {
-    "title": "A1.1 Beginner",
-    "bold": "Saturday",
-    "lesson": "First class",
-    "time": "5:00 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Oct 11"
-  },
-  {
-    "title": "A1.2",
-    "bold": "Monday",
-    "lesson": "First class",
-    "time": "6:00 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Nov 3"
-  },
-  {
-    "title": "A2.1",
-    "bold": "Monday",
-    "lesson": "First class",
-    "time": "6:00 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Oct 6"
-  },
-  {
-    "title": "A2.1",
-    "bold": "Friday",
-    "lesson": "First class",
-    "time": "6:00 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 26"
-  },
-  {
-    "title": "A2.2",
-    "bold": "Monday",
-    "lesson": "First class",
-    "time": "5:30 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 1"
-  },
-  {
-    "title": "A2.2",
-    "bold": "Wednesday",
-    "lesson": "First class",
-    "time": "5:30 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 3"
-  },
-  {
-    "title": "A2.3",
-    "bold": "Tuesday",
-    "lesson": "First class",
-    "time": "6:00 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 9"
-  },
-  {
-    "title": "B1.2",
-    "bold": "Friday",
-    "lesson": "First class",
-    "time": "5:30 pm Spain time",
-    "week": "Once a week 2.5 hours",
-    "month": "Sep 5"
-  },
-  {
-    "title": "Speaking Course Beginner A1",
-    "bold": "Wednesday",
-    "lesson": "First class",
-    "time": "6:30 pm Spain time",
-    "week": "Once a week 2 hours",
-    "month": "Oct 1"
-  },
-  {
-    "title": "Speaking Course Intermediate A2",
-    "bold": "Wednesday",
-    "lesson": "First class",
-    "time": "6:30 pm Spain time",
-    "week": "Once a week 2 hours",
-    "month": "Sep 17"
-  },
-  {
-    "title": "Speaking Course Advanced B1-B2",
-    "bold": "Saturday",
-    "lesson": "First class",
-    "time": "9:00 am Spain time",
-    "week": "Once a week 2 hours",
-    "month": "Oct 11"
-  }
-]
-	
-	
-	
-	
-	,
+    "cardCourses": [
+        {
+        "title": "A1.1 Beginner",
+        "bold": "Wednesday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "Jun 10"
+      },
+      
+      {
+        "title": "A1.2",
+        "bold": "Friday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 27"
+      },
+      {
+        "title": "A2.1",
+        "bold": "Tuesday",
+        "lesson": "First class",
+        "time": "6:30 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 29"
+      },
+      {
+        "title": "A2.1",
+        "bold": "Monday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 9"
+      },
+      {
+        "title": "A2.2",
+        "bold": "Friday",
+        "lesson": "First class",
+        "time": "6:30 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 6"
+      },
+      {
+        "title": "A2.3",
+        "bold": "Monday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 21"
+      },
+      {
+        "title": "B1.1",
+        "bold": "Wednesday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "June 18"
+      },
+      {
+        "title": "B1.2",
+        "bold": "Monday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 14"
+      },
+      {
+        "title": "B1.2",
+        "bold": "Friday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "July 11"
+      },
+      {
+        "title": "B1.5",
+        "bold": "Tuesday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "May 6"
+      },
+      {
+        "title": "B2.4",
+        "bold": "Thursday",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Once a week",
+        "month": "April 17"
+      },
+      {
+        "title": "Tourism Module A",
+        "bold": "Tue - Thu",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Twice a week",
+        "month": "September 16"
+      },
+      {
+        "title": "Tourism Module B",
+        "bold": "Tue - Thu",
+        "lesson": "First class",
+        "time": "7 pm - 2.5 hours",
+        "week": "Twice a week",
+        "month": "September 16"
+      },
+      {
+        "title": "Conversation Course Beginner A1",
+        "bold": "Saturday",
+        "lesson": "First class",
+        "time": "6:30 pm - 2 hours",
+        "week": "Once a week",
+        "month": "June 10"
+      },
+      {
+        "title": "Conversation Course Intermediate A2",
+        "bold": "Tuesday",
+        "lesson": "First class",
+        "time": "7:30 pm - 2 hours",
+        "week": "Once a week",
+        "month": "May 6"
+      },
+      {
+        "title": "Conversation Course Advanced B1-B2",
+        "bold": "Saturday",
+        "lesson": "First class",
+        "time": "10 am - 2 hours",
+        "week": "Once a week",
+        "month": "May 10"
+      }
+    ],
     "title": "ALL LEVELS PROGRAM",
     "levels": [
       {
@@ -387,8 +409,8 @@
         "items": [
           { "level": "A2.1", "duration": "30 hours - Book:", "book": "Aula 2" },
           { "level": "A2.2", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A2.3", "duration": "30 hours - Book:", "book": "Aula 2" },
-          { "level": "A2.4", "duration": "30 hours - Book:", "book": "Aula 2" }
+          { "level": "A3.1", "duration": "30 hours - Book:", "book": "Aula 2" },
+          { "level": "A3.2", "duration": "30 hours - Book:", "book": "Aula 2" }
         ]
       },
       {
@@ -440,7 +462,6 @@
   "price": {
     "PageTitle": "Course Fees",
     "title": "Online Spanish Course Prices",
-
     "tables": {
       "onlineSpanishOneColumns": [
         { "key": "course", "header": "Group Courses" },
@@ -455,14 +476,15 @@
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 mo", "price": "240 EUR  (total)" },
-        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 mo", "price": "200 EUR  (total)" },
-        { "course": "A1.2 / Intermed. / Adv. levels", "duration": "30 hours - 3 mo", "price": "190 EUR  (total)" },
-        { "course": "Comp. courses", "duration": "16 hours - 2 mo", "price": "120 EUR  (total)" }
+        { "course": "A1.1 beginner level (evening)", "duration": "40 hours - 4 mo", "price": "240 EUR" },
+        { "course": "A1.1 beginner level (morning)", "duration": "40 hours - 4 mo", "price": "200 EUR" },
+        { "course": "A1.2 / Intermed. / Adv. levels", "duration": "30 hours - 3 mo", "price": "190 EUR" },
+        { "course": "Comp. courses", "duration": "16 hours - 2 mo", "price": "120 EUR" }
         
       ],
       "onlineSpanishTwoTable": [
-        { "course": "Private lesson", "duration": "1 hour", "price": "25 EUR" }
+        { "course": "Private lesson - adults", "duration": "1 hour", "price": "25 EUR" },
+        { "course": "Private lesson - kids", "duration": "45 minutes", "price": "20 EUR" }
       ]
      
     },
@@ -483,62 +505,6 @@
     "contactDescription": "Please send your questions to us on WhatsApp",
     "officeAddressTitle": "Our School",
     "officeAddressDescription": "Avenida Arquitecto Eduard Ferrés 12, 08340 Vilassar de Mar, Barcelona, Spain",
-    "officeContactButton": "WhatsApp +34 633 45 22 68",
-	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
-  
-  },
-  "freecourse": {
-    "PageTitle": "Free Online Course",
-    "needAssistance": "",
-    "contactDescription": "Please send us a message on WhatsApp",
-    "officeAddressTitle": "Barcelona",
-    "officeAddressDescription": "",
-    "officeContactButton": "WhatsApp +34 633 45 22 68",
-	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
-  
-  },
-   "payment": {
-    "PageTitle": "Free Online Course",
-    "needAssistance": "",
-    "contactDescription": "Please send us a message on WhatsApp",
-    "officeAddressTitle": "Barcelona",
-    "officeAddressDescription": "",
-    "officeContactButton": "WhatsApp +34 633 45 22 68",
-	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
-  
-  },
-  
-  "VioleAWad342": {
-    "PageTitle": "Your special discount",
-    "needAssistance": "",
-    "contactDescription": "Please send us a message on WhatsApp",
-    "officeAddressTitle": "Barcelona",
-    "officeAddressDescription": "",
-    "officeContactButton": "WhatsApp +34 633 45 22 68",
-	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
-  
-  },
-    "AlbaWw2342": {
-    "PageTitle": "Your special discount",
-    "needAssistance": "",
-    "contactDescription": "Please send us a message on WhatsApp",
-    "officeAddressTitle": "Barcelona",
-    "officeAddressDescription": "",
-    "officeContactButton": "WhatsApp +34 633 45 22 68",
-	 "whatsapplink": "https://wa.me/34633452268", 
-	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
-  
-  },
-   "IngridYse342": {
-    "PageTitle": "Your special discount",
-    "needAssistance": "",
-    "contactDescription": "Please send us a message on WhatsApp",
-    "officeAddressTitle": "Barcelona",
-    "officeAddressDescription": "",
     "officeContactButton": "WhatsApp +34 633 45 22 68",
 	 "whatsapplink": "https://wa.me/34633452268", 
 	 "instagramlink": "https://www.instagram.com/estoyonline.es/"
