@@ -4,6 +4,7 @@ export interface Column<T> {
   key: keyof T; // Restrict keys to properties of T
   header: string;
   render?: (value: T[keyof T], row: T) => React.ReactNode;
+  className?: string;
 }
 
 export interface TableProps<T> {
@@ -18,7 +19,7 @@ const Table = <T,>({ columns, data }: TableProps<T>) => {
         <thead className="bg-[#F8BA10] text-[#EB0004] py-5">
           <tr>
             {columns.map((col) => (
-              <th key={String(col.key)} className="w-auto px-4 py-4 border border-gray-300 text-sm md:text-base">
+              <th key={String(col.key)} className={`px-4 py-4 border border-gray-300 text-sm md:text-base ${col.className || "w-auto"}`}>
                 {col.header}
               </th>
             ))}

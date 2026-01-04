@@ -471,9 +471,9 @@
     "title2": "Extra Spanish Course Prices",
     "tables": {
       "onlineSpanishOneColumns": [
-        { "key": "course", "header": "Grup Kursları" },
+        { "key": "course", "header": "Grup Kursları - Türkiye'de yaşayanlar için" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Ücret - Türkiye'de yaşayanlar için" }
+        { "key": "price", "header": "Ücret" }
       ],
       "onlineSpanishTwoColumns": [
         { "key": "course", "header": "Bire Bir Özel Ders" },
@@ -481,9 +481,9 @@
         { "key": "price", "header": "Ücret" }
       ],
       "extraSpanishColumns": [
-    { "key": "course", "header": "Grup Kursları" },
+    { "key": "course", "header": "Grup Kursları - Yurtdışında yaşayanlar için" },
         { "key": "duration", "header": "Süre" },
-        { "key": "price", "header": "Ücret - Yurtdışında yaşayanlar için" }
+        { "key": "price", "header": "Ücret" }
       ]
     },
     "courses": {

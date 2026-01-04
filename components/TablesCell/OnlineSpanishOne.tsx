@@ -32,6 +32,7 @@ const OnlineSpanishOne = () => {
     Data?.tables?.onlineSpanishOneColumns?.map((col) => ({
       key: col.key, // No need to cast
       header: col.header,
+      className: col.key === "course" ? "w-[60%]" : "w-[20%]",
     })) || [];
 
   // Ensure `data` is correctly structured
