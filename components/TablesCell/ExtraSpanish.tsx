@@ -32,7 +32,7 @@ const ExtraSpanish = () => {
     Data?.tables?.extraSpanishColumns?.map((col) => ({
         key: col.key, // No need to cast
         header: col.header,
-        className: col.key === "course" ? "w-[46%]" : col.key === "price" ? "w-[29%]" : "w-[25%]",
+        className: col.key === "course" ? "w-[44%]" : col.key === "price" ? "w-[30%]" : "w-[26%]",
     })) || [];
 
     // Ensure `data` is correctly structured
