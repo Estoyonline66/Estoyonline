@@ -17,7 +17,7 @@ export const courseMap: Record<string, CourseInfo> = {
   "Complementary_course_ext_v7Qe": { name: "Complementary Course", amount: 12000, currency: "eur" },
   "Upper_level_courses_ext_R82e": { name: "Upper level courses", amount: 19000, currency: "eur" },
   "Examen_Rt6B": { name: "Examen", amount: 1500, currency: "eur" },
-   "Test_Rt6B": { name: "Test", amount: 5000, currency: "try" },
+
 
 
   "10_derslik_özel_ders_paketi_Az1R": { name: "Özel Ders (1 kişi, 10 ders)", amount: 22000, currency: "eur" },
