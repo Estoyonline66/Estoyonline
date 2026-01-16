@@ -75,8 +75,7 @@ const COURSE_NAMES = [
   "Özel Ders (4 kişi, 10 ders)",
   "Özel Ders (4 kişi, 5 ders)",
   "Özel Ders (5 kişi, 10 ders)",
-  "Özel Ders (5 kişi, 5 ders)",
-  "Nuevo Curso" // Varsayılan/Yeni eklenenler için
+  "Özel Ders (5 kişi, 5 ders)"
 ];
 
 export default function CourseManagement() {
@@ -383,7 +382,7 @@ export default function CourseManagement() {
      const randomId = Math.random().toString(36).substring(2, 6);
      const newKey = `New_Course_${randomId}`;
      setPrices({
-        [newKey]: { name: "Nuevo Curso", amount: 1000, currency: "eur" },
+        [newKey]: { name: COURSE_NAMES[0], amount: 1000, currency: "eur" },
         ...prices
      });
   };
@@ -450,7 +449,7 @@ export default function CourseManagement() {
                 <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
                 <td className="p-2">
                     <select
-                        value={COURSE_NAMES.includes(info.name) ? info.name : "Nuevo Curso"}
+                        value={info.name}
                         onChange={(e) => updatePrice(key, "name", e.target.value)}
                         className="border p-1 w-full rounded"
                     >
