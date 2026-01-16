@@ -51,25 +51,22 @@ for (let hour = 9; hour <= 22; hour++) {
   if (hour !== 22) hoursTr.push(`${hour.toString().padStart(2, "0")}:30`);
 }
 
+// const blobUrl = ... (Aşağıda tanımlı)
+const PRICES_BLOB_URL = "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/checkout/prices.json";
+
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
-  // const [paymentLinksGroup, setPaymentLinksGroup] = useState<GroupLessonLink[]>([]);
-  // const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
   const [showPaymentLinks, setShowPaymentLinks] = useState(false);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
-  const [prices, setPrices] = useState<Record<string, CourseInfo>>(initialCourseMap);
+  
+  // Başlangıçta boş obje, veri yüklenince dolacak
+  const [prices, setPrices] = useState<Record<string, CourseInfo>>({});
+  const [loadingPrices, setLoadingPrices] = useState(true);
+  const [priceError, setPriceError] = useState("");
 
   // Eski listeleri kaldırdık, artık prices state'i üzerinden direkt render ediyoruz.
-  /*
-  const [paymentLinksGroup, setPaymentLinksGroup] = useState<GroupLessonLink[]>([]);
-  const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
-  
-  // Load links from prices (was courseMap)
-  useEffect(() => {
-    // ... eski link oluşturma mantığı ...
-  }, [prices]);
-  */
+  /* ... */
 
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -97,17 +94,10 @@ export default function CourseManagement() {
 
     const fetchCourses = async () => {
       try {
-        const [res, pricesData] = await Promise.all([
-           fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" }),
-           getCourseMap()
-        ]);
-
+        const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" });
         if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
         const data = await res.json();
         setCoursesEn(data.cardCoursesEn || []);
-        
-        // Fiyatları güncelle
-        setPrices(pricesData);
 
         // Türkçe kursları yüklerken week değerlerini time'a göre düzelt
         const fixedCoursesTr = (data.cardCoursesTr || []).map((course: Course) => {
@@ -132,7 +122,37 @@ export default function CourseManagement() {
         console.error("Error loading courses:", err);
       }
     };
+
+    // Fiyatları Ayrı Çek ve Yönet
+    const fetchPrices = async () => {
+        try {
+            setLoadingPrices(true);
+            setPriceError("");
+            const res = await fetch(`${PRICES_BLOB_URL}?_ts=${Date.now()}`, { 
+                cache: "no-store",
+                headers: { "Cache-Control": "no-cache" }
+            });
+            
+            if (!res.ok) {
+                // Eğer dosya yoksa veya hata varsa
+                throw new Error(`Fiyatlar yüklenemedi: ${res.status}`);
+            }
+            
+            const pricesData = await res.json();
+            console.log("Fiyatlar yüklendi:", pricesData);
+            setPrices(pricesData);
+        } catch (err: any) {
+            console.error("Fiyat yükleme hatası:", err);
+            setPriceError("Fiyatlar sunucudan çekilemedi. Lütfen 'Guardar Precios' ile yeni fiyat seti oluşturun.");
+            // Hata olsa bile boş obje ile devam et
+            setPrices({});
+        } finally {
+            setLoadingPrices(false);
+        }
+    };
+
     fetchCourses();
+    fetchPrices();
   }, [isAuthenticated]);
 
   const handleLogin = (e: React.FormEvent) => {
@@ -367,6 +387,10 @@ export default function CourseManagement() {
         </div>
       </div>
       
+      {loadingPrices && <p className="text-gray-500 text-sm p-4">Cargando precios...</p>}
+      {priceError && <p className="text-red-500 text-sm p-4">{priceError}</p>}
+      
+      {!loadingPrices && !priceError && (
       <div className="overflow-x-auto">
         <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
           <thead>
@@ -435,6 +459,7 @@ export default function CourseManagement() {
           </tbody>
         </table>
       </div>
+      )}
     </div>
   );
 
