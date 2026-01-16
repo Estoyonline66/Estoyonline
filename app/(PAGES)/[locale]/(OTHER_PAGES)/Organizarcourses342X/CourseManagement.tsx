@@ -14,18 +14,18 @@ interface Course {
   teacher?: string;
 }
 
-interface GroupLessonLink {
-  title: string;
-  price: string;
-  link: string;
-}
+// interface GroupLessonLink {
+//   title: string;
+//   price: string;
+//   link: string;
+// }
 
-interface PrivateLessonLink {
-  studentCount: string;
-  lessonCount: string;
-  price: string;
-  link: string;
-}
+// interface PrivateLessonLink {
+//   studentCount: string;
+//   lessonCount: string;
+//   price: string;
+//   link: string;
+// }
 
 const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
