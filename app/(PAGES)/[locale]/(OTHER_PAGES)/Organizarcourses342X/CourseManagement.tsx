@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
-import { courseMap as initialCourseMap, getCourseMap, CourseInfo } from "@/app/api/checkout/text";
+import { CourseInfo } from "@/app/api/checkout/text";
 
 interface Course {
   title: string;
@@ -141,7 +141,7 @@ export default function CourseManagement() {
             const pricesData = await res.json();
             console.log("Fiyatlar yüklendi:", pricesData);
             setPrices(pricesData);
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Fiyat yükleme hatası:", err);
             setPriceError("Fiyatlar sunucudan çekilemedi. Lütfen 'Guardar Precios' ile yeni fiyat seti oluşturun.");
             // Hata olsa bile boş obje ile devam et
