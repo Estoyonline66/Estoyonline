@@ -420,8 +420,10 @@ export default function CourseManagement() {
               </tr>
             </thead>
             <tbody className={saving ? "opacity-50 pointer-events-none" : ""}>
-              {Object.entries(prices).map(([key, info]) => (
-                <tr key={key} className="border-b hover:bg-gray-50 transition-colors">
+              {Object.entries(prices).map(([key, info]) => {
+                const isTemp = key.startsWith("precio_temp");
+                return (
+                <tr key={key} className={`border-b transition-colors ${isTemp ? "bg-gray-100/80 hover:bg-gray-200/80" : "hover:bg-gray-50"}`}>
                   <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
                   <td className="p-2">
                       <select
@@ -482,11 +484,12 @@ export default function CourseManagement() {
                         className="text-destructive hover:text-destructive hover:bg-destructive/10"
                     >
                         <Trash2 size={16} />
-                    </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                      </Button>
+                  </td>
+                </tr>
+                );
+              })}
+            </tbody>
         </table>
       </div>
       )}
@@ -785,11 +788,13 @@ export default function CourseManagement() {
         </div>
       </div>
 
-      {showPaymentLinks && renderPaymentLinksSection()}
-
-      {activeTab === "en"
-        ? renderTable(coursesEn, setCoursesEn, false)
-        : renderTable(coursesTr, setCoursesTr, true)}
+      {showPaymentLinks ? (
+        renderPaymentLinksSection()
+      ) : (
+        activeTab === "en"
+          ? renderTable(coursesEn, setCoursesEn, false)
+          : renderTable(coursesTr, setCoursesTr, true)
+      )}
     </div>
   );
 }
