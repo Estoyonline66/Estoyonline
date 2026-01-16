@@ -54,67 +54,22 @@ for (let hour = 9; hour <= 22; hour++) {
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
-  const [paymentLinksGroup, setPaymentLinksGroup] = useState<GroupLessonLink[]>([]);
-  const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
+  // const [paymentLinksGroup, setPaymentLinksGroup] = useState<GroupLessonLink[]>([]);
+  // const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
   const [showPaymentLinks, setShowPaymentLinks] = useState(false);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   const [prices, setPrices] = useState<Record<string, CourseInfo>>(initialCourseMap);
 
+  // Eski listeleri kaldırdık, artık prices state'i üzerinden direkt render ediyoruz.
+  /*
+  const [paymentLinksGroup, setPaymentLinksGroup] = useState<GroupLessonLink[]>([]);
+  const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
+  
   // Load links from prices (was courseMap)
   useEffect(() => {
-    const groupLinks: GroupLessonLink[] = [];
-    const privateLinks: PrivateLessonLink[] = [];
-
-    const formatCurrency = (amount: number, currency: string) => {
-      // 100'e bölerek asıl değeri bul
-      const val = amount / 100;
-      // Binlik ayracı ile formatla (İspanya/Türkiye formatı: 1.234,56)
-      // Ancak kullanıcı sadece binlik ayracı nokta olsun istiyor: 7.980 TL
-      const formattedVal = val.toLocaleString("tr-TR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-      
-      const currencyLabel = currency.toUpperCase() === "TRY" ? "TL" : currency.toUpperCase();
-      return `${formattedVal} ${currencyLabel}`;
-    };
-
-    Object.entries(prices).forEach(([key, info]) => {
-      const price = formatCurrency(info.amount, info.currency);
-      const link = `https://estoyonline.es/tr/payment?course=${key}`;
-
-      if (info.name.includes("Özel Ders")) {
-        let studentCount = "1";
-        let lessonCount = "0";
-
-        // Regex Strategies
-        // 1. "10 ders" ifadesini ara
-        const matchLesson = info.name.match(/(\d+)\s*ders/i);
-        if (matchLesson) {
-          lessonCount = matchLesson[1];
-        }
-
-        // 2. "X kişi" ifadesini ara
-        const matchStudent = info.name.match(/(\d+)\s*kişi/i);
-        if (matchStudent) {
-          studentCount = matchStudent[1];
-        }
-
-        privateLinks.push({
-            studentCount,
-            lessonCount,
-            price,
-            link
-        });
-      } else {
-        groupLinks.push({
-          title: info.name,
-          price,
-          link
-        });
-      }
-    });
-
-    setPaymentLinksGroup(groupLinks);
-    setPaymentLinksPrivate(privateLinks);
+    // ... eski link oluşturma mantığı ...
   }, [prices]);
+  */
 
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -379,7 +334,7 @@ export default function CourseManagement() {
     setPrices(newPrices);
   };
 
-  const updatePrice = (key: string, field: keyof CourseInfo, value: any) => {
+  const updatePrice = (key: string, field: keyof CourseInfo, value: string | number) => {
       setPrices(prev => ({
           ...prev,
           [key]: { ...prev[key], [field]: value }
