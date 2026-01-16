@@ -20,9 +20,9 @@ const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar", "Salı - Perş"];
+const daysTr = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar", "Salı - Perş", "Pzt - Çarş"];
 const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
-const weeksTr = ["Haftada 1 gün 2,5 saat", "Haftada 1 gün 2 saat", "Haftada 2 gün 1 saat 15 dk", "Haftada 1 gün 1,5 saat"];
+const weeksTr = ["Haftada 1 gün 2,5 saat", "Haftada 1 gün 2 saat", "Haftada 2 gün 1 saat 15 dk", "Haftada 1 gün 1,5 saat", "Haftada 2 gün 2,5 saat"];
 
 // 🔹 English time options — 24 hours, half-hour intervals
 const hoursEn = Array.from({ length: 48 }, (_, i) => {
@@ -150,7 +150,7 @@ export default function CourseManagement() {
         const fixedCoursesTr = (data.cardCoursesTr || []).map((course: Course) => {
           let fixedWeek = course.week;
           if (course.time.includes("2,5 saat")) {
-            fixedWeek = "Haftada 1 gün 2,5 saat";
+            fixedWeek = course.week === "Haftada 2 gün 2,5 saat" ? "Haftada 2 gün 2,5 saat" : "Haftada 1 gün 2,5 saat";
           } else if (course.time.includes("2 saat")) {
             fixedWeek = "Haftada 1 gün 2 saat";
           } else if (course.time.includes("1 saat 15 dk")) {
@@ -587,7 +587,9 @@ export default function CourseManagement() {
                       list[i].time = newTime;
                       
                       if (isTr) {
-                        if (currentDuration === "2,5 saat") list[i].week = "Haftada 1 gün 2,5 saat";
+                        if (currentDuration === "2,5 saat") {
+                          if (list[i].week !== "Haftada 2 gün 2,5 saat") list[i].week = "Haftada 1 gün 2,5 saat";
+                        }
                         else if (currentDuration === "2 saat") list[i].week = "Haftada 1 gün 2 saat";
                         else if (currentDuration === "1 saat 15 dk") list[i].week = "Haftada 2 gün 1 saat 15 dk";
                         else if (currentDuration === "1,5 saat") list[i].week = "Haftada 1 gün 1,5 saat";
@@ -610,6 +612,7 @@ export default function CourseManagement() {
                       if (isTr) {
                         const currentTimePart = c.time.split(" - ")[0];
                         if (e.target.value === "Haftada 1 gün 2,5 saat") list[i].time = `${currentTimePart} - 2,5 saat`;
+                        else if (e.target.value === "Haftada 2 gün 2,5 saat") list[i].time = `${currentTimePart} - 2,5 saat`;
                         else if (e.target.value === "Haftada 1 gün 2 saat") list[i].time = `${currentTimePart} - 2 saat`;
                         else if (e.target.value === "Haftada 2 gün 1 saat 15 dk") list[i].time = `${currentTimePart} - 1 saat 15 dk`;
                         else if (e.target.value === "Haftada 1 gün 1,5 saat") list[i].time = `${currentTimePart} - 1,5 saat`;
