@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
+import { ArrowUp, ArrowDown, Trash2, Plus, Save, Link as LinkIcon, LogOut, Lock } from "lucide-react";
 import { CourseInfo } from "@/app/api/checkout/text";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface Course {
   title: string;
@@ -13,19 +15,6 @@ interface Course {
   month: string;
   teacher?: string;
 }
-
-// interface GroupLessonLink {
-//   title: string;
-//   price: string;
-//   link: string;
-// }
-
-// interface PrivateLessonLink {
-//   studentCount: string;
-//   lessonCount: string;
-//   price: string;
-//   link: string;
-// }
 
 const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
@@ -51,7 +40,6 @@ for (let hour = 9; hour <= 22; hour++) {
   if (hour !== 22) hoursTr.push(`${hour.toString().padStart(2, "0")}:30`);
 }
 
-// const blobUrl = ... (Aşağıda tanımlı)
 const PRICES_BLOB_URL = "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/checkout/prices.json";
 
 const COURSE_NAMES = [
@@ -78,24 +66,21 @@ const COURSE_NAMES = [
   "Özel Ders (5 kişi, 5 ders)"
 ];
 
+const selectClass = "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
+
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
   const [showPaymentLinks, setShowPaymentLinks] = useState(false);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   
-  // Başlangıçta boş obje, veri yüklenince dolacak
   const [prices, setPrices] = useState<Record<string, CourseInfo>>({});
   
-  // Eğer prices boşsa ve hata aldıysak, varsayılan bir veri seti oluşturmak için:
   const defaultPrices: Record<string, CourseInfo> = {
       "New_Course_Default": { name: "Örnek Kurs (Düzenle)", amount: 10000, currency: "try" }
   };
   const [loadingPrices, setLoadingPrices] = useState(true);
   const [priceError, setPriceError] = useState("");
-
-  // Eski listeleri kaldırdık, artık prices state'i üzerinden direkt render ediyoruz.
-  /* ... */
 
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -104,10 +89,8 @@ export default function CourseManagement() {
   const [rememberMe, setRememberMe] = useState(false);
   const [loginError, setLoginError] = useState("");
 
-  // Şifre doğrulama
   const adminPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
 
-  // Authentication kontrolü - her zaman çağrılmalı
   useEffect(() => {
     const savedPassword = localStorage.getItem("coursesAdminPassword");
     const savedRememberMe = localStorage.getItem("coursesRememberMe") === "true";
@@ -117,7 +100,6 @@ export default function CourseManagement() {
     }
   }, [adminPassword]);
 
-  // Kurs verilerini yükle - sadece authenticated ise
   useEffect(() => {
     if (!isAuthenticated) return;
 
@@ -128,10 +110,8 @@ export default function CourseManagement() {
         const data = await res.json();
         setCoursesEn(data.cardCoursesEn || []);
 
-        // Türkçe kursları yüklerken week değerlerini time'a göre düzelt
         const fixedCoursesTr = (data.cardCoursesTr || []).map((course: Course) => {
           let fixedWeek = course.week;
-          // Time içindeki süre bilgisine göre week değerini düzelt
           if (course.time.includes("2,5 saat")) {
             fixedWeek = "Haftada 1 gün 2,5 saat";
           } else if (course.time.includes("2 saat")) {
@@ -152,13 +132,11 @@ export default function CourseManagement() {
       }
     };
 
-    // Fiyatları Ayrı Çek ve Yönet
     const fetchPrices = async () => {
         try {
             setLoadingPrices(true);
             setPriceError("");
             
-            // Daha basit bir fetch isteği deneyelim
             const res = await fetch(`${PRICES_BLOB_URL}?_ts=${Date.now()}`);
             
             if (!res.ok) {
@@ -169,7 +147,6 @@ export default function CourseManagement() {
             const pricesData = await res.json();
             console.log("✅ Fiyatlar başarıyla yüklendi:", pricesData);
             
-            // Eğer gelen veri boşsa veya geçersizse yine de bir kontrol koyalım
             if (pricesData && typeof pricesData === 'object') {
                  setPrices(pricesData);
             } else {
@@ -202,7 +179,6 @@ export default function CourseManagement() {
       setIsAuthenticated(true);
       setLoginError("");
       
-      // "Beni hatırla" seçeneği işaretliyse şifreyi localStorage'a kaydet
       if (rememberMe) {
         localStorage.setItem("coursesAdminPassword", password);
         localStorage.setItem("coursesRememberMe", "true");
@@ -225,7 +201,6 @@ export default function CourseManagement() {
   const saveCoursesWithData = async (
     enData: Course[], 
     trData: Course[],
-    // Links are read-only from file, not saved to blob
   ) => {
     setSaving(true);
     setSaveMessage("");
@@ -236,14 +211,12 @@ export default function CourseManagement() {
         body: JSON.stringify({
           cardCoursesEn: enData,
           cardCoursesTr: trData,
-          // prices: prices, // Fiyatları ayırdık, buraya dahil etmiyoruz
         }),
       });
       if (!res.ok) throw new Error("Save failed");
       
-      // Başarılı kayıt mesajı
       setSaveMessage("✅ Cambios guardados correctamente");
-      setTimeout(() => setSaveMessage(""), 3000); // 3 saniye sonra mesajı kaldır
+      setTimeout(() => setSaveMessage(""), 3000);
     } catch (err) {
       console.error(err);
       setSaveMessage("❌ Error al guardar los cambios");
@@ -276,15 +249,11 @@ export default function CourseManagement() {
         const newCoursesEn = [...coursesEn];
         newCoursesEn.splice(index, 1);
         setCoursesEn(newCoursesEn);
-        
-        // Yeni state ile kaydet
         await saveCoursesWithData(newCoursesEn, coursesTr);
       } else {
         const newCoursesTr = [...coursesTr];
         newCoursesTr.splice(index, 1);
         setCoursesTr(newCoursesTr);
-        
-        // Yeni state ile kaydet
         await saveCoursesWithData(coursesEn, newCoursesTr);
       }
     }
@@ -326,7 +295,6 @@ export default function CourseManagement() {
   const formatEnMonth = (month: string) => {
     if (!month) return "";
     
-    // "Oct 11" formatını parse et
     const match = month.match(/([A-Za-z]+)\s+(\d+)(?:\s+(\d{4}))?/);
     if (match) {
       const monthName = match[1];
@@ -345,7 +313,6 @@ export default function CourseManagement() {
       return `${year}-${m}-${day}`;
     }
     
-    // Fallback: normal date parsing
     const d = new Date(month);
     if (!isNaN(d.getTime())) return d.toISOString().split("T")[0];
     
@@ -402,39 +369,44 @@ export default function CourseManagement() {
   };
 
   const renderPaymentLinksSection = () => (
-    <div className="mb-8 p-4 bg-gray-50 rounded border border-gray-200 shadow-sm">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-gray-800">Gestión de Precios y Enlaces</h2>
+    <div className="mb-8 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <div className="flex justify-between items-center mb-6 border-b pb-4">
+        <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+            <LinkIcon size={20} />
+            Gestión de Precios y Enlaces
+        </h2>
         <div className="flex gap-2 items-center">
-            <button 
+            <Button 
                 onClick={addPrice}
-                className="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
+                className="bg-green-600 hover:bg-green-700 text-white"
+                size="sm"
             >
-                + Nuevo Precio
-            </button>
+                <Plus size={16} /> Nuevo Precio
+            </Button>
             <div className="flex flex-col items-end">
-                <button 
+                <Button 
                     onClick={savePricesOnly}
                     disabled={saving}
-                    className="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 disabled:opacity-50"
+                    size="sm"
+                    className="bg-blue-600 hover:bg-blue-700"
                 >
-                    💾 Guardar Precios
-                </button>
+                    <Save size={16} /> Guardar Precios
+                </Button>
                 {priceSaveMessage && (
-                  <span className="text-xs text-green-600 mt-1">{priceSaveMessage}</span>
+                  <span className="text-xs text-green-600 mt-1 absolute -bottom-5 right-0 whitespace-nowrap">{priceSaveMessage}</span>
                 )}
             </div>
         </div>
       </div>
       
       {loadingPrices && <p className="text-gray-500 text-sm p-4">Cargando precios...</p>}
-      {priceError && <p className="text-red-500 text-sm p-4">{priceError}</p>}
+      {priceError && <p className="text-destructive text-sm p-4">{priceError}</p>}
       
       {!loadingPrices && !priceError && (
       <div className="overflow-x-auto">
         <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
           <thead>
-            <tr className="bg-gray-100 text-gray-700">
+            <tr className="bg-gray-50 text-gray-700 border-b">
               <th className="p-3 text-left font-semibold">ID (Key)</th>
               <th className="p-3 text-left font-semibold">Nombre del Curso</th>
               <th className="p-3 text-left font-semibold">Monto (TL/EUR)</th>
@@ -445,39 +417,40 @@ export default function CourseManagement() {
           </thead>
           <tbody>
             {Object.entries(prices).map(([key, info]) => (
-              <tr key={key} className="border-b hover:bg-gray-50">
+              <tr key={key} className="border-b hover:bg-gray-50 transition-colors">
                 <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
                 <td className="p-2">
                     <select
                         value={info.name}
                         onChange={(e) => updatePrice(key, "name", e.target.value)}
-                        className="border p-1 w-full rounded"
+                        className={selectClass}
                     >
                         {COURSE_NAMES.map(name => (
                             <option key={name} value={name}>{name}</option>
                         ))}
-                        {/* Eğer listede olmayan bir isim varsa onu da göster ki veri kaybolmasın */}
                         {!COURSE_NAMES.includes(info.name) && (
                             <option value={info.name}>{info.name}</option>
                         )}
                     </select>
                 </td>
                 <td className="p-2">
-                    <input 
-                        type="number"
-                        value={info.amount}
-                        onChange={(e) => updatePrice(key, "amount", Number(e.target.value))}
-                        className="border p-1 w-full rounded w-32"
-                    />
-                    <div className="text-xs text-gray-400 mt-1">
-                        {(info.amount).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
+                    <div className="flex items-center gap-2">
+                        <Input 
+                            type="number"
+                            value={info.amount}
+                            onChange={(e) => updatePrice(key, "amount", Number(e.target.value))}
+                            className="w-24 h-9"
+                        />
+                        <div className="text-xs text-muted-foreground whitespace-nowrap">
+                            {(info.amount).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
+                        </div>
                     </div>
                 </td>
                 <td className="p-2">
                     <select
                         value={info.currency}
                         onChange={(e) => updatePrice(key, "currency", e.target.value)}
-                        className="border p-1 rounded"
+                        className={`${selectClass} w-24`}
                     >
                         <option value="eur">EUR</option>
                         <option value="try">TRY</option>
@@ -489,18 +462,20 @@ export default function CourseManagement() {
                     href={`https://estoyonline.es/tr/payment?course=${key}`} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-blue-600 underline text-xs"
+                    className="text-primary hover:underline text-xs flex items-center gap-1"
                   >
-                    Ver Enlace
+                    <LinkIcon size={12} /> Ver Enlace
                   </a>
                 </td>
                 <td className="p-2 text-center">
-                    <button
+                    <Button
+                        variant="ghost"
+                        size="icon"
                         onClick={() => deletePrice(key)}
-                        className="p-1 text-red-600 hover:text-red-800"
+                        className="text-destructive hover:text-destructive hover:bg-destructive/10"
                     >
                         <Trash2 size={16} />
-                    </button>
+                    </Button>
                 </td>
               </tr>
             ))}
@@ -516,67 +491,66 @@ export default function CourseManagement() {
     setCourses: React.Dispatch<React.SetStateAction<Course[]>>,
     isTr: boolean
   ) => (
-    <div className="overflow-x-auto w-full">
-      <table className="w-full border-collapse border-spacing-0 text-sm md:text-base">
+    <div className="overflow-x-auto w-full bg-white rounded-lg shadow-sm border border-gray-200">
+      <table className="w-full border-collapse border-spacing-0 text-sm">
         <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 text-left w-20"></th>
-            <th className={`p-2 text-left ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
-            <th className={`p-2 text-left ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
-            <th className={`p-2 text-left ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
-            <th className="p-2 text-left w-[230px]">Semana</th>
-            <th className="p-2 text-left w-[100px]">Mes</th>
-            <th className="p-2 text-left w-[200px]">Profesor</th>
-            <th className="p-2 text-center w-10"></th>
+          <tr className="bg-gray-50 border-b">
+            <th className="p-3 text-left w-14"></th>
+            <th className={`p-3 text-left font-medium text-gray-600 ${isTr ? "w-[280px]" : "w-[250px]"}`}>Título</th>
+            <th className={`p-3 text-left font-medium text-gray-600 ${isTr ? "w-[130px]" : "w-[100px]"}`}>{isTr ? "Día" : "Day"}</th>
+            <th className={`p-3 text-left font-medium text-gray-600 ${isTr ? "w-[200px]" : "w-[230px]"}`}>Hora</th>
+            <th className="p-3 text-left font-medium text-gray-600 w-[230px]">Semana</th>
+            <th className="p-3 text-left font-medium text-gray-600 w-[100px]">Mes</th>
+            <th className="p-3 text-left font-medium text-gray-600 w-[200px]">Profesor</th>
+            <th className="p-3 text-center w-10"></th>
           </tr>
         </thead>
         <tbody>
           {courses.map((c, i) => {
-            // 🔹 Türkçe haftalık seçenek düzeltmesi
             const normalizedWeekValue = isTr
               ? (() => {
-                  // Time içindeki süre bilgisine göre week değerini belirle
-                  if (c.time.includes("2,5 saat")) {
-                    return "Haftada 1 gün 2,5 saat";
-                  }
-                  if (c.time.includes("2 saat")) {
-                    return "Haftada 1 gün 2 saat";
-                  }
-                  if (c.time.includes("1 saat 15 dk")) {
-                    return "Haftada 2 gün 1 saat 15 dk";
-                  }
-                  if (c.time.includes("1,5 saat")) {
-                    return "Haftada 1 gün 1,5 saat";
-                  }
-                  // Eğer time'da süre bilgisi yoksa, mevcut week değerini kullan
+                  if (c.time.includes("2,5 saat")) return "Haftada 1 gün 2,5 saat";
+                  if (c.time.includes("2 saat")) return "Haftada 1 gün 2 saat";
+                  if (c.time.includes("1 saat 15 dk")) return "Haftada 2 gün 1 saat 15 dk";
+                  if (c.time.includes("1,5 saat")) return "Haftada 1 gün 1,5 saat";
                   return c.week;
                 })()
               : c.week;
 
             return (
-              <tr key={i} className="hover:bg-gray-50">
-                <td className="px-2 py-1 text-center">
-                  <div className="flex flex-row items-center justify-center gap-2">
-                    <button onClick={() => moveRow(i, "up")} className="text-gray-600 hover:text-black">
-                      <ArrowUp size={16} />
-                    </button>
-                    <button onClick={() => moveRow(i, "down")} className="text-gray-600 hover:text-black">
-                      <ArrowDown size={16} />
-                    </button>
+              <tr key={i} className="hover:bg-gray-50/50 transition-colors border-b last:border-b-0">
+                <td className="px-2 py-2 text-center">
+                  <div className="flex flex-col gap-1">
+                    <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-6 w-6" 
+                        onClick={() => moveRow(i, "up")}
+                    >
+                      <ArrowUp size={14} />
+                    </Button>
+                    <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-6 w-6" 
+                        onClick={() => moveRow(i, "down")}
+                    >
+                      <ArrowDown size={14} />
+                    </Button>
                   </div>
                 </td>
-                <td className="px-2 py-1">
-                  <input
+                <td className="px-2 py-2">
+                  <Input
                     value={c.title}
                     onChange={(e) => {
                       const list = [...courses];
                       list[i].title = e.target.value;
                       setCourses(list);
                     }}
-                    className="border p-1 w-full rounded"
+                    className="h-9"
                   />
                 </td>
-                <td className="px-2 py-1">
+                <td className="px-2 py-2">
                   <select
                     value={c.bold}
                     onChange={(e) => {
@@ -584,71 +558,58 @@ export default function CourseManagement() {
                       list[i].bold = e.target.value;
                       setCourses(list);
                     }}
-                    className="border p-1 w-full rounded"
+                    className={selectClass}
                   >
                     {(isTr ? daysTr : days).map((d) => <option key={d}>{d}</option>)}
                   </select>
                 </td>
-                <td className="px-2 py-1">
+                <td className="px-2 py-2">
                   <select
                     value={isTr ? c.time.split(" - ")[0] : c.time}
                     onChange={(e) => {
                       const list = [...courses];
-                      // Time değiştiğinde süre kısmını koru
                       const currentDuration = isTr ? (c.time.split(" - ")[1] || "2,5 saat") : "";
                       const newTime = isTr ? `${e.target.value} - ${currentDuration}` : e.target.value;
                       list[i].time = newTime;
                       
-                      // Türkçe tabında time değiştiğinde week'i de güncelle (sadece saat değiştiğinde)
                       if (isTr) {
-                        if (currentDuration === "2,5 saat") {
-                          list[i].week = "Haftada 1 gün 2,5 saat";
-                        } else if (currentDuration === "2 saat") {
-                          list[i].week = "Haftada 1 gün 2 saat";
-                        } else if (currentDuration === "1 saat 15 dk") {
-                          list[i].week = "Haftada 2 gün 1 saat 15 dk";
-                        } else if (currentDuration === "1,5 saat") {
-                          list[i].week = "Haftada 1 gün 1,5 saat";
-                        }
+                        if (currentDuration === "2,5 saat") list[i].week = "Haftada 1 gün 2,5 saat";
+                        else if (currentDuration === "2 saat") list[i].week = "Haftada 1 gün 2 saat";
+                        else if (currentDuration === "1 saat 15 dk") list[i].week = "Haftada 2 gün 1 saat 15 dk";
+                        else if (currentDuration === "1,5 saat") list[i].week = "Haftada 1 gün 1,5 saat";
                       }
                       
                       setCourses(list);
                     }}
-                    className="border p-1 w-full rounded"
+                    className={selectClass}
                   >
                     {(isTr ? hoursTr : hoursEn).map((h) => <option key={h}>{h}</option>)}
                   </select>
                 </td>
-                <td className="px-2 py-1">
+                <td className="px-2 py-2">
                   <select
                     value={normalizedWeekValue}
                     onChange={(e) => {
                       const list = [...courses];
                       list[i].week = e.target.value;
                       
-                      // Week değiştiğinde time değerini de güncelle
                       if (isTr) {
                         const currentTimePart = c.time.split(" - ")[0];
-                        if (e.target.value === "Haftada 1 gün 2,5 saat") {
-                          list[i].time = `${currentTimePart} - 2,5 saat`;
-                        } else if (e.target.value === "Haftada 1 gün 2 saat") {
-                          list[i].time = `${currentTimePart} - 2 saat`;
-                        } else if (e.target.value === "Haftada 2 gün 1 saat 15 dk") {
-                          list[i].time = `${currentTimePart} - 1 saat 15 dk`;
-                        } else if (e.target.value === "Haftada 1 gün 1,5 saat") {
-                          list[i].time = `${currentTimePart} - 1,5 saat`;
-                        }
+                        if (e.target.value === "Haftada 1 gün 2,5 saat") list[i].time = `${currentTimePart} - 2,5 saat`;
+                        else if (e.target.value === "Haftada 1 gün 2 saat") list[i].time = `${currentTimePart} - 2 saat`;
+                        else if (e.target.value === "Haftada 2 gün 1 saat 15 dk") list[i].time = `${currentTimePart} - 1 saat 15 dk`;
+                        else if (e.target.value === "Haftada 1 gün 1,5 saat") list[i].time = `${currentTimePart} - 1,5 saat`;
                       }
                       
                       setCourses(list);
                     }}
-                    className="border p-1 w-full rounded"
+                    className={selectClass}
                   >
                     {(isTr ? weeksTr : weeks).map((w) => <option key={w}>{w}</option>)}
                   </select>
                 </td>
-                <td className="px-2 py-1 text-center">
-                  <input
+                <td className="px-2 py-2 text-center">
+                  <Input
                     type="date"
                     value={isTr ? formatTrMonth(c.month) : formatEnMonth(c.month)}
                     onChange={(e) => {
@@ -665,27 +626,29 @@ export default function CourseManagement() {
                       }
                       setCourses(list);
                     }}
-                    className="border p-1 w-full rounded text-center"
+                    className="text-center h-9"
                   />
                 </td>
-                <td className="px-2 py-1">
-                  <input
+                <td className="px-2 py-2">
+                  <Input
                     value={c.teacher || ""}
                     onChange={(e) => {
                       const list = [...courses];
                       list[i].teacher = e.target.value;
                       setCourses(list);
                     }}
-                    className="border p-1 w-full rounded"
+                    className="h-9"
                   />
                 </td>
-                <td className="px-2 py-1 text-center">
-                  <button
+                <td className="px-2 py-2 text-center">
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={() => deleteCourse(i)}
-                    className="p-1 text-red-600 hover:text-red-800"
+                    className="text-destructive hover:text-destructive hover:bg-destructive/10"
                   >
                     <Trash2 size={16} />
-                  </button>
+                  </Button>
                 </td>
               </tr>
             );
@@ -695,25 +658,29 @@ export default function CourseManagement() {
     </div>
   );
 
-  // Login sayfası gösterimi
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+        <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-100">
+          <div className="flex justify-center mb-6">
+            <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                <Lock size={24} />
+            </div>
+          </div>
+          <h2 className="text-2xl font-bold text-center mb-2 text-gray-800">
             Acceso de Administración
           </h2>
+          <p className="text-center text-gray-500 mb-6 text-sm">Ingrese su contraseña para continuar</p>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Contraseña
               </label>
-              <input
+              <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Ingrese la contraseña"
                 required
               />
@@ -733,76 +700,81 @@ export default function CourseManagement() {
             </div>
             
             {loginError && (
-              <div className="text-red-600 text-sm text-center">
+              <div className="text-destructive text-sm text-center font-medium bg-destructive/10 p-2 rounded">
                 {loginError}
               </div>
             )}
             
-            <button
+            <Button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full"
             >
               Acceder
-            </button>
+            </Button>
           </form>
         </div>
       </div>
     );
   }
 
-  // Ana uygulama
   return (
-    <div className="p-4 md:p-8">
-      {/* Logout butonu */}
-      <div className="flex justify-between items-center mb-5">
-        <div className="flex gap-3">
-          <button
+    <div className="p-4 md:p-8 max-w-[1600px] mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+        <div className="flex gap-2">
+          <Button
             onClick={() => setActiveTab("en")}
-            className={`px-4 py-2 rounded ${activeTab === "en" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+            variant={activeTab === "en" ? "default" : "outline"}
+            className={activeTab === "en" ? "bg-blue-600 hover:bg-blue-700" : ""}
           >
             🇬🇧 Para Extranjeros
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => setActiveTab("tr")}
-            className={`px-4 py-2 rounded ${activeTab === "tr" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+            variant={activeTab === "tr" ? "default" : "outline"}
+            className={activeTab === "tr" ? "bg-blue-600 hover:bg-blue-700" : ""}
           >
             🇹🇷 Para Turcos
-          </button>
+          </Button>
         </div>
-        <button
+        <Button
           onClick={handleLogout}
-          className="px-3 py-2 bg-red-500 text-white rounded text-sm hover:bg-red-600"
+          variant="destructive"
+          size="sm"
+          className="ml-auto"
         >
-          Cerrar Sesión
-        </button>
+          <LogOut size={16} /> Cerrar Sesión
+        </Button>
       </div>
 
-      <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
-        <div className="flex gap-3 items-center">
-          <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">+ Nuevo curso</button>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+        <div className="flex gap-2 items-center">
+          <Button onClick={addCourse} className="bg-green-600 hover:bg-green-700 text-white">
+            <Plus size={16} /> Nuevo curso
+          </Button>
           
-          <div className="flex flex-col">
-            <button
+          <div className="relative">
+            <Button
               onClick={saveCourses}
               disabled={saving}
-              className="px-3 py-2 bg-blue-500 text-white rounded text-sm disabled:opacity-50"
+              className="bg-blue-600 hover:bg-blue-700"
             >
-              💾 Guardar cambios
-            </button>
+              <Save size={16} /> Guardar cambios
+            </Button>
             {saveMessage && (
-              <div className={`mt-1 text-xs ${saveMessage.includes("✅") ? "text-green-600" : "text-red-600"}`}>
+              <div className={`absolute -bottom-6 left-0 text-xs whitespace-nowrap ${saveMessage.includes("✅") ? "text-green-600" : "text-destructive"}`}>
                 {saveMessage}
               </div>
             )}
           </div>
         </div>
         <div>
-           <button 
+           <Button 
             onClick={() => setShowPaymentLinks(!showPaymentLinks)} 
-            className={`px-3 py-2 rounded text-sm text-white ${showPaymentLinks ? "bg-purple-700" : "bg-purple-500"}`}
+            variant="outline"
+            className={showPaymentLinks ? "bg-purple-100 text-purple-700 border-purple-200" : "text-gray-600"}
           >
             {showPaymentLinks ? "Ocultar Enlaces de Pago" : "Enlaces de Pago"}
-          </button>
+          </Button>
         </div>
       </div>
 
