@@ -523,7 +523,9 @@ export default function CourseManagement() {
           {courses.map((c, i) => {
             const normalizedWeekValue = isTr
               ? (() => {
-                  if (c.time.includes("2,5 saat")) return "Haftada 1 gün 2,5 saat";
+                  if (c.time.includes("2,5 saat")) {
+                    return c.week === "Haftada 2 gün 2,5 saat" ? "Haftada 2 gün 2,5 saat" : "Haftada 1 gün 2,5 saat";
+                  }
                   if (c.time.includes("2 saat")) return "Haftada 1 gün 2 saat";
                   if (c.time.includes("1 saat 15 dk")) return "Haftada 2 gün 1 saat 15 dk";
                   if (c.time.includes("1,5 saat")) return "Haftada 1 gün 1,5 saat";
