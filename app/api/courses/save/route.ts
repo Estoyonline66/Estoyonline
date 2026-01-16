@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     }
 
     // 🔹 Yeni yapı: EN ve TR kurslarını birlikte alıyoruz
-    const { cardCoursesEn, cardCoursesTr } = await request.json();
+    const { cardCoursesEn, cardCoursesTr, paymentLinksGroup, paymentLinksPrivate } = await request.json();
 
     if (
       (!cardCoursesEn || !Array.isArray(cardCoursesEn)) &&
@@ -31,6 +31,8 @@ export async function POST(request: Request) {
       {
         cardCoursesEn: cardCoursesEn || [],
         cardCoursesTr: cardCoursesTr || [],
+        paymentLinksGroup: paymentLinksGroup || [],
+        paymentLinksPrivate: paymentLinksPrivate || [],
       },
       null,
       2

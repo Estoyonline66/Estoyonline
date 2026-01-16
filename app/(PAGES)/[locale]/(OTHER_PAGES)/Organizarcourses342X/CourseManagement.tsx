@@ -13,6 +13,19 @@ interface Course {
   teacher?: string;
 }
 
+interface GroupLessonLink {
+  title: string;
+  price: string;
+  link: string;
+}
+
+interface PrivateLessonLink {
+  studentCount: string;
+  lessonCount: string;
+  price: string;
+  link: string;
+}
+
 const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
@@ -40,6 +53,9 @@ for (let hour = 9; hour <= 22; hour++) {
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
+  const [paymentLinksGroup, setPaymentLinksGroup] = useState<GroupLessonLink[]>([]);
+  const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
+  const [showPaymentLinks, setShowPaymentLinks] = useState(false);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -71,6 +87,8 @@ export default function CourseManagement() {
         if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
         const data = await res.json();
         setCoursesEn(data.cardCoursesEn || []);
+        setPaymentLinksGroup(data.paymentLinksGroup || []);
+        setPaymentLinksPrivate(data.paymentLinksPrivate || []);
         
         // Türkçe kursları yüklerken week değerlerini time'a göre düzelt
         const fixedCoursesTr = (data.cardCoursesTr || []).map((course: Course) => {
@@ -125,7 +143,12 @@ export default function CourseManagement() {
     localStorage.removeItem("coursesRememberMe");
   };
 
-  const saveCoursesWithData = async (enData: Course[], trData: Course[]) => {
+  const saveCoursesWithData = async (
+    enData: Course[], 
+    trData: Course[],
+    groupLinks: GroupLessonLink[] = paymentLinksGroup,
+    privateLinks: PrivateLessonLink[] = paymentLinksPrivate
+  ) => {
     setSaving(true);
     setSaveMessage("");
     try {
@@ -135,6 +158,8 @@ export default function CourseManagement() {
         body: JSON.stringify({
           cardCoursesEn: enData,
           cardCoursesTr: trData,
+          paymentLinksGroup: groupLinks,
+          paymentLinksPrivate: privateLinks,
         }),
       });
       if (!res.ok) throw new Error("Save failed");
@@ -206,6 +231,43 @@ export default function CourseManagement() {
     }
   };
 
+  const addPaymentLinkGroup = () => {
+    const newLink: GroupLessonLink = {
+      title: "Nuevo Curso",
+      price: "0€",
+      link: "https://",
+    };
+    setPaymentLinksGroup([...paymentLinksGroup, newLink]);
+  };
+
+  const deletePaymentLinkGroup = async (index: number) => {
+    if (confirm("¿Eliminar enlace?")) {
+      const newList = [...paymentLinksGroup];
+      newList.splice(index, 1);
+      setPaymentLinksGroup(newList);
+      await saveCoursesWithData(coursesEn, coursesTr, newList, paymentLinksPrivate);
+    }
+  };
+
+  const addPaymentLinkPrivate = () => {
+    const newLink: PrivateLessonLink = {
+      studentCount: "1",
+      lessonCount: "1",
+      price: "0€",
+      link: "https://",
+    };
+    setPaymentLinksPrivate([...paymentLinksPrivate, newLink]);
+  };
+
+  const deletePaymentLinkPrivate = async (index: number) => {
+    if (confirm("¿Eliminar enlace?")) {
+      const newList = [...paymentLinksPrivate];
+      newList.splice(index, 1);
+      setPaymentLinksPrivate(newList);
+      await saveCoursesWithData(coursesEn, coursesTr, paymentLinksGroup, newList);
+    }
+  };
+
   const formatTrMonth = (month: string) => {
     if (!month) return "";
     const match = month.match(/(\d+)\s([^\s]+)(?:\s+(\d{4}))?/);
@@ -249,6 +311,169 @@ export default function CourseManagement() {
     
     return "";
   };
+
+  const renderPaymentLinksSection = () => (
+    <div className="mb-8 p-4 bg-gray-50 rounded border border-gray-200 shadow-sm">
+      <h2 className="text-xl font-bold mb-4 text-gray-800">Enlaces de Pago</h2>
+      
+      {/* Group 1: Group Lessons */}
+      <div className="mb-8">
+        <div className="flex justify-between items-center mb-3">
+          <h3 className="font-semibold text-lg text-blue-800">1. Clases Grupales</h3>
+          <button onClick={addPaymentLinkGroup} className="px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700 transition">+ Añadir</button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-gray-100 text-gray-700">
+                <th className="p-3 text-left font-semibold">Nombre del curso</th>
+                <th className="p-3 text-left font-semibold">Precio</th>
+                <th className="p-3 text-left font-semibold">Enlace</th>
+                <th className="p-3 w-10"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {paymentLinksGroup.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="p-4 text-center text-gray-500 italic">No hay enlaces</td>
+                </tr>
+              )}
+              {paymentLinksGroup.map((item, i) => (
+                <tr key={i} className="border-b hover:bg-gray-50">
+                  <td className="p-2">
+                    <input 
+                      value={item.title} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksGroup];
+                        list[i].title = e.target.value;
+                        setPaymentLinksGroup(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="Nombre del curso"
+                    />
+                  </td>
+                  <td className="p-2">
+                    <input 
+                      value={item.price} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksGroup];
+                        list[i].price = e.target.value;
+                        setPaymentLinksGroup(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="Precio"
+                    />
+                  </td>
+                  <td className="p-2">
+                    <input 
+                      value={item.link} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksGroup];
+                        list[i].link = e.target.value;
+                        setPaymentLinksGroup(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded text-blue-600 underline focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="https://..."
+                    />
+                  </td>
+                  <td className="p-2 text-center">
+                     <button onClick={() => deletePaymentLinkGroup(i)} className="text-red-500 hover:text-red-700 p-1">
+                       <Trash2 size={16} />
+                     </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Group 2: Private Lessons */}
+      <div>
+        <div className="flex justify-between items-center mb-3">
+          <h3 className="font-semibold text-lg text-blue-800">2. Clases Particulares</h3>
+          <button onClick={addPaymentLinkPrivate} className="px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700 transition">+ Añadir</button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-gray-100 text-gray-700">
+                <th className="p-3 text-left font-semibold">Estudiantes</th>
+                <th className="p-3 text-left font-semibold">Clases</th>
+                <th className="p-3 text-left font-semibold">Precio</th>
+                <th className="p-3 text-left font-semibold">Enlace</th>
+                <th className="p-3 w-10"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {paymentLinksPrivate.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="p-4 text-center text-gray-500 italic">No hay enlaces</td>
+                </tr>
+              )}
+              {paymentLinksPrivate.map((item, i) => (
+                <tr key={i} className="border-b hover:bg-gray-50">
+                  <td className="p-2">
+                    <input 
+                      value={item.studentCount} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksPrivate];
+                        list[i].studentCount = e.target.value;
+                        setPaymentLinksPrivate(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="1"
+                    />
+                  </td>
+                  <td className="p-2">
+                    <input 
+                      value={item.lessonCount} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksPrivate];
+                        list[i].lessonCount = e.target.value;
+                        setPaymentLinksPrivate(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="1"
+                    />
+                  </td>
+                  <td className="p-2">
+                    <input 
+                      value={item.price} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksPrivate];
+                        list[i].price = e.target.value;
+                        setPaymentLinksPrivate(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="Precio"
+                    />
+                  </td>
+                  <td className="p-2">
+                    <input 
+                      value={item.link} 
+                      onChange={(e) => {
+                        const list = [...paymentLinksPrivate];
+                        list[i].link = e.target.value;
+                        setPaymentLinksPrivate(list);
+                      }}
+                      className="border border-gray-300 p-2 w-full rounded text-blue-600 underline focus:ring-2 focus:ring-blue-500 outline-none"
+                      placeholder="https://..."
+                    />
+                  </td>
+                  <td className="p-2 text-center">
+                     <button onClick={() => deletePaymentLinkPrivate(i)} className="text-red-500 hover:text-red-700 p-1">
+                       <Trash2 size={16} />
+                     </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
 
   const renderTable = (
     courses: Course[],
@@ -519,6 +744,12 @@ export default function CourseManagement() {
       <div className="flex justify-between items-center mb-5 flex-wrap gap-3">
         <div className="flex gap-3 items-center">
           <button onClick={addCourse} className="px-3 py-2 bg-green-500 text-white rounded text-sm">+ Nuevo curso</button>
+          <button 
+            onClick={() => setShowPaymentLinks(!showPaymentLinks)} 
+            className={`px-3 py-2 rounded text-sm text-white ${showPaymentLinks ? "bg-purple-700" : "bg-purple-500"}`}
+          >
+            {showPaymentLinks ? "Ocultar Enlaces de Pago" : "Enlaces de Pago"}
+          </button>
           <div className="flex flex-col">
             <button
               onClick={saveCourses}
@@ -535,6 +766,8 @@ export default function CourseManagement() {
           </div>
         </div>
       </div>
+
+      {showPaymentLinks && renderPaymentLinksSection()}
 
       {activeTab === "en"
         ? renderTable(coursesEn, setCoursesEn, false)
