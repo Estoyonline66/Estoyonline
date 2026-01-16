@@ -337,10 +337,13 @@ export default function CourseManagement() {
       
       setPriceSaveMessage("✅ Precios guardados correctamente");
       
-      // Kayıttan sonra verileri tekrar çekerek ekranı güncelle
-      await fetchPrices();
+      // Blob cache gecikmesi nedeniyle hemen çekmek eski veriyi getirebiliyor.
+      // Bu yüzden 2 saniye bekleyip çekiyoruz.
+      setTimeout(async () => {
+          await fetchPrices();
+      }, 2000);
       
-      setTimeout(() => setPriceSaveMessage(""), 3000);
+      setTimeout(() => setPriceSaveMessage(""), 4000);
     } catch (err) {
       console.error(err);
       setPriceSaveMessage("❌ Error al guardar precios");
