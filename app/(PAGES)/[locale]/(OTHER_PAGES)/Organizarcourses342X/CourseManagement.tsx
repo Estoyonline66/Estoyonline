@@ -54,6 +54,31 @@ for (let hour = 9; hour <= 22; hour++) {
 // const blobUrl = ... (Aşağıda tanımlı)
 const PRICES_BLOB_URL = "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/checkout/prices.json";
 
+const COURSE_NAMES = [
+  "A1.1 Başlangıç (Türkiye)",
+  "A1.1 Başlangıç (Yurtdışı)",
+  "A1.1 Sabah (Türkiye)",
+  "Üst Seviyeler (Türkiye)",
+  "Üst Seviyeler İndirimli (Türkiye)",
+  "Üst Seviyeler (Yurtdışı)",
+  "Tamamlayıcı Kurs (Türkiye)",
+  "Tamamlayıcı Kurs (Yurtdışı)",
+  "Complementary Course",
+  "Upper level courses",
+  "Examen",
+  "Özel Ders (1 kişi, 10 ders)",
+  "Özel Ders (1 kişi, 5 ders)",
+  "Özel Ders (2 kişi, 10 ders)",
+  "Özel Ders (2 kişi, 5 ders)",
+  "Özel Ders (3 kişi, 10 ders)",
+  "Özel Ders (3 kişi, 5 ders)",
+  "Özel Ders (4 kişi, 10 ders)",
+  "Özel Ders (4 kişi, 5 ders)",
+  "Özel Ders (5 kişi, 10 ders)",
+  "Özel Ders (5 kişi, 5 ders)",
+  "Nuevo Curso" // Varsayılan/Yeni eklenenler için
+];
+
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
@@ -424,11 +449,19 @@ export default function CourseManagement() {
               <tr key={key} className="border-b hover:bg-gray-50">
                 <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
                 <td className="p-2">
-                    <input 
-                        value={info.name}
+                    <select
+                        value={COURSE_NAMES.includes(info.name) ? info.name : "Nuevo Curso"}
                         onChange={(e) => updatePrice(key, "name", e.target.value)}
                         className="border p-1 w-full rounded"
-                    />
+                    >
+                        {COURSE_NAMES.map(name => (
+                            <option key={name} value={name}>{name}</option>
+                        ))}
+                        {/* Eğer listede olmayan bir isim varsa onu da göster ki veri kaybolmasın */}
+                        {!COURSE_NAMES.includes(info.name) && (
+                            <option value={info.name}>{info.name}</option>
+                        )}
+                    </select>
                 </td>
                 <td className="p-2">
                     <input 
