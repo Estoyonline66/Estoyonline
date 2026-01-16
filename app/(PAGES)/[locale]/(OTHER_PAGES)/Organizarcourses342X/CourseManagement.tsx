@@ -62,6 +62,11 @@ export default function CourseManagement() {
   
   // Başlangıçta boş obje, veri yüklenince dolacak
   const [prices, setPrices] = useState<Record<string, CourseInfo>>({});
+  
+  // Eğer prices boşsa ve hata aldıysak, varsayılan bir veri seti oluşturmak için:
+  const defaultPrices: Record<string, CourseInfo> = {
+      "New_Course_Default": { name: "Örnek Kurs (Düzenle)", amount: 10000, currency: "try" }
+  };
   const [loadingPrices, setLoadingPrices] = useState(true);
   const [priceError, setPriceError] = useState("");
 
@@ -143,9 +148,9 @@ export default function CourseManagement() {
             setPrices(pricesData);
         } catch (err: unknown) {
             console.error("Fiyat yükleme hatası:", err);
-            setPriceError("Fiyatlar sunucudan çekilemedi. Lütfen 'Guardar Precios' ile yeni fiyat seti oluşturun.");
-            // Hata olsa bile boş obje ile devam et
-            setPrices({});
+            setPriceError("Fiyatlar sunucudan çekilemedi. Varsayılan boş liste ile başlatıldı. Lütfen 'Guardar Precios' ile yeni fiyat seti oluşturun.");
+            // Hata durumunda varsayılan bir veri seti ile başlat ki kullanıcı "Guardar" diyebilsin.
+            setPrices(defaultPrices);
         } finally {
             setLoadingPrices(false);
         }
