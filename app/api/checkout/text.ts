@@ -6,6 +6,7 @@ export interface CourseInfo {
 
 export const courseMap: Record<string, CourseInfo> = {
   // Grupales
+  /*
   "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 798000, currency: "try" },
   "A1.1_başlangıç_kursu_Yurtdışı_q9Z2": { name: "A1.1 Başlangıç (Yurtdışı)", amount: 19000, currency: "eur" },
   "A1.1_sabah_Türkiye_Xy7p": { name: "A1.1 Sabah (Türkiye)", amount: 660000, currency: "try" },
@@ -19,7 +20,6 @@ export const courseMap: Record<string, CourseInfo> = {
   "Examen_Rt6B": { name: "Examen", amount: 1500, currency: "eur" },
 
 
-
   "10_derslik_özel_ders_paketi_Az1R": { name: "Özel Ders (1 kişi, 10 ders)", amount: 22000, currency: "eur" },
   "5_derslik_özel_ders_paketi_Nm8t": { name: "Özel Ders (1 kişi, 5 ders)", amount: 11000, currency: "eur" },
   "10_derslik_2_kişilik_grup_A1b2": { name: "Özel Ders (2 kişi, 10 ders)", amount: 30000, currency: "eur" },
@@ -30,6 +30,7 @@ export const courseMap: Record<string, CourseInfo> = {
   "5_derslik_4_kişilik_grup_I9j0": { name: "Özel Ders (4 kişi, 5 ders)", amount: 20500, currency: "eur" },
   "10_derslik_5_kişilik_grup_Lm3N": { name: "Özel Ders (5 kişi, 10 ders)", amount: 45000, currency: "eur" },
   "5_derslik_5_kişilik_özel_ders_paketi_Yr2P": { name: "Özel Ders (5 kişi, 5 ders)", amount: 22500, currency: "eur" },
+  */
 };
 
 export const PRICES_BLOB_URL = "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/checkout/prices.json";

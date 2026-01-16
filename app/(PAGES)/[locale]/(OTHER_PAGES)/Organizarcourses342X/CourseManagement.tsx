@@ -221,7 +221,7 @@ export default function CourseManagement() {
         body: JSON.stringify({
           cardCoursesEn: enData,
           cardCoursesTr: trData,
-          prices: prices, // Fiyatları da gönder
+          // prices: prices, // Fiyatları ayırdık, buraya dahil etmiyoruz
         }),
       });
       if (!res.ok) throw new Error("Save failed");
@@ -337,92 +337,148 @@ export default function CourseManagement() {
     return "";
   };
 
+  const [priceSaveMessage, setPriceSaveMessage] = useState("");
+
+  const savePricesOnly = async () => {
+    setSaving(true);
+    setPriceSaveMessage("");
+    try {
+      const res = await fetch("/api/courses/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prices: prices,
+        }),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      
+      setPriceSaveMessage("✅ Precios guardados correctamente");
+      setTimeout(() => setPriceSaveMessage(""), 3000);
+    } catch (err) {
+      console.error(err);
+      setPriceSaveMessage("❌ Error al guardar precios");
+      setTimeout(() => setPriceSaveMessage(""), 3000);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const addPrice = () => {
+     const randomId = Math.random().toString(36).substring(2, 6);
+     const newKey = `New_Course_${randomId}`;
+     setPrices({
+        [newKey]: { name: "Nuevo Curso", amount: 1000, currency: "eur" },
+        ...prices
+     });
+  };
+
+  const deletePrice = (key: string) => {
+    if(!confirm("⚠️ ¿Estás seguro de eliminar este precio?")) return;
+    const newPrices = { ...prices };
+    delete newPrices[key];
+    setPrices(newPrices);
+  };
+
+  const updatePrice = (key: string, field: keyof CourseInfo, value: any) => {
+      setPrices(prev => ({
+          ...prev,
+          [key]: { ...prev[key], [field]: value }
+      }));
+  };
+
   const renderPaymentLinksSection = () => (
     <div className="mb-8 p-4 bg-gray-50 rounded border border-gray-200 shadow-sm">
-      <h2 className="text-xl font-bold mb-4 text-gray-800">Enlaces de Pago</h2>
-      
-      {/* Group 1: Group Lessons */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center mb-3">
-          <h3 className="font-semibold text-lg text-blue-800">1. Clases Grupales</h3>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
-            <thead>
-              <tr className="bg-gray-100 text-gray-700">
-                <th className="p-3 text-left font-semibold">Nombre del curso</th>
-                <th className="p-3 text-left font-semibold">Precio</th>
-                <th className="p-3 text-left font-semibold">Enlace</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paymentLinksGroup.length === 0 && (
-                <tr>
-                  <td colSpan={3} className="p-4 text-center text-gray-500 italic">No hay enlaces</td>
-                </tr>
-              )}
-              {paymentLinksGroup.map((item, i) => (
-                <tr key={i} className="border-b hover:bg-gray-50">
-                  <td className="p-2">
-                    <span className="block p-2 text-gray-800">{item.title}</span>
-                  </td>
-                  <td className="p-2">
-                    <span className="block p-2 text-gray-800">{item.price}</span>
-                  </td>
-                  <td className="p-2">
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="block p-2 text-blue-600 underline">
-                      {item.link}
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold text-gray-800">Gestión de Precios y Enlaces</h2>
+        <div className="flex gap-2 items-center">
+            <button 
+                onClick={addPrice}
+                className="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
+            >
+                + Nuevo Precio
+            </button>
+            <div className="flex flex-col items-end">
+                <button 
+                    onClick={savePricesOnly}
+                    disabled={saving}
+                    className="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 disabled:opacity-50"
+                >
+                    💾 Guardar Precios
+                </button>
+                {priceSaveMessage && (
+                  <span className="text-xs text-green-600 mt-1">{priceSaveMessage}</span>
+                )}
+            </div>
         </div>
       </div>
-
-      {/* Group 2: Private Lessons */}
-      <div>
-        <div className="flex justify-between items-center mb-3">
-          <h3 className="font-semibold text-lg text-blue-800">2. Clases Particulares</h3>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
-            <thead>
-              <tr className="bg-gray-100 text-gray-700">
-                <th className="p-3 text-left font-semibold">Estudiantes</th>
-                <th className="p-3 text-left font-semibold">Clases</th>
-                <th className="p-3 text-left font-semibold">Precio</th>
-                <th className="p-3 text-left font-semibold">Enlace</th>
+      
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
+          <thead>
+            <tr className="bg-gray-100 text-gray-700">
+              <th className="p-3 text-left font-semibold">ID (Key)</th>
+              <th className="p-3 text-left font-semibold">Nombre del Curso</th>
+              <th className="p-3 text-left font-semibold">Monto (Cents/Kuruş)</th>
+              <th className="p-3 text-left font-semibold">Moneda</th>
+              <th className="p-3 text-left font-semibold">Enlace Generado</th>
+              <th className="p-3 text-center font-semibold">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(prices).map(([key, info]) => (
+              <tr key={key} className="border-b hover:bg-gray-50">
+                <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
+                <td className="p-2">
+                    <input 
+                        value={info.name}
+                        onChange={(e) => updatePrice(key, "name", e.target.value)}
+                        className="border p-1 w-full rounded"
+                    />
+                </td>
+                <td className="p-2">
+                    <input 
+                        type="number"
+                        value={info.amount}
+                        onChange={(e) => updatePrice(key, "amount", Number(e.target.value))}
+                        className="border p-1 w-full rounded w-32"
+                    />
+                    <div className="text-xs text-gray-400 mt-1">
+                        {(info.amount / 100).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
+                    </div>
+                </td>
+                <td className="p-2">
+                    <select
+                        value={info.currency}
+                        onChange={(e) => updatePrice(key, "currency", e.target.value)}
+                        className="border p-1 rounded"
+                    >
+                        <option value="eur">EUR</option>
+                        <option value="try">TRY</option>
+                        <option value="usd">USD</option>
+                    </select>
+                </td>
+                <td className="p-2">
+                  <a 
+                    href={`https://estoyonline.es/tr/payment?course=${key}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-600 underline text-xs"
+                  >
+                    Ver Enlace
+                  </a>
+                </td>
+                <td className="p-2 text-center">
+                    <button
+                        onClick={() => deletePrice(key)}
+                        className="p-1 text-red-600 hover:text-red-800"
+                    >
+                        <Trash2 size={16} />
+                    </button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {paymentLinksPrivate.length === 0 && (
-                <tr>
-                  <td colSpan={4} className="p-4 text-center text-gray-500 italic">No hay enlaces</td>
-                </tr>
-              )}
-              {paymentLinksPrivate.map((item, i) => (
-                <tr key={i} className="border-b hover:bg-gray-50">
-                  <td className="p-2">
-                    <span className="block p-2 text-gray-800">{item.studentCount}</span>
-                  </td>
-                  <td className="p-2">
-                    <span className="block p-2 text-gray-800">{item.lessonCount}</span>
-                  </td>
-                  <td className="p-2">
-                     <span className="block p-2 text-gray-800">{item.price}</span>
-                  </td>
-                  <td className="p-2">
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="block p-2 text-blue-600 underline">
-                      {item.link}
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
