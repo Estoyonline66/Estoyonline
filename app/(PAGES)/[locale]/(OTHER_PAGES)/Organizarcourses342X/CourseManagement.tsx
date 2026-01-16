@@ -64,30 +64,60 @@ export default function CourseManagement() {
     const groupLinks: GroupLessonLink[] = [];
     const privateLinks: PrivateLessonLink[] = [];
 
+    const formatCurrency = (amount: number, currency: string) => {
+      // 100'e bölerek asıl değeri bul
+      const val = amount / 100;
+      // Binlik ayracı ile formatla (İspanya/Türkiye formatı: 1.234,56)
+      // Ancak kullanıcı sadece binlik ayracı nokta olsun istiyor: 7.980 TL
+      const formattedVal = val.toLocaleString("tr-TR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+      
+      const currencyLabel = currency.toUpperCase() === "TRY" ? "TL" : currency.toUpperCase();
+      return `${formattedVal} ${currencyLabel}`;
+    };
+
     Object.entries(courseMap).forEach(([key, info]) => {
-      const price = `${info.amount / 100} ${info.currency.toUpperCase()}`;
-      const link = `https://estoyonline.es/tr/payment?course=${key}`; // Default link construction
+      const price = formatCurrency(info.amount, info.currency);
+      const link = `https://estoyonline.es/tr/payment?course=${key}`;
 
       if (info.name.includes("Özel Ders")) {
-        // Parse private lesson details
-        // Pattern: "Özel Ders (X kişi, Y ders)"
-        const match = info.name.match(/(\d+)\s*kişi.*(\d+)\s*ders/);
-        if (match) {
-            privateLinks.push({
-                studentCount: match[1],
-                lessonCount: match[2],
-                price,
-                link
-            });
+        // Regex 1: "Özel Ders (X kişi, Y ders)"
+        // Regex 2: "Y derslik özel ders paketi" (1 kişi varsayılan)
+        // Regex 3: "Y derslik Z kişilik grup" (veya özel ders)
+        
+        let studentCount = "1";
+        let lessonCount = "0";
+
+        const matchMulti = info.name.match(/(\d+)\s*kişi.*(\d+)\s*ders/i); // "2 kişi, 10 ders"
+        const matchLessonFirst = info.name.match(/(\d+)\s*derslik.*(\d+)\s*kişi/i); // "10 derslik 2 kişilik"
+        const matchSingle = info.name.match(/(\d+)\s*derslik/i); // "10 derslik..." (kişi yoksa 1)
+
+        if (matchMulti) {
+             studentCount = matchMulti[1];
+             lessonCount = matchMulti[2];
+        } else if (matchLessonFirst) {
+             lessonCount = matchLessonFirst[1];
+             studentCount = matchLessonFirst[2];
+        } else if (matchSingle) {
+             studentCount = "1";
+             lessonCount = matchSingle[1];
         } else {
-             // Fallback for private lessons that might not match exact regex but are private
-             privateLinks.push({
-                studentCount: "?",
-                lessonCount: "?",
-                price,
-                link
-            });
+             // Fallback
+             const matchParen = info.name.match(/\(([^)]+)\)/);
+             if (matchParen) {
+                 const content = matchParen[1];
+                 const pMatch = content.match(/(\d+)\s*kişi/);
+                 const lMatch = content.match(/(\d+)\s*ders/);
+                 if (pMatch) studentCount = pMatch[1];
+                 if (lMatch) lessonCount = lMatch[1];
+             }
         }
+
+        privateLinks.push({
+            studentCount,
+            lessonCount,
+            price,
+            link
+        });
       } else {
         groupLinks.push({
           title: info.name,
