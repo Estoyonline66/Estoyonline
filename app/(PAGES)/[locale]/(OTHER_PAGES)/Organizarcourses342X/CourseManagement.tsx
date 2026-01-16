@@ -133,23 +133,34 @@ export default function CourseManagement() {
         try {
             setLoadingPrices(true);
             setPriceError("");
-            const res = await fetch(`${PRICES_BLOB_URL}?_ts=${Date.now()}`, { 
-                cache: "no-store",
-                headers: { "Cache-Control": "no-cache" }
-            });
+            
+            // Daha basit bir fetch isteği deneyelim
+            const res = await fetch(`${PRICES_BLOB_URL}?_ts=${Date.now()}`);
             
             if (!res.ok) {
-                // Eğer dosya yoksa veya hata varsa
-                throw new Error(`Fiyatlar yüklenemedi: ${res.status}`);
+                const errorText = await res.text();
+                throw new Error(`Fiyatlar yüklenemedi. Status: ${res.status}, Message: ${errorText}`);
             }
             
             const pricesData = await res.json();
-            console.log("Fiyatlar yüklendi:", pricesData);
-            setPrices(pricesData);
+            console.log("✅ Fiyatlar başarıyla yüklendi:", pricesData);
+            
+            // Eğer gelen veri boşsa veya geçersizse yine de bir kontrol koyalım
+            if (pricesData && typeof pricesData === 'object') {
+                 setPrices(pricesData);
+            } else {
+                 throw new Error("Gelen veri geçerli bir fiyat listesi değil.");
+            }
+
         } catch (err: unknown) {
-            console.error("Fiyat yükleme hatası:", err);
-            setPriceError("Fiyatlar sunucudan çekilemedi. Varsayılan boş liste ile başlatıldı. Lütfen 'Guardar Precios' ile yeni fiyat seti oluşturun.");
-            // Hata durumunda varsayılan bir veri seti ile başlat ki kullanıcı "Guardar" diyebilsin.
+            console.error("❌ Fiyat yükleme hatası (Detaylı):", err);
+            
+            let errorMessage = "Bilinmeyen bir hata oluştu.";
+            if (err instanceof Error) {
+                errorMessage = err.message;
+            }
+            
+            setPriceError(`Hata: ${errorMessage} - Varsayılan liste yüklendi.`);
             setPrices(defaultPrices);
         } finally {
             setLoadingPrices(false);
