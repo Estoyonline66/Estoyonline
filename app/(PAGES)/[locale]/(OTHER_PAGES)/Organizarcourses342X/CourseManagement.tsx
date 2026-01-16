@@ -338,10 +338,10 @@ export default function CourseManagement() {
       setPriceSaveMessage("✅ Precios guardados correctamente");
       
       // Blob cache gecikmesi nedeniyle hemen çekmek eski veriyi getirebiliyor.
-      // Bu yüzden 2 saniye bekleyip çekiyoruz.
-      setTimeout(async () => {
-          await fetchPrices();
-      }, 2000);
+      // Kayıt başarılı olduğu için elimizdeki güncel veri ile devam ediyoruz, tekrar çekmeye gerek yok.
+      // setTimeout(async () => {
+      //    await fetchPrices();
+      // }, 2000);
       
       setTimeout(() => setPriceSaveMessage(""), 4000);
     } catch (err) {
