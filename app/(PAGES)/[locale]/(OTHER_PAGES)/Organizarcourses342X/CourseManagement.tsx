@@ -273,43 +273,6 @@ export default function CourseManagement() {
     }
   };
 
-  const addPaymentLinkGroup = () => {
-    const newLink: GroupLessonLink = {
-      title: "Nuevo Curso",
-      price: "0€",
-      link: "https://",
-    };
-    setPaymentLinksGroup([...paymentLinksGroup, newLink]);
-  };
-
-  const deletePaymentLinkGroup = async (index: number) => {
-    if (confirm("¿Eliminar enlace?")) {
-      const newList = [...paymentLinksGroup];
-      newList.splice(index, 1);
-      setPaymentLinksGroup(newList);
-      await saveCoursesWithData(coursesEn, coursesTr, newList, paymentLinksPrivate);
-    }
-  };
-
-  const addPaymentLinkPrivate = () => {
-    const newLink: PrivateLessonLink = {
-      studentCount: "1",
-      lessonCount: "1",
-      price: "0€",
-      link: "https://",
-    };
-    setPaymentLinksPrivate([...paymentLinksPrivate, newLink]);
-  };
-
-  const deletePaymentLinkPrivate = async (index: number) => {
-    if (confirm("¿Eliminar enlace?")) {
-      const newList = [...paymentLinksPrivate];
-      newList.splice(index, 1);
-      setPaymentLinksPrivate(newList);
-      await saveCoursesWithData(coursesEn, coursesTr, paymentLinksGroup, newList);
-    }
-  };
-
   const formatTrMonth = (month: string) => {
     if (!month) return "";
     const match = month.match(/(\d+)\s([^\s]+)(?:\s+(\d{4}))?/);
