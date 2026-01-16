@@ -413,7 +413,7 @@ export default function CourseManagement() {
             <tr className="bg-gray-100 text-gray-700">
               <th className="p-3 text-left font-semibold">ID (Key)</th>
               <th className="p-3 text-left font-semibold">Nombre del Curso</th>
-              <th className="p-3 text-left font-semibold">Monto (Cents/Kuruş)</th>
+              <th className="p-3 text-left font-semibold">Monto (TL/EUR)</th>
               <th className="p-3 text-left font-semibold">Moneda</th>
               <th className="p-3 text-left font-semibold">Enlace Generado</th>
               <th className="p-3 text-center font-semibold">Acciones</th>
@@ -438,7 +438,7 @@ export default function CourseManagement() {
                         className="border p-1 w-full rounded w-32"
                     />
                     <div className="text-xs text-gray-400 mt-1">
-                        {(info.amount / 100).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
+                        {(info.amount).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
                     </div>
                 </td>
                 <td className="p-2">

@@ -35,7 +35,8 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: course.currency,
             product_data: { name: course.name },
-            unit_amount: course.amount,
+            // Tutarı kuruş/cent cinsine çevir (x100)
+            unit_amount: Math.round(course.amount * 100),
           },
           quantity: 1,
         },
