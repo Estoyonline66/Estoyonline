@@ -100,6 +100,43 @@ export default function CourseManagement() {
     }
   }, [adminPassword]);
 
+  // Fiyatları Ayrı Çek ve Yönet
+  const fetchPrices = async () => {
+      try {
+          setLoadingPrices(true);
+          setPriceError("");
+          
+          const res = await fetch(`${PRICES_BLOB_URL}?_ts=${Date.now()}`);
+          
+          if (!res.ok) {
+              const errorText = await res.text();
+              throw new Error(`Fiyatlar yüklenemedi. Status: ${res.status}, Message: ${errorText}`);
+          }
+          
+          const pricesData = await res.json();
+          console.log("✅ Fiyatlar başarıyla yüklendi:", pricesData);
+          
+          if (pricesData && typeof pricesData === 'object') {
+               setPrices(pricesData);
+          } else {
+               throw new Error("Gelen veri geçerli bir fiyat listesi değil.");
+          }
+
+      } catch (err: unknown) {
+          console.error("❌ Fiyat yükleme hatası (Detaylı):", err);
+          
+          let errorMessage = "Bilinmeyen bir hata oluştu.";
+          if (err instanceof Error) {
+              errorMessage = err.message;
+          }
+          
+          setPriceError(`Hata: ${errorMessage} - Varsayılan liste yüklendi.`);
+          setPrices(defaultPrices);
+      } finally {
+          setLoadingPrices(false);
+      }
+  };
+
   useEffect(() => {
     if (!isAuthenticated) return;
 
@@ -130,42 +167,6 @@ export default function CourseManagement() {
       } catch (err) {
         console.error("Error loading courses:", err);
       }
-    };
-
-    const fetchPrices = async () => {
-        try {
-            setLoadingPrices(true);
-            setPriceError("");
-            
-            const res = await fetch(`${PRICES_BLOB_URL}?_ts=${Date.now()}`);
-            
-            if (!res.ok) {
-                const errorText = await res.text();
-                throw new Error(`Fiyatlar yüklenemedi. Status: ${res.status}, Message: ${errorText}`);
-            }
-            
-            const pricesData = await res.json();
-            console.log("✅ Fiyatlar başarıyla yüklendi:", pricesData);
-            
-            if (pricesData && typeof pricesData === 'object') {
-                 setPrices(pricesData);
-            } else {
-                 throw new Error("Gelen veri geçerli bir fiyat listesi değil.");
-            }
-
-        } catch (err: unknown) {
-            console.error("❌ Fiyat yükleme hatası (Detaylı):", err);
-            
-            let errorMessage = "Bilinmeyen bir hata oluştu.";
-            if (err instanceof Error) {
-                errorMessage = err.message;
-            }
-            
-            setPriceError(`Hata: ${errorMessage} - Varsayılan liste yüklendi.`);
-            setPrices(defaultPrices);
-        } finally {
-            setLoadingPrices(false);
-        }
     };
 
     fetchCourses();
