@@ -29,7 +29,7 @@ export const courseMap: Record<string, CourseInfo> = {
   "10_derslik_4_kişilik_grup_G7h8": { name: "Özel Ders (4 kişi, 10 ders)", amount: 41000, currency: "eur" },
   "5_derslik_4_kişilik_grup_I9j0": { name: "Özel Ders (4 kişi, 5 ders)", amount: 20500, currency: "eur" },
   "10_derslik_5_kişilik_grup_Lm3N": { name: "Özel Ders (5 kişi, 10 ders)", amount: 45000, currency: "eur" },
-  "5_derslik_5_kişilik_özel_ders_paketi_Yr2P": { name: "Özel Ders (5 kişi, 5 ders)", amount: 1122500, currency: "eur" },
+  "5_derslik_5_kişilik_özel_ders_paketi_Yr2P": { name: "Özel Ders (5 kişi, 5 ders)", amount: 22500, currency: "eur" },
 };
 
 export const PRICES_BLOB_URL = "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/checkout/prices.json";
