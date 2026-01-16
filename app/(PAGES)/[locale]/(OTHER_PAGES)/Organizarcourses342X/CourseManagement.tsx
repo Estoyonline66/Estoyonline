@@ -380,7 +380,7 @@ export default function CourseManagement() {
 
   const addPrice = () => {
      const randomId = Math.random().toString(36).substring(2, 6);
-     const newKey = `New_Course_${randomId}`;
+     const newKey = `precio_temp_${randomId}`;
      setPrices({
         [newKey]: { name: COURSE_NAMES[0], amount: 1000, currency: "eur" },
         ...prices
