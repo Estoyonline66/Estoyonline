@@ -14,46 +14,63 @@ export async function POST(request: Request) {
     }
 
     // 🔹 Yeni yapı: EN ve TR kurslarını birlikte alıyoruz
-    const { cardCoursesEn, cardCoursesTr, paymentLinksGroup, paymentLinksPrivate } = await request.json();
+    const { cardCoursesEn, cardCoursesTr, paymentLinksGroup, paymentLinksPrivate, prices } = await request.json();
 
+    // Eğer sadece fiyat güncellemesi yapılıyorsa validation'ı atla veya prices varsa kabul et
     if (
+      (!prices) &&
       (!cardCoursesEn || !Array.isArray(cardCoursesEn)) &&
       (!cardCoursesTr || !Array.isArray(cardCoursesTr))
     ) {
       return NextResponse.json(
-        { error: "Invalid course data. Expected arrays for EN or TR." },
+        { error: "Invalid course data. Expected arrays for EN or TR, or prices object." },
         { status: 400 }
       );
     }
 
-    // 🔹 Blob’a kaydedilecek JSON yapısı
-    const jsonString = JSON.stringify(
-      {
-        cardCoursesEn: cardCoursesEn || [],
-        cardCoursesTr: cardCoursesTr || [],
-        paymentLinksGroup: paymentLinksGroup || [],
-        paymentLinksPrivate: paymentLinksPrivate || [],
-      },
-      null,
-      2
-    );
+    // 🔹 Blob’a kaydedilecek JSON yapısı (Courses)
+    if (cardCoursesEn || cardCoursesTr) {
+      const jsonString = JSON.stringify(
+        {
+          cardCoursesEn: cardCoursesEn || [],
+          cardCoursesTr: cardCoursesTr || [],
+          paymentLinksGroup: paymentLinksGroup || [],
+          paymentLinksPrivate: paymentLinksPrivate || [],
+        },
+        null,
+        2
+      );
 
-    // 🔹 Vercel Blob’a yaz
-    const { url: savedUrl } = await put(
-      "courses/courses-data.json",
-      jsonString,
-      {
-        token: blobToken,
-        contentType: "application/json",
-        access: "public",
-        addRandomSuffix: false,
-      }
-    );
+      // 🔹 Vercel Blob’a yaz (Courses)
+      await put(
+        "courses/courses-data.json",
+        jsonString,
+        {
+          token: blobToken,
+          contentType: "application/json",
+          access: "public",
+          addRandomSuffix: false,
+        }
+      );
+    }
+
+    // 🔹 Fiyatları (Prices) ayrı bir dosyaya kaydet
+    if (prices) {
+      await put(
+        "checkout/prices.json",
+        JSON.stringify(prices, null, 2),
+        {
+          token: blobToken,
+          contentType: "application/json",
+          access: "public",
+          addRandomSuffix: false,
+        }
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      url: savedUrl,
-      message: "✅ Los cursos se guardaron correctamente.",
+      message: "✅ Cambios guardados correctamente.",
     });
   } catch (error) {
     console.error("❌ Save error:", error);

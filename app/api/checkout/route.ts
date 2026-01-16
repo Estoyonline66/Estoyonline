@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { courseMap } from "./text";
+import { getCourseMap } from "./text";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2023-10-16",
@@ -11,7 +11,11 @@ export async function POST(req: NextRequest) {
     const { studentNames, courseKey, locale } = await req.json();
 
     console.log("📩 Received courseKey:", courseKey);
-    const course = courseMap[courseKey];
+    
+    // Blob'dan güncel fiyatları çek
+    const currentCourseMap = await getCourseMap();
+    const course = currentCourseMap[courseKey];
+    
     console.log("📦 Resolved course:", course);
     console.log("🌐 Locale:", locale);
 

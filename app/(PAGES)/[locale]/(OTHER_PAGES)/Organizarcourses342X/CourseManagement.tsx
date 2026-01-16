@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ArrowUp, ArrowDown, Trash2 } from "lucide-react";
-import { courseMap } from "@/app/api/checkout/text";
+import { courseMap as initialCourseMap, getCourseMap, CourseInfo } from "@/app/api/checkout/text";
 
 interface Course {
   title: string;
@@ -58,8 +58,9 @@ export default function CourseManagement() {
   const [paymentLinksPrivate, setPaymentLinksPrivate] = useState<PrivateLessonLink[]>([]);
   const [showPaymentLinks, setShowPaymentLinks] = useState(false);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
+  const [prices, setPrices] = useState<Record<string, CourseInfo>>(initialCourseMap);
 
-  // Load links from courseMap (hardcoded)
+  // Load links from prices (was courseMap)
   useEffect(() => {
     const groupLinks: GroupLessonLink[] = [];
     const privateLinks: PrivateLessonLink[] = [];
@@ -75,7 +76,7 @@ export default function CourseManagement() {
       return `${formattedVal} ${currencyLabel}`;
     };
 
-    Object.entries(courseMap).forEach(([key, info]) => {
+    Object.entries(prices).forEach(([key, info]) => {
       const price = formatCurrency(info.amount, info.currency);
       const link = `https://estoyonline.es/tr/payment?course=${key}`;
 
@@ -113,7 +114,7 @@ export default function CourseManagement() {
 
     setPaymentLinksGroup(groupLinks);
     setPaymentLinksPrivate(privateLinks);
-  }, []);
+  }, [prices]);
 
   const [saving, setSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -141,14 +142,18 @@ export default function CourseManagement() {
 
     const fetchCourses = async () => {
       try {
-        const res = await fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" });
+        const [res, pricesData] = await Promise.all([
+           fetch(`${blobUrl}?_ts=${Date.now()}`, { cache: "no-cache" }),
+           getCourseMap()
+        ]);
+
         if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
         const data = await res.json();
         setCoursesEn(data.cardCoursesEn || []);
-        // Payment links are loaded from courseMap, not blob anymore for display
-        // setPaymentLinksGroup(data.paymentLinksGroup || []);
-        // setPaymentLinksPrivate(data.paymentLinksPrivate || []);
         
+        // Fiyatları güncelle
+        setPrices(pricesData);
+
         // Türkçe kursları yüklerken week değerlerini time'a göre düzelt
         const fixedCoursesTr = (data.cardCoursesTr || []).map((course: Course) => {
           let fixedWeek = course.week;
@@ -216,6 +221,7 @@ export default function CourseManagement() {
         body: JSON.stringify({
           cardCoursesEn: enData,
           cardCoursesTr: trData,
+          prices: prices, // Fiyatları da gönder
         }),
       });
       if (!res.ok) throw new Error("Save failed");
