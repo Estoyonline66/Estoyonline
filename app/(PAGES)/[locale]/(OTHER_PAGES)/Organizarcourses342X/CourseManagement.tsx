@@ -335,6 +335,10 @@ export default function CourseManagement() {
       if (!res.ok) throw new Error("Save failed");
       
       setPriceSaveMessage("✅ Precios guardados correctamente");
+      
+      // Kayıttan sonra verileri tekrar çekerek ekranı güncelle
+      await fetchPrices();
+      
       setTimeout(() => setPriceSaveMessage(""), 3000);
     } catch (err) {
       console.error(err);
@@ -378,7 +382,7 @@ export default function CourseManagement() {
         <div className="flex gap-2 items-center">
             <Button 
                 onClick={addPrice}
-                className="bg-green-600 hover:bg-green-700 text-white"
+                className="bg-black hover:bg-gray-800 text-white"
                 size="sm"
             >
                 <Plus size={16} /> Nuevo Precio
@@ -388,7 +392,7 @@ export default function CourseManagement() {
                     onClick={savePricesOnly}
                     disabled={saving}
                     size="sm"
-                    className="bg-blue-600 hover:bg-blue-700"
+                    className="bg-black hover:bg-gray-800 text-white"
                 >
                     <Save size={16} /> Guardar Precios
                 </Button>
@@ -404,27 +408,28 @@ export default function CourseManagement() {
       
       {!loadingPrices && !priceError && (
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
-          <thead>
-            <tr className="bg-gray-50 text-gray-700 border-b">
-              <th className="p-3 text-left font-semibold">ID (Key)</th>
-              <th className="p-3 text-left font-semibold">Nombre del Curso</th>
-              <th className="p-3 text-left font-semibold">Monto (TL/EUR)</th>
-              <th className="p-3 text-left font-semibold">Moneda</th>
-              <th className="p-3 text-left font-semibold">Enlace Generado</th>
-              <th className="p-3 text-center font-semibold">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(prices).map(([key, info]) => (
-              <tr key={key} className="border-b hover:bg-gray-50 transition-colors">
-                <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
-                <td className="p-2">
-                    <select
-                        value={info.name}
-                        onChange={(e) => updatePrice(key, "name", e.target.value)}
-                        className={selectClass}
-                    >
+          <table className="w-full border-collapse bg-white text-sm shadow-sm rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-gray-50 text-gray-700 border-b">
+                <th className="p-3 text-left font-semibold">ID (Key)</th>
+                <th className="p-3 text-left font-semibold">Nombre del Curso</th>
+                <th className="p-3 text-left font-semibold">Monto (TL/EUR)</th>
+                <th className="p-3 text-left font-semibold">Moneda</th>
+                <th className="p-3 text-left font-semibold">Enlace Generado</th>
+                <th className="p-3 text-center font-semibold">Acciones</th>
+              </tr>
+            </thead>
+            <tbody className={saving ? "opacity-50 pointer-events-none" : ""}>
+              {Object.entries(prices).map(([key, info]) => (
+                <tr key={key} className="border-b hover:bg-gray-50 transition-colors">
+                  <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
+                  <td className="p-2">
+                      <select
+                          value={info.name}
+                          onChange={(e) => updatePrice(key, "name", e.target.value)}
+                          className={selectClass}
+                          disabled={saving}
+                      >
                         {COURSE_NAMES.map(name => (
                             <option key={name} value={name}>{name}</option>
                         ))}
@@ -433,30 +438,32 @@ export default function CourseManagement() {
                         )}
                     </select>
                 </td>
-                <td className="p-2">
-                    <div className="flex items-center gap-2">
-                        <Input 
-                            type="number"
-                            value={info.amount}
-                            onChange={(e) => updatePrice(key, "amount", Number(e.target.value))}
-                            className="w-24 h-9"
-                        />
-                        <div className="text-xs text-muted-foreground whitespace-nowrap">
-                            {(info.amount).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
-                        </div>
-                    </div>
-                </td>
-                <td className="p-2">
-                    <select
-                        value={info.currency}
-                        onChange={(e) => updatePrice(key, "currency", e.target.value)}
-                        className={`${selectClass} w-24`}
-                    >
-                        <option value="eur">EUR</option>
-                        <option value="try">TRY</option>
-                        <option value="usd">USD</option>
-                    </select>
-                </td>
+                  <td className="p-2">
+                      <div className="flex items-center gap-2">
+                          <Input 
+                              type="number"
+                              value={info.amount}
+                              onChange={(e) => updatePrice(key, "amount", Number(e.target.value))}
+                              className="w-24 h-9"
+                              disabled={saving}
+                          />
+                          <div className="text-xs text-muted-foreground whitespace-nowrap">
+                              {(info.amount).toLocaleString("tr-TR", { minimumFractionDigits: 2 })} {info.currency.toUpperCase()}
+                          </div>
+                      </div>
+                  </td>
+                  <td className="p-2">
+                      <select
+                          value={info.currency}
+                          onChange={(e) => updatePrice(key, "currency", e.target.value)}
+                          className={`${selectClass} w-24`}
+                          disabled={saving}
+                      >
+                          <option value="eur">EUR</option>
+                          <option value="try">TRY</option>
+                          <option value="usd">USD</option>
+                      </select>
+                  </td>
                 <td className="p-2">
                   <a 
                     href={`https://estoyonline.es/tr/payment?course=${key}`} 
@@ -724,14 +731,14 @@ export default function CourseManagement() {
           <Button
             onClick={() => setActiveTab("en")}
             variant={activeTab === "en" ? "default" : "outline"}
-            className={activeTab === "en" ? "bg-blue-600 hover:bg-blue-700" : ""}
+            className={activeTab === "en" ? "bg-black text-white hover:bg-gray-800" : "bg-white text-black border-black hover:bg-gray-100"}
           >
             🇬🇧 Para Extranjeros
           </Button>
           <Button
             onClick={() => setActiveTab("tr")}
             variant={activeTab === "tr" ? "default" : "outline"}
-            className={activeTab === "tr" ? "bg-blue-600 hover:bg-blue-700" : ""}
+            className={activeTab === "tr" ? "bg-black text-white hover:bg-gray-800" : "bg-white text-black border-black hover:bg-gray-100"}
           >
             🇹🇷 Para Turcos
           </Button>
@@ -740,7 +747,7 @@ export default function CourseManagement() {
           onClick={handleLogout}
           variant="destructive"
           size="sm"
-          className="ml-auto"
+          className="ml-auto bg-black text-white hover:bg-gray-800"
         >
           <LogOut size={16} /> Cerrar Sesión
         </Button>
@@ -748,7 +755,7 @@ export default function CourseManagement() {
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div className="flex gap-2 items-center">
-          <Button onClick={addCourse} className="bg-green-600 hover:bg-green-700 text-white">
+          <Button onClick={addCourse} className="bg-black text-white hover:bg-gray-800">
             <Plus size={16} /> Nuevo curso
           </Button>
           
@@ -756,7 +763,7 @@ export default function CourseManagement() {
             <Button
               onClick={saveCourses}
               disabled={saving}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-black text-white hover:bg-gray-800"
             >
               <Save size={16} /> Guardar cambios
             </Button>
@@ -771,7 +778,7 @@ export default function CourseManagement() {
            <Button 
             onClick={() => setShowPaymentLinks(!showPaymentLinks)} 
             variant="outline"
-            className={showPaymentLinks ? "bg-purple-100 text-purple-700 border-purple-200" : "text-gray-600"}
+            className={showPaymentLinks ? "bg-black text-white hover:bg-gray-800" : "bg-white text-black border-black hover:bg-gray-100"}
           >
             {showPaymentLinks ? "Ocultar Enlaces de Pago" : "Enlaces de Pago"}
           </Button>
