@@ -427,7 +427,7 @@ export default function CourseManagement() {
               {Object.entries(prices).map(([key, info]) => {
                 const isTemp = key.startsWith("precio_temp");
                 return (
-                <tr key={key} className={`border-b transition-colors ${isTemp ? "bg-gray-100/80 hover:bg-gray-200/80" : "hover:bg-gray-50"}`}>
+                <tr key={key} className={`border-b transition-colors ${isTemp ? "bg-red-50 hover:bg-red-100/80" : "hover:bg-gray-50"}`}>
                   <td className="p-2 text-gray-500 text-xs font-mono">{key}</td>
                   <td className="p-2">
                       <select
