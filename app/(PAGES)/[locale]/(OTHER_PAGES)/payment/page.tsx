@@ -21,6 +21,13 @@ export default function PaymentPage() {
   // Eğer Examen_Rt6B ise her şey İspanyolca olacak
   const isExamen = courseParam === "Examen_Rt6B";
 
+  const isPrivateLesson = courseParam && (
+    courseParam.toLowerCase().includes("özel_ders") || 
+    courseParam.toLowerCase().includes("ozel_ders")
+  );
+
+  const [lessonType, setLessonType] = useState<"spanish" | "english" | null>(null);
+
   const t = (tr: string, en: string) => {
     if (isExamen) return ""; // t() fonksiyonu devre dışı
     return isTurkish ? tr : en;
@@ -106,6 +113,11 @@ export default function PaymentPage() {
       }
     }
 
+    if (isPrivateLesson && !lessonType) {
+      setError(t("Lütfen dersi seçin", "Please select the lesson"));
+      return;
+    }
+
     setError("");
     try {
       const res = await fetch("/api/checkout", {
@@ -115,6 +127,7 @@ export default function PaymentPage() {
           studentNames,
           courseKey: courseParam,
           locale: isExamen ? "es" : isTurkish ? "tr" : "en",
+          lessonType,
         }),
       });
       const data = await res.json();
@@ -192,6 +205,35 @@ export default function PaymentPage() {
               }
             />
           ))}
+
+          {isPrivateLesson && (
+            <div className="mb-4 mt-2">
+              <div className="flex gap-4">
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="lessonType"
+                    value="spanish"
+                    checked={lessonType === "spanish"}
+                    onChange={() => setLessonType("spanish")}
+                    className="form-radio h-4 w-4 text-blue-600"
+                  />
+                  <span>{t("İspanyolca Ders", "Spanish Lesson")}</span>
+                </label>
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="lessonType"
+                    value="english"
+                    checked={lessonType === "english"}
+                    onChange={() => setLessonType("english")}
+                    className="form-radio h-4 w-4 text-blue-600"
+                  />
+                  <span>{t("İngilizce Ders", "English Lesson")}</span>
+                </label>
+              </div>
+            </div>
+          )}
 
           {error && <p className="text-red-500 mb-2">{error}</p>}
 

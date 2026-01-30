@@ -8,9 +8,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(req: NextRequest) {
   try {
-    const { studentNames, courseKey, locale } = await req.json();
+    const { studentNames, courseKey, locale, lessonType } = await req.json();
 
-    console.log("📩 Received courseKey:", courseKey);
+    console.log("📩 Received courseKey:", courseKey, "LessonType:", lessonType);
     
     // Blob'dan güncel fiyatları çek
     const currentCourseMap = await getCourseMap();
@@ -43,7 +43,11 @@ export async function POST(req: NextRequest) {
       ],
       success_url: `${origin}${pathPrefix}/payment?course=${encodeURIComponent(courseKey)}&status=success`,
       cancel_url: `${origin}${pathPrefix}/payment?course=${encodeURIComponent(courseKey)}&status=cancel`,
-      metadata: { studentNames: JSON.stringify(studentNames), courseKey, locale },
+      metadata: { 
+        studentNames: JSON.stringify(studentNames), 
+        courseKey: lessonType ? `${courseKey}_${lessonType}` : courseKey, 
+        locale 
+      },
     });
 
     console.log("✅ Stripe session created:", session.id);
