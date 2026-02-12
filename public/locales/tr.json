@@ -496,7 +496,11 @@
         { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" }
       ],
       "onlineSpanishTwoTable": [
-          { "course": "Özel ders", "duration": "1 saat", "price": "22 EUR" }
+          { "course": "Özel ders - 1 öğrenci", "duration": "1 saat", "price": "22 EUR (kişi başı)" },
+          { "course": "Özel ders - 2 öğrenci", "duration": "1 saat", "price": "15 EUR (kişi başı)" },
+          { "course": "Özel ders - 3 öğrenci", "duration": "1 saat", "price": "12 EUR (kişi başı)" },
+          { "course": "Özel ders - 4 öğrenci", "duration": "1 saat", "price": "10 EUR (kişi başı)" },
+          { "course": "Özel ders - 5 öğrenci", "duration": "1 saat", "price": "9 EUR (kişi başı)" }
          ],
       "extraSpanishTable": [
        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "190 EUR (toplam)" },
