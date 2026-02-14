@@ -235,10 +235,10 @@
       {
         "title": "ÇOCUKLAR İÇİN GRUP DERSLERİ",
         "content": [
-          { "contentTitle": "Genel Bilgi", "contentDescription": "Çocuklar için İspanyolca öğrenimi genellikle şarkılar, oyunlar, videolar ve eğlenceli aktivitelerle yapılır; temel kelimeler (Hola, Adiós, Gracias), sayılar ve basit cümleler öğretilir; hedef öğrenmeyi keyifli ve etkileşimli hale getirmektir." },
-          { "contentTitle": "Öğretmenler", "contentDescription": "Çocuklar için dersler, bu yaş grubunun ilgi alanlarına uyarlanmış bir metodolojiyle çocuklara İspanyolca öğretme konusunda eğitimli ve uzman olan öğretmenler tarafından verilecektir. Eğitim programımız, çocukların dikkat sürelerini ve öğrenme alışkanlıklarını göz önünde bulunduran özel bir pedagojik yaklaşımla hazırlanmıştır. Derslerde kullanılan interaktif teknikler sayesinde öğrencinin ilgisi sürekli canlı tutulur ve öğrenme süreci eğlenceli bir deneyime dönüşür." },
-          { "contentTitle": "Dersler", "contentDescription": "Dersler haftada bir kez, cumartesi günleri yapılır; ders süresi bir buçuk saattir ve ortasında 10 dakikalık bir mola vardır. Kurs 4 ay sürer ve öğrenciler A1.1 seviyesini tamamlar." },
-          { "contentTitle": "Sertifika", "contentDescription": "Kursun sonunda sözlü sınav yapılır ve öğrencinin seviyesini belirten bir sertifika verilir." }
+          { "contentTitle": "Genel Bilgi", "contentDescription": "Çocuklar için İspanyolca grup dersleri şarkılar, oyunlar, videolar ve eğlenceli aktivitelerle yapılır; temel kelimeler (Hola, Adiós, Gracias), sayılar ve basit cümleler öğretilir; hedef öğrenmeyi keyifli ve etkileşimli hale getirmektir. Her çocuğun katılımnı sağlamak için grup en fazla 6 öğrenciden oluşur." },
+          { "contentTitle": "Öğretmenler", "contentDescription": "Çocukların ilgi alanlarına uyarlanmış bir metodolojiyle çocuklara İspanyolca öğretme konusunda eğitimli ve uzman olan öğretmenler tarafından verilecektir. Eğitim programımız, çocukların dikkat sürelerini ve öğrenme alışkanlıklarını göz önünde bulunduran özel bir pedagojik yaklaşımla hazırlanmıştır. Derslerde kullanılan interaktif teknikler sayesinde öğrencinin ilgisi sürekli canlı tutulur ve öğrenme süreci eğlenceli bir deneyime dönüşür." },
+          { "contentTitle": "Dersler", "contentDescription": "Dersler haftada bir kez 1,5 saat yapılır, ders ortasında 10 dakikalık bir mola vardır. 4 ay sürer ve öğrenciler A1.1 seviyesini tamamlar. Tüm dersler kayıt altına alınır, öğrenciler sonrasında kayıtları indirip izleyebilirler. Dersin materyalleri ve tüm önemli bilgiler Google Classroom’da kayıtlıdır ve istendiği zaman ulaşılabilir." },
+          { "contentTitle": "Sertifika", "contentDescription": "Son derste, öğrencilerin bir üst seviyeye hazır olup olmadıklarını belirlemek amacıyla öğretmenle sözlü bir sınav yapılır. Kurs sonunda, ulaşılan İspanyolca seviyesini belgeleyen bir sertifika verilir." }
         ]
       },
       {
@@ -476,7 +476,7 @@
         { "key": "price", "header": "Ücret" }
       ],
       "onlineSpanishTwoColumns": [
-        { "key": "course", "header": "Bire Bir Özel Ders" },
+        { "key": "course", "header": "Bire Bir Özel Ders (İspanyolca veya İngilizce)" },
         { "key": "duration", "header": "Süre" },
         { "key": "price", "header": "Ücret" }
       ],
@@ -492,7 +492,8 @@
         { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "6.600 TL (toplam)" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "6.120 TL (toplam)" },
         { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "3.180 TL (toplam)" },
-    { "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" },
+        { "course": "Çocuklar A1.1 başlangıç seviyesi", "duration": "24 saat - 4 ay", "price": "6.975 TL (toplam)" },
+        { "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" },
         { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" }
       ],
       "onlineSpanishTwoTable": [
@@ -506,7 +507,8 @@
        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "190 EUR (toplam)" },
         { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "160 EUR (toplam)" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "145 EUR (toplam)" },
-        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR (toplam)" }
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR (toplam)" },
+        { "course": "Çocuklar A1.1 başlangıç seviyesi", "duration": "24 saat - 4 ay", "price": "155 EUR (toplam)" }      
       
       ]
     },

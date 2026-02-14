@@ -537,19 +537,29 @@ export default function CourseManagement() {
               <tr key={i} className="hover:bg-gray-50/50 transition-colors border-b last:border-b-0">
                 <td className="px-2 py-2 text-center">
                   <div className="flex flex-col gap-1">
-                    <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className="h-6 w-6" 
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-9 w-9 md:h-6 md:w-6 touch-manipulation"
+                        aria-label="Move row up"
                         onClick={() => moveRow(i, "up")}
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          moveRow(i, "up");
+                        }}
                     >
                       <ArrowUp size={14} />
                     </Button>
-                    <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className="h-6 w-6" 
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-9 w-9 md:h-6 md:w-6 touch-manipulation"
+                        aria-label="Move row down"
                         onClick={() => moveRow(i, "down")}
+                        onTouchEnd={(e) => {
+                          e.preventDefault();
+                          moveRow(i, "down");
+                        }}
                     >
                       <ArrowDown size={14} />
                     </Button>
