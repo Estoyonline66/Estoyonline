@@ -5,6 +5,16 @@ export interface CourseInfo {
 }
 
 export const courseMap: Record<string, CourseInfo> = {
+  "Çocuk_başlangıç_kursu_Türkiye_Ck1T": {
+    name: "Çocuk Başlangıç (Türkiye)",
+    amount: 7850,
+    currency: "try",
+  },
+  "Çocuk_başlangıç_kursu_Yurtdışı_Ck1Y": {
+    name: "Çocuk Başlangıç (Yurtdışı)",
+    amount: 185,
+    currency: "eur",
+  },
   // Grupales
   /*
   "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 798000, currency: "try" },

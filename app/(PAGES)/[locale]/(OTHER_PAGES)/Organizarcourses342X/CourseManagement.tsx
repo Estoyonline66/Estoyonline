@@ -45,6 +45,8 @@ const PRICES_BLOB_URL = "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com
 const COURSE_NAMES = [
   "A1.1 Başlangıç (Türkiye)",
   "A1.1 Başlangıç (Yurtdışı)",
+  "Çocuk Başlangıç (Türkiye)",
+  "Çocuk Başlangıç (Yurtdışı)",
   "A1.1 Sabah (Türkiye)",
   "Üst Seviyeler (Türkiye)",
   "Üst Seviyeler İndirimli (Türkiye)",
@@ -67,6 +69,19 @@ const COURSE_NAMES = [
 ];
 
 const selectClass = "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50";
+
+const DEFAULT_PRICES: Record<string, CourseInfo> = {
+  "Çocuk_başlangıç_kursu_Türkiye_Ck1T": {
+    name: "Çocuk Başlangıç (Türkiye)",
+    amount: 7850,
+    currency: "try",
+  },
+  "Çocuk_başlangıç_kursu_Yurtdışı_Ck1Y": {
+    name: "Çocuk Başlangıç (Yurtdışı)",
+    amount: 185,
+    currency: "eur",
+  },
+};
 
 export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
@@ -117,7 +132,10 @@ export default function CourseManagement() {
           console.log("✅ Fiyatlar başarıyla yüklendi:", pricesData);
           
           if (pricesData && typeof pricesData === 'object') {
-               setPrices(pricesData);
+               setPrices({
+                 ...DEFAULT_PRICES,
+                 ...pricesData,
+               });
           } else {
                throw new Error("Gelen veri geçerli bir fiyat listesi değil.");
           }
@@ -131,7 +149,10 @@ export default function CourseManagement() {
           }
           
           setPriceError(`Hata: ${errorMessage} - Varsayılan liste yüklendi.`);
-          setPrices(defaultPrices);
+          setPrices({
+            ...DEFAULT_PRICES,
+            ...defaultPrices,
+          });
       } finally {
           setLoadingPrices(false);
       }
