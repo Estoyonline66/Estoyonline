@@ -48,6 +48,7 @@ const COURSE_NAMES = [
   "Çocuk Başlangıç (Türkiye)",
   "Çocuk Başlangıç (Yurtdışı)",
   "A1.1 Sabah (Türkiye)",
+  "A1.1 Sabah (Yurtdışı)",
   "Üst Seviyeler (Türkiye)",
   "Üst Seviyeler İndirimli (Türkiye)",
   "Üst Seviyeler (Yurtdışı)",
