@@ -15,6 +15,11 @@ export const courseMap: Record<string, CourseInfo> = {
     amount: 185,
     currency: "eur",
   },
+  "A1.1_sabah_Yurtdışı_N4k8": {
+    name: "A1.1 Sabah (Yurtdışı)",
+    amount: 160,
+    currency: "eur",
+  },
   // Grupales
   /*
   "A1.1_başlangıç_kursu_Türkiye_ab1X": { name: "A1.1 Başlangıç (Türkiye)", amount: 798000, currency: "try" },
@@ -53,7 +58,10 @@ export async function getCourseMap(): Promise<Record<string, CourseInfo>> {
     });
     if (res.ok) {
       const data = await res.json();
-      return data;
+      return {
+        ...courseMap,
+        ...data,
+      };
     }
   } catch (error) {
     console.warn("⚠️ Failed to fetch prices from Blob, using fallback:", error);

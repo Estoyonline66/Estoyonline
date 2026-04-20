@@ -82,6 +82,11 @@ const DEFAULT_PRICES: Record<string, CourseInfo> = {
     amount: 185,
     currency: "eur",
   },
+  "A1.1_sabah_Yurtdışı_N4k8": {
+    name: "A1.1 Sabah (Yurtdışı)",
+    amount: 160,
+    currency: "eur",
+  },
 };
 
 export default function CourseManagement() {
