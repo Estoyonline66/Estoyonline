@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const STORAGE_ACTIVE = "eo_google_g1";
 const STORAGE_SID = "eo_google_g1_sid";
+const DEBUG_PREFIX = "[google-g1-client]";
 
 function clientScreenPayload() {
   if (typeof window === "undefined") return undefined;
@@ -25,7 +26,8 @@ function clientScreenPayload() {
 async function sendLog(kind: "entry" | "nav", sessionId: string, path: string) {
   try {
     const extras = typeof window !== "undefined" ? clientScreenPayload() : undefined;
-    await fetch("/api/google-g1", {
+    console.info(`${DEBUG_PREFIX} send start`, { kind, sessionId, path, extras });
+    const res = await fetch("/api/google-g1", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -36,8 +38,15 @@ async function sendLog(kind: "entry" | "nav", sessionId: string, path: string) {
       }),
       keepalive: true,
     });
-  } catch {
-    // intentional no-op — tracking must not affect UX
+    const text = await res.text().catch(() => "");
+    console.info(`${DEBUG_PREFIX} send result`, {
+      kind,
+      status: res.status,
+      ok: res.ok,
+      body: text.slice(0, 500),
+    });
+  } catch (err) {
+    console.error(`${DEBUG_PREFIX} send error`, { kind, sessionId, path, err });
   }
 }
 
@@ -54,6 +63,14 @@ export default function GoogleTrafficTracker() {
     if (typeof window === "undefined") return;
 
     const params = new URLSearchParams(window.location.search);
+    console.info(`${DEBUG_PREFIX} effect entry-check`, {
+      pathname,
+      search: window.location.search,
+      g: params.get("g"),
+      active: sessionStorage.getItem(STORAGE_ACTIVE),
+      sid: sessionStorage.getItem(STORAGE_SID),
+    });
+
     if (params.get("g") === "1") {
       sessionStorage.setItem(STORAGE_ACTIVE, "1");
       let sid = sessionStorage.getItem(STORAGE_SID);
@@ -65,12 +82,18 @@ export default function GoogleTrafficTracker() {
       if (!sessionStorage.getItem(dedupeKey)) {
         sessionStorage.setItem(dedupeKey, "1");
         const path = `${pathname}${window.location.search || ""}`;
+        console.info(`${DEBUG_PREFIX} entry sending`, { sid, dedupeKey, path });
         void sendLog("entry", sid, path);
+      } else {
+        console.info(`${DEBUG_PREFIX} entry skipped dedupe`, { sid, dedupeKey });
       }
       return;
     }
 
-    if (sessionStorage.getItem(STORAGE_ACTIVE) !== "1") return;
+    if (sessionStorage.getItem(STORAGE_ACTIVE) !== "1") {
+      console.info(`${DEBUG_PREFIX} not active, skip`);
+      return;
+    }
   }, [pathname]);
 
   useEffect(() => {
@@ -82,10 +105,12 @@ export default function GoogleTrafficTracker() {
 
     if (!firstPathSkipped.current) {
       firstPathSkipped.current = true;
+      console.info(`${DEBUG_PREFIX} nav first render skip`, { sid, pathname });
       return;
     }
 
     const path = `${pathname}${window.location.search || ""}`;
+    console.info(`${DEBUG_PREFIX} nav sending`, { sid, path });
     void sendLog("nav", sid, path);
   }, [pathname]);
 

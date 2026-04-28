@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
+import os from "os";
 import path from "path";
+import { Client } from "basic-ftp";
 
-const LOG_DIR = path.join(process.cwd(), "data");
-const LOG_FILE = path.join(LOG_DIR, "google-from-g1.ndjson");
+const FTP_LOG_FILE = "google-from-g1.ndjson";
+const LOG_PREFIX = "[google-g1]";
 
 type LogLineEntry = {
   ts: string;
@@ -11,9 +12,7 @@ type LogLineEntry = {
   ip: string;
   kind: "entry";
   path: string;
-  /** City/region/country özeti */
   location?: string;
-  /** UA + İstemci görüntüsü özeti */
   deviceSummary?: string;
 };
 
@@ -27,7 +26,107 @@ type LogLineNav = {
 
 type LogLine = LogLineEntry | LogLineNav;
 
-/** geojs HTTPS — kota/limit uygunluğu için sadece entry ve GET eksikleri için kullanılıyor */
+type ClientExtrasBody = {
+  sw?: unknown;
+  sh?: unknown;
+  vw?: unknown;
+  vh?: unknown;
+  dpr?: unknown;
+  lang?: unknown;
+};
+
+type GoogleG1SessionSummary = {
+  sessionId: string;
+  ip: string;
+  location: string;
+  deviceSummary: string;
+  arrival: string;
+  landingPath: string;
+  navigations: { path: string; time: string; deviceSummary: string }[];
+};
+
+function hasFtpConfig(): boolean {
+  return Boolean(
+    process.env.FTP_HOST &&
+      process.env.FTP_USER &&
+      process.env.FTP_PASSWORD
+  );
+}
+
+function getFtpPort(): number {
+  return process.env.FTP_PORT ? Number(process.env.FTP_PORT) : 21;
+}
+
+async function withFtpClient<T>(cb: (client: Client) => Promise<T>): Promise<T> {
+  const client = new Client();
+  try {
+    await client.access({
+      host: process.env.FTP_HOST,
+      user: process.env.FTP_USER,
+      password: process.env.FTP_PASSWORD,
+      secure: true,
+      secureOptions: { rejectUnauthorized: false },
+      port: getFtpPort(),
+    });
+    return await cb(client);
+  } finally {
+    client.close();
+  }
+}
+
+function isFtpMissingFile(err: unknown): boolean {
+  const msg = err instanceof Error ? err.message : String(err);
+  return msg.includes("550") || msg.toLowerCase().includes("file not found");
+}
+
+async function readLogRaw(): Promise<string> {
+  return withFtpClient(async (client) => {
+    const tmpPath = path.join(
+      os.tmpdir(),
+      `google-g1-${Date.now()}-${Math.random().toString(36).slice(2)}.ndjson`
+    );
+    try {
+      await client.downloadTo(tmpPath, FTP_LOG_FILE);
+      const { promises: fs } = await import("fs");
+      const text = await fs.readFile(tmpPath, "utf8");
+      console.info(`${LOG_PREFIX} readLogRaw storage=ftp bytes=${text.length}`);
+      return text;
+    } catch (err) {
+      if (isFtpMissingFile(err)) {
+        console.info(`${LOG_PREFIX} readLogRaw storage=ftp file-missing`);
+        return "";
+      }
+      throw err;
+    } finally {
+      const { promises: fs } = await import("fs");
+      await fs.unlink(tmpPath).catch(() => undefined);
+    }
+  });
+}
+
+async function writeLogRaw(content: string): Promise<void> {
+  await withFtpClient(async (client) => {
+    const tmpPath = path.join(
+      os.tmpdir(),
+      `google-g1-${Date.now()}-${Math.random().toString(36).slice(2)}.ndjson`
+    );
+    const { promises: fs } = await import("fs");
+    await fs.writeFile(tmpPath, content, "utf8");
+    try {
+      await client.uploadFrom(tmpPath, FTP_LOG_FILE);
+      console.info(`${LOG_PREFIX} writeLogRaw storage=ftp bytes=${content.length}`);
+    } finally {
+      await fs.unlink(tmpPath).catch(() => undefined);
+    }
+  });
+}
+
+async function appendLogLine(line: string): Promise<void> {
+  const existing = await readLogRaw();
+  const content = existing + line + "\n";
+  await writeLogRaw(content);
+}
+
 async function lookupIpLocation(ip: string): Promise<string> {
   if (!ip || ip === "unknown") return "";
   const trimmed = ip.trim();
@@ -44,32 +143,28 @@ async function lookupIpLocation(ip: string): Promise<string> {
   try {
     const res = await fetch(
       `https://get.geojs.io/v1/ip/geo/${encodeURIComponent(trimmed)}.json`,
-      {
-        headers: { Accept: "application/json" },
-        signal: AbortSignal.timeout(8000),
-      }
+      { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) }
     );
     if (!res.ok) return "";
     const j = (await res.json()) as Record<string, unknown>;
 
     const city = typeof j.city === "string" ? j.city.trim() : "";
-    const regionRaw =
+    const region =
       typeof j.region === "string"
         ? j.region.trim()
         : typeof j.region_name === "string"
           ? j.region_name.trim()
           : "";
-    const region = regionRaw;
     const country = typeof j.country === "string" ? j.country.trim() : "";
     const cc =
       typeof j.country_code === "string"
-        ? (j.country_code as string).trim().toUpperCase()
+        ? j.country_code.trim().toUpperCase()
         : "";
     const org =
       typeof j.organization_name === "string"
-        ? (j.organization_name as string).trim()
+        ? j.organization_name.trim()
         : "";
-    const tz = typeof j.timezone === "string" ? (j.timezone as string).trim() : "";
+    const tz = typeof j.timezone === "string" ? j.timezone.trim() : "";
 
     const locality = [city, region].filter(Boolean).join(", ");
     if (locality && country) return `${locality}, ${country}`;
@@ -80,7 +175,8 @@ async function lookupIpLocation(ip: string): Promise<string> {
     if (org) return org;
     if (tz) return tz;
     return "";
-  } catch {
+  } catch (err) {
+    console.warn(`${LOG_PREFIX} lookupIpLocation failed`, err);
     return "";
   }
 }
@@ -95,15 +191,6 @@ function getClientIp(req: NextRequest): string {
   if (real) return real.trim();
   return "unknown";
 }
-
-type ClientExtrasBody = {
-  sw?: unknown;
-  sh?: unknown;
-  vw?: unknown;
-  vh?: unknown;
-  dpr?: unknown;
-  lang?: unknown;
-};
 
 function clampDim(v: unknown, max = 8192): number | undefined {
   const n = Number(v);
@@ -135,27 +222,25 @@ function sniffBrandFromSecChUa(secChUa: string | null): string {
 }
 
 function sniffBrowserFromUa(ua: string): string {
-  if (!ua) return "Tarayıcı";
+  if (!ua) return "Browser";
   if (/Edg\//i.test(ua)) return "Microsoft Edge";
-  if (/\bwv\b.*Chrome/i.test(ua) || /\bVersion\/[^\s]+\sChrome\//i.test(ua))
-    return "Chrome (webview)";
+  if (/\bwv\b.*Chrome/i.test(ua) || /\bVersion\/[^\s]+\sChrome\//i.test(ua)) return "Chrome (webview)";
   if (/OPR\/|Opera\b/i.test(ua)) return "Opera";
   if (/Firefox\/\d+/i.test(ua)) return "Firefox";
   if (/CriOS/i.test(ua)) return "Chrome (iOS)";
   if (/\bChrome\/\d+/i.test(ua) && /Safari\/\d+/i.test(ua)) return "Chrome";
-  if (/Version\/[^\s]+\sSafari/i.test(ua) && !/Chrom(e|ium)/i.test(ua))
-    return "Safari";
+  if (/Version\/[^\s]+\sSafari/i.test(ua) && !/Chrom(e|ium)/i.test(ua)) return "Safari";
   if (/SamsungBrowser/i.test(ua)) return "Samsung Internet";
   if (/Brave/i.test(ua)) return "Brave";
-  return ua.length > 80 ? ua.slice(0, 77) + "…" : ua;
+  return ua.length > 80 ? ua.slice(0, 77) + "..." : ua;
 }
 
 function sniffOsFromUa(ua: string): string {
   if (!ua) return "";
   if (/Windows NT 10/i.test(ua)) return "Windows 10/11";
   if (/Windows NT/i.test(ua)) return "Windows";
-  const Android = ua.match(/\bAndroid\s+([\d.]+)/i);
-  if (Android?.[1]) return `Android ${Android[1]}`;
+  const android = ua.match(/\bAndroid\s+([\d.]+)/i);
+  if (android?.[1]) return `Android ${android[1]}`;
   const ios =
     ua.match(/\biPhone\s+OS\s+([\d_]+)/i) ||
     ua.match(/\b(?:CPU\s+)?(?:iPhone\s)?OS\s+([\d_]+)/i) ||
@@ -170,11 +255,11 @@ function sniffOsFromUa(ua: string): string {
 
 function guessFormFactor(secUaMobile: string | null | undefined, ua: string): string {
   const ch = secUaMobile?.trim();
-  if (ch === "?1") return "Mobil";
-  if (ch === "?0") return "Masaüstü";
+  if (ch === "?1") return "Mobile";
+  if (ch === "?0") return "Desktop";
   if (/\biPad\b/i.test(ua)) return "Tablet";
-  if (/Mobi|Android.+Mobile|\biPhone\b/i.test(ua)) return "Mobil";
-  return "Masaüstü";
+  if (/Mobi|Android.+Mobile|\biPhone\b/i.test(ua)) return "Mobile";
+  return "Desktop";
 }
 
 function formatScreenExtras(c?: ClientExtrasBody): string {
@@ -182,74 +267,56 @@ function formatScreenExtras(c?: ClientExtrasBody): string {
   const sh = clampDim(c?.sh);
   const vw = clampDim(c?.vw);
   const vh = clampDim(c?.vh);
-  const rawDpr = clampDim(c?.dpr, 8);
+  const dpr = Number(c?.dpr);
   const parts: string[] = [];
-  if (sw && sh) parts.push(`ekran ${sw}×${sh}`);
-  if (vw && vh && (vw !== sw || vh !== sh)) parts.push(`görünüm ${vw}×${vh}`);
-  if (rawDpr && rawDpr > 0) parts.push(`DPR ×${Math.min(4, Math.round(rawDpr * 100) / 100)}`);
-  return parts.filter(Boolean).join(", ");
+  if (sw && sh) parts.push(`screen ${sw}x${sh}`);
+  if (vw && vh && (vw !== sw || vh !== sh)) parts.push(`viewport ${vw}x${vh}`);
+  if (Number.isFinite(dpr) && dpr > 0) parts.push(`dpr ${Math.min(4, Math.max(1, dpr)).toFixed(2)}`);
+  return parts.join(", ");
 }
 
-/**
- * UA, Sec-CH-* ve opsiyonel ekran + dil (istemci ile).
- * Metin kullanıcı arayüzünde görülen etiket (Türkçe kısa terimler).
- */
-function summarizeClientFromRequest(
-  req: NextRequest,
-  extras?: ClientExtrasBody
-): string {
+function summarizeClientFromRequest(req: NextRequest, extras?: ClientExtrasBody): string {
   const ua = req.headers.get("user-agent") || "";
-  const acc =
+  const lang =
     extras && typeof extras.lang === "string" && extras.lang.trim()
       ? extras.lang.trim().slice(0, 48)
-      : (req.headers.get("accept-language") || "").split(",")[0]?.split(";")[0]?.trim()?.slice(
-          0,
-          48
-        ) ||
-        "";
-  const platform =
-    parseClientHintValue(req.headers.get("sec-ch-ua-platform")) || sniffOsFromUa(ua);
-  const chromeBrand = sniffBrandFromSecChUa(req.headers.get("sec-ch-ua"));
-  const browser = chromeBrand || sniffBrowserFromUa(ua);
+      : (req.headers.get("accept-language") || "")
+          .split(",")[0]
+          ?.split(";")[0]
+          ?.trim()
+          ?.slice(0, 48) || "";
+  const platform = parseClientHintValue(req.headers.get("sec-ch-ua-platform")) || sniffOsFromUa(ua);
+  const browser = sniffBrandFromSecChUa(req.headers.get("sec-ch-ua")) || sniffBrowserFromUa(ua);
   const formFactor = guessFormFactor(req.headers.get("sec-ch-ua-mobile"), ua);
-
-  let head = [
-    browser,
-    platform.trim() ? platform : sniffOsFromUa(ua),
-    formFactor,
-  ].join(" · ");
-
-  const extra: string[] = [];
-  const scr = formatScreenExtras(extras);
-  if (scr) extra.push(scr);
-  if (acc) extra.push(`dil ${acc}`);
-
-  if (extra.length > 0) head += ` · ${extra.join(", ")}`;
-
-  const maxLen = 512;
-  const out = head.trim();
-  return out.length > maxLen ? out.slice(0, maxLen - 1) + "…" : out;
+  const screen = formatScreenExtras(extras);
+  const parts = [browser, platform || "OS?", formFactor];
+  const suffix = [screen, lang ? `lang ${lang}` : ""].filter(Boolean).join(", ");
+  const text = suffix ? `${parts.join(" · ")} · ${suffix}` : parts.join(" · ");
+  return text.length > 512 ? text.slice(0, 511) + "…" : text;
 }
 
 export async function POST(req: NextRequest) {
   try {
+    if (!hasFtpConfig()) {
+      console.error(`${LOG_PREFIX} POST missing FTP config`);
+      return NextResponse.json(
+        { error: "FTP config missing (FTP_HOST/FTP_USER/FTP_PASSWORD)" },
+        { status: 500 }
+      );
+    }
+
     const body = await req.json();
-    const {
-      sessionId: sid,
-      kind,
-      path: pagePath,
-      client: rawClient,
-    } = body as {
+    const { sessionId: sid, kind, path: pagePath, client: rawClient } = body as {
       sessionId?: string;
       kind?: string;
       path?: string;
       client?: ClientExtrasBody;
     };
-
-    let clientExtras: ClientExtrasBody | undefined;
-    if (rawClient != null && typeof rawClient === "object") clientExtras = rawClient;
+    const clientExtras =
+      rawClient != null && typeof rawClient === "object" ? rawClient : undefined;
 
     if (!sid || typeof sid !== "string" || sid.length > 128) {
+      console.warn(`${LOG_PREFIX} POST invalid-session`, { sidType: typeof sid });
       return NextResponse.json({ error: "Invalid sessionId" }, { status: 400 });
     }
 
@@ -257,17 +324,20 @@ export async function POST(req: NextRequest) {
       typeof pagePath === "string" && pagePath.length > 0 && pagePath.length < 2048
         ? pagePath
         : "/";
-
-    await fs.mkdir(LOG_DIR, { recursive: true });
-
     const ts = new Date().toISOString();
     const deviceSummary = summarizeClientFromRequest(req, clientExtras);
-    let line: LogLine;
 
+    console.info(`${LOG_PREFIX} POST start`, {
+      kind,
+      sid,
+      path: safePath,
+      storage: "ftp",
+    });
+
+    let line: LogLine;
     if (kind === "entry") {
       const ip = getClientIp(req);
       const location = (await lookupIpLocation(ip)) || undefined;
-
       line = {
         ts,
         sid,
@@ -286,35 +356,35 @@ export async function POST(req: NextRequest) {
         deviceSummary,
       };
     } else {
+      console.warn(`${LOG_PREFIX} POST invalid-kind`, { kind });
       return NextResponse.json({ error: "Invalid kind" }, { status: 400 });
     }
 
-    await fs.appendFile(LOG_FILE, JSON.stringify(line) + "\n", "utf8");
-    return NextResponse.json({ ok: true });
+    await appendLogLine(JSON.stringify(line));
+    console.info(`${LOG_PREFIX} POST ok`, { kind: line.kind, sid });
+    return NextResponse.json({ ok: true, storage: "ftp" });
   } catch (e) {
-    console.error("google-g1 POST:", e);
+    console.error(`${LOG_PREFIX} POST error`, e);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
 
-type GoogleG1SessionSummary = {
-  sessionId: string;
-  ip: string;
-  /** Konum özeti — eski kayıtlarda eksik olabilir (GET sırasında doldurulur) */
-  location: string;
-  /** Girişteki cihaz/tarayıcı özeti */
-  deviceSummary: string;
-  arrival: string;
-  landingPath: string;
-  navigations: { path: string; time: string; deviceSummary: string }[];
-};
-
 export async function GET() {
   try {
-    let raw = "";
-    try {
-      raw = await fs.readFile(LOG_FILE, "utf8");
-    } catch {
+    if (!hasFtpConfig()) {
+      console.error(`${LOG_PREFIX} GET missing FTP config`);
+      return NextResponse.json(
+        { error: "FTP config missing (FTP_HOST/FTP_USER/FTP_PASSWORD)" },
+        { status: 500 }
+      );
+    }
+
+    console.info(`${LOG_PREFIX} GET start`, {
+      storage: "ftp",
+    });
+    const raw = await readLogRaw();
+    if (!raw.trim()) {
+      console.info(`${LOG_PREFIX} GET empty-log`);
       return NextResponse.json({ sessions: [] as GoogleG1SessionSummary[] });
     }
 
@@ -322,7 +392,6 @@ export async function GET() {
       .split("\n")
       .map((l) => l.trim())
       .filter(Boolean);
-
     const bySid = new Map<string, LogLine[]>();
     for (const line of lines) {
       try {
@@ -337,9 +406,7 @@ export async function GET() {
     }
 
     const sessions: GoogleG1SessionSummary[] = [];
-    /** GET içinde IP başına tek coğrafya çağrısı */
     const locationCache = new Map<string, string>();
-
     for (const [, events] of bySid) {
       events.sort((a, b) => new Date(a.ts).getTime() - new Date(b.ts).getTime());
       const entry = events.find((e): e is LogLineEntry => e.kind === "entry");
@@ -384,10 +451,13 @@ export async function GET() {
     }
 
     sessions.sort((a, b) => new Date(b.arrival).getTime() - new Date(a.arrival).getTime());
-
-    return NextResponse.json({ sessions });
+    console.info(`${LOG_PREFIX} GET ok`, {
+      lines: lines.length,
+      sessions: sessions.length,
+    });
+    return NextResponse.json({ sessions, storage: "ftp" });
   } catch (e) {
-    console.error("google-g1 GET:", e);
+    console.error(`${LOG_PREFIX} GET error`, e);
     return NextResponse.json({ error: "Could not read log" }, { status: 500 });
   }
 }

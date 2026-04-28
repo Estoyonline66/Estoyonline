@@ -421,9 +421,17 @@ export default function CourseManagement() {
     setGoogleTrafficLoading(true);
     setGoogleTrafficError(null);
     try {
+      console.info("[google-g1-admin] fetch start");
       const res = await fetch("/api/google-g1");
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = (await res.json()) as {
+      const rawText = await res.text();
+      console.info("[google-g1-admin] fetch response", {
+        status: res.status,
+        ok: res.ok,
+        bodyPreview: rawText.slice(0, 500),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status} - ${rawText.slice(0, 250)}`);
+
+      let json: {
         sessions?: {
           sessionId: string;
           ip: string;
@@ -434,7 +442,25 @@ export default function CourseManagement() {
           navigations: { path: string; time: string; deviceSummary?: string }[];
         }[];
       };
+
+      try {
+        json = JSON.parse(rawText) as {
+          sessions?: {
+            sessionId: string;
+            ip: string;
+            location?: string;
+            deviceSummary?: string;
+            arrival: string;
+            landingPath: string;
+            navigations: { path: string; time: string; deviceSummary?: string }[];
+          }[];
+        };
+      } catch (parseErr) {
+        console.error("[google-g1-admin] json parse error", parseErr);
+        throw new Error("API JSON parse error");
+      }
       const raw = json.sessions || [];
+      console.info("[google-g1-admin] sessions received", { count: raw.length });
       setGoogleTrafficSessions(
         raw.map((s) => ({
           ...s,
@@ -456,10 +482,12 @@ export default function CourseManagement() {
         }))
       );
     } catch (e) {
+      console.error("[google-g1-admin] fetch error", e);
       setGoogleTrafficError(e instanceof Error ? e.message : "Error");
       setGoogleTrafficSessions([]);
     } finally {
       setGoogleTrafficLoading(false);
+      console.info("[google-g1-admin] fetch end");
     }
   };
 
