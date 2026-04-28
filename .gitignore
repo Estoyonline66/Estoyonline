@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# google ?g=1 referrer log (IPs)
+/data/google-from-g1.ndjson
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -1,4 +1,5 @@
 import { TranslationProvider } from "@/contexts/TranslationProvider";
+import GoogleTrafficTracker from "@/components/GoogleTrafficTracker";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -209,6 +210,7 @@ export default function RootLayout({
       </head>
       <body className={clsx("bg-white max-h-screen", inter.className)}>
         <TranslationProvider>
+          <GoogleTrafficTracker />
           <main id="scroll-container" className="max-h-screen overflow-auto relative">
             {children}
           </main>

@@ -93,6 +93,20 @@ export default function CourseManagement() {
   const [coursesEn, setCoursesEn] = useState<Course[]>([]);
   const [coursesTr, setCoursesTr] = useState<Course[]>([]);
   const [showPaymentLinks, setShowPaymentLinks] = useState(false);
+  const [showGoogleTraffic, setShowGoogleTraffic] = useState(false);
+  const [googleTrafficLoading, setGoogleTrafficLoading] = useState(false);
+  const [googleTrafficSessions, setGoogleTrafficSessions] = useState<
+    {
+      sessionId: string;
+      ip: string;
+      location: string;
+      deviceSummary: string;
+      arrival: string;
+      landingPath: string;
+      navigations: { path: string; time: string; deviceSummary: string }[];
+    }[]
+  >([]);
+  const [googleTrafficError, setGoogleTrafficError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"en" | "tr">("en");
   
   const [prices, setPrices] = useState<Record<string, CourseInfo>>({});
@@ -401,6 +415,61 @@ export default function CourseManagement() {
           ...prev,
           [key]: { ...prev[key], [field]: value }
       }));
+  };
+
+  const fetchGoogleTraffic = async () => {
+    setGoogleTrafficLoading(true);
+    setGoogleTrafficError(null);
+    try {
+      const res = await fetch("/api/google-g1");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = (await res.json()) as {
+        sessions?: {
+          sessionId: string;
+          ip: string;
+          location?: string;
+          deviceSummary?: string;
+          arrival: string;
+          landingPath: string;
+          navigations: { path: string; time: string; deviceSummary?: string }[];
+        }[];
+      };
+      const raw = json.sessions || [];
+      setGoogleTrafficSessions(
+        raw.map((s) => ({
+          ...s,
+          location:
+            typeof s.location === "string" && s.location.trim().length > 0
+              ? s.location
+              : "—",
+          deviceSummary:
+            typeof s.deviceSummary === "string" && s.deviceSummary.trim().length > 0
+              ? s.deviceSummary
+              : "—",
+          navigations: (s.navigations || []).map((n) => ({
+            ...n,
+            deviceSummary:
+              typeof n.deviceSummary === "string" && n.deviceSummary.trim().length > 0
+                ? n.deviceSummary
+                : "—",
+          })),
+        }))
+      );
+    } catch (e) {
+      setGoogleTrafficError(e instanceof Error ? e.message : "Error");
+      setGoogleTrafficSessions([]);
+    } finally {
+      setGoogleTrafficLoading(false);
+    }
+  };
+
+  const formatUtcForTable = (iso: string) => {
+    try {
+      const d = new Date(iso);
+      return d.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+    } catch {
+      return iso;
+    }
   };
 
   const renderPaymentLinksSection = () => (
@@ -823,7 +892,7 @@ export default function CourseManagement() {
             )}
           </div>
         </div>
-        <div>
+        <div className="flex flex-wrap gap-2">
            <Button 
             onClick={() => setShowPaymentLinks(!showPaymentLinks)} 
             variant="outline"
@@ -831,8 +900,96 @@ export default function CourseManagement() {
           >
             {showPaymentLinks ? "Ocultar Enlaces de Pago" : "Enlaces de Pago"}
           </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className={
+              showGoogleTraffic
+                ? "bg-black text-white hover:bg-gray-800"
+                : "bg-white text-black border-black hover:bg-gray-100"
+            }
+            onClick={() => {
+              const next = !showGoogleTraffic;
+              setShowGoogleTraffic(next);
+              if (next) void fetchGoogleTraffic();
+            }}
+          >
+            From google
+          </Button>
         </div>
       </div>
+
+      {showGoogleTraffic && (
+        <div className="mb-8 p-6 bg-white rounded-lg border border-gray-200 shadow-sm overflow-x-auto">
+          <div className="flex justify-between items-center mb-4 border-b pb-3">
+            <h2 className="text-xl font-bold text-gray-800">Visitas (?g=1)</h2>
+            <Button size="sm" variant="outline" onClick={() => void fetchGoogleTraffic()} disabled={googleTrafficLoading}>
+              {googleTrafficLoading ? "Cargando…" : "Actualizar"}
+            </Button>
+          </div>
+          {googleTrafficError && (
+            <p className="text-destructive text-sm mb-2">{googleTrafficError}</p>
+          )}
+          {googleTrafficLoading && googleTrafficSessions.length === 0 && !googleTrafficError ? (
+            <p className="text-gray-500 text-sm">Cargando…</p>
+          ) : !googleTrafficError && googleTrafficSessions.length === 0 ? (
+            <p className="text-gray-500 text-sm">No hay registros todavía.</p>
+          ) : (
+            <table className="w-full border-collapse text-sm border border-gray-200">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="p-3 text-left font-semibold border-b">Session</th>
+                  <th className="p-3 text-left font-semibold border-b">IP</th>
+                  <th className="p-3 text-left font-semibold border-b max-w-[220px]">Ubicación</th>
+                  <th className="p-3 text-left font-semibold border-b max-w-[280px]">
+                    Dispositivo / navegador
+                  </th>
+                  <th className="p-3 text-left font-semibold border-b">Llegada (UTC)</th>
+                  <th className="p-3 text-left font-semibold border-b">Landing</th>
+                  <th className="p-3 text-left font-semibold border-b">Siguientes páginas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {googleTrafficSessions.map((row) => (
+                  <tr key={row.sessionId} className="border-b align-top hover:bg-gray-50/80">
+                    <td className="p-3 font-mono text-xs break-all max-w-[120px]">{row.sessionId}</td>
+                    <td className="p-3 font-mono text-xs">{row.ip}</td>
+                    <td className="p-3 text-xs max-w-[280px] break-words text-gray-800">
+                      {row.location}
+                    </td>
+                    <td className="p-3 text-xs max-w-[300px] break-words text-gray-800">
+                      {row.deviceSummary}
+                    </td>
+                    <td className="p-3 whitespace-nowrap">{formatUtcForTable(row.arrival)}</td>
+                    <td className="p-3 break-all text-xs">{row.landingPath}</td>
+                    <td className="p-3 text-xs">
+                      {row.navigations.length === 0 ? (
+                        <span className="text-gray-400">—</span>
+                      ) : (
+                        <ul className="space-y-1">
+                          {row.navigations.map((n, idx) => (
+                            <li key={`${row.sessionId}-${idx}`} className="leading-snug">
+                              <span className="text-gray-500 whitespace-nowrap">
+                                {formatUtcForTable(n.time)}
+                              </span>
+                              {" · "}
+                              <span className="text-gray-700 break-words text-[11px]">
+                                {n.deviceSummary}
+                              </span>
+                              <br />
+                              <span className="break-all text-gray-900">{n.path}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
 
       {showPaymentLinks ? (
         renderPaymentLinksSection()
