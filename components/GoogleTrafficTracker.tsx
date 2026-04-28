@@ -50,14 +50,10 @@ async function sendLog(kind: "entry" | "nav", sessionId: string, path: string) {
   }
 }
 
-/** Sadece URL'de ?g=1 olduğunda (ve aynı oturumda sessionStorage işareti varken) sunucuya log gönderir. */
-function entryDedupeKey(sessionId: string) {
-  return `eo_google_g1_entry_${sessionId}`;
-}
-
 export default function GoogleTrafficTracker() {
   const pathname = usePathname();
   const firstPathSkipped = useRef(false);
+  const lastEntryRef = useRef<{ key: string; ts: number } | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -73,20 +69,21 @@ export default function GoogleTrafficTracker() {
 
     if (params.get("g") === "1") {
       sessionStorage.setItem(STORAGE_ACTIVE, "1");
-      let sid = sessionStorage.getItem(STORAGE_SID);
-      if (!sid) {
-        sid = crypto.randomUUID();
-        sessionStorage.setItem(STORAGE_SID, sid);
+      const path = `${pathname}${window.location.search || ""}`;
+      const now = Date.now();
+      const last = lastEntryRef.current;
+      // Aynı event döngüsünde olası çift effect tetiklerini yut.
+      if (last && last.key === path && now - last.ts < 2000) {
+        console.info(`${DEBUG_PREFIX} entry skipped short-duplicate`, { path, dtMs: now - last.ts });
+        return;
       }
-      const dedupeKey = entryDedupeKey(sid);
-      if (!sessionStorage.getItem(dedupeKey)) {
-        sessionStorage.setItem(dedupeKey, "1");
-        const path = `${pathname}${window.location.search || ""}`;
-        console.info(`${DEBUG_PREFIX} entry sending`, { sid, dedupeKey, path });
-        void sendLog("entry", sid, path);
-      } else {
-        console.info(`${DEBUG_PREFIX} entry skipped dedupe`, { sid, dedupeKey });
-      }
+
+      const sid = crypto.randomUUID();
+      sessionStorage.setItem(STORAGE_SID, sid);
+      firstPathSkipped.current = false;
+      lastEntryRef.current = { key: path, ts: now };
+      console.info(`${DEBUG_PREFIX} entry sending`, { sid, path });
+      void sendLog("entry", sid, path);
       return;
     }
 
