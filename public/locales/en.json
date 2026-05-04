@@ -496,7 +496,8 @@
         { "course": "Private lesson - 2 students", "duration": "1 hour", "price": "17 EUR (per person) " },
         { "course": "Private lesson - 3 students", "duration": "1 hour", "price": "14 EUR (per person) " },
         { "course": "Private lesson - 4 students", "duration": "1 hour", "price": "12 EUR (per person) " },
-        { "course": "Private lesson - 5 students", "duration": "1 hour", "price": "10 EUR (per person) " }
+        { "course": "Private lesson - 5 students", "duration": "1 hour", "price": "10 EUR (per person) " },
+        { "course": "Private lesson - 6 students", "duration": "1 hour", "price": "8 EUR (per person) " }
 
         
       ]
