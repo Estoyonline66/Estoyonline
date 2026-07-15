@@ -488,13 +488,11 @@
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "7.980 TL (toplam)" },
-        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "6.600 TL (toplam)" },
-        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "6.120 TL (toplam)" },
-        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "3.180 TL (toplam)" },
-        { "course": "Çocuklar A1.1 başlangıç (Max 6 çocuk)", "duration": "24 saat - 4 ay", "price": "7.850 TL (toplam)" },
-        { "course": "Turizm İspanyolcası Başlangıç (A)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" },
-        { "course": "Turizm İspanyolcası Orta (B)", "duration": "90 saat - 4,5 ay", "price": "18.250 TL (toplam)" }
+        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "9.200 TL (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "7.600 TL (toplam)" },
+        { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "7.100 TL (toplam)" },
+        { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "3.800 TL (toplam)" },
+        { "course": "Çocuklar A1.1 başlangıç (Max 6 çocuk)", "duration": "24 saat - 4 ay", "price": "9.100 TL (toplam)" }
       ],
       "onlineSpanishTwoTable": [
           { "course": "Özel ders - 1 öğrenci", "duration": "1 saat", "price": "22 EUR (kişi başı)" },

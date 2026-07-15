@@ -38,6 +38,11 @@ const ExtraSpanish = () => {
     // Ensure `data` is correctly structured
     const extraSpanishTable: CourseData[] =
     Data?.courses?.extraSpanishTable || [];
+
+    if (extraSpanishColumns.length === 0 || extraSpanishTable.length === 0) {
+      return null;
+    }
+
   return (
     <div className="p-3 md:p-6">
       {/* <h1 className="text-xl font-bold mb-4">{Data?.title2}</h1> */}
