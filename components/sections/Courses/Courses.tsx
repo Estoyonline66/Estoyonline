@@ -11,11 +11,11 @@ interface CourseCard {
   month: string;
 }
 
-export default function Courses() {
+export default function Courses({ initialCourses }: { initialCourses?: CourseCard[] }) {
   const { t, language } = useTranslation();
   const Data: PriceData = t("courses");
 
-  const [cardCourses, setCardCourses] = useState<CourseCard[]>([]);
+  const [cardCourses, setCardCourses] = useState<CourseCard[]>(initialCourses ?? Data?.cardCourses ?? []);
   const [displayYear, setDisplayYear] = useState<number>(new Date().getFullYear());
 
   useEffect(() => {

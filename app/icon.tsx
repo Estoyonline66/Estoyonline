@@ -1,5 +1,9 @@
 import { SunLogo } from '@/components/shapes/SunLogo'
 import { ImageResponse } from 'next/og'
+
+// Preserve the same icon while avoiding the Node image renderer's Windows
+// file-URL issue during production builds.
+export const runtime = 'edge'
  
 // Image metadata
 export const size = {

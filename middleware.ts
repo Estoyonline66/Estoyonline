@@ -1,18 +1,22 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-    const path = request.nextUrl.pathname
-    const savedLanguage = request.cookies.get('language') as { name: string, value: string };
-    // If token is not present, redirect to login page
-    if (path === "/") {
-        return NextResponse.redirect(new URL(`/${savedLanguage?.value||"en"}`, request.url));
-    }
-    return NextResponse.next();
+  const path = request.nextUrl.pathname;
+  if (path === "/") {
+    const locale = request.cookies.get("language")?.value === "tr" ? "tr" : "en";
+    const destination = request.nextUrl.clone();
+    destination.pathname = `/${locale}`;
+    const response = NextResponse.redirect(destination);
+    response.headers.set("Vary", "Cookie");
+    response.headers.set("Cache-Control", "private, no-store");
+    return response;
+  }
+  // Override caller-supplied headers so HTML language always follows the URL.
+  const locale = path.split("/")[1] === "tr" ? "tr" : "en";
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-site-locale", locale);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
+  response.headers.set("Content-Language", locale);
+  return response;
 }
-
-// See "Matching Paths" below to learn more
-export const config = {
-    matcher: ['/'],
-}
+export const config = { matcher: ["/", "/en/:path*", "/tr/:path*"] };
