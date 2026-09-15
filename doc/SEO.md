@@ -12,6 +12,7 @@
 ## Metadata ve keşif
 
 - Her public sayfa kendi dilinde başlık/açıklama, kendisini gösteren canonical, karşılıklı `en`, `tr` ve `x-default` hreflang bağlantılarına sahiptir.
+- Her public sayfada tek, dolu bir H1 bulunur. Mevcut başlık metinleri ve görünümleri korunur; kart başlıkları alt başlık düzeylerini kullanır. Dekoratif dil bayrakları boş `alt` ile işaretlenir. Ana sayfaların arama açıklamaları 120–160 karakter aralığındadır.
 - `html lang` ve `Content-Language` URL ile eşleşir. İstemci tarafında dil değişirse HTML dil etiketi de güncellenir.
 - Next.js metadata streaming kapalıdır (`htmlLimitedBots: /.*/`); tüm okuyucular metadata'yı ilk `<head>` içinde alır. İçerik User-Agent'a göre değiştirilmez.
 - `app/sitemap.ts`, 14 canonical URL'yi dil eşleşmeleriyle üretir. Gerçek bir değişiklik tarihi bilinmediğinde yapay `lastmod` yazılmaz.
@@ -32,7 +33,7 @@ npm run start -- --port 3100
 node scripts/check-seo.mjs http://localhost:3100
 ```
 
-Kontrol betiği JavaScript çalıştırmadan HTML'yi ayrıştırır. Dil, tekil metadata, canonical/hreflang, JSON-LD, kurs ve öğretmen açıklamaları, fiyat tabloları, sitemap, robots.txt, llms.txt, 404/noindex, kök yönlendirmesi ve farklı robotlar için içerik eşitliğini doğrular. Form göndermez ve başvuru sonucu API'lerini çağırmaz. HTML ayrıştırıcısı `parse5` mevcut kilitli bağımlılık ağacında bulunur.
+Kontrol betiği JavaScript çalıştırmadan HTML'yi ayrıştırır. Dil, tekil metadata, ana sayfa açıklama uzunluğu, tek ve dolu H1, görsellerde `alt` niteliği, canonical/hreflang, JSON-LD, kurs ve öğretmen açıklamaları, fiyat tabloları, sitemap, robots.txt, llms.txt, 404/noindex, kök yönlendirmesi ve farklı robotlar için içerik eşitliğini doğrular. Form göndermez ve başvuru sonucu API'lerini çağırmaz. HTML ayrıştırıcısı `parse5` mevcut kilitli bağımlılık ağacında bulunur.
 
 Yayın sonrası aynı betik üretim adresine karşı çalıştırılabilir:
 

@@ -85,9 +85,9 @@ export default function Courses({ initialCourses }: { initialCourses?: CourseCar
             key={index}
             className="bg-[#FB2C3621] rounded-lg text-[#333] p-6 min-h-[160px] text-center shadow-lg scale-100 duration-300 hover:scale-105"
           >
-            <h1 className="text-2xl font-semibold line-clamp-2 min-h-[3em] leading-normal">
+            <h3 className="text-2xl font-semibold line-clamp-2 min-h-[3em] leading-normal">
               {card.title}
-            </h1>
+            </h3>
             <p className="text-md">
               <span className="font-bold">{card.bold}</span> {card.time}
             </p>
@@ -103,7 +103,7 @@ export default function Courses({ initialCourses }: { initialCourses?: CourseCar
       {/* 🔹 Seviyeler Bölümü */}
       <section className="relative bg-[#0068FF] w-full h-[85rem] flex justify-center items-center z-[-1]">
         <div className="absolute w-full h-full flex flex-col items-center py-20 gap-9 px-4">
-          <h1 className="text-white text-2xl font-bold">{Data?.title}</h1>
+          <h2 className="text-white text-2xl font-bold">{Data?.title}</h2>
           <ul className="text-white flex flex-col gap-9">
             {Data?.levels?.map((level, index) => (
               <li key={index} className="flex flex-col">

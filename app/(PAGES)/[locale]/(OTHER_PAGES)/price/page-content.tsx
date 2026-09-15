@@ -43,7 +43,7 @@ export default function Page() {
               key={index}
               className="bg-[#0068FF] px-3 py-4 max-h-[150px] rounded-lg text-center text-white space-y-1 transition-transform duration-300 transform hover:scale-105 z-[-1]"
             >
-              <h1 className="text-xl font-bold">{card.title}</h1>
+              <h2 className="text-xl font-bold">{card.title}</h2>
               <p className="text-md">{card.description}</p>
             </li>
           ))}

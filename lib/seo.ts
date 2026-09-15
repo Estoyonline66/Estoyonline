@@ -18,6 +18,15 @@ export async function getPageLocale({ params }: LocalePageProps): Promise<Locale
 
 export function pageDescription(locale: Locale, route: PublicRoute) {
   const existing = dictionaries[locale].seo.pages.find((page) => page.route === route)?.datas;
+  if (route === "/" && existing) {
+    // Keep the existing title and visible copy; provide a concise search snippet.
+    return {
+      ...existing,
+      description: locale === "tr"
+        ? "EstoyOnline.es ile ana dili İspanyolca olan öğretmenlerden online İspanyolca öğrenin. Zoom dersleri, farklı seviyeler ve ücretsiz deneme dersi."
+        : "Learn Spanish online with native-speaking teachers at EstoyOnline.es. Enjoy engaging Zoom lessons for different levels and book a free trial lesson.",
+    };
+  }
   if (existing) return existing;
   return locale === "tr"
     ? { title: "EstoyOnline | Ücretsiz online İspanyolca kursu", description: "Başlangıç seviyesindeki öğrenciler için ücretsiz online İspanyolca mini kursu. Kayıt ve Zoom ders bilgileri için WhatsApp üzerinden iletişime geçin." }

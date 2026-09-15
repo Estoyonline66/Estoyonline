@@ -55,7 +55,7 @@ const Translator = () => {
       <DropdownMenuTrigger asChild>
         <button className="flex invisible h-fit items-center justify-between gap-2 cursor-pointer text-base sm:text-sm md:text-base lg:text-lg">
           <span className="size-6 overflow-hidden rounded-full flex items-center justify-center">
-          <Flag code={selectedLang?.flag} className="size-full object-center object-cover"/>
+          <Flag code={selectedLang?.flag} alt="" aria-hidden="true" className="size-full object-center object-cover"/>
           </span>
           {selectedLang?.label}
           <ChevronDown className="font-light" />
@@ -86,7 +86,7 @@ const Translator = () => {
           {filteredLanguagesOption.map((lang) => (
             <DropdownMenuRadioItem className="cursor-pointer" key={lang.value} value={lang.value}>
               <span className="size-4 overflow-hidden rounded-full flex items-center justify-center">
-          <Flag code={lang.flag} className="size-full object-center object-cover"/>
+          <Flag code={lang.flag} alt="" aria-hidden="true" className="size-full object-center object-cover"/>
           </span>
           {lang.label}
             </DropdownMenuRadioItem>

@@ -10,7 +10,7 @@ const routes = ["", "/courses", "/teachers", "/videos", "/price", "/contact", "/
 const normalize = (value) => value.replace(/\s+/g, " ").trim();
 
 function inspect(html) {
-  const result = { title: [], meta: [], links: [], scripts: [], headings: [], text: [], lang: undefined };
+  const result = { title: [], meta: [], links: [], scripts: [], headings: [], images: [], text: [], lang: undefined };
   function text(node) {
     if (node.nodeName === "#text") return node.value;
     if (["script", "style", "head"].includes(node.tagName)) return "";
@@ -20,6 +20,8 @@ function inspect(html) {
     const attrs = Object.fromEntries((node.attrs || []).map(({ name, value }) => [name, value]));
     if (node.tagName === "html") result.lang = attrs.lang;
     if (node.tagName === "title") result.title.push(text(node));
+    if (node.tagName === "h1") result.headings.push(normalize(text(node)));
+    if (node.tagName === "img") result.images.push(attrs);
     if (node.tagName === "meta") result.meta.push(attrs);
     if (node.tagName === "link") result.links.push(attrs);
     if (node.tagName === "script" && attrs.type === "application/ld+json") {
@@ -47,6 +49,9 @@ for (const locale of ["en", "tr"]) {
     const page = inspect(await response.text());
     assert.equal(page.lang, locale, `${path}: HTML language`);
     assert.equal(page.title.length, 1, `${path}: exactly one title`);
+    assert.equal(page.headings.length, 1, `${path}: exactly one H1`);
+    assert.ok(page.headings[0], `${path}: non-empty H1`);
+    assert.ok(page.images.every((image) => Object.hasOwn(image, "alt")), `${path}: every image has an alt attribute`);
     assert.equal(page.meta.filter((meta) => meta.name === "description").length, 1, `${path}: exactly one description`);
     const robots = page.meta.filter((meta) => meta.name === "robots").map((meta) => meta.content).join(",");
     assert.match(robots, /\bindex\b/, `${path}: indexable`);
@@ -62,6 +67,9 @@ for (const locale of ["en", "tr"]) {
     const includes = (value) => assert.ok(page.text.includes(normalize(value)), `${path}: missing body text: ${value.slice(0, 90)}`);
     for (const label of Object.keys(data.navbar.links)) includes(label);
     if (!route) {
+      const description = page.meta.find((meta) => meta.name === "description").content;
+      assert.ok(description.length >= 120 && description.length <= 160, `${path}: concise homepage search description`);
+      assert.equal(page.headings[0], normalize(`${data.home.HeroTitle} ${data.home.HeroYellowTitle} ${data.home.HeroTitle2}`), `${path}: preserve visible headline`);
       for (const key of ["HeroTitle", "HeroYellowTitle", "HeroTitle2", "LearnSpanishtitle", "LearnSpanishdescription", "homeAboutDescription", "homeAboutDescription2", "homeSubAboutTitle"]) includes(data.home[key]);
       for (const item of data.testimonials.items) { includes(item.personName); includes(item.firstComment); }
     }

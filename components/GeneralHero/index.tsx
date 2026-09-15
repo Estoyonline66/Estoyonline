@@ -9,6 +9,7 @@ type Props = {
 
 
 export default function GeneralHero({icon,text}: Props) {
+  const Heading = text ? 'h1' : 'strong';
   return (
     <section className='w-full bg-primary isolate relative flex items-center justify-center gap-3 py-14 overflow-hidden'>
         <span className='absolute h-full pointer-events-none -left-14 sm:-left-2 top-0 -z-10'>
@@ -33,7 +34,7 @@ export default function GeneralHero({icon,text}: Props) {
             }} svg={{className:"size-full"}}/>
         </span>
         <span className='size-10 *:size-full text-white'>{icon}</span>
-         <strong className='text-secondary text-3xl'>{text}</strong>
+         <Heading className='text-secondary text-3xl font-bold'>{text}</Heading>
     </section>
   )
 }

@@ -44,9 +44,9 @@ export default function Freecourse() {
           className="w-full max-w-3xl rounded-xl shadow-lg"
         />
         <div className="mt-6 text-center max-w-2xl">
-          <h2 className="text-xl font-semibold mb-4">
+          <h1 className="text-xl font-semibold mb-4">
             Free Online Spanish Course
-          </h2>
+          </h1>
            <p className="mb-2">
             Next week, we’re starting a free mini course made up of 4 classes.
             It will take place on Wednesdays and Saturdays from 6:30 pm to 7:30 pm
