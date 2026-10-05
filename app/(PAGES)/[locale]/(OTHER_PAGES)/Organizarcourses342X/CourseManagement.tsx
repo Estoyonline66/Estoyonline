@@ -19,7 +19,19 @@ interface Course {
 const blobUrl =
   "https://iwvrsly8ro5bi96g.public.blob.vercel-storage.com/courses/courses-data.json";
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+  "Tue - Thu",
+  "Mon - Wed",
+  "Wed - Fri",
+  "Mon - Fri",
+];
 const daysTr = [
   "Pazartesi",
   "Salı",
