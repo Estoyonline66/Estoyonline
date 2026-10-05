@@ -45,7 +45,13 @@ const daysTr = [
   "Çarş - Cuma",
   "Pzt - Cuma",
 ];
-const weeks = ["Once a week 2.5 hours", "Once a week 2 hours"];
+const weeks = [
+  "Once a week 2.5 hours",
+  "Once a week 2 hours",
+  "Twice a week 1 hour 15 minutes",
+  "Once a week 1.5 hours",
+  "Twice a week 2.5 hours",
+];
 const weeksTr = ["Haftada 1 gün 2,5 saat", "Haftada 1 gün 2 saat", "Haftada 2 gün 1 saat 15 dk", "Haftada 1 gün 1,5 saat", "Haftada 2 gün 2,5 saat"];
 
 // 🔹 English time options — 24 hours, half-hour intervals
