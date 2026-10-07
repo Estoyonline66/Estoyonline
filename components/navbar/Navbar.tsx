@@ -43,6 +43,14 @@ export default function Navbar({isHome}:props) {
   useEffect(() => {
     setDropped(false)
   }, [pathName])
+
+  const linkClassName = (href: string) => clsx(
+    "relative py-4 sm:py-0 min-[498px]:w-fit text-center",
+    "before:w-0 before:absolute before:h-[2px] before:bg-gradient-to-r before:from-secondary before:to-primary",
+    "hover:before:w-full hover:before:absolute hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
+    "before:duration-500 before:bottom-1 sm:before:-bottom-1 before:left-0 before:rounded-full before:delay-150",
+    pathName.includes(href)&&"before:w-full before:absolute before:bg-gradient-to-r before:from-secondary before:to-primary"
+  )
   
   return (
     <header data-id="main-header" className={
@@ -86,29 +94,17 @@ export default function Navbar({isHome}:props) {
         <Translator />
         <nav className="w-full !h-fit min-[498px]:w-fit flex flex-col sm:flex-row items-center sm:gap-5 text-base sm:text-sm md:text-base lg:text-lg">
           {(pathName === "/en" || pathName === "/en/") && (
-            <TranslatedLink href="/free-lesson" className="relative py-4 sm:py-0 text-center whitespace-nowrap font-semibold underline-offset-4 hover:underline">
+            <TranslatedLink href="/free-lesson" className={linkClassName("/free-lesson")}>
               Free Lesson
             </TranslatedLink>
           )}
           
             {
               navbarData.links?Object.keys(navbarData.links).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className={
-                clsx(
-                  "relative py-4 sm:py-0 min-[498px]:w-fit text-center",
-                  "before:w-0 before:absolute before:h-[2px] before:bg-gradient-to-r before:from-secondary before:to-primary",
-                  "hover:before:w-full hover:before:absolute hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
-                  "before:duration-500 before:bottom-1 sm:before:-bottom-1 before:left-0 before:rounded-full before:delay-150",
-                  pathName.includes(navbarData.links[link])&&"before:w-full before:absolute before:bg-gradient-to-r before:from-secondary before:to-primary"
-                )
+                linkClassName(navbarData.links[link])
               }>{link}</TranslatedLink>):
               (Object.keys(defaultLink) as Array<keyof typeof defaultLink>).map((link)=><TranslatedLink key={link} href={defaultLink[link]} className={
-                clsx(
-                  "relative py-4 sm:py-0 min-[498px]:w-fit text-center",
-                  "before:w-0 before:absolute before:h-[2px] before:bg-gradient-to-r before:from-secondary before:to-primary",
-                  "hover:before:w-full hover:before:absolute hover:before:bg-gradient-to-r hover:before:from-secondary hover:before:to-primary",
-                  "before:duration-500 before:bottom-1 sm:before:-bottom-1 before:left-0 before:rounded-full before:delay-150",
-                  pathName.includes(defaultLink[link])&&"before:w-full before:absolute before:bg-gradient-to-r before:from-secondary before:to-primary"
-                )
+                linkClassName(defaultLink[link])
               }>{link}</TranslatedLink>)
             }
               
