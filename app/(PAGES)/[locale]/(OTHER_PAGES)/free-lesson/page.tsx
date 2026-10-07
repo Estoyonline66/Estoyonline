@@ -3,8 +3,9 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CalendarDays, Clock, Video } from "lucide-react";
 import GeneralHero from "@/components/GeneralHero";
-import { DoubleLeft, DoubleRight, TeacherIcon } from "@/components/shapes";
-import type { LocalePageProps } from "@/lib/i18n";
+import { DoubleLeft, DoubleRight, MessagePhone, TeacherIcon } from "@/components/shapes";
+import StyledButton from "@/components/StyledButton";
+import { dictionaries, type LocalePageProps } from "@/lib/i18n";
 import { siteUrl } from "@/lib/seo";
 
 const title = "Free Spanish Trial Lesson with Meli | EstoyOnline";
@@ -92,6 +93,16 @@ export default async function FreeLesson({ params }: LocalePageProps) {
                 <dd className="font-bold text-secondary">Free</dd>
               </div>
             </dl>
+            <div className="mt-8 flex justify-center md:justify-start">
+              <a href={dictionaries.en.home.homewhatsapplink} target="_blank" rel="noopener noreferrer">
+                <StyledButton icon={<MessagePhone
+                  path={{ fill: "var(--styledButtonHoveredTextColor)", style: { transitionDuration: "300ms" } }}
+                  svg={{ className: "size-4" }}
+                />}>
+                  {dictionaries.en.home.homeAboutButton}
+                </StyledButton>
+              </a>
+            </div>
           </div>
         </div>
       </section>
