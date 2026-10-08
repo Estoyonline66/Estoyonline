@@ -5,12 +5,17 @@ export type LessonEvent = {
   path: string;
   country: string;
   time: string;
+  campaignId?: "cht";
 };
 
 export const lessonPaths = ["/en/free-lesson", "/en", "/en/contact"];
 
-export function summarizeLessonEvents(events: LessonEvent[]) {
-  const unique = [...new Map(events.map((event) => [event.id, event])).values()];
+export type CampaignFilter = "all" | "cht" | "other";
+
+export function summarizeLessonEvents(events: LessonEvent[], campaign: CampaignFilter = "all") {
+  const unique = [...new Map(events.map((event) => [event.id, event])).values()].filter(event =>
+    campaign === "all" || (campaign === "cht" ? event.campaignId === "cht" : event.campaignId !== "cht")
+  );
   const countries = new Map<string, { country: string; views: number; sessions: Set<string>; clicks: number }>();
   for (const event of unique) {
     const row = countries.get(event.country) ?? { country: event.country, views: 0, sessions: new Set<string>(), clicks: 0 };

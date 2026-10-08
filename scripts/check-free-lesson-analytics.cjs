@@ -61,6 +61,13 @@ async function main() {
   assert.equal(report.events.length, 5);
   assert.ok(report.events.every(event => !Object.hasOwn(event, "ip") && !Number.isNaN(Date.parse(event.time))));
   assert.equal(analytics.summarizeLessonEvents([...report.events, report.events[0]]).events.length, 5);
+  assert.equal((await api.POST(request({ ...visit, campaignId: "invalid" }))).status, 400);
+  const campaignVisit = { ...visit, id: randomUUID(), campaignId: "cht" };
+  assert.equal((await api.POST(request(campaignVisit))).status, 200);
+  const campaignReport = await (await api.GET(get({ authorization: "Bearer test-only-password" }))).json();
+  assert.equal(analytics.summarizeLessonEvents(campaignReport.events, "cht").events.length, 1);
+  assert.equal(analytics.summarizeLessonEvents(campaignReport.events, "other").events.length, 5);
+  assert.equal(analytics.summarizeLessonEvents(campaignReport.events, "cht").countries[0].views, 1);
 
   // Exercise the tracker across navigation, Strict Mode effect replay and reload.
   const sent = [];
@@ -72,10 +79,11 @@ async function main() {
   global.fetch = async (_url, options) => { sent.push(JSON.parse(options.body)); };
   global.Element = class { closest() { return { getAttribute: () => "https://wa.me/34633452268" }; } };
   let pathname = "/en";
+  let search = "";
   let refs = [], index = 0, cleanup;
   const tracker = load("components/FreeLessonTracker.tsx", {
     react: { useRef: initial => refs[index++] ?? (refs[index - 1] = { current: initial }), useEffect: effect => { cleanup = effect(); } },
-    "next/navigation": { usePathname: () => pathname },
+    "next/navigation": { usePathname: () => pathname, useSearchParams: () => new URLSearchParams(search) },
     "@/lib/free-lesson-analytics": analytics,
   }).default;
   function render(next) { cleanup?.(); pathname = next; index = 0; tracker(); }
@@ -88,6 +96,24 @@ async function main() {
   refs = []; render("/en/free-lesson"); assert.equal(sent.length, 6);
   assert.equal(new Set(sent.map(event => event.sessionId)).size, 1);
   assert.equal(sent.filter(event => event.kind === "whatsapp").length, 3);
+  assert.ok(sent.every(event => !event.campaignId));
+  search = "campaign_id=cht";
+  render("/en/free-lesson"); // Query-only navigation is tracked, too.
+  assert.equal(sent.length, 7);
+  render("/en/free-lesson"); assert.equal(sent.length, 7);
+  click();
+  search = "";
+  render("/en"); click(); render("/en/contact"); click();
+  refs = []; render("/en/contact"); click(); // Attribution survives reloads.
+  assert.ok(sent.slice(6).every(event => event.campaignId === "cht"));
+  assert.equal(sent.slice(6).filter(event => event.kind === "whatsapp").length, 4);
+  storage.clear(); refs = []; search = "campaign_id=cht";
+  render("/en"); search = ""; render("/en/free-lesson"); click();
+  assert.equal(sent.at(-1).campaignId, undefined); // Only the lesson landing may set attribution.
+  const filtered = analytics.summarizeLessonEvents(sent.map(event => ({ ...event, country: "GB", time: new Date().toISOString() })), "cht");
+  assert.equal(filtered.countries[0].views, 1);
+  assert.equal(filtered.countries[0].clicks, 4);
+  console.log("PASS: campaign persistence, query-only landing, filtered counts, older records and campaign validation.");
   console.log("PASS: validation, authentication, concurrent storage, replay, country counts, timestamps, attribution, all three click paths, Strict Mode and reloads.");
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

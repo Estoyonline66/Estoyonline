@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { summarizeLessonEvents } from "@/lib/free-lesson-analytics";
+import { summarizeLessonEvents, type CampaignFilter } from "@/lib/free-lesson-analytics";
 import { Button } from "@/components/ui/button";
 
 type Report = ReturnType<typeof summarizeLessonEvents>;
@@ -10,7 +10,9 @@ const countryName = (code: string) => code === "Unknown" ? "Unknown" : countryNa
 const dateFormat = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Paris", dateStyle: "medium", timeStyle: "medium" });
 
 export default function FreeLessonReport({ password }: { password: string }) {
-  const [report, setReport] = useState<Report | null>(null);
+  const [loadedReport, setReport] = useState<Report | null>(null);
+  const [campaignFilter, setCampaignFilter] = useState<CampaignFilter>("all");
+  const report = loadedReport ? summarizeLessonEvents(loadedReport.events, campaignFilter) : null;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const load = useCallback(async () => {
@@ -32,9 +34,17 @@ export default function FreeLessonReport({ password }: { password: string }) {
     </div>
     <p className="mb-4 text-sm text-gray-600">Every Free Lesson page view is counted, including reloads. WhatsApp clicks are linked to the same browser-tab session after visiting Free Lesson. Times: Europe/Paris. Country is approximate; unavailable locations appear as Unknown. Clicks do not confirm a message was sent.</p>
     {error && <p role="alert" className="mb-4 text-red-600">{error}</p>}
+    <label className="mb-4 flex flex-wrap items-center gap-3 text-sm font-semibold">
+      Campaign
+      <select className="rounded-md border border-gray-300 bg-white p-2" value={campaignFilter} onChange={event => setCampaignFilter(event.target.value as CampaignFilter)}>
+        <option value="all">All visits</option>
+        <option value="cht">campaign_id=cht</option>
+        <option value="other">Without cht / older records</option>
+      </select>
+    </label>
     {report && <>
       <p className="mb-4 font-semibold">Page views: {report.events.filter(e => e.kind === "visit").length} · Sessions: {new Set(report.events.filter(e => e.kind === "visit").map(e => e.sessionId)).size} · WhatsApp clicks: {report.events.filter(e => e.kind === "whatsapp").length}</p>
-      {report.events.length === 0 ? <p>No Free Lesson records yet.</p> : <>
+      {report.events.length === 0 ? <p>No Free Lesson records match this filter.</p> : <>
         <div className="mb-6 overflow-x-auto">
           <table className="w-full text-left text-sm">
             <caption className="mb-2 text-left font-semibold">Visits by country</caption>
@@ -45,9 +55,9 @@ export default function FreeLessonReport({ password }: { password: string }) {
         <div className="max-h-[600px] overflow-auto">
           <table className="w-full text-left text-sm">
             <caption className="mb-2 text-left font-semibold">Visit and click log — newest first</caption>
-            <thead><tr className="border-b"><th className="p-2">Time (Europe/Paris)</th><th className="p-2">Country</th><th className="p-2">Event</th><th className="p-2">Page</th><th className="p-2">Session</th></tr></thead>
+            <thead><tr className="border-b"><th className="p-2">Time (Europe/Paris)</th><th className="p-2">Country</th><th className="p-2">Event</th><th className="p-2">Page</th><th className="p-2">Campaign</th><th className="p-2">Session</th></tr></thead>
             <tbody>{report.events.map(event => <tr className="border-b" key={event.id}>
-              <td className="whitespace-nowrap p-2">{dateFormat.format(new Date(event.time))}</td><td className="p-2">{countryName(event.country)}</td><td className="p-2">{event.kind === "visit" ? "Page view" : "WhatsApp click"}</td><td className="p-2">{event.path}</td><td className="break-all p-2 font-mono text-xs">{event.sessionId}</td>
+              <td className="whitespace-nowrap p-2">{dateFormat.format(new Date(event.time))}</td><td className="p-2">{countryName(event.country)}</td><td className="p-2">{event.kind === "visit" ? "Page view" : "WhatsApp click"}</td><td className="p-2">{event.path}</td><td className="p-2">{event.campaignId || "—"}</td><td className="break-all p-2 font-mono text-xs">{event.sessionId}</td>
             </tr>)}</tbody>
           </table>
         </div>

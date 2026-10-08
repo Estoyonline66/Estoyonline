@@ -35,13 +35,14 @@ export async function POST(request: NextRequest) {
   } catch { return NextResponse.json({ error: "Invalid JSON" }, { status: 400 }); }
   if (!body || !uuid.test(body.id ?? "") || !uuid.test(body.sessionId ?? "") ||
       !lessonPaths.includes(body.path) || !["visit", "whatsapp"].includes(body.kind) ||
+      (body.campaignId !== undefined && body.campaignId !== "cht") ||
       (body.kind === "visit" && body.path !== "/en/free-lesson")) {
     return NextResponse.json({ error: "Invalid event" }, { status: 400 });
   }
   // Vercel supplies coarse country information; no raw IP addresses are stored.
   const countryHeader = process.env.VERCEL ? request.headers.get("x-vercel-ip-country") : null;
   const country = countryHeader && /^[A-Z]{2}$/.test(countryHeader) ? countryHeader : "Unknown";
-  const event: LessonEvent = { id: body.id, sessionId: body.sessionId, kind: body.kind, path: body.path, country, time: new Date().toISOString() };
+  const event: LessonEvent = { id: body.id, sessionId: body.sessionId, kind: body.kind, path: body.path, country, time: new Date().toISOString(), ...(body.campaignId === "cht" ? { campaignId: "cht" as const } : {}) };
   try {
     await withFtp(async (client) => {
       // Independent files avoid read/modify/write races between visitors.
