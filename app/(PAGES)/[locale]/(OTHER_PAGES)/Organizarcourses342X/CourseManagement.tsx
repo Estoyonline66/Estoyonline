@@ -5,6 +5,7 @@ import { ArrowUp, ArrowDown, Trash2, Plus, Save, Link as LinkIcon, LogOut, Lock 
 import { CourseInfo } from "@/app/api/checkout/text";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import FreeLessonReport from "@/components/FreeLessonReport";
 
 interface Course {
   title: string;
@@ -154,16 +155,22 @@ export default function CourseManagement() {
   const [rememberMe, setRememberMe] = useState(false);
   const [loginError, setLoginError] = useState("");
 
-  const adminPassword = process.env.NEXT_PUBLIC_COURSES_ADMIN_PASSWORD;
-
   useEffect(() => {
+    let cancelled = false;
     const savedPassword = localStorage.getItem("coursesAdminPassword");
     const savedRememberMe = localStorage.getItem("coursesRememberMe") === "true";
     
-    if (savedRememberMe && savedPassword === adminPassword) {
-      setIsAuthenticated(true);
+    if (savedRememberMe && savedPassword) {
+      void fetch("/api/courses/auth", { method: "POST", headers: { Authorization: `Bearer ${savedPassword}` } })
+        .then(response => {
+          if (response.ok && !cancelled) {
+            setPassword(savedPassword);
+            setIsAuthenticated(true);
+          }
+        }).catch(() => undefined);
     }
-  }, [adminPassword]);
+    return () => { cancelled = true; };
+  }, []);
 
   // Fiyatları Ayrı Çek ve Yönet
   const fetchPrices = async () => {
@@ -244,10 +251,17 @@ export default function CourseManagement() {
     fetchPrices();
   }, [isAuthenticated]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (password === adminPassword) {
+    let authenticated = false;
+    try {
+      const response = await fetch("/api/courses/auth", { method: "POST", headers: { Authorization: `Bearer ${password}` } });
+      authenticated = response.ok;
+    } catch {
+      setLoginError("No se pudo conectar. Inténtalo de nuevo.");
+      return;
+    }
+    if (authenticated) {
       setIsAuthenticated(true);
       setLoginError("");
       
@@ -977,6 +991,7 @@ export default function CourseManagement() {
         </div>
       </div>
 
+      {showGoogleTraffic && <FreeLessonReport password={password} />}
       {showGoogleTraffic && (
         <div className="mb-8 p-6 bg-white rounded-lg border border-gray-200 shadow-sm overflow-x-auto">
           <div className="flex justify-between items-center mb-4 border-b pb-3">
