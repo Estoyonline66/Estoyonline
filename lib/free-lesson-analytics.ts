@@ -4,6 +4,7 @@ export type LessonEvent = {
   kind: "visit" | "whatsapp";
   path: string;
   country: string;
+  countrySource?: "cloudflare" | "vercel" | "unknown";
   time: string;
   campaignId?: "cht" | "tr";
 };

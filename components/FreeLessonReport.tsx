@@ -12,7 +12,8 @@ const dateFormat = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Paris", 
 export default function FreeLessonReport({ password }: { password: string }) {
   const [loadedReport, setReport] = useState<Report | null>(null);
   const [campaignFilter, setCampaignFilter] = useState<CampaignFilter>("all");
-  const report = loadedReport ? summarizeLessonEvents(loadedReport.events, campaignFilter) : null;
+  const [includeLegacy, setIncludeLegacy] = useState(false);
+  const report = loadedReport ? summarizeLessonEvents(loadedReport.events.filter(event => includeLegacy || event.countrySource !== undefined), campaignFilter) : null;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [loadedCount, setLoadedCount] = useState(0);
@@ -52,6 +53,11 @@ export default function FreeLessonReport({ password }: { password: string }) {
     </div>
     <p className="mb-4 text-sm text-gray-600">Counts include Free Lesson views and arrivals on any page with campaign_id=tr, including reloads. TR campaign visitors’ WhatsApp clicks are tracked on any page in the same browser-tab session. The latest explicit campaign landing determines subsequent click attribution. Times: Europe/Paris. Country is approximate; unavailable locations appear as Unknown. Clicks do not confirm a message was sent.</p>
     {error && <p role="alert" className="mb-4 text-red-600">{error}</p>}
+    <label className="mb-4 flex items-center gap-2 text-sm">
+      <input type="checkbox" checked={includeLegacy} onChange={event => setIncludeLegacy(event.target.checked)} />
+      Include older records (country may reflect a proxy location)
+    </label>
+    {loadedReport?.events.some(event => event.countrySource === "unknown") && <p className="mb-4 text-sm text-amber-800">Some visitor countries could not be verified. For Cloudflare traffic, enable IP Geolocation or Add visitor location headers. Proxy countries are not used as a fallback.</p>}
     {loading && <p role="status" className="mb-4 text-sm">Loading logs… {loadedCount} records received. Totals update when loading finishes.</p>}
     <label className="mb-4 flex flex-wrap items-center gap-3 text-sm font-semibold">
       Campaign
@@ -77,7 +83,7 @@ export default function FreeLessonReport({ password }: { password: string }) {
             <caption className="mb-2 text-left font-semibold">Visit and click log — newest first</caption>
             <thead><tr className="border-b"><th className="p-2">Time (Europe/Paris)</th><th className="p-2">Country</th><th className="p-2">Event</th><th className="p-2">Page</th><th className="p-2">Campaign</th><th className="p-2">Session</th></tr></thead>
             <tbody>{report.events.map(event => <tr className="border-b" key={event.id}>
-              <td className="whitespace-nowrap p-2">{dateFormat.format(new Date(event.time))}</td><td className="p-2">{countryName(event.country)}</td><td className="p-2">{event.kind === "visit" ? "Page view" : "WhatsApp click"}</td><td className="p-2">{event.path}</td><td className="p-2">{event.campaignId || "—"}</td><td className="break-all p-2 font-mono text-xs">{event.sessionId}</td>
+              <td className="whitespace-nowrap p-2">{dateFormat.format(new Date(event.time))}</td><td className="p-2">{countryName(event.country)}<span className="block text-xs text-gray-500">{event.countrySource || "Legacy — unverified"}</span></td><td className="p-2">{event.kind === "visit" ? "Page view" : "WhatsApp click"}</td><td className="p-2">{event.path}</td><td className="p-2">{event.campaignId || "—"}</td><td className="break-all p-2 font-mono text-xs">{event.sessionId}</td>
             </tr>)}</tbody>
           </table>
         </div>

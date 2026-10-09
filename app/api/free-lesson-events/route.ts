@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Client } from "basic-ftp";
 import { Readable, Writable } from "node:stream";
 import { isCoursesAdmin } from "@/lib/courses-admin-auth";
+import { visitorCountry } from "@/lib/visitor-country";
 import { isTrackingPath, lessonPaths, summarizeLessonEvents, type LessonEvent } from "@/lib/free-lesson-analytics";
 
 export const runtime = "nodejs";
@@ -40,10 +41,8 @@ export async function POST(request: NextRequest) {
       (body.campaignId !== "tr" && (!lessonPaths.includes(body.path) || (body.kind === "visit" && body.path !== "/en/free-lesson")))) {
     return NextResponse.json({ error: "Invalid event" }, { status: 400 });
   }
-  // Vercel supplies coarse country information; no raw IP addresses are stored.
-  const countryHeader = process.env.VERCEL ? request.headers.get("x-vercel-ip-country") : null;
-  const country = countryHeader && /^[A-Z]{2}$/.test(countryHeader) ? countryHeader : "Unknown";
-  const event: LessonEvent = { id: body.id, sessionId: body.sessionId, kind: body.kind, path: body.path, country, time: new Date().toISOString(), ...(body.campaignId === "cht" || body.campaignId === "tr" ? { campaignId: body.campaignId } : {}) };
+  const location = visitorCountry(request.headers);
+  const event: LessonEvent = { id: body.id, sessionId: body.sessionId, kind: body.kind, path: body.path, ...location, time: new Date().toISOString(), ...(body.campaignId === "cht" || body.campaignId === "tr" ? { campaignId: body.campaignId } : {}) };
   try {
     await withFtp(async (client) => {
       // Independent files avoid read/modify/write races between visitors.

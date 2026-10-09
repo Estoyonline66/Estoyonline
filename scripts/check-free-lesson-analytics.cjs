@@ -31,16 +31,29 @@ async function main() {
   }
   Object.assign(process.env, { FTP_HOST: "test", FTP_USER: "test", FTP_PASSWORD: "test", COURSES_ADMIN_PASSWORD: "test-only-password", VERCEL: "1" });
   const auth = load("lib/courses-admin-auth.ts");
+  const geo = load("lib/visitor-country.ts");
+  const locate = headers => geo.visitorCountry(new Headers(headers));
+  for (const peer of ["162.158.1.1", "2606:4700::1", "::ffff:162.158.1.1"]) {
+    assert.deepEqual(locate({ "x-vercel-forwarded-for": peer, "cf-ipcountry": "TR", "x-vercel-ip-country": "NL" }), { country: "TR", countrySource: "cloudflare" });
+    for (const country of ["XX", "T1", "ZZ", ""]) {
+      assert.equal(locate({ "x-vercel-forwarded-for": peer, "cf-ipcountry": country, "x-vercel-ip-country": "NL" }).country, "Unknown");
+    }
+  }
+  assert.deepEqual(locate({ "x-vercel-forwarded-for": "8.8.8.8", "cf-ipcountry": "TR", "x-vercel-ip-country": "GB" }), { country: "GB", countrySource: "vercel" });
+  assert.equal(locate({ "x-vercel-forwarded-for": "8.8.8.8", "cf-ray": "unverified", "x-vercel-ip-country": "NL" }).country, "Unknown");
+  assert.equal(locate({ "cf-ipcountry": "TR", "x-vercel-ip-country": "NL" }).country, "Unknown");
+  console.log("PASS: trusted Cloudflare IPv4/IPv6, proxy country rejection, missing country and spoofed headers.");
   const api = load("app/api/free-lesson-events/route.ts", {
     "basic-ftp": { Client: FakeFtp },
     "@/lib/free-lesson-analytics": analytics,
     "@/lib/courses-admin-auth": auth,
+    "@/lib/visitor-country": geo,
   });
   const { NextRequest } = require("next/server");
   const sessionId = randomUUID();
   const visit = { id: randomUUID(), sessionId, kind: "visit", path: "/en/free-lesson" };
   const request = (body, extra = {}) => new NextRequest("https://estoyonline.es/api/free-lesson-events", {
-    method: "POST", headers: { origin: "https://estoyonline.es", "x-vercel-ip-country": "GB", ...extra }, body: JSON.stringify(body),
+    method: "POST", headers: { origin: "https://estoyonline.es", "x-vercel-forwarded-for": "8.8.8.8", "x-vercel-ip-country": "GB", ...extra }, body: JSON.stringify(body),
   });
   assert.equal((await api.POST(request(visit, { origin: "https://example.com" }))).status, 403);
   assert.equal((await api.POST(request({ ...visit, path: "/en/contact" }))).status, 400);
