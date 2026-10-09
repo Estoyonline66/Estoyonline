@@ -8,6 +8,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 const directory = "free-lesson-events";
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const reportBatchSize = 10;
 
 async function withFtp<T>(callback: (client: Client) => Promise<T>) {
   if (!process.env.FTP_HOST || !process.env.FTP_USER || !process.env.FTP_PASSWORD) throw new Error("FTP configuration missing");
@@ -61,18 +62,26 @@ export async function GET(request: NextRequest) {
   if (!isCoursesAdmin(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  const cursor = request.nextUrl.searchParams.get("cursor");
+  if (cursor && !uuid.test(cursor)) {
+    return NextResponse.json({ error: "Invalid cursor" }, { status: 400 });
+  }
   try {
-    const events = await withFtp(async (client) => {
-      const files = (await client.list()).filter((file) => file.name.endsWith(".json") && uuid.test(file.name.slice(0, -5)));
+    const result = await withFtp(async (client) => {
+      const files = (await client.list())
+        .filter((file) => file.name.endsWith(".json") && uuid.test(file.name.slice(0, -5)))
+        .sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
+        .filter(file => !cursor || file.name > `${cursor}.json`);
+      const batch = files.slice(0, reportBatchSize);
       const rows: LessonEvent[] = [];
-      for (const file of files) {
+      for (const file of batch) {
         const chunks: Buffer[] = [];
         await client.downloadTo(new Writable({ write(chunk, _encoding, done) { chunks.push(Buffer.from(chunk)); done(); } }), file.name);
         rows.push(JSON.parse(Buffer.concat(chunks).toString("utf8")) as LessonEvent);
       }
-      return rows;
+      return { events: rows, nextCursor: files.length > batch.length ? batch[batch.length - 1].name.slice(0, -5) : null };
     });
-    return NextResponse.json(summarizeLessonEvents(events), { headers: { "Cache-Control": "private, no-store" } });
+    return NextResponse.json({ ...summarizeLessonEvents(result.events), nextCursor: result.nextCursor }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     console.error("Free lesson report failed", error);
     return NextResponse.json({ error: "Unable to load Free Lesson logs" }, { status: 503 });

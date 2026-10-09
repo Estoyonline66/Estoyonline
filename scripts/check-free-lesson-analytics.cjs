@@ -51,6 +51,21 @@ async function main() {
   assert.equal((await api.POST(request(visit))).status, 200);
   assert.equal(files.size, 5);
   const get = headers => new NextRequest("https://estoyonline.es/api/free-lesson-events", { headers });
+  async function readAllPages() {
+    let cursor = null;
+    const events = [];
+    let pages = 0;
+    do {
+      const response = await api.GET(new NextRequest(`https://estoyonline.es/api/free-lesson-events${cursor ? `?cursor=${cursor}` : ""}`, { headers: { authorization: "Bearer test-only-password" } }));
+      assert.equal(response.status, 200);
+      const page = await response.json();
+      assert.ok(page.events.length <= 10);
+      events.push(...page.events);
+      cursor = page.nextCursor;
+      assert.ok(++pages < 100);
+    } while (cursor);
+    return { ...analytics.summarizeLessonEvents(events), pages };
+  }
   assert.equal((await api.GET(get({}))).status, 401);
   assert.equal((await api.GET(get({ authorization: "Bearer wrong" }))).status, 401);
   const result = await api.GET(get({ authorization: "Bearer test-only-password" }));
@@ -75,10 +90,20 @@ async function main() {
   for (const page of ["https://example.com", "//example.com", "/tr?secret=value", "/tr#hash"]) {
     assert.equal((await api.POST(request({ ...visit, path: page, campaignId: "tr" }))).status, 400);
   }
-  const combined = await (await api.GET(get({ authorization: "Bearer test-only-password" }))).json();
+  const combined = await readAllPages();
+  assert.equal(combined.pages, 2);
   assert.deepEqual(analytics.summarizeLessonEvents(combined.events, "tr").countries, [{ country: "GB", views: 4, sessions: 1, clicks: 1 }]);
   assert.equal(analytics.summarizeLessonEvents(combined.events, "cht").events.length, 1);
   assert.equal(analytics.summarizeLessonEvents(combined.events, "other").events.length, 5);
+  for (let i = 0; i < 30; i++) {
+    assert.equal((await api.POST(request({ ...visit, id: randomUUID() }))).status, 200);
+  }
+  const largeReport = await readAllPages();
+  assert.equal(largeReport.pages, 5);
+  assert.equal(largeReport.events.length, 41);
+  assert.equal(new Set(largeReport.events.map(event => event.id)).size, 41);
+  assert.equal((await api.GET(new NextRequest("https://estoyonline.es/api/free-lesson-events?cursor=../bad", { headers: { authorization: "Bearer test-only-password" } }))).status, 400);
+  console.log("PASS: bounded FTP batches, pagination across 41 events, no missing or duplicate records, invalid cursor rejection.");
 
   // Exercise the tracker across navigation, Strict Mode effect replay and reload.
   const sent = [];

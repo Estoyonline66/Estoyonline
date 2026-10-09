@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { summarizeLessonEvents, type CampaignFilter } from "@/lib/free-lesson-analytics";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { summarizeLessonEvents, type CampaignFilter, type LessonEvent } from "@/lib/free-lesson-analytics";
 import { Button } from "@/components/ui/button";
 
 type Report = ReturnType<typeof summarizeLessonEvents>;
@@ -15,17 +15,35 @@ export default function FreeLessonReport({ password }: { password: string }) {
   const report = loadedReport ? summarizeLessonEvents(loadedReport.events, campaignFilter) : null;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loadedCount, setLoadedCount] = useState(0);
+  const activeRequest = useRef<AbortController | null>(null);
   const load = useCallback(async () => {
+    activeRequest.current?.abort();
+    const controller = new AbortController();
+    activeRequest.current = controller;
     setLoading(true);
+    setLoadedCount(0);
     setError("");
     try {
-      const response = await fetch("/api/free-lesson-events", { cache: "no-store", headers: { Authorization: `Bearer ${password}` } });
-      if (!response.ok) throw new Error(response.status === 401 ? "Please sign in again to view this report." : "Unable to load Free Lesson logs. Please try again.");
-      setReport(await response.json());
-    } catch (err) { setError(err instanceof Error ? err.message : "Unable to load logs."); }
-    finally { setLoading(false); }
+      const events: LessonEvent[] = [];
+      let cursor: string | null = null;
+      const cursors = new Set<string>();
+      do {
+        const url: string = `/api/free-lesson-events${cursor ? `?cursor=${encodeURIComponent(cursor)}` : ""}`;
+        const response = await fetch(url, { cache: "no-store", signal: controller.signal, headers: { Authorization: `Bearer ${password}` } });
+        if (!response.ok) throw new Error(response.status === 401 ? "Please sign in again to view this report." : `Unable to load logs (HTTP ${response.status}). Please try again.`);
+        const page: Report & { nextCursor?: string | null } = await response.json();
+        events.push(...page.events);
+        setLoadedCount(events.length);
+        cursor = page.nextCursor ?? null;
+        if (cursor && cursors.has(cursor)) throw new Error("Unable to continue loading logs. Please refresh.");
+        if (cursor) cursors.add(cursor);
+      } while (cursor);
+      setReport(summarizeLessonEvents(events));
+    } catch (err) { if (!controller.signal.aborted) setError(err instanceof Error ? err.message : "Unable to load logs."); }
+    finally { if (activeRequest.current === controller) setLoading(false); }
   }, [password]);
-  useEffect(() => { void load(); }, [load]);
+  useEffect(() => { void load(); return () => activeRequest.current?.abort(); }, [load]);
 
   return <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
     <div className="mb-4 flex items-center justify-between gap-4 border-b pb-3">
@@ -34,6 +52,7 @@ export default function FreeLessonReport({ password }: { password: string }) {
     </div>
     <p className="mb-4 text-sm text-gray-600">Counts include Free Lesson views and arrivals on any page with campaign_id=tr, including reloads. TR campaign visitors’ WhatsApp clicks are tracked on any page in the same browser-tab session. The latest explicit campaign landing determines subsequent click attribution. Times: Europe/Paris. Country is approximate; unavailable locations appear as Unknown. Clicks do not confirm a message was sent.</p>
     {error && <p role="alert" className="mb-4 text-red-600">{error}</p>}
+    {loading && <p role="status" className="mb-4 text-sm">Loading logs… {loadedCount} records received. Totals update when loading finishes.</p>}
     <label className="mb-4 flex flex-wrap items-center gap-3 text-sm font-semibold">
       Campaign
       <select className="rounded-md border border-gray-300 bg-white p-2" value={campaignFilter} onChange={event => setCampaignFilter(event.target.value as CampaignFilter)}>
