@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Client } from "basic-ftp";
 import { Readable, Writable } from "node:stream";
 import { isCoursesAdmin } from "@/lib/courses-admin-auth";
-import { lessonPaths, summarizeLessonEvents, type LessonEvent } from "@/lib/free-lesson-analytics";
+import { isTrackingPath, lessonPaths, summarizeLessonEvents, type LessonEvent } from "@/lib/free-lesson-analytics";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -34,15 +34,15 @@ export async function POST(request: NextRequest) {
     body = JSON.parse(raw);
   } catch { return NextResponse.json({ error: "Invalid JSON" }, { status: 400 }); }
   if (!body || !uuid.test(body.id ?? "") || !uuid.test(body.sessionId ?? "") ||
-      !lessonPaths.includes(body.path) || !["visit", "whatsapp"].includes(body.kind) ||
-      (body.campaignId !== undefined && body.campaignId !== "cht") ||
-      (body.kind === "visit" && body.path !== "/en/free-lesson")) {
+      !isTrackingPath(body.path) || !["visit", "whatsapp"].includes(body.kind) ||
+      (body.campaignId !== undefined && body.campaignId !== "cht" && body.campaignId !== "tr") ||
+      (body.campaignId !== "tr" && (!lessonPaths.includes(body.path) || (body.kind === "visit" && body.path !== "/en/free-lesson")))) {
     return NextResponse.json({ error: "Invalid event" }, { status: 400 });
   }
   // Vercel supplies coarse country information; no raw IP addresses are stored.
   const countryHeader = process.env.VERCEL ? request.headers.get("x-vercel-ip-country") : null;
   const country = countryHeader && /^[A-Z]{2}$/.test(countryHeader) ? countryHeader : "Unknown";
-  const event: LessonEvent = { id: body.id, sessionId: body.sessionId, kind: body.kind, path: body.path, country, time: new Date().toISOString(), ...(body.campaignId === "cht" ? { campaignId: "cht" as const } : {}) };
+  const event: LessonEvent = { id: body.id, sessionId: body.sessionId, kind: body.kind, path: body.path, country, time: new Date().toISOString(), ...(body.campaignId === "cht" || body.campaignId === "tr" ? { campaignId: body.campaignId } : {}) };
   try {
     await withFtp(async (client) => {
       // Independent files avoid read/modify/write races between visitors.

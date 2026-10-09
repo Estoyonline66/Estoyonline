@@ -29,22 +29,23 @@ export default function FreeLessonReport({ password }: { password: string }) {
 
   return <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
     <div className="mb-4 flex items-center justify-between gap-4 border-b pb-3">
-      <h2 className="text-xl font-bold">Free Lesson — visits &amp; WhatsApp clicks</h2>
+      <h2 className="text-xl font-bold">Campaigns &amp; Free Lesson — visits &amp; WhatsApp clicks</h2>
       <Button size="sm" variant="outline" onClick={() => void load()} disabled={loading}>{loading ? "Loading…" : "Refresh"}</Button>
     </div>
-    <p className="mb-4 text-sm text-gray-600">Every Free Lesson page view is counted, including reloads. WhatsApp clicks are linked to the same browser-tab session after visiting Free Lesson. Times: Europe/Paris. Country is approximate; unavailable locations appear as Unknown. Clicks do not confirm a message was sent.</p>
+    <p className="mb-4 text-sm text-gray-600">Counts include Free Lesson views and arrivals on any page with campaign_id=tr, including reloads. TR campaign visitors’ WhatsApp clicks are tracked on any page in the same browser-tab session. The latest explicit campaign landing determines subsequent click attribution. Times: Europe/Paris. Country is approximate; unavailable locations appear as Unknown. Clicks do not confirm a message was sent.</p>
     {error && <p role="alert" className="mb-4 text-red-600">{error}</p>}
     <label className="mb-4 flex flex-wrap items-center gap-3 text-sm font-semibold">
       Campaign
       <select className="rounded-md border border-gray-300 bg-white p-2" value={campaignFilter} onChange={event => setCampaignFilter(event.target.value as CampaignFilter)}>
         <option value="all">All visits</option>
         <option value="cht">campaign_id=cht</option>
-        <option value="other">Without cht / older records</option>
+        <option value="tr">campaign_id=tr</option>
+        <option value="other">No campaign / older records</option>
       </select>
     </label>
     {report && <>
       <p className="mb-4 font-semibold">Page views: {report.events.filter(e => e.kind === "visit").length} · Sessions: {new Set(report.events.filter(e => e.kind === "visit").map(e => e.sessionId)).size} · WhatsApp clicks: {report.events.filter(e => e.kind === "whatsapp").length}</p>
-      {report.events.length === 0 ? <p>No Free Lesson records match this filter.</p> : <>
+      {report.events.length === 0 ? <p>No records match this filter.</p> : <>
         <div className="mb-6 overflow-x-auto">
           <table className="w-full text-left text-sm">
             <caption className="mb-2 text-left font-semibold">Visits by country</caption>

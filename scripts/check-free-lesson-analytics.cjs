@@ -68,6 +68,17 @@ async function main() {
   assert.equal(analytics.summarizeLessonEvents(campaignReport.events, "cht").events.length, 1);
   assert.equal(analytics.summarizeLessonEvents(campaignReport.events, "other").events.length, 5);
   assert.equal(analytics.summarizeLessonEvents(campaignReport.events, "cht").countries[0].views, 1);
+  for (const page of ["/tr", "/tr/contact", "/en/courses", "/any-page"]) {
+    assert.equal((await api.POST(request({ ...visit, id: randomUUID(), path: page, campaignId: "tr" }))).status, 200);
+  }
+  assert.equal((await api.POST(request({ ...visit, id: randomUUID(), kind: "whatsapp", path: "/tr/contact", campaignId: "tr" }))).status, 200);
+  for (const page of ["https://example.com", "//example.com", "/tr?secret=value", "/tr#hash"]) {
+    assert.equal((await api.POST(request({ ...visit, path: page, campaignId: "tr" }))).status, 400);
+  }
+  const combined = await (await api.GET(get({ authorization: "Bearer test-only-password" }))).json();
+  assert.deepEqual(analytics.summarizeLessonEvents(combined.events, "tr").countries, [{ country: "GB", views: 4, sessions: 1, clicks: 1 }]);
+  assert.equal(analytics.summarizeLessonEvents(combined.events, "cht").events.length, 1);
+  assert.equal(analytics.summarizeLessonEvents(combined.events, "other").events.length, 5);
 
   // Exercise the tracker across navigation, Strict Mode effect replay and reload.
   const sent = [];
@@ -113,6 +124,25 @@ async function main() {
   const filtered = analytics.summarizeLessonEvents(sent.map(event => ({ ...event, country: "GB", time: new Date().toISOString() })), "cht");
   assert.equal(filtered.countries[0].views, 1);
   assert.equal(filtered.countries[0].clicks, 4);
+  storage.clear(); refs = []; search = "campaign_id=tr";
+  const trStart = sent.length;
+  render("/tr"); render("/tr");
+  assert.equal(sent.length, trStart + 1); // No duplicate on effect replay.
+  click(); search = ""; render("/tr/contact"); click();
+  refs = []; render("/en/courses"); click();
+  assert.ok(sent.slice(trStart).every(event => event.campaignId === "tr"));
+  assert.equal(sent.slice(trStart).filter(event => event.kind === "visit").length, 1);
+  assert.equal(sent.slice(trStart).filter(event => event.kind === "whatsapp").length, 3);
+  search = "campaign_id=tr"; render("/en/courses");
+  assert.equal(sent.at(-1).kind, "visit"); // Query-only campaign arrival.
+  refs = []; render("/en/courses");
+  assert.equal(sent.slice(trStart).filter(event => event.kind === "visit").length, 3);
+  search = "campaign_id=cht"; render("/en/free-lesson"); click();
+  assert.equal(sent.at(-1).campaignId, "cht");
+  assert.equal(sent[trStart].campaignId, "tr"); // No retroactive reassignment.
+  search = "campaign_id=tr"; render("/en/free-lesson"); click();
+  assert.equal(sent.at(-1).campaignId, "tr");
+  console.log("PASS: TR campaign landings on arbitrary pages, cross-page clicks, reloads, query-only navigation, campaign switching and separate filters.");
   console.log("PASS: campaign persistence, query-only landing, filtered counts, older records and campaign validation.");
   console.log("PASS: validation, authentication, concurrent storage, replay, country counts, timestamps, attribution, all three click paths, Strict Mode and reloads.");
 }

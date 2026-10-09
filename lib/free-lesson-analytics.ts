@@ -5,16 +5,20 @@ export type LessonEvent = {
   path: string;
   country: string;
   time: string;
-  campaignId?: "cht";
+  campaignId?: "cht" | "tr";
 };
 
 export const lessonPaths = ["/en/free-lesson", "/en", "/en/contact"];
 
-export type CampaignFilter = "all" | "cht" | "other";
+export type CampaignFilter = "all" | "cht" | "tr" | "other";
+
+export function isTrackingPath(value: unknown): value is string {
+  return typeof value === "string" && value.length <= 512 && /^\/(?!\/)[A-Za-z0-9/_%.-]*$/.test(value);
+}
 
 export function summarizeLessonEvents(events: LessonEvent[], campaign: CampaignFilter = "all") {
   const unique = [...new Map(events.map((event) => [event.id, event])).values()].filter(event =>
-    campaign === "all" || (campaign === "cht" ? event.campaignId === "cht" : event.campaignId !== "cht")
+    campaign === "all" || (campaign === "other" ? !event.campaignId : event.campaignId === campaign)
   );
   const countries = new Map<string, { country: string; views: number; sessions: Set<string>; clicks: number }>();
   for (const event of unique) {
