@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [{
+      source: "/:path*",
+      has: [{ type: "host", value: "www.estoyonline.es" }],
+      destination: "https://estoyonline.es/:path*",
+      statusCode: 301,
+    }];
+  },
   // Send complete metadata in <head> for every visitor and crawler, including
   // AI readers that do not execute JavaScript or process streamed metadata.
   htmlLimitedBots: /.*/,

@@ -3,11 +3,16 @@ import { NextResponse, type NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   if (path === "/") {
-    const locale = request.cookies.get("language")?.value === "tr" ? "tr" : "en";
+    // Preserve the former Cloudflare Worker's landing-page behavior.
+    // After removing the proxy, Vercel supplies the visitor's country.
+    const acceptsTurkish = (request.headers.get("accept-language") || "").toLowerCase().includes("tr");
+    const country = request.headers.get("x-vercel-ip-country") || "";
+    const locale = acceptsTurkish || country === "TR" ? "tr" : "en";
     const destination = request.nextUrl.clone();
     destination.pathname = `/${locale}`;
-    const response = NextResponse.redirect(destination);
-    response.headers.set("Vary", "Cookie");
+    destination.search = "";
+    const response = NextResponse.redirect(destination, 302);
+    response.headers.set("Vary", "Accept-Language, X-Vercel-IP-Country");
     response.headers.set("Cache-Control", "private, no-store");
     return response;
   }
