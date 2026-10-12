@@ -9,8 +9,8 @@ import { dictionaries, type LocalePageProps } from "@/lib/i18n";
 import { siteUrl } from "@/lib/seo";
 
 const title = "Free Spanish Trial Lesson with Meli | EstoyOnline";
-const description = "Free beginner Spanish lesson with Meli, a real native Spanish-speaking teacher, not AI. Live online on Friday, 12 October at 17:00 UK time.";
-const poster = "/Images/free-spanish-trial-lesson-v2.png";
+const description = "Free beginner Spanish lesson with Meli, a real native Spanish-speaking teacher, not AI. Live online on Friday, 16 October at 17:00 UK time.";
+const poster = "/Images/free-spanish-trial-lesson-16-october.jpg";
 
 export const metadata: Metadata = {
   title,
@@ -58,7 +58,7 @@ export default async function FreeLesson({ params }: LocalePageProps) {
         <div className="flex flex-col items-center justify-center gap-10 md:flex-row-reverse">
           <Image
             src={poster}
-            alt="EstoyOnline.es announcement: free Spanish trial lesson, beginner level, with Meli. Real teacher, not AI. Friday, 12 October, 17:00 UK. Live online class."
+            alt="EstoyOnline.es announcement: free Spanish trial lesson, beginner level, with Meli. Real teacher, not AI. Friday, 16 October, 17:00 UK. Live online class."
             width={1122}
             height={1402}
             priority
@@ -78,7 +78,7 @@ export default async function FreeLesson({ params }: LocalePageProps) {
               </div>
               <div>
                 <dt className="flex items-center gap-2 font-semibold"><CalendarDays aria-hidden="true" className="size-5 text-secondary" />Date</dt>
-                <dd className="mt-1">Friday, 12 October</dd>
+                <dd className="mt-1">Friday, 16 October</dd>
               </div>
               <div>
                 <dt className="flex items-center gap-2 font-semibold"><Clock aria-hidden="true" className="size-5 text-secondary" />Time</dt>
