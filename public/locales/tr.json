@@ -493,8 +493,10 @@
     },
     "courses": {
       "onlineSpanishOneTable": [
-        { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "9.200 TL (toplam)" },
-        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "7.600 TL (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (akşam - standart)", "duration": "40 saat - 4 ay", "price": "9.200 TL (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (akşam - yoğun)", "duration": "40 saat - 2 ay", "price": "9.200 TL (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (sabah - standart)", "duration": "40 saat - 4 ay", "price": "7.600 TL (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (sabah - yoğun)", "duration": "40 saat - 2 ay", "price": "7.600 TL (toplam)" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "7.100 TL (toplam)" },
         { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "3.800 TL (toplam)" },
         { "course": "Çocuklar tüm seviyeler (Max 6 çocuk)", "duration": "24 saat - 4 ay", "price": "9.100 TL (toplam)" }
@@ -508,8 +510,10 @@
           { "course": "Özel ders - 6 öğrenci", "duration": "1 saat", "price": "8 EUR (kişi başı)" }
          ],
       "extraSpanishTable": [
-       { "course": "A1.1 başlangıç seviyesi (akşam)", "duration": "40 saat - 4 ay", "price": "190 EUR (toplam)" },
-        { "course": "A1.1 başlangıç seviyesi (sabah)", "duration": "40 saat - 4 ay", "price": "160 EUR (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (akşam - standart)", "duration": "40 saat - 4 ay", "price": "190 EUR (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (akşam - yoğun)", "duration": "40 saat - 2 ay", "price": "190 EUR (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (sabah - standart)", "duration": "40 saat - 4 ay", "price": "160 EUR (toplam)" },
+        { "course": "A1.1 başlangıç seviyesi (sabah - yoğun)", "duration": "40 saat - 2 ay", "price": "160 EUR (toplam)" },
         { "course": "A1.2 / Orta / Üst seviyeler", "duration": "30 saat - 3 ay", "price": "145 EUR (toplam)" },
         { "course": "Tamamlayıcı kurslar", "duration": "16 saat - 2 ay ", "price": "90 EUR (toplam)" },
         { "course": "Çocuklar tüm seviyeler (Max 6 çocuk)", "duration": "24 saat - 4 ay", "price": "185 EUR (toplam)" }

@@ -30,6 +30,7 @@ const days = [
   "Sunday",
   "Tue - Thu",
   "Mon - Wed",
+  "Mon - Thu",
   "Wed - Fri",
   "Mon - Fri",
 ];
