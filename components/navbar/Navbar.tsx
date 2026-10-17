@@ -93,11 +93,6 @@ export default function Navbar({isHome}:props) {
       }>
         <Translator />
         <nav className="w-full !h-fit min-[498px]:w-fit flex flex-col sm:flex-row items-center sm:gap-5 text-base sm:text-sm md:text-base lg:text-lg">
-          {(pathName === "/en" || pathName === "/en/") && (
-            <TranslatedLink href="/free-lesson" className={linkClassName("/free-lesson")}>
-              Free Lesson
-            </TranslatedLink>
-          )}
           
             {
               navbarData.links?Object.keys(navbarData.links).map((link)=><TranslatedLink key={link} href={navbarData.links[link]} className={
