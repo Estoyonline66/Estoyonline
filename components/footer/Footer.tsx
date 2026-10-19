@@ -10,7 +10,7 @@ import { Button } from '../ui/button'
 import { ContactData } from "@/types/PropTypes";
 
 export default function Footer() {
-    const {t} = useTranslation();
+    const {t, language} = useTranslation();
 	 const Data: ContactData = t("contact");
     const navigationData = t<{
       links: Record<string, string>
@@ -47,7 +47,7 @@ export default function Footer() {
           </Button></a>
           
           
-          <p className='text-xs sm:text-sm'>© 2025 EstoyOnline.es | All Rights Reserved</p>
+          <p className='text-xs sm:text-sm'>© 2025 EstoyOnline.es | {language === "tr" ? "Tüm hakları saklıdır" : "All Rights Reserved"}</p>
     </footer>
   )
 }
