@@ -27,10 +27,12 @@ function render() {
   const tree = mod.exports.default(); cleanups = effects.map(fn => fn()); return tree;
 }
 function click(href, type='click', button=0) { handlers.get(type)?.({ type, button, target: new Element(href) }); }
-render(); render();
-assert.equal(scripts.length, 0, 'Do not load SDK before consent');
-states[0] = false; render(); assert.equal(scripts.length, 0);
-states[0] = true; render();
+storage.set('eo_ads_measurement_consent', 'no');
+assert.equal(render(), null); assert.equal(render(), null);
+assert.equal(scripts.length, 0, 'Respect a previous refusal');
+storage.clear(); states = []; render();
+assert.equal(render(), null, 'Never render a banner or privacy button');
+assert.equal(storage.has('eo_ads_measurement_consent'), false, 'Do not fabricate a stored consent choice');
 assert.equal(scripts.length, 1);
 const events = () => window.oaiq.q.filter(x => x[0] === 'measure');
 click('https://wa.me/123');
@@ -47,4 +49,4 @@ states[0] = false; render(); click('https://wa.me/123');
 assert.equal(events().length, 3, 'Revoked consent stops conversion tracking');
 states[0] = true; pathname = '/admin'; render(); click('https://wa.me/123');
 assert.equal(events().length, 3);
-console.log('PASS: consent, single SDK load, cross-page tracking, WhatsApp URL validation, effect replay, withdrawal and non-public routes.');
+console.log('PASS: no visible UI, prior opt-out, no fabricated consent, single SDK load, cross-page tracking, WhatsApp URL validation, effect replay, withdrawal and non-public routes.');
