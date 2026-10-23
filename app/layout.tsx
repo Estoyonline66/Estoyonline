@@ -1,6 +1,7 @@
 import { TranslationProvider } from "@/contexts/TranslationProvider";
 import GoogleTrafficTracker from "@/components/GoogleTrafficTracker";
 import FreeLessonTracker from "@/components/FreeLessonTracker";
+import OpenAIAdsTracker from "@/components/OpenAIAdsTracker";
 import { Suspense } from "react";
 import clsx from "clsx";
 import type { Metadata } from "next";
@@ -34,6 +35,7 @@ export default async function RootLayout({
         <TranslationProvider initialLocale={locale}>
           <GoogleTrafficTracker />
           <Suspense fallback={null}><FreeLessonTracker /></Suspense>
+          <OpenAIAdsTracker />
           <main id="scroll-container" className="max-h-screen overflow-auto relative">
             {children}
           </main>
